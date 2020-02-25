@@ -5,6 +5,7 @@
  */
 package com.azure.management.network.implementation;
 
+import com.azure.management.network.ProvisioningState;
 import com.azure.management.network.models.ExpressRouteCrossConnectionPeeringInner;
 import com.azure.management.network.models.ExpressRouteCrossConnectionPeeringsInner;
 import com.azure.management.resources.fluentcore.model.implementation.CreatableUpdatableImpl;
@@ -206,7 +207,7 @@ class ExpressRouteCrossConnectionPeeringImpl extends
     }
 
     @Override
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return inner().provisioningState();
     }
 

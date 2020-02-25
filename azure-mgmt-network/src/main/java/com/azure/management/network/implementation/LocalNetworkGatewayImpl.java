@@ -8,6 +8,7 @@ package com.azure.management.network.implementation;
 import com.azure.management.network.AddressSpace;
 import com.azure.management.network.BgpSettings;
 import com.azure.management.network.LocalNetworkGateway;
+import com.azure.management.network.ProvisioningState;
 import com.azure.management.network.models.AppliableWithTags;
 import com.azure.management.network.models.LocalNetworkGatewayInner;
 import com.azure.management.resources.fluentcore.arm.models.implementation.GroupableResourceImpl;
@@ -59,7 +60,7 @@ class LocalNetworkGatewayImpl
     }
 
     @Override
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return inner().provisioningState();
     }
 

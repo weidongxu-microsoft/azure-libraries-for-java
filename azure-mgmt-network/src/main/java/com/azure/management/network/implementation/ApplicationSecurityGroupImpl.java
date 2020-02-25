@@ -6,6 +6,7 @@
 package com.azure.management.network.implementation;
 
 import com.azure.management.network.ApplicationSecurityGroup;
+import com.azure.management.network.ProvisioningState;
 import com.azure.management.network.models.ApplicationSecurityGroupInner;
 import com.azure.management.resources.fluentcore.arm.models.implementation.GroupableResourceImpl;
 import reactor.core.publisher.Mono;
@@ -48,7 +49,7 @@ class ApplicationSecurityGroupImpl
     }
 
     @Override
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return inner().provisioningState();
     }
 }

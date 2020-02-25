@@ -33,7 +33,7 @@ public interface ApplicationSecurityGroup extends
     /**
      * @return the provisioning state of the application security group resource
      */
-    String provisioningState();
+    ProvisioningState provisioningState();
 
     // Fluent interfaces for creating Application Security Groups
 

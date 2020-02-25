@@ -7,6 +7,7 @@ package com.azure.management.network.implementation;
 
 import com.azure.management.network.Access;
 import com.azure.management.network.ExpressRouteCircuitPeering;
+import com.azure.management.network.ProvisioningState;
 import com.azure.management.network.RouteFilter;
 import com.azure.management.network.RouteFilterRule;
 import com.azure.management.network.models.RouteFilterInner;
@@ -85,7 +86,7 @@ class RouteFilterImpl
     }
 
     @Override
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return inner().provisioningState();
     }
 

@@ -38,7 +38,7 @@ public interface RouteFilter extends
     /**
      * @return the provisioning state of the route filter resource
      */
-    String provisioningState();
+    ProvisioningState provisioningState();
 
     // Fluent interfaces for creating Route Filter
 

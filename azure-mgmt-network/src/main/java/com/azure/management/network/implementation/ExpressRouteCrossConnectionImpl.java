@@ -9,6 +9,7 @@ import com.azure.management.network.ExpressRouteCircuitReference;
 import com.azure.management.network.ExpressRouteCrossConnection;
 import com.azure.management.network.ExpressRouteCrossConnectionPeering;
 import com.azure.management.network.ExpressRouteCrossConnectionPeerings;
+import com.azure.management.network.ProvisioningState;
 import com.azure.management.network.ServiceProviderProvisioningState;
 import com.azure.management.network.models.ExpressRouteCrossConnectionInner;
 import com.azure.management.network.models.ExpressRouteCrossConnectionPeeringInner;
@@ -131,7 +132,7 @@ public class ExpressRouteCrossConnectionImpl extends GroupableParentResourceWith
     }
 
     @Override
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return inner().provisioningState();
     }
 

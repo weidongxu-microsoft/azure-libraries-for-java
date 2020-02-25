@@ -9,6 +9,7 @@ import com.azure.core.management.SubResource;
 import com.azure.management.network.ExpressRouteCircuit;
 import com.azure.management.network.IpsecPolicy;
 import com.azure.management.network.LocalNetworkGateway;
+import com.azure.management.network.ProvisioningState;
 import com.azure.management.network.TunnelConnectionHealth;
 import com.azure.management.network.VirtualNetworkGateway;
 import com.azure.management.network.VirtualNetworkGatewayConnection;
@@ -132,7 +133,7 @@ public class VirtualNetworkGatewayConnectionImpl
     }
 
     @Override
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return inner().provisioningState();
     }
 

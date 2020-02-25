@@ -11,6 +11,7 @@ import com.azure.management.network.ExpressRouteCircuitPeeringConfig;
 import com.azure.management.network.ExpressRoutePeeringState;
 import com.azure.management.network.ExpressRoutePeeringType;
 import com.azure.management.network.Ipv6ExpressRouteCircuitPeeringConfig;
+import com.azure.management.network.ProvisioningState;
 import com.azure.management.network.models.ExpressRouteCircuitPeeringInner;
 import com.azure.management.network.models.ExpressRouteCircuitPeeringsInner;
 import com.azure.management.resources.fluentcore.model.implementation.CreatableUpdatableImpl;
@@ -164,7 +165,7 @@ class ExpressRouteCircuitPeeringImpl extends
     }
 
     @Override
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return inner().provisioningState();
     }
 

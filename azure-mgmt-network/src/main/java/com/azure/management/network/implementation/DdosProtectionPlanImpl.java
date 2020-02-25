@@ -7,6 +7,7 @@ package com.azure.management.network.implementation;
 
 import com.azure.core.management.SubResource;
 import com.azure.management.network.DdosProtectionPlan;
+import com.azure.management.network.ProvisioningState;
 import com.azure.management.network.models.DdosProtectionPlanInner;
 import com.azure.management.resources.fluentcore.arm.models.implementation.GroupableResourceImpl;
 import reactor.core.publisher.Mono;
@@ -52,7 +53,7 @@ class DdosProtectionPlanImpl
     }
 
     @Override
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return inner().provisioningState();
     }
 

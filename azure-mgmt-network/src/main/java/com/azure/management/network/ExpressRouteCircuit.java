@@ -84,7 +84,7 @@ public interface ExpressRouteCircuit extends
      *
      * @return provisioningState
      */
-    String provisioningState();
+    ProvisioningState provisioningState();
 
     /**
      * The entirety of the express route circuit definition.

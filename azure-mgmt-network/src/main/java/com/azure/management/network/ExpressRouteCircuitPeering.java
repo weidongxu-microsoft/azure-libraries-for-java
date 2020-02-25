@@ -94,7 +94,7 @@ public interface ExpressRouteCircuitPeering extends
      *
      * @return provisioningState
      */
-    String provisioningState();
+    ProvisioningState provisioningState();
 
     /**
      * @return whether the provider or the customer last modified the peering
