@@ -38,6 +38,12 @@ public final class ConnectivityParameters {
     @JsonProperty(value = "protocolConfiguration")
     private ProtocolConfiguration protocolConfiguration;
 
+    /*
+     * IP address version.
+     */
+    @JsonProperty(value = "preferredIPVersion")
+    private IPVersion preferredIPVersion;
+
     /**
      * Get the source property: Parameters that define the source of the
      * connection.
@@ -119,6 +125,26 @@ public final class ConnectivityParameters {
      */
     public ConnectivityParameters withProtocolConfiguration(ProtocolConfiguration protocolConfiguration) {
         this.protocolConfiguration = protocolConfiguration;
+        return this;
+    }
+
+    /**
+     * Get the preferredIPVersion property: IP address version.
+     * 
+     * @return the preferredIPVersion value.
+     */
+    public IPVersion preferredIPVersion() {
+        return this.preferredIPVersion;
+    }
+
+    /**
+     * Set the preferredIPVersion property: IP address version.
+     * 
+     * @param preferredIPVersion the preferredIPVersion value to set.
+     * @return the ConnectivityParameters object itself.
+     */
+    public ConnectivityParameters withPreferredIPVersion(IPVersion preferredIPVersion) {
+        this.preferredIPVersion = preferredIPVersion;
         return this;
     }
 }

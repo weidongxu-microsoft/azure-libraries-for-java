@@ -10,6 +10,7 @@ import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.management.SubResource;
 import com.azure.management.network.ProbeProtocol;
+import com.azure.management.network.ProvisioningState;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
@@ -20,8 +21,8 @@ import java.util.List;
 @Fluent
 public class ProbeInner extends SubResource {
     /*
-     * Gets name of the resource that is unique within the set of probes used
-     * by the load balancer. This name can be used to access the resource.
+     * The name of the resource that is unique within the set of probes used by
+     * the load balancer. This name can be used to access the resource.
      */
     @JsonProperty(value = "name")
     private String name;
@@ -29,7 +30,7 @@ public class ProbeInner extends SubResource {
     /*
      * A unique read-only string that changes whenever the resource is updated.
      */
-    @JsonProperty(value = "etag")
+    @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
@@ -88,14 +89,13 @@ public class ProbeInner extends SubResource {
     private String requestPath;
 
     /*
-     * Gets the provisioning state of the public IP resource. Possible values
-     * are: 'Updating', 'Deleting', and 'Failed'.
+     * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
-    private String provisioningState;
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
+    private ProvisioningState provisioningState;
 
     /**
-     * Get the name property: Gets name of the resource that is unique within
+     * Get the name property: The name of the resource that is unique within
      * the set of probes used by the load balancer. This name can be used to
      * access the resource.
      * 
@@ -106,7 +106,7 @@ public class ProbeInner extends SubResource {
     }
 
     /**
-     * Set the name property: Gets name of the resource that is unique within
+     * Set the name property: The name of the resource that is unique within
      * the set of probes used by the load balancer. This name can be used to
      * access the resource.
      * 
@@ -126,18 +126,6 @@ public class ProbeInner extends SubResource {
      */
     public String etag() {
         return this.etag;
-    }
-
-    /**
-     * Set the etag property: A unique read-only string that changes whenever
-     * the resource is updated.
-     * 
-     * @param etag the etag value to set.
-     * @return the ProbeInner object itself.
-     */
-    public ProbeInner withEtag(String etag) {
-        this.etag = etag;
-        return this;
     }
 
     /**
@@ -286,26 +274,11 @@ public class ProbeInner extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: Gets the provisioning state of the
-     * public IP resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: Gets the provisioning state of the
-     * public IP resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the ProbeInner object itself.
-     */
-    public ProbeInner withProvisioningState(String provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 }

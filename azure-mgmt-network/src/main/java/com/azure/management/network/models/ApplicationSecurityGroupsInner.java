@@ -59,7 +59,7 @@ public final class ApplicationSecurityGroupsInner implements InnerSupportsGet<Ap
      * @param client the instance of the service client containing this operation class.
      */
     public ApplicationSecurityGroupsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(ApplicationSecurityGroupsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(ApplicationSecurityGroupsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -89,7 +89,7 @@ public final class ApplicationSecurityGroupsInner implements InnerSupportsGet<Ap
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("applicationSecurityGroupName") String applicationSecurityGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ApplicationSecurityGroupInner>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("applicationSecurityGroupName") String applicationSecurityGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationSecurityGroups")
         @ExpectedResponses({200})
@@ -110,11 +110,6 @@ public final class ApplicationSecurityGroupsInner implements InnerSupportsGet<Ap
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ApplicationSecurityGroupInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("applicationSecurityGroupName") String applicationSecurityGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ApplicationSecurityGroupInner parameters, @QueryParam("api-version") String apiVersion);
-
-        @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}")
-        @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ApplicationSecurityGroupInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("applicationSecurityGroupName") String applicationSecurityGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Get("{nextLink}")
         @ExpectedResponses({200})
@@ -138,7 +133,7 @@ public final class ApplicationSecurityGroupsInner implements InnerSupportsGet<Ap
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String applicationSecurityGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, applicationSecurityGroupName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -184,7 +179,7 @@ public final class ApplicationSecurityGroupsInner implements InnerSupportsGet<Ap
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ApplicationSecurityGroupInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String applicationSecurityGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), resourceGroupName, applicationSecurityGroupName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -235,7 +230,7 @@ public final class ApplicationSecurityGroupsInner implements InnerSupportsGet<Ap
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String applicationSecurityGroupName, ApplicationSecurityGroupInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, applicationSecurityGroupName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -283,8 +278,8 @@ public final class ApplicationSecurityGroupsInner implements InnerSupportsGet<Ap
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<Flux<ByteBuffer>>> updateTagsWithResponseAsync(String resourceGroupName, String applicationSecurityGroupName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
+    public Mono<SimpleResponse<ApplicationSecurityGroupInner>> updateTagsWithResponseAsync(String resourceGroupName, String applicationSecurityGroupName, Map<String, String> tags) {
+        final String apiVersion = "2019-11-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
         return service.updateTags(this.client.getHost(), resourceGroupName, applicationSecurityGroupName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -302,10 +297,14 @@ public final class ApplicationSecurityGroupsInner implements InnerSupportsGet<Ap
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<ApplicationSecurityGroupInner> updateTagsAsync(String resourceGroupName, String applicationSecurityGroupName, Map<String, String> tags) {
-        Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateTagsWithResponseAsync(resourceGroupName, applicationSecurityGroupName, tags);
-        return client.<ApplicationSecurityGroupInner, ApplicationSecurityGroupInner>getLroResultAsync(response, client.getHttpPipeline(), ApplicationSecurityGroupInner.class, ApplicationSecurityGroupInner.class)
-            .last()
-            .flatMap(AsyncPollResponse::getFinalResult);
+        return updateTagsWithResponseAsync(resourceGroupName, applicationSecurityGroupName, tags)
+            .flatMap((SimpleResponse<ApplicationSecurityGroupInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
     }
 
     /**
@@ -331,7 +330,7 @@ public final class ApplicationSecurityGroupsInner implements InnerSupportsGet<Ap
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ApplicationSecurityGroupInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -375,7 +374,7 @@ public final class ApplicationSecurityGroupsInner implements InnerSupportsGet<Ap
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ApplicationSecurityGroupInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -424,7 +423,7 @@ public final class ApplicationSecurityGroupsInner implements InnerSupportsGet<Ap
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String applicationSecurityGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, applicationSecurityGroupName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -469,7 +468,7 @@ public final class ApplicationSecurityGroupsInner implements InnerSupportsGet<Ap
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ApplicationSecurityGroupInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String applicationSecurityGroupName, ApplicationSecurityGroupInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, applicationSecurityGroupName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -508,61 +507,6 @@ public final class ApplicationSecurityGroupsInner implements InnerSupportsGet<Ap
     @ServiceMethod(returns = ReturnType.SINGLE)
     public ApplicationSecurityGroupInner beginCreateOrUpdate(String resourceGroupName, String applicationSecurityGroupName, ApplicationSecurityGroupInner parameters) {
         return beginCreateOrUpdateAsync(resourceGroupName, applicationSecurityGroupName, parameters).block();
-    }
-
-    /**
-     * Updates an application security group's tags.
-     * 
-     * @param resourceGroupName 
-     * @param applicationSecurityGroupName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<ApplicationSecurityGroupInner>> beginUpdateTagsWithResponseAsync(String resourceGroupName, String applicationSecurityGroupName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
-        TagsObject parameters = new TagsObject();
-        parameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), resourceGroupName, applicationSecurityGroupName, this.client.getSubscriptionId(), parameters, apiVersion);
-    }
-
-    /**
-     * Updates an application security group's tags.
-     * 
-     * @param resourceGroupName 
-     * @param applicationSecurityGroupName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<ApplicationSecurityGroupInner> beginUpdateTagsAsync(String resourceGroupName, String applicationSecurityGroupName, Map<String, String> tags) {
-        return beginUpdateTagsWithResponseAsync(resourceGroupName, applicationSecurityGroupName, tags)
-            .flatMap((SimpleResponse<ApplicationSecurityGroupInner> res) -> {
-                if (res.getValue() != null) {
-                    return Mono.just(res.getValue());
-                } else {
-                    return Mono.empty();
-                }
-            });
-    }
-
-    /**
-     * Updates an application security group's tags.
-     * 
-     * @param resourceGroupName 
-     * @param applicationSecurityGroupName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public ApplicationSecurityGroupInner beginUpdateTags(String resourceGroupName, String applicationSecurityGroupName, Map<String, String> tags) {
-        return beginUpdateTagsAsync(resourceGroupName, applicationSecurityGroupName, tags).block();
     }
 
     /**

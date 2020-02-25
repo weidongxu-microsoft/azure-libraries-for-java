@@ -12,7 +12,6 @@ import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
-import com.azure.core.annotation.Patch;
 import com.azure.core.annotation.PathParam;
 import com.azure.core.annotation.Put;
 import com.azure.core.annotation.QueryParam;
@@ -29,7 +28,6 @@ import com.azure.core.http.rest.RestProxy;
 import com.azure.core.http.rest.SimpleResponse;
 import com.azure.core.management.CloudException;
 import com.azure.core.util.polling.AsyncPollResponse;
-import com.azure.management.network.PatchRouteFilterRule;
 import java.nio.ByteBuffer;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -55,7 +53,7 @@ public final class RouteFilterRulesInner {
      * @param client the instance of the service client containing this operation class.
      */
     public RouteFilterRulesInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(RouteFilterRulesService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(RouteFilterRulesService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -82,11 +80,6 @@ public final class RouteFilterRulesInner {
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("routeFilterName") String routeFilterName, @PathParam("ruleName") String ruleName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RouteFilterRuleInner routeFilterRuleParameters, @QueryParam("api-version") String apiVersion);
 
-        @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}/routeFilterRules/{ruleName}")
-        @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("routeFilterName") String routeFilterName, @PathParam("ruleName") String ruleName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PatchRouteFilterRule routeFilterRuleParameters, @QueryParam("api-version") String apiVersion);
-
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}/routeFilterRules")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -101,11 +94,6 @@ public final class RouteFilterRulesInner {
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<RouteFilterRuleInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("routeFilterName") String routeFilterName, @PathParam("ruleName") String ruleName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RouteFilterRuleInner routeFilterRuleParameters, @QueryParam("api-version") String apiVersion);
-
-        @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}/routeFilterRules/{ruleName}")
-        @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<RouteFilterRuleInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("routeFilterName") String routeFilterName, @PathParam("ruleName") String ruleName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PatchRouteFilterRule routeFilterRuleParameters, @QueryParam("api-version") String apiVersion);
 
         @Get("{nextLink}")
         @ExpectedResponses({200})
@@ -125,7 +113,7 @@ public final class RouteFilterRulesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String routeFilterName, String ruleName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, routeFilterName, ruleName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -174,7 +162,7 @@ public final class RouteFilterRulesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<RouteFilterRuleInner>> getWithResponseAsync(String resourceGroupName, String routeFilterName, String ruleName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.get(this.client.getHost(), resourceGroupName, routeFilterName, ruleName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -228,7 +216,7 @@ public final class RouteFilterRulesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String routeFilterName, String ruleName, RouteFilterRuleInner routeFilterRuleParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, routeFilterName, ruleName, this.client.getSubscriptionId(), routeFilterRuleParameters, apiVersion);
     }
 
@@ -268,58 +256,6 @@ public final class RouteFilterRulesInner {
     }
 
     /**
-     * Updates a route in the specified route filter.
-     * 
-     * @param resourceGroupName 
-     * @param routeFilterName 
-     * @param ruleName 
-     * @param routeFilterRuleParameters Route Filter Rule Resource.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<Flux<ByteBuffer>>> updateWithResponseAsync(String resourceGroupName, String routeFilterName, String ruleName, PatchRouteFilterRule routeFilterRuleParameters) {
-        final String apiVersion = "2019-06-01";
-        return service.update(this.client.getHost(), resourceGroupName, routeFilterName, ruleName, this.client.getSubscriptionId(), routeFilterRuleParameters, apiVersion);
-    }
-
-    /**
-     * Updates a route in the specified route filter.
-     * 
-     * @param resourceGroupName 
-     * @param routeFilterName 
-     * @param ruleName 
-     * @param routeFilterRuleParameters Route Filter Rule Resource.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<RouteFilterRuleInner> updateAsync(String resourceGroupName, String routeFilterName, String ruleName, PatchRouteFilterRule routeFilterRuleParameters) {
-        Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateWithResponseAsync(resourceGroupName, routeFilterName, ruleName, routeFilterRuleParameters);
-        return client.<RouteFilterRuleInner, RouteFilterRuleInner>getLroResultAsync(response, client.getHttpPipeline(), RouteFilterRuleInner.class, RouteFilterRuleInner.class)
-            .last()
-            .flatMap(AsyncPollResponse::getFinalResult);
-    }
-
-    /**
-     * Updates a route in the specified route filter.
-     * 
-     * @param resourceGroupName 
-     * @param routeFilterName 
-     * @param ruleName 
-     * @param routeFilterRuleParameters Route Filter Rule Resource.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public RouteFilterRuleInner update(String resourceGroupName, String routeFilterName, String ruleName, PatchRouteFilterRule routeFilterRuleParameters) {
-        return updateAsync(resourceGroupName, routeFilterName, ruleName, routeFilterRuleParameters).block();
-    }
-
-    /**
      * Gets all RouteFilterRules in a route filter.
      * 
      * @param resourceGroupName 
@@ -330,7 +266,7 @@ public final class RouteFilterRulesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<RouteFilterRuleInner>> listByRouteFilterSinglePageAsync(String resourceGroupName, String routeFilterName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByRouteFilter(this.client.getHost(), resourceGroupName, routeFilterName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -382,7 +318,7 @@ public final class RouteFilterRulesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String routeFilterName, String ruleName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, routeFilterName, ruleName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -430,7 +366,7 @@ public final class RouteFilterRulesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<RouteFilterRuleInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String routeFilterName, String ruleName, RouteFilterRuleInner routeFilterRuleParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, routeFilterName, ruleName, this.client.getSubscriptionId(), routeFilterRuleParameters, apiVersion);
     }
 
@@ -471,62 +407,6 @@ public final class RouteFilterRulesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public RouteFilterRuleInner beginCreateOrUpdate(String resourceGroupName, String routeFilterName, String ruleName, RouteFilterRuleInner routeFilterRuleParameters) {
         return beginCreateOrUpdateAsync(resourceGroupName, routeFilterName, ruleName, routeFilterRuleParameters).block();
-    }
-
-    /**
-     * Updates a route in the specified route filter.
-     * 
-     * @param resourceGroupName 
-     * @param routeFilterName 
-     * @param ruleName 
-     * @param routeFilterRuleParameters Route Filter Rule Resource.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<RouteFilterRuleInner>> beginUpdateWithResponseAsync(String resourceGroupName, String routeFilterName, String ruleName, PatchRouteFilterRule routeFilterRuleParameters) {
-        final String apiVersion = "2019-06-01";
-        return service.beginUpdate(this.client.getHost(), resourceGroupName, routeFilterName, ruleName, this.client.getSubscriptionId(), routeFilterRuleParameters, apiVersion);
-    }
-
-    /**
-     * Updates a route in the specified route filter.
-     * 
-     * @param resourceGroupName 
-     * @param routeFilterName 
-     * @param ruleName 
-     * @param routeFilterRuleParameters Route Filter Rule Resource.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<RouteFilterRuleInner> beginUpdateAsync(String resourceGroupName, String routeFilterName, String ruleName, PatchRouteFilterRule routeFilterRuleParameters) {
-        return beginUpdateWithResponseAsync(resourceGroupName, routeFilterName, ruleName, routeFilterRuleParameters)
-            .flatMap((SimpleResponse<RouteFilterRuleInner> res) -> {
-                if (res.getValue() != null) {
-                    return Mono.just(res.getValue());
-                } else {
-                    return Mono.empty();
-                }
-            });
-    }
-
-    /**
-     * Updates a route in the specified route filter.
-     * 
-     * @param resourceGroupName 
-     * @param routeFilterName 
-     * @param ruleName 
-     * @param routeFilterRuleParameters Route Filter Rule Resource.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public RouteFilterRuleInner beginUpdate(String resourceGroupName, String routeFilterName, String ruleName, PatchRouteFilterRule routeFilterRuleParameters) {
-        return beginUpdateAsync(resourceGroupName, routeFilterName, ruleName, routeFilterRuleParameters).block();
     }
 
     /**

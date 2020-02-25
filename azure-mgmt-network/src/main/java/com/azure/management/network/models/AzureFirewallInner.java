@@ -12,13 +12,16 @@ import com.azure.core.management.Resource;
 import com.azure.core.management.SubResource;
 import com.azure.management.network.AzureFirewallApplicationRuleCollection;
 import com.azure.management.network.AzureFirewallIPConfiguration;
+import com.azure.management.network.AzureFirewallIpGroups;
 import com.azure.management.network.AzureFirewallNatRuleCollection;
 import com.azure.management.network.AzureFirewallNetworkRuleCollection;
+import com.azure.management.network.AzureFirewallSku;
 import com.azure.management.network.AzureFirewallThreatIntelMode;
 import com.azure.management.network.HubIPAddresses;
 import com.azure.management.network.ProvisioningState;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The AzureFirewall model.
@@ -34,8 +37,7 @@ public class AzureFirewallInner extends Resource {
     private List<String> zones;
 
     /*
-     * Gets a unique read-only string that changes whenever the resource is
-     * updated.
+     * A unique read-only string that changes whenever the resource is updated.
      */
     @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
@@ -65,9 +67,15 @@ public class AzureFirewallInner extends Resource {
     private List<AzureFirewallIPConfiguration> ipConfigurations;
 
     /*
+     * IP configuration of an Azure Firewall.
+     */
+    @JsonProperty(value = "properties.managementIpConfiguration")
+    private AzureFirewallIPConfiguration managementIpConfiguration;
+
+    /*
      * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
     private ProvisioningState provisioningState;
 
     /*
@@ -93,6 +101,24 @@ public class AzureFirewallInner extends Resource {
      */
     @JsonProperty(value = "properties.hubIpAddresses", access = JsonProperty.Access.WRITE_ONLY)
     private HubIPAddresses hubIpAddresses;
+
+    /*
+     * List of IpGroups associated with azure firewall.
+     */
+    @JsonProperty(value = "properties.ipGroups", access = JsonProperty.Access.WRITE_ONLY)
+    private List<AzureFirewallIpGroups> ipGroups;
+
+    /*
+     * SKU of an Azure Firewall.
+     */
+    @JsonProperty(value = "properties.sku")
+    private AzureFirewallSku sku;
+
+    /*
+     * The additional properties of azure firewall.
+     */
+    @JsonProperty(value = "properties.additionalProperties")
+    private Map<String, String> additionalProperties;
 
     /*
      * Resource ID.
@@ -123,8 +149,8 @@ public class AzureFirewallInner extends Resource {
     }
 
     /**
-     * Get the etag property: Gets a unique read-only string that changes
-     * whenever the resource is updated.
+     * Get the etag property: A unique read-only string that changes whenever
+     * the resource is updated.
      * 
      * @return the etag value.
      */
@@ -222,23 +248,35 @@ public class AzureFirewallInner extends Resource {
     }
 
     /**
+     * Get the managementIpConfiguration property: IP configuration of an Azure
+     * Firewall.
+     * 
+     * @return the managementIpConfiguration value.
+     */
+    public AzureFirewallIPConfiguration managementIpConfiguration() {
+        return this.managementIpConfiguration;
+    }
+
+    /**
+     * Set the managementIpConfiguration property: IP configuration of an Azure
+     * Firewall.
+     * 
+     * @param managementIpConfiguration the managementIpConfiguration value to
+     * set.
+     * @return the AzureFirewallInner object itself.
+     */
+    public AzureFirewallInner withManagementIpConfiguration(AzureFirewallIPConfiguration managementIpConfiguration) {
+        this.managementIpConfiguration = managementIpConfiguration;
+        return this;
+    }
+
+    /**
      * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
     public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: The current provisioning state.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the AzureFirewallInner object itself.
-     */
-    public AzureFirewallInner withProvisioningState(ProvisioningState provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 
     /**
@@ -309,6 +347,58 @@ public class AzureFirewallInner extends Resource {
      */
     public HubIPAddresses hubIpAddresses() {
         return this.hubIpAddresses;
+    }
+
+    /**
+     * Get the ipGroups property: List of IpGroups associated with azure
+     * firewall.
+     * 
+     * @return the ipGroups value.
+     */
+    public List<AzureFirewallIpGroups> ipGroups() {
+        return this.ipGroups;
+    }
+
+    /**
+     * Get the sku property: SKU of an Azure Firewall.
+     * 
+     * @return the sku value.
+     */
+    public AzureFirewallSku sku() {
+        return this.sku;
+    }
+
+    /**
+     * Set the sku property: SKU of an Azure Firewall.
+     * 
+     * @param sku the sku value to set.
+     * @return the AzureFirewallInner object itself.
+     */
+    public AzureFirewallInner withSku(AzureFirewallSku sku) {
+        this.sku = sku;
+        return this;
+    }
+
+    /**
+     * Get the additionalProperties property: The additional properties of
+     * azure firewall.
+     * 
+     * @return the additionalProperties value.
+     */
+    public Map<String, String> additionalProperties() {
+        return this.additionalProperties;
+    }
+
+    /**
+     * Set the additionalProperties property: The additional properties of
+     * azure firewall.
+     * 
+     * @param additionalProperties the additionalProperties value to set.
+     * @return the AzureFirewallInner object itself.
+     */
+    public AzureFirewallInner withAdditionalProperties(Map<String, String> additionalProperties) {
+        this.additionalProperties = additionalProperties;
+        return this;
     }
 
     /**

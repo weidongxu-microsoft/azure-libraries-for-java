@@ -71,7 +71,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      * @param client the instance of the service client containing this operation class.
      */
     public NetworkWatchersInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(NetworkWatchersService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(NetworkWatchersService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -246,7 +246,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<NetworkWatcherInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String networkWatcherName, NetworkWatcherInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -298,7 +298,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<NetworkWatcherInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String networkWatcherName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -348,7 +348,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String networkWatcherName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -395,7 +395,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<NetworkWatcherInner>> updateTagsWithResponseAsync(String resourceGroupName, String networkWatcherName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
         return service.updateTags(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -448,7 +448,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<NetworkWatcherInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -493,7 +493,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<NetworkWatcherInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -538,7 +538,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<TopologyInner>> getTopologyWithResponseAsync(String resourceGroupName, String networkWatcherName, TopologyParameters parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getTopology(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -591,7 +591,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> verifyIPFlowWithResponseAsync(String resourceGroupName, String networkWatcherName, VerificationIPFlowParameters parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.verifyIPFlow(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -640,7 +640,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> getNextHopWithResponseAsync(String resourceGroupName, String networkWatcherName, NextHopParameters parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getNextHop(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -689,7 +689,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> getVMSecurityRulesWithResponseAsync(String resourceGroupName, String networkWatcherName, String targetResourceId) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         SecurityGroupViewParameters parameters = new SecurityGroupViewParameters();
         parameters.withTargetResourceId(targetResourceId);
         return service.getVMSecurityRules(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -740,7 +740,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> getTroubleshootingWithResponseAsync(String resourceGroupName, String networkWatcherName, TroubleshootingParameters parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getTroubleshooting(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -789,7 +789,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> getTroubleshootingResultWithResponseAsync(String resourceGroupName, String networkWatcherName, String targetResourceId) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         QueryTroubleshootingParameters parameters = new QueryTroubleshootingParameters();
         parameters.withTargetResourceId(targetResourceId);
         return service.getTroubleshootingResult(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -840,7 +840,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> setFlowLogConfigurationWithResponseAsync(String resourceGroupName, String networkWatcherName, FlowLogInformationInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.setFlowLogConfiguration(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -889,7 +889,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> getFlowLogStatusWithResponseAsync(String resourceGroupName, String networkWatcherName, String targetResourceId) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         FlowLogStatusParameters parameters = new FlowLogStatusParameters();
         parameters.withTargetResourceId(targetResourceId);
         return service.getFlowLogStatus(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -940,7 +940,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> checkConnectivityWithResponseAsync(String resourceGroupName, String networkWatcherName, ConnectivityParameters parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.checkConnectivity(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -978,7 +978,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
     }
 
     /**
-     * Gets the relative latency score for internet service providers from a specified location to Azure regions.
+     * NOTE: This feature is currently in preview and still being tested for stability. Gets the relative latency score for internet service providers from a specified location to Azure regions.
      * 
      * @param resourceGroupName 
      * @param networkWatcherName 
@@ -989,12 +989,12 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> getAzureReachabilityReportWithResponseAsync(String resourceGroupName, String networkWatcherName, AzureReachabilityReportParameters parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getAzureReachabilityReport(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
-     * Gets the relative latency score for internet service providers from a specified location to Azure regions.
+     * NOTE: This feature is currently in preview and still being tested for stability. Gets the relative latency score for internet service providers from a specified location to Azure regions.
      * 
      * @param resourceGroupName 
      * @param networkWatcherName 
@@ -1012,7 +1012,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
     }
 
     /**
-     * Gets the relative latency score for internet service providers from a specified location to Azure regions.
+     * NOTE: This feature is currently in preview and still being tested for stability. Gets the relative latency score for internet service providers from a specified location to Azure regions.
      * 
      * @param resourceGroupName 
      * @param networkWatcherName 
@@ -1027,7 +1027,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
     }
 
     /**
-     * Lists all available internet service providers for a specified Azure region.
+     * NOTE: This feature is currently in preview and still being tested for stability. Lists all available internet service providers for a specified Azure region.
      * 
      * @param resourceGroupName 
      * @param networkWatcherName 
@@ -1038,12 +1038,12 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> listAvailableProvidersWithResponseAsync(String resourceGroupName, String networkWatcherName, AvailableProvidersListParameters parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listAvailableProviders(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
-     * Lists all available internet service providers for a specified Azure region.
+     * NOTE: This feature is currently in preview and still being tested for stability. Lists all available internet service providers for a specified Azure region.
      * 
      * @param resourceGroupName 
      * @param networkWatcherName 
@@ -1061,7 +1061,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
     }
 
     /**
-     * Lists all available internet service providers for a specified Azure region.
+     * NOTE: This feature is currently in preview and still being tested for stability. Lists all available internet service providers for a specified Azure region.
      * 
      * @param resourceGroupName 
      * @param networkWatcherName 
@@ -1076,7 +1076,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
     }
 
     /**
-     * Get network configuration diagnostic.
+     * Gets Network Configuration Diagnostic data to help customers understand and debug network behavior. It provides detailed information on what security rules were applied to a specified traffic flow and the result of evaluating these rules. Customers must provide details of a flow like source, destination, protocol, etc. The API returns whether traffic was allowed or denied, the rules evaluated for the specified flow and the evaluation results.
      * 
      * @param resourceGroupName 
      * @param networkWatcherName 
@@ -1087,12 +1087,12 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> getNetworkConfigurationDiagnosticWithResponseAsync(String resourceGroupName, String networkWatcherName, NetworkConfigurationDiagnosticParameters parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getNetworkConfigurationDiagnostic(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
-     * Get network configuration diagnostic.
+     * Gets Network Configuration Diagnostic data to help customers understand and debug network behavior. It provides detailed information on what security rules were applied to a specified traffic flow and the result of evaluating these rules. Customers must provide details of a flow like source, destination, protocol, etc. The API returns whether traffic was allowed or denied, the rules evaluated for the specified flow and the evaluation results.
      * 
      * @param resourceGroupName 
      * @param networkWatcherName 
@@ -1110,7 +1110,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
     }
 
     /**
-     * Get network configuration diagnostic.
+     * Gets Network Configuration Diagnostic data to help customers understand and debug network behavior. It provides detailed information on what security rules were applied to a specified traffic flow and the result of evaluating these rules. Customers must provide details of a flow like source, destination, protocol, etc. The API returns whether traffic was allowed or denied, the rules evaluated for the specified flow and the evaluation results.
      * 
      * @param resourceGroupName 
      * @param networkWatcherName 
@@ -1135,7 +1135,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String networkWatcherName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -1180,7 +1180,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VerificationIPFlowResultInner>> beginVerifyIPFlowWithResponseAsync(String resourceGroupName, String networkWatcherName, VerificationIPFlowParameters parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginVerifyIPFlow(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -1233,7 +1233,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<NextHopResultInner>> beginGetNextHopWithResponseAsync(String resourceGroupName, String networkWatcherName, NextHopParameters parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginGetNextHop(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -1286,7 +1286,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SecurityGroupViewResultInner>> beginGetVMSecurityRulesWithResponseAsync(String resourceGroupName, String networkWatcherName, String targetResourceId) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         SecurityGroupViewParameters parameters = new SecurityGroupViewParameters();
         parameters.withTargetResourceId(targetResourceId);
         return service.beginGetVMSecurityRules(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -1341,7 +1341,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<TroubleshootingResultInner>> beginGetTroubleshootingWithResponseAsync(String resourceGroupName, String networkWatcherName, TroubleshootingParameters parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginGetTroubleshooting(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -1394,7 +1394,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<TroubleshootingResultInner>> beginGetTroubleshootingResultWithResponseAsync(String resourceGroupName, String networkWatcherName, String targetResourceId) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         QueryTroubleshootingParameters parameters = new QueryTroubleshootingParameters();
         parameters.withTargetResourceId(targetResourceId);
         return service.beginGetTroubleshootingResult(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -1449,7 +1449,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<FlowLogInformationInner>> beginSetFlowLogConfigurationWithResponseAsync(String resourceGroupName, String networkWatcherName, FlowLogInformationInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginSetFlowLogConfiguration(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -1502,7 +1502,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<FlowLogInformationInner>> beginGetFlowLogStatusWithResponseAsync(String resourceGroupName, String networkWatcherName, String targetResourceId) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         FlowLogStatusParameters parameters = new FlowLogStatusParameters();
         parameters.withTargetResourceId(targetResourceId);
         return service.beginGetFlowLogStatus(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -1557,7 +1557,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ConnectivityInformationInner>> beginCheckConnectivityWithResponseAsync(String resourceGroupName, String networkWatcherName, ConnectivityParameters parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCheckConnectivity(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -1599,7 +1599,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
     }
 
     /**
-     * Gets the relative latency score for internet service providers from a specified location to Azure regions.
+     * NOTE: This feature is currently in preview and still being tested for stability. Gets the relative latency score for internet service providers from a specified location to Azure regions.
      * 
      * @param resourceGroupName 
      * @param networkWatcherName 
@@ -1610,12 +1610,12 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<AzureReachabilityReportInner>> beginGetAzureReachabilityReportWithResponseAsync(String resourceGroupName, String networkWatcherName, AzureReachabilityReportParameters parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginGetAzureReachabilityReport(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
-     * Gets the relative latency score for internet service providers from a specified location to Azure regions.
+     * NOTE: This feature is currently in preview and still being tested for stability. Gets the relative latency score for internet service providers from a specified location to Azure regions.
      * 
      * @param resourceGroupName 
      * @param networkWatcherName 
@@ -1637,7 +1637,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
     }
 
     /**
-     * Gets the relative latency score for internet service providers from a specified location to Azure regions.
+     * NOTE: This feature is currently in preview and still being tested for stability. Gets the relative latency score for internet service providers from a specified location to Azure regions.
      * 
      * @param resourceGroupName 
      * @param networkWatcherName 
@@ -1652,7 +1652,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
     }
 
     /**
-     * Lists all available internet service providers for a specified Azure region.
+     * NOTE: This feature is currently in preview and still being tested for stability. Lists all available internet service providers for a specified Azure region.
      * 
      * @param resourceGroupName 
      * @param networkWatcherName 
@@ -1663,12 +1663,12 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<AvailableProvidersListInner>> beginListAvailableProvidersWithResponseAsync(String resourceGroupName, String networkWatcherName, AvailableProvidersListParameters parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginListAvailableProviders(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
-     * Lists all available internet service providers for a specified Azure region.
+     * NOTE: This feature is currently in preview and still being tested for stability. Lists all available internet service providers for a specified Azure region.
      * 
      * @param resourceGroupName 
      * @param networkWatcherName 
@@ -1690,7 +1690,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
     }
 
     /**
-     * Lists all available internet service providers for a specified Azure region.
+     * NOTE: This feature is currently in preview and still being tested for stability. Lists all available internet service providers for a specified Azure region.
      * 
      * @param resourceGroupName 
      * @param networkWatcherName 
@@ -1705,7 +1705,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
     }
 
     /**
-     * Get network configuration diagnostic.
+     * Gets Network Configuration Diagnostic data to help customers understand and debug network behavior. It provides detailed information on what security rules were applied to a specified traffic flow and the result of evaluating these rules. Customers must provide details of a flow like source, destination, protocol, etc. The API returns whether traffic was allowed or denied, the rules evaluated for the specified flow and the evaluation results.
      * 
      * @param resourceGroupName 
      * @param networkWatcherName 
@@ -1716,12 +1716,12 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<NetworkConfigurationDiagnosticResponseInner>> beginGetNetworkConfigurationDiagnosticWithResponseAsync(String resourceGroupName, String networkWatcherName, NetworkConfigurationDiagnosticParameters parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginGetNetworkConfigurationDiagnostic(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
-     * Get network configuration diagnostic.
+     * Gets Network Configuration Diagnostic data to help customers understand and debug network behavior. It provides detailed information on what security rules were applied to a specified traffic flow and the result of evaluating these rules. Customers must provide details of a flow like source, destination, protocol, etc. The API returns whether traffic was allowed or denied, the rules evaluated for the specified flow and the evaluation results.
      * 
      * @param resourceGroupName 
      * @param networkWatcherName 
@@ -1743,7 +1743,7 @@ public final class NetworkWatchersInner implements InnerSupportsGet<NetworkWatch
     }
 
     /**
-     * Get network configuration diagnostic.
+     * Gets Network Configuration Diagnostic data to help customers understand and debug network behavior. It provides detailed information on what security rules were applied to a specified traffic flow and the result of evaluating these rules. Customers must provide details of a flow like source, destination, protocol, etc. The API returns whether traffic was allowed or denied, the rules evaluated for the specified flow and the evaluation results.
      * 
      * @param resourceGroupName 
      * @param networkWatcherName 

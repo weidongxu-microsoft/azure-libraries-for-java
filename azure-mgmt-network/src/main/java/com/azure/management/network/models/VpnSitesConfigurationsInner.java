@@ -20,8 +20,8 @@ import com.azure.core.annotation.UnexpectedResponseExceptionType;
 import com.azure.core.http.rest.Response;
 import com.azure.core.http.rest.RestProxy;
 import com.azure.core.http.rest.SimpleResponse;
+import com.azure.core.management.CloudException;
 import com.azure.core.util.polling.AsyncPollResponse;
-import com.azure.management.network.ErrorException;
 import com.azure.management.network.GetVpnSitesConfigurationRequest;
 import java.nio.ByteBuffer;
 import reactor.core.publisher.Flux;
@@ -48,7 +48,7 @@ public final class VpnSitesConfigurationsInner {
      * @param client the instance of the service client containing this operation class.
      */
     public VpnSitesConfigurationsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(VpnSitesConfigurationsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(VpnSitesConfigurationsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -62,12 +62,12 @@ public final class VpnSitesConfigurationsInner {
     private interface VpnSitesConfigurationsService {
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnConfiguration")
         @ExpectedResponses({200, 202})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> download(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualWANName") String virtualWANName, @BodyParam("application/json") GetVpnSitesConfigurationRequest request, @QueryParam("api-version") String apiVersion);
 
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnConfiguration")
         @ExpectedResponses({200, 202})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginDownload(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualWANName") String virtualWANName, @BodyParam("application/json") GetVpnSitesConfigurationRequest request, @QueryParam("api-version") String apiVersion);
     }
 
@@ -78,12 +78,12 @@ public final class VpnSitesConfigurationsInner {
      * @param virtualWANName 
      * @param request List of Vpn-Sites.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> downloadWithResponseAsync(String resourceGroupName, String virtualWANName, GetVpnSitesConfigurationRequest request) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.download(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, request, apiVersion);
     }
 
@@ -94,7 +94,7 @@ public final class VpnSitesConfigurationsInner {
      * @param virtualWANName 
      * @param request List of Vpn-Sites.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -112,7 +112,7 @@ public final class VpnSitesConfigurationsInner {
      * @param virtualWANName 
      * @param request List of Vpn-Sites.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -127,12 +127,12 @@ public final class VpnSitesConfigurationsInner {
      * @param virtualWANName 
      * @param request List of Vpn-Sites.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDownloadWithResponseAsync(String resourceGroupName, String virtualWANName, GetVpnSitesConfigurationRequest request) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDownload(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, request, apiVersion);
     }
 
@@ -143,7 +143,7 @@ public final class VpnSitesConfigurationsInner {
      * @param virtualWANName 
      * @param request List of Vpn-Sites.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -159,7 +159,7 @@ public final class VpnSitesConfigurationsInner {
      * @param virtualWANName 
      * @param request List of Vpn-Sites.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)

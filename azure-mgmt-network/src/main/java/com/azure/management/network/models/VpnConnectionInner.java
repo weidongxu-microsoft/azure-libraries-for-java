@@ -30,8 +30,7 @@ public class VpnConnectionInner extends SubResource {
     private String name;
 
     /*
-     * Gets a unique read-only string that changes whenever the resource is
-     * updated.
+     * A unique read-only string that changes whenever the resource is updated.
      */
     @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
@@ -123,7 +122,7 @@ public class VpnConnectionInner extends SubResource {
     /*
      * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
     private ProvisioningState provisioningState;
 
     /*
@@ -155,8 +154,8 @@ public class VpnConnectionInner extends SubResource {
     }
 
     /**
-     * Get the etag property: Gets a unique read-only string that changes
-     * whenever the resource is updated.
+     * Get the etag property: A unique read-only string that changes whenever
+     * the resource is updated.
      * 
      * @return the etag value.
      */
@@ -439,17 +438,6 @@ public class VpnConnectionInner extends SubResource {
      */
     public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: The current provisioning state.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the VpnConnectionInner object itself.
-     */
-    public VpnConnectionInner withProvisioningState(ProvisioningState provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 
     /**

@@ -57,7 +57,7 @@ public final class ConnectionMonitorsInner {
      * @param client the instance of the service client containing this operation class.
      */
     public ConnectionMonitorsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(ConnectionMonitorsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(ConnectionMonitorsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -148,7 +148,7 @@ public final class ConnectionMonitorsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName, ConnectionMonitorInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -199,7 +199,7 @@ public final class ConnectionMonitorsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ConnectionMonitorResultInner>> getWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.get(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -252,7 +252,7 @@ public final class ConnectionMonitorsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -302,7 +302,7 @@ public final class ConnectionMonitorsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ConnectionMonitorResultInner>> updateTagsWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
         return service.updateTags(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -359,7 +359,7 @@ public final class ConnectionMonitorsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> stopWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.stop(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -408,7 +408,7 @@ public final class ConnectionMonitorsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> startWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.start(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -457,7 +457,7 @@ public final class ConnectionMonitorsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> queryWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.query(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -505,7 +505,7 @@ public final class ConnectionMonitorsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ConnectionMonitorResultInner>> listSinglePageAsync(String resourceGroupName, String networkWatcherName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -557,7 +557,7 @@ public final class ConnectionMonitorsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ConnectionMonitorResultInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName, ConnectionMonitorInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -612,7 +612,7 @@ public final class ConnectionMonitorsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -659,7 +659,7 @@ public final class ConnectionMonitorsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginStopWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginStop(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -706,7 +706,7 @@ public final class ConnectionMonitorsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginStartWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginStart(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -753,7 +753,7 @@ public final class ConnectionMonitorsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ConnectionMonitorQueryResultInner>> beginQueryWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginQuery(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), apiVersion);
     }
 

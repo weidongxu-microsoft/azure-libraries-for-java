@@ -58,7 +58,7 @@ public final class LocalNetworkGatewaysInner implements InnerSupportsGet<LocalNe
      * @param client the instance of the service client containing this operation class.
      */
     public LocalNetworkGatewaysInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(LocalNetworkGatewaysService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(LocalNetworkGatewaysService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -88,7 +88,7 @@ public final class LocalNetworkGatewaysInner implements InnerSupportsGet<LocalNe
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("localNetworkGatewayName") String localNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<LocalNetworkGatewayInner>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("localNetworkGatewayName") String localNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways")
         @ExpectedResponses({200})
@@ -104,11 +104,6 @@ public final class LocalNetworkGatewaysInner implements InnerSupportsGet<LocalNe
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("localNetworkGatewayName") String localNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
-
-        @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}")
-        @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<LocalNetworkGatewayInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("localNetworkGatewayName") String localNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Get("{nextLink}")
         @ExpectedResponses({200})
@@ -128,7 +123,7 @@ public final class LocalNetworkGatewaysInner implements InnerSupportsGet<LocalNe
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String localNetworkGatewayName, LocalNetworkGatewayInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, localNetworkGatewayName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -176,7 +171,7 @@ public final class LocalNetworkGatewaysInner implements InnerSupportsGet<LocalNe
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<LocalNetworkGatewayInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String localNetworkGatewayName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), resourceGroupName, localNetworkGatewayName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -226,7 +221,7 @@ public final class LocalNetworkGatewaysInner implements InnerSupportsGet<LocalNe
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String localNetworkGatewayName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, localNetworkGatewayName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -272,8 +267,8 @@ public final class LocalNetworkGatewaysInner implements InnerSupportsGet<LocalNe
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<Flux<ByteBuffer>>> updateTagsWithResponseAsync(String resourceGroupName, String localNetworkGatewayName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
+    public Mono<SimpleResponse<LocalNetworkGatewayInner>> updateTagsWithResponseAsync(String resourceGroupName, String localNetworkGatewayName, Map<String, String> tags) {
+        final String apiVersion = "2019-11-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
         return service.updateTags(this.client.getHost(), resourceGroupName, localNetworkGatewayName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -291,10 +286,14 @@ public final class LocalNetworkGatewaysInner implements InnerSupportsGet<LocalNe
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<LocalNetworkGatewayInner> updateTagsAsync(String resourceGroupName, String localNetworkGatewayName, Map<String, String> tags) {
-        Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateTagsWithResponseAsync(resourceGroupName, localNetworkGatewayName, tags);
-        return client.<LocalNetworkGatewayInner, LocalNetworkGatewayInner>getLroResultAsync(response, client.getHttpPipeline(), LocalNetworkGatewayInner.class, LocalNetworkGatewayInner.class)
-            .last()
-            .flatMap(AsyncPollResponse::getFinalResult);
+        return updateTagsWithResponseAsync(resourceGroupName, localNetworkGatewayName, tags)
+            .flatMap((SimpleResponse<LocalNetworkGatewayInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
     }
 
     /**
@@ -322,7 +321,7 @@ public final class LocalNetworkGatewaysInner implements InnerSupportsGet<LocalNe
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<LocalNetworkGatewayInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -372,7 +371,7 @@ public final class LocalNetworkGatewaysInner implements InnerSupportsGet<LocalNe
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<LocalNetworkGatewayInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String localNetworkGatewayName, LocalNetworkGatewayInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, localNetworkGatewayName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -424,7 +423,7 @@ public final class LocalNetworkGatewaysInner implements InnerSupportsGet<LocalNe
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String localNetworkGatewayName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, localNetworkGatewayName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -455,61 +454,6 @@ public final class LocalNetworkGatewaysInner implements InnerSupportsGet<LocalNe
     @ServiceMethod(returns = ReturnType.SINGLE)
     public void beginDelete(String resourceGroupName, String localNetworkGatewayName) {
         beginDeleteAsync(resourceGroupName, localNetworkGatewayName).block();
-    }
-
-    /**
-     * Updates a local network gateway tags.
-     * 
-     * @param resourceGroupName 
-     * @param localNetworkGatewayName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<LocalNetworkGatewayInner>> beginUpdateTagsWithResponseAsync(String resourceGroupName, String localNetworkGatewayName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
-        TagsObject parameters = new TagsObject();
-        parameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), resourceGroupName, localNetworkGatewayName, this.client.getSubscriptionId(), parameters, apiVersion);
-    }
-
-    /**
-     * Updates a local network gateway tags.
-     * 
-     * @param resourceGroupName 
-     * @param localNetworkGatewayName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<LocalNetworkGatewayInner> beginUpdateTagsAsync(String resourceGroupName, String localNetworkGatewayName, Map<String, String> tags) {
-        return beginUpdateTagsWithResponseAsync(resourceGroupName, localNetworkGatewayName, tags)
-            .flatMap((SimpleResponse<LocalNetworkGatewayInner> res) -> {
-                if (res.getValue() != null) {
-                    return Mono.just(res.getValue());
-                } else {
-                    return Mono.empty();
-                }
-            });
-    }
-
-    /**
-     * Updates a local network gateway tags.
-     * 
-     * @param resourceGroupName 
-     * @param localNetworkGatewayName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public LocalNetworkGatewayInner beginUpdateTags(String resourceGroupName, String localNetworkGatewayName, Map<String, String> tags) {
-        return beginUpdateTagsAsync(resourceGroupName, localNetworkGatewayName, tags).block();
     }
 
     /**

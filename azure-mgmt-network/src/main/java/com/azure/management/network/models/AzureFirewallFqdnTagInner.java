@@ -9,6 +9,7 @@ package com.azure.management.network.models;
 import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.management.Resource;
+import com.azure.management.network.ProvisioningState;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -18,17 +19,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public class AzureFirewallFqdnTagInner extends Resource {
     /*
-     * Gets a unique read-only string that changes whenever the resource is
-     * updated.
+     * A unique read-only string that changes whenever the resource is updated.
      */
     @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
-     * The provisioning state of the resource.
+     * The current provisioning state.
      */
     @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
-    private String provisioningState;
+    private ProvisioningState provisioningState;
 
     /*
      * The name of this FQDN Tag.
@@ -43,8 +43,8 @@ public class AzureFirewallFqdnTagInner extends Resource {
     private String id;
 
     /**
-     * Get the etag property: Gets a unique read-only string that changes
-     * whenever the resource is updated.
+     * Get the etag property: A unique read-only string that changes whenever
+     * the resource is updated.
      * 
      * @return the etag value.
      */
@@ -53,12 +53,11 @@ public class AzureFirewallFqdnTagInner extends Resource {
     }
 
     /**
-     * Get the provisioningState property: The provisioning state of the
-     * resource.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
     }
 

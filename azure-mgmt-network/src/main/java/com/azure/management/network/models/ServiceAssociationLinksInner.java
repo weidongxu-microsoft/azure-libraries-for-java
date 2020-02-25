@@ -42,7 +42,7 @@ public final class ServiceAssociationLinksInner {
      * @param client the instance of the service client containing this operation class.
      */
     public ServiceAssociationLinksInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(ServiceAssociationLinksService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(ServiceAssociationLinksService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -72,7 +72,7 @@ public final class ServiceAssociationLinksInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ServiceAssociationLinksListResultInner>> listWithResponseAsync(String resourceGroupName, String virtualNetworkName, String subnetName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), apiVersion);
     }
 

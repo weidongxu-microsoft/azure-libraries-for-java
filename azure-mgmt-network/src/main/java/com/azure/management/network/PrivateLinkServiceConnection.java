@@ -40,7 +40,7 @@ public class PrivateLinkServiceConnection extends SubResource {
     /*
      * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
     private ProvisioningState provisioningState;
 
     /*
@@ -118,17 +118,6 @@ public class PrivateLinkServiceConnection extends SubResource {
      */
     public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: The current provisioning state.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the PrivateLinkServiceConnection object itself.
-     */
-    public PrivateLinkServiceConnection withProvisioningState(ProvisioningState provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 
     /**

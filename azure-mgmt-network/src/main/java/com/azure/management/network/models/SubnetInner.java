@@ -10,6 +10,7 @@ import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.management.SubResource;
 import com.azure.management.network.Delegation;
+import com.azure.management.network.ProvisioningState;
 import com.azure.management.network.ResourceNavigationLink;
 import com.azure.management.network.ServiceAssociationLink;
 import com.azure.management.network.ServiceEndpointPropertiesFormat;
@@ -32,7 +33,7 @@ public class SubnetInner extends SubResource {
     /*
      * A unique read-only string that changes whenever the resource is updated.
      */
-    @JsonProperty(value = "etag")
+    @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
@@ -84,8 +85,8 @@ public class SubnetInner extends SubResource {
     private List<PrivateEndpointInner> privateEndpoints;
 
     /*
-     * Gets an array of references to the network interface IP configurations
-     * using subnet.
+     * An array of references to the network interface IP configurations using
+     * subnet.
      */
     @JsonProperty(value = "properties.ipConfigurations", access = JsonProperty.Access.WRITE_ONLY)
     private List<IPConfigurationInner> ipConfigurations;
@@ -97,19 +98,19 @@ public class SubnetInner extends SubResource {
     private List<IPConfigurationProfileInner> ipConfigurationProfiles;
 
     /*
-     * Gets an array of references to the external resources using subnet.
+     * An array of references to the external resources using subnet.
      */
-    @JsonProperty(value = "properties.resourceNavigationLinks")
+    @JsonProperty(value = "properties.resourceNavigationLinks", access = JsonProperty.Access.WRITE_ONLY)
     private List<ResourceNavigationLink> resourceNavigationLinks;
 
     /*
-     * Gets an array of references to services injecting into this subnet.
+     * An array of references to services injecting into this subnet.
      */
-    @JsonProperty(value = "properties.serviceAssociationLinks")
+    @JsonProperty(value = "properties.serviceAssociationLinks", access = JsonProperty.Access.WRITE_ONLY)
     private List<ServiceAssociationLink> serviceAssociationLinks;
 
     /*
-     * Gets an array of references to the delegations on the subnet.
+     * An array of references to the delegations on the subnet.
      */
     @JsonProperty(value = "properties.delegations")
     private List<Delegation> delegations;
@@ -122,10 +123,10 @@ public class SubnetInner extends SubResource {
     private String purpose;
 
     /*
-     * The provisioning state of the resource.
+     * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
-    private String provisioningState;
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
+    private ProvisioningState provisioningState;
 
     /*
      * Enable or Disable apply network policies on private end point in the
@@ -171,18 +172,6 @@ public class SubnetInner extends SubResource {
      */
     public String etag() {
         return this.etag;
-    }
-
-    /**
-     * Set the etag property: A unique read-only string that changes whenever
-     * the resource is updated.
-     * 
-     * @param etag the etag value to set.
-     * @return the SubnetInner object itself.
-     */
-    public SubnetInner withEtag(String etag) {
-        this.etag = etag;
-        return this;
     }
 
     /**
@@ -340,8 +329,8 @@ public class SubnetInner extends SubResource {
     }
 
     /**
-     * Get the ipConfigurations property: Gets an array of references to the
-     * network interface IP configurations using subnet.
+     * Get the ipConfigurations property: An array of references to the network
+     * interface IP configurations using subnet.
      * 
      * @return the ipConfigurations value.
      */
@@ -360,8 +349,8 @@ public class SubnetInner extends SubResource {
     }
 
     /**
-     * Get the resourceNavigationLinks property: Gets an array of references to
-     * the external resources using subnet.
+     * Get the resourceNavigationLinks property: An array of references to the
+     * external resources using subnet.
      * 
      * @return the resourceNavigationLinks value.
      */
@@ -370,19 +359,7 @@ public class SubnetInner extends SubResource {
     }
 
     /**
-     * Set the resourceNavigationLinks property: Gets an array of references to
-     * the external resources using subnet.
-     * 
-     * @param resourceNavigationLinks the resourceNavigationLinks value to set.
-     * @return the SubnetInner object itself.
-     */
-    public SubnetInner withResourceNavigationLinks(List<ResourceNavigationLink> resourceNavigationLinks) {
-        this.resourceNavigationLinks = resourceNavigationLinks;
-        return this;
-    }
-
-    /**
-     * Get the serviceAssociationLinks property: Gets an array of references to
+     * Get the serviceAssociationLinks property: An array of references to
      * services injecting into this subnet.
      * 
      * @return the serviceAssociationLinks value.
@@ -392,20 +369,8 @@ public class SubnetInner extends SubResource {
     }
 
     /**
-     * Set the serviceAssociationLinks property: Gets an array of references to
-     * services injecting into this subnet.
-     * 
-     * @param serviceAssociationLinks the serviceAssociationLinks value to set.
-     * @return the SubnetInner object itself.
-     */
-    public SubnetInner withServiceAssociationLinks(List<ServiceAssociationLink> serviceAssociationLinks) {
-        this.serviceAssociationLinks = serviceAssociationLinks;
-        return this;
-    }
-
-    /**
-     * Get the delegations property: Gets an array of references to the
-     * delegations on the subnet.
+     * Get the delegations property: An array of references to the delegations
+     * on the subnet.
      * 
      * @return the delegations value.
      */
@@ -414,8 +379,8 @@ public class SubnetInner extends SubResource {
     }
 
     /**
-     * Set the delegations property: Gets an array of references to the
-     * delegations on the subnet.
+     * Set the delegations property: An array of references to the delegations
+     * on the subnet.
      * 
      * @param delegations the delegations value to set.
      * @return the SubnetInner object itself.
@@ -437,25 +402,12 @@ public class SubnetInner extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: The provisioning state of the
-     * resource.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: The provisioning state of the
-     * resource.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the SubnetInner object itself.
-     */
-    public SubnetInner withProvisioningState(String provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 
     /**

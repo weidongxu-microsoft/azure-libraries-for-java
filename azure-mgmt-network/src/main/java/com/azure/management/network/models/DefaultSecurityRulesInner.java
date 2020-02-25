@@ -46,7 +46,7 @@ public final class DefaultSecurityRulesInner {
      * @param client the instance of the service client containing this operation class.
      */
     public DefaultSecurityRulesInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(DefaultSecurityRulesService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(DefaultSecurityRulesService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -85,7 +85,7 @@ public final class DefaultSecurityRulesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<SecurityRuleInner>> listSinglePageAsync(String resourceGroupName, String networkSecurityGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), resourceGroupName, networkSecurityGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -137,7 +137,7 @@ public final class DefaultSecurityRulesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SecurityRuleInner>> getWithResponseAsync(String resourceGroupName, String networkSecurityGroupName, String defaultSecurityRuleName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.get(this.client.getHost(), resourceGroupName, networkSecurityGroupName, defaultSecurityRuleName, this.client.getSubscriptionId(), apiVersion);
     }
 

@@ -34,7 +34,7 @@ public class ServiceAssociationLink extends SubResource {
     /*
      * Resource type.
      */
-    @JsonProperty(value = "type")
+    @JsonProperty(value = "type", access = JsonProperty.Access.WRITE_ONLY)
     private String type;
 
     /*
@@ -50,10 +50,10 @@ public class ServiceAssociationLink extends SubResource {
     private String link;
 
     /*
-     * Provisioning state of the ServiceAssociationLink resource.
+     * The current provisioning state.
      */
     @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
-    private String provisioningState;
+    private ProvisioningState provisioningState;
 
     /*
      * If true, the resource can be deleted.
@@ -109,17 +109,6 @@ public class ServiceAssociationLink extends SubResource {
     }
 
     /**
-     * Set the type property: Resource type.
-     * 
-     * @param type the type value to set.
-     * @return the ServiceAssociationLink object itself.
-     */
-    public ServiceAssociationLink withType(String type) {
-        this.type = type;
-        return this;
-    }
-
-    /**
      * Get the linkedResourceType property: Resource type of the linked
      * resource.
      * 
@@ -162,12 +151,11 @@ public class ServiceAssociationLink extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: Provisioning state of the
-     * ServiceAssociationLink resource.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
     }
 

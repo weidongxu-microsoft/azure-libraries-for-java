@@ -46,7 +46,7 @@ public final class PeerExpressRouteCircuitConnectionsInner {
      * @param client the instance of the service client containing this operation class.
      */
     public PeerExpressRouteCircuitConnectionsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(PeerExpressRouteCircuitConnectionsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(PeerExpressRouteCircuitConnectionsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -87,7 +87,7 @@ public final class PeerExpressRouteCircuitConnectionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PeerExpressRouteCircuitConnectionInner>> getWithResponseAsync(String resourceGroupName, String circuitName, String peeringName, String connectionName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.get(this.client.getHost(), resourceGroupName, circuitName, peeringName, connectionName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -142,7 +142,7 @@ public final class PeerExpressRouteCircuitConnectionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<PeerExpressRouteCircuitConnectionInner>> listSinglePageAsync(String resourceGroupName, String circuitName, String peeringName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), resourceGroupName, circuitName, peeringName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),

@@ -49,7 +49,7 @@ public final class ExpressRouteConnectionsInner {
      * @param client the instance of the service client containing this operation class.
      */
     public ExpressRouteConnectionsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(ExpressRouteConnectionsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(ExpressRouteConnectionsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -105,7 +105,7 @@ public final class ExpressRouteConnectionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String expressRouteGatewayName, String connectionName, ExpressRouteConnectionInner putExpressRouteConnectionParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, expressRouteGatewayName, connectionName, this.client.getSubscriptionId(), putExpressRouteConnectionParameters, apiVersion);
     }
 
@@ -156,7 +156,7 @@ public final class ExpressRouteConnectionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteConnectionInner>> getWithResponseAsync(String resourceGroupName, String expressRouteGatewayName, String connectionName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.get(this.client.getHost(), resourceGroupName, expressRouteGatewayName, connectionName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -209,7 +209,7 @@ public final class ExpressRouteConnectionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String expressRouteGatewayName, String connectionName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, expressRouteGatewayName, connectionName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -257,7 +257,7 @@ public final class ExpressRouteConnectionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteConnectionListInner>> listWithResponseAsync(String resourceGroupName, String expressRouteGatewayName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), resourceGroupName, expressRouteGatewayName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -309,7 +309,7 @@ public final class ExpressRouteConnectionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteConnectionInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String expressRouteGatewayName, String connectionName, ExpressRouteConnectionInner putExpressRouteConnectionParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, expressRouteGatewayName, connectionName, this.client.getSubscriptionId(), putExpressRouteConnectionParameters, apiVersion);
     }
 
@@ -364,7 +364,7 @@ public final class ExpressRouteConnectionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String expressRouteGatewayName, String connectionName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, expressRouteGatewayName, connectionName, this.client.getSubscriptionId(), apiVersion);
     }
 

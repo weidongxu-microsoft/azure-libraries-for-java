@@ -9,6 +9,7 @@ package com.azure.management.network.models;
 import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.management.SubResource;
+import com.azure.management.network.ProvisioningState;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -27,13 +28,13 @@ public class ApplicationGatewayAuthenticationCertificateInner extends SubResourc
     /*
      * A unique read-only string that changes whenever the resource is updated.
      */
-    @JsonProperty(value = "etag")
+    @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
      * Type of the resource.
      */
-    @JsonProperty(value = "type")
+    @JsonProperty(value = "type", access = JsonProperty.Access.WRITE_ONLY)
     private String type;
 
     /*
@@ -43,11 +44,10 @@ public class ApplicationGatewayAuthenticationCertificateInner extends SubResourc
     private String data;
 
     /*
-     * Provisioning state of the authentication certificate resource. Possible
-     * values are: 'Updating', 'Deleting', and 'Failed'.
+     * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
-    private String provisioningState;
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
+    private ProvisioningState provisioningState;
 
     /**
      * Get the name property: Name of the authentication certificate that is
@@ -83,37 +83,12 @@ public class ApplicationGatewayAuthenticationCertificateInner extends SubResourc
     }
 
     /**
-     * Set the etag property: A unique read-only string that changes whenever
-     * the resource is updated.
-     * 
-     * @param etag the etag value to set.
-     * @return the ApplicationGatewayAuthenticationCertificateInner object
-     * itself.
-     */
-    public ApplicationGatewayAuthenticationCertificateInner withEtag(String etag) {
-        this.etag = etag;
-        return this;
-    }
-
-    /**
      * Get the type property: Type of the resource.
      * 
      * @return the type value.
      */
     public String type() {
         return this.type;
-    }
-
-    /**
-     * Set the type property: Type of the resource.
-     * 
-     * @param type the type value to set.
-     * @return the ApplicationGatewayAuthenticationCertificateInner object
-     * itself.
-     */
-    public ApplicationGatewayAuthenticationCertificateInner withType(String type) {
-        this.type = type;
-        return this;
     }
 
     /**
@@ -138,27 +113,11 @@ public class ApplicationGatewayAuthenticationCertificateInner extends SubResourc
     }
 
     /**
-     * Get the provisioningState property: Provisioning state of the
-     * authentication certificate resource. Possible values are: 'Updating',
-     * 'Deleting', and 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: Provisioning state of the
-     * authentication certificate resource. Possible values are: 'Updating',
-     * 'Deleting', and 'Failed'.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the ApplicationGatewayAuthenticationCertificateInner object
-     * itself.
-     */
-    public ApplicationGatewayAuthenticationCertificateInner withProvisioningState(String provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 }

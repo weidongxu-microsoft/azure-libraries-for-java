@@ -22,8 +22,7 @@ import java.util.List;
 @Fluent
 public class VirtualHubInner extends Resource {
     /*
-     * Gets a unique read-only string that changes whenever the resource is
-     * updated.
+     * A unique read-only string that changes whenever the resource is updated.
      */
     @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
@@ -53,6 +52,12 @@ public class VirtualHubInner extends Resource {
     private SubResource expressRouteGateway;
 
     /*
+     * Reference to another subresource.
+     */
+    @JsonProperty(value = "properties.azureFirewall")
+    private SubResource azureFirewall;
+
+    /*
      * List of all vnet connections with this VirtualHub.
      */
     @JsonProperty(value = "properties.virtualNetworkConnections")
@@ -73,8 +78,26 @@ public class VirtualHubInner extends Resource {
     /*
      * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
     private ProvisioningState provisioningState;
+
+    /*
+     * The Security Provider name.
+     */
+    @JsonProperty(value = "properties.securityProviderName")
+    private String securityProviderName;
+
+    /*
+     * List of all virtual hub route table v2s associated with this VirtualHub.
+     */
+    @JsonProperty(value = "properties.virtualHubRouteTableV2s")
+    private List<VirtualHubRouteTableV2Inner> virtualHubRouteTableV2S;
+
+    /*
+     * The sku of this VirtualHub.
+     */
+    @JsonProperty(value = "properties.sku")
+    private String sku;
 
     /*
      * Resource ID.
@@ -83,8 +106,8 @@ public class VirtualHubInner extends Resource {
     private String id;
 
     /**
-     * Get the etag property: Gets a unique read-only string that changes
-     * whenever the resource is updated.
+     * Get the etag property: A unique read-only string that changes whenever
+     * the resource is updated.
      * 
      * @return the etag value.
      */
@@ -173,6 +196,26 @@ public class VirtualHubInner extends Resource {
     }
 
     /**
+     * Get the azureFirewall property: Reference to another subresource.
+     * 
+     * @return the azureFirewall value.
+     */
+    public SubResource azureFirewall() {
+        return this.azureFirewall;
+    }
+
+    /**
+     * Set the azureFirewall property: Reference to another subresource.
+     * 
+     * @param azureFirewall the azureFirewall value to set.
+     * @return the VirtualHubInner object itself.
+     */
+    public VirtualHubInner withAzureFirewall(SubResource azureFirewall) {
+        this.azureFirewall = azureFirewall;
+        return this;
+    }
+
+    /**
      * Get the virtualNetworkConnections property: List of all vnet connections
      * with this VirtualHub.
      * 
@@ -245,13 +288,64 @@ public class VirtualHubInner extends Resource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Get the securityProviderName property: The Security Provider name.
      * 
-     * @param provisioningState the provisioningState value to set.
+     * @return the securityProviderName value.
+     */
+    public String securityProviderName() {
+        return this.securityProviderName;
+    }
+
+    /**
+     * Set the securityProviderName property: The Security Provider name.
+     * 
+     * @param securityProviderName the securityProviderName value to set.
      * @return the VirtualHubInner object itself.
      */
-    public VirtualHubInner withProvisioningState(ProvisioningState provisioningState) {
-        this.provisioningState = provisioningState;
+    public VirtualHubInner withSecurityProviderName(String securityProviderName) {
+        this.securityProviderName = securityProviderName;
+        return this;
+    }
+
+    /**
+     * Get the virtualHubRouteTableV2S property: List of all virtual hub route
+     * table v2s associated with this VirtualHub.
+     * 
+     * @return the virtualHubRouteTableV2S value.
+     */
+    public List<VirtualHubRouteTableV2Inner> virtualHubRouteTableV2S() {
+        return this.virtualHubRouteTableV2S;
+    }
+
+    /**
+     * Set the virtualHubRouteTableV2S property: List of all virtual hub route
+     * table v2s associated with this VirtualHub.
+     * 
+     * @param virtualHubRouteTableV2S the virtualHubRouteTableV2S value to set.
+     * @return the VirtualHubInner object itself.
+     */
+    public VirtualHubInner withVirtualHubRouteTableV2S(List<VirtualHubRouteTableV2Inner> virtualHubRouteTableV2S) {
+        this.virtualHubRouteTableV2S = virtualHubRouteTableV2S;
+        return this;
+    }
+
+    /**
+     * Get the sku property: The sku of this VirtualHub.
+     * 
+     * @return the sku value.
+     */
+    public String sku() {
+        return this.sku;
+    }
+
+    /**
+     * Set the sku property: The sku of this VirtualHub.
+     * 
+     * @param sku the sku value to set.
+     * @return the VirtualHubInner object itself.
+     */
+    public VirtualHubInner withSku(String sku) {
+        this.sku = sku;
         return this;
     }
 

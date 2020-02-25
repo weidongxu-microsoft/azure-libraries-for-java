@@ -22,8 +22,7 @@ import java.util.List;
 @Fluent
 public class VirtualWANInner extends Resource {
     /*
-     * Gets a unique read-only string that changes whenever the resource is
-     * updated.
+     * A unique read-only string that changes whenever the resource is updated.
      */
     @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
@@ -47,12 +46,6 @@ public class VirtualWANInner extends Resource {
     private List<SubResource> vpnSites;
 
     /*
-     * The Security Provider name.
-     */
-    @JsonProperty(value = "properties.securityProviderName")
-    private String securityProviderName;
-
-    /*
      * True if branch to branch traffic is allowed.
      */
     @JsonProperty(value = "properties.allowBranchToBranchTraffic")
@@ -71,16 +64,16 @@ public class VirtualWANInner extends Resource {
     private OfficeTrafficCategory office365LocalBreakoutCategory;
 
     /*
-     * List of all P2SVpnServerConfigurations associated with the virtual wan.
-     */
-    @JsonProperty(value = "properties.p2SVpnServerConfigurations")
-    private List<P2SVpnServerConfigurationInner> p2SVpnServerConfigurations;
-
-    /*
      * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
     private ProvisioningState provisioningState;
+
+    /*
+     * The type of the VirtualWAN.
+     */
+    @JsonProperty(value = "properties.type")
+    private String typePropertiesType;
 
     /*
      * Resource ID.
@@ -89,8 +82,8 @@ public class VirtualWANInner extends Resource {
     private String id;
 
     /**
-     * Get the etag property: Gets a unique read-only string that changes
-     * whenever the resource is updated.
+     * Get the etag property: A unique read-only string that changes whenever
+     * the resource is updated.
      * 
      * @return the etag value.
      */
@@ -136,26 +129,6 @@ public class VirtualWANInner extends Resource {
      */
     public List<SubResource> vpnSites() {
         return this.vpnSites;
-    }
-
-    /**
-     * Get the securityProviderName property: The Security Provider name.
-     * 
-     * @return the securityProviderName value.
-     */
-    public String securityProviderName() {
-        return this.securityProviderName;
-    }
-
-    /**
-     * Set the securityProviderName property: The Security Provider name.
-     * 
-     * @param securityProviderName the securityProviderName value to set.
-     * @return the VirtualWANInner object itself.
-     */
-    public VirtualWANInner withSecurityProviderName(String securityProviderName) {
-        this.securityProviderName = securityProviderName;
-        return this;
     }
 
     /**
@@ -227,29 +200,6 @@ public class VirtualWANInner extends Resource {
     }
 
     /**
-     * Get the p2SVpnServerConfigurations property: List of all
-     * P2SVpnServerConfigurations associated with the virtual wan.
-     * 
-     * @return the p2SVpnServerConfigurations value.
-     */
-    public List<P2SVpnServerConfigurationInner> p2SVpnServerConfigurations() {
-        return this.p2SVpnServerConfigurations;
-    }
-
-    /**
-     * Set the p2SVpnServerConfigurations property: List of all
-     * P2SVpnServerConfigurations associated with the virtual wan.
-     * 
-     * @param p2SVpnServerConfigurations the p2SVpnServerConfigurations value
-     * to set.
-     * @return the VirtualWANInner object itself.
-     */
-    public VirtualWANInner withP2SVpnServerConfigurations(List<P2SVpnServerConfigurationInner> p2SVpnServerConfigurations) {
-        this.p2SVpnServerConfigurations = p2SVpnServerConfigurations;
-        return this;
-    }
-
-    /**
      * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
@@ -259,13 +209,22 @@ public class VirtualWANInner extends Resource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Get the typePropertiesType property: The type of the VirtualWAN.
      * 
-     * @param provisioningState the provisioningState value to set.
+     * @return the typePropertiesType value.
+     */
+    public String typePropertiesType() {
+        return this.typePropertiesType;
+    }
+
+    /**
+     * Set the typePropertiesType property: The type of the VirtualWAN.
+     * 
+     * @param typePropertiesType the typePropertiesType value to set.
      * @return the VirtualWANInner object itself.
      */
-    public VirtualWANInner withProvisioningState(ProvisioningState provisioningState) {
-        this.provisioningState = provisioningState;
+    public VirtualWANInner withTypePropertiesType(String typePropertiesType) {
+        this.typePropertiesType = typePropertiesType;
         return this;
     }
 

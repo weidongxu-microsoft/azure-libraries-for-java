@@ -56,7 +56,7 @@ public final class PrivateEndpointsInner implements InnerSupportsGet<PrivateEndp
      * @param client the instance of the service client containing this operation class.
      */
     public PrivateEndpointsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(PrivateEndpointsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(PrivateEndpointsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -125,7 +125,7 @@ public final class PrivateEndpointsInner implements InnerSupportsGet<PrivateEndp
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String privateEndpointName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, privateEndpointName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -172,7 +172,7 @@ public final class PrivateEndpointsInner implements InnerSupportsGet<PrivateEndp
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PrivateEndpointInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String privateEndpointName, String expand) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), resourceGroupName, privateEndpointName, this.client.getSubscriptionId(), expand, apiVersion);
     }
 
@@ -210,7 +210,7 @@ public final class PrivateEndpointsInner implements InnerSupportsGet<PrivateEndp
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PrivateEndpointInner> getByResourceGroupAsync(String resourceGroupName, String privateEndpointName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return getByResourceGroupWithResponseAsync(resourceGroupName, privateEndpointName, expand)
             .flatMap((SimpleResponse<PrivateEndpointInner> res) -> {
                 if (res.getValue() != null) {
@@ -248,7 +248,7 @@ public final class PrivateEndpointsInner implements InnerSupportsGet<PrivateEndp
     @ServiceMethod(returns = ReturnType.SINGLE)
     public PrivateEndpointInner getByResourceGroup(String resourceGroupName, String privateEndpointName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return getByResourceGroupAsync(resourceGroupName, privateEndpointName, expand).block();
     }
 
@@ -264,7 +264,7 @@ public final class PrivateEndpointsInner implements InnerSupportsGet<PrivateEndp
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String privateEndpointName, PrivateEndpointInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, privateEndpointName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -311,7 +311,7 @@ public final class PrivateEndpointsInner implements InnerSupportsGet<PrivateEndp
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<PrivateEndpointInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -357,7 +357,7 @@ public final class PrivateEndpointsInner implements InnerSupportsGet<PrivateEndp
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<PrivateEndpointInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -402,7 +402,7 @@ public final class PrivateEndpointsInner implements InnerSupportsGet<PrivateEndp
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String privateEndpointName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, privateEndpointName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -447,7 +447,7 @@ public final class PrivateEndpointsInner implements InnerSupportsGet<PrivateEndp
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PrivateEndpointInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String privateEndpointName, PrivateEndpointInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, privateEndpointName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 

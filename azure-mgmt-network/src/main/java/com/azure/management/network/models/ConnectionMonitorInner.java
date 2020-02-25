@@ -9,8 +9,13 @@ package com.azure.management.network.models;
 import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
 import com.azure.management.network.ConnectionMonitorDestination;
+import com.azure.management.network.ConnectionMonitorEndpoint;
+import com.azure.management.network.ConnectionMonitorOutput;
 import com.azure.management.network.ConnectionMonitorSource;
+import com.azure.management.network.ConnectionMonitorTestConfiguration;
+import com.azure.management.network.ConnectionMonitorTestGroup;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -34,13 +39,13 @@ public class ConnectionMonitorInner {
     /*
      * Describes the source of connection monitor.
      */
-    @JsonProperty(value = "properties.source", required = true)
+    @JsonProperty(value = "properties.source")
     private ConnectionMonitorSource source;
 
     /*
      * Describes the destination of connection monitor.
      */
-    @JsonProperty(value = "properties.destination", required = true)
+    @JsonProperty(value = "properties.destination")
     private ConnectionMonitorDestination destination;
 
     /*
@@ -55,6 +60,36 @@ public class ConnectionMonitorInner {
      */
     @JsonProperty(value = "properties.monitoringIntervalInSeconds")
     private Integer monitoringIntervalInSeconds;
+
+    /*
+     * List of connection monitor endpoints.
+     */
+    @JsonProperty(value = "properties.endpoints")
+    private List<ConnectionMonitorEndpoint> endpoints;
+
+    /*
+     * List of connection monitor test configurations.
+     */
+    @JsonProperty(value = "properties.testConfigurations")
+    private List<ConnectionMonitorTestConfiguration> testConfigurations;
+
+    /*
+     * List of connection monitor test groups.
+     */
+    @JsonProperty(value = "properties.testGroups")
+    private List<ConnectionMonitorTestGroup> testGroups;
+
+    /*
+     * List of connection monitor outputs.
+     */
+    @JsonProperty(value = "properties.outputs")
+    private List<ConnectionMonitorOutput> outputs;
+
+    /*
+     * Optional notes to be associated with the connection monitor.
+     */
+    @JsonProperty(value = "properties.notes")
+    private String notes;
 
     /**
      * Get the location property: Connection monitor location.
@@ -180,6 +215,110 @@ public class ConnectionMonitorInner {
      */
     public ConnectionMonitorInner withMonitoringIntervalInSeconds(Integer monitoringIntervalInSeconds) {
         this.monitoringIntervalInSeconds = monitoringIntervalInSeconds;
+        return this;
+    }
+
+    /**
+     * Get the endpoints property: List of connection monitor endpoints.
+     * 
+     * @return the endpoints value.
+     */
+    public List<ConnectionMonitorEndpoint> endpoints() {
+        return this.endpoints;
+    }
+
+    /**
+     * Set the endpoints property: List of connection monitor endpoints.
+     * 
+     * @param endpoints the endpoints value to set.
+     * @return the ConnectionMonitorInner object itself.
+     */
+    public ConnectionMonitorInner withEndpoints(List<ConnectionMonitorEndpoint> endpoints) {
+        this.endpoints = endpoints;
+        return this;
+    }
+
+    /**
+     * Get the testConfigurations property: List of connection monitor test
+     * configurations.
+     * 
+     * @return the testConfigurations value.
+     */
+    public List<ConnectionMonitorTestConfiguration> testConfigurations() {
+        return this.testConfigurations;
+    }
+
+    /**
+     * Set the testConfigurations property: List of connection monitor test
+     * configurations.
+     * 
+     * @param testConfigurations the testConfigurations value to set.
+     * @return the ConnectionMonitorInner object itself.
+     */
+    public ConnectionMonitorInner withTestConfigurations(List<ConnectionMonitorTestConfiguration> testConfigurations) {
+        this.testConfigurations = testConfigurations;
+        return this;
+    }
+
+    /**
+     * Get the testGroups property: List of connection monitor test groups.
+     * 
+     * @return the testGroups value.
+     */
+    public List<ConnectionMonitorTestGroup> testGroups() {
+        return this.testGroups;
+    }
+
+    /**
+     * Set the testGroups property: List of connection monitor test groups.
+     * 
+     * @param testGroups the testGroups value to set.
+     * @return the ConnectionMonitorInner object itself.
+     */
+    public ConnectionMonitorInner withTestGroups(List<ConnectionMonitorTestGroup> testGroups) {
+        this.testGroups = testGroups;
+        return this;
+    }
+
+    /**
+     * Get the outputs property: List of connection monitor outputs.
+     * 
+     * @return the outputs value.
+     */
+    public List<ConnectionMonitorOutput> outputs() {
+        return this.outputs;
+    }
+
+    /**
+     * Set the outputs property: List of connection monitor outputs.
+     * 
+     * @param outputs the outputs value to set.
+     * @return the ConnectionMonitorInner object itself.
+     */
+    public ConnectionMonitorInner withOutputs(List<ConnectionMonitorOutput> outputs) {
+        this.outputs = outputs;
+        return this;
+    }
+
+    /**
+     * Get the notes property: Optional notes to be associated with the
+     * connection monitor.
+     * 
+     * @return the notes value.
+     */
+    public String notes() {
+        return this.notes;
+    }
+
+    /**
+     * Set the notes property: Optional notes to be associated with the
+     * connection monitor.
+     * 
+     * @param notes the notes value to set.
+     * @return the ConnectionMonitorInner object itself.
+     */
+    public ConnectionMonitorInner withNotes(String notes) {
+        this.notes = notes;
         return this;
     }
 }

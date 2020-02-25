@@ -53,7 +53,7 @@ public final class ExpressRouteCircuitConnectionsInner {
      * @param client the instance of the service client containing this operation class.
      */
     public ExpressRouteCircuitConnectionsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(ExpressRouteCircuitConnectionsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(ExpressRouteCircuitConnectionsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -114,7 +114,7 @@ public final class ExpressRouteCircuitConnectionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String circuitName, String peeringName, String connectionName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, circuitName, peeringName, connectionName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -166,7 +166,7 @@ public final class ExpressRouteCircuitConnectionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteCircuitConnectionInner>> getWithResponseAsync(String resourceGroupName, String circuitName, String peeringName, String connectionName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.get(this.client.getHost(), resourceGroupName, circuitName, peeringName, connectionName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -223,7 +223,7 @@ public final class ExpressRouteCircuitConnectionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String circuitName, String peeringName, String connectionName, ExpressRouteCircuitConnectionInner expressRouteCircuitConnectionParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, circuitName, peeringName, connectionName, this.client.getSubscriptionId(), expressRouteCircuitConnectionParameters, apiVersion);
     }
 
@@ -276,7 +276,7 @@ public final class ExpressRouteCircuitConnectionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ExpressRouteCircuitConnectionInner>> listSinglePageAsync(String resourceGroupName, String circuitName, String peeringName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), resourceGroupName, circuitName, peeringName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -331,7 +331,7 @@ public final class ExpressRouteCircuitConnectionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String circuitName, String peeringName, String connectionName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, circuitName, peeringName, connectionName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -382,7 +382,7 @@ public final class ExpressRouteCircuitConnectionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteCircuitConnectionInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String circuitName, String peeringName, String connectionName, ExpressRouteCircuitConnectionInner expressRouteCircuitConnectionParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, circuitName, peeringName, connectionName, this.client.getSubscriptionId(), expressRouteCircuitConnectionParameters, apiVersion);
     }
 

@@ -9,6 +9,7 @@ package com.azure.management.network.models;
 import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.management.Resource;
+import com.azure.management.network.ProvisioningState;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -32,11 +33,10 @@ public class ApplicationSecurityGroupInner extends Resource {
     private String resourceGuid;
 
     /*
-     * The provisioning state of the application security group resource.
-     * Possible values are: 'Succeeded', 'Updating', 'Deleting', and 'Failed'.
+     * The current provisioning state.
      */
     @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
-    private String provisioningState;
+    private ProvisioningState provisioningState;
 
     /*
      * Resource ID.
@@ -67,13 +67,11 @@ public class ApplicationSecurityGroupInner extends Resource {
     }
 
     /**
-     * Get the provisioningState property: The provisioning state of the
-     * application security group resource. Possible values are: 'Succeeded',
-     * 'Updating', 'Deleting', and 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
     }
 

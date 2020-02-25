@@ -27,7 +27,7 @@ public class VpnClientRootCertificate extends SubResource {
     /*
      * A unique read-only string that changes whenever the resource is updated.
      */
-    @JsonProperty(value = "etag")
+    @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
@@ -37,11 +37,10 @@ public class VpnClientRootCertificate extends SubResource {
     private String publicCertData;
 
     /*
-     * The provisioning state of the VPN client root certificate resource.
-     * Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     * The current provisioning state.
      */
     @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
-    private String provisioningState;
+    private ProvisioningState provisioningState;
 
     /**
      * Get the name property: The name of the resource that is unique within a
@@ -76,18 +75,6 @@ public class VpnClientRootCertificate extends SubResource {
     }
 
     /**
-     * Set the etag property: A unique read-only string that changes whenever
-     * the resource is updated.
-     * 
-     * @param etag the etag value to set.
-     * @return the VpnClientRootCertificate object itself.
-     */
-    public VpnClientRootCertificate withEtag(String etag) {
-        this.etag = etag;
-        return this;
-    }
-
-    /**
      * Get the publicCertData property: The certificate public data.
      * 
      * @return the publicCertData value.
@@ -108,13 +95,11 @@ public class VpnClientRootCertificate extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: The provisioning state of the VPN
-     * client root certificate resource. Possible values are: 'Updating',
-     * 'Deleting', and 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
     }
 }

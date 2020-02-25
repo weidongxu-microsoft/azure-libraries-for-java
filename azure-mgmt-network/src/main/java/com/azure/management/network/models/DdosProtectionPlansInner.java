@@ -59,7 +59,7 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
      * @param client the instance of the service client containing this operation class.
      */
     public DdosProtectionPlansInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(DdosProtectionPlansService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(DdosProtectionPlansService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -89,7 +89,7 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("ddosProtectionPlanName") String ddosProtectionPlanName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DdosProtectionPlanInner>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("ddosProtectionPlanName") String ddosProtectionPlanName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/ddosProtectionPlans")
         @ExpectedResponses({200})
@@ -110,11 +110,6 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DdosProtectionPlanInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("ddosProtectionPlanName") String ddosProtectionPlanName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DdosProtectionPlanInner parameters, @QueryParam("api-version") String apiVersion);
-
-        @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}")
-        @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DdosProtectionPlanInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("ddosProtectionPlanName") String ddosProtectionPlanName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Get("{nextLink}")
         @ExpectedResponses({200})
@@ -138,7 +133,7 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String ddosProtectionPlanName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, ddosProtectionPlanName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -184,7 +179,7 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DdosProtectionPlanInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String ddosProtectionPlanName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), resourceGroupName, ddosProtectionPlanName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -235,7 +230,7 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String ddosProtectionPlanName, DdosProtectionPlanInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, ddosProtectionPlanName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -283,8 +278,8 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<Flux<ByteBuffer>>> updateTagsWithResponseAsync(String resourceGroupName, String ddosProtectionPlanName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
+    public Mono<SimpleResponse<DdosProtectionPlanInner>> updateTagsWithResponseAsync(String resourceGroupName, String ddosProtectionPlanName, Map<String, String> tags) {
+        final String apiVersion = "2019-11-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
         return service.updateTags(this.client.getHost(), resourceGroupName, ddosProtectionPlanName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -302,10 +297,14 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<DdosProtectionPlanInner> updateTagsAsync(String resourceGroupName, String ddosProtectionPlanName, Map<String, String> tags) {
-        Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateTagsWithResponseAsync(resourceGroupName, ddosProtectionPlanName, tags);
-        return client.<DdosProtectionPlanInner, DdosProtectionPlanInner>getLroResultAsync(response, client.getHttpPipeline(), DdosProtectionPlanInner.class, DdosProtectionPlanInner.class)
-            .last()
-            .flatMap(AsyncPollResponse::getFinalResult);
+        return updateTagsWithResponseAsync(resourceGroupName, ddosProtectionPlanName, tags)
+            .flatMap((SimpleResponse<DdosProtectionPlanInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
     }
 
     /**
@@ -331,7 +330,7 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<DdosProtectionPlanInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -375,7 +374,7 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<DdosProtectionPlanInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -424,7 +423,7 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String ddosProtectionPlanName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, ddosProtectionPlanName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -469,7 +468,7 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DdosProtectionPlanInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String ddosProtectionPlanName, DdosProtectionPlanInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, ddosProtectionPlanName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -508,61 +507,6 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
     @ServiceMethod(returns = ReturnType.SINGLE)
     public DdosProtectionPlanInner beginCreateOrUpdate(String resourceGroupName, String ddosProtectionPlanName, DdosProtectionPlanInner parameters) {
         return beginCreateOrUpdateAsync(resourceGroupName, ddosProtectionPlanName, parameters).block();
-    }
-
-    /**
-     * Update a DDoS protection plan tags.
-     * 
-     * @param resourceGroupName 
-     * @param ddosProtectionPlanName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<DdosProtectionPlanInner>> beginUpdateTagsWithResponseAsync(String resourceGroupName, String ddosProtectionPlanName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
-        TagsObject parameters = new TagsObject();
-        parameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), resourceGroupName, ddosProtectionPlanName, this.client.getSubscriptionId(), parameters, apiVersion);
-    }
-
-    /**
-     * Update a DDoS protection plan tags.
-     * 
-     * @param resourceGroupName 
-     * @param ddosProtectionPlanName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<DdosProtectionPlanInner> beginUpdateTagsAsync(String resourceGroupName, String ddosProtectionPlanName, Map<String, String> tags) {
-        return beginUpdateTagsWithResponseAsync(resourceGroupName, ddosProtectionPlanName, tags)
-            .flatMap((SimpleResponse<DdosProtectionPlanInner> res) -> {
-                if (res.getValue() != null) {
-                    return Mono.just(res.getValue());
-                } else {
-                    return Mono.empty();
-                }
-            });
-    }
-
-    /**
-     * Update a DDoS protection plan tags.
-     * 
-     * @param resourceGroupName 
-     * @param ddosProtectionPlanName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public DdosProtectionPlanInner beginUpdateTags(String resourceGroupName, String ddosProtectionPlanName, Map<String, String> tags) {
-        return beginUpdateTagsAsync(resourceGroupName, ddosProtectionPlanName, tags).block();
     }
 
     /**

@@ -51,7 +51,7 @@ public final class ExpressRouteGatewaysInner implements InnerSupportsGet<Express
      * @param client the instance of the service client containing this operation class.
      */
     public ExpressRouteGatewaysInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(ExpressRouteGatewaysService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(ExpressRouteGatewaysService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -107,7 +107,7 @@ public final class ExpressRouteGatewaysInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteGatewayListInner>> listBySubscriptionWithResponseAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listBySubscription(this.client.getHost(), this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -150,7 +150,7 @@ public final class ExpressRouteGatewaysInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteGatewayListInner>> listByResourceGroupWithResponseAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -199,7 +199,7 @@ public final class ExpressRouteGatewaysInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String expressRouteGatewayName, ExpressRouteGatewayInner putExpressRouteGatewayParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, expressRouteGatewayName, this.client.getSubscriptionId(), putExpressRouteGatewayParameters, apiVersion);
     }
 
@@ -247,7 +247,7 @@ public final class ExpressRouteGatewaysInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteGatewayInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String expressRouteGatewayName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), resourceGroupName, expressRouteGatewayName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -297,7 +297,7 @@ public final class ExpressRouteGatewaysInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String expressRouteGatewayName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, expressRouteGatewayName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -344,7 +344,7 @@ public final class ExpressRouteGatewaysInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteGatewayInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String expressRouteGatewayName, ExpressRouteGatewayInner putExpressRouteGatewayParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, expressRouteGatewayName, this.client.getSubscriptionId(), putExpressRouteGatewayParameters, apiVersion);
     }
 
@@ -396,7 +396,7 @@ public final class ExpressRouteGatewaysInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String expressRouteGatewayName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, expressRouteGatewayName, this.client.getSubscriptionId(), apiVersion);
     }
 

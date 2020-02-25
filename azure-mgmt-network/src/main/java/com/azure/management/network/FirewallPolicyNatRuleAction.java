@@ -15,17 +15,24 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class FirewallPolicyNatRuleAction {
     /*
-     * The action type of a rule
+     * The action type of a rule.
      */
     @JsonProperty(value = "type")
-    private FirewallPolicyNatRuleActionType type;
+    private String type;
+
+    /**
+     * Creates an instance of FirewallPolicyNatRuleAction class.
+     */
+    public FirewallPolicyNatRuleAction() {
+        type = "DNAT";
+    }
 
     /**
      * Get the type property: The action type of a rule.
      * 
      * @return the type value.
      */
-    public FirewallPolicyNatRuleActionType type() {
+    public String type() {
         return this.type;
     }
 
@@ -35,7 +42,7 @@ public final class FirewallPolicyNatRuleAction {
      * @param type the type value to set.
      * @return the FirewallPolicyNatRuleAction object itself.
      */
-    public FirewallPolicyNatRuleAction withType(FirewallPolicyNatRuleActionType type) {
+    public FirewallPolicyNatRuleAction withType(String type) {
         this.type = type;
         return this;
     }

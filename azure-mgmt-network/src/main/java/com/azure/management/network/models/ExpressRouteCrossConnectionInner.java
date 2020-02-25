@@ -10,6 +10,7 @@ import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.management.Resource;
 import com.azure.management.network.ExpressRouteCircuitReference;
+import com.azure.management.network.ProvisioningState;
 import com.azure.management.network.ServiceProviderProvisioningState;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
@@ -21,8 +22,7 @@ import java.util.List;
 @Fluent
 public class ExpressRouteCrossConnectionInner extends Resource {
     /*
-     * Gets a unique read-only string that changes whenever the resource is
-     * updated.
+     * A unique read-only string that changes whenever the resource is updated.
      */
     @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
@@ -76,11 +76,10 @@ public class ExpressRouteCrossConnectionInner extends Resource {
     private String serviceProviderNotes;
 
     /*
-     * Gets the provisioning state of the public IP resource. Possible values
-     * are: 'Updating', 'Deleting', and 'Failed'.
+     * The current provisioning state.
      */
     @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
-    private String provisioningState;
+    private ProvisioningState provisioningState;
 
     /*
      * The list of peerings.
@@ -95,8 +94,8 @@ public class ExpressRouteCrossConnectionInner extends Resource {
     private String id;
 
     /**
-     * Get the etag property: Gets a unique read-only string that changes
-     * whenever the resource is updated.
+     * Get the etag property: A unique read-only string that changes whenever
+     * the resource is updated.
      * 
      * @return the etag value.
      */
@@ -241,13 +240,11 @@ public class ExpressRouteCrossConnectionInner extends Resource {
     }
 
     /**
-     * Get the provisioningState property: Gets the provisioning state of the
-     * public IP resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
     }
 

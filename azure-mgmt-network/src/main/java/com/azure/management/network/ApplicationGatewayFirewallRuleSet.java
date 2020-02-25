@@ -19,10 +19,10 @@ import java.util.List;
 @Fluent
 public class ApplicationGatewayFirewallRuleSet extends Resource {
     /*
-     * The provisioning state of the web application firewall rule set.
+     * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
-    private String provisioningState;
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
+    private ProvisioningState provisioningState;
 
     /*
      * The type of the web application firewall rule set.
@@ -49,25 +49,12 @@ public class ApplicationGatewayFirewallRuleSet extends Resource {
     private String id;
 
     /**
-     * Get the provisioningState property: The provisioning state of the web
-     * application firewall rule set.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: The provisioning state of the web
-     * application firewall rule set.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the ApplicationGatewayFirewallRuleSet object itself.
-     */
-    public ApplicationGatewayFirewallRuleSet withProvisioningState(String provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 
     /**

@@ -54,7 +54,7 @@ public final class PacketCapturesInner {
      * @param client the instance of the service client containing this operation class.
      */
     public PacketCapturesInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(PacketCapturesService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(PacketCapturesService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -130,7 +130,7 @@ public final class PacketCapturesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName, PacketCaptureInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.create(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -181,7 +181,7 @@ public final class PacketCapturesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PacketCaptureResultInner>> getWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.get(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -234,7 +234,7 @@ public final class PacketCapturesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -283,7 +283,7 @@ public final class PacketCapturesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> stopWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.stop(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -332,7 +332,7 @@ public final class PacketCapturesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> getStatusWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getStatus(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -380,7 +380,7 @@ public final class PacketCapturesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<PacketCaptureResultInner>> listSinglePageAsync(String resourceGroupName, String networkWatcherName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -432,7 +432,7 @@ public final class PacketCapturesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PacketCaptureResultInner>> beginCreateWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName, PacketCaptureInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreate(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -487,7 +487,7 @@ public final class PacketCapturesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -534,7 +534,7 @@ public final class PacketCapturesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginStopWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginStop(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -581,7 +581,7 @@ public final class PacketCapturesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PacketCaptureQueryStatusResultInner>> beginGetStatusWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginGetStatus(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), apiVersion);
     }
 

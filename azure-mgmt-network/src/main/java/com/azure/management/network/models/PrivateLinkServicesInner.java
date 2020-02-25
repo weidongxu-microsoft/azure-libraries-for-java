@@ -59,7 +59,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
      * @param client the instance of the service client containing this operation class.
      */
     public PrivateLinkServicesInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(PrivateLinkServicesService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(PrivateLinkServicesService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -96,6 +96,11 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
         @UnexpectedResponseExceptionType(ErrorException.class)
         Mono<SimpleResponse<PrivateLinkServiceListResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections/{peConnectionName}")
+        @ExpectedResponses({200})
+        @UnexpectedResponseExceptionType(ErrorException.class)
+        Mono<SimpleResponse<PrivateEndpointConnectionInner>> getPrivateEndpointConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @PathParam("peConnectionName") String peConnectionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("$expand") String expand, @QueryParam("api-version") String apiVersion);
+
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections/{peConnectionName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorException.class)
@@ -105,6 +110,11 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(ErrorException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> deletePrivateEndpointConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @PathParam("peConnectionName") String peConnectionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+
+        @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections")
+        @ExpectedResponses({200})
+        @UnexpectedResponseExceptionType(ErrorException.class)
+        Mono<SimpleResponse<PrivateEndpointConnectionListResultInner>> listPrivateEndpointConnections(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/checkPrivateLinkServiceVisibility")
         @ExpectedResponses({200})
@@ -153,6 +163,11 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
 
         @Get("{nextLink}")
         @ExpectedResponses({200})
+        @UnexpectedResponseExceptionType(ErrorException.class)
+        Mono<SimpleResponse<PrivateEndpointConnectionListResultInner>> listPrivateEndpointConnectionsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
+
+        @Get("{nextLink}")
+        @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<AutoApprovedPrivateLinkServicesResultInner>> listAutoApprovedPrivateLinkServicesNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
@@ -173,7 +188,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String serviceName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, serviceName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -220,7 +235,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PrivateLinkServiceInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String serviceName, String expand) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), resourceGroupName, serviceName, this.client.getSubscriptionId(), expand, apiVersion);
     }
 
@@ -258,7 +273,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PrivateLinkServiceInner> getByResourceGroupAsync(String resourceGroupName, String serviceName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return getByResourceGroupWithResponseAsync(resourceGroupName, serviceName, expand)
             .flatMap((SimpleResponse<PrivateLinkServiceInner> res) -> {
                 if (res.getValue() != null) {
@@ -296,7 +311,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     @ServiceMethod(returns = ReturnType.SINGLE)
     public PrivateLinkServiceInner getByResourceGroup(String resourceGroupName, String serviceName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return getByResourceGroupAsync(resourceGroupName, serviceName, expand).block();
     }
 
@@ -312,7 +327,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String serviceName, PrivateLinkServiceInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, serviceName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -359,7 +374,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<PrivateLinkServiceInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -405,7 +420,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<PrivateLinkServiceInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -440,6 +455,103 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     }
 
     /**
+     * Get the specific private end point connection by specific private link service in the resource group.
+     * 
+     * @param resourceGroupName 
+     * @param serviceName 
+     * @param peConnectionName 
+     * @param expand 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<SimpleResponse<PrivateEndpointConnectionInner>> getPrivateEndpointConnectionWithResponseAsync(String resourceGroupName, String serviceName, String peConnectionName, String expand) {
+        final String apiVersion = "2019-11-01";
+        return service.getPrivateEndpointConnection(this.client.getHost(), resourceGroupName, serviceName, peConnectionName, this.client.getSubscriptionId(), expand, apiVersion);
+    }
+
+    /**
+     * Get the specific private end point connection by specific private link service in the resource group.
+     * 
+     * @param resourceGroupName 
+     * @param serviceName 
+     * @param peConnectionName 
+     * @param expand 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<PrivateEndpointConnectionInner> getPrivateEndpointConnectionAsync(String resourceGroupName, String serviceName, String peConnectionName, String expand) {
+        return getPrivateEndpointConnectionWithResponseAsync(resourceGroupName, serviceName, peConnectionName, expand)
+            .flatMap((SimpleResponse<PrivateEndpointConnectionInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
+    }
+
+    /**
+     * Get the specific private end point connection by specific private link service in the resource group.
+     * 
+     * @param resourceGroupName 
+     * @param serviceName 
+     * @param peConnectionName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<PrivateEndpointConnectionInner> getPrivateEndpointConnectionAsync(String resourceGroupName, String serviceName, String peConnectionName) {
+        final String expand = null;
+        final String apiVersion = "2019-11-01";
+        return getPrivateEndpointConnectionWithResponseAsync(resourceGroupName, serviceName, peConnectionName, expand)
+            .flatMap((SimpleResponse<PrivateEndpointConnectionInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
+    }
+
+    /**
+     * Get the specific private end point connection by specific private link service in the resource group.
+     * 
+     * @param resourceGroupName 
+     * @param serviceName 
+     * @param peConnectionName 
+     * @param expand 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public PrivateEndpointConnectionInner getPrivateEndpointConnection(String resourceGroupName, String serviceName, String peConnectionName, String expand) {
+        return getPrivateEndpointConnectionAsync(resourceGroupName, serviceName, peConnectionName, expand).block();
+    }
+
+    /**
+     * Get the specific private end point connection by specific private link service in the resource group.
+     * 
+     * @param resourceGroupName 
+     * @param serviceName 
+     * @param peConnectionName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public PrivateEndpointConnectionInner getPrivateEndpointConnection(String resourceGroupName, String serviceName, String peConnectionName) {
+        final String expand = null;
+        final String apiVersion = "2019-11-01";
+        return getPrivateEndpointConnectionAsync(resourceGroupName, serviceName, peConnectionName, expand).block();
+    }
+
+    /**
      * Approve or reject private end point connection for a private link service in a subscription.
      * 
      * @param resourceGroupName 
@@ -452,7 +564,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PrivateEndpointConnectionInner>> updatePrivateEndpointConnectionWithResponseAsync(String resourceGroupName, String serviceName, String peConnectionName, PrivateEndpointConnectionInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.updatePrivateEndpointConnection(this.client.getHost(), resourceGroupName, serviceName, peConnectionName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -507,7 +619,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deletePrivateEndpointConnectionWithResponseAsync(String resourceGroupName, String serviceName, String peConnectionName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.deletePrivateEndpointConnection(this.client.getHost(), resourceGroupName, serviceName, peConnectionName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -545,7 +657,58 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     }
 
     /**
-     * Checks the subscription is visible to private link service.
+     * Gets all private end point connections for a specific private link service.
+     * 
+     * @param resourceGroupName 
+     * @param serviceName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<PagedResponse<PrivateEndpointConnectionInner>> listPrivateEndpointConnectionsSinglePageAsync(String resourceGroupName, String serviceName) {
+        final String apiVersion = "2019-11-01";
+        return service.listPrivateEndpointConnections(this.client.getHost(), resourceGroupName, serviceName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+            res.getRequest(),
+            res.getStatusCode(),
+            res.getHeaders(),
+            res.getValue().value(),
+            res.getValue().nextLink(),
+            null));
+    }
+
+    /**
+     * Gets all private end point connections for a specific private link service.
+     * 
+     * @param resourceGroupName 
+     * @param serviceName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.COLLECTION)
+    public PagedFlux<PrivateEndpointConnectionInner> listPrivateEndpointConnectionsAsync(String resourceGroupName, String serviceName) {
+        return new PagedFlux<>(
+            () -> listPrivateEndpointConnectionsSinglePageAsync(resourceGroupName, serviceName),
+            nextLink -> listPrivateEndpointConnectionsNextSinglePageAsync(nextLink));
+    }
+
+    /**
+     * Gets all private end point connections for a specific private link service.
+     * 
+     * @param resourceGroupName 
+     * @param serviceName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.COLLECTION)
+    public PagedIterable<PrivateEndpointConnectionInner> listPrivateEndpointConnections(String resourceGroupName, String serviceName) {
+        return new PagedIterable<>(listPrivateEndpointConnectionsAsync(resourceGroupName, serviceName));
+    }
+
+    /**
+     * Checks whether the subscription is visible to private link service.
      * 
      * @param location 
      * @param privateLinkServiceAlias The alias of the private link service.
@@ -555,14 +718,14 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PrivateLinkServiceVisibilityInner>> checkPrivateLinkServiceVisibilityWithResponseAsync(String location, String privateLinkServiceAlias) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         CheckPrivateLinkServiceVisibilityRequest parameters = new CheckPrivateLinkServiceVisibilityRequest();
         parameters.withPrivateLinkServiceAlias(privateLinkServiceAlias);
         return service.checkPrivateLinkServiceVisibility(this.client.getHost(), location, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
-     * Checks the subscription is visible to private link service.
+     * Checks whether the subscription is visible to private link service.
      * 
      * @param location 
      * @param privateLinkServiceAlias The alias of the private link service.
@@ -583,7 +746,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     }
 
     /**
-     * Checks the subscription is visible to private link service.
+     * Checks whether the subscription is visible to private link service.
      * 
      * @param location 
      * @param privateLinkServiceAlias The alias of the private link service.
@@ -597,7 +760,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     }
 
     /**
-     * Checks the subscription is visible to private link service.
+     * Checks whether the subscription is visible to private link service in the specified resource group.
      * 
      * @param location 
      * @param resourceGroupName 
@@ -608,14 +771,14 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PrivateLinkServiceVisibilityInner>> checkPrivateLinkServiceVisibilityByResourceGroupWithResponseAsync(String location, String resourceGroupName, String privateLinkServiceAlias) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         CheckPrivateLinkServiceVisibilityRequest parameters = new CheckPrivateLinkServiceVisibilityRequest();
         parameters.withPrivateLinkServiceAlias(privateLinkServiceAlias);
         return service.checkPrivateLinkServiceVisibilityByResourceGroup(this.client.getHost(), location, resourceGroupName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
-     * Checks the subscription is visible to private link service.
+     * Checks whether the subscription is visible to private link service in the specified resource group.
      * 
      * @param location 
      * @param resourceGroupName 
@@ -637,7 +800,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     }
 
     /**
-     * Checks the subscription is visible to private link service.
+     * Checks whether the subscription is visible to private link service in the specified resource group.
      * 
      * @param location 
      * @param resourceGroupName 
@@ -661,7 +824,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<AutoApprovedPrivateLinkServiceInner>> listAutoApprovedPrivateLinkServicesSinglePageAsync(String location) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listAutoApprovedPrivateLinkServices(this.client.getHost(), location, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -710,7 +873,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<AutoApprovedPrivateLinkServiceInner>> listAutoApprovedPrivateLinkServicesByResourceGroupSinglePageAsync(String location, String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listAutoApprovedPrivateLinkServicesByResourceGroup(this.client.getHost(), location, resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -761,7 +924,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String serviceName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, serviceName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -806,7 +969,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PrivateLinkServiceInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String serviceName, PrivateLinkServiceInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serviceName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -859,7 +1022,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeletePrivateEndpointConnectionWithResponseAsync(String resourceGroupName, String serviceName, String peConnectionName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDeletePrivateEndpointConnection(this.client.getHost(), resourceGroupName, serviceName, peConnectionName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -924,6 +1087,25 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<PrivateLinkServiceInner>> listBySubscriptionNextSinglePageAsync(String nextLink) {
         return service.listBySubscriptionNext(nextLink).map(res -> new PagedResponseBase<>(
+            res.getRequest(),
+            res.getStatusCode(),
+            res.getHeaders(),
+            res.getValue().value(),
+            res.getValue().nextLink(),
+            null));
+    }
+
+    /**
+     * Get the next page of items.
+     * 
+     * @param nextLink null
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<PagedResponse<PrivateEndpointConnectionInner>> listPrivateEndpointConnectionsNextSinglePageAsync(String nextLink) {
+        return service.listPrivateEndpointConnectionsNext(nextLink).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),

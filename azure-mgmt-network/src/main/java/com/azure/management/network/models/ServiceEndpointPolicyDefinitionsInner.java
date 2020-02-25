@@ -53,7 +53,7 @@ public final class ServiceEndpointPolicyDefinitionsInner {
      * @param client the instance of the service client containing this operation class.
      */
     public ServiceEndpointPolicyDefinitionsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(ServiceEndpointPolicyDefinitionsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(ServiceEndpointPolicyDefinitionsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -113,7 +113,7 @@ public final class ServiceEndpointPolicyDefinitionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String serviceEndpointPolicyName, String serviceEndpointPolicyDefinitionName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, serviceEndpointPolicyDefinitionName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -162,7 +162,7 @@ public final class ServiceEndpointPolicyDefinitionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ServiceEndpointPolicyDefinitionInner>> getWithResponseAsync(String resourceGroupName, String serviceEndpointPolicyName, String serviceEndpointPolicyDefinitionName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.get(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, serviceEndpointPolicyDefinitionName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -216,7 +216,7 @@ public final class ServiceEndpointPolicyDefinitionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String serviceEndpointPolicyName, String serviceEndpointPolicyDefinitionName, ServiceEndpointPolicyDefinitionInner serviceEndpointPolicyDefinitions) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, serviceEndpointPolicyDefinitionName, this.client.getSubscriptionId(), serviceEndpointPolicyDefinitions, apiVersion);
     }
 
@@ -266,7 +266,7 @@ public final class ServiceEndpointPolicyDefinitionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ServiceEndpointPolicyDefinitionInner>> listByResourceGroupSinglePageAsync(String resourceGroupName, String serviceEndpointPolicyName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -318,7 +318,7 @@ public final class ServiceEndpointPolicyDefinitionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String serviceEndpointPolicyName, String serviceEndpointPolicyDefinitionName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, serviceEndpointPolicyDefinitionName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -366,7 +366,7 @@ public final class ServiceEndpointPolicyDefinitionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ServiceEndpointPolicyDefinitionInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String serviceEndpointPolicyName, String serviceEndpointPolicyDefinitionName, ServiceEndpointPolicyDefinitionInner serviceEndpointPolicyDefinitions) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, serviceEndpointPolicyDefinitionName, this.client.getSubscriptionId(), serviceEndpointPolicyDefinitions, apiVersion);
     }
 

@@ -56,7 +56,7 @@ public final class WebApplicationFirewallPoliciesInner implements InnerSupportsG
      * @param client the instance of the service client containing this operation class.
      */
     public WebApplicationFirewallPoliciesInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(WebApplicationFirewallPoliciesService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(WebApplicationFirewallPoliciesService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -119,7 +119,7 @@ public final class WebApplicationFirewallPoliciesInner implements InnerSupportsG
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<WebApplicationFirewallPolicyInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -165,7 +165,7 @@ public final class WebApplicationFirewallPoliciesInner implements InnerSupportsG
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<WebApplicationFirewallPolicyInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -210,7 +210,7 @@ public final class WebApplicationFirewallPoliciesInner implements InnerSupportsG
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<WebApplicationFirewallPolicyInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String policyName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), resourceGroupName, policyName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -261,7 +261,7 @@ public final class WebApplicationFirewallPoliciesInner implements InnerSupportsG
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<WebApplicationFirewallPolicyInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String policyName, WebApplicationFirewallPolicyInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, policyName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -313,7 +313,7 @@ public final class WebApplicationFirewallPoliciesInner implements InnerSupportsG
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String policyName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, policyName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -359,7 +359,7 @@ public final class WebApplicationFirewallPoliciesInner implements InnerSupportsG
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String policyName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, policyName, this.client.getSubscriptionId(), apiVersion);
     }
 

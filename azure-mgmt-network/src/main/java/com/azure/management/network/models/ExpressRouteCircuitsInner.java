@@ -60,7 +60,7 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
      * @param client the instance of the service client containing this operation class.
      */
     public ExpressRouteCircuitsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(ExpressRouteCircuitsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(ExpressRouteCircuitsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -90,7 +90,7 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("circuitName") String circuitName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ExpressRouteCircuitInner>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("circuitName") String circuitName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/arpTables/{devicePath}")
         @ExpectedResponses({200, 202})
@@ -137,11 +137,6 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ExpressRouteCircuitInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("circuitName") String circuitName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ExpressRouteCircuitInner parameters, @QueryParam("api-version") String apiVersion);
 
-        @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}")
-        @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ExpressRouteCircuitInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("circuitName") String circuitName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
-
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/arpTables/{devicePath}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -179,7 +174,7 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String circuitName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, circuitName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -225,7 +220,7 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteCircuitInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String circuitName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), resourceGroupName, circuitName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -276,7 +271,7 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String circuitName, ExpressRouteCircuitInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, circuitName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -324,8 +319,8 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<Flux<ByteBuffer>>> updateTagsWithResponseAsync(String resourceGroupName, String circuitName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
+    public Mono<SimpleResponse<ExpressRouteCircuitInner>> updateTagsWithResponseAsync(String resourceGroupName, String circuitName, Map<String, String> tags) {
+        final String apiVersion = "2019-11-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
         return service.updateTags(this.client.getHost(), resourceGroupName, circuitName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -343,10 +338,14 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<ExpressRouteCircuitInner> updateTagsAsync(String resourceGroupName, String circuitName, Map<String, String> tags) {
-        Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateTagsWithResponseAsync(resourceGroupName, circuitName, tags);
-        return client.<ExpressRouteCircuitInner, ExpressRouteCircuitInner>getLroResultAsync(response, client.getHttpPipeline(), ExpressRouteCircuitInner.class, ExpressRouteCircuitInner.class)
-            .last()
-            .flatMap(AsyncPollResponse::getFinalResult);
+        return updateTagsWithResponseAsync(resourceGroupName, circuitName, tags)
+            .flatMap((SimpleResponse<ExpressRouteCircuitInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
     }
 
     /**
@@ -377,7 +376,7 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> listArpTableWithResponseAsync(String resourceGroupName, String circuitName, String peeringName, String devicePath) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listArpTable(this.client.getHost(), resourceGroupName, circuitName, peeringName, devicePath, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -429,7 +428,7 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> listRoutesTableWithResponseAsync(String resourceGroupName, String circuitName, String peeringName, String devicePath) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listRoutesTable(this.client.getHost(), resourceGroupName, circuitName, peeringName, devicePath, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -481,7 +480,7 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> listRoutesTableSummaryWithResponseAsync(String resourceGroupName, String circuitName, String peeringName, String devicePath) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listRoutesTableSummary(this.client.getHost(), resourceGroupName, circuitName, peeringName, devicePath, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -531,7 +530,7 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteCircuitStatsInner>> getStatsWithResponseAsync(String resourceGroupName, String circuitName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getStats(this.client.getHost(), resourceGroupName, circuitName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -582,7 +581,7 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteCircuitStatsInner>> getPeeringStatsWithResponseAsync(String resourceGroupName, String circuitName, String peeringName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getPeeringStats(this.client.getHost(), resourceGroupName, circuitName, peeringName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -633,7 +632,7 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ExpressRouteCircuitInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -679,7 +678,7 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ExpressRouteCircuitInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -724,7 +723,7 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String circuitName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, circuitName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -769,7 +768,7 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteCircuitInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String circuitName, ExpressRouteCircuitInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, circuitName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -811,61 +810,6 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
     }
 
     /**
-     * Updates an express route circuit tags.
-     * 
-     * @param resourceGroupName 
-     * @param circuitName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<ExpressRouteCircuitInner>> beginUpdateTagsWithResponseAsync(String resourceGroupName, String circuitName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
-        TagsObject parameters = new TagsObject();
-        parameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), resourceGroupName, circuitName, this.client.getSubscriptionId(), parameters, apiVersion);
-    }
-
-    /**
-     * Updates an express route circuit tags.
-     * 
-     * @param resourceGroupName 
-     * @param circuitName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<ExpressRouteCircuitInner> beginUpdateTagsAsync(String resourceGroupName, String circuitName, Map<String, String> tags) {
-        return beginUpdateTagsWithResponseAsync(resourceGroupName, circuitName, tags)
-            .flatMap((SimpleResponse<ExpressRouteCircuitInner> res) -> {
-                if (res.getValue() != null) {
-                    return Mono.just(res.getValue());
-                } else {
-                    return Mono.empty();
-                }
-            });
-    }
-
-    /**
-     * Updates an express route circuit tags.
-     * 
-     * @param resourceGroupName 
-     * @param circuitName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public ExpressRouteCircuitInner beginUpdateTags(String resourceGroupName, String circuitName, Map<String, String> tags) {
-        return beginUpdateTagsAsync(resourceGroupName, circuitName, tags).block();
-    }
-
-    /**
      * Gets the currently advertised ARP table associated with the express route circuit in a resource group.
      * 
      * @param resourceGroupName 
@@ -878,7 +822,7 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteCircuitsArpTableListResultInner>> beginListArpTableWithResponseAsync(String resourceGroupName, String circuitName, String peeringName, String devicePath) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginListArpTable(this.client.getHost(), resourceGroupName, circuitName, peeringName, devicePath, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -934,7 +878,7 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteCircuitsRoutesTableListResultInner>> beginListRoutesTableWithResponseAsync(String resourceGroupName, String circuitName, String peeringName, String devicePath) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginListRoutesTable(this.client.getHost(), resourceGroupName, circuitName, peeringName, devicePath, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -990,7 +934,7 @@ public final class ExpressRouteCircuitsInner implements InnerSupportsGet<Express
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteCircuitsRoutesTableSummaryListResultInner>> beginListRoutesTableSummaryWithResponseAsync(String resourceGroupName, String circuitName, String peeringName, String devicePath) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginListRoutesTableSummary(this.client.getHost(), resourceGroupName, circuitName, peeringName, devicePath, this.client.getSubscriptionId(), apiVersion);
     }
 

@@ -56,7 +56,7 @@ public final class SubnetsInner {
      * @param client the instance of the service client containing this operation class.
      */
     public SubnetsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(SubnetsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(SubnetsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -136,7 +136,7 @@ public final class SubnetsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String virtualNetworkName, String subnetName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -186,7 +186,7 @@ public final class SubnetsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SubnetInner>> getWithResponseAsync(String resourceGroupName, String virtualNetworkName, String subnetName, String expand) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.get(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), expand, apiVersion);
     }
 
@@ -226,7 +226,7 @@ public final class SubnetsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SubnetInner> getAsync(String resourceGroupName, String virtualNetworkName, String subnetName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return getWithResponseAsync(resourceGroupName, virtualNetworkName, subnetName, expand)
             .flatMap((SimpleResponse<SubnetInner> res) -> {
                 if (res.getValue() != null) {
@@ -266,7 +266,7 @@ public final class SubnetsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public SubnetInner get(String resourceGroupName, String virtualNetworkName, String subnetName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return getAsync(resourceGroupName, virtualNetworkName, subnetName, expand).block();
     }
 
@@ -283,7 +283,7 @@ public final class SubnetsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String virtualNetworkName, String subnetName, SubnetInner subnetParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), subnetParameters, apiVersion);
     }
 
@@ -335,7 +335,7 @@ public final class SubnetsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> prepareNetworkPoliciesWithResponseAsync(String resourceGroupName, String virtualNetworkName, String subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.prepareNetworkPolicies(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), prepareNetworkPoliciesRequestParameters, apiVersion);
     }
 
@@ -387,7 +387,7 @@ public final class SubnetsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> unprepareNetworkPoliciesWithResponseAsync(String resourceGroupName, String virtualNetworkName, String subnetName, String serviceName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters = new UnprepareNetworkPoliciesRequest();
         unprepareNetworkPoliciesRequestParameters.withServiceName(serviceName);
         return service.unprepareNetworkPolicies(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), unprepareNetworkPoliciesRequestParameters, apiVersion);
@@ -439,7 +439,7 @@ public final class SubnetsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<SubnetInner>> listSinglePageAsync(String resourceGroupName, String virtualNetworkName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), resourceGroupName, virtualNetworkName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -491,7 +491,7 @@ public final class SubnetsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String virtualNetworkName, String subnetName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -539,7 +539,7 @@ public final class SubnetsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SubnetInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String virtualNetworkName, String subnetName, SubnetInner subnetParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), subnetParameters, apiVersion);
     }
 
@@ -595,7 +595,7 @@ public final class SubnetsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginPrepareNetworkPoliciesWithResponseAsync(String resourceGroupName, String virtualNetworkName, String subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginPrepareNetworkPolicies(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), prepareNetworkPoliciesRequestParameters, apiVersion);
     }
 
@@ -645,7 +645,7 @@ public final class SubnetsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginUnprepareNetworkPoliciesWithResponseAsync(String resourceGroupName, String virtualNetworkName, String subnetName, String serviceName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters = new UnprepareNetworkPoliciesRequest();
         unprepareNetworkPoliciesRequestParameters.withServiceName(serviceName);
         return service.beginUnprepareNetworkPolicies(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), unprepareNetworkPoliciesRequestParameters, apiVersion);

@@ -59,7 +59,7 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
      * @param client the instance of the service client containing this operation class.
      */
     public ExpressRoutePortsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(ExpressRoutePortsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(ExpressRoutePortsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -89,7 +89,7 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRoutePortName") String expressRoutePortName, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ExpressRoutePortInner>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRoutePortName") String expressRoutePortName, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts")
         @ExpectedResponses({200})
@@ -110,11 +110,6 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ExpressRoutePortInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRoutePortName") String expressRoutePortName, @BodyParam("application/json") ExpressRoutePortInner parameters, @QueryParam("api-version") String apiVersion);
-
-        @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}")
-        @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ExpressRoutePortInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRoutePortName") String expressRoutePortName, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Get("{nextLink}")
         @ExpectedResponses({200})
@@ -138,7 +133,7 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String expressRoutePortName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, expressRoutePortName, apiVersion);
     }
 
@@ -184,7 +179,7 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRoutePortInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String expressRoutePortName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, expressRoutePortName, apiVersion);
     }
 
@@ -235,7 +230,7 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String expressRoutePortName, ExpressRoutePortInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, expressRoutePortName, parameters, apiVersion);
     }
 
@@ -283,8 +278,8 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<Flux<ByteBuffer>>> updateTagsWithResponseAsync(String resourceGroupName, String expressRoutePortName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
+    public Mono<SimpleResponse<ExpressRoutePortInner>> updateTagsWithResponseAsync(String resourceGroupName, String expressRoutePortName, Map<String, String> tags) {
+        final String apiVersion = "2019-11-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
         return service.updateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, expressRoutePortName, parameters, apiVersion);
@@ -302,10 +297,14 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<ExpressRoutePortInner> updateTagsAsync(String resourceGroupName, String expressRoutePortName, Map<String, String> tags) {
-        Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateTagsWithResponseAsync(resourceGroupName, expressRoutePortName, tags);
-        return client.<ExpressRoutePortInner, ExpressRoutePortInner>getLroResultAsync(response, client.getHttpPipeline(), ExpressRoutePortInner.class, ExpressRoutePortInner.class)
-            .last()
-            .flatMap(AsyncPollResponse::getFinalResult);
+        return updateTagsWithResponseAsync(resourceGroupName, expressRoutePortName, tags)
+            .flatMap((SimpleResponse<ExpressRoutePortInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
     }
 
     /**
@@ -333,7 +332,7 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ExpressRoutePortInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -379,7 +378,7 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ExpressRoutePortInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -424,7 +423,7 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String expressRoutePortName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, expressRoutePortName, apiVersion);
     }
 
@@ -469,7 +468,7 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRoutePortInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String expressRoutePortName, ExpressRoutePortInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, expressRoutePortName, parameters, apiVersion);
     }
 
@@ -508,61 +507,6 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
     @ServiceMethod(returns = ReturnType.SINGLE)
     public ExpressRoutePortInner beginCreateOrUpdate(String resourceGroupName, String expressRoutePortName, ExpressRoutePortInner parameters) {
         return beginCreateOrUpdateAsync(resourceGroupName, expressRoutePortName, parameters).block();
-    }
-
-    /**
-     * Update ExpressRoutePort tags.
-     * 
-     * @param resourceGroupName 
-     * @param expressRoutePortName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<ExpressRoutePortInner>> beginUpdateTagsWithResponseAsync(String resourceGroupName, String expressRoutePortName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
-        TagsObject parameters = new TagsObject();
-        parameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, expressRoutePortName, parameters, apiVersion);
-    }
-
-    /**
-     * Update ExpressRoutePort tags.
-     * 
-     * @param resourceGroupName 
-     * @param expressRoutePortName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<ExpressRoutePortInner> beginUpdateTagsAsync(String resourceGroupName, String expressRoutePortName, Map<String, String> tags) {
-        return beginUpdateTagsWithResponseAsync(resourceGroupName, expressRoutePortName, tags)
-            .flatMap((SimpleResponse<ExpressRoutePortInner> res) -> {
-                if (res.getValue() != null) {
-                    return Mono.just(res.getValue());
-                } else {
-                    return Mono.empty();
-                }
-            });
-    }
-
-    /**
-     * Update ExpressRoutePort tags.
-     * 
-     * @param resourceGroupName 
-     * @param expressRoutePortName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public ExpressRoutePortInner beginUpdateTags(String resourceGroupName, String expressRoutePortName, Map<String, String> tags) {
-        return beginUpdateTagsAsync(resourceGroupName, expressRoutePortName, tags).block();
     }
 
     /**

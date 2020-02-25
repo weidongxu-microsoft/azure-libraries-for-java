@@ -27,13 +27,13 @@ public class ApplicationGatewayHttpListener extends SubResource {
     /*
      * A unique read-only string that changes whenever the resource is updated.
      */
-    @JsonProperty(value = "etag")
+    @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
      * Type of the resource.
      */
-    @JsonProperty(value = "type")
+    @JsonProperty(value = "type", access = JsonProperty.Access.WRITE_ONLY)
     private String type;
 
     /*
@@ -73,17 +73,29 @@ public class ApplicationGatewayHttpListener extends SubResource {
     private Boolean requireServerNameIndication;
 
     /*
-     * Provisioning state of the HTTP listener resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
+     * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
-    private String provisioningState;
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
+    private ProvisioningState provisioningState;
 
     /*
      * Custom error configurations of the HTTP listener.
      */
     @JsonProperty(value = "properties.customErrorConfigurations")
     private List<ApplicationGatewayCustomError> customErrorConfigurations;
+
+    /*
+     * Reference to another subresource.
+     */
+    @JsonProperty(value = "properties.firewallPolicy")
+    private SubResource firewallPolicy;
+
+    /*
+     * List of Host names for HTTP Listener that allows special wildcard
+     * characters as well.
+     */
+    @JsonProperty(value = "properties.hostnames")
+    private List<String> hostnames;
 
     /**
      * Get the name property: Name of the HTTP listener that is unique within
@@ -118,35 +130,12 @@ public class ApplicationGatewayHttpListener extends SubResource {
     }
 
     /**
-     * Set the etag property: A unique read-only string that changes whenever
-     * the resource is updated.
-     * 
-     * @param etag the etag value to set.
-     * @return the ApplicationGatewayHttpListener object itself.
-     */
-    public ApplicationGatewayHttpListener withEtag(String etag) {
-        this.etag = etag;
-        return this;
-    }
-
-    /**
      * Get the type property: Type of the resource.
      * 
      * @return the type value.
      */
     public String type() {
         return this.type;
-    }
-
-    /**
-     * Set the type property: Type of the resource.
-     * 
-     * @param type the type value to set.
-     * @return the ApplicationGatewayHttpListener object itself.
-     */
-    public ApplicationGatewayHttpListener withType(String type) {
-        this.type = type;
-        return this;
     }
 
     /**
@@ -275,27 +264,12 @@ public class ApplicationGatewayHttpListener extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: Provisioning state of the HTTP
-     * listener resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: Provisioning state of the HTTP
-     * listener resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the ApplicationGatewayHttpListener object itself.
-     */
-    public ApplicationGatewayHttpListener withProvisioningState(String provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 
     /**
@@ -318,6 +292,48 @@ public class ApplicationGatewayHttpListener extends SubResource {
      */
     public ApplicationGatewayHttpListener withCustomErrorConfigurations(List<ApplicationGatewayCustomError> customErrorConfigurations) {
         this.customErrorConfigurations = customErrorConfigurations;
+        return this;
+    }
+
+    /**
+     * Get the firewallPolicy property: Reference to another subresource.
+     * 
+     * @return the firewallPolicy value.
+     */
+    public SubResource firewallPolicy() {
+        return this.firewallPolicy;
+    }
+
+    /**
+     * Set the firewallPolicy property: Reference to another subresource.
+     * 
+     * @param firewallPolicy the firewallPolicy value to set.
+     * @return the ApplicationGatewayHttpListener object itself.
+     */
+    public ApplicationGatewayHttpListener withFirewallPolicy(SubResource firewallPolicy) {
+        this.firewallPolicy = firewallPolicy;
+        return this;
+    }
+
+    /**
+     * Get the hostnames property: List of Host names for HTTP Listener that
+     * allows special wildcard characters as well.
+     * 
+     * @return the hostnames value.
+     */
+    public List<String> hostnames() {
+        return this.hostnames;
+    }
+
+    /**
+     * Set the hostnames property: List of Host names for HTTP Listener that
+     * allows special wildcard characters as well.
+     * 
+     * @param hostnames the hostnames value to set.
+     * @return the ApplicationGatewayHttpListener object itself.
+     */
+    public ApplicationGatewayHttpListener withHostnames(List<String> hostnames) {
+        this.hostnames = hostnames;
         return this;
     }
 }

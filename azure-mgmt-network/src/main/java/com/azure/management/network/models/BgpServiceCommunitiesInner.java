@@ -46,7 +46,7 @@ public final class BgpServiceCommunitiesInner {
      * @param client the instance of the service client containing this operation class.
      */
     public BgpServiceCommunitiesInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(BgpServiceCommunitiesService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(BgpServiceCommunitiesService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -77,7 +77,7 @@ public final class BgpServiceCommunitiesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<BgpServiceCommunityInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),

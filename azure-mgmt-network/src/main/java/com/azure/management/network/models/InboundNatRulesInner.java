@@ -53,7 +53,7 @@ public final class InboundNatRulesInner {
      * @param client the instance of the service client containing this operation class.
      */
     public InboundNatRulesInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(InboundNatRulesService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(InboundNatRulesService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -112,7 +112,7 @@ public final class InboundNatRulesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<InboundNatRuleInner>> listSinglePageAsync(String resourceGroupName, String loadBalancerName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), resourceGroupName, loadBalancerName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -164,7 +164,7 @@ public final class InboundNatRulesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String loadBalancerName, String inboundNatRuleName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, loadBalancerName, inboundNatRuleName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -214,7 +214,7 @@ public final class InboundNatRulesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<InboundNatRuleInner>> getWithResponseAsync(String resourceGroupName, String loadBalancerName, String inboundNatRuleName, String expand) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.get(this.client.getHost(), resourceGroupName, loadBalancerName, inboundNatRuleName, this.client.getSubscriptionId(), expand, apiVersion);
     }
 
@@ -254,7 +254,7 @@ public final class InboundNatRulesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<InboundNatRuleInner> getAsync(String resourceGroupName, String loadBalancerName, String inboundNatRuleName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return getWithResponseAsync(resourceGroupName, loadBalancerName, inboundNatRuleName, expand)
             .flatMap((SimpleResponse<InboundNatRuleInner> res) -> {
                 if (res.getValue() != null) {
@@ -294,7 +294,7 @@ public final class InboundNatRulesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public InboundNatRuleInner get(String resourceGroupName, String loadBalancerName, String inboundNatRuleName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return getAsync(resourceGroupName, loadBalancerName, inboundNatRuleName, expand).block();
     }
 
@@ -311,7 +311,7 @@ public final class InboundNatRulesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String loadBalancerName, String inboundNatRuleName, InboundNatRuleInner inboundNatRuleParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, loadBalancerName, inboundNatRuleName, this.client.getSubscriptionId(), inboundNatRuleParameters, apiVersion);
     }
 
@@ -362,7 +362,7 @@ public final class InboundNatRulesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String loadBalancerName, String inboundNatRuleName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, loadBalancerName, inboundNatRuleName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -410,7 +410,7 @@ public final class InboundNatRulesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<InboundNatRuleInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String loadBalancerName, String inboundNatRuleName, InboundNatRuleInner inboundNatRuleParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, loadBalancerName, inboundNatRuleName, this.client.getSubscriptionId(), inboundNatRuleParameters, apiVersion);
     }
 

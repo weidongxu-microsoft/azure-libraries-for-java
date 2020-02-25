@@ -12,7 +12,6 @@ import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
-import com.azure.core.annotation.Patch;
 import com.azure.core.annotation.PathParam;
 import com.azure.core.annotation.Put;
 import com.azure.core.annotation.QueryParam;
@@ -29,13 +28,10 @@ import com.azure.core.http.rest.RestProxy;
 import com.azure.core.http.rest.SimpleResponse;
 import com.azure.core.management.CloudException;
 import com.azure.core.util.polling.AsyncPollResponse;
-import com.azure.management.network.ErrorException;
-import com.azure.management.network.TagsObject;
 import com.azure.management.resources.fluentcore.collection.InnerSupportsDelete;
 import com.azure.management.resources.fluentcore.collection.InnerSupportsGet;
 import com.azure.management.resources.fluentcore.collection.InnerSupportsListing;
 import java.nio.ByteBuffer;
-import java.util.Map;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -60,7 +56,7 @@ public final class FirewallPoliciesInner implements InnerSupportsGet<FirewallPol
      * @param client the instance of the service client containing this operation class.
      */
     public FirewallPoliciesInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(FirewallPoliciesService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(FirewallPoliciesService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -81,11 +77,6 @@ public final class FirewallPoliciesInner implements InnerSupportsGet<FirewallPol
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<FirewallPolicyInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("firewallPolicyName") String firewallPolicyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("$expand") String expand, @QueryParam("api-version") String apiVersion);
-
-        @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}")
-        @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<FirewallPolicyInner>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("firewallPolicyName") String firewallPolicyName, @BodyParam("application/json") TagsObject firewallPolicyParameters, @QueryParam("api-version") String apiVersion);
 
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}")
         @ExpectedResponses({200, 201})
@@ -134,7 +125,7 @@ public final class FirewallPoliciesInner implements InnerSupportsGet<FirewallPol
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String firewallPolicyName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, firewallPolicyName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -181,7 +172,7 @@ public final class FirewallPoliciesInner implements InnerSupportsGet<FirewallPol
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<FirewallPolicyInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String firewallPolicyName, String expand) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), resourceGroupName, firewallPolicyName, this.client.getSubscriptionId(), expand, apiVersion);
     }
 
@@ -219,7 +210,7 @@ public final class FirewallPoliciesInner implements InnerSupportsGet<FirewallPol
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<FirewallPolicyInner> getByResourceGroupAsync(String resourceGroupName, String firewallPolicyName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return getByResourceGroupWithResponseAsync(resourceGroupName, firewallPolicyName, expand)
             .flatMap((SimpleResponse<FirewallPolicyInner> res) -> {
                 if (res.getValue() != null) {
@@ -257,63 +248,8 @@ public final class FirewallPoliciesInner implements InnerSupportsGet<FirewallPol
     @ServiceMethod(returns = ReturnType.SINGLE)
     public FirewallPolicyInner getByResourceGroup(String resourceGroupName, String firewallPolicyName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return getByResourceGroupAsync(resourceGroupName, firewallPolicyName, expand).block();
-    }
-
-    /**
-     * Updates a Firewall Policy Tags.
-     * 
-     * @param resourceGroupName 
-     * @param firewallPolicyName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<FirewallPolicyInner>> updateTagsWithResponseAsync(String resourceGroupName, String firewallPolicyName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
-        TagsObject firewallPolicyParameters = new TagsObject();
-        firewallPolicyParameters.withTags(tags);
-        return service.updateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, firewallPolicyName, firewallPolicyParameters, apiVersion);
-    }
-
-    /**
-     * Updates a Firewall Policy Tags.
-     * 
-     * @param resourceGroupName 
-     * @param firewallPolicyName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<FirewallPolicyInner> updateTagsAsync(String resourceGroupName, String firewallPolicyName, Map<String, String> tags) {
-        return updateTagsWithResponseAsync(resourceGroupName, firewallPolicyName, tags)
-            .flatMap((SimpleResponse<FirewallPolicyInner> res) -> {
-                if (res.getValue() != null) {
-                    return Mono.just(res.getValue());
-                } else {
-                    return Mono.empty();
-                }
-            });
-    }
-
-    /**
-     * Updates a Firewall Policy Tags.
-     * 
-     * @param resourceGroupName 
-     * @param firewallPolicyName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public FirewallPolicyInner updateTags(String resourceGroupName, String firewallPolicyName, Map<String, String> tags) {
-        return updateTagsAsync(resourceGroupName, firewallPolicyName, tags).block();
     }
 
     /**
@@ -328,7 +264,7 @@ public final class FirewallPoliciesInner implements InnerSupportsGet<FirewallPol
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String firewallPolicyName, FirewallPolicyInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, firewallPolicyName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -375,7 +311,7 @@ public final class FirewallPoliciesInner implements InnerSupportsGet<FirewallPol
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<FirewallPolicyInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -421,7 +357,7 @@ public final class FirewallPoliciesInner implements InnerSupportsGet<FirewallPol
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<FirewallPolicyInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -466,7 +402,7 @@ public final class FirewallPoliciesInner implements InnerSupportsGet<FirewallPol
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String firewallPolicyName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, firewallPolicyName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -511,7 +447,7 @@ public final class FirewallPoliciesInner implements InnerSupportsGet<FirewallPol
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<FirewallPolicyInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String firewallPolicyName, FirewallPolicyInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, firewallPolicyName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 

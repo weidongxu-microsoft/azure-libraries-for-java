@@ -22,7 +22,7 @@ import com.azure.core.http.rest.PagedResponse;
 import com.azure.core.http.rest.PagedResponseBase;
 import com.azure.core.http.rest.RestProxy;
 import com.azure.core.http.rest.SimpleResponse;
-import com.azure.management.network.ErrorException;
+import com.azure.core.management.CloudException;
 import reactor.core.publisher.Mono;
 
 /**
@@ -46,7 +46,7 @@ public final class VpnLinkConnectionsInner {
      * @param client the instance of the service client containing this operation class.
      */
     public VpnLinkConnectionsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(VpnLinkConnectionsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(VpnLinkConnectionsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -60,12 +60,12 @@ public final class VpnLinkConnectionsInner {
     private interface VpnLinkConnectionsService {
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ListVpnSiteLinkConnectionsResultInner>> listByVpnConnection(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @PathParam("connectionName") String connectionName, @QueryParam("api-version") String apiVersion);
 
         @Get("{nextLink}")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ListVpnSiteLinkConnectionsResultInner>> listByVpnConnectionNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
     }
 
@@ -76,12 +76,12 @@ public final class VpnLinkConnectionsInner {
      * @param gatewayName 
      * @param connectionName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<VpnSiteLinkConnectionInner>> listByVpnConnectionSinglePageAsync(String resourceGroupName, String gatewayName, String connectionName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByVpnConnection(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, connectionName, apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -98,7 +98,7 @@ public final class VpnLinkConnectionsInner {
      * @param gatewayName 
      * @param connectionName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.COLLECTION)
@@ -115,7 +115,7 @@ public final class VpnLinkConnectionsInner {
      * @param gatewayName 
      * @param connectionName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.COLLECTION)
@@ -128,7 +128,7 @@ public final class VpnLinkConnectionsInner {
      * 
      * @param nextLink null
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)

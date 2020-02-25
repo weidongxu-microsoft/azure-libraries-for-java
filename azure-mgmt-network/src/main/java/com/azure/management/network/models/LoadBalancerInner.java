@@ -11,6 +11,7 @@ import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.management.Resource;
 import com.azure.management.network.InboundNatPool;
 import com.azure.management.network.LoadBalancerSku;
+import com.azure.management.network.ProvisioningState;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class LoadBalancerInner extends Resource {
     /*
      * A unique read-only string that changes whenever the resource is updated.
      */
-    @JsonProperty(value = "etag")
+    @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
@@ -90,15 +91,14 @@ public class LoadBalancerInner extends Resource {
     /*
      * The resource GUID property of the load balancer resource.
      */
-    @JsonProperty(value = "properties.resourceGuid")
+    @JsonProperty(value = "properties.resourceGuid", access = JsonProperty.Access.WRITE_ONLY)
     private String resourceGuid;
 
     /*
-     * Gets the provisioning state of the PublicIP resource. Possible values
-     * are: 'Updating', 'Deleting', and 'Failed'.
+     * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
-    private String provisioningState;
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
+    private ProvisioningState provisioningState;
 
     /*
      * Resource ID.
@@ -134,18 +134,6 @@ public class LoadBalancerInner extends Resource {
      */
     public String etag() {
         return this.etag;
-    }
-
-    /**
-     * Set the etag property: A unique read-only string that changes whenever
-     * the resource is updated.
-     * 
-     * @param etag the etag value to set.
-     * @return the LoadBalancerInner object itself.
-     */
-    public LoadBalancerInner withEtag(String etag) {
-        this.etag = etag;
-        return this;
     }
 
     /**
@@ -334,39 +322,12 @@ public class LoadBalancerInner extends Resource {
     }
 
     /**
-     * Set the resourceGuid property: The resource GUID property of the load
-     * balancer resource.
-     * 
-     * @param resourceGuid the resourceGuid value to set.
-     * @return the LoadBalancerInner object itself.
-     */
-    public LoadBalancerInner withResourceGuid(String resourceGuid) {
-        this.resourceGuid = resourceGuid;
-        return this;
-    }
-
-    /**
-     * Get the provisioningState property: Gets the provisioning state of the
-     * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: Gets the provisioning state of the
-     * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the LoadBalancerInner object itself.
-     */
-    public LoadBalancerInner withProvisioningState(String provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 
     /**

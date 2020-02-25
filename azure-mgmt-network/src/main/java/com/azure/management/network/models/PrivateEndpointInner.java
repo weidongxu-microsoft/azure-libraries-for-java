@@ -23,7 +23,7 @@ public class PrivateEndpointInner extends Resource {
     /*
      * A unique read-only string that changes whenever the resource is updated.
      */
-    @JsonProperty(value = "etag")
+    @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
@@ -33,7 +33,7 @@ public class PrivateEndpointInner extends Resource {
     private SubnetInner subnet;
 
     /*
-     * Gets an array of references to the network interfaces created for this
+     * An array of references to the network interfaces created for this
      * private endpoint.
      */
     @JsonProperty(value = "properties.networkInterfaces", access = JsonProperty.Access.WRITE_ONLY)
@@ -42,7 +42,7 @@ public class PrivateEndpointInner extends Resource {
     /*
      * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
     private ProvisioningState provisioningState;
 
     /*
@@ -76,18 +76,6 @@ public class PrivateEndpointInner extends Resource {
     }
 
     /**
-     * Set the etag property: A unique read-only string that changes whenever
-     * the resource is updated.
-     * 
-     * @param etag the etag value to set.
-     * @return the PrivateEndpointInner object itself.
-     */
-    public PrivateEndpointInner withEtag(String etag) {
-        this.etag = etag;
-        return this;
-    }
-
-    /**
      * Get the subnet property: Subnet in a virtual network resource.
      * 
      * @return the subnet value.
@@ -108,7 +96,7 @@ public class PrivateEndpointInner extends Resource {
     }
 
     /**
-     * Get the networkInterfaces property: Gets an array of references to the
+     * Get the networkInterfaces property: An array of references to the
      * network interfaces created for this private endpoint.
      * 
      * @return the networkInterfaces value.
@@ -124,17 +112,6 @@ public class PrivateEndpointInner extends Resource {
      */
     public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: The current provisioning state.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the PrivateEndpointInner object itself.
-     */
-    public PrivateEndpointInner withProvisioningState(ProvisioningState provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 
     /**

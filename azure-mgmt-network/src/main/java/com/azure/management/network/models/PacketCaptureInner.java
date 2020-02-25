@@ -44,7 +44,7 @@ public class PacketCaptureInner {
     private Integer timeLimitInSeconds;
 
     /*
-     * Describes the storage location for a packet capture session.
+     * The storage location for a packet capture session.
      */
     @JsonProperty(value = "properties.storageLocation", required = true)
     private PacketCaptureStorageLocation storageLocation;
@@ -144,8 +144,8 @@ public class PacketCaptureInner {
     }
 
     /**
-     * Get the storageLocation property: Describes the storage location for a
-     * packet capture session.
+     * Get the storageLocation property: The storage location for a packet
+     * capture session.
      * 
      * @return the storageLocation value.
      */
@@ -154,8 +154,8 @@ public class PacketCaptureInner {
     }
 
     /**
-     * Set the storageLocation property: Describes the storage location for a
-     * packet capture session.
+     * Set the storageLocation property: The storage location for a packet
+     * capture session.
      * 
      * @param storageLocation the storageLocation value to set.
      * @return the PacketCaptureInner object itself.

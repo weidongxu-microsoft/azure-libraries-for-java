@@ -12,9 +12,11 @@ import com.azure.core.management.Resource;
 import com.azure.core.management.SubResource;
 import com.azure.management.network.AddressSpace;
 import com.azure.management.network.BgpSettings;
+import com.azure.management.network.ProvisioningState;
 import com.azure.management.network.VirtualNetworkGatewaySku;
 import com.azure.management.network.VirtualNetworkGatewayType;
 import com.azure.management.network.VpnClientConfiguration;
+import com.azure.management.network.VpnGatewayGeneration;
 import com.azure.management.network.VpnType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
@@ -26,10 +28,9 @@ import java.util.List;
 @Fluent
 public class VirtualNetworkGatewayInner extends Resource {
     /*
-     * Gets a unique read-only string that changes whenever the resource is
-     * updated.
+     * A unique read-only string that changes whenever the resource is updated.
      */
-    @JsonProperty(value = "etag")
+    @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
@@ -49,6 +50,13 @@ public class VirtualNetworkGatewayInner extends Resource {
      */
     @JsonProperty(value = "properties.vpnType")
     private VpnType vpnType;
+
+    /*
+     * The generation for this VirtualNetworkGateway. Must be None if
+     * gatewayType is not VPN.
+     */
+    @JsonProperty(value = "properties.vpnGatewayGeneration")
+    private VpnGatewayGeneration vpnGatewayGeneration;
 
     /*
      * Whether BGP is enabled for this virtual network gateway or not.
@@ -94,17 +102,29 @@ public class VirtualNetworkGatewayInner extends Resource {
     private AddressSpace customRoutes;
 
     /*
-     * The resource GUID property of the VirtualNetworkGateway resource.
+     * The resource GUID property of the virtual network gateway resource.
      */
-    @JsonProperty(value = "properties.resourceGuid")
+    @JsonProperty(value = "properties.resourceGuid", access = JsonProperty.Access.WRITE_ONLY)
     private String resourceGuid;
 
     /*
-     * The provisioning state of the VirtualNetworkGateway resource. Possible
-     * values are: 'Updating', 'Deleting', and 'Failed'.
+     * The current provisioning state.
      */
     @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
-    private String provisioningState;
+    private ProvisioningState provisioningState;
+
+    /*
+     * Whether dns forwarding is enabled or not.
+     */
+    @JsonProperty(value = "properties.enableDnsForwarding")
+    private Boolean enableDnsForwarding;
+
+    /*
+     * The IP address allocated by the gateway to which dns requests can be
+     * sent.
+     */
+    @JsonProperty(value = "properties.inboundDnsForwardingEndpoint", access = JsonProperty.Access.WRITE_ONLY)
+    private String inboundDnsForwardingEndpoint;
 
     /*
      * Resource ID.
@@ -113,25 +133,13 @@ public class VirtualNetworkGatewayInner extends Resource {
     private String id;
 
     /**
-     * Get the etag property: Gets a unique read-only string that changes
-     * whenever the resource is updated.
+     * Get the etag property: A unique read-only string that changes whenever
+     * the resource is updated.
      * 
      * @return the etag value.
      */
     public String etag() {
         return this.etag;
-    }
-
-    /**
-     * Set the etag property: Gets a unique read-only string that changes
-     * whenever the resource is updated.
-     * 
-     * @param etag the etag value to set.
-     * @return the VirtualNetworkGatewayInner object itself.
-     */
-    public VirtualNetworkGatewayInner withEtag(String etag) {
-        this.etag = etag;
-        return this;
     }
 
     /**
@@ -193,6 +201,28 @@ public class VirtualNetworkGatewayInner extends Resource {
      */
     public VirtualNetworkGatewayInner withVpnType(VpnType vpnType) {
         this.vpnType = vpnType;
+        return this;
+    }
+
+    /**
+     * Get the vpnGatewayGeneration property: The generation for this
+     * VirtualNetworkGateway. Must be None if gatewayType is not VPN.
+     * 
+     * @return the vpnGatewayGeneration value.
+     */
+    public VpnGatewayGeneration vpnGatewayGeneration() {
+        return this.vpnGatewayGeneration;
+    }
+
+    /**
+     * Set the vpnGatewayGeneration property: The generation for this
+     * VirtualNetworkGateway. Must be None if gatewayType is not VPN.
+     * 
+     * @param vpnGatewayGeneration the vpnGatewayGeneration value to set.
+     * @return the VirtualNetworkGatewayInner object itself.
+     */
+    public VirtualNetworkGatewayInner withVpnGatewayGeneration(VpnGatewayGeneration vpnGatewayGeneration) {
+        this.vpnGatewayGeneration = vpnGatewayGeneration;
         return this;
     }
 
@@ -343,8 +373,8 @@ public class VirtualNetworkGatewayInner extends Resource {
     }
 
     /**
-     * Get the resourceGuid property: The resource GUID property of the
-     * VirtualNetworkGateway resource.
+     * Get the resourceGuid property: The resource GUID property of the virtual
+     * network gateway resource.
      * 
      * @return the resourceGuid value.
      */
@@ -353,26 +383,44 @@ public class VirtualNetworkGatewayInner extends Resource {
     }
 
     /**
-     * Set the resourceGuid property: The resource GUID property of the
-     * VirtualNetworkGateway resource.
+     * Get the provisioningState property: The current provisioning state.
      * 
-     * @param resourceGuid the resourceGuid value to set.
+     * @return the provisioningState value.
+     */
+    public ProvisioningState provisioningState() {
+        return this.provisioningState;
+    }
+
+    /**
+     * Get the enableDnsForwarding property: Whether dns forwarding is enabled
+     * or not.
+     * 
+     * @return the enableDnsForwarding value.
+     */
+    public Boolean enableDnsForwarding() {
+        return this.enableDnsForwarding;
+    }
+
+    /**
+     * Set the enableDnsForwarding property: Whether dns forwarding is enabled
+     * or not.
+     * 
+     * @param enableDnsForwarding the enableDnsForwarding value to set.
      * @return the VirtualNetworkGatewayInner object itself.
      */
-    public VirtualNetworkGatewayInner withResourceGuid(String resourceGuid) {
-        this.resourceGuid = resourceGuid;
+    public VirtualNetworkGatewayInner withEnableDnsForwarding(Boolean enableDnsForwarding) {
+        this.enableDnsForwarding = enableDnsForwarding;
         return this;
     }
 
     /**
-     * Get the provisioningState property: The provisioning state of the
-     * VirtualNetworkGateway resource. Possible values are: 'Updating',
-     * 'Deleting', and 'Failed'.
+     * Get the inboundDnsForwardingEndpoint property: The IP address allocated
+     * by the gateway to which dns requests can be sent.
      * 
-     * @return the provisioningState value.
+     * @return the inboundDnsForwardingEndpoint value.
      */
-    public String provisioningState() {
-        return this.provisioningState;
+    public String inboundDnsForwardingEndpoint() {
+        return this.inboundDnsForwardingEndpoint;
     }
 
     /**

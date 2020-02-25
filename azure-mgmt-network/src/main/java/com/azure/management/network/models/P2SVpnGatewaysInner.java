@@ -31,13 +31,15 @@ import com.azure.core.http.rest.SimpleResponse;
 import com.azure.core.management.CloudException;
 import com.azure.core.util.polling.AsyncPollResponse;
 import com.azure.management.network.AuthenticationMethod;
-import com.azure.management.network.ErrorException;
+import com.azure.management.network.P2SVpnConnectionHealthRequest;
+import com.azure.management.network.P2SVpnConnectionRequest;
 import com.azure.management.network.P2SVpnProfileParameters;
 import com.azure.management.network.TagsObject;
 import com.azure.management.resources.fluentcore.collection.InnerSupportsDelete;
 import com.azure.management.resources.fluentcore.collection.InnerSupportsGet;
 import com.azure.management.resources.fluentcore.collection.InnerSupportsListing;
 import java.nio.ByteBuffer;
+import java.util.List;
 import java.util.Map;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -63,7 +65,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * @param client the instance of the service client containing this operation class.
      */
     public P2SVpnGatewaysInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(P2SVpnGatewaysService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(P2SVpnGatewaysService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -77,32 +79,32 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
     private interface P2SVpnGatewaysService {
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<P2SVpnGatewayInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @QueryParam("api-version") String apiVersion);
 
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}")
         @ExpectedResponses({200, 201})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @BodyParam("application/json") P2SVpnGatewayInner p2SVpnGatewayParameters, @QueryParam("api-version") String apiVersion);
 
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}")
-        @ExpectedResponses({200, 201})
-        @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @BodyParam("application/json") TagsObject p2SVpnGatewayParameters, @QueryParam("api-version") String apiVersion);
+        @ExpectedResponses({200})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<P2SVpnGatewayInner>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @BodyParam("application/json") TagsObject p2SVpnGatewayParameters, @QueryParam("api-version") String apiVersion);
 
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}")
         @ExpectedResponses({200, 202, 204})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @QueryParam("api-version") String apiVersion);
 
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ListP2SVpnGatewaysResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("api-version") String apiVersion);
 
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/p2svpnGateways")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ListP2SVpnGatewaysResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/generatevpnprofile")
@@ -115,19 +117,24 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> getP2SVpnConnectionHealth(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/getP2sVpnConnectionHealthDetailed")
+        @ExpectedResponses({200, 202})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<Flux<ByteBuffer>>> getP2SVpnConnectionHealthDetailed(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @BodyParam("application/json") P2SVpnConnectionHealthRequest request, @QueryParam("api-version") String apiVersion);
+
+        @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{p2sVpnGatewayName}/disconnectP2sVpnConnections")
+        @ExpectedResponses({200, 202})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<Flux<ByteBuffer>>> disconnectP2SVpnConnections(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("p2sVpnGatewayName") String p2SVpnGatewayName, @BodyParam("application/json") P2SVpnConnectionRequest request, @QueryParam("api-version") String apiVersion);
+
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}")
         @ExpectedResponses({200, 201})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<P2SVpnGatewayInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @BodyParam("application/json") P2SVpnGatewayInner p2SVpnGatewayParameters, @QueryParam("api-version") String apiVersion);
-
-        @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}")
-        @ExpectedResponses({200, 201})
-        @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<P2SVpnGatewayInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @BodyParam("application/json") TagsObject p2SVpnGatewayParameters, @QueryParam("api-version") String apiVersion);
 
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}")
         @ExpectedResponses({200, 202, 204})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @QueryParam("api-version") String apiVersion);
 
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/generatevpnprofile")
@@ -140,14 +147,24 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<P2SVpnGatewayInner>> beginGetP2SVpnConnectionHealth(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/getP2sVpnConnectionHealthDetailed")
+        @ExpectedResponses({200, 202})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<P2SVpnConnectionHealthInner>> beginGetP2SVpnConnectionHealthDetailed(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @BodyParam("application/json") P2SVpnConnectionHealthRequest request, @QueryParam("api-version") String apiVersion);
+
+        @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{p2sVpnGatewayName}/disconnectP2sVpnConnections")
+        @ExpectedResponses({200, 202})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<Response<Void>> beginDisconnectP2SVpnConnections(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("p2sVpnGatewayName") String p2SVpnGatewayName, @BodyParam("application/json") P2SVpnConnectionRequest request, @QueryParam("api-version") String apiVersion);
+
         @Get("{nextLink}")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ListP2SVpnGatewaysResultInner>> listByResourceGroupNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
         @Get("{nextLink}")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ListP2SVpnGatewaysResultInner>> listNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
     }
 
@@ -157,12 +174,12 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * @param resourceGroupName 
      * @param gatewayName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<P2SVpnGatewayInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String gatewayName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, apiVersion);
     }
 
@@ -172,7 +189,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * @param resourceGroupName 
      * @param gatewayName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -193,7 +210,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * @param resourceGroupName 
      * @param gatewayName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -208,12 +225,12 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * @param gatewayName 
      * @param p2SVpnGatewayParameters P2SVpnGateway Resource.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String gatewayName, P2SVpnGatewayInner p2SVpnGatewayParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, p2SVpnGatewayParameters, apiVersion);
     }
 
@@ -224,7 +241,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * @param gatewayName 
      * @param p2SVpnGatewayParameters P2SVpnGateway Resource.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -242,7 +259,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * @param gatewayName 
      * @param p2SVpnGatewayParameters P2SVpnGateway Resource.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -257,12 +274,12 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * @param gatewayName 
      * @param tags Resource tags.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<Flux<ByteBuffer>>> updateTagsWithResponseAsync(String resourceGroupName, String gatewayName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
+    public Mono<SimpleResponse<P2SVpnGatewayInner>> updateTagsWithResponseAsync(String resourceGroupName, String gatewayName, Map<String, String> tags) {
+        final String apiVersion = "2019-11-01";
         TagsObject p2SVpnGatewayParameters = new TagsObject();
         p2SVpnGatewayParameters.withTags(tags);
         return service.updateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, p2SVpnGatewayParameters, apiVersion);
@@ -275,15 +292,19 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * @param gatewayName 
      * @param tags Resource tags.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<P2SVpnGatewayInner> updateTagsAsync(String resourceGroupName, String gatewayName, Map<String, String> tags) {
-        Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateTagsWithResponseAsync(resourceGroupName, gatewayName, tags);
-        return client.<P2SVpnGatewayInner, P2SVpnGatewayInner>getLroResultAsync(response, client.getHttpPipeline(), P2SVpnGatewayInner.class, P2SVpnGatewayInner.class)
-            .last()
-            .flatMap(AsyncPollResponse::getFinalResult);
+        return updateTagsWithResponseAsync(resourceGroupName, gatewayName, tags)
+            .flatMap((SimpleResponse<P2SVpnGatewayInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
     }
 
     /**
@@ -293,7 +314,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * @param gatewayName 
      * @param tags Resource tags.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -307,12 +328,12 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * @param resourceGroupName 
      * @param gatewayName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String gatewayName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, apiVersion);
     }
 
@@ -322,7 +343,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * @param resourceGroupName 
      * @param gatewayName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -339,7 +360,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * @param resourceGroupName 
      * @param gatewayName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -352,12 +373,12 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * 
      * @param resourceGroupName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<P2SVpnGatewayInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -372,7 +393,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * 
      * @param resourceGroupName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.COLLECTION)
@@ -387,7 +408,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * 
      * @param resourceGroupName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.COLLECTION)
@@ -398,12 +419,12 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
     /**
      * Lists all the P2SVpnGateways in a subscription.
      * 
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<P2SVpnGatewayInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -416,7 +437,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
     /**
      * Lists all the P2SVpnGateways in a subscription.
      * 
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.COLLECTION)
@@ -429,7 +450,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
     /**
      * Lists all the P2SVpnGateways in a subscription.
      * 
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.COLLECTION)
@@ -449,7 +470,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> generateVpnProfileWithResponseAsync(String resourceGroupName, String gatewayName, AuthenticationMethod authenticationMethod) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         P2SVpnProfileParameters parameters = new P2SVpnProfileParameters();
         parameters.withAuthenticationMethod(authenticationMethod);
         return service.generateVpnProfile(this.client.getHost(), resourceGroupName, gatewayName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -499,7 +520,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> getP2SVpnConnectionHealthWithResponseAsync(String resourceGroupName, String gatewayName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getP2SVpnConnectionHealth(this.client.getHost(), resourceGroupName, gatewayName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -535,18 +556,118 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
     }
 
     /**
+     * Gets the sas url to get the connection health detail of P2S clients of the virtual wan P2SVpnGateway in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param gatewayName 
+     * @param request List of P2S Vpn connection health request.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<SimpleResponse<Flux<ByteBuffer>>> getP2SVpnConnectionHealthDetailedWithResponseAsync(String resourceGroupName, String gatewayName, P2SVpnConnectionHealthRequest request) {
+        final String apiVersion = "2019-11-01";
+        return service.getP2SVpnConnectionHealthDetailed(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, request, apiVersion);
+    }
+
+    /**
+     * Gets the sas url to get the connection health detail of P2S clients of the virtual wan P2SVpnGateway in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param gatewayName 
+     * @param request List of P2S Vpn connection health request.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<P2SVpnConnectionHealthInner> getP2SVpnConnectionHealthDetailedAsync(String resourceGroupName, String gatewayName, P2SVpnConnectionHealthRequest request) {
+        Mono<SimpleResponse<Flux<ByteBuffer>>> response = getP2SVpnConnectionHealthDetailedWithResponseAsync(resourceGroupName, gatewayName, request);
+        return client.<P2SVpnConnectionHealthInner, P2SVpnConnectionHealthInner>getLroResultAsync(response, client.getHttpPipeline(), P2SVpnConnectionHealthInner.class, P2SVpnConnectionHealthInner.class)
+            .last()
+            .flatMap(AsyncPollResponse::getFinalResult);
+    }
+
+    /**
+     * Gets the sas url to get the connection health detail of P2S clients of the virtual wan P2SVpnGateway in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param gatewayName 
+     * @param request List of P2S Vpn connection health request.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public P2SVpnConnectionHealthInner getP2SVpnConnectionHealthDetailed(String resourceGroupName, String gatewayName, P2SVpnConnectionHealthRequest request) {
+        return getP2SVpnConnectionHealthDetailedAsync(resourceGroupName, gatewayName, request).block();
+    }
+
+    /**
+     * Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param p2SVpnGatewayName 
+     * @param vpnConnectionIds List of p2s vpn connection Ids.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<SimpleResponse<Flux<ByteBuffer>>> disconnectP2SVpnConnectionsWithResponseAsync(String resourceGroupName, String p2SVpnGatewayName, List<String> vpnConnectionIds) {
+        final String apiVersion = "2019-11-01";
+        P2SVpnConnectionRequest request = new P2SVpnConnectionRequest();
+        request.withVpnConnectionIds(vpnConnectionIds);
+        return service.disconnectP2SVpnConnections(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, p2SVpnGatewayName, request, apiVersion);
+    }
+
+    /**
+     * Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param p2SVpnGatewayName 
+     * @param vpnConnectionIds List of p2s vpn connection Ids.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<Void> disconnectP2SVpnConnectionsAsync(String resourceGroupName, String p2SVpnGatewayName, List<String> vpnConnectionIds) {
+        Mono<SimpleResponse<Flux<ByteBuffer>>> response = disconnectP2SVpnConnectionsWithResponseAsync(resourceGroupName, p2SVpnGatewayName, vpnConnectionIds);
+        return client.<Void, Void>getLroResultAsync(response, client.getHttpPipeline(), Void.class, Void.class)
+            .last()
+            .flatMap(AsyncPollResponse::getFinalResult);
+    }
+
+    /**
+     * Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param p2SVpnGatewayName 
+     * @param vpnConnectionIds List of p2s vpn connection Ids.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public void disconnectP2SVpnConnections(String resourceGroupName, String p2SVpnGatewayName, List<String> vpnConnectionIds) {
+        disconnectP2SVpnConnectionsAsync(resourceGroupName, p2SVpnGatewayName, vpnConnectionIds).block();
+    }
+
+    /**
      * Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the existing gateway.
      * 
      * @param resourceGroupName 
      * @param gatewayName 
      * @param p2SVpnGatewayParameters P2SVpnGateway Resource.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<P2SVpnGatewayInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String gatewayName, P2SVpnGatewayInner p2SVpnGatewayParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, p2SVpnGatewayParameters, apiVersion);
     }
 
@@ -557,7 +678,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * @param gatewayName 
      * @param p2SVpnGatewayParameters P2SVpnGateway Resource.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -579,7 +700,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * @param gatewayName 
      * @param p2SVpnGatewayParameters P2SVpnGateway Resource.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -588,72 +709,17 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
     }
 
     /**
-     * Updates virtual wan p2s vpn gateway tags.
-     * 
-     * @param resourceGroupName 
-     * @param gatewayName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<P2SVpnGatewayInner>> beginUpdateTagsWithResponseAsync(String resourceGroupName, String gatewayName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
-        TagsObject p2SVpnGatewayParameters = new TagsObject();
-        p2SVpnGatewayParameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, p2SVpnGatewayParameters, apiVersion);
-    }
-
-    /**
-     * Updates virtual wan p2s vpn gateway tags.
-     * 
-     * @param resourceGroupName 
-     * @param gatewayName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<P2SVpnGatewayInner> beginUpdateTagsAsync(String resourceGroupName, String gatewayName, Map<String, String> tags) {
-        return beginUpdateTagsWithResponseAsync(resourceGroupName, gatewayName, tags)
-            .flatMap((SimpleResponse<P2SVpnGatewayInner> res) -> {
-                if (res.getValue() != null) {
-                    return Mono.just(res.getValue());
-                } else {
-                    return Mono.empty();
-                }
-            });
-    }
-
-    /**
-     * Updates virtual wan p2s vpn gateway tags.
-     * 
-     * @param resourceGroupName 
-     * @param gatewayName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public P2SVpnGatewayInner beginUpdateTags(String resourceGroupName, String gatewayName, Map<String, String> tags) {
-        return beginUpdateTagsAsync(resourceGroupName, gatewayName, tags).block();
-    }
-
-    /**
      * Deletes a virtual wan p2s vpn gateway.
      * 
      * @param resourceGroupName 
      * @param gatewayName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String gatewayName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, apiVersion);
     }
 
@@ -663,7 +729,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * @param resourceGroupName 
      * @param gatewayName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -678,7 +744,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * @param resourceGroupName 
      * @param gatewayName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -698,7 +764,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VpnProfileResponseInner>> beginGenerateVpnProfileWithResponseAsync(String resourceGroupName, String gatewayName, AuthenticationMethod authenticationMethod) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         P2SVpnProfileParameters parameters = new P2SVpnProfileParameters();
         parameters.withAuthenticationMethod(authenticationMethod);
         return service.beginGenerateVpnProfile(this.client.getHost(), resourceGroupName, gatewayName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -752,7 +818,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<P2SVpnGatewayInner>> beginGetP2SVpnConnectionHealthWithResponseAsync(String resourceGroupName, String gatewayName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginGetP2SVpnConnectionHealth(this.client.getHost(), resourceGroupName, gatewayName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -792,11 +858,113 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
     }
 
     /**
+     * Gets the sas url to get the connection health detail of P2S clients of the virtual wan P2SVpnGateway in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param gatewayName 
+     * @param request List of P2S Vpn connection health request.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<SimpleResponse<P2SVpnConnectionHealthInner>> beginGetP2SVpnConnectionHealthDetailedWithResponseAsync(String resourceGroupName, String gatewayName, P2SVpnConnectionHealthRequest request) {
+        final String apiVersion = "2019-11-01";
+        return service.beginGetP2SVpnConnectionHealthDetailed(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, request, apiVersion);
+    }
+
+    /**
+     * Gets the sas url to get the connection health detail of P2S clients of the virtual wan P2SVpnGateway in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param gatewayName 
+     * @param request List of P2S Vpn connection health request.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<P2SVpnConnectionHealthInner> beginGetP2SVpnConnectionHealthDetailedAsync(String resourceGroupName, String gatewayName, P2SVpnConnectionHealthRequest request) {
+        return beginGetP2SVpnConnectionHealthDetailedWithResponseAsync(resourceGroupName, gatewayName, request)
+            .flatMap((SimpleResponse<P2SVpnConnectionHealthInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
+    }
+
+    /**
+     * Gets the sas url to get the connection health detail of P2S clients of the virtual wan P2SVpnGateway in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param gatewayName 
+     * @param request List of P2S Vpn connection health request.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public P2SVpnConnectionHealthInner beginGetP2SVpnConnectionHealthDetailed(String resourceGroupName, String gatewayName, P2SVpnConnectionHealthRequest request) {
+        return beginGetP2SVpnConnectionHealthDetailedAsync(resourceGroupName, gatewayName, request).block();
+    }
+
+    /**
+     * Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param p2SVpnGatewayName 
+     * @param vpnConnectionIds List of p2s vpn connection Ids.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<Response<Void>> beginDisconnectP2SVpnConnectionsWithResponseAsync(String resourceGroupName, String p2SVpnGatewayName, List<String> vpnConnectionIds) {
+        final String apiVersion = "2019-11-01";
+        P2SVpnConnectionRequest request = new P2SVpnConnectionRequest();
+        request.withVpnConnectionIds(vpnConnectionIds);
+        return service.beginDisconnectP2SVpnConnections(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, p2SVpnGatewayName, request, apiVersion);
+    }
+
+    /**
+     * Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param p2SVpnGatewayName 
+     * @param vpnConnectionIds List of p2s vpn connection Ids.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<Void> beginDisconnectP2SVpnConnectionsAsync(String resourceGroupName, String p2SVpnGatewayName, List<String> vpnConnectionIds) {
+        return beginDisconnectP2SVpnConnectionsWithResponseAsync(resourceGroupName, p2SVpnGatewayName, vpnConnectionIds)
+            .flatMap((Response<Void> res) -> Mono.empty());
+    }
+
+    /**
+     * Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param p2SVpnGatewayName 
+     * @param vpnConnectionIds List of p2s vpn connection Ids.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public void beginDisconnectP2SVpnConnections(String resourceGroupName, String p2SVpnGatewayName, List<String> vpnConnectionIds) {
+        beginDisconnectP2SVpnConnectionsAsync(resourceGroupName, p2SVpnGatewayName, vpnConnectionIds).block();
+    }
+
+    /**
      * Get the next page of items.
      * 
      * @param nextLink null
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -815,7 +983,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
      * 
      * @param nextLink null
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)

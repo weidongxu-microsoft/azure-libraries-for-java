@@ -14,6 +14,7 @@ import com.azure.management.network.DdosSettings;
 import com.azure.management.network.IPAllocationMethod;
 import com.azure.management.network.IpTag;
 import com.azure.management.network.IPVersion;
+import com.azure.management.network.ProvisioningState;
 import com.azure.management.network.PublicIPAddressDnsSettings;
 import com.azure.management.network.PublicIPAddressSku;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -34,7 +35,7 @@ public class PublicIPAddressInner extends Resource {
     /*
      * A unique read-only string that changes whenever the resource is updated.
      */
-    @JsonProperty(value = "etag")
+    @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
@@ -99,17 +100,16 @@ public class PublicIPAddressInner extends Resource {
     private Integer idleTimeoutInMinutes;
 
     /*
-     * The resource GUID property of the public IP resource.
+     * The resource GUID property of the public IP address resource.
      */
-    @JsonProperty(value = "properties.resourceGuid")
+    @JsonProperty(value = "properties.resourceGuid", access = JsonProperty.Access.WRITE_ONLY)
     private String resourceGuid;
 
     /*
-     * The provisioning state of the PublicIP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
+     * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
-    private String provisioningState;
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
+    private ProvisioningState provisioningState;
 
     /*
      * Resource ID.
@@ -145,18 +145,6 @@ public class PublicIPAddressInner extends Resource {
      */
     public String etag() {
         return this.etag;
-    }
-
-    /**
-     * Set the etag property: A unique read-only string that changes whenever
-     * the resource is updated.
-     * 
-     * @param etag the etag value to set.
-     * @return the PublicIPAddressInner object itself.
-     */
-    public PublicIPAddressInner withEtag(String etag) {
-        this.etag = etag;
-        return this;
     }
 
     /**
@@ -363,7 +351,7 @@ public class PublicIPAddressInner extends Resource {
 
     /**
      * Get the resourceGuid property: The resource GUID property of the public
-     * IP resource.
+     * IP address resource.
      * 
      * @return the resourceGuid value.
      */
@@ -372,39 +360,12 @@ public class PublicIPAddressInner extends Resource {
     }
 
     /**
-     * Set the resourceGuid property: The resource GUID property of the public
-     * IP resource.
-     * 
-     * @param resourceGuid the resourceGuid value to set.
-     * @return the PublicIPAddressInner object itself.
-     */
-    public PublicIPAddressInner withResourceGuid(String resourceGuid) {
-        this.resourceGuid = resourceGuid;
-        return this;
-    }
-
-    /**
-     * Get the provisioningState property: The provisioning state of the
-     * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: The provisioning state of the
-     * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the PublicIPAddressInner object itself.
-     */
-    public PublicIPAddressInner withProvisioningState(String provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 
     /**

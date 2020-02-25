@@ -19,15 +19,14 @@ import java.util.List;
 @Fluent
 public class AzureFirewallApplicationRuleCollection extends SubResource {
     /*
-     * Gets name of the resource that is unique within a resource group. This
+     * The name of the resource that is unique within the Azure firewall. This
      * name can be used to access the resource.
      */
     @JsonProperty(value = "name")
     private String name;
 
     /*
-     * Gets a unique read-only string that changes whenever the resource is
-     * updated.
+     * A unique read-only string that changes whenever the resource is updated.
      */
     @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
@@ -53,12 +52,12 @@ public class AzureFirewallApplicationRuleCollection extends SubResource {
     /*
      * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
     private ProvisioningState provisioningState;
 
     /**
-     * Get the name property: Gets name of the resource that is unique within a
-     * resource group. This name can be used to access the resource.
+     * Get the name property: The name of the resource that is unique within
+     * the Azure firewall. This name can be used to access the resource.
      * 
      * @return the name value.
      */
@@ -67,8 +66,8 @@ public class AzureFirewallApplicationRuleCollection extends SubResource {
     }
 
     /**
-     * Set the name property: Gets name of the resource that is unique within a
-     * resource group. This name can be used to access the resource.
+     * Set the name property: The name of the resource that is unique within
+     * the Azure firewall. This name can be used to access the resource.
      * 
      * @param name the name value to set.
      * @return the AzureFirewallApplicationRuleCollection object itself.
@@ -79,8 +78,8 @@ public class AzureFirewallApplicationRuleCollection extends SubResource {
     }
 
     /**
-     * Get the etag property: Gets a unique read-only string that changes
-     * whenever the resource is updated.
+     * Get the etag property: A unique read-only string that changes whenever
+     * the resource is updated.
      * 
      * @return the etag value.
      */
@@ -159,16 +158,5 @@ public class AzureFirewallApplicationRuleCollection extends SubResource {
      */
     public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: The current provisioning state.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the AzureFirewallApplicationRuleCollection object itself.
-     */
-    public AzureFirewallApplicationRuleCollection withProvisioningState(ProvisioningState provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 }

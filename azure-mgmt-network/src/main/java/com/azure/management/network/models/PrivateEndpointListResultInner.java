@@ -16,7 +16,7 @@ import java.util.List;
 @Fluent
 public final class PrivateEndpointListResultInner {
     /*
-     * Gets a list of private endpoint resources in a resource group.
+     * A list of private endpoint resources in a resource group.
      */
     @JsonProperty(value = "value")
     private List<PrivateEndpointInner> value;
@@ -28,7 +28,7 @@ public final class PrivateEndpointListResultInner {
     private String nextLink;
 
     /**
-     * Get the value property: Gets a list of private endpoint resources in a
+     * Get the value property: A list of private endpoint resources in a
      * resource group.
      * 
      * @return the value value.
@@ -38,7 +38,7 @@ public final class PrivateEndpointListResultInner {
     }
 
     /**
-     * Set the value property: Gets a list of private endpoint resources in a
+     * Set the value property: A list of private endpoint resources in a
      * resource group.
      * 
      * @param value the value value to set.

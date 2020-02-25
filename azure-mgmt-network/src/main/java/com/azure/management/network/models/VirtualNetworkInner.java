@@ -12,6 +12,8 @@ import com.azure.core.management.Resource;
 import com.azure.core.management.SubResource;
 import com.azure.management.network.AddressSpace;
 import com.azure.management.network.DhcpOptions;
+import com.azure.management.network.ProvisioningState;
+import com.azure.management.network.VirtualNetworkBgpCommunities;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
@@ -22,10 +24,9 @@ import java.util.List;
 @Fluent
 public class VirtualNetworkInner extends Resource {
     /*
-     * Gets a unique read-only string that changes whenever the resource is
-     * updated.
+     * A unique read-only string that changes whenever the resource is updated.
      */
-    @JsonProperty(value = "etag")
+    @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
@@ -58,15 +59,14 @@ public class VirtualNetworkInner extends Resource {
     /*
      * The resourceGuid property of the Virtual Network resource.
      */
-    @JsonProperty(value = "properties.resourceGuid")
+    @JsonProperty(value = "properties.resourceGuid", access = JsonProperty.Access.WRITE_ONLY)
     private String resourceGuid;
 
     /*
-     * The provisioning state of the PublicIP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
+     * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
-    private String provisioningState;
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
+    private ProvisioningState provisioningState;
 
     /*
      * Indicates if DDoS protection is enabled for all the protected resources
@@ -90,31 +90,26 @@ public class VirtualNetworkInner extends Resource {
     private SubResource ddosProtectionPlan;
 
     /*
+     * Bgp Communities sent over ExpressRoute with each route corresponding to
+     * a prefix in this VNET.
+     */
+    @JsonProperty(value = "properties.bgpCommunities")
+    private VirtualNetworkBgpCommunities bgpCommunities;
+
+    /*
      * Resource ID.
      */
     @JsonProperty(value = "id")
     private String id;
 
     /**
-     * Get the etag property: Gets a unique read-only string that changes
-     * whenever the resource is updated.
+     * Get the etag property: A unique read-only string that changes whenever
+     * the resource is updated.
      * 
      * @return the etag value.
      */
     public String etag() {
         return this.etag;
-    }
-
-    /**
-     * Set the etag property: Gets a unique read-only string that changes
-     * whenever the resource is updated.
-     * 
-     * @param etag the etag value to set.
-     * @return the VirtualNetworkInner object itself.
-     */
-    public VirtualNetworkInner withEtag(String etag) {
-        this.etag = etag;
-        return this;
     }
 
     /**
@@ -216,39 +211,12 @@ public class VirtualNetworkInner extends Resource {
     }
 
     /**
-     * Set the resourceGuid property: The resourceGuid property of the Virtual
-     * Network resource.
-     * 
-     * @param resourceGuid the resourceGuid value to set.
-     * @return the VirtualNetworkInner object itself.
-     */
-    public VirtualNetworkInner withResourceGuid(String resourceGuid) {
-        this.resourceGuid = resourceGuid;
-        return this;
-    }
-
-    /**
-     * Get the provisioningState property: The provisioning state of the
-     * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: The provisioning state of the
-     * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the VirtualNetworkInner object itself.
-     */
-    public VirtualNetworkInner withProvisioningState(String provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 
     /**
@@ -314,6 +282,28 @@ public class VirtualNetworkInner extends Resource {
      */
     public VirtualNetworkInner withDdosProtectionPlan(SubResource ddosProtectionPlan) {
         this.ddosProtectionPlan = ddosProtectionPlan;
+        return this;
+    }
+
+    /**
+     * Get the bgpCommunities property: Bgp Communities sent over ExpressRoute
+     * with each route corresponding to a prefix in this VNET.
+     * 
+     * @return the bgpCommunities value.
+     */
+    public VirtualNetworkBgpCommunities bgpCommunities() {
+        return this.bgpCommunities;
+    }
+
+    /**
+     * Set the bgpCommunities property: Bgp Communities sent over ExpressRoute
+     * with each route corresponding to a prefix in this VNET.
+     * 
+     * @param bgpCommunities the bgpCommunities value to set.
+     * @return the VirtualNetworkInner object itself.
+     */
+    public VirtualNetworkInner withBgpCommunities(VirtualNetworkBgpCommunities bgpCommunities) {
+        this.bgpCommunities = bgpCommunities;
         return this;
     }
 

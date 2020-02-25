@@ -57,7 +57,7 @@ public final class ExpressRouteCrossConnectionsInner implements InnerSupportsGet
      * @param client the instance of the service client containing this operation class.
      */
     public ExpressRouteCrossConnectionsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(ExpressRouteCrossConnectionsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(ExpressRouteCrossConnectionsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -92,7 +92,7 @@ public final class ExpressRouteCrossConnectionsInner implements InnerSupportsGet
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("crossConnectionName") String crossConnectionName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject crossConnectionParameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ExpressRouteCrossConnectionInner>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("crossConnectionName") String crossConnectionName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject crossConnectionParameters, @QueryParam("api-version") String apiVersion);
 
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}/arpTables/{devicePath}")
         @ExpectedResponses({200, 202})
@@ -113,11 +113,6 @@ public final class ExpressRouteCrossConnectionsInner implements InnerSupportsGet
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ExpressRouteCrossConnectionInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("crossConnectionName") String crossConnectionName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ExpressRouteCrossConnectionInner parameters, @QueryParam("api-version") String apiVersion);
-
-        @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}")
-        @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ExpressRouteCrossConnectionInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("crossConnectionName") String crossConnectionName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject crossConnectionParameters, @QueryParam("api-version") String apiVersion);
 
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}/arpTables/{devicePath}")
         @ExpectedResponses({200, 202})
@@ -153,7 +148,7 @@ public final class ExpressRouteCrossConnectionsInner implements InnerSupportsGet
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ExpressRouteCrossConnectionInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -197,7 +192,7 @@ public final class ExpressRouteCrossConnectionsInner implements InnerSupportsGet
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ExpressRouteCrossConnectionInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -246,7 +241,7 @@ public final class ExpressRouteCrossConnectionsInner implements InnerSupportsGet
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteCrossConnectionInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String crossConnectionName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), resourceGroupName, crossConnectionName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -297,7 +292,7 @@ public final class ExpressRouteCrossConnectionsInner implements InnerSupportsGet
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String crossConnectionName, ExpressRouteCrossConnectionInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, crossConnectionName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -345,8 +340,8 @@ public final class ExpressRouteCrossConnectionsInner implements InnerSupportsGet
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<Flux<ByteBuffer>>> updateTagsWithResponseAsync(String resourceGroupName, String crossConnectionName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
+    public Mono<SimpleResponse<ExpressRouteCrossConnectionInner>> updateTagsWithResponseAsync(String resourceGroupName, String crossConnectionName, Map<String, String> tags) {
+        final String apiVersion = "2019-11-01";
         TagsObject crossConnectionParameters = new TagsObject();
         crossConnectionParameters.withTags(tags);
         return service.updateTags(this.client.getHost(), resourceGroupName, crossConnectionName, this.client.getSubscriptionId(), crossConnectionParameters, apiVersion);
@@ -364,10 +359,14 @@ public final class ExpressRouteCrossConnectionsInner implements InnerSupportsGet
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<ExpressRouteCrossConnectionInner> updateTagsAsync(String resourceGroupName, String crossConnectionName, Map<String, String> tags) {
-        Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateTagsWithResponseAsync(resourceGroupName, crossConnectionName, tags);
-        return client.<ExpressRouteCrossConnectionInner, ExpressRouteCrossConnectionInner>getLroResultAsync(response, client.getHttpPipeline(), ExpressRouteCrossConnectionInner.class, ExpressRouteCrossConnectionInner.class)
-            .last()
-            .flatMap(AsyncPollResponse::getFinalResult);
+        return updateTagsWithResponseAsync(resourceGroupName, crossConnectionName, tags)
+            .flatMap((SimpleResponse<ExpressRouteCrossConnectionInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
     }
 
     /**
@@ -398,7 +397,7 @@ public final class ExpressRouteCrossConnectionsInner implements InnerSupportsGet
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> listArpTableWithResponseAsync(String resourceGroupName, String crossConnectionName, String peeringName, String devicePath) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listArpTable(this.client.getHost(), resourceGroupName, crossConnectionName, peeringName, devicePath, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -450,7 +449,7 @@ public final class ExpressRouteCrossConnectionsInner implements InnerSupportsGet
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> listRoutesTableSummaryWithResponseAsync(String resourceGroupName, String crossConnectionName, String peeringName, String devicePath) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listRoutesTableSummary(this.client.getHost(), resourceGroupName, crossConnectionName, peeringName, devicePath, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -502,7 +501,7 @@ public final class ExpressRouteCrossConnectionsInner implements InnerSupportsGet
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> listRoutesTableWithResponseAsync(String resourceGroupName, String crossConnectionName, String peeringName, String devicePath) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listRoutesTable(this.client.getHost(), resourceGroupName, crossConnectionName, peeringName, devicePath, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -553,7 +552,7 @@ public final class ExpressRouteCrossConnectionsInner implements InnerSupportsGet
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteCrossConnectionInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String crossConnectionName, ExpressRouteCrossConnectionInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, crossConnectionName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -595,61 +594,6 @@ public final class ExpressRouteCrossConnectionsInner implements InnerSupportsGet
     }
 
     /**
-     * Updates an express route cross connection tags.
-     * 
-     * @param resourceGroupName 
-     * @param crossConnectionName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<ExpressRouteCrossConnectionInner>> beginUpdateTagsWithResponseAsync(String resourceGroupName, String crossConnectionName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
-        TagsObject crossConnectionParameters = new TagsObject();
-        crossConnectionParameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), resourceGroupName, crossConnectionName, this.client.getSubscriptionId(), crossConnectionParameters, apiVersion);
-    }
-
-    /**
-     * Updates an express route cross connection tags.
-     * 
-     * @param resourceGroupName 
-     * @param crossConnectionName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<ExpressRouteCrossConnectionInner> beginUpdateTagsAsync(String resourceGroupName, String crossConnectionName, Map<String, String> tags) {
-        return beginUpdateTagsWithResponseAsync(resourceGroupName, crossConnectionName, tags)
-            .flatMap((SimpleResponse<ExpressRouteCrossConnectionInner> res) -> {
-                if (res.getValue() != null) {
-                    return Mono.just(res.getValue());
-                } else {
-                    return Mono.empty();
-                }
-            });
-    }
-
-    /**
-     * Updates an express route cross connection tags.
-     * 
-     * @param resourceGroupName 
-     * @param crossConnectionName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public ExpressRouteCrossConnectionInner beginUpdateTags(String resourceGroupName, String crossConnectionName, Map<String, String> tags) {
-        return beginUpdateTagsAsync(resourceGroupName, crossConnectionName, tags).block();
-    }
-
-    /**
      * Gets the currently advertised ARP table associated with the express route cross connection in a resource group.
      * 
      * @param resourceGroupName 
@@ -662,7 +606,7 @@ public final class ExpressRouteCrossConnectionsInner implements InnerSupportsGet
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteCircuitsArpTableListResultInner>> beginListArpTableWithResponseAsync(String resourceGroupName, String crossConnectionName, String peeringName, String devicePath) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginListArpTable(this.client.getHost(), resourceGroupName, crossConnectionName, peeringName, devicePath, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -718,7 +662,7 @@ public final class ExpressRouteCrossConnectionsInner implements InnerSupportsGet
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteCrossConnectionsRoutesTableSummaryListResultInner>> beginListRoutesTableSummaryWithResponseAsync(String resourceGroupName, String crossConnectionName, String peeringName, String devicePath) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginListRoutesTableSummary(this.client.getHost(), resourceGroupName, crossConnectionName, peeringName, devicePath, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -774,7 +718,7 @@ public final class ExpressRouteCrossConnectionsInner implements InnerSupportsGet
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteCircuitsRoutesTableListResultInner>> beginListRoutesTableWithResponseAsync(String resourceGroupName, String crossConnectionName, String peeringName, String devicePath) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginListRoutesTable(this.client.getHost(), resourceGroupName, crossConnectionName, peeringName, devicePath, this.client.getSubscriptionId(), apiVersion);
     }
 

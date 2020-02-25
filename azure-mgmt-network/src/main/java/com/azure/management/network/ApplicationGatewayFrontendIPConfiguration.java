@@ -27,13 +27,13 @@ public class ApplicationGatewayFrontendIPConfiguration extends SubResource {
     /*
      * A unique read-only string that changes whenever the resource is updated.
      */
-    @JsonProperty(value = "etag")
+    @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
      * Type of the resource.
      */
-    @JsonProperty(value = "type")
+    @JsonProperty(value = "type", access = JsonProperty.Access.WRITE_ONLY)
     private String type;
 
     /*
@@ -61,11 +61,10 @@ public class ApplicationGatewayFrontendIPConfiguration extends SubResource {
     private SubResource publicIPAddress;
 
     /*
-     * Provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
+     * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
-    private String provisioningState;
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
+    private ProvisioningState provisioningState;
 
     /**
      * Get the name property: Name of the frontend IP configuration that is
@@ -100,35 +99,12 @@ public class ApplicationGatewayFrontendIPConfiguration extends SubResource {
     }
 
     /**
-     * Set the etag property: A unique read-only string that changes whenever
-     * the resource is updated.
-     * 
-     * @param etag the etag value to set.
-     * @return the ApplicationGatewayFrontendIPConfiguration object itself.
-     */
-    public ApplicationGatewayFrontendIPConfiguration withEtag(String etag) {
-        this.etag = etag;
-        return this;
-    }
-
-    /**
      * Get the type property: Type of the resource.
      * 
      * @return the type value.
      */
     public String type() {
         return this.type;
-    }
-
-    /**
-     * Set the type property: Type of the resource.
-     * 
-     * @param type the type value to set.
-     * @return the ApplicationGatewayFrontendIPConfiguration object itself.
-     */
-    public ApplicationGatewayFrontendIPConfiguration withType(String type) {
-        this.type = type;
-        return this;
     }
 
     /**
@@ -217,24 +193,11 @@ public class ApplicationGatewayFrontendIPConfiguration extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: Provisioning state of the public IP
-     * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: Provisioning state of the public IP
-     * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the ApplicationGatewayFrontendIPConfiguration object itself.
-     */
-    public ApplicationGatewayFrontendIPConfiguration withProvisioningState(String provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 }

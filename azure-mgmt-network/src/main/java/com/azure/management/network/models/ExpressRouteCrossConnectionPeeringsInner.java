@@ -53,7 +53,7 @@ public final class ExpressRouteCrossConnectionPeeringsInner {
      * @param client the instance of the service client containing this operation class.
      */
     public ExpressRouteCrossConnectionPeeringsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(ExpressRouteCrossConnectionPeeringsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(ExpressRouteCrossConnectionPeeringsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -112,7 +112,7 @@ public final class ExpressRouteCrossConnectionPeeringsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ExpressRouteCrossConnectionPeeringInner>> listSinglePageAsync(String resourceGroupName, String crossConnectionName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), resourceGroupName, crossConnectionName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -164,7 +164,7 @@ public final class ExpressRouteCrossConnectionPeeringsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String crossConnectionName, String peeringName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, crossConnectionName, peeringName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -213,7 +213,7 @@ public final class ExpressRouteCrossConnectionPeeringsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteCrossConnectionPeeringInner>> getWithResponseAsync(String resourceGroupName, String crossConnectionName, String peeringName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.get(this.client.getHost(), resourceGroupName, crossConnectionName, peeringName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -267,7 +267,7 @@ public final class ExpressRouteCrossConnectionPeeringsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String crossConnectionName, String peeringName, ExpressRouteCrossConnectionPeeringInner peeringParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, crossConnectionName, peeringName, this.client.getSubscriptionId(), peeringParameters, apiVersion);
     }
 
@@ -318,7 +318,7 @@ public final class ExpressRouteCrossConnectionPeeringsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String crossConnectionName, String peeringName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, crossConnectionName, peeringName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -366,7 +366,7 @@ public final class ExpressRouteCrossConnectionPeeringsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteCrossConnectionPeeringInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String crossConnectionName, String peeringName, ExpressRouteCrossConnectionPeeringInner peeringParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, crossConnectionName, peeringName, this.client.getSubscriptionId(), peeringParameters, apiVersion);
     }
 

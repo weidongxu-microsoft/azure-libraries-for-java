@@ -59,7 +59,7 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
      * @param client the instance of the service client containing this operation class.
      */
     public PublicIPAddressesInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(PublicIPAddressesService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(PublicIPAddressesService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -89,7 +89,7 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("publicIpAddressName") String publicIpAddressName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PublicIPAddressInner>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("publicIpAddressName") String publicIpAddressName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/publicIPAddresses")
         @ExpectedResponses({200})
@@ -126,11 +126,6 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<PublicIPAddressInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("publicIpAddressName") String publicIpAddressName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PublicIPAddressInner parameters, @QueryParam("api-version") String apiVersion);
 
-        @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}")
-        @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<PublicIPAddressInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("publicIpAddressName") String publicIpAddressName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
-
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -163,7 +158,7 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String publicIpAddressName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, publicIpAddressName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -210,7 +205,7 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PublicIPAddressInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String publicIpAddressName, String expand) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), resourceGroupName, publicIpAddressName, this.client.getSubscriptionId(), expand, apiVersion);
     }
 
@@ -248,7 +243,7 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PublicIPAddressInner> getByResourceGroupAsync(String resourceGroupName, String publicIpAddressName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return getByResourceGroupWithResponseAsync(resourceGroupName, publicIpAddressName, expand)
             .flatMap((SimpleResponse<PublicIPAddressInner> res) -> {
                 if (res.getValue() != null) {
@@ -286,7 +281,7 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
     @ServiceMethod(returns = ReturnType.SINGLE)
     public PublicIPAddressInner getByResourceGroup(String resourceGroupName, String publicIpAddressName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return getByResourceGroupAsync(resourceGroupName, publicIpAddressName, expand).block();
     }
 
@@ -302,7 +297,7 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String publicIpAddressName, PublicIPAddressInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, publicIpAddressName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -350,8 +345,8 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<Flux<ByteBuffer>>> updateTagsWithResponseAsync(String resourceGroupName, String publicIpAddressName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
+    public Mono<SimpleResponse<PublicIPAddressInner>> updateTagsWithResponseAsync(String resourceGroupName, String publicIpAddressName, Map<String, String> tags) {
+        final String apiVersion = "2019-11-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
         return service.updateTags(this.client.getHost(), resourceGroupName, publicIpAddressName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -369,10 +364,14 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PublicIPAddressInner> updateTagsAsync(String resourceGroupName, String publicIpAddressName, Map<String, String> tags) {
-        Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateTagsWithResponseAsync(resourceGroupName, publicIpAddressName, tags);
-        return client.<PublicIPAddressInner, PublicIPAddressInner>getLroResultAsync(response, client.getHttpPipeline(), PublicIPAddressInner.class, PublicIPAddressInner.class)
-            .last()
-            .flatMap(AsyncPollResponse::getFinalResult);
+        return updateTagsWithResponseAsync(resourceGroupName, publicIpAddressName, tags)
+            .flatMap((SimpleResponse<PublicIPAddressInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
     }
 
     /**
@@ -398,7 +397,7 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<PublicIPAddressInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -442,7 +441,7 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<PublicIPAddressInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -491,7 +490,7 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<PublicIPAddressInner>> listVirtualMachineScaleSetPublicIPAddressesSinglePageAsync(String resourceGroupName, String virtualMachineScaleSetName) {
-        final String apiVersion = "2017-03-30";
+        final String apiVersion = "2018-10-01";
         return service.listVirtualMachineScaleSetPublicIPAddresses(this.client.getHost(), resourceGroupName, virtualMachineScaleSetName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -545,7 +544,7 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<PublicIPAddressInner>> listVirtualMachineScaleSetVMPublicIPAddressesSinglePageAsync(String resourceGroupName, String virtualMachineScaleSetName, String virtualmachineIndex, String networkInterfaceName, String ipConfigurationName) {
-        final String apiVersion = "2017-03-30";
+        final String apiVersion = "2018-10-01";
         return service.listVirtualMachineScaleSetVMPublicIPAddresses(this.client.getHost(), resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, ipConfigurationName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -607,7 +606,7 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PublicIPAddressInner>> getVirtualMachineScaleSetPublicIPAddressWithResponseAsync(String resourceGroupName, String virtualMachineScaleSetName, String virtualmachineIndex, String networkInterfaceName, String ipConfigurationName, String publicIpAddressName, String expand) {
-        final String apiVersion = "2017-03-30";
+        final String apiVersion = "2018-10-01";
         return service.getVirtualMachineScaleSetPublicIPAddress(this.client.getHost(), resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, ipConfigurationName, publicIpAddressName, this.client.getSubscriptionId(), expand, apiVersion);
     }
 
@@ -653,7 +652,7 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PublicIPAddressInner> getVirtualMachineScaleSetPublicIPAddressAsync(String resourceGroupName, String virtualMachineScaleSetName, String virtualmachineIndex, String networkInterfaceName, String ipConfigurationName, String publicIpAddressName) {
         final String expand = null;
-        final String apiVersion = "2017-03-30";
+        final String apiVersion = "2018-10-01";
         return getVirtualMachineScaleSetPublicIPAddressWithResponseAsync(resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, ipConfigurationName, publicIpAddressName, expand)
             .flatMap((SimpleResponse<PublicIPAddressInner> res) -> {
                 if (res.getValue() != null) {
@@ -699,7 +698,7 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
     @ServiceMethod(returns = ReturnType.SINGLE)
     public PublicIPAddressInner getVirtualMachineScaleSetPublicIPAddress(String resourceGroupName, String virtualMachineScaleSetName, String virtualmachineIndex, String networkInterfaceName, String ipConfigurationName, String publicIpAddressName) {
         final String expand = null;
-        final String apiVersion = "2017-03-30";
+        final String apiVersion = "2018-10-01";
         return getVirtualMachineScaleSetPublicIPAddressAsync(resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, ipConfigurationName, publicIpAddressName, expand).block();
     }
 
@@ -714,7 +713,7 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String publicIpAddressName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, publicIpAddressName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -759,7 +758,7 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PublicIPAddressInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String publicIpAddressName, PublicIPAddressInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, publicIpAddressName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -798,61 +797,6 @@ public final class PublicIPAddressesInner implements InnerSupportsGet<PublicIPAd
     @ServiceMethod(returns = ReturnType.SINGLE)
     public PublicIPAddressInner beginCreateOrUpdate(String resourceGroupName, String publicIpAddressName, PublicIPAddressInner parameters) {
         return beginCreateOrUpdateAsync(resourceGroupName, publicIpAddressName, parameters).block();
-    }
-
-    /**
-     * Updates public IP address tags.
-     * 
-     * @param resourceGroupName 
-     * @param publicIpAddressName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<PublicIPAddressInner>> beginUpdateTagsWithResponseAsync(String resourceGroupName, String publicIpAddressName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
-        TagsObject parameters = new TagsObject();
-        parameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), resourceGroupName, publicIpAddressName, this.client.getSubscriptionId(), parameters, apiVersion);
-    }
-
-    /**
-     * Updates public IP address tags.
-     * 
-     * @param resourceGroupName 
-     * @param publicIpAddressName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<PublicIPAddressInner> beginUpdateTagsAsync(String resourceGroupName, String publicIpAddressName, Map<String, String> tags) {
-        return beginUpdateTagsWithResponseAsync(resourceGroupName, publicIpAddressName, tags)
-            .flatMap((SimpleResponse<PublicIPAddressInner> res) -> {
-                if (res.getValue() != null) {
-                    return Mono.just(res.getValue());
-                } else {
-                    return Mono.empty();
-                }
-            });
-    }
-
-    /**
-     * Updates public IP address tags.
-     * 
-     * @param resourceGroupName 
-     * @param publicIpAddressName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public PublicIPAddressInner beginUpdateTags(String resourceGroupName, String publicIpAddressName, Map<String, String> tags) {
-        return beginUpdateTagsAsync(resourceGroupName, publicIpAddressName, tags).block();
     }
 
     /**

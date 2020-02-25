@@ -31,6 +31,12 @@ public class AzureFirewallIPConfiguration extends SubResource {
     private String etag;
 
     /*
+     * Type of the resource.
+     */
+    @JsonProperty(value = "type", access = JsonProperty.Access.WRITE_ONLY)
+    private String type;
+
+    /*
      * The Firewall Internal Load Balancer IP to be used as the next hop in
      * User Defined Routes.
      */
@@ -52,7 +58,7 @@ public class AzureFirewallIPConfiguration extends SubResource {
     /*
      * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
     private ProvisioningState provisioningState;
 
     /**
@@ -85,6 +91,15 @@ public class AzureFirewallIPConfiguration extends SubResource {
      */
     public String etag() {
         return this.etag;
+    }
+
+    /**
+     * Get the type property: Type of the resource.
+     * 
+     * @return the type value.
+     */
+    public String type() {
+        return this.type;
     }
 
     /**
@@ -144,16 +159,5 @@ public class AzureFirewallIPConfiguration extends SubResource {
      */
     public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: The current provisioning state.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the AzureFirewallIPConfiguration object itself.
-     */
-    public AzureFirewallIPConfiguration withProvisioningState(ProvisioningState provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 }

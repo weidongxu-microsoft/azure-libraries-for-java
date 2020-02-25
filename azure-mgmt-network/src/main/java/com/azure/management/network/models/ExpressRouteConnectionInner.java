@@ -28,7 +28,7 @@ public class ExpressRouteConnectionInner extends SubResource {
     /*
      * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
     private ProvisioningState provisioningState;
 
     /*
@@ -48,6 +48,12 @@ public class ExpressRouteConnectionInner extends SubResource {
      */
     @JsonProperty(value = "properties.routingWeight")
     private Integer routingWeight;
+
+    /*
+     * Enable internet security.
+     */
+    @JsonProperty(value = "properties.enableInternetSecurity")
+    private Boolean enableInternetSecurity;
 
     /**
      * Get the name property: The name of the resource.
@@ -76,17 +82,6 @@ public class ExpressRouteConnectionInner extends SubResource {
      */
     public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: The current provisioning state.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the ExpressRouteConnectionInner object itself.
-     */
-    public ExpressRouteConnectionInner withProvisioningState(ProvisioningState provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 
     /**
@@ -153,6 +148,26 @@ public class ExpressRouteConnectionInner extends SubResource {
      */
     public ExpressRouteConnectionInner withRoutingWeight(Integer routingWeight) {
         this.routingWeight = routingWeight;
+        return this;
+    }
+
+    /**
+     * Get the enableInternetSecurity property: Enable internet security.
+     * 
+     * @return the enableInternetSecurity value.
+     */
+    public Boolean enableInternetSecurity() {
+        return this.enableInternetSecurity;
+    }
+
+    /**
+     * Set the enableInternetSecurity property: Enable internet security.
+     * 
+     * @param enableInternetSecurity the enableInternetSecurity value to set.
+     * @return the ExpressRouteConnectionInner object itself.
+     */
+    public ExpressRouteConnectionInner withEnableInternetSecurity(Boolean enableInternetSecurity) {
+        this.enableInternetSecurity = enableInternetSecurity;
         return this;
     }
 }

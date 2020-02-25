@@ -59,7 +59,7 @@ public final class NetworkProfilesInner implements InnerSupportsGet<NetworkProfi
      * @param client the instance of the service client containing this operation class.
      */
     public NetworkProfilesInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(NetworkProfilesService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(NetworkProfilesService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -128,7 +128,7 @@ public final class NetworkProfilesInner implements InnerSupportsGet<NetworkProfi
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String networkProfileName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, networkProfileName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -175,7 +175,7 @@ public final class NetworkProfilesInner implements InnerSupportsGet<NetworkProfi
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<NetworkProfileInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String networkProfileName, String expand) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), resourceGroupName, networkProfileName, this.client.getSubscriptionId(), expand, apiVersion);
     }
 
@@ -213,7 +213,7 @@ public final class NetworkProfilesInner implements InnerSupportsGet<NetworkProfi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<NetworkProfileInner> getByResourceGroupAsync(String resourceGroupName, String networkProfileName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return getByResourceGroupWithResponseAsync(resourceGroupName, networkProfileName, expand)
             .flatMap((SimpleResponse<NetworkProfileInner> res) -> {
                 if (res.getValue() != null) {
@@ -251,7 +251,7 @@ public final class NetworkProfilesInner implements InnerSupportsGet<NetworkProfi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public NetworkProfileInner getByResourceGroup(String resourceGroupName, String networkProfileName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return getByResourceGroupAsync(resourceGroupName, networkProfileName, expand).block();
     }
 
@@ -267,7 +267,7 @@ public final class NetworkProfilesInner implements InnerSupportsGet<NetworkProfi
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<NetworkProfileInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String networkProfileName, NetworkProfileInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, networkProfileName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -320,7 +320,7 @@ public final class NetworkProfilesInner implements InnerSupportsGet<NetworkProfi
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<NetworkProfileInner>> updateTagsWithResponseAsync(String resourceGroupName, String networkProfileName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
         return service.updateTags(this.client.getHost(), resourceGroupName, networkProfileName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -371,7 +371,7 @@ public final class NetworkProfilesInner implements InnerSupportsGet<NetworkProfi
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<NetworkProfileInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -415,7 +415,7 @@ public final class NetworkProfilesInner implements InnerSupportsGet<NetworkProfi
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<NetworkProfileInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -464,7 +464,7 @@ public final class NetworkProfilesInner implements InnerSupportsGet<NetworkProfi
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String networkProfileName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, networkProfileName, this.client.getSubscriptionId(), apiVersion);
     }
 

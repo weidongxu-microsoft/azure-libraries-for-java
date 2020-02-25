@@ -11,6 +11,7 @@ import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.management.Resource;
 import com.azure.core.management.SubResource;
 import com.azure.management.network.NetworkInterfaceDnsSettings;
+import com.azure.management.network.ProvisioningState;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class NetworkInterfaceInner extends Resource {
     /*
      * A unique read-only string that changes whenever the resource is updated.
      */
-    @JsonProperty(value = "etag")
+    @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
@@ -53,7 +54,7 @@ public class NetworkInterfaceInner extends Resource {
     /*
      * A list of TapConfigurations of the network interface.
      */
-    @JsonProperty(value = "properties.tapConfigurations")
+    @JsonProperty(value = "properties.tapConfigurations", access = JsonProperty.Access.WRITE_ONLY)
     private List<NetworkInterfaceTapConfigurationInner> tapConfigurations;
 
     /*
@@ -65,13 +66,13 @@ public class NetworkInterfaceInner extends Resource {
     /*
      * The MAC address of the network interface.
      */
-    @JsonProperty(value = "properties.macAddress")
+    @JsonProperty(value = "properties.macAddress", access = JsonProperty.Access.WRITE_ONLY)
     private String macAddress;
 
     /*
-     * Gets whether this is a primary network interface on a virtual machine.
+     * Whether this is a primary network interface on a virtual machine.
      */
-    @JsonProperty(value = "properties.primary")
+    @JsonProperty(value = "properties.primary", access = JsonProperty.Access.WRITE_ONLY)
     private Boolean primary;
 
     /*
@@ -95,15 +96,14 @@ public class NetworkInterfaceInner extends Resource {
     /*
      * The resource GUID property of the network interface resource.
      */
-    @JsonProperty(value = "properties.resourceGuid")
+    @JsonProperty(value = "properties.resourceGuid", access = JsonProperty.Access.WRITE_ONLY)
     private String resourceGuid;
 
     /*
-     * The provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
+     * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
-    private String provisioningState;
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
+    private ProvisioningState provisioningState;
 
     /*
      * Resource ID.
@@ -119,18 +119,6 @@ public class NetworkInterfaceInner extends Resource {
      */
     public String etag() {
         return this.etag;
-    }
-
-    /**
-     * Set the etag property: A unique read-only string that changes whenever
-     * the resource is updated.
-     * 
-     * @param etag the etag value to set.
-     * @return the NetworkInterfaceInner object itself.
-     */
-    public NetworkInterfaceInner withEtag(String etag) {
-        this.etag = etag;
-        return this;
     }
 
     /**
@@ -204,18 +192,6 @@ public class NetworkInterfaceInner extends Resource {
     }
 
     /**
-     * Set the tapConfigurations property: A list of TapConfigurations of the
-     * network interface.
-     * 
-     * @param tapConfigurations the tapConfigurations value to set.
-     * @return the NetworkInterfaceInner object itself.
-     */
-    public NetworkInterfaceInner withTapConfigurations(List<NetworkInterfaceTapConfigurationInner> tapConfigurations) {
-        this.tapConfigurations = tapConfigurations;
-        return this;
-    }
-
-    /**
      * Get the dnsSettings property: DNS settings of a network interface.
      * 
      * @return the dnsSettings value.
@@ -245,36 +221,13 @@ public class NetworkInterfaceInner extends Resource {
     }
 
     /**
-     * Set the macAddress property: The MAC address of the network interface.
-     * 
-     * @param macAddress the macAddress value to set.
-     * @return the NetworkInterfaceInner object itself.
-     */
-    public NetworkInterfaceInner withMacAddress(String macAddress) {
-        this.macAddress = macAddress;
-        return this;
-    }
-
-    /**
-     * Get the primary property: Gets whether this is a primary network
-     * interface on a virtual machine.
+     * Get the primary property: Whether this is a primary network interface on
+     * a virtual machine.
      * 
      * @return the primary value.
      */
     public Boolean primary() {
         return this.primary;
-    }
-
-    /**
-     * Set the primary property: Gets whether this is a primary network
-     * interface on a virtual machine.
-     * 
-     * @param primary the primary value to set.
-     * @return the NetworkInterfaceInner object itself.
-     */
-    public NetworkInterfaceInner withPrimary(Boolean primary) {
-        this.primary = primary;
-        return this;
     }
 
     /**
@@ -343,37 +296,12 @@ public class NetworkInterfaceInner extends Resource {
     }
 
     /**
-     * Set the resourceGuid property: The resource GUID property of the network
-     * interface resource.
-     * 
-     * @param resourceGuid the resourceGuid value to set.
-     * @return the NetworkInterfaceInner object itself.
-     */
-    public NetworkInterfaceInner withResourceGuid(String resourceGuid) {
-        this.resourceGuid = resourceGuid;
-        return this;
-    }
-
-    /**
-     * Get the provisioningState property: The provisioning state of the public
-     * IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: The provisioning state of the public
-     * IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the NetworkInterfaceInner object itself.
-     */
-    public NetworkInterfaceInner withProvisioningState(String provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 
     /**

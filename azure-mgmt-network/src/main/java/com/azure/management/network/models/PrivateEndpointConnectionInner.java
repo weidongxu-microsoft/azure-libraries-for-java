@@ -41,7 +41,7 @@ public class PrivateEndpointConnectionInner extends SubResource {
     /*
      * Private endpoint resource.
      */
-    @JsonProperty(value = "properties.privateEndpoint")
+    @JsonProperty(value = "properties.privateEndpoint", access = JsonProperty.Access.WRITE_ONLY)
     private PrivateEndpointInner privateEndpoint;
 
     /*
@@ -54,8 +54,14 @@ public class PrivateEndpointConnectionInner extends SubResource {
     /*
      * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
     private ProvisioningState provisioningState;
+
+    /*
+     * The consumer link id.
+     */
+    @JsonProperty(value = "properties.linkIdentifier", access = JsonProperty.Access.WRITE_ONLY)
+    private String linkIdentifier;
 
     /**
      * Get the name property: The name of the resource that is unique within a
@@ -108,17 +114,6 @@ public class PrivateEndpointConnectionInner extends SubResource {
     }
 
     /**
-     * Set the privateEndpoint property: Private endpoint resource.
-     * 
-     * @param privateEndpoint the privateEndpoint value to set.
-     * @return the PrivateEndpointConnectionInner object itself.
-     */
-    public PrivateEndpointConnectionInner withPrivateEndpoint(PrivateEndpointInner privateEndpoint) {
-        this.privateEndpoint = privateEndpoint;
-        return this;
-    }
-
-    /**
      * Get the privateLinkServiceConnectionState property: A collection of
      * information about the state of the connection between service consumer
      * and provider.
@@ -153,13 +148,11 @@ public class PrivateEndpointConnectionInner extends SubResource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Get the linkIdentifier property: The consumer link id.
      * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the PrivateEndpointConnectionInner object itself.
+     * @return the linkIdentifier value.
      */
-    public PrivateEndpointConnectionInner withProvisioningState(ProvisioningState provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
+    public String linkIdentifier() {
+        return this.linkIdentifier;
     }
 }

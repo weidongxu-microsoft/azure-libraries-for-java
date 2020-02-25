@@ -65,6 +65,11 @@ public final class WebApplicationFirewallOperator extends ExpandableStringEnum<W
     public static final WebApplicationFirewallOperator REGEX = fromString("Regex");
 
     /**
+     * Static value GeoMatch for WebApplicationFirewallOperator.
+     */
+    public static final WebApplicationFirewallOperator GEO_MATCH = fromString("GeoMatch");
+
+    /**
      * Creates or finds a WebApplicationFirewallOperator from its string representation.
      * 
      * @param name a name to look for.

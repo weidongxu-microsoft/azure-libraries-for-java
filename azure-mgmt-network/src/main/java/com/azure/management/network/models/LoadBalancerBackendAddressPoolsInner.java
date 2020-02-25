@@ -46,7 +46,7 @@ public final class LoadBalancerBackendAddressPoolsInner {
      * @param client the instance of the service client containing this operation class.
      */
     public LoadBalancerBackendAddressPoolsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(LoadBalancerBackendAddressPoolsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(LoadBalancerBackendAddressPoolsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -85,7 +85,7 @@ public final class LoadBalancerBackendAddressPoolsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<BackendAddressPoolInner>> listSinglePageAsync(String resourceGroupName, String loadBalancerName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), resourceGroupName, loadBalancerName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -137,7 +137,7 @@ public final class LoadBalancerBackendAddressPoolsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<BackendAddressPoolInner>> getWithResponseAsync(String resourceGroupName, String loadBalancerName, String backendAddressPoolName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.get(this.client.getHost(), resourceGroupName, loadBalancerName, backendAddressPoolName, this.client.getSubscriptionId(), apiVersion);
     }
 

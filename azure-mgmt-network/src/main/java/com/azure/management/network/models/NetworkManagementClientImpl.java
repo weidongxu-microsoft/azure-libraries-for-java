@@ -6,11 +6,13 @@
 
 package com.azure.management.network.models;
 
+import com.azure.core.annotation.BodyParam;
 import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
 import com.azure.core.annotation.PathParam;
+import com.azure.core.annotation.Post;
 import com.azure.core.annotation.QueryParam;
 import com.azure.core.annotation.ReturnType;
 import com.azure.core.annotation.ServiceInterface;
@@ -21,12 +23,23 @@ import com.azure.core.http.HttpPipelineBuilder;
 import com.azure.core.http.policy.CookiePolicy;
 import com.azure.core.http.policy.RetryPolicy;
 import com.azure.core.http.policy.UserAgentPolicy;
+import com.azure.core.http.rest.PagedFlux;
+import com.azure.core.http.rest.PagedIterable;
+import com.azure.core.http.rest.PagedResponse;
+import com.azure.core.http.rest.PagedResponseBase;
+import com.azure.core.http.rest.Response;
 import com.azure.core.http.rest.RestProxy;
 import com.azure.core.http.rest.SimpleResponse;
 import com.azure.core.management.AzureEnvironment;
 import com.azure.core.management.CloudException;
+import com.azure.core.util.polling.AsyncPollResponse;
 import com.azure.management.AzureServiceClient;
-import com.azure.management.network.ErrorException;
+import com.azure.management.network.BastionShareableLinkListRequest;
+import com.azure.management.network.SessionIds;
+import com.azure.management.network.VirtualWanVpnProfileParameters;
+import java.nio.ByteBuffer;
+import java.util.List;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -156,6 +169,20 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
      */
     public AvailableResourceGroupDelegationsInner availableResourceGroupDelegations() {
         return this.availableResourceGroupDelegations;
+    }
+
+    /**
+     * The AvailableServiceAliasesInner object to access its operations.
+     */
+    private AvailableServiceAliasesInner availableServiceAliases;
+
+    /**
+     * Gets the AvailableServiceAliasesInner object to access its operations.
+     * 
+     * @return the AvailableServiceAliasesInner object.
+     */
+    public AvailableServiceAliasesInner availableServiceAliases() {
+        return this.availableServiceAliases;
     }
 
     /**
@@ -453,6 +480,20 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
     }
 
     /**
+     * The IpGroupsInner object to access its operations.
+     */
+    private IpGroupsInner ipGroups;
+
+    /**
+     * Gets the IpGroupsInner object to access its operations.
+     * 
+     * @return the IpGroupsInner object.
+     */
+    public IpGroupsInner ipGroups() {
+        return this.ipGroups;
+    }
+
+    /**
      * The LoadBalancersInner object to access its operations.
      */
     private LoadBalancersInner loadBalancers;
@@ -730,6 +771,20 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
      */
     public ConnectionMonitorsInner connectionMonitors() {
         return this.connectionMonitors;
+    }
+
+    /**
+     * The FlowLogsInner object to access its operations.
+     */
+    private FlowLogsInner flowLogs;
+
+    /**
+     * Gets the FlowLogsInner object to access its operations.
+     * 
+     * @return the FlowLogsInner object.
+     */
+    public FlowLogsInner flowLogs() {
+        return this.flowLogs;
     }
 
     /**
@@ -1069,6 +1124,34 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
     }
 
     /**
+     * The VirtualRoutersInner object to access its operations.
+     */
+    private VirtualRoutersInner virtualRouters;
+
+    /**
+     * Gets the VirtualRoutersInner object to access its operations.
+     * 
+     * @return the VirtualRoutersInner object.
+     */
+    public VirtualRoutersInner virtualRouters() {
+        return this.virtualRouters;
+    }
+
+    /**
+     * The VirtualRouterPeeringsInner object to access its operations.
+     */
+    private VirtualRouterPeeringsInner virtualRouterPeerings;
+
+    /**
+     * Gets the VirtualRouterPeeringsInner object to access its operations.
+     * 
+     * @return the VirtualRouterPeeringsInner object.
+     */
+    public VirtualRouterPeeringsInner virtualRouterPeerings() {
+        return this.virtualRouterPeerings;
+    }
+
+    /**
      * The VirtualWansInner object to access its operations.
      */
     private VirtualWansInner virtualWans;
@@ -1122,6 +1205,20 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
      */
     public VpnSitesConfigurationsInner vpnSitesConfigurations() {
         return this.vpnSitesConfigurations;
+    }
+
+    /**
+     * The VpnServerConfigurationsInner object to access its operations.
+     */
+    private VpnServerConfigurationsInner vpnServerConfigurations;
+
+    /**
+     * Gets the VpnServerConfigurationsInner object to access its operations.
+     * 
+     * @return the VpnServerConfigurationsInner object.
+     */
+    public VpnServerConfigurationsInner vpnServerConfigurations() {
+        return this.vpnServerConfigurations;
     }
 
     /**
@@ -1209,20 +1306,6 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
     }
 
     /**
-     * The P2SVpnServerConfigurationsInner object to access its operations.
-     */
-    private P2SVpnServerConfigurationsInner p2SVpnServerConfigurations;
-
-    /**
-     * Gets the P2SVpnServerConfigurationsInner object to access its operations.
-     * 
-     * @return the P2SVpnServerConfigurationsInner object.
-     */
-    public P2SVpnServerConfigurationsInner p2SVpnServerConfigurations() {
-        return this.p2SVpnServerConfigurations;
-    }
-
-    /**
      * The P2SVpnGatewaysInner object to access its operations.
      */
     private P2SVpnGatewaysInner p2SVpnGateways;
@@ -1234,6 +1317,34 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
      */
     public P2SVpnGatewaysInner p2SVpnGateways() {
         return this.p2SVpnGateways;
+    }
+
+    /**
+     * The VpnServerConfigurationsAssociatedWithVirtualWansInner object to access its operations.
+     */
+    private VpnServerConfigurationsAssociatedWithVirtualWansInner vpnServerConfigurationsAssociatedWithVirtualWans;
+
+    /**
+     * Gets the VpnServerConfigurationsAssociatedWithVirtualWansInner object to access its operations.
+     * 
+     * @return the VpnServerConfigurationsAssociatedWithVirtualWansInner object.
+     */
+    public VpnServerConfigurationsAssociatedWithVirtualWansInner vpnServerConfigurationsAssociatedWithVirtualWans() {
+        return this.vpnServerConfigurationsAssociatedWithVirtualWans;
+    }
+
+    /**
+     * The VirtualHubRouteTableV2SInner object to access its operations.
+     */
+    private VirtualHubRouteTableV2SInner virtualHubRouteTableV2S;
+
+    /**
+     * Gets the VirtualHubRouteTableV2SInner object to access its operations.
+     * 
+     * @return the VirtualHubRouteTableV2SInner object.
+     */
+    public VirtualHubRouteTableV2SInner virtualHubRouteTableV2S() {
+        return this.virtualHubRouteTableV2S;
     }
 
     /**
@@ -1251,14 +1362,14 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
     }
 
     /**
-     * Initializes an instance of NetworkManagementClient client.
+     * Initializes an instance of NetworkManagementClient this.
      */
     public NetworkManagementClientImpl() {
         this(new HttpPipelineBuilder().policies(new UserAgentPolicy(), new RetryPolicy(), new CookiePolicy()).build(), AzureEnvironment.AZURE);
     }
 
     /**
-     * Initializes an instance of NetworkManagementClient client.
+     * Initializes an instance of NetworkManagementClient this.
      * 
      * @param httpPipeline The HTTP pipeline to send requests through.
      */
@@ -1267,7 +1378,7 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
     }
 
     /**
-     * Initializes an instance of NetworkManagementClient client.
+     * Initializes an instance of NetworkManagementClient this.
      * 
      * @param httpPipeline The HTTP pipeline to send requests through.
      * @param environment The Azure environment.
@@ -1279,6 +1390,7 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
         this.applicationSecurityGroups = new ApplicationSecurityGroupsInner(this);
         this.availableDelegations = new AvailableDelegationsInner(this);
         this.availableResourceGroupDelegations = new AvailableResourceGroupDelegationsInner(this);
+        this.availableServiceAliases = new AvailableServiceAliasesInner(this);
         this.azureFirewalls = new AzureFirewallsInner(this);
         this.azureFirewallFqdnTags = new AzureFirewallFqdnTagsInner(this);
         this.bastionHosts = new BastionHostsInner(this);
@@ -1300,6 +1412,7 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
         this.expressRouteLinks = new ExpressRouteLinksInner(this);
         this.firewallPolicies = new FirewallPoliciesInner(this);
         this.firewallPolicyRuleGroups = new FirewallPolicyRuleGroupsInner(this);
+        this.ipGroups = new IpGroupsInner(this);
         this.loadBalancers = new LoadBalancersInner(this);
         this.loadBalancerBackendAddressPools = new LoadBalancerBackendAddressPoolsInner(this);
         this.loadBalancerFrontendIPConfigurations = new LoadBalancerFrontendIPConfigurationsInner(this);
@@ -1320,6 +1433,7 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
         this.networkWatchers = new NetworkWatchersInner(this);
         this.packetCaptures = new PacketCapturesInner(this);
         this.connectionMonitors = new ConnectionMonitorsInner(this);
+        this.flowLogs = new FlowLogsInner(this);
         this.operations = new OperationsInner(this);
         this.privateEndpoints = new PrivateEndpointsInner(this);
         this.availablePrivateEndpointTypes = new AvailablePrivateEndpointTypesInner(this);
@@ -1344,20 +1458,24 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
         this.virtualNetworkGatewayConnections = new VirtualNetworkGatewayConnectionsInner(this);
         this.localNetworkGateways = new LocalNetworkGatewaysInner(this);
         this.virtualNetworkTaps = new VirtualNetworkTapsInner(this);
+        this.virtualRouters = new VirtualRoutersInner(this);
+        this.virtualRouterPeerings = new VirtualRouterPeeringsInner(this);
         this.virtualWans = new VirtualWansInner(this);
         this.vpnSites = new VpnSitesInner(this);
         this.vpnSiteLinks = new VpnSiteLinksInner(this);
         this.vpnSitesConfigurations = new VpnSitesConfigurationsInner(this);
+        this.vpnServerConfigurations = new VpnServerConfigurationsInner(this);
         this.virtualHubs = new VirtualHubsInner(this);
         this.hubVirtualNetworkConnections = new HubVirtualNetworkConnectionsInner(this);
         this.vpnGateways = new VpnGatewaysInner(this);
         this.vpnConnections = new VpnConnectionsInner(this);
         this.vpnSiteLinkConnections = new VpnSiteLinkConnectionsInner(this);
         this.vpnLinkConnections = new VpnLinkConnectionsInner(this);
-        this.p2SVpnServerConfigurations = new P2SVpnServerConfigurationsInner(this);
         this.p2SVpnGateways = new P2SVpnGatewaysInner(this);
+        this.vpnServerConfigurationsAssociatedWithVirtualWans = new VpnServerConfigurationsAssociatedWithVirtualWansInner(this);
+        this.virtualHubRouteTableV2S = new VirtualHubRouteTableV2SInner(this);
         this.webApplicationFirewallPolicies = new WebApplicationFirewallPoliciesInner(this);
-        this.service = RestProxy.create(NetworkManagementClientService.class, this.httpPipeline);
+        this.service = RestProxy.create(NetworkManagementClientService.class, this.httpPipeline, this.getSerializerAdapter());
     }
 
     /**
@@ -1367,6 +1485,31 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
     @Host("{$host}")
     @ServiceInterface(name = "NetworkManagementClient")
     private interface NetworkManagementClientService {
+        @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/createShareableLinks")
+        @ExpectedResponses({200, 202})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<Flux<ByteBuffer>>> putBastionShareableLink(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BastionShareableLinkListRequest bslRequest, @QueryParam("api-version") String apiVersion);
+
+        @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/deleteShareableLinks")
+        @ExpectedResponses({200, 202})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<Flux<ByteBuffer>>> deleteBastionShareableLink(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BastionShareableLinkListRequest bslRequest, @QueryParam("api-version") String apiVersion);
+
+        @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getShareableLinks")
+        @ExpectedResponses({200})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<BastionShareableLinkListResultInner>> getBastionShareableLink(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BastionShareableLinkListRequest bslRequest, @QueryParam("api-version") String apiVersion);
+
+        @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getActiveSessions")
+        @ExpectedResponses({200, 202})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<Flux<ByteBuffer>>> getActiveSessions(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+
+        @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/disconnectActiveSessions")
+        @ExpectedResponses({200})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<BastionSessionDeleteResultInner>> disconnectActiveSessions(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SessionIds sessionIds, @QueryParam("api-version") String apiVersion);
+
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/CheckDnsNameAvailability")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -1374,8 +1517,303 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
 
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/supportedSecurityProviders")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<VirtualWanSecurityProvidersInner>> supportedSecurityProviders(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualWANName") String virtualWANName, @QueryParam("api-version") String apiVersion);
+
+        @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/GenerateVpnProfile")
+        @ExpectedResponses({200, 202})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<Flux<ByteBuffer>>> generatevirtualwanvpnserverconfigurationvpnprofile(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualWANName") String virtualWANName, @BodyParam("application/json") VirtualWanVpnProfileParameters vpnClientParams, @QueryParam("api-version") String apiVersion);
+
+        @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/createShareableLinks")
+        @ExpectedResponses({200, 202})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<BastionShareableLinkListResultInner>> beginPutBastionShareableLink(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BastionShareableLinkListRequest bslRequest, @QueryParam("api-version") String apiVersion);
+
+        @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/deleteShareableLinks")
+        @ExpectedResponses({200, 202})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<Response<Void>> beginDeleteBastionShareableLink(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BastionShareableLinkListRequest bslRequest, @QueryParam("api-version") String apiVersion);
+
+        @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getActiveSessions")
+        @ExpectedResponses({200, 202})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<BastionActiveSessionListResultInner>> beginGetActiveSessions(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+
+        @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/GenerateVpnProfile")
+        @ExpectedResponses({200, 202})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<VpnProfileResponseInner>> beginGeneratevirtualwanvpnserverconfigurationvpnprofile(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualWANName") String virtualWANName, @BodyParam("application/json") VirtualWanVpnProfileParameters vpnClientParams, @QueryParam("api-version") String apiVersion);
+
+        @Get("{nextLink}")
+        @ExpectedResponses({200})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<BastionShareableLinkListResultInner>> getBastionShareableLinkNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
+
+        @Get("{nextLink}")
+        @ExpectedResponses({200})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<BastionSessionDeleteResultInner>> disconnectActiveSessionsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
+    }
+
+    /**
+     * Creates a Bastion Shareable Links for all the VMs specified in the request.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @param vms List of VM references.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<SimpleResponse<Flux<ByteBuffer>>> putBastionShareableLinkWithResponseAsync(String resourceGroupName, String bastionHostName, List<BastionShareableLinkInner> vms) {
+        final String apiVersion = "2019-11-01";
+        BastionShareableLinkListRequest bslRequest = new BastionShareableLinkListRequest();
+        bslRequest.withVms(vms);
+        return service.putBastionShareableLink(this.getHost(), resourceGroupName, bastionHostName, this.getSubscriptionId(), bslRequest, apiVersion);
+    }
+
+    /**
+     * Creates a Bastion Shareable Links for all the VMs specified in the request.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @param vms List of VM references.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<BastionShareableLinkListResultInner> putBastionShareableLinkAsync(String resourceGroupName, String bastionHostName, List<BastionShareableLinkInner> vms) {
+        Mono<SimpleResponse<Flux<ByteBuffer>>> response = putBastionShareableLinkWithResponseAsync(resourceGroupName, bastionHostName, vms);
+        return this.<BastionShareableLinkListResultInner, BastionShareableLinkListResultInner>getLroResultAsync(response, this.getHttpPipeline(), BastionShareableLinkListResultInner.class, BastionShareableLinkListResultInner.class)
+            .last()
+            .flatMap(AsyncPollResponse::getFinalResult);
+    }
+
+    /**
+     * Creates a Bastion Shareable Links for all the VMs specified in the request.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @param vms List of VM references.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public BastionShareableLinkListResultInner putBastionShareableLink(String resourceGroupName, String bastionHostName, List<BastionShareableLinkInner> vms) {
+        return putBastionShareableLinkAsync(resourceGroupName, bastionHostName, vms).block();
+    }
+
+    /**
+     * Deletes the Bastion Shareable Links for all the VMs specified in the request.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @param vms List of VM references.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteBastionShareableLinkWithResponseAsync(String resourceGroupName, String bastionHostName, List<BastionShareableLinkInner> vms) {
+        final String apiVersion = "2019-11-01";
+        BastionShareableLinkListRequest bslRequest = new BastionShareableLinkListRequest();
+        bslRequest.withVms(vms);
+        return service.deleteBastionShareableLink(this.getHost(), resourceGroupName, bastionHostName, this.getSubscriptionId(), bslRequest, apiVersion);
+    }
+
+    /**
+     * Deletes the Bastion Shareable Links for all the VMs specified in the request.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @param vms List of VM references.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<Void> deleteBastionShareableLinkAsync(String resourceGroupName, String bastionHostName, List<BastionShareableLinkInner> vms) {
+        Mono<SimpleResponse<Flux<ByteBuffer>>> response = deleteBastionShareableLinkWithResponseAsync(resourceGroupName, bastionHostName, vms);
+        return this.<Void, Void>getLroResultAsync(response, this.getHttpPipeline(), Void.class, Void.class)
+            .last()
+            .flatMap(AsyncPollResponse::getFinalResult);
+    }
+
+    /**
+     * Deletes the Bastion Shareable Links for all the VMs specified in the request.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @param vms List of VM references.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public void deleteBastionShareableLink(String resourceGroupName, String bastionHostName, List<BastionShareableLinkInner> vms) {
+        deleteBastionShareableLinkAsync(resourceGroupName, bastionHostName, vms).block();
+    }
+
+    /**
+     * Return the Bastion Shareable Links for all the VMs specified in the request.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @param vms List of VM references.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<PagedResponse<BastionShareableLinkInner>> getBastionShareableLinkSinglePageAsync(String resourceGroupName, String bastionHostName, List<BastionShareableLinkInner> vms) {
+        final String apiVersion = "2019-11-01";
+        BastionShareableLinkListRequest bslRequest = new BastionShareableLinkListRequest();
+        bslRequest.withVms(vms);
+        return service.getBastionShareableLink(this.getHost(), resourceGroupName, bastionHostName, this.getSubscriptionId(), bslRequest, apiVersion).map(res -> new PagedResponseBase<>(
+            res.getRequest(),
+            res.getStatusCode(),
+            res.getHeaders(),
+            res.getValue().value(),
+            res.getValue().nextLink(),
+            null));
+    }
+
+    /**
+     * Return the Bastion Shareable Links for all the VMs specified in the request.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @param vms List of VM references.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.COLLECTION)
+    public PagedFlux<BastionShareableLinkInner> getBastionShareableLinkAsync(String resourceGroupName, String bastionHostName, List<BastionShareableLinkInner> vms) {
+        return new PagedFlux<>(
+            () -> getBastionShareableLinkSinglePageAsync(resourceGroupName, bastionHostName, vms),
+            nextLink -> getBastionShareableLinkNextSinglePageAsync(nextLink));
+    }
+
+    /**
+     * Return the Bastion Shareable Links for all the VMs specified in the request.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @param vms List of VM references.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.COLLECTION)
+    public PagedIterable<BastionShareableLinkInner> getBastionShareableLink(String resourceGroupName, String bastionHostName, List<BastionShareableLinkInner> vms) {
+        return new PagedIterable<>(getBastionShareableLinkAsync(resourceGroupName, bastionHostName, vms));
+    }
+
+    /**
+     * Returns the list of currently active sessions on the Bastion.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<SimpleResponse<Flux<ByteBuffer>>> getActiveSessionsWithResponseAsync(String resourceGroupName, String bastionHostName) {
+        final String apiVersion = "2019-11-01";
+        return service.getActiveSessions(this.getHost(), resourceGroupName, bastionHostName, this.getSubscriptionId(), apiVersion);
+    }
+
+    /**
+     * Returns the list of currently active sessions on the Bastion.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<BastionActiveSessionListResultInner> getActiveSessionsAsync(String resourceGroupName, String bastionHostName) {
+        Mono<SimpleResponse<Flux<ByteBuffer>>> response = getActiveSessionsWithResponseAsync(resourceGroupName, bastionHostName);
+        return this.<BastionActiveSessionListResultInner, BastionActiveSessionListResultInner>getLroResultAsync(response, this.getHttpPipeline(), BastionActiveSessionListResultInner.class, BastionActiveSessionListResultInner.class)
+            .last()
+            .flatMap(AsyncPollResponse::getFinalResult);
+    }
+
+    /**
+     * Returns the list of currently active sessions on the Bastion.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public BastionActiveSessionListResultInner getActiveSessions(String resourceGroupName, String bastionHostName) {
+        return getActiveSessionsAsync(resourceGroupName, bastionHostName).block();
+    }
+
+    /**
+     * Returns the list of currently active sessions on the Bastion.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @param sessionIdsSessionIds List of session IDs.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<PagedResponse<BastionSessionStateInner>> disconnectActiveSessionsSinglePageAsync(String resourceGroupName, String bastionHostName, List<String> sessionIdsSessionIds) {
+        final String apiVersion = "2019-11-01";
+        SessionIds sessionIds = new SessionIds();
+        sessionIds.withSessionIds(sessionIdsSessionIds);
+        return service.disconnectActiveSessions(this.getHost(), resourceGroupName, bastionHostName, this.getSubscriptionId(), sessionIds, apiVersion).map(res -> new PagedResponseBase<>(
+            res.getRequest(),
+            res.getStatusCode(),
+            res.getHeaders(),
+            res.getValue().value(),
+            res.getValue().nextLink(),
+            null));
+    }
+
+    /**
+     * Returns the list of currently active sessions on the Bastion.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @param sessionIdsSessionIds List of session IDs.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.COLLECTION)
+    public PagedFlux<BastionSessionStateInner> disconnectActiveSessionsAsync(String resourceGroupName, String bastionHostName, List<String> sessionIdsSessionIds) {
+        return new PagedFlux<>(
+            () -> disconnectActiveSessionsSinglePageAsync(resourceGroupName, bastionHostName, sessionIdsSessionIds),
+            nextLink -> disconnectActiveSessionsNextSinglePageAsync(nextLink));
+    }
+
+    /**
+     * Returns the list of currently active sessions on the Bastion.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @param sessionIdsSessionIds List of session IDs.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.COLLECTION)
+    public PagedIterable<BastionSessionStateInner> disconnectActiveSessions(String resourceGroupName, String bastionHostName, List<String> sessionIdsSessionIds) {
+        return new PagedIterable<>(disconnectActiveSessionsAsync(resourceGroupName, bastionHostName, sessionIdsSessionIds));
     }
 
     /**
@@ -1389,7 +1827,7 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DnsNameAvailabilityResultInner>> checkDnsNameAvailabilityWithResponseAsync(String location, String domainNameLabel) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.checkDnsNameAvailability(this.getHost(), location, domainNameLabel, this.getSubscriptionId(), apiVersion);
     }
 
@@ -1434,12 +1872,12 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
      * @param resourceGroupName 
      * @param virtualWANName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VirtualWanSecurityProvidersInner>> supportedSecurityProvidersWithResponseAsync(String resourceGroupName, String virtualWANName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.supportedSecurityProviders(this.getHost(), this.getSubscriptionId(), resourceGroupName, virtualWANName, apiVersion);
     }
 
@@ -1449,7 +1887,7 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
      * @param resourceGroupName 
      * @param virtualWANName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -1470,11 +1908,305 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
      * @param resourceGroupName 
      * @param virtualWANName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public VirtualWanSecurityProvidersInner supportedSecurityProviders(String resourceGroupName, String virtualWANName) {
         return supportedSecurityProvidersAsync(resourceGroupName, virtualWANName).block();
+    }
+
+    /**
+     * Generates a unique VPN profile for P2S clients for VirtualWan and associated VpnServerConfiguration combination in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param virtualWANName 
+     * @param vpnClientParams Virtual Wan Vpn profile parameters Vpn profile generation.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<SimpleResponse<Flux<ByteBuffer>>> generatevirtualwanvpnserverconfigurationvpnprofileWithResponseAsync(String resourceGroupName, String virtualWANName, VirtualWanVpnProfileParameters vpnClientParams) {
+        final String apiVersion = "2019-11-01";
+        return service.generatevirtualwanvpnserverconfigurationvpnprofile(this.getHost(), this.getSubscriptionId(), resourceGroupName, virtualWANName, vpnClientParams, apiVersion);
+    }
+
+    /**
+     * Generates a unique VPN profile for P2S clients for VirtualWan and associated VpnServerConfiguration combination in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param virtualWANName 
+     * @param vpnClientParams Virtual Wan Vpn profile parameters Vpn profile generation.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<VpnProfileResponseInner> generatevirtualwanvpnserverconfigurationvpnprofileAsync(String resourceGroupName, String virtualWANName, VirtualWanVpnProfileParameters vpnClientParams) {
+        Mono<SimpleResponse<Flux<ByteBuffer>>> response = generatevirtualwanvpnserverconfigurationvpnprofileWithResponseAsync(resourceGroupName, virtualWANName, vpnClientParams);
+        return this.<VpnProfileResponseInner, VpnProfileResponseInner>getLroResultAsync(response, this.getHttpPipeline(), VpnProfileResponseInner.class, VpnProfileResponseInner.class)
+            .last()
+            .flatMap(AsyncPollResponse::getFinalResult);
+    }
+
+    /**
+     * Generates a unique VPN profile for P2S clients for VirtualWan and associated VpnServerConfiguration combination in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param virtualWANName 
+     * @param vpnClientParams Virtual Wan Vpn profile parameters Vpn profile generation.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public VpnProfileResponseInner generatevirtualwanvpnserverconfigurationvpnprofile(String resourceGroupName, String virtualWANName, VirtualWanVpnProfileParameters vpnClientParams) {
+        return generatevirtualwanvpnserverconfigurationvpnprofileAsync(resourceGroupName, virtualWANName, vpnClientParams).block();
+    }
+
+    /**
+     * Creates a Bastion Shareable Links for all the VMs specified in the request.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @param vms List of VM references.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<SimpleResponse<BastionShareableLinkListResultInner>> beginPutBastionShareableLinkWithResponseAsync(String resourceGroupName, String bastionHostName, List<BastionShareableLinkInner> vms) {
+        final String apiVersion = "2019-11-01";
+        BastionShareableLinkListRequest bslRequest = new BastionShareableLinkListRequest();
+        bslRequest.withVms(vms);
+        return service.beginPutBastionShareableLink(this.getHost(), resourceGroupName, bastionHostName, this.getSubscriptionId(), bslRequest, apiVersion);
+    }
+
+    /**
+     * Creates a Bastion Shareable Links for all the VMs specified in the request.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @param vms List of VM references.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<BastionShareableLinkListResultInner> beginPutBastionShareableLinkAsync(String resourceGroupName, String bastionHostName, List<BastionShareableLinkInner> vms) {
+        return beginPutBastionShareableLinkWithResponseAsync(resourceGroupName, bastionHostName, vms)
+            .flatMap((SimpleResponse<BastionShareableLinkListResultInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
+    }
+
+    /**
+     * Creates a Bastion Shareable Links for all the VMs specified in the request.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @param vms List of VM references.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public BastionShareableLinkListResultInner beginPutBastionShareableLink(String resourceGroupName, String bastionHostName, List<BastionShareableLinkInner> vms) {
+        return beginPutBastionShareableLinkAsync(resourceGroupName, bastionHostName, vms).block();
+    }
+
+    /**
+     * Deletes the Bastion Shareable Links for all the VMs specified in the request.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @param vms List of VM references.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<Response<Void>> beginDeleteBastionShareableLinkWithResponseAsync(String resourceGroupName, String bastionHostName, List<BastionShareableLinkInner> vms) {
+        final String apiVersion = "2019-11-01";
+        BastionShareableLinkListRequest bslRequest = new BastionShareableLinkListRequest();
+        bslRequest.withVms(vms);
+        return service.beginDeleteBastionShareableLink(this.getHost(), resourceGroupName, bastionHostName, this.getSubscriptionId(), bslRequest, apiVersion);
+    }
+
+    /**
+     * Deletes the Bastion Shareable Links for all the VMs specified in the request.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @param vms List of VM references.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<Void> beginDeleteBastionShareableLinkAsync(String resourceGroupName, String bastionHostName, List<BastionShareableLinkInner> vms) {
+        return beginDeleteBastionShareableLinkWithResponseAsync(resourceGroupName, bastionHostName, vms)
+            .flatMap((Response<Void> res) -> Mono.empty());
+    }
+
+    /**
+     * Deletes the Bastion Shareable Links for all the VMs specified in the request.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @param vms List of VM references.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public void beginDeleteBastionShareableLink(String resourceGroupName, String bastionHostName, List<BastionShareableLinkInner> vms) {
+        beginDeleteBastionShareableLinkAsync(resourceGroupName, bastionHostName, vms).block();
+    }
+
+    /**
+     * Returns the list of currently active sessions on the Bastion.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<SimpleResponse<BastionActiveSessionListResultInner>> beginGetActiveSessionsWithResponseAsync(String resourceGroupName, String bastionHostName) {
+        final String apiVersion = "2019-11-01";
+        return service.beginGetActiveSessions(this.getHost(), resourceGroupName, bastionHostName, this.getSubscriptionId(), apiVersion);
+    }
+
+    /**
+     * Returns the list of currently active sessions on the Bastion.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<BastionActiveSessionListResultInner> beginGetActiveSessionsAsync(String resourceGroupName, String bastionHostName) {
+        return beginGetActiveSessionsWithResponseAsync(resourceGroupName, bastionHostName)
+            .flatMap((SimpleResponse<BastionActiveSessionListResultInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
+    }
+
+    /**
+     * Returns the list of currently active sessions on the Bastion.
+     * 
+     * @param resourceGroupName 
+     * @param bastionHostName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public BastionActiveSessionListResultInner beginGetActiveSessions(String resourceGroupName, String bastionHostName) {
+        return beginGetActiveSessionsAsync(resourceGroupName, bastionHostName).block();
+    }
+
+    /**
+     * Generates a unique VPN profile for P2S clients for VirtualWan and associated VpnServerConfiguration combination in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param virtualWANName 
+     * @param vpnClientParams Virtual Wan Vpn profile parameters Vpn profile generation.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<SimpleResponse<VpnProfileResponseInner>> beginGeneratevirtualwanvpnserverconfigurationvpnprofileWithResponseAsync(String resourceGroupName, String virtualWANName, VirtualWanVpnProfileParameters vpnClientParams) {
+        final String apiVersion = "2019-11-01";
+        return service.beginGeneratevirtualwanvpnserverconfigurationvpnprofile(this.getHost(), this.getSubscriptionId(), resourceGroupName, virtualWANName, vpnClientParams, apiVersion);
+    }
+
+    /**
+     * Generates a unique VPN profile for P2S clients for VirtualWan and associated VpnServerConfiguration combination in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param virtualWANName 
+     * @param vpnClientParams Virtual Wan Vpn profile parameters Vpn profile generation.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<VpnProfileResponseInner> beginGeneratevirtualwanvpnserverconfigurationvpnprofileAsync(String resourceGroupName, String virtualWANName, VirtualWanVpnProfileParameters vpnClientParams) {
+        return beginGeneratevirtualwanvpnserverconfigurationvpnprofileWithResponseAsync(resourceGroupName, virtualWANName, vpnClientParams)
+            .flatMap((SimpleResponse<VpnProfileResponseInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
+    }
+
+    /**
+     * Generates a unique VPN profile for P2S clients for VirtualWan and associated VpnServerConfiguration combination in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param virtualWANName 
+     * @param vpnClientParams Virtual Wan Vpn profile parameters Vpn profile generation.
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public VpnProfileResponseInner beginGeneratevirtualwanvpnserverconfigurationvpnprofile(String resourceGroupName, String virtualWANName, VirtualWanVpnProfileParameters vpnClientParams) {
+        return beginGeneratevirtualwanvpnserverconfigurationvpnprofileAsync(resourceGroupName, virtualWANName, vpnClientParams).block();
+    }
+
+    /**
+     * Get the next page of items.
+     * 
+     * @param nextLink null
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<PagedResponse<BastionShareableLinkInner>> getBastionShareableLinkNextSinglePageAsync(String nextLink) {
+        return service.getBastionShareableLinkNext(nextLink).map(res -> new PagedResponseBase<>(
+            res.getRequest(),
+            res.getStatusCode(),
+            res.getHeaders(),
+            res.getValue().value(),
+            res.getValue().nextLink(),
+            null));
+    }
+
+    /**
+     * Get the next page of items.
+     * 
+     * @param nextLink null
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<PagedResponse<BastionSessionStateInner>> disconnectActiveSessionsNextSinglePageAsync(String nextLink) {
+        return service.disconnectActiveSessionsNext(nextLink).map(res -> new PagedResponseBase<>(
+            res.getRequest(),
+            res.getStatusCode(),
+            res.getHeaders(),
+            res.getValue().value(),
+            res.getValue().nextLink(),
+            null));
     }
 }

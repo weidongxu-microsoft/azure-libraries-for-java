@@ -53,7 +53,7 @@ public final class VirtualNetworkPeeringsInner {
      * @param client the instance of the service client containing this operation class.
      */
     public VirtualNetworkPeeringsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(VirtualNetworkPeeringsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(VirtualNetworkPeeringsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -113,7 +113,7 @@ public final class VirtualNetworkPeeringsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String virtualNetworkName, String virtualNetworkPeeringName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -162,7 +162,7 @@ public final class VirtualNetworkPeeringsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VirtualNetworkPeeringInner>> getWithResponseAsync(String resourceGroupName, String virtualNetworkName, String virtualNetworkPeeringName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.get(this.client.getHost(), resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -216,7 +216,7 @@ public final class VirtualNetworkPeeringsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String virtualNetworkName, String virtualNetworkPeeringName, VirtualNetworkPeeringInner virtualNetworkPeeringParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, this.client.getSubscriptionId(), virtualNetworkPeeringParameters, apiVersion);
     }
 
@@ -266,7 +266,7 @@ public final class VirtualNetworkPeeringsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<VirtualNetworkPeeringInner>> listSinglePageAsync(String resourceGroupName, String virtualNetworkName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), resourceGroupName, virtualNetworkName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -318,7 +318,7 @@ public final class VirtualNetworkPeeringsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String virtualNetworkName, String virtualNetworkPeeringName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -366,7 +366,7 @@ public final class VirtualNetworkPeeringsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VirtualNetworkPeeringInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String virtualNetworkName, String virtualNetworkPeeringName, VirtualNetworkPeeringInner virtualNetworkPeeringParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, this.client.getSubscriptionId(), virtualNetworkPeeringParameters, apiVersion);
     }
 

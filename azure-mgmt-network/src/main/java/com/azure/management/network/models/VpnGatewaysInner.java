@@ -30,7 +30,6 @@ import com.azure.core.http.rest.RestProxy;
 import com.azure.core.http.rest.SimpleResponse;
 import com.azure.core.management.CloudException;
 import com.azure.core.util.polling.AsyncPollResponse;
-import com.azure.management.network.ErrorException;
 import com.azure.management.network.TagsObject;
 import com.azure.management.resources.fluentcore.collection.InnerSupportsDelete;
 import com.azure.management.resources.fluentcore.collection.InnerSupportsGet;
@@ -61,7 +60,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * @param client the instance of the service client containing this operation class.
      */
     public VpnGatewaysInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(VpnGatewaysService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(VpnGatewaysService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -75,22 +74,22 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
     private interface VpnGatewaysService {
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<VpnGatewayInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @QueryParam("api-version") String apiVersion);
 
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}")
         @ExpectedResponses({200, 201})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @BodyParam("application/json") VpnGatewayInner vpnGatewayParameters, @QueryParam("api-version") String apiVersion);
 
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}")
-        @ExpectedResponses({200, 201})
-        @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @BodyParam("application/json") TagsObject vpnGatewayParameters, @QueryParam("api-version") String apiVersion);
+        @ExpectedResponses({200})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<VpnGatewayInner>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @BodyParam("application/json") TagsObject vpnGatewayParameters, @QueryParam("api-version") String apiVersion);
 
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}")
         @ExpectedResponses({200, 202, 204})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @QueryParam("api-version") String apiVersion);
 
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/reset")
@@ -100,27 +99,22 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
 
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ListVpnGatewaysResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("api-version") String apiVersion);
 
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/vpnGateways")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ListVpnGatewaysResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}")
         @ExpectedResponses({200, 201})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<VpnGatewayInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @BodyParam("application/json") VpnGatewayInner vpnGatewayParameters, @QueryParam("api-version") String apiVersion);
-
-        @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}")
-        @ExpectedResponses({200, 201})
-        @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<VpnGatewayInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @BodyParam("application/json") TagsObject vpnGatewayParameters, @QueryParam("api-version") String apiVersion);
 
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}")
         @ExpectedResponses({200, 202, 204})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @QueryParam("api-version") String apiVersion);
 
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/reset")
@@ -130,12 +124,12 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
 
         @Get("{nextLink}")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ListVpnGatewaysResultInner>> listByResourceGroupNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
         @Get("{nextLink}")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ListVpnGatewaysResultInner>> listNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
     }
 
@@ -145,12 +139,12 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * @param resourceGroupName 
      * @param gatewayName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VpnGatewayInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String gatewayName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, apiVersion);
     }
 
@@ -160,7 +154,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * @param resourceGroupName 
      * @param gatewayName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -181,7 +175,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * @param resourceGroupName 
      * @param gatewayName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -196,12 +190,12 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * @param gatewayName 
      * @param vpnGatewayParameters VpnGateway Resource.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String gatewayName, VpnGatewayInner vpnGatewayParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, vpnGatewayParameters, apiVersion);
     }
 
@@ -212,7 +206,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * @param gatewayName 
      * @param vpnGatewayParameters VpnGateway Resource.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -230,7 +224,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * @param gatewayName 
      * @param vpnGatewayParameters VpnGateway Resource.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -245,12 +239,12 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * @param gatewayName 
      * @param tags Resource tags.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<Flux<ByteBuffer>>> updateTagsWithResponseAsync(String resourceGroupName, String gatewayName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
+    public Mono<SimpleResponse<VpnGatewayInner>> updateTagsWithResponseAsync(String resourceGroupName, String gatewayName, Map<String, String> tags) {
+        final String apiVersion = "2019-11-01";
         TagsObject vpnGatewayParameters = new TagsObject();
         vpnGatewayParameters.withTags(tags);
         return service.updateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, vpnGatewayParameters, apiVersion);
@@ -263,15 +257,19 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * @param gatewayName 
      * @param tags Resource tags.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<VpnGatewayInner> updateTagsAsync(String resourceGroupName, String gatewayName, Map<String, String> tags) {
-        Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateTagsWithResponseAsync(resourceGroupName, gatewayName, tags);
-        return client.<VpnGatewayInner, VpnGatewayInner>getLroResultAsync(response, client.getHttpPipeline(), VpnGatewayInner.class, VpnGatewayInner.class)
-            .last()
-            .flatMap(AsyncPollResponse::getFinalResult);
+        return updateTagsWithResponseAsync(resourceGroupName, gatewayName, tags)
+            .flatMap((SimpleResponse<VpnGatewayInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
     }
 
     /**
@@ -281,7 +279,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * @param gatewayName 
      * @param tags Resource tags.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -295,12 +293,12 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * @param resourceGroupName 
      * @param gatewayName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String gatewayName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, apiVersion);
     }
 
@@ -310,7 +308,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * @param resourceGroupName 
      * @param gatewayName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -327,7 +325,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * @param resourceGroupName 
      * @param gatewayName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -346,7 +344,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> resetWithResponseAsync(String resourceGroupName, String gatewayName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.reset(this.client.getHost(), resourceGroupName, gatewayName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -386,12 +384,12 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * 
      * @param resourceGroupName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<VpnGatewayInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -406,7 +404,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * 
      * @param resourceGroupName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.COLLECTION)
@@ -421,7 +419,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * 
      * @param resourceGroupName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.COLLECTION)
@@ -432,12 +430,12 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
     /**
      * Lists all the VpnGateways in a subscription.
      * 
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<VpnGatewayInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -450,7 +448,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
     /**
      * Lists all the VpnGateways in a subscription.
      * 
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.COLLECTION)
@@ -463,7 +461,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
     /**
      * Lists all the VpnGateways in a subscription.
      * 
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.COLLECTION)
@@ -478,12 +476,12 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * @param gatewayName 
      * @param vpnGatewayParameters VpnGateway Resource.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VpnGatewayInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String gatewayName, VpnGatewayInner vpnGatewayParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, vpnGatewayParameters, apiVersion);
     }
 
@@ -494,7 +492,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * @param gatewayName 
      * @param vpnGatewayParameters VpnGateway Resource.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -516,7 +514,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * @param gatewayName 
      * @param vpnGatewayParameters VpnGateway Resource.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -525,72 +523,17 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
     }
 
     /**
-     * Updates virtual wan vpn gateway tags.
-     * 
-     * @param resourceGroupName 
-     * @param gatewayName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<VpnGatewayInner>> beginUpdateTagsWithResponseAsync(String resourceGroupName, String gatewayName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
-        TagsObject vpnGatewayParameters = new TagsObject();
-        vpnGatewayParameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, vpnGatewayParameters, apiVersion);
-    }
-
-    /**
-     * Updates virtual wan vpn gateway tags.
-     * 
-     * @param resourceGroupName 
-     * @param gatewayName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<VpnGatewayInner> beginUpdateTagsAsync(String resourceGroupName, String gatewayName, Map<String, String> tags) {
-        return beginUpdateTagsWithResponseAsync(resourceGroupName, gatewayName, tags)
-            .flatMap((SimpleResponse<VpnGatewayInner> res) -> {
-                if (res.getValue() != null) {
-                    return Mono.just(res.getValue());
-                } else {
-                    return Mono.empty();
-                }
-            });
-    }
-
-    /**
-     * Updates virtual wan vpn gateway tags.
-     * 
-     * @param resourceGroupName 
-     * @param gatewayName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public VpnGatewayInner beginUpdateTags(String resourceGroupName, String gatewayName, Map<String, String> tags) {
-        return beginUpdateTagsAsync(resourceGroupName, gatewayName, tags).block();
-    }
-
-    /**
      * Deletes a virtual wan vpn gateway.
      * 
      * @param resourceGroupName 
      * @param gatewayName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String gatewayName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, apiVersion);
     }
 
@@ -600,7 +543,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * @param resourceGroupName 
      * @param gatewayName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -615,7 +558,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * @param resourceGroupName 
      * @param gatewayName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -634,7 +577,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VpnGatewayInner>> beginResetWithResponseAsync(String resourceGroupName, String gatewayName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginReset(this.client.getHost(), resourceGroupName, gatewayName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -678,7 +621,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * 
      * @param nextLink null
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -697,7 +640,7 @@ public final class VpnGatewaysInner implements InnerSupportsGet<VpnGatewayInner>
      * 
      * @param nextLink null
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)

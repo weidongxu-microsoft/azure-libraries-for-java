@@ -14,6 +14,7 @@ import com.azure.management.network.ExpressRouteConnectionId;
 import com.azure.management.network.ExpressRoutePeeringState;
 import com.azure.management.network.ExpressRoutePeeringType;
 import com.azure.management.network.Ipv6ExpressRouteCircuitPeeringConfig;
+import com.azure.management.network.ProvisioningState;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
@@ -24,7 +25,7 @@ import java.util.List;
 @Fluent
 public class ExpressRouteCircuitPeeringInner extends SubResource {
     /*
-     * Gets name of the resource that is unique within a resource group. This
+     * The name of the resource that is unique within a resource group. This
      * name can be used to access the resource.
      */
     @JsonProperty(value = "name")
@@ -115,11 +116,10 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     private ExpressRouteCircuitStatsInner stats;
 
     /*
-     * Gets the provisioning state of the public IP resource. Possible values
-     * are: 'Updating', 'Deleting', and 'Failed'.
+     * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
-    private String provisioningState;
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
+    private ProvisioningState provisioningState;
 
     /*
      * The GatewayManager Etag.
@@ -128,9 +128,9 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     private String gatewayManagerEtag;
 
     /*
-     * Gets whether the provider or the customer last modified the peering.
+     * Who was the last to modify the peering.
      */
-    @JsonProperty(value = "properties.lastModifiedBy")
+    @JsonProperty(value = "properties.lastModifiedBy", access = JsonProperty.Access.WRITE_ONLY)
     private String lastModifiedBy;
 
     /*
@@ -166,7 +166,7 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     private List<PeerExpressRouteCircuitConnectionInner> peeredConnections;
 
     /**
-     * Get the name property: Gets name of the resource that is unique within a
+     * Get the name property: The name of the resource that is unique within a
      * resource group. This name can be used to access the resource.
      * 
      * @return the name value.
@@ -176,7 +176,7 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     }
 
     /**
-     * Set the name property: Gets name of the resource that is unique within a
+     * Set the name property: The name of the resource that is unique within a
      * resource group. This name can be used to access the resource.
      * 
      * @param name the name value to set.
@@ -453,27 +453,12 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: Gets the provisioning state of the
-     * public IP resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: Gets the provisioning state of the
-     * public IP resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the ExpressRouteCircuitPeeringInner object itself.
-     */
-    public ExpressRouteCircuitPeeringInner withProvisioningState(String provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 
     /**
@@ -497,25 +482,12 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     }
 
     /**
-     * Get the lastModifiedBy property: Gets whether the provider or the
-     * customer last modified the peering.
+     * Get the lastModifiedBy property: Who was the last to modify the peering.
      * 
      * @return the lastModifiedBy value.
      */
     public String lastModifiedBy() {
         return this.lastModifiedBy;
-    }
-
-    /**
-     * Set the lastModifiedBy property: Gets whether the provider or the
-     * customer last modified the peering.
-     * 
-     * @param lastModifiedBy the lastModifiedBy value to set.
-     * @return the ExpressRouteCircuitPeeringInner object itself.
-     */
-    public ExpressRouteCircuitPeeringInner withLastModifiedBy(String lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy;
-        return this;
     }
 
     /**

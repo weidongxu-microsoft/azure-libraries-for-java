@@ -24,6 +24,7 @@ import com.azure.management.network.ApplicationGatewaySslPolicy;
 import com.azure.management.network.ApplicationGatewayTrustedRootCertificate;
 import com.azure.management.network.ApplicationGatewayWebApplicationFirewallConfiguration;
 import com.azure.management.network.ManagedServiceIdentity;
+import com.azure.management.network.ProvisioningState;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class ApplicationGatewayInner extends Resource {
     /*
      * A unique read-only string that changes whenever the resource is updated.
      */
-    @JsonProperty(value = "etag")
+    @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
@@ -207,17 +208,16 @@ public class ApplicationGatewayInner extends Resource {
     private ApplicationGatewayAutoscaleConfiguration autoscaleConfiguration;
 
     /*
-     * Resource GUID property of the application gateway resource.
+     * The resource GUID property of the application gateway resource.
      */
-    @JsonProperty(value = "properties.resourceGuid")
+    @JsonProperty(value = "properties.resourceGuid", access = JsonProperty.Access.WRITE_ONLY)
     private String resourceGuid;
 
     /*
-     * Provisioning state of the application gateway resource. Possible values
-     * are: 'Updating', 'Deleting', and 'Failed'.
+     * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
-    private String provisioningState;
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
+    private ProvisioningState provisioningState;
 
     /*
      * Custom error configurations of the application gateway resource.
@@ -239,18 +239,6 @@ public class ApplicationGatewayInner extends Resource {
      */
     public String etag() {
         return this.etag;
-    }
-
-    /**
-     * Set the etag property: A unique read-only string that changes whenever
-     * the resource is updated.
-     * 
-     * @param etag the etag value to set.
-     * @return the ApplicationGatewayInner object itself.
-     */
-    public ApplicationGatewayInner withEtag(String etag) {
-        this.etag = etag;
-        return this;
     }
 
     /**
@@ -798,8 +786,8 @@ public class ApplicationGatewayInner extends Resource {
     }
 
     /**
-     * Get the resourceGuid property: Resource GUID property of the application
-     * gateway resource.
+     * Get the resourceGuid property: The resource GUID property of the
+     * application gateway resource.
      * 
      * @return the resourceGuid value.
      */
@@ -808,39 +796,12 @@ public class ApplicationGatewayInner extends Resource {
     }
 
     /**
-     * Set the resourceGuid property: Resource GUID property of the application
-     * gateway resource.
-     * 
-     * @param resourceGuid the resourceGuid value to set.
-     * @return the ApplicationGatewayInner object itself.
-     */
-    public ApplicationGatewayInner withResourceGuid(String resourceGuid) {
-        this.resourceGuid = resourceGuid;
-        return this;
-    }
-
-    /**
-     * Get the provisioningState property: Provisioning state of the
-     * application gateway resource. Possible values are: 'Updating',
-     * 'Deleting', and 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: Provisioning state of the
-     * application gateway resource. Possible values are: 'Updating',
-     * 'Deleting', and 'Failed'.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the ApplicationGatewayInner object itself.
-     */
-    public ApplicationGatewayInner withProvisioningState(String provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 
     /**

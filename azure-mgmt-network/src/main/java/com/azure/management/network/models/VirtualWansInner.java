@@ -27,8 +27,8 @@ import com.azure.core.http.rest.PagedResponseBase;
 import com.azure.core.http.rest.Response;
 import com.azure.core.http.rest.RestProxy;
 import com.azure.core.http.rest.SimpleResponse;
+import com.azure.core.management.CloudException;
 import com.azure.core.util.polling.AsyncPollResponse;
-import com.azure.management.network.ErrorException;
 import com.azure.management.network.TagsObject;
 import com.azure.management.resources.fluentcore.collection.InnerSupportsDelete;
 import com.azure.management.resources.fluentcore.collection.InnerSupportsGet;
@@ -59,7 +59,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * @param client the instance of the service client containing this operation class.
      */
     public VirtualWansInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(VirtualWansService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(VirtualWansService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -73,57 +73,52 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
     private interface VirtualWansService {
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<VirtualWANInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("VirtualWANName") String virtualWANName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}")
         @ExpectedResponses({200, 201})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("VirtualWANName") String virtualWANName, @BodyParam("application/json") VirtualWANInner wANParameters, @QueryParam("api-version") String apiVersion);
 
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}")
-        @ExpectedResponses({200, 201})
-        @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("VirtualWANName") String virtualWANName, @BodyParam("application/json") TagsObject wANParameters, @QueryParam("api-version") String apiVersion);
+        @ExpectedResponses({200})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<VirtualWANInner>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("VirtualWANName") String virtualWANName, @BodyParam("application/json") TagsObject wANParameters, @QueryParam("api-version") String apiVersion);
 
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}")
         @ExpectedResponses({200, 202, 204})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("VirtualWANName") String virtualWANName, @QueryParam("api-version") String apiVersion);
 
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ListVirtualWANsResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("api-version") String apiVersion);
 
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualWans")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ListVirtualWANsResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}")
         @ExpectedResponses({200, 201})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<VirtualWANInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("VirtualWANName") String virtualWANName, @BodyParam("application/json") VirtualWANInner wANParameters, @QueryParam("api-version") String apiVersion);
-
-        @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}")
-        @ExpectedResponses({200, 201})
-        @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<VirtualWANInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("VirtualWANName") String virtualWANName, @BodyParam("application/json") TagsObject wANParameters, @QueryParam("api-version") String apiVersion);
 
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}")
         @ExpectedResponses({200, 202, 204})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("VirtualWANName") String virtualWANName, @QueryParam("api-version") String apiVersion);
 
         @Get("{nextLink}")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ListVirtualWANsResultInner>> listByResourceGroupNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
         @Get("{nextLink}")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ListVirtualWANsResultInner>> listNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
     }
 
@@ -133,12 +128,12 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * @param resourceGroupName 
      * @param virtualWANName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VirtualWANInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String virtualWANName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), resourceGroupName, virtualWANName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -148,7 +143,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * @param resourceGroupName 
      * @param virtualWANName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -169,7 +164,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * @param resourceGroupName 
      * @param virtualWANName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -184,12 +179,12 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * @param virtualWANName 
      * @param wANParameters VirtualWAN Resource.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String virtualWANName, VirtualWANInner wANParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, wANParameters, apiVersion);
     }
 
@@ -200,7 +195,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * @param virtualWANName 
      * @param wANParameters VirtualWAN Resource.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -218,7 +213,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * @param virtualWANName 
      * @param wANParameters VirtualWAN Resource.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -233,12 +228,12 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * @param virtualWANName 
      * @param tags Resource tags.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<Flux<ByteBuffer>>> updateTagsWithResponseAsync(String resourceGroupName, String virtualWANName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
+    public Mono<SimpleResponse<VirtualWANInner>> updateTagsWithResponseAsync(String resourceGroupName, String virtualWANName, Map<String, String> tags) {
+        final String apiVersion = "2019-11-01";
         TagsObject wANParameters = new TagsObject();
         wANParameters.withTags(tags);
         return service.updateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, wANParameters, apiVersion);
@@ -251,15 +246,19 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * @param virtualWANName 
      * @param tags Resource tags.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<VirtualWANInner> updateTagsAsync(String resourceGroupName, String virtualWANName, Map<String, String> tags) {
-        Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateTagsWithResponseAsync(resourceGroupName, virtualWANName, tags);
-        return client.<VirtualWANInner, VirtualWANInner>getLroResultAsync(response, client.getHttpPipeline(), VirtualWANInner.class, VirtualWANInner.class)
-            .last()
-            .flatMap(AsyncPollResponse::getFinalResult);
+        return updateTagsWithResponseAsync(resourceGroupName, virtualWANName, tags)
+            .flatMap((SimpleResponse<VirtualWANInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
     }
 
     /**
@@ -269,7 +268,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * @param virtualWANName 
      * @param tags Resource tags.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -283,12 +282,12 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * @param resourceGroupName 
      * @param virtualWANName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String virtualWANName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, apiVersion);
     }
 
@@ -298,7 +297,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * @param resourceGroupName 
      * @param virtualWANName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -315,7 +314,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * @param resourceGroupName 
      * @param virtualWANName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -328,12 +327,12 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * 
      * @param resourceGroupName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<VirtualWANInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -348,7 +347,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * 
      * @param resourceGroupName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.COLLECTION)
@@ -363,7 +362,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * 
      * @param resourceGroupName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.COLLECTION)
@@ -374,12 +373,12 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
     /**
      * Lists all the VirtualWANs in a subscription.
      * 
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<VirtualWANInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -392,7 +391,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
     /**
      * Lists all the VirtualWANs in a subscription.
      * 
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.COLLECTION)
@@ -405,7 +404,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
     /**
      * Lists all the VirtualWANs in a subscription.
      * 
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.COLLECTION)
@@ -420,12 +419,12 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * @param virtualWANName 
      * @param wANParameters VirtualWAN Resource.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VirtualWANInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String virtualWANName, VirtualWANInner wANParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, wANParameters, apiVersion);
     }
 
@@ -436,7 +435,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * @param virtualWANName 
      * @param wANParameters VirtualWAN Resource.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -458,7 +457,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * @param virtualWANName 
      * @param wANParameters VirtualWAN Resource.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -467,72 +466,17 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
     }
 
     /**
-     * Updates a VirtualWAN tags.
-     * 
-     * @param resourceGroupName 
-     * @param virtualWANName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<VirtualWANInner>> beginUpdateTagsWithResponseAsync(String resourceGroupName, String virtualWANName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
-        TagsObject wANParameters = new TagsObject();
-        wANParameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, wANParameters, apiVersion);
-    }
-
-    /**
-     * Updates a VirtualWAN tags.
-     * 
-     * @param resourceGroupName 
-     * @param virtualWANName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<VirtualWANInner> beginUpdateTagsAsync(String resourceGroupName, String virtualWANName, Map<String, String> tags) {
-        return beginUpdateTagsWithResponseAsync(resourceGroupName, virtualWANName, tags)
-            .flatMap((SimpleResponse<VirtualWANInner> res) -> {
-                if (res.getValue() != null) {
-                    return Mono.just(res.getValue());
-                } else {
-                    return Mono.empty();
-                }
-            });
-    }
-
-    /**
-     * Updates a VirtualWAN tags.
-     * 
-     * @param resourceGroupName 
-     * @param virtualWANName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public VirtualWANInner beginUpdateTags(String resourceGroupName, String virtualWANName, Map<String, String> tags) {
-        return beginUpdateTagsAsync(resourceGroupName, virtualWANName, tags).block();
-    }
-
-    /**
      * Deletes a VirtualWAN.
      * 
      * @param resourceGroupName 
      * @param virtualWANName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String virtualWANName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, apiVersion);
     }
 
@@ -542,7 +486,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * @param resourceGroupName 
      * @param virtualWANName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -557,7 +501,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * @param resourceGroupName 
      * @param virtualWANName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -570,7 +514,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * 
      * @param nextLink null
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -589,7 +533,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
      * 
      * @param nextLink null
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)

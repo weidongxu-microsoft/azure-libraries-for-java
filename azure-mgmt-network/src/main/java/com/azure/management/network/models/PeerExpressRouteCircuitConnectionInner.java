@@ -10,6 +10,7 @@ import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.management.SubResource;
 import com.azure.management.network.CircuitConnectionStatus;
+import com.azure.management.network.ProvisioningState;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -19,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public class PeerExpressRouteCircuitConnectionInner extends SubResource {
     /*
-     * Gets name of the resource that is unique within a resource group. This
+     * The name of the resource that is unique within a resource group. This
      * name can be used to access the resource.
      */
     @JsonProperty(value = "name")
@@ -75,15 +76,13 @@ public class PeerExpressRouteCircuitConnectionInner extends SubResource {
     private String authResourceGuid;
 
     /*
-     * Provisioning state of the peer express route circuit connection
-     * resource. Possible values are: 'Succeeded', 'Updating', 'Deleting', and
-     * 'Failed'.
+     * The current provisioning state.
      */
     @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
-    private String provisioningState;
+    private ProvisioningState provisioningState;
 
     /**
-     * Get the name property: Gets name of the resource that is unique within a
+     * Get the name property: The name of the resource that is unique within a
      * resource group. This name can be used to access the resource.
      * 
      * @return the name value.
@@ -93,7 +92,7 @@ public class PeerExpressRouteCircuitConnectionInner extends SubResource {
     }
 
     /**
-     * Set the name property: Gets name of the resource that is unique within a
+     * Set the name property: The name of the resource that is unique within a
      * resource group. This name can be used to access the resource.
      * 
      * @param name the name value to set.
@@ -258,13 +257,11 @@ public class PeerExpressRouteCircuitConnectionInner extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: Provisioning state of the peer
-     * express route circuit connection resource. Possible values are:
-     * 'Succeeded', 'Updating', 'Deleting', and 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
     }
 }

@@ -53,7 +53,7 @@ public final class ExpressRouteCircuitAuthorizationsInner {
      * @param client the instance of the service client containing this operation class.
      */
     public ExpressRouteCircuitAuthorizationsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(ExpressRouteCircuitAuthorizationsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(ExpressRouteCircuitAuthorizationsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -113,7 +113,7 @@ public final class ExpressRouteCircuitAuthorizationsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String circuitName, String authorizationName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, circuitName, authorizationName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -162,7 +162,7 @@ public final class ExpressRouteCircuitAuthorizationsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteCircuitAuthorizationInner>> getWithResponseAsync(String resourceGroupName, String circuitName, String authorizationName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.get(this.client.getHost(), resourceGroupName, circuitName, authorizationName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -216,7 +216,7 @@ public final class ExpressRouteCircuitAuthorizationsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String circuitName, String authorizationName, ExpressRouteCircuitAuthorizationInner authorizationParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, circuitName, authorizationName, this.client.getSubscriptionId(), authorizationParameters, apiVersion);
     }
 
@@ -266,7 +266,7 @@ public final class ExpressRouteCircuitAuthorizationsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ExpressRouteCircuitAuthorizationInner>> listSinglePageAsync(String resourceGroupName, String circuitName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), resourceGroupName, circuitName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -318,7 +318,7 @@ public final class ExpressRouteCircuitAuthorizationsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String circuitName, String authorizationName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, circuitName, authorizationName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -366,7 +366,7 @@ public final class ExpressRouteCircuitAuthorizationsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteCircuitAuthorizationInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String circuitName, String authorizationName, ExpressRouteCircuitAuthorizationInner authorizationParameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, circuitName, authorizationName, this.client.getSubscriptionId(), authorizationParameters, apiVersion);
     }
 

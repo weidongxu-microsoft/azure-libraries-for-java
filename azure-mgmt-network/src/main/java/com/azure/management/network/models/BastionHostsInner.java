@@ -12,7 +12,6 @@ import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
-import com.azure.core.annotation.Patch;
 import com.azure.core.annotation.PathParam;
 import com.azure.core.annotation.Put;
 import com.azure.core.annotation.QueryParam;
@@ -29,13 +28,10 @@ import com.azure.core.http.rest.RestProxy;
 import com.azure.core.http.rest.SimpleResponse;
 import com.azure.core.management.CloudException;
 import com.azure.core.util.polling.AsyncPollResponse;
-import com.azure.management.network.ErrorException;
-import com.azure.management.network.TagsObject;
 import com.azure.management.resources.fluentcore.collection.InnerSupportsDelete;
 import com.azure.management.resources.fluentcore.collection.InnerSupportsGet;
 import com.azure.management.resources.fluentcore.collection.InnerSupportsListing;
 import java.nio.ByteBuffer;
-import java.util.Map;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -60,7 +56,7 @@ public final class BastionHostsInner implements InnerSupportsGet<BastionHostInne
      * @param client the instance of the service client containing this operation class.
      */
     public BastionHostsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(BastionHostsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(BastionHostsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -87,11 +83,6 @@ public final class BastionHostsInner implements InnerSupportsGet<BastionHostInne
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BastionHostInner parameters, @QueryParam("api-version") String apiVersion);
 
-        @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}")
-        @ExpectedResponses({200, 201})
-        @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @BodyParam("application/json") TagsObject bastionHostParameters, @QueryParam("api-version") String apiVersion);
-
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/bastionHosts")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -111,11 +102,6 @@ public final class BastionHostsInner implements InnerSupportsGet<BastionHostInne
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<BastionHostInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BastionHostInner parameters, @QueryParam("api-version") String apiVersion);
-
-        @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}")
-        @ExpectedResponses({200, 201})
-        @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<BastionHostInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @BodyParam("application/json") TagsObject bastionHostParameters, @QueryParam("api-version") String apiVersion);
 
         @Get("{nextLink}")
         @ExpectedResponses({200})
@@ -139,7 +125,7 @@ public final class BastionHostsInner implements InnerSupportsGet<BastionHostInne
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String bastionHostName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, bastionHostName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -185,7 +171,7 @@ public final class BastionHostsInner implements InnerSupportsGet<BastionHostInne
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<BastionHostInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String bastionHostName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), resourceGroupName, bastionHostName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -236,7 +222,7 @@ public final class BastionHostsInner implements InnerSupportsGet<BastionHostInne
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String bastionHostName, BastionHostInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, bastionHostName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -274,57 +260,6 @@ public final class BastionHostsInner implements InnerSupportsGet<BastionHostInne
     }
 
     /**
-     * Updates bastion host tags.
-     * 
-     * @param resourceGroupName 
-     * @param bastionHostName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<Flux<ByteBuffer>>> updateTagsWithResponseAsync(String resourceGroupName, String bastionHostName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
-        TagsObject bastionHostParameters = new TagsObject();
-        bastionHostParameters.withTags(tags);
-        return service.updateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, bastionHostName, bastionHostParameters, apiVersion);
-    }
-
-    /**
-     * Updates bastion host tags.
-     * 
-     * @param resourceGroupName 
-     * @param bastionHostName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<BastionHostInner> updateTagsAsync(String resourceGroupName, String bastionHostName, Map<String, String> tags) {
-        Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateTagsWithResponseAsync(resourceGroupName, bastionHostName, tags);
-        return client.<BastionHostInner, BastionHostInner>getLroResultAsync(response, client.getHttpPipeline(), BastionHostInner.class, BastionHostInner.class)
-            .last()
-            .flatMap(AsyncPollResponse::getFinalResult);
-    }
-
-    /**
-     * Updates bastion host tags.
-     * 
-     * @param resourceGroupName 
-     * @param bastionHostName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public BastionHostInner updateTags(String resourceGroupName, String bastionHostName, Map<String, String> tags) {
-        return updateTagsAsync(resourceGroupName, bastionHostName, tags).block();
-    }
-
-    /**
      * Lists all Bastion Hosts in a subscription.
      * 
      * @throws CloudException thrown if the request is rejected by server.
@@ -332,7 +267,7 @@ public final class BastionHostsInner implements InnerSupportsGet<BastionHostInne
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<BastionHostInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -376,7 +311,7 @@ public final class BastionHostsInner implements InnerSupportsGet<BastionHostInne
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<BastionHostInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -425,7 +360,7 @@ public final class BastionHostsInner implements InnerSupportsGet<BastionHostInne
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String bastionHostName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, bastionHostName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -470,7 +405,7 @@ public final class BastionHostsInner implements InnerSupportsGet<BastionHostInne
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<BastionHostInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String bastionHostName, BastionHostInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, bastionHostName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -509,61 +444,6 @@ public final class BastionHostsInner implements InnerSupportsGet<BastionHostInne
     @ServiceMethod(returns = ReturnType.SINGLE)
     public BastionHostInner beginCreateOrUpdate(String resourceGroupName, String bastionHostName, BastionHostInner parameters) {
         return beginCreateOrUpdateAsync(resourceGroupName, bastionHostName, parameters).block();
-    }
-
-    /**
-     * Updates bastion host tags.
-     * 
-     * @param resourceGroupName 
-     * @param bastionHostName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<BastionHostInner>> beginUpdateTagsWithResponseAsync(String resourceGroupName, String bastionHostName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
-        TagsObject bastionHostParameters = new TagsObject();
-        bastionHostParameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, bastionHostName, bastionHostParameters, apiVersion);
-    }
-
-    /**
-     * Updates bastion host tags.
-     * 
-     * @param resourceGroupName 
-     * @param bastionHostName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<BastionHostInner> beginUpdateTagsAsync(String resourceGroupName, String bastionHostName, Map<String, String> tags) {
-        return beginUpdateTagsWithResponseAsync(resourceGroupName, bastionHostName, tags)
-            .flatMap((SimpleResponse<BastionHostInner> res) -> {
-                if (res.getValue() != null) {
-                    return Mono.just(res.getValue());
-                } else {
-                    return Mono.empty();
-                }
-            });
-    }
-
-    /**
-     * Updates bastion host tags.
-     * 
-     * @param resourceGroupName 
-     * @param bastionHostName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public BastionHostInner beginUpdateTags(String resourceGroupName, String bastionHostName, Map<String, String> tags) {
-        return beginUpdateTagsAsync(resourceGroupName, bastionHostName, tags).block();
     }
 
     /**

@@ -46,7 +46,7 @@ public final class AvailableResourceGroupDelegationsInner {
      * @param client the instance of the service client containing this operation class.
      */
     public AvailableResourceGroupDelegationsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(AvailableResourceGroupDelegationsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(AvailableResourceGroupDelegationsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -80,7 +80,7 @@ public final class AvailableResourceGroupDelegationsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<AvailableDelegationInner>> listSinglePageAsync(String location, String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), location, resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),

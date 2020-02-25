@@ -11,6 +11,7 @@ import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.management.SubResource;
 import com.azure.management.network.IPAllocationMethod;
 import com.azure.management.network.IPVersion;
+import com.azure.management.network.ProvisioningState;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class FrontendIPConfigurationInner extends SubResource {
     /*
      * A unique read-only string that changes whenever the resource is updated.
      */
-    @JsonProperty(value = "etag")
+    @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
@@ -48,25 +49,26 @@ public class FrontendIPConfigurationInner extends SubResource {
     private List<String> zones;
 
     /*
-     * Read only. Inbound rules URIs that use this frontend IP.
+     * An array of references to inbound rules that use this frontend IP.
      */
     @JsonProperty(value = "properties.inboundNatRules", access = JsonProperty.Access.WRITE_ONLY)
     private List<SubResource> inboundNatRules;
 
     /*
-     * Read only. Inbound pools URIs that use this frontend IP.
+     * An array of references to inbound pools that use this frontend IP.
      */
     @JsonProperty(value = "properties.inboundNatPools", access = JsonProperty.Access.WRITE_ONLY)
     private List<SubResource> inboundNatPools;
 
     /*
-     * Read only. Outbound rules URIs that use this frontend IP.
+     * An array of references to outbound rules that use this frontend IP.
      */
     @JsonProperty(value = "properties.outboundRules", access = JsonProperty.Access.WRITE_ONLY)
     private List<SubResource> outboundRules;
 
     /*
-     * Gets load balancing rules URIs that use this frontend IP.
+     * An array of references to load balancing rules that use this frontend
+     * IP.
      */
     @JsonProperty(value = "properties.loadBalancingRules", access = JsonProperty.Access.WRITE_ONLY)
     private List<SubResource> loadBalancingRules;
@@ -108,11 +110,10 @@ public class FrontendIPConfigurationInner extends SubResource {
     private SubResource publicIPPrefix;
 
     /*
-     * Gets the provisioning state of the public IP resource. Possible values
-     * are: 'Updating', 'Deleting', and 'Failed'.
+     * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
-    private String provisioningState;
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
+    private ProvisioningState provisioningState;
 
     /**
      * Get the name property: The name of the resource that is unique within
@@ -149,18 +150,6 @@ public class FrontendIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Set the etag property: A unique read-only string that changes whenever
-     * the resource is updated.
-     * 
-     * @param etag the etag value to set.
-     * @return the FrontendIPConfigurationInner object itself.
-     */
-    public FrontendIPConfigurationInner withEtag(String etag) {
-        this.etag = etag;
-        return this;
-    }
-
-    /**
      * Get the type property: Type of the resource.
      * 
      * @return the type value.
@@ -192,8 +181,8 @@ public class FrontendIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the inboundNatRules property: Read only. Inbound rules URIs that use
-     * this frontend IP.
+     * Get the inboundNatRules property: An array of references to inbound
+     * rules that use this frontend IP.
      * 
      * @return the inboundNatRules value.
      */
@@ -202,8 +191,8 @@ public class FrontendIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the inboundNatPools property: Read only. Inbound pools URIs that use
-     * this frontend IP.
+     * Get the inboundNatPools property: An array of references to inbound
+     * pools that use this frontend IP.
      * 
      * @return the inboundNatPools value.
      */
@@ -212,8 +201,8 @@ public class FrontendIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the outboundRules property: Read only. Outbound rules URIs that use
-     * this frontend IP.
+     * Get the outboundRules property: An array of references to outbound rules
+     * that use this frontend IP.
      * 
      * @return the outboundRules value.
      */
@@ -222,8 +211,8 @@ public class FrontendIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the loadBalancingRules property: Gets load balancing rules URIs that
-     * use this frontend IP.
+     * Get the loadBalancingRules property: An array of references to load
+     * balancing rules that use this frontend IP.
      * 
      * @return the loadBalancingRules value.
      */
@@ -357,26 +346,11 @@ public class FrontendIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: Gets the provisioning state of the
-     * public IP resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: Gets the provisioning state of the
-     * public IP resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the FrontendIPConfigurationInner object itself.
-     */
-    public FrontendIPConfigurationInner withProvisioningState(String provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 }

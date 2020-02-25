@@ -15,13 +15,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class CloudError {
     /*
-     * An error response from the Batch service.
+     * An error response from the service.
      */
     @JsonProperty(value = "error")
     private CloudErrorBody error;
 
     /**
-     * Get the error property: An error response from the Batch service.
+     * Get the error property: An error response from the service.
      * 
      * @return the error value.
      */
@@ -30,7 +30,7 @@ public final class CloudError {
     }
 
     /**
-     * Set the error property: An error response from the Batch service.
+     * Set the error property: An error response from the service.
      * 
      * @param error the error value to set.
      * @return the CloudError object itself.

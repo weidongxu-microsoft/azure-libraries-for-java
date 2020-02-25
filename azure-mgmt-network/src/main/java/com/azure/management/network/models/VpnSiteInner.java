@@ -24,8 +24,7 @@ import java.util.List;
 @Fluent
 public class VpnSiteInner extends Resource {
     /*
-     * Gets a unique read-only string that changes whenever the resource is
-     * updated.
+     * A unique read-only string that changes whenever the resource is updated.
      */
     @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
@@ -70,7 +69,7 @@ public class VpnSiteInner extends Resource {
     /*
      * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
     private ProvisioningState provisioningState;
 
     /*
@@ -80,7 +79,7 @@ public class VpnSiteInner extends Resource {
     private Boolean isSecuritySite;
 
     /*
-     * List of all vpn site links
+     * List of all vpn site links.
      */
     @JsonProperty(value = "properties.vpnSiteLinks")
     private List<VpnSiteLinkInner> vpnSiteLinks;
@@ -92,8 +91,8 @@ public class VpnSiteInner extends Resource {
     private String id;
 
     /**
-     * Get the etag property: Gets a unique read-only string that changes
-     * whenever the resource is updated.
+     * Get the etag property: A unique read-only string that changes whenever
+     * the resource is updated.
      * 
      * @return the etag value.
      */
@@ -232,17 +231,6 @@ public class VpnSiteInner extends Resource {
      */
     public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: The current provisioning state.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the VpnSiteInner object itself.
-     */
-    public VpnSiteInner withProvisioningState(ProvisioningState provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 
     /**

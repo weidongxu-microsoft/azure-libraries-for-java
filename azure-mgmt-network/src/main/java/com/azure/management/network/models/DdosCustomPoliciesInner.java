@@ -54,7 +54,7 @@ public final class DdosCustomPoliciesInner implements InnerSupportsGet<DdosCusto
      * @param client the instance of the service client containing this operation class.
      */
     public DdosCustomPoliciesInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(DdosCustomPoliciesService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(DdosCustomPoliciesService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -84,7 +84,7 @@ public final class DdosCustomPoliciesInner implements InnerSupportsGet<DdosCusto
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("ddosCustomPolicyName") String ddosCustomPolicyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DdosCustomPolicyInner>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("ddosCustomPolicyName") String ddosCustomPolicyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}")
         @ExpectedResponses({200, 202, 204})
@@ -95,11 +95,6 @@ public final class DdosCustomPoliciesInner implements InnerSupportsGet<DdosCusto
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DdosCustomPolicyInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("ddosCustomPolicyName") String ddosCustomPolicyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DdosCustomPolicyInner parameters, @QueryParam("api-version") String apiVersion);
-
-        @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}")
-        @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DdosCustomPolicyInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("ddosCustomPolicyName") String ddosCustomPolicyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
     }
 
     /**
@@ -113,7 +108,7 @@ public final class DdosCustomPoliciesInner implements InnerSupportsGet<DdosCusto
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String ddosCustomPolicyName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, ddosCustomPolicyName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -159,7 +154,7 @@ public final class DdosCustomPoliciesInner implements InnerSupportsGet<DdosCusto
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DdosCustomPolicyInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String ddosCustomPolicyName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), resourceGroupName, ddosCustomPolicyName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -210,7 +205,7 @@ public final class DdosCustomPoliciesInner implements InnerSupportsGet<DdosCusto
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String ddosCustomPolicyName, DdosCustomPolicyInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, ddosCustomPolicyName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -258,8 +253,8 @@ public final class DdosCustomPoliciesInner implements InnerSupportsGet<DdosCusto
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<Flux<ByteBuffer>>> updateTagsWithResponseAsync(String resourceGroupName, String ddosCustomPolicyName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
+    public Mono<SimpleResponse<DdosCustomPolicyInner>> updateTagsWithResponseAsync(String resourceGroupName, String ddosCustomPolicyName, Map<String, String> tags) {
+        final String apiVersion = "2019-11-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
         return service.updateTags(this.client.getHost(), resourceGroupName, ddosCustomPolicyName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -277,10 +272,14 @@ public final class DdosCustomPoliciesInner implements InnerSupportsGet<DdosCusto
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<DdosCustomPolicyInner> updateTagsAsync(String resourceGroupName, String ddosCustomPolicyName, Map<String, String> tags) {
-        Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateTagsWithResponseAsync(resourceGroupName, ddosCustomPolicyName, tags);
-        return client.<DdosCustomPolicyInner, DdosCustomPolicyInner>getLroResultAsync(response, client.getHttpPipeline(), DdosCustomPolicyInner.class, DdosCustomPolicyInner.class)
-            .last()
-            .flatMap(AsyncPollResponse::getFinalResult);
+        return updateTagsWithResponseAsync(resourceGroupName, ddosCustomPolicyName, tags)
+            .flatMap((SimpleResponse<DdosCustomPolicyInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
     }
 
     /**
@@ -309,7 +308,7 @@ public final class DdosCustomPoliciesInner implements InnerSupportsGet<DdosCusto
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String ddosCustomPolicyName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, ddosCustomPolicyName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -354,7 +353,7 @@ public final class DdosCustomPoliciesInner implements InnerSupportsGet<DdosCusto
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DdosCustomPolicyInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String ddosCustomPolicyName, DdosCustomPolicyInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, ddosCustomPolicyName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -393,60 +392,5 @@ public final class DdosCustomPoliciesInner implements InnerSupportsGet<DdosCusto
     @ServiceMethod(returns = ReturnType.SINGLE)
     public DdosCustomPolicyInner beginCreateOrUpdate(String resourceGroupName, String ddosCustomPolicyName, DdosCustomPolicyInner parameters) {
         return beginCreateOrUpdateAsync(resourceGroupName, ddosCustomPolicyName, parameters).block();
-    }
-
-    /**
-     * Update a DDoS custom policy tags.
-     * 
-     * @param resourceGroupName 
-     * @param ddosCustomPolicyName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<DdosCustomPolicyInner>> beginUpdateTagsWithResponseAsync(String resourceGroupName, String ddosCustomPolicyName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
-        TagsObject parameters = new TagsObject();
-        parameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), resourceGroupName, ddosCustomPolicyName, this.client.getSubscriptionId(), parameters, apiVersion);
-    }
-
-    /**
-     * Update a DDoS custom policy tags.
-     * 
-     * @param resourceGroupName 
-     * @param ddosCustomPolicyName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<DdosCustomPolicyInner> beginUpdateTagsAsync(String resourceGroupName, String ddosCustomPolicyName, Map<String, String> tags) {
-        return beginUpdateTagsWithResponseAsync(resourceGroupName, ddosCustomPolicyName, tags)
-            .flatMap((SimpleResponse<DdosCustomPolicyInner> res) -> {
-                if (res.getValue() != null) {
-                    return Mono.just(res.getValue());
-                } else {
-                    return Mono.empty();
-                }
-            });
-    }
-
-    /**
-     * Update a DDoS custom policy tags.
-     * 
-     * @param resourceGroupName 
-     * @param ddosCustomPolicyName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public DdosCustomPolicyInner beginUpdateTags(String resourceGroupName, String ddosCustomPolicyName, Map<String, String> tags) {
-        return beginUpdateTagsAsync(resourceGroupName, ddosCustomPolicyName, tags).block();
     }
 }

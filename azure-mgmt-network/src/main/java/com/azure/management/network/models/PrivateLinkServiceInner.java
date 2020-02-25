@@ -24,7 +24,7 @@ public class PrivateLinkServiceInner extends Resource {
     /*
      * A unique read-only string that changes whenever the resource is updated.
      */
-    @JsonProperty(value = "etag")
+    @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
@@ -34,13 +34,13 @@ public class PrivateLinkServiceInner extends Resource {
     private List<FrontendIPConfigurationInner> loadBalancerFrontendIpConfigurations;
 
     /*
-     * An array of references to the private link service IP configuration.
+     * An array of private link service IP configurations.
      */
     @JsonProperty(value = "properties.ipConfigurations")
     private List<PrivateLinkServiceIpConfigurationInner> ipConfigurations;
 
     /*
-     * Gets an array of references to the network interfaces created for this
+     * An array of references to the network interfaces created for this
      * private link service.
      */
     @JsonProperty(value = "properties.networkInterfaces", access = JsonProperty.Access.WRITE_ONLY)
@@ -49,13 +49,13 @@ public class PrivateLinkServiceInner extends Resource {
     /*
      * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
     private ProvisioningState provisioningState;
 
     /*
      * An array of list about connections to the private endpoint.
      */
-    @JsonProperty(value = "properties.privateEndpointConnections")
+    @JsonProperty(value = "properties.privateEndpointConnections", access = JsonProperty.Access.WRITE_ONLY)
     private List<PrivateEndpointConnectionInner> privateEndpointConnections;
 
     /*
@@ -83,6 +83,12 @@ public class PrivateLinkServiceInner extends Resource {
     private String alias;
 
     /*
+     * Whether the private link service is enabled for proxy protocol or not.
+     */
+    @JsonProperty(value = "properties.enableProxyProtocol")
+    private Boolean enableProxyProtocol;
+
+    /*
      * Resource ID.
      */
     @JsonProperty(value = "id")
@@ -96,18 +102,6 @@ public class PrivateLinkServiceInner extends Resource {
      */
     public String etag() {
         return this.etag;
-    }
-
-    /**
-     * Set the etag property: A unique read-only string that changes whenever
-     * the resource is updated.
-     * 
-     * @param etag the etag value to set.
-     * @return the PrivateLinkServiceInner object itself.
-     */
-    public PrivateLinkServiceInner withEtag(String etag) {
-        this.etag = etag;
-        return this;
     }
 
     /**
@@ -134,8 +128,8 @@ public class PrivateLinkServiceInner extends Resource {
     }
 
     /**
-     * Get the ipConfigurations property: An array of references to the private
-     * link service IP configuration.
+     * Get the ipConfigurations property: An array of private link service IP
+     * configurations.
      * 
      * @return the ipConfigurations value.
      */
@@ -144,8 +138,8 @@ public class PrivateLinkServiceInner extends Resource {
     }
 
     /**
-     * Set the ipConfigurations property: An array of references to the private
-     * link service IP configuration.
+     * Set the ipConfigurations property: An array of private link service IP
+     * configurations.
      * 
      * @param ipConfigurations the ipConfigurations value to set.
      * @return the PrivateLinkServiceInner object itself.
@@ -156,7 +150,7 @@ public class PrivateLinkServiceInner extends Resource {
     }
 
     /**
-     * Get the networkInterfaces property: Gets an array of references to the
+     * Get the networkInterfaces property: An array of references to the
      * network interfaces created for this private link service.
      * 
      * @return the networkInterfaces value.
@@ -175,17 +169,6 @@ public class PrivateLinkServiceInner extends Resource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the PrivateLinkServiceInner object itself.
-     */
-    public PrivateLinkServiceInner withProvisioningState(ProvisioningState provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
-    }
-
-    /**
      * Get the privateEndpointConnections property: An array of list about
      * connections to the private endpoint.
      * 
@@ -193,19 +176,6 @@ public class PrivateLinkServiceInner extends Resource {
      */
     public List<PrivateEndpointConnectionInner> privateEndpointConnections() {
         return this.privateEndpointConnections;
-    }
-
-    /**
-     * Set the privateEndpointConnections property: An array of list about
-     * connections to the private endpoint.
-     * 
-     * @param privateEndpointConnections the privateEndpointConnections value
-     * to set.
-     * @return the PrivateLinkServiceInner object itself.
-     */
-    public PrivateLinkServiceInner withPrivateEndpointConnections(List<PrivateEndpointConnectionInner> privateEndpointConnections) {
-        this.privateEndpointConnections = privateEndpointConnections;
-        return this;
     }
 
     /**
@@ -279,6 +249,28 @@ public class PrivateLinkServiceInner extends Resource {
      */
     public String alias() {
         return this.alias;
+    }
+
+    /**
+     * Get the enableProxyProtocol property: Whether the private link service
+     * is enabled for proxy protocol or not.
+     * 
+     * @return the enableProxyProtocol value.
+     */
+    public Boolean enableProxyProtocol() {
+        return this.enableProxyProtocol;
+    }
+
+    /**
+     * Set the enableProxyProtocol property: Whether the private link service
+     * is enabled for proxy protocol or not.
+     * 
+     * @param enableProxyProtocol the enableProxyProtocol value to set.
+     * @return the PrivateLinkServiceInner object itself.
+     */
+    public PrivateLinkServiceInner withEnableProxyProtocol(Boolean enableProxyProtocol) {
+        this.enableProxyProtocol = enableProxyProtocol;
+        return this;
     }
 
     /**

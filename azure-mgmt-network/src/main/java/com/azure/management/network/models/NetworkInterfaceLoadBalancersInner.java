@@ -46,7 +46,7 @@ public final class NetworkInterfaceLoadBalancersInner {
      * @param client the instance of the service client containing this operation class.
      */
     public NetworkInterfaceLoadBalancersInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(NetworkInterfaceLoadBalancersService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(NetworkInterfaceLoadBalancersService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -80,7 +80,7 @@ public final class NetworkInterfaceLoadBalancersInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<LoadBalancerInner>> listSinglePageAsync(String resourceGroupName, String networkInterfaceName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), resourceGroupName, networkInterfaceName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),

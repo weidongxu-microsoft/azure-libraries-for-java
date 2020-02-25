@@ -18,7 +18,7 @@ import com.azure.core.annotation.ServiceMethod;
 import com.azure.core.annotation.UnexpectedResponseExceptionType;
 import com.azure.core.http.rest.RestProxy;
 import com.azure.core.http.rest.SimpleResponse;
-import com.azure.management.network.ErrorException;
+import com.azure.core.management.CloudException;
 import reactor.core.publisher.Mono;
 
 /**
@@ -42,7 +42,7 @@ public final class VpnSiteLinkConnectionsInner {
      * @param client the instance of the service client containing this operation class.
      */
     public VpnSiteLinkConnectionsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(VpnSiteLinkConnectionsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(VpnSiteLinkConnectionsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -56,7 +56,7 @@ public final class VpnSiteLinkConnectionsInner {
     private interface VpnSiteLinkConnectionsService {
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections/{linkConnectionName}")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<VpnSiteLinkConnectionInner>> get(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @PathParam("connectionName") String connectionName, @PathParam("linkConnectionName") String linkConnectionName, @QueryParam("api-version") String apiVersion);
     }
 
@@ -68,12 +68,12 @@ public final class VpnSiteLinkConnectionsInner {
      * @param connectionName 
      * @param linkConnectionName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VpnSiteLinkConnectionInner>> getWithResponseAsync(String resourceGroupName, String gatewayName, String connectionName, String linkConnectionName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.get(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, connectionName, linkConnectionName, apiVersion);
     }
 
@@ -85,7 +85,7 @@ public final class VpnSiteLinkConnectionsInner {
      * @param connectionName 
      * @param linkConnectionName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -108,7 +108,7 @@ public final class VpnSiteLinkConnectionsInner {
      * @param connectionName 
      * @param linkConnectionName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)

@@ -55,10 +55,10 @@ public class ResourceNavigationLink extends SubResource {
     private String link;
 
     /*
-     * Provisioning state of the ResourceNavigationLink resource.
+     * The current provisioning state.
      */
     @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
-    private String provisioningState;
+    private ProvisioningState provisioningState;
 
     /**
      * Get the name property: Name of the resource that is unique within a
@@ -153,12 +153,11 @@ public class ResourceNavigationLink extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: Provisioning state of the
-     * ResourceNavigationLink resource.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
     }
 }

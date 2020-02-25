@@ -9,6 +9,7 @@ package com.azure.management.network.models;
 import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.management.SubResource;
+import com.azure.management.network.ProvisioningState;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -32,7 +33,7 @@ public class IPConfigurationProfileInner extends SubResource {
     /*
      * A unique read-only string that changes whenever the resource is updated.
      */
-    @JsonProperty(value = "etag")
+    @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
@@ -42,10 +43,10 @@ public class IPConfigurationProfileInner extends SubResource {
     private SubnetInner subnet;
 
     /*
-     * The provisioning state of the resource.
+     * The current provisioning state.
      */
     @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
-    private String provisioningState;
+    private ProvisioningState provisioningState;
 
     /**
      * Get the name property: The name of the resource. This name can be used
@@ -89,18 +90,6 @@ public class IPConfigurationProfileInner extends SubResource {
     }
 
     /**
-     * Set the etag property: A unique read-only string that changes whenever
-     * the resource is updated.
-     * 
-     * @param etag the etag value to set.
-     * @return the IPConfigurationProfileInner object itself.
-     */
-    public IPConfigurationProfileInner withEtag(String etag) {
-        this.etag = etag;
-        return this;
-    }
-
-    /**
      * Get the subnet property: Subnet in a virtual network resource.
      * 
      * @return the subnet value.
@@ -121,12 +110,11 @@ public class IPConfigurationProfileInner extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: The provisioning state of the
-     * resource.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
     }
 }

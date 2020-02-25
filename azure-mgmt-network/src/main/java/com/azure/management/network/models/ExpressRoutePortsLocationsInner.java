@@ -46,7 +46,7 @@ public final class ExpressRoutePortsLocationsInner {
      * @param client the instance of the service client containing this operation class.
      */
     public ExpressRoutePortsLocationsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(ExpressRoutePortsLocationsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(ExpressRoutePortsLocationsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -82,7 +82,7 @@ public final class ExpressRoutePortsLocationsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ExpressRoutePortsLocationInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -126,7 +126,7 @@ public final class ExpressRoutePortsLocationsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRoutePortsLocationInner>> getWithResponseAsync(String locationName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.get(this.client.getHost(), this.client.getSubscriptionId(), locationName, apiVersion);
     }
 

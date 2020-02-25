@@ -46,7 +46,7 @@ public final class AvailableEndpointServicesInner {
      * @param client the instance of the service client containing this operation class.
      */
     public AvailableEndpointServicesInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(AvailableEndpointServicesService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(AvailableEndpointServicesService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -79,7 +79,7 @@ public final class AvailableEndpointServicesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<EndpointServiceResultInner>> listSinglePageAsync(String location) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), location, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),

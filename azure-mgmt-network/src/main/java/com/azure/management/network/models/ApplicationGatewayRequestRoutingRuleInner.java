@@ -10,6 +10,7 @@ import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.management.SubResource;
 import com.azure.management.network.ApplicationGatewayRequestRoutingRuleType;
+import com.azure.management.network.ProvisioningState;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -28,13 +29,13 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
     /*
      * A unique read-only string that changes whenever the resource is updated.
      */
-    @JsonProperty(value = "etag")
+    @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
      * Type of the resource.
      */
-    @JsonProperty(value = "type")
+    @JsonProperty(value = "type", access = JsonProperty.Access.WRITE_ONLY)
     private String type;
 
     /*
@@ -42,6 +43,12 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
      */
     @JsonProperty(value = "properties.ruleType")
     private ApplicationGatewayRequestRoutingRuleType ruleType;
+
+    /*
+     * Priority of the request routing rule.
+     */
+    @JsonProperty(value = "properties.priority")
+    private Integer priority;
 
     /*
      * Reference to another subresource.
@@ -80,11 +87,10 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
     private SubResource redirectConfiguration;
 
     /*
-     * Provisioning state of the request routing rule resource. Possible values
-     * are: 'Updating', 'Deleting', and 'Failed'.
+     * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
-    private String provisioningState;
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
+    private ProvisioningState provisioningState;
 
     /**
      * Get the name property: Name of the request routing rule that is unique
@@ -119,35 +125,12 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
     }
 
     /**
-     * Set the etag property: A unique read-only string that changes whenever
-     * the resource is updated.
-     * 
-     * @param etag the etag value to set.
-     * @return the ApplicationGatewayRequestRoutingRuleInner object itself.
-     */
-    public ApplicationGatewayRequestRoutingRuleInner withEtag(String etag) {
-        this.etag = etag;
-        return this;
-    }
-
-    /**
      * Get the type property: Type of the resource.
      * 
      * @return the type value.
      */
     public String type() {
         return this.type;
-    }
-
-    /**
-     * Set the type property: Type of the resource.
-     * 
-     * @param type the type value to set.
-     * @return the ApplicationGatewayRequestRoutingRuleInner object itself.
-     */
-    public ApplicationGatewayRequestRoutingRuleInner withType(String type) {
-        this.type = type;
-        return this;
     }
 
     /**
@@ -167,6 +150,26 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
      */
     public ApplicationGatewayRequestRoutingRuleInner withRuleType(ApplicationGatewayRequestRoutingRuleType ruleType) {
         this.ruleType = ruleType;
+        return this;
+    }
+
+    /**
+     * Get the priority property: Priority of the request routing rule.
+     * 
+     * @return the priority value.
+     */
+    public Integer priority() {
+        return this.priority;
+    }
+
+    /**
+     * Set the priority property: Priority of the request routing rule.
+     * 
+     * @param priority the priority value to set.
+     * @return the ApplicationGatewayRequestRoutingRuleInner object itself.
+     */
+    public ApplicationGatewayRequestRoutingRuleInner withPriority(Integer priority) {
+        this.priority = priority;
         return this;
     }
 
@@ -293,26 +296,11 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: Provisioning state of the request
-     * routing rule resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: Provisioning state of the request
-     * routing rule resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the ApplicationGatewayRequestRoutingRuleInner object itself.
-     */
-    public ApplicationGatewayRequestRoutingRuleInner withProvisioningState(String provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 }

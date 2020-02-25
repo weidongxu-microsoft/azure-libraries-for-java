@@ -9,6 +9,7 @@ package com.azure.management.network.models;
 import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.management.SubResource;
+import com.azure.management.network.ProvisioningState;
 import com.azure.management.network.SecurityRuleAccess;
 import com.azure.management.network.SecurityRuleDirection;
 import com.azure.management.network.SecurityRuleProtocol;
@@ -31,7 +32,7 @@ public class SecurityRuleInner extends SubResource {
     /*
      * A unique read-only string that changes whenever the resource is updated.
      */
-    @JsonProperty(value = "etag")
+    @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
 
     /*
@@ -135,11 +136,10 @@ public class SecurityRuleInner extends SubResource {
     private SecurityRuleDirection direction;
 
     /*
-     * The provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
+     * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
-    private String provisioningState;
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
+    private ProvisioningState provisioningState;
 
     /**
      * Get the name property: The name of the resource that is unique within a
@@ -171,18 +171,6 @@ public class SecurityRuleInner extends SubResource {
      */
     public String etag() {
         return this.etag;
-    }
-
-    /**
-     * Set the etag property: A unique read-only string that changes whenever
-     * the resource is updated.
-     * 
-     * @param etag the etag value to set.
-     * @return the SecurityRuleInner object itself.
-     */
-    public SecurityRuleInner withEtag(String etag) {
-        this.etag = etag;
-        return this;
     }
 
     /**
@@ -528,24 +516,11 @@ public class SecurityRuleInner extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: The provisioning state of the public
-     * IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: The provisioning state of the public
-     * IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the SecurityRuleInner object itself.
-     */
-    public SecurityRuleInner withProvisioningState(String provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 }

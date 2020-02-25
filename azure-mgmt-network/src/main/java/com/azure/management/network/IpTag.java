@@ -15,21 +15,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class IpTag {
     /*
-     * Gets or sets the ipTag type: Example FirstPartyUsage.
+     * The IP tag type. Example: FirstPartyUsage.
      */
     @JsonProperty(value = "ipTagType")
     private String ipTagType;
 
     /*
-     * Gets or sets value of the IpTag associated with the public IP. Example
-     * SQL, Storage etc.
+     * The value of the IP tag associated with the public IP. Example: SQL.
      */
     @JsonProperty(value = "tag")
     private String tag;
 
     /**
-     * Get the ipTagType property: Gets or sets the ipTag type: Example
-     * FirstPartyUsage.
+     * Get the ipTagType property: The IP tag type. Example: FirstPartyUsage.
      * 
      * @return the ipTagType value.
      */
@@ -38,8 +36,7 @@ public final class IpTag {
     }
 
     /**
-     * Set the ipTagType property: Gets or sets the ipTag type: Example
-     * FirstPartyUsage.
+     * Set the ipTagType property: The IP tag type. Example: FirstPartyUsage.
      * 
      * @param ipTagType the ipTagType value to set.
      * @return the IpTag object itself.
@@ -50,8 +47,8 @@ public final class IpTag {
     }
 
     /**
-     * Get the tag property: Gets or sets value of the IpTag associated with
-     * the public IP. Example SQL, Storage etc.
+     * Get the tag property: The value of the IP tag associated with the public
+     * IP. Example: SQL.
      * 
      * @return the tag value.
      */
@@ -60,8 +57,8 @@ public final class IpTag {
     }
 
     /**
-     * Set the tag property: Gets or sets value of the IpTag associated with
-     * the public IP. Example SQL, Storage etc.
+     * Set the tag property: The value of the IP tag associated with the public
+     * IP. Example: SQL.
      * 
      * @param tag the tag value to set.
      * @return the IpTag object itself.

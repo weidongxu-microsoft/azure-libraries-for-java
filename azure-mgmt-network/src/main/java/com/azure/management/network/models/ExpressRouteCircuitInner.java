@@ -12,6 +12,7 @@ import com.azure.core.management.Resource;
 import com.azure.core.management.SubResource;
 import com.azure.management.network.ExpressRouteCircuitServiceProviderProperties;
 import com.azure.management.network.ExpressRouteCircuitSku;
+import com.azure.management.network.ProvisioningState;
 import com.azure.management.network.ServiceProviderProvisioningState;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
@@ -29,8 +30,7 @@ public class ExpressRouteCircuitInner extends Resource {
     private ExpressRouteCircuitSku sku;
 
     /*
-     * Gets a unique read-only string that changes whenever the resource is
-     * updated.
+     * A unique read-only string that changes whenever the resource is updated.
      */
     @JsonProperty(value = "etag", access = JsonProperty.Access.WRITE_ONLY)
     private String etag;
@@ -103,11 +103,10 @@ public class ExpressRouteCircuitInner extends Resource {
     private Integer stag;
 
     /*
-     * Gets the provisioning state of the public IP resource. Possible values
-     * are: 'Updating', 'Deleting', and 'Failed'.
+     * The current provisioning state.
      */
-    @JsonProperty(value = "properties.provisioningState")
-    private String provisioningState;
+    @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
+    private ProvisioningState provisioningState;
 
     /*
      * The GatewayManager Etag.
@@ -148,8 +147,8 @@ public class ExpressRouteCircuitInner extends Resource {
     }
 
     /**
-     * Get the etag property: Gets a unique read-only string that changes
-     * whenever the resource is updated.
+     * Get the etag property: A unique read-only string that changes whenever
+     * the resource is updated.
      * 
      * @return the etag value.
      */
@@ -379,27 +378,12 @@ public class ExpressRouteCircuitInner extends Resource {
     }
 
     /**
-     * Get the provisioningState property: Gets the provisioning state of the
-     * public IP resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
-    }
-
-    /**
-     * Set the provisioningState property: Gets the provisioning state of the
-     * public IP resource. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
-     * 
-     * @param provisioningState the provisioningState value to set.
-     * @return the ExpressRouteCircuitInner object itself.
-     */
-    public ExpressRouteCircuitInner withProvisioningState(String provisioningState) {
-        this.provisioningState = provisioningState;
-        return this;
     }
 
     /**

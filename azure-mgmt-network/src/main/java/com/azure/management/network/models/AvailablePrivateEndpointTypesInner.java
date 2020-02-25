@@ -46,7 +46,7 @@ public final class AvailablePrivateEndpointTypesInner {
      * @param client the instance of the service client containing this operation class.
      */
     public AvailablePrivateEndpointTypesInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(AvailablePrivateEndpointTypesService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(AvailablePrivateEndpointTypesService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -89,7 +89,7 @@ public final class AvailablePrivateEndpointTypesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<AvailablePrivateEndpointTypeInner>> listSinglePageAsync(String location) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), location, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -138,7 +138,7 @@ public final class AvailablePrivateEndpointTypesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<AvailablePrivateEndpointTypeInner>> listByResourceGroupSinglePageAsync(String location, String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), location, resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),

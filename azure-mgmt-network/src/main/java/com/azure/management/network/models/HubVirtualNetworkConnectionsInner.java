@@ -22,7 +22,7 @@ import com.azure.core.http.rest.PagedResponse;
 import com.azure.core.http.rest.PagedResponseBase;
 import com.azure.core.http.rest.RestProxy;
 import com.azure.core.http.rest.SimpleResponse;
-import com.azure.management.network.ErrorException;
+import com.azure.core.management.CloudException;
 import reactor.core.publisher.Mono;
 
 /**
@@ -46,7 +46,7 @@ public final class HubVirtualNetworkConnectionsInner {
      * @param client the instance of the service client containing this operation class.
      */
     public HubVirtualNetworkConnectionsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(HubVirtualNetworkConnectionsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(HubVirtualNetworkConnectionsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -60,17 +60,17 @@ public final class HubVirtualNetworkConnectionsInner {
     private interface HubVirtualNetworkConnectionsService {
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubVirtualNetworkConnections/{connectionName}")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<HubVirtualNetworkConnectionInner>> get(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualHubName") String virtualHubName, @PathParam("connectionName") String connectionName, @QueryParam("api-version") String apiVersion);
 
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubVirtualNetworkConnections")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ListHubVirtualNetworkConnectionsResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualHubName") String virtualHubName, @QueryParam("api-version") String apiVersion);
 
         @Get("{nextLink}")
         @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(ErrorException.class)
+        @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ListHubVirtualNetworkConnectionsResultInner>> listNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
     }
 
@@ -81,12 +81,12 @@ public final class HubVirtualNetworkConnectionsInner {
      * @param virtualHubName 
      * @param connectionName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<HubVirtualNetworkConnectionInner>> getWithResponseAsync(String resourceGroupName, String virtualHubName, String connectionName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.get(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualHubName, connectionName, apiVersion);
     }
 
@@ -97,7 +97,7 @@ public final class HubVirtualNetworkConnectionsInner {
      * @param virtualHubName 
      * @param connectionName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -119,7 +119,7 @@ public final class HubVirtualNetworkConnectionsInner {
      * @param virtualHubName 
      * @param connectionName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
@@ -133,12 +133,12 @@ public final class HubVirtualNetworkConnectionsInner {
      * @param resourceGroupName 
      * @param virtualHubName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<HubVirtualNetworkConnectionInner>> listSinglePageAsync(String resourceGroupName, String virtualHubName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualHubName, apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -154,7 +154,7 @@ public final class HubVirtualNetworkConnectionsInner {
      * @param resourceGroupName 
      * @param virtualHubName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.COLLECTION)
@@ -170,7 +170,7 @@ public final class HubVirtualNetworkConnectionsInner {
      * @param resourceGroupName 
      * @param virtualHubName 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.COLLECTION)
@@ -183,7 +183,7 @@ public final class HubVirtualNetworkConnectionsInner {
      * 
      * @param nextLink null
      * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws ErrorException thrown if the request is rejected by server.
+     * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)

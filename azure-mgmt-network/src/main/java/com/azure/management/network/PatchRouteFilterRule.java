@@ -51,11 +51,10 @@ public class PatchRouteFilterRule extends SubResource {
     private List<String> communities;
 
     /*
-     * The provisioning state of the resource. Possible values are: 'Updating',
-     * 'Deleting', 'Succeeded' and 'Failed'.
+     * The current provisioning state.
      */
     @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
-    private String provisioningState;
+    private ProvisioningState provisioningState;
 
     /**
      * Creates an instance of PatchRouteFilterRule class.
@@ -147,13 +146,11 @@ public class PatchRouteFilterRule extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: The provisioning state of the
-     * resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and
-     * 'Failed'.
+     * Get the provisioningState property: The current provisioning state.
      * 
      * @return the provisioningState value.
      */
-    public String provisioningState() {
+    public ProvisioningState provisioningState() {
         return this.provisioningState;
     }
 }

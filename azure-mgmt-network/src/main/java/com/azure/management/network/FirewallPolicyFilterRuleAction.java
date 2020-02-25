@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class FirewallPolicyFilterRuleAction {
     /*
-     * The action type of a rule
+     * The action type of a rule.
      */
     @JsonProperty(value = "type")
     private FirewallPolicyFilterRuleActionType type;

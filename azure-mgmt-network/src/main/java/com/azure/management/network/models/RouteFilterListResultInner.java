@@ -16,7 +16,7 @@ import java.util.List;
 @Fluent
 public final class RouteFilterListResultInner {
     /*
-     * Gets a list of route filters in a resource group.
+     * A list of route filters in a resource group.
      */
     @JsonProperty(value = "value")
     private List<RouteFilterInner> value;
@@ -28,8 +28,7 @@ public final class RouteFilterListResultInner {
     private String nextLink;
 
     /**
-     * Get the value property: Gets a list of route filters in a resource
-     * group.
+     * Get the value property: A list of route filters in a resource group.
      * 
      * @return the value value.
      */
@@ -38,8 +37,7 @@ public final class RouteFilterListResultInner {
     }
 
     /**
-     * Set the value property: Gets a list of route filters in a resource
-     * group.
+     * Set the value property: A list of route filters in a resource group.
      * 
      * @param value the value value to set.
      * @return the RouteFilterListResultInner object itself.

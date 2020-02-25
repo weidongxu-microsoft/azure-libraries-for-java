@@ -59,7 +59,7 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
      * @param client the instance of the service client containing this operation class.
      */
     public ServiceEndpointPoliciesInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(ServiceEndpointPoliciesService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(ServiceEndpointPoliciesService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -89,7 +89,7 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ServiceEndpointPolicyInner>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/ServiceEndpointPolicies")
         @ExpectedResponses({200})
@@ -110,11 +110,6 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ServiceEndpointPolicyInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ServiceEndpointPolicyInner parameters, @QueryParam("api-version") String apiVersion);
-
-        @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}")
-        @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ServiceEndpointPolicyInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Get("{nextLink}")
         @ExpectedResponses({200})
@@ -138,7 +133,7 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String serviceEndpointPolicyName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -185,7 +180,7 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ServiceEndpointPolicyInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String serviceEndpointPolicyName, String expand) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, this.client.getSubscriptionId(), expand, apiVersion);
     }
 
@@ -223,7 +218,7 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<ServiceEndpointPolicyInner> getByResourceGroupAsync(String resourceGroupName, String serviceEndpointPolicyName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return getByResourceGroupWithResponseAsync(resourceGroupName, serviceEndpointPolicyName, expand)
             .flatMap((SimpleResponse<ServiceEndpointPolicyInner> res) -> {
                 if (res.getValue() != null) {
@@ -261,7 +256,7 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
     @ServiceMethod(returns = ReturnType.SINGLE)
     public ServiceEndpointPolicyInner getByResourceGroup(String resourceGroupName, String serviceEndpointPolicyName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return getByResourceGroupAsync(resourceGroupName, serviceEndpointPolicyName, expand).block();
     }
 
@@ -277,7 +272,7 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String serviceEndpointPolicyName, ServiceEndpointPolicyInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -315,7 +310,7 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
     }
 
     /**
-     * Updates service Endpoint Policies.
+     * Updates tags of a service endpoint policy.
      * 
      * @param resourceGroupName 
      * @param serviceEndpointPolicyName 
@@ -325,15 +320,15 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<Flux<ByteBuffer>>> updateWithResponseAsync(String resourceGroupName, String serviceEndpointPolicyName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
+    public Mono<SimpleResponse<ServiceEndpointPolicyInner>> updateTagsWithResponseAsync(String resourceGroupName, String serviceEndpointPolicyName, Map<String, String> tags) {
+        final String apiVersion = "2019-11-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
-        return service.update(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.updateTags(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
-     * Updates service Endpoint Policies.
+     * Updates tags of a service endpoint policy.
      * 
      * @param resourceGroupName 
      * @param serviceEndpointPolicyName 
@@ -343,15 +338,19 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<ServiceEndpointPolicyInner> updateAsync(String resourceGroupName, String serviceEndpointPolicyName, Map<String, String> tags) {
-        Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateWithResponseAsync(resourceGroupName, serviceEndpointPolicyName, tags);
-        return client.<ServiceEndpointPolicyInner, ServiceEndpointPolicyInner>getLroResultAsync(response, client.getHttpPipeline(), ServiceEndpointPolicyInner.class, ServiceEndpointPolicyInner.class)
-            .last()
-            .flatMap(AsyncPollResponse::getFinalResult);
+    public Mono<ServiceEndpointPolicyInner> updateTagsAsync(String resourceGroupName, String serviceEndpointPolicyName, Map<String, String> tags) {
+        return updateTagsWithResponseAsync(resourceGroupName, serviceEndpointPolicyName, tags)
+            .flatMap((SimpleResponse<ServiceEndpointPolicyInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
     }
 
     /**
-     * Updates service Endpoint Policies.
+     * Updates tags of a service endpoint policy.
      * 
      * @param resourceGroupName 
      * @param serviceEndpointPolicyName 
@@ -361,8 +360,8 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public ServiceEndpointPolicyInner update(String resourceGroupName, String serviceEndpointPolicyName, Map<String, String> tags) {
-        return updateAsync(resourceGroupName, serviceEndpointPolicyName, tags).block();
+    public ServiceEndpointPolicyInner updateTags(String resourceGroupName, String serviceEndpointPolicyName, Map<String, String> tags) {
+        return updateTagsAsync(resourceGroupName, serviceEndpointPolicyName, tags).block();
     }
 
     /**
@@ -373,7 +372,7 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ServiceEndpointPolicyInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -417,7 +416,7 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ServiceEndpointPolicyInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -466,7 +465,7 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String serviceEndpointPolicyName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -511,7 +510,7 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ServiceEndpointPolicyInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String serviceEndpointPolicyName, ServiceEndpointPolicyInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -550,61 +549,6 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
     @ServiceMethod(returns = ReturnType.SINGLE)
     public ServiceEndpointPolicyInner beginCreateOrUpdate(String resourceGroupName, String serviceEndpointPolicyName, ServiceEndpointPolicyInner parameters) {
         return beginCreateOrUpdateAsync(resourceGroupName, serviceEndpointPolicyName, parameters).block();
-    }
-
-    /**
-     * Updates service Endpoint Policies.
-     * 
-     * @param resourceGroupName 
-     * @param serviceEndpointPolicyName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<ServiceEndpointPolicyInner>> beginUpdateWithResponseAsync(String resourceGroupName, String serviceEndpointPolicyName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
-        TagsObject parameters = new TagsObject();
-        parameters.withTags(tags);
-        return service.beginUpdate(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, this.client.getSubscriptionId(), parameters, apiVersion);
-    }
-
-    /**
-     * Updates service Endpoint Policies.
-     * 
-     * @param resourceGroupName 
-     * @param serviceEndpointPolicyName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<ServiceEndpointPolicyInner> beginUpdateAsync(String resourceGroupName, String serviceEndpointPolicyName, Map<String, String> tags) {
-        return beginUpdateWithResponseAsync(resourceGroupName, serviceEndpointPolicyName, tags)
-            .flatMap((SimpleResponse<ServiceEndpointPolicyInner> res) -> {
-                if (res.getValue() != null) {
-                    return Mono.just(res.getValue());
-                } else {
-                    return Mono.empty();
-                }
-            });
-    }
-
-    /**
-     * Updates service Endpoint Policies.
-     * 
-     * @param resourceGroupName 
-     * @param serviceEndpointPolicyName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public ServiceEndpointPolicyInner beginUpdate(String resourceGroupName, String serviceEndpointPolicyName, Map<String, String> tags) {
-        return beginUpdateAsync(resourceGroupName, serviceEndpointPolicyName, tags).block();
     }
 
     /**

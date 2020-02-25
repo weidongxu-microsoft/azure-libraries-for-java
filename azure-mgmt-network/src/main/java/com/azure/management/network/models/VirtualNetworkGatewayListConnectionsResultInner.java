@@ -16,8 +16,8 @@ import java.util.List;
 @Fluent
 public final class VirtualNetworkGatewayListConnectionsResultInner {
     /*
-     * Gets a list of VirtualNetworkGatewayConnection resources that exists in
-     * a resource group.
+     * A list of VirtualNetworkGatewayConnection resources that exists in a
+     * resource group.
      */
     @JsonProperty(value = "value")
     private List<VirtualNetworkGatewayConnectionListEntityInner> value;
@@ -29,7 +29,7 @@ public final class VirtualNetworkGatewayListConnectionsResultInner {
     private String nextLink;
 
     /**
-     * Get the value property: Gets a list of VirtualNetworkGatewayConnection
+     * Get the value property: A list of VirtualNetworkGatewayConnection
      * resources that exists in a resource group.
      * 
      * @return the value value.
@@ -39,7 +39,7 @@ public final class VirtualNetworkGatewayListConnectionsResultInner {
     }
 
     /**
-     * Set the value property: Gets a list of VirtualNetworkGatewayConnection
+     * Set the value property: A list of VirtualNetworkGatewayConnection
      * resources that exists in a resource group.
      * 
      * @param value the value value to set.

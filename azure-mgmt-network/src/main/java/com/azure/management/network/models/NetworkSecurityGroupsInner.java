@@ -59,7 +59,7 @@ public final class NetworkSecurityGroupsInner implements InnerSupportsGet<Networ
      * @param client the instance of the service client containing this operation class.
      */
     public NetworkSecurityGroupsInner(NetworkManagementClientImpl client) {
-        this.service = RestProxy.create(NetworkSecurityGroupsService.class, client.getHttpPipeline());
+        this.service = RestProxy.create(NetworkSecurityGroupsService.class, client.getHttpPipeline(), client.getSerializerAdapter());
         this.client = client;
     }
 
@@ -89,7 +89,7 @@ public final class NetworkSecurityGroupsInner implements InnerSupportsGet<Networ
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkSecurityGroupName") String networkSecurityGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<NetworkSecurityGroupInner>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkSecurityGroupName") String networkSecurityGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkSecurityGroups")
         @ExpectedResponses({200})
@@ -110,11 +110,6 @@ public final class NetworkSecurityGroupsInner implements InnerSupportsGet<Networ
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<NetworkSecurityGroupInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkSecurityGroupName") String networkSecurityGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") NetworkSecurityGroupInner parameters, @QueryParam("api-version") String apiVersion);
-
-        @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}")
-        @ExpectedResponses({200})
-        @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<NetworkSecurityGroupInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkSecurityGroupName") String networkSecurityGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Get("{nextLink}")
         @ExpectedResponses({200})
@@ -138,7 +133,7 @@ public final class NetworkSecurityGroupsInner implements InnerSupportsGet<Networ
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String networkSecurityGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.delete(this.client.getHost(), resourceGroupName, networkSecurityGroupName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -185,7 +180,7 @@ public final class NetworkSecurityGroupsInner implements InnerSupportsGet<Networ
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<NetworkSecurityGroupInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String networkSecurityGroupName, String expand) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.getByResourceGroup(this.client.getHost(), resourceGroupName, networkSecurityGroupName, this.client.getSubscriptionId(), expand, apiVersion);
     }
 
@@ -223,7 +218,7 @@ public final class NetworkSecurityGroupsInner implements InnerSupportsGet<Networ
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<NetworkSecurityGroupInner> getByResourceGroupAsync(String resourceGroupName, String networkSecurityGroupName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return getByResourceGroupWithResponseAsync(resourceGroupName, networkSecurityGroupName, expand)
             .flatMap((SimpleResponse<NetworkSecurityGroupInner> res) -> {
                 if (res.getValue() != null) {
@@ -261,7 +256,7 @@ public final class NetworkSecurityGroupsInner implements InnerSupportsGet<Networ
     @ServiceMethod(returns = ReturnType.SINGLE)
     public NetworkSecurityGroupInner getByResourceGroup(String resourceGroupName, String networkSecurityGroupName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return getByResourceGroupAsync(resourceGroupName, networkSecurityGroupName, expand).block();
     }
 
@@ -277,7 +272,7 @@ public final class NetworkSecurityGroupsInner implements InnerSupportsGet<Networ
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String networkSecurityGroupName, NetworkSecurityGroupInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, networkSecurityGroupName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -325,8 +320,8 @@ public final class NetworkSecurityGroupsInner implements InnerSupportsGet<Networ
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<Flux<ByteBuffer>>> updateTagsWithResponseAsync(String resourceGroupName, String networkSecurityGroupName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
+    public Mono<SimpleResponse<NetworkSecurityGroupInner>> updateTagsWithResponseAsync(String resourceGroupName, String networkSecurityGroupName, Map<String, String> tags) {
+        final String apiVersion = "2019-11-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
         return service.updateTags(this.client.getHost(), resourceGroupName, networkSecurityGroupName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -344,10 +339,14 @@ public final class NetworkSecurityGroupsInner implements InnerSupportsGet<Networ
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<NetworkSecurityGroupInner> updateTagsAsync(String resourceGroupName, String networkSecurityGroupName, Map<String, String> tags) {
-        Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateTagsWithResponseAsync(resourceGroupName, networkSecurityGroupName, tags);
-        return client.<NetworkSecurityGroupInner, NetworkSecurityGroupInner>getLroResultAsync(response, client.getHttpPipeline(), NetworkSecurityGroupInner.class, NetworkSecurityGroupInner.class)
-            .last()
-            .flatMap(AsyncPollResponse::getFinalResult);
+        return updateTagsWithResponseAsync(resourceGroupName, networkSecurityGroupName, tags)
+            .flatMap((SimpleResponse<NetworkSecurityGroupInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
     }
 
     /**
@@ -373,7 +372,7 @@ public final class NetworkSecurityGroupsInner implements InnerSupportsGet<Networ
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<NetworkSecurityGroupInner>> listSinglePageAsync() {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -417,7 +416,7 @@ public final class NetworkSecurityGroupsInner implements InnerSupportsGet<Networ
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<NetworkSecurityGroupInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -466,7 +465,7 @@ public final class NetworkSecurityGroupsInner implements InnerSupportsGet<Networ
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String networkSecurityGroupName) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginDelete(this.client.getHost(), resourceGroupName, networkSecurityGroupName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -511,7 +510,7 @@ public final class NetworkSecurityGroupsInner implements InnerSupportsGet<Networ
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<NetworkSecurityGroupInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String networkSecurityGroupName, NetworkSecurityGroupInner parameters) {
-        final String apiVersion = "2019-06-01";
+        final String apiVersion = "2019-11-01";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, networkSecurityGroupName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -550,61 +549,6 @@ public final class NetworkSecurityGroupsInner implements InnerSupportsGet<Networ
     @ServiceMethod(returns = ReturnType.SINGLE)
     public NetworkSecurityGroupInner beginCreateOrUpdate(String resourceGroupName, String networkSecurityGroupName, NetworkSecurityGroupInner parameters) {
         return beginCreateOrUpdateAsync(resourceGroupName, networkSecurityGroupName, parameters).block();
-    }
-
-    /**
-     * Updates a network security group tags.
-     * 
-     * @param resourceGroupName 
-     * @param networkSecurityGroupName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<SimpleResponse<NetworkSecurityGroupInner>> beginUpdateTagsWithResponseAsync(String resourceGroupName, String networkSecurityGroupName, Map<String, String> tags) {
-        final String apiVersion = "2019-06-01";
-        TagsObject parameters = new TagsObject();
-        parameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), resourceGroupName, networkSecurityGroupName, this.client.getSubscriptionId(), parameters, apiVersion);
-    }
-
-    /**
-     * Updates a network security group tags.
-     * 
-     * @param resourceGroupName 
-     * @param networkSecurityGroupName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<NetworkSecurityGroupInner> beginUpdateTagsAsync(String resourceGroupName, String networkSecurityGroupName, Map<String, String> tags) {
-        return beginUpdateTagsWithResponseAsync(resourceGroupName, networkSecurityGroupName, tags)
-            .flatMap((SimpleResponse<NetworkSecurityGroupInner> res) -> {
-                if (res.getValue() != null) {
-                    return Mono.just(res.getValue());
-                } else {
-                    return Mono.empty();
-                }
-            });
-    }
-
-    /**
-     * Updates a network security group tags.
-     * 
-     * @param resourceGroupName 
-     * @param networkSecurityGroupName 
-     * @param tags Resource tags.
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
-    public NetworkSecurityGroupInner beginUpdateTags(String resourceGroupName, String networkSecurityGroupName, Map<String, String> tags) {
-        return beginUpdateTagsAsync(resourceGroupName, networkSecurityGroupName, tags).block();
     }
 
     /**
