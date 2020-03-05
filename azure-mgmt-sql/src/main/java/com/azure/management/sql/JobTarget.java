@@ -21,7 +21,7 @@ public final class JobTarget {
     private JobTargetGroupMembershipType membershipType;
 
     /*
-     * The type of the target.
+     * The target type.
      */
     @JsonProperty(value = "type", required = true)
     private JobTargetType type;
@@ -81,7 +81,7 @@ public final class JobTarget {
     }
 
     /**
-     * Get the type property: The type of the target.
+     * Get the type property: The target type.
      * 
      * @return the type value.
      */
@@ -90,7 +90,7 @@ public final class JobTarget {
     }
 
     /**
-     * Set the type property: The type of the target.
+     * Set the type property: The target type.
      * 
      * @param type the type value to set.
      * @return the JobTarget object itself.

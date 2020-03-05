@@ -41,7 +41,7 @@ public class VpnSiteLinkInner extends SubResource {
     private String type;
 
     /*
-     * List of properties of a link provider.
+     * The link provider properties.
      */
     @JsonProperty(value = "properties.linkProperties")
     private VpnLinkProviderProperties linkProperties;
@@ -53,13 +53,13 @@ public class VpnSiteLinkInner extends SubResource {
     private String ipAddress;
 
     /*
-     * BGP settings details for a link.
+     * The set of bgp properties.
      */
     @JsonProperty(value = "properties.bgpProperties")
     private VpnLinkBgpSettings bgpProperties;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -106,7 +106,7 @@ public class VpnSiteLinkInner extends SubResource {
     }
 
     /**
-     * Get the linkProperties property: List of properties of a link provider.
+     * Get the linkProperties property: The link provider properties.
      * 
      * @return the linkProperties value.
      */
@@ -115,7 +115,7 @@ public class VpnSiteLinkInner extends SubResource {
     }
 
     /**
-     * Set the linkProperties property: List of properties of a link provider.
+     * Set the linkProperties property: The link provider properties.
      * 
      * @param linkProperties the linkProperties value to set.
      * @return the VpnSiteLinkInner object itself.
@@ -146,7 +146,7 @@ public class VpnSiteLinkInner extends SubResource {
     }
 
     /**
-     * Get the bgpProperties property: BGP settings details for a link.
+     * Get the bgpProperties property: The set of bgp properties.
      * 
      * @return the bgpProperties value.
      */
@@ -155,7 +155,7 @@ public class VpnSiteLinkInner extends SubResource {
     }
 
     /**
-     * Set the bgpProperties property: BGP settings details for a link.
+     * Set the bgpProperties property: The set of bgp properties.
      * 
      * @param bgpProperties the bgpProperties value to set.
      * @return the VpnSiteLinkInner object itself.
@@ -166,7 +166,8 @@ public class VpnSiteLinkInner extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -175,7 +176,8 @@ public class VpnSiteLinkInner extends SubResource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the VpnSiteLinkInner object itself.

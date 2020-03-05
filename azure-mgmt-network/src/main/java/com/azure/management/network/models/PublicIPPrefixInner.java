@@ -24,7 +24,7 @@ import java.util.List;
 @Fluent
 public class PublicIPPrefixInner extends Resource {
     /*
-     * SKU of a public IP prefix.
+     * The public IP prefix SKU.
      */
     @JsonProperty(value = "sku")
     private PublicIPPrefixSku sku;
@@ -43,7 +43,7 @@ public class PublicIPPrefixInner extends Resource {
     private List<String> zones;
 
     /*
-     * IP address version.
+     * The public IP address version.
      */
     @JsonProperty(value = "properties.publicIPAddressVersion")
     private IPVersion publicIPAddressVersion;
@@ -73,7 +73,8 @@ public class PublicIPPrefixInner extends Resource {
     private List<ReferencedPublicIpAddress> publicIPAddresses;
 
     /*
-     * Reference to another subresource.
+     * The reference to load balancer frontend IP configuration associated with
+     * the public IP prefix.
      */
     @JsonProperty(value = "properties.loadBalancerFrontendIpConfiguration", access = JsonProperty.Access.WRITE_ONLY)
     private SubResource loadBalancerFrontendIpConfiguration;
@@ -98,7 +99,7 @@ public class PublicIPPrefixInner extends Resource {
     private String id;
 
     /**
-     * Get the sku property: SKU of a public IP prefix.
+     * Get the sku property: The public IP prefix SKU.
      * 
      * @return the sku value.
      */
@@ -107,7 +108,7 @@ public class PublicIPPrefixInner extends Resource {
     }
 
     /**
-     * Set the sku property: SKU of a public IP prefix.
+     * Set the sku property: The public IP prefix SKU.
      * 
      * @param sku the sku value to set.
      * @return the PublicIPPrefixInner object itself.
@@ -162,7 +163,7 @@ public class PublicIPPrefixInner extends Resource {
     }
 
     /**
-     * Get the publicIPAddressVersion property: IP address version.
+     * Get the publicIPAddressVersion property: The public IP address version.
      * 
      * @return the publicIPAddressVersion value.
      */
@@ -171,7 +172,7 @@ public class PublicIPPrefixInner extends Resource {
     }
 
     /**
-     * Set the publicIPAddressVersion property: IP address version.
+     * Set the publicIPAddressVersion property: The public IP address version.
      * 
      * @param publicIPAddressVersion the publicIPAddressVersion value to set.
      * @return the PublicIPPrefixInner object itself.
@@ -266,8 +267,9 @@ public class PublicIPPrefixInner extends Resource {
     }
 
     /**
-     * Get the loadBalancerFrontendIpConfiguration property: Reference to
-     * another subresource.
+     * Get the loadBalancerFrontendIpConfiguration property: The reference to
+     * load balancer frontend IP configuration associated with the public IP
+     * prefix.
      * 
      * @return the loadBalancerFrontendIpConfiguration value.
      */

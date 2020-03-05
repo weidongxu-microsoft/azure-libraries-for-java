@@ -95,7 +95,7 @@ public class JobExecutionInner extends ProxyResource {
     private String lastMessage;
 
     /*
-     * The target that a job execution is executed on.
+     * The target that this execution is executed on.
      */
     @JsonProperty(value = "properties.target", access = JsonProperty.Access.WRITE_ONLY)
     private JobExecutionTarget target;
@@ -226,7 +226,7 @@ public class JobExecutionInner extends ProxyResource {
     }
 
     /**
-     * Get the target property: The target that a job execution is executed on.
+     * Get the target property: The target that this execution is executed on.
      * 
      * @return the target value.
      */

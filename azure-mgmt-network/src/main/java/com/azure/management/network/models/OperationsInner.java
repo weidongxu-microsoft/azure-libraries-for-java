@@ -59,13 +59,13 @@ public final class OperationsInner {
     @Host("{$host}")
     @ServiceInterface(name = "NetworkManagementClientOperations")
     private interface OperationsService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/providers/Microsoft.Network/operations")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<OperationListResultInner>> list(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)

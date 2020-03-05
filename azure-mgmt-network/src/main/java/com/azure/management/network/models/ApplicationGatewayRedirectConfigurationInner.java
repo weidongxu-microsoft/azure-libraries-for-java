@@ -39,13 +39,13 @@ public class ApplicationGatewayRedirectConfigurationInner extends SubResource {
     private String type;
 
     /*
-     * Redirect type enum.
+     * HTTP redirection type.
      */
     @JsonProperty(value = "properties.redirectType")
     private ApplicationGatewayRedirectType redirectType;
 
     /*
-     * Reference to another subresource.
+     * Reference to a listener to redirect the request to.
      */
     @JsonProperty(value = "properties.targetListener")
     private SubResource targetListener;
@@ -151,7 +151,7 @@ public class ApplicationGatewayRedirectConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the redirectType property: Redirect type enum.
+     * Get the redirectType property: HTTP redirection type.
      * 
      * @return the redirectType value.
      */
@@ -160,7 +160,7 @@ public class ApplicationGatewayRedirectConfigurationInner extends SubResource {
     }
 
     /**
-     * Set the redirectType property: Redirect type enum.
+     * Set the redirectType property: HTTP redirection type.
      * 
      * @param redirectType the redirectType value to set.
      * @return the ApplicationGatewayRedirectConfigurationInner object itself.
@@ -171,7 +171,8 @@ public class ApplicationGatewayRedirectConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the targetListener property: Reference to another subresource.
+     * Get the targetListener property: Reference to a listener to redirect the
+     * request to.
      * 
      * @return the targetListener value.
      */
@@ -180,7 +181,8 @@ public class ApplicationGatewayRedirectConfigurationInner extends SubResource {
     }
 
     /**
-     * Set the targetListener property: Reference to another subresource.
+     * Set the targetListener property: Reference to a listener to redirect the
+     * request to.
      * 
      * @param targetListener the targetListener value to set.
      * @return the ApplicationGatewayRedirectConfigurationInner object itself.

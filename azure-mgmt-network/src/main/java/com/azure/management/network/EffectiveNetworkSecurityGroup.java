@@ -17,13 +17,13 @@ import java.util.List;
 @Fluent
 public final class EffectiveNetworkSecurityGroup {
     /*
-     * Reference to another subresource.
+     * The ID of network security group that is applied.
      */
     @JsonProperty(value = "networkSecurityGroup")
     private SubResource networkSecurityGroup;
 
     /*
-     * The effective network security group association.
+     * Associated resources.
      */
     @JsonProperty(value = "association")
     private EffectiveNetworkSecurityGroupAssociation association;
@@ -41,7 +41,8 @@ public final class EffectiveNetworkSecurityGroup {
     private String tagMap;
 
     /**
-     * Get the networkSecurityGroup property: Reference to another subresource.
+     * Get the networkSecurityGroup property: The ID of network security group
+     * that is applied.
      * 
      * @return the networkSecurityGroup value.
      */
@@ -50,7 +51,8 @@ public final class EffectiveNetworkSecurityGroup {
     }
 
     /**
-     * Set the networkSecurityGroup property: Reference to another subresource.
+     * Set the networkSecurityGroup property: The ID of network security group
+     * that is applied.
      * 
      * @param networkSecurityGroup the networkSecurityGroup value to set.
      * @return the EffectiveNetworkSecurityGroup object itself.
@@ -61,8 +63,7 @@ public final class EffectiveNetworkSecurityGroup {
     }
 
     /**
-     * Get the association property: The effective network security group
-     * association.
+     * Get the association property: Associated resources.
      * 
      * @return the association value.
      */
@@ -71,8 +72,7 @@ public final class EffectiveNetworkSecurityGroup {
     }
 
     /**
-     * Set the association property: The effective network security group
-     * association.
+     * Set the association property: Associated resources.
      * 
      * @param association the association value to set.
      * @return the EffectiveNetworkSecurityGroup object itself.

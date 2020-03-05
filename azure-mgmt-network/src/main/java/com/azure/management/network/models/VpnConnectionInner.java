@@ -37,7 +37,7 @@ public class VpnConnectionInner extends SubResource {
     private String etag;
 
     /*
-     * Reference to another subresource.
+     * Id of the connected vpn site.
      */
     @JsonProperty(value = "properties.remoteVpnSite")
     private SubResource remoteVpnSite;
@@ -49,13 +49,13 @@ public class VpnConnectionInner extends SubResource {
     private Integer routingWeight;
 
     /*
-     * The current state of the vpn connection.
+     * The connection status.
      */
     @JsonProperty(value = "properties.connectionStatus")
     private VpnConnectionStatus connectionStatus;
 
     /*
-     * Gateway connection protocol.
+     * Connection protocol used for this connection.
      */
     @JsonProperty(value = "properties.vpnConnectionProtocolType")
     private VirtualNetworkGatewayConnectionProtocol vpnConnectionProtocolType;
@@ -121,7 +121,7 @@ public class VpnConnectionInner extends SubResource {
     private Boolean useLocalAzureIpAddress;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -165,7 +165,7 @@ public class VpnConnectionInner extends SubResource {
     }
 
     /**
-     * Get the remoteVpnSite property: Reference to another subresource.
+     * Get the remoteVpnSite property: Id of the connected vpn site.
      * 
      * @return the remoteVpnSite value.
      */
@@ -174,7 +174,7 @@ public class VpnConnectionInner extends SubResource {
     }
 
     /**
-     * Set the remoteVpnSite property: Reference to another subresource.
+     * Set the remoteVpnSite property: Id of the connected vpn site.
      * 
      * @param remoteVpnSite the remoteVpnSite value to set.
      * @return the VpnConnectionInner object itself.
@@ -205,8 +205,7 @@ public class VpnConnectionInner extends SubResource {
     }
 
     /**
-     * Get the connectionStatus property: The current state of the vpn
-     * connection.
+     * Get the connectionStatus property: The connection status.
      * 
      * @return the connectionStatus value.
      */
@@ -215,8 +214,7 @@ public class VpnConnectionInner extends SubResource {
     }
 
     /**
-     * Set the connectionStatus property: The current state of the vpn
-     * connection.
+     * Set the connectionStatus property: The connection status.
      * 
      * @param connectionStatus the connectionStatus value to set.
      * @return the VpnConnectionInner object itself.
@@ -227,7 +225,8 @@ public class VpnConnectionInner extends SubResource {
     }
 
     /**
-     * Get the vpnConnectionProtocolType property: Gateway connection protocol.
+     * Get the vpnConnectionProtocolType property: Connection protocol used for
+     * this connection.
      * 
      * @return the vpnConnectionProtocolType value.
      */
@@ -236,7 +235,8 @@ public class VpnConnectionInner extends SubResource {
     }
 
     /**
-     * Set the vpnConnectionProtocolType property: Gateway connection protocol.
+     * Set the vpnConnectionProtocolType property: Connection protocol used for
+     * this connection.
      * 
      * @param vpnConnectionProtocolType the vpnConnectionProtocolType value to
      * set.
@@ -433,7 +433,8 @@ public class VpnConnectionInner extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -442,7 +443,8 @@ public class VpnConnectionInner extends SubResource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the VpnConnectionInner object itself.

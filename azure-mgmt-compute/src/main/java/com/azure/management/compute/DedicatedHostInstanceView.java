@@ -23,7 +23,7 @@ public final class DedicatedHostInstanceView {
     private String assetId;
 
     /*
-     * Dedicated host unutilized capacity.
+     * Unutilized capacity of the dedicated host.
      */
     @JsonProperty(value = "availableCapacity")
     private DedicatedHostAvailableCapacity availableCapacity;
@@ -45,7 +45,8 @@ public final class DedicatedHostInstanceView {
     }
 
     /**
-     * Get the availableCapacity property: Dedicated host unutilized capacity.
+     * Get the availableCapacity property: Unutilized capacity of the dedicated
+     * host.
      * 
      * @return the availableCapacity value.
      */
@@ -54,7 +55,8 @@ public final class DedicatedHostInstanceView {
     }
 
     /**
-     * Set the availableCapacity property: Dedicated host unutilized capacity.
+     * Set the availableCapacity property: Unutilized capacity of the dedicated
+     * host.
      * 
      * @param availableCapacity the availableCapacity value to set.
      * @return the DedicatedHostInstanceView object itself.

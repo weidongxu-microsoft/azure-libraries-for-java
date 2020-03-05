@@ -107,7 +107,8 @@ public class CertificateInner extends Resource {
     private String publicKeyHash;
 
     /*
-     * Specification for an App Service Environment to use for this resource.
+     * Specification for the App Service Environment to use for the
+     * certificate.
      */
     @JsonProperty(value = "properties.hostingEnvironmentProfile", access = JsonProperty.Access.WRITE_ONLY)
     private HostingEnvironmentProfile hostingEnvironmentProfile;
@@ -309,8 +310,8 @@ public class CertificateInner extends Resource {
     }
 
     /**
-     * Get the hostingEnvironmentProfile property: Specification for an App
-     * Service Environment to use for this resource.
+     * Get the hostingEnvironmentProfile property: Specification for the App
+     * Service Environment to use for the certificate.
      * 
      * @return the hostingEnvironmentProfile value.
      */

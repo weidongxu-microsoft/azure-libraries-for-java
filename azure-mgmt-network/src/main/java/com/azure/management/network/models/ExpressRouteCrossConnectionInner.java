@@ -58,13 +58,14 @@ public class ExpressRouteCrossConnectionInner extends Resource {
     private Integer bandwidthInMbps;
 
     /*
-     * Reference to an express route circuit.
+     * The ExpressRouteCircuit.
      */
     @JsonProperty(value = "properties.expressRouteCircuit")
     private ExpressRouteCircuitReference expressRouteCircuit;
 
     /*
-     * The ServiceProviderProvisioningState state of the resource.
+     * The provisioning state of the circuit in the connectivity provider
+     * system.
      */
     @JsonProperty(value = "properties.serviceProviderProvisioningState")
     private ServiceProviderProvisioningState serviceProviderProvisioningState;
@@ -174,8 +175,7 @@ public class ExpressRouteCrossConnectionInner extends Resource {
     }
 
     /**
-     * Get the expressRouteCircuit property: Reference to an express route
-     * circuit.
+     * Get the expressRouteCircuit property: The ExpressRouteCircuit.
      * 
      * @return the expressRouteCircuit value.
      */
@@ -184,8 +184,7 @@ public class ExpressRouteCrossConnectionInner extends Resource {
     }
 
     /**
-     * Set the expressRouteCircuit property: Reference to an express route
-     * circuit.
+     * Set the expressRouteCircuit property: The ExpressRouteCircuit.
      * 
      * @param expressRouteCircuit the expressRouteCircuit value to set.
      * @return the ExpressRouteCrossConnectionInner object itself.
@@ -196,8 +195,8 @@ public class ExpressRouteCrossConnectionInner extends Resource {
     }
 
     /**
-     * Get the serviceProviderProvisioningState property: The
-     * ServiceProviderProvisioningState state of the resource.
+     * Get the serviceProviderProvisioningState property: The provisioning
+     * state of the circuit in the connectivity provider system.
      * 
      * @return the serviceProviderProvisioningState value.
      */
@@ -206,8 +205,8 @@ public class ExpressRouteCrossConnectionInner extends Resource {
     }
 
     /**
-     * Set the serviceProviderProvisioningState property: The
-     * ServiceProviderProvisioningState state of the resource.
+     * Set the serviceProviderProvisioningState property: The provisioning
+     * state of the circuit in the connectivity provider system.
      * 
      * @param serviceProviderProvisioningState the
      * serviceProviderProvisioningState value to set.

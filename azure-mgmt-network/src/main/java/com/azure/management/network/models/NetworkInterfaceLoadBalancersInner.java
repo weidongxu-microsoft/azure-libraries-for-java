@@ -59,13 +59,13 @@ public final class NetworkInterfaceLoadBalancersInner {
     @Host("{$host}")
     @ServiceInterface(name = "NetworkManagementClientNetworkInterfaceLoadBalancers")
     private interface NetworkInterfaceLoadBalancersService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/loadBalancers")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<NetworkInterfaceLoadBalancerListResultInner>> list(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkInterfaceName") String networkInterfaceName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)

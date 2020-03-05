@@ -15,13 +15,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class ErrorResponse {
     /*
-     * Common error details representation.
+     * The error details object.
      */
     @JsonProperty(value = "error")
     private ErrorDetails error;
 
     /**
-     * Get the error property: Common error details representation.
+     * Get the error property: The error details object.
      * 
      * @return the error value.
      */
@@ -30,7 +30,7 @@ public final class ErrorResponse {
     }
 
     /**
-     * Set the error property: Common error details representation.
+     * Set the error property: The error details object.
      * 
      * @param error the error value to set.
      * @return the ErrorResponse object itself.

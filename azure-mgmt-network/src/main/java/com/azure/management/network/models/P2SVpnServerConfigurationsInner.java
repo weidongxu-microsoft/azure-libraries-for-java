@@ -66,43 +66,43 @@ public final class P2SVpnServerConfigurationsInner {
     @Host("{$host}")
     @ServiceInterface(name = "NetworkManagementClientP2SVpnServerConfigurations")
     private interface P2SVpnServerConfigurationsService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWanName}/p2sVpnServerConfigurations/{p2SVpnServerConfigurationName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorException.class)
         Mono<SimpleResponse<P2SVpnServerConfigurationInner>> get(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualWanName") String virtualWanName, @PathParam("p2SVpnServerConfigurationName") String p2SVpnServerConfigurationName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWanName}/p2sVpnServerConfigurations/{p2SVpnServerConfigurationName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualWanName") String virtualWanName, @PathParam("p2SVpnServerConfigurationName") String p2SVpnServerConfigurationName, @BodyParam("application/json") P2SVpnServerConfigurationInner p2SVpnServerConfigurationParameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualWanName") String virtualWanName, @PathParam("p2SVpnServerConfigurationName") String p2SVpnServerConfigurationName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") P2SVpnServerConfigurationInner p2SVpnServerConfigurationParameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWanName}/p2sVpnServerConfigurations/{p2SVpnServerConfigurationName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(ErrorException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualWanName") String virtualWanName, @PathParam("p2SVpnServerConfigurationName") String p2SVpnServerConfigurationName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWanName}/p2sVpnServerConfigurations")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorException.class)
         Mono<SimpleResponse<ListP2SVpnServerConfigurationsResultInner>> listByVirtualWan(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualWanName") String virtualWanName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWanName}/p2sVpnServerConfigurations/{p2SVpnServerConfigurationName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<P2SVpnServerConfigurationInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualWanName") String virtualWanName, @PathParam("p2SVpnServerConfigurationName") String p2SVpnServerConfigurationName, @BodyParam("application/json") P2SVpnServerConfigurationInner p2SVpnServerConfigurationParameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<P2SVpnServerConfigurationInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualWanName") String virtualWanName, @PathParam("p2SVpnServerConfigurationName") String p2SVpnServerConfigurationName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") P2SVpnServerConfigurationInner p2SVpnServerConfigurationParameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWanName}/p2sVpnServerConfigurations/{p2SVpnServerConfigurationName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(ErrorException.class)
         Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualWanName") String virtualWanName, @PathParam("p2SVpnServerConfigurationName") String p2SVpnServerConfigurationName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorException.class)
@@ -176,7 +176,7 @@ public final class P2SVpnServerConfigurationsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String virtualWanName, String p2SVpnServerConfigurationName, P2SVpnServerConfigurationInner p2SVpnServerConfigurationParameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWanName, p2SVpnServerConfigurationName, p2SVpnServerConfigurationParameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWanName, p2SVpnServerConfigurationName, apiVersion, p2SVpnServerConfigurationParameters);
     }
 
     /**
@@ -328,7 +328,7 @@ public final class P2SVpnServerConfigurationsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<P2SVpnServerConfigurationInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String virtualWanName, String p2SVpnServerConfigurationName, P2SVpnServerConfigurationInner p2SVpnServerConfigurationParameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWanName, p2SVpnServerConfigurationName, p2SVpnServerConfigurationParameters, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWanName, p2SVpnServerConfigurationName, apiVersion, p2SVpnServerConfigurationParameters);
     }
 
     /**

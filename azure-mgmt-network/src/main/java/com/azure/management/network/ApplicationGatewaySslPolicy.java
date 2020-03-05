@@ -28,7 +28,7 @@ public final class ApplicationGatewaySslPolicy {
     private ApplicationGatewaySslPolicyType policyType;
 
     /*
-     * Ssl predefined policy name enums.
+     * Name of Ssl predefined policy.
      */
     @JsonProperty(value = "policyName")
     private ApplicationGatewaySslPolicyName policyName;
@@ -41,7 +41,7 @@ public final class ApplicationGatewaySslPolicy {
     private List<ApplicationGatewaySslCipherSuite> cipherSuites;
 
     /*
-     * Ssl protocol enums.
+     * Minimum version of Ssl protocol to be supported on application gateway.
      */
     @JsonProperty(value = "minProtocolVersion")
     private ApplicationGatewaySslProtocol minProtocolVersion;
@@ -89,7 +89,7 @@ public final class ApplicationGatewaySslPolicy {
     }
 
     /**
-     * Get the policyName property: Ssl predefined policy name enums.
+     * Get the policyName property: Name of Ssl predefined policy.
      * 
      * @return the policyName value.
      */
@@ -98,7 +98,7 @@ public final class ApplicationGatewaySslPolicy {
     }
 
     /**
-     * Set the policyName property: Ssl predefined policy name enums.
+     * Set the policyName property: Name of Ssl predefined policy.
      * 
      * @param policyName the policyName value to set.
      * @return the ApplicationGatewaySslPolicy object itself.
@@ -131,7 +131,8 @@ public final class ApplicationGatewaySslPolicy {
     }
 
     /**
-     * Get the minProtocolVersion property: Ssl protocol enums.
+     * Get the minProtocolVersion property: Minimum version of Ssl protocol to
+     * be supported on application gateway.
      * 
      * @return the minProtocolVersion value.
      */
@@ -140,7 +141,8 @@ public final class ApplicationGatewaySslPolicy {
     }
 
     /**
-     * Set the minProtocolVersion property: Ssl protocol enums.
+     * Set the minProtocolVersion property: Minimum version of Ssl protocol to
+     * be supported on application gateway.
      * 
      * @param minProtocolVersion the minProtocolVersion value to set.
      * @return the ApplicationGatewaySslPolicy object itself.

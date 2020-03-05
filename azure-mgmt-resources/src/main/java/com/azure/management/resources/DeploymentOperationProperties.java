@@ -52,19 +52,19 @@ public final class DeploymentOperationProperties {
     private Object statusMessage;
 
     /*
-     * Target resource.
+     * The target resource.
      */
     @JsonProperty(value = "targetResource", access = JsonProperty.Access.WRITE_ONLY)
     private TargetResource targetResource;
 
     /*
-     * HTTP message.
+     * The HTTP request message.
      */
     @JsonProperty(value = "request", access = JsonProperty.Access.WRITE_ONLY)
     private HttpMessage request;
 
     /*
-     * HTTP message.
+     * The HTTP response message.
      */
     @JsonProperty(value = "response", access = JsonProperty.Access.WRITE_ONLY)
     private HttpMessage response;
@@ -125,7 +125,7 @@ public final class DeploymentOperationProperties {
     }
 
     /**
-     * Get the targetResource property: Target resource.
+     * Get the targetResource property: The target resource.
      * 
      * @return the targetResource value.
      */
@@ -134,7 +134,7 @@ public final class DeploymentOperationProperties {
     }
 
     /**
-     * Get the request property: HTTP message.
+     * Get the request property: The HTTP request message.
      * 
      * @return the request value.
      */
@@ -143,7 +143,7 @@ public final class DeploymentOperationProperties {
     }
 
     /**
-     * Get the response property: HTTP message.
+     * Get the response property: The HTTP response message.
      * 
      * @return the response value.
      */

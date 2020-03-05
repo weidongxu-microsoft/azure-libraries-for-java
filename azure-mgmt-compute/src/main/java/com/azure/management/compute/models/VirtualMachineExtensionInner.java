@@ -73,7 +73,7 @@ public class VirtualMachineExtensionInner extends Resource {
     private String provisioningState;
 
     /*
-     * The instance view of a virtual machine extension.
+     * The virtual machine extension instance view.
      */
     @JsonProperty(value = "properties.instanceView")
     private VirtualMachineExtensionInstanceView instanceView;
@@ -247,8 +247,8 @@ public class VirtualMachineExtensionInner extends Resource {
     }
 
     /**
-     * Get the instanceView property: The instance view of a virtual machine
-     * extension.
+     * Get the instanceView property: The virtual machine extension instance
+     * view.
      * 
      * @return the instanceView value.
      */
@@ -257,8 +257,8 @@ public class VirtualMachineExtensionInner extends Resource {
     }
 
     /**
-     * Set the instanceView property: The instance view of a virtual machine
-     * extension.
+     * Set the instanceView property: The virtual machine extension instance
+     * view.
      * 
      * @param instanceView the instanceView value to set.
      * @return the VirtualMachineExtensionInner object itself.

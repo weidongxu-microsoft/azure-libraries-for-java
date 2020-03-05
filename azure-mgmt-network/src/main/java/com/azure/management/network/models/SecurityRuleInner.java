@@ -114,7 +114,7 @@ public class SecurityRuleInner extends SubResource {
     private List<String> destinationPortRanges;
 
     /*
-     * Whether network traffic is allowed or denied.
+     * The network traffic is allowed or denied.
      */
     @JsonProperty(value = "properties.access")
     private SecurityRuleAccess access;
@@ -460,7 +460,7 @@ public class SecurityRuleInner extends SubResource {
     }
 
     /**
-     * Get the access property: Whether network traffic is allowed or denied.
+     * Get the access property: The network traffic is allowed or denied.
      * 
      * @return the access value.
      */
@@ -469,7 +469,7 @@ public class SecurityRuleInner extends SubResource {
     }
 
     /**
-     * Set the access property: Whether network traffic is allowed or denied.
+     * Set the access property: The network traffic is allowed or denied.
      * 
      * @param access the access value to set.
      * @return the SecurityRuleInner object itself.

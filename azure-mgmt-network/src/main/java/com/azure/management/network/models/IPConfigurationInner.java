@@ -38,19 +38,19 @@ public class IPConfigurationInner extends SubResource {
     private String privateIPAddress;
 
     /*
-     * IP address allocation method.
+     * The private IP address allocation method.
      */
     @JsonProperty(value = "properties.privateIPAllocationMethod")
     private IPAllocationMethod privateIPAllocationMethod;
 
     /*
-     * Subnet in a virtual network resource.
+     * The reference of the subnet resource.
      */
     @JsonProperty(value = "properties.subnet")
     private SubnetInner subnet;
 
     /*
-     * Public IP address resource.
+     * The reference of the public IP resource.
      */
     @JsonProperty(value = "properties.publicIPAddress")
     private PublicIPAddressInner publicIPAddress;
@@ -129,8 +129,8 @@ public class IPConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the privateIPAllocationMethod property: IP address allocation
-     * method.
+     * Get the privateIPAllocationMethod property: The private IP address
+     * allocation method.
      * 
      * @return the privateIPAllocationMethod value.
      */
@@ -139,8 +139,8 @@ public class IPConfigurationInner extends SubResource {
     }
 
     /**
-     * Set the privateIPAllocationMethod property: IP address allocation
-     * method.
+     * Set the privateIPAllocationMethod property: The private IP address
+     * allocation method.
      * 
      * @param privateIPAllocationMethod the privateIPAllocationMethod value to
      * set.
@@ -152,7 +152,7 @@ public class IPConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the subnet property: Subnet in a virtual network resource.
+     * Get the subnet property: The reference of the subnet resource.
      * 
      * @return the subnet value.
      */
@@ -161,7 +161,7 @@ public class IPConfigurationInner extends SubResource {
     }
 
     /**
-     * Set the subnet property: Subnet in a virtual network resource.
+     * Set the subnet property: The reference of the subnet resource.
      * 
      * @param subnet the subnet value to set.
      * @return the IPConfigurationInner object itself.
@@ -172,7 +172,8 @@ public class IPConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the publicIPAddress property: Public IP address resource.
+     * Get the publicIPAddress property: The reference of the public IP
+     * resource.
      * 
      * @return the publicIPAddress value.
      */
@@ -181,7 +182,8 @@ public class IPConfigurationInner extends SubResource {
     }
 
     /**
-     * Set the publicIPAddress property: Public IP address resource.
+     * Set the publicIPAddress property: The reference of the public IP
+     * resource.
      * 
      * @param publicIPAddress the publicIPAddress value to set.
      * @return the IPConfigurationInner object itself.

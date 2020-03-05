@@ -26,8 +26,7 @@ public class LocalNetworkGatewayInner extends Resource {
     private String etag;
 
     /*
-     * AddressSpace contains an array of IP address ranges that can be used by
-     * subnets of the virtual network.
+     * Local network site address space.
      */
     @JsonProperty(value = "properties.localNetworkAddressSpace")
     private AddressSpace localNetworkAddressSpace;
@@ -39,7 +38,7 @@ public class LocalNetworkGatewayInner extends Resource {
     private String gatewayIpAddress;
 
     /*
-     * BGP settings details.
+     * Local network gateway's BGP speaker settings.
      */
     @JsonProperty(value = "properties.bgpSettings")
     private BgpSettings bgpSettings;
@@ -86,9 +85,8 @@ public class LocalNetworkGatewayInner extends Resource {
     }
 
     /**
-     * Get the localNetworkAddressSpace property: AddressSpace contains an
-     * array of IP address ranges that can be used by subnets of the virtual
-     * network.
+     * Get the localNetworkAddressSpace property: Local network site address
+     * space.
      * 
      * @return the localNetworkAddressSpace value.
      */
@@ -97,9 +95,8 @@ public class LocalNetworkGatewayInner extends Resource {
     }
 
     /**
-     * Set the localNetworkAddressSpace property: AddressSpace contains an
-     * array of IP address ranges that can be used by subnets of the virtual
-     * network.
+     * Set the localNetworkAddressSpace property: Local network site address
+     * space.
      * 
      * @param localNetworkAddressSpace the localNetworkAddressSpace value to
      * set.
@@ -131,7 +128,8 @@ public class LocalNetworkGatewayInner extends Resource {
     }
 
     /**
-     * Get the bgpSettings property: BGP settings details.
+     * Get the bgpSettings property: Local network gateway's BGP speaker
+     * settings.
      * 
      * @return the bgpSettings value.
      */
@@ -140,7 +138,8 @@ public class LocalNetworkGatewayInner extends Resource {
     }
 
     /**
-     * Set the bgpSettings property: BGP settings details.
+     * Set the bgpSettings property: Local network gateway's BGP speaker
+     * settings.
      * 
      * @param bgpSettings the bgpSettings value to set.
      * @return the LocalNetworkGatewayInner object itself.

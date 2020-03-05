@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Immutable
 public final class UpgradeOperationHistoricalStatusInfoInner {
     /*
-     * Describes each OS upgrade on the Virtual Machine Scale Set.
+     * Information about the properties of the upgrade operation.
      */
     @JsonProperty(value = "properties", access = JsonProperty.Access.WRITE_ONLY)
     private UpgradeOperationHistoricalStatusInfoProperties properties;
@@ -34,8 +34,8 @@ public final class UpgradeOperationHistoricalStatusInfoInner {
     private String location;
 
     /**
-     * Get the properties property: Describes each OS upgrade on the Virtual
-     * Machine Scale Set.
+     * Get the properties property: Information about the properties of the
+     * upgrade operation.
      * 
      * @return the properties value.
      */

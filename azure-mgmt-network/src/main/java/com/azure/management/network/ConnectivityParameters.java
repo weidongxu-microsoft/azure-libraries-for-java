@@ -15,13 +15,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class ConnectivityParameters {
     /*
-     * Parameters that define the source of the connection.
+     * Describes the source of the connection.
      */
     @JsonProperty(value = "source", required = true)
     private ConnectivitySource source;
 
     /*
-     * Parameters that define destination of connection.
+     * Describes the destination of connection.
      */
     @JsonProperty(value = "destination", required = true)
     private ConnectivityDestination destination;
@@ -39,8 +39,7 @@ public final class ConnectivityParameters {
     private ProtocolConfiguration protocolConfiguration;
 
     /**
-     * Get the source property: Parameters that define the source of the
-     * connection.
+     * Get the source property: Describes the source of the connection.
      * 
      * @return the source value.
      */
@@ -49,8 +48,7 @@ public final class ConnectivityParameters {
     }
 
     /**
-     * Set the source property: Parameters that define the source of the
-     * connection.
+     * Set the source property: Describes the source of the connection.
      * 
      * @param source the source value to set.
      * @return the ConnectivityParameters object itself.
@@ -61,8 +59,7 @@ public final class ConnectivityParameters {
     }
 
     /**
-     * Get the destination property: Parameters that define destination of
-     * connection.
+     * Get the destination property: Describes the destination of connection.
      * 
      * @return the destination value.
      */
@@ -71,8 +68,7 @@ public final class ConnectivityParameters {
     }
 
     /**
-     * Set the destination property: Parameters that define destination of
-     * connection.
+     * Set the destination property: Describes the destination of connection.
      * 
      * @param destination the destination value to set.
      * @return the ConnectivityParameters object itself.

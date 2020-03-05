@@ -21,26 +21,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public class FileServicePropertiesInner extends ProxyResource {
     /*
-     * The SKU of the storage account.
+     * Sku name and tier.
      */
     @JsonProperty(value = "sku", access = JsonProperty.Access.WRITE_ONLY)
     private Sku sku;
 
     /*
-     * Sets the CORS rules. You can include up to five CorsRule elements in the
-     * request.
+     * Specifies CORS rules for the File service. You can include up to five
+     * CorsRule elements in the request. If no CorsRule elements are included
+     * in the request body, all CORS rules will be deleted, and CORS will be
+     * disabled for the File service.
      */
     @JsonProperty(value = "properties.cors")
     private CorsRules cors;
 
     /*
-     * The service properties for soft delete.
+     * The file service properties for share soft delete.
      */
     @JsonProperty(value = "properties.shareDeleteRetentionPolicy")
     private DeleteRetentionPolicy shareDeleteRetentionPolicy;
 
     /**
-     * Get the sku property: The SKU of the storage account.
+     * Get the sku property: Sku name and tier.
      * 
      * @return the sku value.
      */
@@ -49,8 +51,10 @@ public class FileServicePropertiesInner extends ProxyResource {
     }
 
     /**
-     * Get the cors property: Sets the CORS rules. You can include up to five
-     * CorsRule elements in the request.
+     * Get the cors property: Specifies CORS rules for the File service. You
+     * can include up to five CorsRule elements in the request. If no CorsRule
+     * elements are included in the request body, all CORS rules will be
+     * deleted, and CORS will be disabled for the File service.
      * 
      * @return the cors value.
      */
@@ -59,8 +63,10 @@ public class FileServicePropertiesInner extends ProxyResource {
     }
 
     /**
-     * Set the cors property: Sets the CORS rules. You can include up to five
-     * CorsRule elements in the request.
+     * Set the cors property: Specifies CORS rules for the File service. You
+     * can include up to five CorsRule elements in the request. If no CorsRule
+     * elements are included in the request body, all CORS rules will be
+     * deleted, and CORS will be disabled for the File service.
      * 
      * @param cors the cors value to set.
      * @return the FileServicePropertiesInner object itself.
@@ -71,8 +77,8 @@ public class FileServicePropertiesInner extends ProxyResource {
     }
 
     /**
-     * Get the shareDeleteRetentionPolicy property: The service properties for
-     * soft delete.
+     * Get the shareDeleteRetentionPolicy property: The file service properties
+     * for share soft delete.
      * 
      * @return the shareDeleteRetentionPolicy value.
      */
@@ -81,8 +87,8 @@ public class FileServicePropertiesInner extends ProxyResource {
     }
 
     /**
-     * Set the shareDeleteRetentionPolicy property: The service properties for
-     * soft delete.
+     * Set the shareDeleteRetentionPolicy property: The file service properties
+     * for share soft delete.
      * 
      * @param shareDeleteRetentionPolicy the shareDeleteRetentionPolicy value
      * to set.

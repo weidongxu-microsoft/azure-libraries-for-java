@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class FirewallPolicyRuleConditionApplicationProtocol {
     /*
-     * The application protocol type of a Rule condition.
+     * Protocol type
      */
     @JsonProperty(value = "protocolType")
     private FirewallPolicyRuleConditionApplicationProtocolType protocolType;
@@ -27,8 +27,7 @@ public final class FirewallPolicyRuleConditionApplicationProtocol {
     private Integer port;
 
     /**
-     * Get the protocolType property: The application protocol type of a Rule
-     * condition.
+     * Get the protocolType property: Protocol type.
      * 
      * @return the protocolType value.
      */
@@ -37,8 +36,7 @@ public final class FirewallPolicyRuleConditionApplicationProtocol {
     }
 
     /**
-     * Set the protocolType property: The application protocol type of a Rule
-     * condition.
+     * Set the protocolType property: Protocol type.
      * 
      * @param protocolType the protocolType value to set.
      * @return the FirewallPolicyRuleConditionApplicationProtocol object

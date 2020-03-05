@@ -34,7 +34,7 @@ public class ApplicationGatewaySslPredefinedPolicyInner extends SubResource {
     private List<ApplicationGatewaySslCipherSuite> cipherSuites;
 
     /*
-     * Ssl protocol enums.
+     * Minimum version of Ssl protocol to be supported on application gateway.
      */
     @JsonProperty(value = "properties.minProtocolVersion")
     private ApplicationGatewaySslProtocol minProtocolVersion;
@@ -82,7 +82,8 @@ public class ApplicationGatewaySslPredefinedPolicyInner extends SubResource {
     }
 
     /**
-     * Get the minProtocolVersion property: Ssl protocol enums.
+     * Get the minProtocolVersion property: Minimum version of Ssl protocol to
+     * be supported on application gateway.
      * 
      * @return the minProtocolVersion value.
      */
@@ -91,7 +92,8 @@ public class ApplicationGatewaySslPredefinedPolicyInner extends SubResource {
     }
 
     /**
-     * Set the minProtocolVersion property: Ssl protocol enums.
+     * Set the minProtocolVersion property: Minimum version of Ssl protocol to
+     * be supported on application gateway.
      * 
      * @param minProtocolVersion the minProtocolVersion value to set.
      * @return the ApplicationGatewaySslPredefinedPolicyInner object itself.

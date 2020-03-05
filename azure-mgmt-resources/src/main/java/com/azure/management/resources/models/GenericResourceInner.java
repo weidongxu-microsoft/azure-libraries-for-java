@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public class GenericResourceInner extends Resource {
     /*
-     * Plan for the resource.
+     * The plan of the resource.
      */
     @JsonProperty(value = "plan")
     private Plan plan;
@@ -43,19 +43,19 @@ public class GenericResourceInner extends Resource {
     private String managedBy;
 
     /*
-     * SKU for the resource.
+     * The SKU of the resource.
      */
     @JsonProperty(value = "sku")
     private Sku sku;
 
     /*
-     * Identity for the resource.
+     * The identity of the resource.
      */
     @JsonProperty(value = "identity")
     private Identity identity;
 
     /**
-     * Get the plan property: Plan for the resource.
+     * Get the plan property: The plan of the resource.
      * 
      * @return the plan value.
      */
@@ -64,7 +64,7 @@ public class GenericResourceInner extends Resource {
     }
 
     /**
-     * Set the plan property: Plan for the resource.
+     * Set the plan property: The plan of the resource.
      * 
      * @param plan the plan value to set.
      * @return the GenericResourceInner object itself.
@@ -137,7 +137,7 @@ public class GenericResourceInner extends Resource {
     }
 
     /**
-     * Get the sku property: SKU for the resource.
+     * Get the sku property: The SKU of the resource.
      * 
      * @return the sku value.
      */
@@ -146,7 +146,7 @@ public class GenericResourceInner extends Resource {
     }
 
     /**
-     * Set the sku property: SKU for the resource.
+     * Set the sku property: The SKU of the resource.
      * 
      * @param sku the sku value to set.
      * @return the GenericResourceInner object itself.
@@ -157,7 +157,7 @@ public class GenericResourceInner extends Resource {
     }
 
     /**
-     * Get the identity property: Identity for the resource.
+     * Get the identity property: The identity of the resource.
      * 
      * @return the identity value.
      */
@@ -166,7 +166,7 @@ public class GenericResourceInner extends Resource {
     }
 
     /**
-     * Set the identity property: Identity for the resource.
+     * Set the identity property: The identity of the resource.
      * 
      * @param identity the identity value to set.
      * @return the GenericResourceInner object itself.

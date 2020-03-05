@@ -34,7 +34,7 @@ public class CustomHostnameAnalysisResultInner extends ProxyOnlyResource {
     private DnsVerificationTestResult customDomainVerificationTest;
 
     /*
-     * Body of the error response returned from the API.
+     * Raw failure information if DNS verification fails.
      */
     @JsonProperty(value = "properties.customDomainVerificationFailureInfo", access = JsonProperty.Access.WRITE_ONLY)
     private ErrorEntity customDomainVerificationFailureInfo;
@@ -112,8 +112,8 @@ public class CustomHostnameAnalysisResultInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the customDomainVerificationFailureInfo property: Body of the error
-     * response returned from the API.
+     * Get the customDomainVerificationFailureInfo property: Raw failure
+     * information if DNS verification fails.
      * 
      * @return the customDomainVerificationFailureInfo value.
      */

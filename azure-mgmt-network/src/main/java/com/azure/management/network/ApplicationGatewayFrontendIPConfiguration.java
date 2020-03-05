@@ -43,19 +43,19 @@ public class ApplicationGatewayFrontendIPConfiguration extends SubResource {
     private String privateIPAddress;
 
     /*
-     * IP address allocation method.
+     * The private IP address allocation method.
      */
     @JsonProperty(value = "properties.privateIPAllocationMethod")
     private IPAllocationMethod privateIPAllocationMethod;
 
     /*
-     * Reference to another subresource.
+     * Reference of the subnet resource.
      */
     @JsonProperty(value = "properties.subnet")
     private SubResource subnet;
 
     /*
-     * Reference to another subresource.
+     * Reference of the PublicIP resource.
      */
     @JsonProperty(value = "properties.publicIPAddress")
     private SubResource publicIPAddress;
@@ -154,8 +154,8 @@ public class ApplicationGatewayFrontendIPConfiguration extends SubResource {
     }
 
     /**
-     * Get the privateIPAllocationMethod property: IP address allocation
-     * method.
+     * Get the privateIPAllocationMethod property: The private IP address
+     * allocation method.
      * 
      * @return the privateIPAllocationMethod value.
      */
@@ -164,8 +164,8 @@ public class ApplicationGatewayFrontendIPConfiguration extends SubResource {
     }
 
     /**
-     * Set the privateIPAllocationMethod property: IP address allocation
-     * method.
+     * Set the privateIPAllocationMethod property: The private IP address
+     * allocation method.
      * 
      * @param privateIPAllocationMethod the privateIPAllocationMethod value to
      * set.
@@ -177,7 +177,7 @@ public class ApplicationGatewayFrontendIPConfiguration extends SubResource {
     }
 
     /**
-     * Get the subnet property: Reference to another subresource.
+     * Get the subnet property: Reference of the subnet resource.
      * 
      * @return the subnet value.
      */
@@ -186,7 +186,7 @@ public class ApplicationGatewayFrontendIPConfiguration extends SubResource {
     }
 
     /**
-     * Set the subnet property: Reference to another subresource.
+     * Set the subnet property: Reference of the subnet resource.
      * 
      * @param subnet the subnet value to set.
      * @return the ApplicationGatewayFrontendIPConfiguration object itself.
@@ -197,7 +197,7 @@ public class ApplicationGatewayFrontendIPConfiguration extends SubResource {
     }
 
     /**
-     * Get the publicIPAddress property: Reference to another subresource.
+     * Get the publicIPAddress property: Reference of the PublicIP resource.
      * 
      * @return the publicIPAddress value.
      */
@@ -206,7 +206,7 @@ public class ApplicationGatewayFrontendIPConfiguration extends SubResource {
     }
 
     /**
-     * Set the publicIPAddress property: Reference to another subresource.
+     * Set the publicIPAddress property: Reference of the PublicIP resource.
      * 
      * @param publicIPAddress the publicIPAddress value to set.
      * @return the ApplicationGatewayFrontendIPConfiguration object itself.

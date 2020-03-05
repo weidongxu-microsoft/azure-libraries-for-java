@@ -16,7 +16,10 @@ import java.util.List;
 @Fluent
 public final class ImageStorageProfile {
     /*
-     * Describes an Operating System disk.
+     * Specifies information about the operating system disk used by the
+     * virtual machine. <br><br> For more information about disks, see [About
+     * disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
      */
     @JsonProperty(value = "osDisk")
     private ImageOSDisk osDisk;
@@ -39,7 +42,10 @@ public final class ImageStorageProfile {
     private Boolean zoneResilient;
 
     /**
-     * Get the osDisk property: Describes an Operating System disk.
+     * Get the osDisk property: Specifies information about the operating
+     * system disk used by the virtual machine. &lt;br&gt;&lt;br&gt; For more
+     * information about disks, see [About disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
      * 
      * @return the osDisk value.
      */
@@ -48,7 +54,10 @@ public final class ImageStorageProfile {
     }
 
     /**
-     * Set the osDisk property: Describes an Operating System disk.
+     * Set the osDisk property: Specifies information about the operating
+     * system disk used by the virtual machine. &lt;br&gt;&lt;br&gt; For more
+     * information about disks, see [About disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
      * 
      * @param osDisk the osDisk value to set.
      * @return the ImageStorageProfile object itself.

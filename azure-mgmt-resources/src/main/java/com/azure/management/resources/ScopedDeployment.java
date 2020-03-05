@@ -21,7 +21,7 @@ public final class ScopedDeployment {
     private String location;
 
     /*
-     * Deployment properties.
+     * The deployment properties.
      */
     @JsonProperty(value = "properties", required = true)
     private DeploymentProperties properties;
@@ -47,7 +47,7 @@ public final class ScopedDeployment {
     }
 
     /**
-     * Get the properties property: Deployment properties.
+     * Get the properties property: The deployment properties.
      * 
      * @return the properties value.
      */
@@ -56,7 +56,7 @@ public final class ScopedDeployment {
     }
 
     /**
-     * Set the properties property: Deployment properties.
+     * Set the properties property: The deployment properties.
      * 
      * @param properties the properties value to set.
      * @return the ScopedDeployment object itself.

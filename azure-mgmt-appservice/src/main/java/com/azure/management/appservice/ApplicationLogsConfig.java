@@ -21,13 +21,13 @@ public final class ApplicationLogsConfig {
     private FileSystemApplicationLogsConfig fileSystem;
 
     /*
-     * Application logs to Azure table storage configuration.
+     * Application logs to azure table storage configuration.
      */
     @JsonProperty(value = "azureTableStorage")
     private AzureTableStorageApplicationLogsConfig azureTableStorage;
 
     /*
-     * Application logs azure blob storage configuration.
+     * Application logs to blob storage configuration.
      */
     @JsonProperty(value = "azureBlobStorage")
     private AzureBlobStorageApplicationLogsConfig azureBlobStorage;
@@ -55,7 +55,7 @@ public final class ApplicationLogsConfig {
     }
 
     /**
-     * Get the azureTableStorage property: Application logs to Azure table
+     * Get the azureTableStorage property: Application logs to azure table
      * storage configuration.
      * 
      * @return the azureTableStorage value.
@@ -65,7 +65,7 @@ public final class ApplicationLogsConfig {
     }
 
     /**
-     * Set the azureTableStorage property: Application logs to Azure table
+     * Set the azureTableStorage property: Application logs to azure table
      * storage configuration.
      * 
      * @param azureTableStorage the azureTableStorage value to set.
@@ -77,7 +77,7 @@ public final class ApplicationLogsConfig {
     }
 
     /**
-     * Get the azureBlobStorage property: Application logs azure blob storage
+     * Get the azureBlobStorage property: Application logs to blob storage
      * configuration.
      * 
      * @return the azureBlobStorage value.
@@ -87,7 +87,7 @@ public final class ApplicationLogsConfig {
     }
 
     /**
-     * Set the azureBlobStorage property: Application logs azure blob storage
+     * Set the azureBlobStorage property: Application logs to blob storage
      * configuration.
      * 
      * @param azureBlobStorage the azureBlobStorage value to set.

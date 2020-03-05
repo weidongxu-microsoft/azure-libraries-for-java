@@ -38,7 +38,7 @@ public class PrivateLinkServiceConnection extends SubResource {
     private String etag;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the private link service connection.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -64,8 +64,8 @@ public class PrivateLinkServiceConnection extends SubResource {
     private String requestMessage;
 
     /*
-     * A collection of information about the state of the connection between
-     * service consumer and provider.
+     * A collection of read-only information about the state of the connection
+     * to the remote resource.
      */
     @JsonProperty(value = "properties.privateLinkServiceConnectionState")
     private PrivateLinkServiceConnectionState privateLinkServiceConnectionState;
@@ -112,7 +112,8 @@ public class PrivateLinkServiceConnection extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * private link service connection.
      * 
      * @return the provisioningState value.
      */
@@ -121,7 +122,8 @@ public class PrivateLinkServiceConnection extends SubResource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * private link service connection.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the PrivateLinkServiceConnection object itself.
@@ -199,8 +201,8 @@ public class PrivateLinkServiceConnection extends SubResource {
 
     /**
      * Get the privateLinkServiceConnectionState property: A collection of
-     * information about the state of the connection between service consumer
-     * and provider.
+     * read-only information about the state of the connection to the remote
+     * resource.
      * 
      * @return the privateLinkServiceConnectionState value.
      */
@@ -210,8 +212,8 @@ public class PrivateLinkServiceConnection extends SubResource {
 
     /**
      * Set the privateLinkServiceConnectionState property: A collection of
-     * information about the state of the connection between service consumer
-     * and provider.
+     * read-only information about the state of the connection to the remote
+     * resource.
      * 
      * @param privateLinkServiceConnectionState the
      * privateLinkServiceConnectionState value to set.

@@ -22,7 +22,7 @@ import java.util.UUID;
 @Fluent
 public class SyncMemberInner extends ProxyResource {
     /*
-     * Type of the sync agent linked database.
+     * Database type of the sync member.
      */
     @JsonProperty(value = "properties.databaseType")
     private SyncMemberDbType databaseType;
@@ -76,7 +76,7 @@ public class SyncMemberInner extends ProxyResource {
     private SyncMemberState syncState;
 
     /**
-     * Get the databaseType property: Type of the sync agent linked database.
+     * Get the databaseType property: Database type of the sync member.
      * 
      * @return the databaseType value.
      */
@@ -85,7 +85,7 @@ public class SyncMemberInner extends ProxyResource {
     }
 
     /**
-     * Set the databaseType property: Type of the sync agent linked database.
+     * Set the databaseType property: Database type of the sync member.
      * 
      * @param databaseType the databaseType value to set.
      * @return the SyncMemberInner object itself.

@@ -26,7 +26,7 @@ public class WhatIfOperationResultInner {
     private String status;
 
     /*
-     * The resource management error response.
+     * Error when What-If operation fails.
      */
     @JsonProperty(value = "error")
     private ErrorResponse error;
@@ -58,7 +58,7 @@ public class WhatIfOperationResultInner {
     }
 
     /**
-     * Get the error property: The resource management error response.
+     * Get the error property: Error when What-If operation fails.
      * 
      * @return the error value.
      */
@@ -67,7 +67,7 @@ public class WhatIfOperationResultInner {
     }
 
     /**
-     * Set the error property: The resource management error response.
+     * Set the error property: Error when What-If operation fails.
      * 
      * @param error the error value to set.
      * @return the WhatIfOperationResultInner object itself.

@@ -22,7 +22,7 @@ public final class NetworkIntentPolicyConfiguration {
     private String networkIntentPolicyName;
 
     /*
-     * Network Intent Policy resource.
+     * Source network intent policy.
      */
     @JsonProperty(value = "sourceNetworkIntentPolicy")
     private NetworkIntentPolicy sourceNetworkIntentPolicy;
@@ -50,8 +50,8 @@ public final class NetworkIntentPolicyConfiguration {
     }
 
     /**
-     * Get the sourceNetworkIntentPolicy property: Network Intent Policy
-     * resource.
+     * Get the sourceNetworkIntentPolicy property: Source network intent
+     * policy.
      * 
      * @return the sourceNetworkIntentPolicy value.
      */
@@ -60,8 +60,8 @@ public final class NetworkIntentPolicyConfiguration {
     }
 
     /**
-     * Set the sourceNetworkIntentPolicy property: Network Intent Policy
-     * resource.
+     * Set the sourceNetworkIntentPolicy property: Source network intent
+     * policy.
      * 
      * @param sourceNetworkIntentPolicy the sourceNetworkIntentPolicy value to
      * set.

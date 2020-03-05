@@ -15,13 +15,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class DeploymentWhatIfProperties extends DeploymentProperties {
     /*
-     * Deployment What-If operation settings.
+     * Optional What-If operation settings.
      */
     @JsonProperty(value = "whatIfSettings")
     private DeploymentWhatIfSettings whatIfSettings;
 
     /**
-     * Get the whatIfSettings property: Deployment What-If operation settings.
+     * Get the whatIfSettings property: Optional What-If operation settings.
      * 
      * @return the whatIfSettings value.
      */
@@ -30,7 +30,7 @@ public final class DeploymentWhatIfProperties extends DeploymentProperties {
     }
 
     /**
-     * Set the whatIfSettings property: Deployment What-If operation settings.
+     * Set the whatIfSettings property: Optional What-If operation settings.
      * 
      * @param whatIfSettings the whatIfSettings value to set.
      * @return the DeploymentWhatIfProperties object itself.

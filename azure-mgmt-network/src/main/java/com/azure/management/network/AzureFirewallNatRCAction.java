@@ -15,13 +15,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class AzureFirewallNatRCAction {
     /*
-     * The action type of a NAT rule collection.
+     * The type of action.
      */
     @JsonProperty(value = "type")
     private AzureFirewallNatRCActionType type;
 
     /**
-     * Get the type property: The action type of a NAT rule collection.
+     * Get the type property: The type of action.
      * 
      * @return the type value.
      */
@@ -30,7 +30,7 @@ public final class AzureFirewallNatRCAction {
     }
 
     /**
-     * Set the type property: The action type of a NAT rule collection.
+     * Set the type property: The type of action.
      * 
      * @param type the type value to set.
      * @return the AzureFirewallNatRCAction object itself.

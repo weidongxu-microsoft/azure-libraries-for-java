@@ -39,7 +39,7 @@ public class ServerKeyInner extends ProxyResource {
     private String subregion;
 
     /*
-     * The key type like 'ServiceManaged', 'AzureKeyVault'.
+     * The server key type like 'ServiceManaged', 'AzureKeyVault'.
      */
     @JsonProperty(value = "properties.serverKeyType")
     private ServerKeyType serverKeyType;
@@ -103,8 +103,8 @@ public class ServerKeyInner extends ProxyResource {
     }
 
     /**
-     * Get the serverKeyType property: The key type like 'ServiceManaged',
-     * 'AzureKeyVault'.
+     * Get the serverKeyType property: The server key type like
+     * 'ServiceManaged', 'AzureKeyVault'.
      * 
      * @return the serverKeyType value.
      */
@@ -113,8 +113,8 @@ public class ServerKeyInner extends ProxyResource {
     }
 
     /**
-     * Set the serverKeyType property: The key type like 'ServiceManaged',
-     * 'AzureKeyVault'.
+     * Set the serverKeyType property: The server key type like
+     * 'ServiceManaged', 'AzureKeyVault'.
      * 
      * @param serverKeyType the serverKeyType value to set.
      * @return the ServerKeyInner object itself.

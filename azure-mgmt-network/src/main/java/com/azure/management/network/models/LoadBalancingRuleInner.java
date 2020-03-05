@@ -40,25 +40,27 @@ public class LoadBalancingRuleInner extends SubResource {
     private String type;
 
     /*
-     * Reference to another subresource.
+     * A reference to frontend IP addresses.
      */
     @JsonProperty(value = "properties.frontendIPConfiguration")
     private SubResource frontendIPConfiguration;
 
     /*
-     * Reference to another subresource.
+     * A reference to a pool of DIPs. Inbound traffic is randomly load balanced
+     * across IPs in the backend IPs.
      */
     @JsonProperty(value = "properties.backendAddressPool")
     private SubResource backendAddressPool;
 
     /*
-     * Reference to another subresource.
+     * The reference of the load balancer probe used by the load balancing
+     * rule.
      */
     @JsonProperty(value = "properties.probe")
     private SubResource probe;
 
     /*
-     * The transport protocol for the endpoint.
+     * The reference to the transport protocol used by the load balancing rule.
      */
     @JsonProperty(value = "properties.protocol")
     private TransportProtocol protocol;
@@ -179,8 +181,8 @@ public class LoadBalancingRuleInner extends SubResource {
     }
 
     /**
-     * Get the frontendIPConfiguration property: Reference to another
-     * subresource.
+     * Get the frontendIPConfiguration property: A reference to frontend IP
+     * addresses.
      * 
      * @return the frontendIPConfiguration value.
      */
@@ -189,8 +191,8 @@ public class LoadBalancingRuleInner extends SubResource {
     }
 
     /**
-     * Set the frontendIPConfiguration property: Reference to another
-     * subresource.
+     * Set the frontendIPConfiguration property: A reference to frontend IP
+     * addresses.
      * 
      * @param frontendIPConfiguration the frontendIPConfiguration value to set.
      * @return the LoadBalancingRuleInner object itself.
@@ -201,7 +203,8 @@ public class LoadBalancingRuleInner extends SubResource {
     }
 
     /**
-     * Get the backendAddressPool property: Reference to another subresource.
+     * Get the backendAddressPool property: A reference to a pool of DIPs.
+     * Inbound traffic is randomly load balanced across IPs in the backend IPs.
      * 
      * @return the backendAddressPool value.
      */
@@ -210,7 +213,8 @@ public class LoadBalancingRuleInner extends SubResource {
     }
 
     /**
-     * Set the backendAddressPool property: Reference to another subresource.
+     * Set the backendAddressPool property: A reference to a pool of DIPs.
+     * Inbound traffic is randomly load balanced across IPs in the backend IPs.
      * 
      * @param backendAddressPool the backendAddressPool value to set.
      * @return the LoadBalancingRuleInner object itself.
@@ -221,7 +225,8 @@ public class LoadBalancingRuleInner extends SubResource {
     }
 
     /**
-     * Get the probe property: Reference to another subresource.
+     * Get the probe property: The reference of the load balancer probe used by
+     * the load balancing rule.
      * 
      * @return the probe value.
      */
@@ -230,7 +235,8 @@ public class LoadBalancingRuleInner extends SubResource {
     }
 
     /**
-     * Set the probe property: Reference to another subresource.
+     * Set the probe property: The reference of the load balancer probe used by
+     * the load balancing rule.
      * 
      * @param probe the probe value to set.
      * @return the LoadBalancingRuleInner object itself.
@@ -241,7 +247,8 @@ public class LoadBalancingRuleInner extends SubResource {
     }
 
     /**
-     * Get the protocol property: The transport protocol for the endpoint.
+     * Get the protocol property: The reference to the transport protocol used
+     * by the load balancing rule.
      * 
      * @return the protocol value.
      */
@@ -250,7 +257,8 @@ public class LoadBalancingRuleInner extends SubResource {
     }
 
     /**
-     * Set the protocol property: The transport protocol for the endpoint.
+     * Set the protocol property: The reference to the transport protocol used
+     * by the load balancing rule.
      * 
      * @param protocol the protocol value to set.
      * @return the LoadBalancingRuleInner object itself.

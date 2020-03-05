@@ -67,61 +67,61 @@ public final class PacketCapturesInner {
     @Host("{$host}")
     @ServiceInterface(name = "NetworkManagementClientPacketCaptures")
     private interface PacketCapturesService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}")
         @ExpectedResponses({201})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> create(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PacketCaptureInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> create(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PacketCaptureInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
         Mono<SimpleResponse<PacketCaptureResultInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}/stop")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> stop(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}/queryStatus")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> getStatus(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
         Mono<SimpleResponse<PacketCaptureListResultInner>> list(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}")
         @ExpectedResponses({201})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<PacketCaptureResultInner>> beginCreate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PacketCaptureInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PacketCaptureResultInner>> beginCreate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PacketCaptureInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
         Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}/stop")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
         Mono<Response<Void>> beginStop(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}/queryStatus")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
@@ -142,7 +142,7 @@ public final class PacketCapturesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName, PacketCaptureInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.create(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.create(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -444,7 +444,7 @@ public final class PacketCapturesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PacketCaptureResultInner>> beginCreateWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName, PacketCaptureInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreate(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginCreate(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**

@@ -29,8 +29,7 @@ public class VirtualMachineScaleSetUpdatePublicIPAddressConfiguration {
     private Integer idleTimeoutInMinutes;
 
     /*
-     * Describes a virtual machines scale sets network configuration's DNS
-     * settings.
+     * The dns settings to be applied on the publicIP addresses .
      */
     @JsonProperty(value = "properties.dnsSettings")
     private VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings dnsSettings;
@@ -80,8 +79,8 @@ public class VirtualMachineScaleSetUpdatePublicIPAddressConfiguration {
     }
 
     /**
-     * Get the dnsSettings property: Describes a virtual machines scale sets
-     * network configuration's DNS settings.
+     * Get the dnsSettings property: The dns settings to be applied on the
+     * publicIP addresses .
      * 
      * @return the dnsSettings value.
      */
@@ -90,8 +89,8 @@ public class VirtualMachineScaleSetUpdatePublicIPAddressConfiguration {
     }
 
     /**
-     * Set the dnsSettings property: Describes a virtual machines scale sets
-     * network configuration's DNS settings.
+     * Set the dnsSettings property: The dns settings to be applied on the
+     * publicIP addresses .
      * 
      * @param dnsSettings the dnsSettings value to set.
      * @return the VirtualMachineScaleSetUpdatePublicIPAddressConfiguration

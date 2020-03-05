@@ -41,7 +41,7 @@ public final class GlobalCsmSkuDescription {
     private String family;
 
     /*
-     * Description of the App Service plan scale options.
+     * Min, max, and default scale values of the SKU.
      */
     @JsonProperty(value = "capacity")
     private SkuCapacity capacity;
@@ -139,8 +139,8 @@ public final class GlobalCsmSkuDescription {
     }
 
     /**
-     * Get the capacity property: Description of the App Service plan scale
-     * options.
+     * Get the capacity property: Min, max, and default scale values of the
+     * SKU.
      * 
      * @return the capacity value.
      */
@@ -149,8 +149,8 @@ public final class GlobalCsmSkuDescription {
     }
 
     /**
-     * Set the capacity property: Description of the App Service plan scale
-     * options.
+     * Set the capacity property: Min, max, and default scale values of the
+     * SKU.
      * 
      * @param capacity the capacity value to set.
      * @return the GlobalCsmSkuDescription object itself.

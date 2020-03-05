@@ -15,13 +15,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class OSDisk {
     /*
-     * The operating system of the osDiskImage.
+     * This property allows you to specify the type of the OS that is included
+     * in the disk if creating a VM from user-image or a specialized VHD.
+     * <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
      */
     @JsonProperty(value = "osType")
     private OperatingSystemTypes osType;
 
     /*
-     * Describes a Encryption Settings for a Disk
+     * Specifies the encryption settings for the OS Disk. <br><br> Minimum
+     * api-version: 2015-06-15
      */
     @JsonProperty(value = "encryptionSettings")
     private DiskEncryptionSettings encryptionSettings;
@@ -33,13 +36,15 @@ public final class OSDisk {
     private String name;
 
     /*
-     * Describes the uri of a disk.
+     * The virtual hard disk.
      */
     @JsonProperty(value = "vhd")
     private VirtualHardDisk vhd;
 
     /*
-     * Describes the uri of a disk.
+     * The source user image virtual hard disk. The virtual hard disk will be
+     * copied before being attached to the virtual machine. If SourceImage is
+     * provided, the destination virtual hard drive must not exist.
      */
     @JsonProperty(value = "image")
     private VirtualHardDisk image;
@@ -60,9 +65,8 @@ public final class OSDisk {
     private Boolean writeAcceleratorEnabled;
 
     /*
-     * Describes the parameters of ephemeral disk settings that can be
-     * specified for operating system disk. <br><br> NOTE: The ephemeral disk
-     * settings can only be specified for managed disk.
+     * Specifies the ephemeral Disk Settings for the operating system disk used
+     * by the virtual machine.
      */
     @JsonProperty(value = "diffDiskSettings")
     private DiffDiskSettings diffDiskSettings;
@@ -88,13 +92,16 @@ public final class OSDisk {
     private Integer diskSizeGB;
 
     /*
-     * The parameters of a managed disk.
+     * The managed disk parameters.
      */
     @JsonProperty(value = "managedDisk")
     private ManagedDiskParameters managedDisk;
 
     /**
-     * Get the osType property: The operating system of the osDiskImage.
+     * Get the osType property: This property allows you to specify the type of
+     * the OS that is included in the disk if creating a VM from user-image or
+     * a specialized VHD. &lt;br&gt;&lt;br&gt; Possible values are:
+     * &lt;br&gt;&lt;br&gt; **Windows** &lt;br&gt;&lt;br&gt; **Linux**.
      * 
      * @return the osType value.
      */
@@ -103,7 +110,10 @@ public final class OSDisk {
     }
 
     /**
-     * Set the osType property: The operating system of the osDiskImage.
+     * Set the osType property: This property allows you to specify the type of
+     * the OS that is included in the disk if creating a VM from user-image or
+     * a specialized VHD. &lt;br&gt;&lt;br&gt; Possible values are:
+     * &lt;br&gt;&lt;br&gt; **Windows** &lt;br&gt;&lt;br&gt; **Linux**.
      * 
      * @param osType the osType value to set.
      * @return the OSDisk object itself.
@@ -114,8 +124,8 @@ public final class OSDisk {
     }
 
     /**
-     * Get the encryptionSettings property: Describes a Encryption Settings for
-     * a Disk.
+     * Get the encryptionSettings property: Specifies the encryption settings
+     * for the OS Disk. &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15.
      * 
      * @return the encryptionSettings value.
      */
@@ -124,8 +134,8 @@ public final class OSDisk {
     }
 
     /**
-     * Set the encryptionSettings property: Describes a Encryption Settings for
-     * a Disk.
+     * Set the encryptionSettings property: Specifies the encryption settings
+     * for the OS Disk. &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15.
      * 
      * @param encryptionSettings the encryptionSettings value to set.
      * @return the OSDisk object itself.
@@ -156,7 +166,7 @@ public final class OSDisk {
     }
 
     /**
-     * Get the vhd property: Describes the uri of a disk.
+     * Get the vhd property: The virtual hard disk.
      * 
      * @return the vhd value.
      */
@@ -165,7 +175,7 @@ public final class OSDisk {
     }
 
     /**
-     * Set the vhd property: Describes the uri of a disk.
+     * Set the vhd property: The virtual hard disk.
      * 
      * @param vhd the vhd value to set.
      * @return the OSDisk object itself.
@@ -176,7 +186,10 @@ public final class OSDisk {
     }
 
     /**
-     * Get the image property: Describes the uri of a disk.
+     * Get the image property: The source user image virtual hard disk. The
+     * virtual hard disk will be copied before being attached to the virtual
+     * machine. If SourceImage is provided, the destination virtual hard drive
+     * must not exist.
      * 
      * @return the image value.
      */
@@ -185,7 +198,10 @@ public final class OSDisk {
     }
 
     /**
-     * Set the image property: Describes the uri of a disk.
+     * Set the image property: The source user image virtual hard disk. The
+     * virtual hard disk will be copied before being attached to the virtual
+     * machine. If SourceImage is provided, the destination virtual hard drive
+     * must not exist.
      * 
      * @param image the image value to set.
      * @return the OSDisk object itself.
@@ -246,10 +262,8 @@ public final class OSDisk {
     }
 
     /**
-     * Get the diffDiskSettings property: Describes the parameters of ephemeral
-     * disk settings that can be specified for operating system disk.
-     * &lt;br&gt;&lt;br&gt; NOTE: The ephemeral disk settings can only be
-     * specified for managed disk.
+     * Get the diffDiskSettings property: Specifies the ephemeral Disk Settings
+     * for the operating system disk used by the virtual machine.
      * 
      * @return the diffDiskSettings value.
      */
@@ -258,10 +272,8 @@ public final class OSDisk {
     }
 
     /**
-     * Set the diffDiskSettings property: Describes the parameters of ephemeral
-     * disk settings that can be specified for operating system disk.
-     * &lt;br&gt;&lt;br&gt; NOTE: The ephemeral disk settings can only be
-     * specified for managed disk.
+     * Set the diffDiskSettings property: Specifies the ephemeral Disk Settings
+     * for the operating system disk used by the virtual machine.
      * 
      * @param diffDiskSettings the diffDiskSettings value to set.
      * @return the OSDisk object itself.
@@ -332,7 +344,7 @@ public final class OSDisk {
     }
 
     /**
-     * Get the managedDisk property: The parameters of a managed disk.
+     * Get the managedDisk property: The managed disk parameters.
      * 
      * @return the managedDisk value.
      */
@@ -341,7 +353,7 @@ public final class OSDisk {
     }
 
     /**
-     * Set the managedDisk property: The parameters of a managed disk.
+     * Set the managedDisk property: The managed disk parameters.
      * 
      * @param managedDisk the managedDisk value to set.
      * @return the OSDisk object itself.

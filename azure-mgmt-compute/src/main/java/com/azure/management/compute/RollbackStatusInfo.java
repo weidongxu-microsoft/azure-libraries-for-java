@@ -27,7 +27,7 @@ public final class RollbackStatusInfo {
     private Integer failedRolledbackInstanceCount;
 
     /*
-     * Api error.
+     * Error details if OS rollback failed.
      */
     @JsonProperty(value = "rollbackError", access = JsonProperty.Access.WRITE_ONLY)
     private ApiError rollbackError;
@@ -53,7 +53,7 @@ public final class RollbackStatusInfo {
     }
 
     /**
-     * Get the rollbackError property: Api error.
+     * Get the rollbackError property: Error details if OS rollback failed.
      * 
      * @return the rollbackError value.
      */

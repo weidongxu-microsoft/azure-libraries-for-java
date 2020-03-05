@@ -27,7 +27,9 @@ public final class BootDiagnosticsInstanceView {
     private String serialConsoleLogBlobUri;
 
     /*
-     * Instance view status.
+     * The boot diagnostics status information for the VM. <br><br> NOTE: It
+     * will be set only if there are errors encountered in enabling boot
+     * diagnostics.
      */
     @JsonProperty(value = "status", access = JsonProperty.Access.WRITE_ONLY)
     private InstanceViewStatus status;
@@ -53,7 +55,9 @@ public final class BootDiagnosticsInstanceView {
     }
 
     /**
-     * Get the status property: Instance view status.
+     * Get the status property: The boot diagnostics status information for the
+     * VM. &lt;br&gt;&lt;br&gt; NOTE: It will be set only if there are errors
+     * encountered in enabling boot diagnostics.
      * 
      * @return the status value.
      */

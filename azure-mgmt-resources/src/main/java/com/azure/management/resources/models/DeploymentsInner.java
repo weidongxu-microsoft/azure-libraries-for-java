@@ -73,361 +73,361 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
     @Host("{$host}")
     @ServiceInterface(name = "ResourceManagementClientDeployments")
     private interface DeploymentsService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> deleteAtScope(@HostParam("$host") String host, @PathParam("scope") String scope, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Head("/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({204, 404})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Boolean>> checkExistenceAtScope(@HostParam("$host") String host, @PathParam("scope") String scope, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateAtScope(@HostParam("$host") String host, @PathParam("scope") String scope, @PathParam("deploymentName") String deploymentName, @BodyParam("application/json") DeploymentInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateAtScope(@HostParam("$host") String host, @PathParam("scope") String scope, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeploymentInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentExtendedInner>> getAtScope(@HostParam("$host") String host, @PathParam("scope") String scope, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/cancel")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> cancelAtScope(@HostParam("$host") String host, @PathParam("scope") String scope, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/validate")
         @ExpectedResponses({200, 400})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DeploymentValidateResultInner>> validateAtScope(@HostParam("$host") String host, @PathParam("scope") String scope, @PathParam("deploymentName") String deploymentName, @BodyParam("application/json") DeploymentInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DeploymentValidateResultInner>> validateAtScope(@HostParam("$host") String host, @PathParam("scope") String scope, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeploymentInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/exportTemplate")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentExportResultInner>> exportTemplateAtScope(@HostParam("$host") String host, @PathParam("scope") String scope, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/{scope}/providers/Microsoft.Resources/deployments/")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentListResultInner>> listAtScope(@HostParam("$host") String host, @PathParam("scope") String scope, @QueryParam("$filter") String filter, @QueryParam("$top") Integer top, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> deleteAtTenantScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Head("/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({204, 404})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Boolean>> checkExistenceAtTenantScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateAtTenantScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @BodyParam("application/json") ScopedDeployment parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateAtTenantScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ScopedDeployment parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentExtendedInner>> getAtTenantScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/providers/Microsoft.Resources/deployments/{deploymentName}/cancel")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> cancelAtTenantScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/providers/Microsoft.Resources/deployments/{deploymentName}/validate")
         @ExpectedResponses({200, 400})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DeploymentValidateResultInner>> validateAtTenantScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @BodyParam("application/json") ScopedDeployment parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DeploymentValidateResultInner>> validateAtTenantScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ScopedDeployment parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/providers/Microsoft.Resources/deployments/{deploymentName}/exportTemplate")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentExportResultInner>> exportTemplateAtTenantScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/providers/Microsoft.Resources/deployments/")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentListResultInner>> listAtTenantScope(@HostParam("$host") String host, @QueryParam("$filter") String filter, @QueryParam("$top") Integer top, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> deleteAtManagementGroupScope(@HostParam("$host") String host, @PathParam("groupId") String groupId, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Head("/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({204, 404})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Boolean>> checkExistenceAtManagementGroupScope(@HostParam("$host") String host, @PathParam("groupId") String groupId, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateAtManagementGroupScope(@HostParam("$host") String host, @PathParam("groupId") String groupId, @PathParam("deploymentName") String deploymentName, @BodyParam("application/json") ScopedDeployment parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateAtManagementGroupScope(@HostParam("$host") String host, @PathParam("groupId") String groupId, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ScopedDeployment parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentExtendedInner>> getAtManagementGroupScope(@HostParam("$host") String host, @PathParam("groupId") String groupId, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/cancel")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> cancelAtManagementGroupScope(@HostParam("$host") String host, @PathParam("groupId") String groupId, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate")
         @ExpectedResponses({200, 400})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DeploymentValidateResultInner>> validateAtManagementGroupScope(@HostParam("$host") String host, @PathParam("groupId") String groupId, @PathParam("deploymentName") String deploymentName, @BodyParam("application/json") ScopedDeployment parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DeploymentValidateResultInner>> validateAtManagementGroupScope(@HostParam("$host") String host, @PathParam("groupId") String groupId, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ScopedDeployment parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/exportTemplate")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentExportResultInner>> exportTemplateAtManagementGroupScope(@HostParam("$host") String host, @PathParam("groupId") String groupId, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentListResultInner>> listAtManagementGroupScope(@HostParam("$host") String host, @PathParam("groupId") String groupId, @QueryParam("$filter") String filter, @QueryParam("$top") Integer top, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> deleteAtSubscriptionScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Head("/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({204, 404})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Boolean>> checkExistenceAtSubscriptionScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateAtSubscriptionScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DeploymentInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateAtSubscriptionScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeploymentInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentExtendedInner>> getAtSubscriptionScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/cancel")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> cancelAtSubscriptionScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate")
         @ExpectedResponses({200, 400})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DeploymentValidateResultInner>> validateAtSubscriptionScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DeploymentInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DeploymentValidateResultInner>> validateAtSubscriptionScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeploymentInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> whatIfAtSubscriptionScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DeploymentWhatIf parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> whatIfAtSubscriptionScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeploymentWhatIf parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/exportTemplate")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentExportResultInner>> exportTemplateAtSubscriptionScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentListResultInner>> list(@HostParam("$host") String host, @QueryParam("$filter") String filter, @QueryParam("$top") Integer top, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Head("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({204, 404})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Boolean>> checkExistence(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DeploymentInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeploymentInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentExtendedInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/cancel")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> cancel(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/validate")
         @ExpectedResponses({200, 400})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DeploymentValidateResultInner>> validate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DeploymentInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DeploymentValidateResultInner>> validate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeploymentInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> whatIf(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DeploymentWhatIf parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> whatIf(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeploymentWhatIf parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/exportTemplate")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentExportResultInner>> exportTemplate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("$filter") String filter, @QueryParam("$top") Integer top, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/providers/Microsoft.Resources/calculateTemplateHash")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<TemplateHashResultInner>> calculateTemplateHash(@HostParam("$host") String host, @BodyParam("application/json") Object template, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<TemplateHashResultInner>> calculateTemplateHash(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") Object template);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginDeleteAtScope(@HostParam("$host") String host, @PathParam("scope") String scope, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DeploymentExtendedInner>> beginCreateOrUpdateAtScope(@HostParam("$host") String host, @PathParam("scope") String scope, @PathParam("deploymentName") String deploymentName, @BodyParam("application/json") DeploymentInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DeploymentExtendedInner>> beginCreateOrUpdateAtScope(@HostParam("$host") String host, @PathParam("scope") String scope, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeploymentInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginDeleteAtTenantScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DeploymentExtendedInner>> beginCreateOrUpdateAtTenantScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @BodyParam("application/json") ScopedDeployment parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DeploymentExtendedInner>> beginCreateOrUpdateAtTenantScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ScopedDeployment parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginDeleteAtManagementGroupScope(@HostParam("$host") String host, @PathParam("groupId") String groupId, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DeploymentExtendedInner>> beginCreateOrUpdateAtManagementGroupScope(@HostParam("$host") String host, @PathParam("groupId") String groupId, @PathParam("deploymentName") String deploymentName, @BodyParam("application/json") ScopedDeployment parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DeploymentExtendedInner>> beginCreateOrUpdateAtManagementGroupScope(@HostParam("$host") String host, @PathParam("groupId") String groupId, @PathParam("deploymentName") String deploymentName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ScopedDeployment parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginDeleteAtSubscriptionScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DeploymentExtendedInner>> beginCreateOrUpdateAtSubscriptionScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DeploymentInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DeploymentExtendedInner>> beginCreateOrUpdateAtSubscriptionScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeploymentInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<DeploymentsBeginWhatIfAtSubscriptionScopeResponse> beginWhatIfAtSubscriptionScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DeploymentWhatIf parameters, @QueryParam("api-version") String apiVersion);
+        Mono<DeploymentsBeginWhatIfAtSubscriptionScopeResponse> beginWhatIfAtSubscriptionScope(@HostParam("$host") String host, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeploymentWhatIf parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DeploymentExtendedInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DeploymentInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DeploymentExtendedInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeploymentInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<DeploymentsBeginWhatIfResponse> beginWhatIf(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DeploymentWhatIf parameters, @QueryParam("api-version") String apiVersion);
+        Mono<DeploymentsBeginWhatIfResponse> beginWhatIf(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("deploymentName") String deploymentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeploymentWhatIf parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentListResultInner>> listAtScopeNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentListResultInner>> listAtTenantScopeNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentListResultInner>> listAtManagementGroupScopeNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DeploymentListResultInner>> listAtSubscriptionScopeNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -540,7 +540,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateAtScopeWithResponseAsync(String scope, String deploymentName, DeploymentInner parameters) {
-        return service.createOrUpdateAtScope(this.client.getHost(), scope, deploymentName, parameters, this.client.getApiVersion());
+        return service.createOrUpdateAtScope(this.client.getHost(), scope, deploymentName, this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -680,7 +680,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DeploymentValidateResultInner>> validateAtScopeWithResponseAsync(String scope, String deploymentName, DeploymentInner parameters) {
-        return service.validateAtScope(this.client.getHost(), scope, deploymentName, parameters, this.client.getApiVersion());
+        return service.validateAtScope(this.client.getHost(), scope, deploymentName, this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -953,7 +953,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateAtTenantScopeWithResponseAsync(String deploymentName, ScopedDeployment parameters) {
-        return service.createOrUpdateAtTenantScope(this.client.getHost(), deploymentName, parameters, this.client.getApiVersion());
+        return service.createOrUpdateAtTenantScope(this.client.getHost(), deploymentName, this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -1084,7 +1084,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DeploymentValidateResultInner>> validateAtTenantScopeWithResponseAsync(String deploymentName, ScopedDeployment parameters) {
-        return service.validateAtTenantScope(this.client.getHost(), deploymentName, parameters, this.client.getApiVersion());
+        return service.validateAtTenantScope(this.client.getHost(), deploymentName, this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -1352,7 +1352,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateAtManagementGroupScopeWithResponseAsync(String groupId, String deploymentName, ScopedDeployment parameters) {
-        return service.createOrUpdateAtManagementGroupScope(this.client.getHost(), groupId, deploymentName, parameters, this.client.getApiVersion());
+        return service.createOrUpdateAtManagementGroupScope(this.client.getHost(), groupId, deploymentName, this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -1492,7 +1492,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DeploymentValidateResultInner>> validateAtManagementGroupScopeWithResponseAsync(String groupId, String deploymentName, ScopedDeployment parameters) {
-        return service.validateAtManagementGroupScope(this.client.getHost(), groupId, deploymentName, parameters, this.client.getApiVersion());
+        return service.validateAtManagementGroupScope(this.client.getHost(), groupId, deploymentName, this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -1765,7 +1765,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateAtSubscriptionScopeWithResponseAsync(String deploymentName, DeploymentInner parameters) {
-        return service.createOrUpdateAtSubscriptionScope(this.client.getHost(), deploymentName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.createOrUpdateAtSubscriptionScope(this.client.getHost(), deploymentName, this.client.getSubscriptionId(), this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -1896,7 +1896,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DeploymentValidateResultInner>> validateAtSubscriptionScopeWithResponseAsync(String deploymentName, DeploymentInner parameters) {
-        return service.validateAtSubscriptionScope(this.client.getHost(), deploymentName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.validateAtSubscriptionScope(this.client.getHost(), deploymentName, this.client.getSubscriptionId(), this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -1945,7 +1945,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> whatIfAtSubscriptionScopeWithResponseAsync(String deploymentName, DeploymentWhatIf parameters) {
-        return service.whatIfAtSubscriptionScope(this.client.getHost(), deploymentName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.whatIfAtSubscriptionScope(this.client.getHost(), deploymentName, this.client.getSubscriptionId(), this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -2209,7 +2209,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String deploymentName, DeploymentInner parameters) {
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, deploymentName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, deploymentName, this.client.getSubscriptionId(), this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -2349,7 +2349,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DeploymentValidateResultInner>> validateWithResponseAsync(String resourceGroupName, String deploymentName, DeploymentInner parameters) {
-        return service.validate(this.client.getHost(), resourceGroupName, deploymentName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.validate(this.client.getHost(), resourceGroupName, deploymentName, this.client.getSubscriptionId(), this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -2401,7 +2401,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> whatIfWithResponseAsync(String resourceGroupName, String deploymentName, DeploymentWhatIf parameters) {
-        return service.whatIf(this.client.getHost(), resourceGroupName, deploymentName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.whatIf(this.client.getHost(), resourceGroupName, deploymentName, this.client.getSubscriptionId(), this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -2574,20 +2574,20 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
     /**
      * Calculate the hash of the given template.
      * 
-     * @param template 
+     * @param template Any object.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
      * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<TemplateHashResultInner>> calculateTemplateHashWithResponseAsync(Object template) {
-        return service.calculateTemplateHash(this.client.getHost(), template, this.client.getApiVersion());
+        return service.calculateTemplateHash(this.client.getHost(), this.client.getApiVersion(), template);
     }
 
     /**
      * Calculate the hash of the given template.
      * 
-     * @param template 
+     * @param template Any object.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
      * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
@@ -2607,7 +2607,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
     /**
      * Calculate the hash of the given template.
      * 
-     * @param template 
+     * @param template Any object.
      * @throws IllegalArgumentException thrown if parameters fail the validation.
      * @throws CloudException thrown if the request is rejected by server.
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
@@ -2672,7 +2672,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DeploymentExtendedInner>> beginCreateOrUpdateAtScopeWithResponseAsync(String scope, String deploymentName, DeploymentInner parameters) {
-        return service.beginCreateOrUpdateAtScope(this.client.getHost(), scope, deploymentName, parameters, this.client.getApiVersion());
+        return service.beginCreateOrUpdateAtScope(this.client.getHost(), scope, deploymentName, this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -2763,7 +2763,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DeploymentExtendedInner>> beginCreateOrUpdateAtTenantScopeWithResponseAsync(String deploymentName, ScopedDeployment parameters) {
-        return service.beginCreateOrUpdateAtTenantScope(this.client.getHost(), deploymentName, parameters, this.client.getApiVersion());
+        return service.beginCreateOrUpdateAtTenantScope(this.client.getHost(), deploymentName, this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -2856,7 +2856,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DeploymentExtendedInner>> beginCreateOrUpdateAtManagementGroupScopeWithResponseAsync(String groupId, String deploymentName, ScopedDeployment parameters) {
-        return service.beginCreateOrUpdateAtManagementGroupScope(this.client.getHost(), groupId, deploymentName, parameters, this.client.getApiVersion());
+        return service.beginCreateOrUpdateAtManagementGroupScope(this.client.getHost(), groupId, deploymentName, this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -2947,7 +2947,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DeploymentExtendedInner>> beginCreateOrUpdateAtSubscriptionScopeWithResponseAsync(String deploymentName, DeploymentInner parameters) {
-        return service.beginCreateOrUpdateAtSubscriptionScope(this.client.getHost(), deploymentName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.beginCreateOrUpdateAtSubscriptionScope(this.client.getHost(), deploymentName, this.client.getSubscriptionId(), this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -2996,7 +2996,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<DeploymentsBeginWhatIfAtSubscriptionScopeResponse> beginWhatIfAtSubscriptionScopeWithResponseAsync(String deploymentName, DeploymentWhatIf parameters) {
-        return service.beginWhatIfAtSubscriptionScope(this.client.getHost(), deploymentName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.beginWhatIfAtSubscriptionScope(this.client.getHost(), deploymentName, this.client.getSubscriptionId(), this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -3089,7 +3089,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DeploymentExtendedInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String deploymentName, DeploymentInner parameters) {
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, deploymentName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, deploymentName, this.client.getSubscriptionId(), this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -3141,7 +3141,7 @@ public final class DeploymentsInner implements InnerSupportsGet<DeploymentExtend
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<DeploymentsBeginWhatIfResponse> beginWhatIfWithResponseAsync(String resourceGroupName, String deploymentName, DeploymentWhatIf parameters) {
-        return service.beginWhatIf(this.client.getHost(), resourceGroupName, deploymentName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.beginWhatIf(this.client.getHost(), resourceGroupName, deploymentName, this.client.getSubscriptionId(), this.client.getApiVersion(), parameters);
     }
 
     /**

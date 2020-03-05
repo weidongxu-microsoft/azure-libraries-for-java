@@ -38,19 +38,21 @@ public class AzureFirewallIPConfiguration extends SubResource {
     private String privateIPAddress;
 
     /*
-     * Reference to another subresource.
+     * Reference of the subnet resource. This resource must be named
+     * 'AzureFirewallSubnet'.
      */
     @JsonProperty(value = "properties.subnet")
     private SubResource subnet;
 
     /*
-     * Reference to another subresource.
+     * Reference of the PublicIP resource. This field is a mandatory input if
+     * subnet is not null.
      */
     @JsonProperty(value = "properties.publicIPAddress")
     private SubResource publicIPAddress;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -98,7 +100,8 @@ public class AzureFirewallIPConfiguration extends SubResource {
     }
 
     /**
-     * Get the subnet property: Reference to another subresource.
+     * Get the subnet property: Reference of the subnet resource. This resource
+     * must be named 'AzureFirewallSubnet'.
      * 
      * @return the subnet value.
      */
@@ -107,7 +110,8 @@ public class AzureFirewallIPConfiguration extends SubResource {
     }
 
     /**
-     * Set the subnet property: Reference to another subresource.
+     * Set the subnet property: Reference of the subnet resource. This resource
+     * must be named 'AzureFirewallSubnet'.
      * 
      * @param subnet the subnet value to set.
      * @return the AzureFirewallIPConfiguration object itself.
@@ -118,7 +122,8 @@ public class AzureFirewallIPConfiguration extends SubResource {
     }
 
     /**
-     * Get the publicIPAddress property: Reference to another subresource.
+     * Get the publicIPAddress property: Reference of the PublicIP resource.
+     * This field is a mandatory input if subnet is not null.
      * 
      * @return the publicIPAddress value.
      */
@@ -127,7 +132,8 @@ public class AzureFirewallIPConfiguration extends SubResource {
     }
 
     /**
-     * Set the publicIPAddress property: Reference to another subresource.
+     * Set the publicIPAddress property: Reference of the PublicIP resource.
+     * This field is a mandatory input if subnet is not null.
      * 
      * @param publicIPAddress the publicIPAddress value to set.
      * @return the AzureFirewallIPConfiguration object itself.
@@ -138,7 +144,8 @@ public class AzureFirewallIPConfiguration extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -147,7 +154,8 @@ public class AzureFirewallIPConfiguration extends SubResource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the AzureFirewallIPConfiguration object itself.

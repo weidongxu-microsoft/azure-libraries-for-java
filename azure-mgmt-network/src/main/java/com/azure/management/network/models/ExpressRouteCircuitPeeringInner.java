@@ -49,7 +49,7 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     private ExpressRoutePeeringType peeringType;
 
     /*
-     * The state of peering.
+     * The peering state.
      */
     @JsonProperty(value = "properties.state")
     private ExpressRoutePeeringState state;
@@ -103,13 +103,13 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     private Integer vlanId;
 
     /*
-     * Specifies the peering configuration.
+     * The Microsoft peering configuration.
      */
     @JsonProperty(value = "properties.microsoftPeeringConfig")
     private ExpressRouteCircuitPeeringConfig microsoftPeeringConfig;
 
     /*
-     * Contains stats associated with the peering.
+     * Gets peering stats.
      */
     @JsonProperty(value = "properties.stats")
     private ExpressRouteCircuitStatsInner stats;
@@ -134,19 +134,19 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     private String lastModifiedBy;
 
     /*
-     * Reference to another subresource.
+     * The reference of the RouteFilter resource.
      */
     @JsonProperty(value = "properties.routeFilter")
     private SubResource routeFilter;
 
     /*
-     * Contains IPv6 peering config.
+     * The IPv6 peering configuration.
      */
     @JsonProperty(value = "properties.ipv6PeeringConfig")
     private Ipv6ExpressRouteCircuitPeeringConfig ipv6PeeringConfig;
 
     /*
-     * The ID of the ExpressRouteConnection.
+     * The ExpressRoute connection.
      */
     @JsonProperty(value = "properties.expressRouteConnection")
     private ExpressRouteConnectionId expressRouteConnection;
@@ -227,7 +227,7 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     }
 
     /**
-     * Get the state property: The state of peering.
+     * Get the state property: The peering state.
      * 
      * @return the state value.
      */
@@ -236,7 +236,7 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     }
 
     /**
-     * Set the state property: The state of peering.
+     * Set the state property: The peering state.
      * 
      * @param state the state value to set.
      * @return the ExpressRouteCircuitPeeringInner object itself.
@@ -411,7 +411,7 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     }
 
     /**
-     * Get the microsoftPeeringConfig property: Specifies the peering
+     * Get the microsoftPeeringConfig property: The Microsoft peering
      * configuration.
      * 
      * @return the microsoftPeeringConfig value.
@@ -421,7 +421,7 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     }
 
     /**
-     * Set the microsoftPeeringConfig property: Specifies the peering
+     * Set the microsoftPeeringConfig property: The Microsoft peering
      * configuration.
      * 
      * @param microsoftPeeringConfig the microsoftPeeringConfig value to set.
@@ -433,7 +433,7 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     }
 
     /**
-     * Get the stats property: Contains stats associated with the peering.
+     * Get the stats property: Gets peering stats.
      * 
      * @return the stats value.
      */
@@ -442,7 +442,7 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     }
 
     /**
-     * Set the stats property: Contains stats associated with the peering.
+     * Set the stats property: Gets peering stats.
      * 
      * @param stats the stats value to set.
      * @return the ExpressRouteCircuitPeeringInner object itself.
@@ -519,7 +519,7 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     }
 
     /**
-     * Get the routeFilter property: Reference to another subresource.
+     * Get the routeFilter property: The reference of the RouteFilter resource.
      * 
      * @return the routeFilter value.
      */
@@ -528,7 +528,7 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     }
 
     /**
-     * Set the routeFilter property: Reference to another subresource.
+     * Set the routeFilter property: The reference of the RouteFilter resource.
      * 
      * @param routeFilter the routeFilter value to set.
      * @return the ExpressRouteCircuitPeeringInner object itself.
@@ -539,7 +539,7 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     }
 
     /**
-     * Get the ipv6PeeringConfig property: Contains IPv6 peering config.
+     * Get the ipv6PeeringConfig property: The IPv6 peering configuration.
      * 
      * @return the ipv6PeeringConfig value.
      */
@@ -548,7 +548,7 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     }
 
     /**
-     * Set the ipv6PeeringConfig property: Contains IPv6 peering config.
+     * Set the ipv6PeeringConfig property: The IPv6 peering configuration.
      * 
      * @param ipv6PeeringConfig the ipv6PeeringConfig value to set.
      * @return the ExpressRouteCircuitPeeringInner object itself.
@@ -559,8 +559,7 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     }
 
     /**
-     * Get the expressRouteConnection property: The ID of the
-     * ExpressRouteConnection.
+     * Get the expressRouteConnection property: The ExpressRoute connection.
      * 
      * @return the expressRouteConnection value.
      */
@@ -569,8 +568,7 @@ public class ExpressRouteCircuitPeeringInner extends SubResource {
     }
 
     /**
-     * Set the expressRouteConnection property: The ID of the
-     * ExpressRouteConnection.
+     * Set the expressRouteConnection property: The ExpressRoute connection.
      * 
      * @param expressRouteConnection the expressRouteConnection value to set.
      * @return the ExpressRouteCircuitPeeringInner object itself.

@@ -109,8 +109,7 @@ public final class EffectiveNetworkSecurityRule {
     private Integer priority;
 
     /*
-     * The direction of the rule. The direction specifies if rule will be
-     * evaluated on incoming or outgoing traffic.
+     * The direction of the rule.
      */
     @JsonProperty(value = "direction")
     private SecurityRuleDirection direction;
@@ -426,8 +425,7 @@ public final class EffectiveNetworkSecurityRule {
     }
 
     /**
-     * Get the direction property: The direction of the rule. The direction
-     * specifies if rule will be evaluated on incoming or outgoing traffic.
+     * Get the direction property: The direction of the rule.
      * 
      * @return the direction value.
      */
@@ -436,8 +434,7 @@ public final class EffectiveNetworkSecurityRule {
     }
 
     /**
-     * Set the direction property: The direction of the rule. The direction
-     * specifies if rule will be evaluated on incoming or outgoing traffic.
+     * Set the direction property: The direction of the rule.
      * 
      * @param direction the direction value to set.
      * @return the EffectiveNetworkSecurityRule object itself.

@@ -29,13 +29,13 @@ public class P2SVpnGatewayInner extends Resource {
     private String etag;
 
     /*
-     * Reference to another subresource.
+     * The VirtualHub to which the gateway belongs.
      */
     @JsonProperty(value = "properties.virtualHub")
     private SubResource virtualHub;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -47,27 +47,27 @@ public class P2SVpnGatewayInner extends Resource {
     private Integer vpnGatewayScaleUnit;
 
     /*
-     * Reference to another subresource.
+     * The P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
      */
     @JsonProperty(value = "properties.p2SVpnServerConfiguration")
     private SubResource p2SVpnServerConfiguration;
 
     /*
-     * AddressSpace contains an array of IP address ranges that can be used by
-     * subnets of the virtual network.
+     * The reference of the address space resource which represents Address
+     * space for P2S VpnClient.
      */
     @JsonProperty(value = "properties.vpnClientAddressPool")
     private AddressSpace vpnClientAddressPool;
 
     /*
-     * AddressSpace contains an array of IP address ranges that can be used by
-     * subnets of the virtual network.
+     * The reference of the address space resource which represents the custom
+     * routes specified by the customer for P2SVpnGateway and P2S VpnClient.
      */
     @JsonProperty(value = "properties.customRoutes")
     private AddressSpace customRoutes;
 
     /*
-     * VpnClientConnectionHealth properties.
+     * All P2S VPN clients' connection health status.
      */
     @JsonProperty(value = "properties.vpnClientConnectionHealth", access = JsonProperty.Access.WRITE_ONLY)
     private VpnClientConnectionHealth vpnClientConnectionHealth;
@@ -89,7 +89,8 @@ public class P2SVpnGatewayInner extends Resource {
     }
 
     /**
-     * Get the virtualHub property: Reference to another subresource.
+     * Get the virtualHub property: The VirtualHub to which the gateway
+     * belongs.
      * 
      * @return the virtualHub value.
      */
@@ -98,7 +99,8 @@ public class P2SVpnGatewayInner extends Resource {
     }
 
     /**
-     * Set the virtualHub property: Reference to another subresource.
+     * Set the virtualHub property: The VirtualHub to which the gateway
+     * belongs.
      * 
      * @param virtualHub the virtualHub value to set.
      * @return the P2SVpnGatewayInner object itself.
@@ -109,7 +111,8 @@ public class P2SVpnGatewayInner extends Resource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -118,7 +121,8 @@ public class P2SVpnGatewayInner extends Resource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the P2SVpnGatewayInner object itself.
@@ -151,8 +155,8 @@ public class P2SVpnGatewayInner extends Resource {
     }
 
     /**
-     * Get the p2SVpnServerConfiguration property: Reference to another
-     * subresource.
+     * Get the p2SVpnServerConfiguration property: The
+     * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
      * 
      * @return the p2SVpnServerConfiguration value.
      */
@@ -161,8 +165,8 @@ public class P2SVpnGatewayInner extends Resource {
     }
 
     /**
-     * Set the p2SVpnServerConfiguration property: Reference to another
-     * subresource.
+     * Set the p2SVpnServerConfiguration property: The
+     * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
      * 
      * @param p2SVpnServerConfiguration the p2SVpnServerConfiguration value to
      * set.
@@ -174,8 +178,8 @@ public class P2SVpnGatewayInner extends Resource {
     }
 
     /**
-     * Get the vpnClientAddressPool property: AddressSpace contains an array of
-     * IP address ranges that can be used by subnets of the virtual network.
+     * Get the vpnClientAddressPool property: The reference of the address
+     * space resource which represents Address space for P2S VpnClient.
      * 
      * @return the vpnClientAddressPool value.
      */
@@ -184,8 +188,8 @@ public class P2SVpnGatewayInner extends Resource {
     }
 
     /**
-     * Set the vpnClientAddressPool property: AddressSpace contains an array of
-     * IP address ranges that can be used by subnets of the virtual network.
+     * Set the vpnClientAddressPool property: The reference of the address
+     * space resource which represents Address space for P2S VpnClient.
      * 
      * @param vpnClientAddressPool the vpnClientAddressPool value to set.
      * @return the P2SVpnGatewayInner object itself.
@@ -196,8 +200,9 @@ public class P2SVpnGatewayInner extends Resource {
     }
 
     /**
-     * Get the customRoutes property: AddressSpace contains an array of IP
-     * address ranges that can be used by subnets of the virtual network.
+     * Get the customRoutes property: The reference of the address space
+     * resource which represents the custom routes specified by the customer
+     * for P2SVpnGateway and P2S VpnClient.
      * 
      * @return the customRoutes value.
      */
@@ -206,8 +211,9 @@ public class P2SVpnGatewayInner extends Resource {
     }
 
     /**
-     * Set the customRoutes property: AddressSpace contains an array of IP
-     * address ranges that can be used by subnets of the virtual network.
+     * Set the customRoutes property: The reference of the address space
+     * resource which represents the custom routes specified by the customer
+     * for P2SVpnGateway and P2S VpnClient.
      * 
      * @param customRoutes the customRoutes value to set.
      * @return the P2SVpnGatewayInner object itself.
@@ -218,8 +224,8 @@ public class P2SVpnGatewayInner extends Resource {
     }
 
     /**
-     * Get the vpnClientConnectionHealth property: VpnClientConnectionHealth
-     * properties.
+     * Get the vpnClientConnectionHealth property: All P2S VPN clients'
+     * connection health status.
      * 
      * @return the vpnClientConnectionHealth value.
      */

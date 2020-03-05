@@ -59,31 +59,31 @@ public final class DeletedWebAppsInner {
     @Host("{$host}")
     @ServiceInterface(name = "WebSiteManagementClientDeletedWebApps")
     private interface DeletedWebAppsService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Web/deletedSites")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<DeletedWebAppCollectionInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/deletedSites")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<DeletedWebAppCollectionInner>> listByLocation(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Web/locations/{location}/deletedSites/{deletedSiteId}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<DeletedSiteInner>> getDeletedWebAppByLocation(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("deletedSiteId") String deletedSiteId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<DeletedWebAppCollectionInner>> listNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)

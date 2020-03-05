@@ -59,13 +59,13 @@ public final class VpnClientIPsecParametersInner {
     private IkeIntegrity ikeIntegrity;
 
     /*
-     * The DH Groups used in IKE Phase 1 for initial SA.
+     * The DH Group used in IKE Phase 1 for initial SA.
      */
     @JsonProperty(value = "dhGroup", required = true)
     private DhGroup dhGroup;
 
     /*
-     * The Pfs Groups used in IKE Phase 2 for new child SA.
+     * The Pfs Group used in IKE Phase 2 for new child SA.
      */
     @JsonProperty(value = "pfsGroup", required = true)
     private PfsGroup pfsGroup;
@@ -205,7 +205,7 @@ public final class VpnClientIPsecParametersInner {
     }
 
     /**
-     * Get the dhGroup property: The DH Groups used in IKE Phase 1 for initial
+     * Get the dhGroup property: The DH Group used in IKE Phase 1 for initial
      * SA.
      * 
      * @return the dhGroup value.
@@ -215,7 +215,7 @@ public final class VpnClientIPsecParametersInner {
     }
 
     /**
-     * Set the dhGroup property: The DH Groups used in IKE Phase 1 for initial
+     * Set the dhGroup property: The DH Group used in IKE Phase 1 for initial
      * SA.
      * 
      * @param dhGroup the dhGroup value to set.
@@ -227,7 +227,7 @@ public final class VpnClientIPsecParametersInner {
     }
 
     /**
-     * Get the pfsGroup property: The Pfs Groups used in IKE Phase 2 for new
+     * Get the pfsGroup property: The Pfs Group used in IKE Phase 2 for new
      * child SA.
      * 
      * @return the pfsGroup value.
@@ -237,7 +237,7 @@ public final class VpnClientIPsecParametersInner {
     }
 
     /**
-     * Set the pfsGroup property: The Pfs Groups used in IKE Phase 2 for new
+     * Set the pfsGroup property: The Pfs Group used in IKE Phase 2 for new
      * child SA.
      * 
      * @param pfsGroup the pfsGroup value to set.

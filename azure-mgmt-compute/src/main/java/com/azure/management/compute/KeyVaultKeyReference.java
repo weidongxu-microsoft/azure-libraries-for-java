@@ -22,7 +22,7 @@ public final class KeyVaultKeyReference {
     private String keyUrl;
 
     /*
-     * The sourceVault property.
+     * The relative URL of the Key Vault containing the key.
      */
     @JsonProperty(value = "sourceVault", required = true)
     private SubResource sourceVault;
@@ -50,7 +50,8 @@ public final class KeyVaultKeyReference {
     }
 
     /**
-     * Get the sourceVault property: The sourceVault property.
+     * Get the sourceVault property: The relative URL of the Key Vault
+     * containing the key.
      * 
      * @return the sourceVault value.
      */
@@ -59,7 +60,8 @@ public final class KeyVaultKeyReference {
     }
 
     /**
-     * Set the sourceVault property: The sourceVault property.
+     * Set the sourceVault property: The relative URL of the Key Vault
+     * containing the key.
      * 
      * @param sourceVault the sourceVault value to set.
      * @return the KeyVaultKeyReference object itself.

@@ -21,7 +21,7 @@ import java.util.List;
 @Fluent
 public class NatGatewayInner extends Resource {
     /*
-     * SKU of nat gateway.
+     * The nat gateway SKU.
      */
     @JsonProperty(value = "sku")
     private NatGatewaySku sku;
@@ -84,7 +84,7 @@ public class NatGatewayInner extends Resource {
     private String id;
 
     /**
-     * Get the sku property: SKU of nat gateway.
+     * Get the sku property: The nat gateway SKU.
      * 
      * @return the sku value.
      */
@@ -93,7 +93,7 @@ public class NatGatewayInner extends Resource {
     }
 
     /**
-     * Set the sku property: SKU of nat gateway.
+     * Set the sku property: The nat gateway SKU.
      * 
      * @param sku the sku value to set.
      * @return the NatGatewayInner object itself.

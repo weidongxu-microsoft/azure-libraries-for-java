@@ -27,7 +27,21 @@ import java.util.UUID;
 @Fluent
 public class DatabaseInner extends Resource {
     /*
-     * An ARM Resource SKU.
+     * The database SKU.
+     * 
+     * The list of SKUs may vary by region and support offer. To determine the
+     * SKUs (including the SKU name, tier/edition, family, and capacity) that
+     * are available to your subscription in an Azure region, use the
+     * `Capabilities_ListByLocation` REST API or one of the following commands:
+     * 
+     * ```azurecli
+     * az sql db list-editions -l <location> -o table
+     * ````
+     * 
+     * ```powershell
+     * Get-AzSqlServerServiceObjective -Location <location>
+     * ````
+     * 
      */
     @JsonProperty(value = "sku")
     private Sku sku;
@@ -248,7 +262,7 @@ public class DatabaseInner extends Resource {
     private Integer readReplicaCount;
 
     /*
-     * An ARM Resource SKU.
+     * The name and tier of the SKU.
      */
     @JsonProperty(value = "properties.currentSku", access = JsonProperty.Access.WRITE_ONLY)
     private Sku currentSku;
@@ -281,7 +295,20 @@ public class DatabaseInner extends Resource {
     private OffsetDateTime resumedDate;
 
     /**
-     * Get the sku property: An ARM Resource SKU.
+     * Get the sku property: The database SKU.
+     * 
+     * The list of SKUs may vary by region and support offer. To determine the
+     * SKUs (including the SKU name, tier/edition, family, and capacity) that
+     * are available to your subscription in an Azure region, use the
+     * `Capabilities_ListByLocation` REST API or one of the following commands:
+     * 
+     * ```azurecli
+     * az sql db list-editions -l &lt;location&gt; -o table
+     * ````
+     * 
+     * ```powershell
+     * Get-AzSqlServerServiceObjective -Location &lt;location&gt;
+     * ````.
      * 
      * @return the sku value.
      */
@@ -290,7 +317,20 @@ public class DatabaseInner extends Resource {
     }
 
     /**
-     * Set the sku property: An ARM Resource SKU.
+     * Set the sku property: The database SKU.
+     * 
+     * The list of SKUs may vary by region and support offer. To determine the
+     * SKUs (including the SKU name, tier/edition, family, and capacity) that
+     * are available to your subscription in an Azure region, use the
+     * `Capabilities_ListByLocation` REST API or one of the following commands:
+     * 
+     * ```azurecli
+     * az sql db list-editions -l &lt;location&gt; -o table
+     * ````
+     * 
+     * ```powershell
+     * Get-AzSqlServerServiceObjective -Location &lt;location&gt;
+     * ````.
      * 
      * @param sku the sku value to set.
      * @return the DatabaseInner object itself.
@@ -866,7 +906,7 @@ public class DatabaseInner extends Resource {
     }
 
     /**
-     * Get the currentSku property: An ARM Resource SKU.
+     * Get the currentSku property: The name and tier of the SKU.
      * 
      * @return the currentSku value.
      */

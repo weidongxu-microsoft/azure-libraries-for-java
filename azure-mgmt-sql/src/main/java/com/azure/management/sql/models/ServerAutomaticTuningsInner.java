@@ -57,17 +57,17 @@ public final class ServerAutomaticTuningsInner {
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientServerAutomaticTunings")
     private interface ServerAutomaticTuningsService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/automaticTuning/current")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ServerAutomaticTuningInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/automaticTuning/current")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ServerAutomaticTuningInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ServerAutomaticTuningInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ServerAutomaticTuningInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ServerAutomaticTuningInner parameters);
     }
 
     /**
@@ -133,7 +133,7 @@ public final class ServerAutomaticTuningsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ServerAutomaticTuningInner>> updateWithResponseAsync(String resourceGroupName, String serverName, ServerAutomaticTuningInner parameters) {
         final String apiVersion = "2017-03-01-preview";
-        return service.update(this.client.getHost(), resourceGroupName, serverName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.update(this.client.getHost(), resourceGroupName, serverName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**

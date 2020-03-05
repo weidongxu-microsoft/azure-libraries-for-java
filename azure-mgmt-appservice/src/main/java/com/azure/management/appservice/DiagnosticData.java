@@ -15,20 +15,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class DiagnosticData {
     /*
-     * Data Table which defines columns and raw row values
+     * Data in table form
      */
     @JsonProperty(value = "table")
     private DataTableResponseObject table;
 
     /*
-     * Instructions for rendering the data
+     * Properties that describe how the table should be rendered
      */
     @JsonProperty(value = "renderingProperties")
     private Rendering renderingProperties;
 
     /**
-     * Get the table property: Data Table which defines columns and raw row
-     * values.
+     * Get the table property: Data in table form.
      * 
      * @return the table value.
      */
@@ -37,8 +36,7 @@ public final class DiagnosticData {
     }
 
     /**
-     * Set the table property: Data Table which defines columns and raw row
-     * values.
+     * Set the table property: Data in table form.
      * 
      * @param table the table value to set.
      * @return the DiagnosticData object itself.
@@ -49,8 +47,8 @@ public final class DiagnosticData {
     }
 
     /**
-     * Get the renderingProperties property: Instructions for rendering the
-     * data.
+     * Get the renderingProperties property: Properties that describe how the
+     * table should be rendered.
      * 
      * @return the renderingProperties value.
      */
@@ -59,8 +57,8 @@ public final class DiagnosticData {
     }
 
     /**
-     * Set the renderingProperties property: Instructions for rendering the
-     * data.
+     * Set the renderingProperties property: Properties that describe how the
+     * table should be rendered.
      * 
      * @param renderingProperties the renderingProperties value to set.
      * @return the DiagnosticData object itself.

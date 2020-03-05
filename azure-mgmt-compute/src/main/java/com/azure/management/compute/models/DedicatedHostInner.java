@@ -24,7 +24,9 @@ import java.util.List;
 @Fluent
 public class DedicatedHostInner extends Resource {
     /*
-     * Describes a virtual machine scale set sku.
+     * SKU of the dedicated host for Hardware Generation and VM family. Only
+     * name is required to be set. List Microsoft.Compute SKUs for a list of
+     * possible values.
      */
     @JsonProperty(value = "sku", required = true)
     private Sku sku;
@@ -77,13 +79,15 @@ public class DedicatedHostInner extends Resource {
     private String provisioningState;
 
     /*
-     * The instance view of a dedicated host.
+     * The dedicated host instance view.
      */
     @JsonProperty(value = "properties.instanceView", access = JsonProperty.Access.WRITE_ONLY)
     private DedicatedHostInstanceView instanceView;
 
     /**
-     * Get the sku property: Describes a virtual machine scale set sku.
+     * Get the sku property: SKU of the dedicated host for Hardware Generation
+     * and VM family. Only name is required to be set. List Microsoft.Compute
+     * SKUs for a list of possible values.
      * 
      * @return the sku value.
      */
@@ -92,7 +96,9 @@ public class DedicatedHostInner extends Resource {
     }
 
     /**
-     * Set the sku property: Describes a virtual machine scale set sku.
+     * Set the sku property: SKU of the dedicated host for Hardware Generation
+     * and VM family. Only name is required to be set. List Microsoft.Compute
+     * SKUs for a list of possible values.
      * 
      * @param sku the sku value to set.
      * @return the DedicatedHostInner object itself.
@@ -218,7 +224,7 @@ public class DedicatedHostInner extends Resource {
     }
 
     /**
-     * Get the instanceView property: The instance view of a dedicated host.
+     * Get the instanceView property: The dedicated host instance view.
      * 
      * @return the instanceView value.
      */

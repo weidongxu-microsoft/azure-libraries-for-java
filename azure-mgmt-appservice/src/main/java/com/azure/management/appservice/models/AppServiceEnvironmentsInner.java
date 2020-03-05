@@ -74,367 +74,367 @@ public final class AppServiceEnvironmentsInner implements InnerSupportsGet<AppSe
     @Host("{$host}")
     @ServiceInterface(name = "WebSiteManagementClientAppServiceEnvironments")
     private interface AppServiceEnvironmentsService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Web/hostingEnvironments")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AppServiceEnvironmentCollectionInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AppServiceEnvironmentCollectionInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AppServiceEnvironmentResourceInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AppServiceEnvironmentResourceInner hostingEnvironmentEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") AppServiceEnvironmentResourceInner hostingEnvironmentEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam("forceDelete") Boolean forceDelete, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<AppServiceEnvironmentResourceInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AppServiceEnvironmentPatchResource hostingEnvironmentEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<AppServiceEnvironmentResourceInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") AppServiceEnvironmentPatchResource hostingEnvironmentEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/capacities/compute")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<StampCapacityCollectionInner>> listCapacities(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/capacities/virtualip")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AddressResponseInner>> getVipInfo(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/changeVirtualNetwork")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> changeVnet(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualNetworkProfile vnetInfo, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> changeVnet(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VirtualNetworkProfile vnetInfo);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/diagnostics")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<List<HostingEnvironmentDiagnosticsInner>>> listDiagnostics(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/diagnostics/{diagnosticsName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<HostingEnvironmentDiagnosticsInner>> getDiagnosticsItem(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("diagnosticsName") String diagnosticsName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/inboundNetworkDependenciesEndpoints")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<InboundEnvironmentEndpointCollectionInner>> getInboundNetworkDependenciesEndpoints(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WorkerPoolCollectionInner>> listMultiRolePools(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WorkerPoolResourceInner>> getMultiRolePool(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateMultiRolePool(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") WorkerPoolResourceInner multiRolePoolEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateMultiRolePool(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") WorkerPoolResourceInner multiRolePoolEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<WorkerPoolResourceInner>> updateMultiRolePool(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") WorkerPoolResourceInner multiRolePoolEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<WorkerPoolResourceInner>> updateMultiRolePool(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") WorkerPoolResourceInner multiRolePoolEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default/instances/{instance}/metricdefinitions")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ResourceMetricDefinitionCollectionInner>> listMultiRolePoolInstanceMetricDefinitions(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("instance") String instance, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default/metricdefinitions")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ResourceMetricDefinitionCollectionInner>> listMultiRoleMetricDefinitions(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default/skus")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SkuInfoCollectionInner>> listMultiRolePoolSkus(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default/usages")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<UsageCollectionInner>> listMultiRoleUsages(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/operations")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<List<OperationInner>>> listOperations(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/outboundNetworkDependenciesEndpoints")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<OutboundEnvironmentEndpointCollectionInner>> getOutboundNetworkDependenciesEndpoints(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/reboot")
         @ExpectedResponses({202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> reboot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/resume")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> resume(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/serverfarms")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AppServicePlanCollectionInner>> listAppServicePlans(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/sites")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebAppCollectionInner>> listWebApps(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam("propertiesToInclude") String propertiesToInclude, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/suspend")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> suspend(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/usages")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<CsmUsageQuotaCollectionInner>> listUsages(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam(value = "$filter", encoded = true) String filter, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WorkerPoolCollectionInner>> listWorkerPools(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WorkerPoolResourceInner>> getWorkerPool(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("workerPoolName") String workerPoolName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWorkerPool(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("workerPoolName") String workerPoolName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") WorkerPoolResourceInner workerPoolEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWorkerPool(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("workerPoolName") String workerPoolName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") WorkerPoolResourceInner workerPoolEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<WorkerPoolResourceInner>> updateWorkerPool(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("workerPoolName") String workerPoolName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") WorkerPoolResourceInner workerPoolEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<WorkerPoolResourceInner>> updateWorkerPool(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("workerPoolName") String workerPoolName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") WorkerPoolResourceInner workerPoolEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}/instances/{instance}/metricdefinitions")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ResourceMetricDefinitionCollectionInner>> listWorkerPoolInstanceMetricDefinitions(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("workerPoolName") String workerPoolName, @PathParam("instance") String instance, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}/metricdefinitions")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ResourceMetricDefinitionCollectionInner>> listWebWorkerMetricDefinitions(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("workerPoolName") String workerPoolName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}/skus")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SkuInfoCollectionInner>> listWorkerPoolSkus(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("workerPoolName") String workerPoolName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}/usages")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<UsageCollectionInner>> listWebWorkerUsages(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("workerPoolName") String workerPoolName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<AppServiceEnvironmentResourceInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AppServiceEnvironmentResourceInner hostingEnvironmentEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<AppServiceEnvironmentResourceInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") AppServiceEnvironmentResourceInner hostingEnvironmentEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam("forceDelete") Boolean forceDelete, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/changeVirtualNetwork")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<WebAppCollectionInner>> beginChangeVnet(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualNetworkProfile vnetInfo, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<WebAppCollectionInner>> beginChangeVnet(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VirtualNetworkProfile vnetInfo);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<WorkerPoolResourceInner>> beginCreateOrUpdateMultiRolePool(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") WorkerPoolResourceInner multiRolePoolEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<WorkerPoolResourceInner>> beginCreateOrUpdateMultiRolePool(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") WorkerPoolResourceInner multiRolePoolEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/resume")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebAppCollectionInner>> beginResume(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/suspend")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebAppCollectionInner>> beginSuspend(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<WorkerPoolResourceInner>> beginCreateOrUpdateWorkerPool(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("workerPoolName") String workerPoolName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") WorkerPoolResourceInner workerPoolEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<WorkerPoolResourceInner>> beginCreateOrUpdateWorkerPool(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("workerPoolName") String workerPoolName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") WorkerPoolResourceInner workerPoolEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AppServiceEnvironmentCollectionInner>> listNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AppServiceEnvironmentCollectionInner>> listByResourceGroupNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<StampCapacityCollectionInner>> listCapacitiesNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<InboundEnvironmentEndpointCollectionInner>> getInboundNetworkDependenciesEndpointsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WorkerPoolCollectionInner>> listMultiRolePoolsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ResourceMetricDefinitionCollectionInner>> listMultiRolePoolInstanceMetricDefinitionsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ResourceMetricDefinitionCollectionInner>> listMultiRoleMetricDefinitionsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SkuInfoCollectionInner>> listMultiRolePoolSkusNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<UsageCollectionInner>> listMultiRoleUsagesNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<OutboundEnvironmentEndpointCollectionInner>> getOutboundNetworkDependenciesEndpointsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AppServicePlanCollectionInner>> listAppServicePlansNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebAppCollectionInner>> listWebAppsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<CsmUsageQuotaCollectionInner>> listUsagesNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WorkerPoolCollectionInner>> listWorkerPoolsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ResourceMetricDefinitionCollectionInner>> listWorkerPoolInstanceMetricDefinitionsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ResourceMetricDefinitionCollectionInner>> listWebWorkerMetricDefinitionsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SkuInfoCollectionInner>> listWorkerPoolSkusNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
@@ -590,7 +590,7 @@ public final class AppServiceEnvironmentsInner implements InnerSupportsGet<AppSe
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String name, AppServiceEnvironmentResourceInner hostingEnvironmentEnvelope) {
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), hostingEnvironmentEnvelope, this.client.getApiVersion());
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), hostingEnvironmentEnvelope);
     }
 
     /**
@@ -719,7 +719,7 @@ public final class AppServiceEnvironmentsInner implements InnerSupportsGet<AppSe
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<AppServiceEnvironmentResourceInner>> updateWithResponseAsync(String resourceGroupName, String name, AppServiceEnvironmentPatchResource hostingEnvironmentEnvelope) {
-        return service.update(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), hostingEnvironmentEnvelope, this.client.getApiVersion());
+        return service.update(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), hostingEnvironmentEnvelope);
     }
 
     /**
@@ -870,7 +870,7 @@ public final class AppServiceEnvironmentsInner implements InnerSupportsGet<AppSe
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> changeVnetWithResponseAsync(String resourceGroupName, String name, VirtualNetworkProfile vnetInfo) {
-        return service.changeVnet(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), vnetInfo, this.client.getApiVersion());
+        return service.changeVnet(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), vnetInfo);
     }
 
     /**
@@ -1168,7 +1168,7 @@ public final class AppServiceEnvironmentsInner implements InnerSupportsGet<AppSe
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateMultiRolePoolWithResponseAsync(String resourceGroupName, String name, WorkerPoolResourceInner multiRolePoolEnvelope) {
-        return service.createOrUpdateMultiRolePool(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), multiRolePoolEnvelope, this.client.getApiVersion());
+        return service.createOrUpdateMultiRolePool(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), multiRolePoolEnvelope);
     }
 
     /**
@@ -1216,7 +1216,7 @@ public final class AppServiceEnvironmentsInner implements InnerSupportsGet<AppSe
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<WorkerPoolResourceInner>> updateMultiRolePoolWithResponseAsync(String resourceGroupName, String name, WorkerPoolResourceInner multiRolePoolEnvelope) {
-        return service.updateMultiRolePool(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), multiRolePoolEnvelope, this.client.getApiVersion());
+        return service.updateMultiRolePool(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), multiRolePoolEnvelope);
     }
 
     /**
@@ -2026,7 +2026,7 @@ public final class AppServiceEnvironmentsInner implements InnerSupportsGet<AppSe
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWorkerPoolWithResponseAsync(String resourceGroupName, String name, String workerPoolName, WorkerPoolResourceInner workerPoolEnvelope) {
-        return service.createOrUpdateWorkerPool(this.client.getHost(), resourceGroupName, name, workerPoolName, this.client.getSubscriptionId(), workerPoolEnvelope, this.client.getApiVersion());
+        return service.createOrUpdateWorkerPool(this.client.getHost(), resourceGroupName, name, workerPoolName, this.client.getSubscriptionId(), this.client.getApiVersion(), workerPoolEnvelope);
     }
 
     /**
@@ -2077,7 +2077,7 @@ public final class AppServiceEnvironmentsInner implements InnerSupportsGet<AppSe
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<WorkerPoolResourceInner>> updateWorkerPoolWithResponseAsync(String resourceGroupName, String name, String workerPoolName, WorkerPoolResourceInner workerPoolEnvelope) {
-        return service.updateWorkerPool(this.client.getHost(), resourceGroupName, name, workerPoolName, this.client.getSubscriptionId(), workerPoolEnvelope, this.client.getApiVersion());
+        return service.updateWorkerPool(this.client.getHost(), resourceGroupName, name, workerPoolName, this.client.getSubscriptionId(), this.client.getApiVersion(), workerPoolEnvelope);
     }
 
     /**
@@ -2346,7 +2346,7 @@ public final class AppServiceEnvironmentsInner implements InnerSupportsGet<AppSe
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<AppServiceEnvironmentResourceInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String name, AppServiceEnvironmentResourceInner hostingEnvironmentEnvelope) {
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), hostingEnvironmentEnvelope, this.client.getApiVersion());
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), hostingEnvironmentEnvelope);
     }
 
     /**
@@ -2475,7 +2475,7 @@ public final class AppServiceEnvironmentsInner implements InnerSupportsGet<AppSe
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<WebAppCollectionInner>> beginChangeVnetWithResponseAsync(String resourceGroupName, String name, VirtualNetworkProfile vnetInfo) {
-        return service.beginChangeVnet(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), vnetInfo, this.client.getApiVersion());
+        return service.beginChangeVnet(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), vnetInfo);
     }
 
     /**
@@ -2527,7 +2527,7 @@ public final class AppServiceEnvironmentsInner implements InnerSupportsGet<AppSe
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<WorkerPoolResourceInner>> beginCreateOrUpdateMultiRolePoolWithResponseAsync(String resourceGroupName, String name, WorkerPoolResourceInner multiRolePoolEnvelope) {
-        return service.beginCreateOrUpdateMultiRolePool(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), multiRolePoolEnvelope, this.client.getApiVersion());
+        return service.beginCreateOrUpdateMultiRolePool(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), multiRolePoolEnvelope);
     }
 
     /**
@@ -2678,7 +2678,7 @@ public final class AppServiceEnvironmentsInner implements InnerSupportsGet<AppSe
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<WorkerPoolResourceInner>> beginCreateOrUpdateWorkerPoolWithResponseAsync(String resourceGroupName, String name, String workerPoolName, WorkerPoolResourceInner workerPoolEnvelope) {
-        return service.beginCreateOrUpdateWorkerPool(this.client.getHost(), resourceGroupName, name, workerPoolName, this.client.getSubscriptionId(), workerPoolEnvelope, this.client.getApiVersion());
+        return service.beginCreateOrUpdateWorkerPool(this.client.getHost(), resourceGroupName, name, workerPoolName, this.client.getSubscriptionId(), this.client.getApiVersion(), workerPoolEnvelope);
     }
 
     /**

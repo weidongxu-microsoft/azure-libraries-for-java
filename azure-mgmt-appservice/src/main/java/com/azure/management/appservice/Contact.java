@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class Contact {
     /*
-     * Address information for domain registration.
+     * Mailing address.
      */
     @JsonProperty(value = "addressMailing")
     private Address addressMailing;
@@ -69,8 +69,7 @@ public final class Contact {
     private String phone;
 
     /**
-     * Get the addressMailing property: Address information for domain
-     * registration.
+     * Get the addressMailing property: Mailing address.
      * 
      * @return the addressMailing value.
      */
@@ -79,8 +78,7 @@ public final class Contact {
     }
 
     /**
-     * Set the addressMailing property: Address information for domain
-     * registration.
+     * Set the addressMailing property: Mailing address.
      * 
      * @param addressMailing the addressMailing value to set.
      * @return the Contact object itself.

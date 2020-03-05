@@ -37,7 +37,8 @@ public class ApplicationGatewayIPConfigurationInner extends SubResource {
     private String type;
 
     /*
-     * Reference to another subresource.
+     * Reference of the subnet resource. A subnet from where application
+     * gateway gets its private address.
      */
     @JsonProperty(value = "properties.subnet")
     private SubResource subnet;
@@ -114,7 +115,8 @@ public class ApplicationGatewayIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the subnet property: Reference to another subresource.
+     * Get the subnet property: Reference of the subnet resource. A subnet from
+     * where application gateway gets its private address.
      * 
      * @return the subnet value.
      */
@@ -123,7 +125,8 @@ public class ApplicationGatewayIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Set the subnet property: Reference to another subresource.
+     * Set the subnet property: Reference of the subnet resource. A subnet from
+     * where application gateway gets its private address.
      * 
      * @param subnet the subnet value to set.
      * @return the ApplicationGatewayIPConfigurationInner object itself.

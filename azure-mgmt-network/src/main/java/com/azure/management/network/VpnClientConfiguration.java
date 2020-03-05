@@ -16,8 +16,8 @@ import java.util.List;
 @Fluent
 public final class VpnClientConfiguration {
     /*
-     * AddressSpace contains an array of IP address ranges that can be used by
-     * subnets of the virtual network.
+     * The reference of the address space resource which represents Address
+     * space for P2S VpnClient.
      */
     @JsonProperty(value = "vpnClientAddressPool")
     private AddressSpace vpnClientAddressPool;
@@ -82,8 +82,8 @@ public final class VpnClientConfiguration {
     private String aadIssuer;
 
     /**
-     * Get the vpnClientAddressPool property: AddressSpace contains an array of
-     * IP address ranges that can be used by subnets of the virtual network.
+     * Get the vpnClientAddressPool property: The reference of the address
+     * space resource which represents Address space for P2S VpnClient.
      * 
      * @return the vpnClientAddressPool value.
      */
@@ -92,8 +92,8 @@ public final class VpnClientConfiguration {
     }
 
     /**
-     * Set the vpnClientAddressPool property: AddressSpace contains an array of
-     * IP address ranges that can be used by subnets of the virtual network.
+     * Set the vpnClientAddressPool property: The reference of the address
+     * space resource which represents Address space for P2S VpnClient.
      * 
      * @param vpnClientAddressPool the vpnClientAddressPool value to set.
      * @return the VpnClientConfiguration object itself.

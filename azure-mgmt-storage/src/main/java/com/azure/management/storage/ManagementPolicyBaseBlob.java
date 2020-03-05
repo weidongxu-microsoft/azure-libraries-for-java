@@ -15,26 +15,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class ManagementPolicyBaseBlob {
     /*
-     * Object to define the number of days after last modification.
+     * The function to tier blobs to cool storage. Support blobs currently at
+     * Hot tier
      */
     @JsonProperty(value = "tierToCool")
     private DateAfterModification tierToCool;
 
     /*
-     * Object to define the number of days after last modification.
+     * The function to tier blobs to archive storage. Support blobs currently
+     * at Hot or Cool tier
      */
     @JsonProperty(value = "tierToArchive")
     private DateAfterModification tierToArchive;
 
     /*
-     * Object to define the number of days after last modification.
+     * The function to delete the blob
      */
     @JsonProperty(value = "delete")
     private DateAfterModification delete;
 
     /**
-     * Get the tierToCool property: Object to define the number of days after
-     * last modification.
+     * Get the tierToCool property: The function to tier blobs to cool storage.
+     * Support blobs currently at Hot tier.
      * 
      * @return the tierToCool value.
      */
@@ -43,8 +45,8 @@ public final class ManagementPolicyBaseBlob {
     }
 
     /**
-     * Set the tierToCool property: Object to define the number of days after
-     * last modification.
+     * Set the tierToCool property: The function to tier blobs to cool storage.
+     * Support blobs currently at Hot tier.
      * 
      * @param tierToCool the tierToCool value to set.
      * @return the ManagementPolicyBaseBlob object itself.
@@ -55,8 +57,8 @@ public final class ManagementPolicyBaseBlob {
     }
 
     /**
-     * Get the tierToArchive property: Object to define the number of days
-     * after last modification.
+     * Get the tierToArchive property: The function to tier blobs to archive
+     * storage. Support blobs currently at Hot or Cool tier.
      * 
      * @return the tierToArchive value.
      */
@@ -65,8 +67,8 @@ public final class ManagementPolicyBaseBlob {
     }
 
     /**
-     * Set the tierToArchive property: Object to define the number of days
-     * after last modification.
+     * Set the tierToArchive property: The function to tier blobs to archive
+     * storage. Support blobs currently at Hot or Cool tier.
      * 
      * @param tierToArchive the tierToArchive value to set.
      * @return the ManagementPolicyBaseBlob object itself.
@@ -77,8 +79,7 @@ public final class ManagementPolicyBaseBlob {
     }
 
     /**
-     * Get the delete property: Object to define the number of days after last
-     * modification.
+     * Get the delete property: The function to delete the blob.
      * 
      * @return the delete value.
      */
@@ -87,8 +88,7 @@ public final class ManagementPolicyBaseBlob {
     }
 
     /**
-     * Set the delete property: Object to define the number of days after last
-     * modification.
+     * Set the delete property: The function to delete the blob.
      * 
      * @param delete the delete value to set.
      * @return the ManagementPolicyBaseBlob object itself.

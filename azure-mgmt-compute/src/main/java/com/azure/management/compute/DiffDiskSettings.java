@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class DiffDiskSettings {
     /*
-     * Specifies the ephemeral disk option for operating system disk.
+     * Specifies the ephemeral disk settings for operating system disk.
      */
     @JsonProperty(value = "option")
     private String option;
@@ -28,7 +28,7 @@ public final class DiffDiskSettings {
     }
 
     /**
-     * Get the option property: Specifies the ephemeral disk option for
+     * Get the option property: Specifies the ephemeral disk settings for
      * operating system disk.
      * 
      * @return the option value.
@@ -38,7 +38,7 @@ public final class DiffDiskSettings {
     }
 
     /**
-     * Set the option property: Specifies the ephemeral disk option for
+     * Set the option property: Specifies the ephemeral disk settings for
      * operating system disk.
      * 
      * @param option the option value to set.

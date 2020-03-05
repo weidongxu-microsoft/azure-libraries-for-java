@@ -15,20 +15,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Immutable
 public final class UpgradeOperationHistoricalStatusInfoProperties {
     /*
-     * Information about the current running state of the overall upgrade.
+     * Information about the overall status of the upgrade operation.
      */
     @JsonProperty(value = "runningStatus", access = JsonProperty.Access.WRITE_ONLY)
     private UpgradeOperationHistoryStatus runningStatus;
 
     /*
-     * Information about the number of virtual machine instances in each
-     * upgrade state.
+     * Counts of the VMs in each state.
      */
     @JsonProperty(value = "progress", access = JsonProperty.Access.WRITE_ONLY)
     private RollingUpgradeProgressInfo progress;
 
     /*
-     * Api error.
+     * Error Details for this upgrade if there are any.
      */
     @JsonProperty(value = "error", access = JsonProperty.Access.WRITE_ONLY)
     private ApiError error;
@@ -40,25 +39,20 @@ public final class UpgradeOperationHistoricalStatusInfoProperties {
     private UpgradeOperationInvoker startedBy;
 
     /*
-     * Specifies information about the image to use. You can specify
-     * information about platform images, marketplace images, or virtual
-     * machine images. This element is required when you want to use a platform
-     * image, marketplace image, or virtual machine image, but is not used in
-     * other creation operations.
+     * Image Reference details
      */
     @JsonProperty(value = "targetImageReference", access = JsonProperty.Access.WRITE_ONLY)
     private ImageReference targetImageReference;
 
     /*
-     * Information about rollback on failed VM instances after a OS Upgrade
-     * operation.
+     * Information about OS rollback if performed
      */
     @JsonProperty(value = "rollbackInfo", access = JsonProperty.Access.WRITE_ONLY)
     private RollbackStatusInfo rollbackInfo;
 
     /**
-     * Get the runningStatus property: Information about the current running
-     * state of the overall upgrade.
+     * Get the runningStatus property: Information about the overall status of
+     * the upgrade operation.
      * 
      * @return the runningStatus value.
      */
@@ -67,8 +61,7 @@ public final class UpgradeOperationHistoricalStatusInfoProperties {
     }
 
     /**
-     * Get the progress property: Information about the number of virtual
-     * machine instances in each upgrade state.
+     * Get the progress property: Counts of the VMs in each state.
      * 
      * @return the progress value.
      */
@@ -77,7 +70,7 @@ public final class UpgradeOperationHistoricalStatusInfoProperties {
     }
 
     /**
-     * Get the error property: Api error.
+     * Get the error property: Error Details for this upgrade if there are any.
      * 
      * @return the error value.
      */
@@ -95,11 +88,7 @@ public final class UpgradeOperationHistoricalStatusInfoProperties {
     }
 
     /**
-     * Get the targetImageReference property: Specifies information about the
-     * image to use. You can specify information about platform images,
-     * marketplace images, or virtual machine images. This element is required
-     * when you want to use a platform image, marketplace image, or virtual
-     * machine image, but is not used in other creation operations.
+     * Get the targetImageReference property: Image Reference details.
      * 
      * @return the targetImageReference value.
      */
@@ -108,8 +97,8 @@ public final class UpgradeOperationHistoricalStatusInfoProperties {
     }
 
     /**
-     * Get the rollbackInfo property: Information about rollback on failed VM
-     * instances after a OS Upgrade operation.
+     * Get the rollbackInfo property: Information about OS rollback if
+     * performed.
      * 
      * @return the rollbackInfo value.
      */

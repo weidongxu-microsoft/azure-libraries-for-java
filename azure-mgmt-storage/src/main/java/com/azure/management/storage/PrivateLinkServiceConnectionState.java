@@ -15,7 +15,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class PrivateLinkServiceConnectionState {
     /*
-     * The private endpoint connection status.
+     * Indicates whether the connection has been Approved/Rejected/Removed by
+     * the owner of the service.
      */
     @JsonProperty(value = "status")
     private PrivateEndpointServiceConnectionStatus status;
@@ -34,7 +35,8 @@ public final class PrivateLinkServiceConnectionState {
     private String actionRequired;
 
     /**
-     * Get the status property: The private endpoint connection status.
+     * Get the status property: Indicates whether the connection has been
+     * Approved/Rejected/Removed by the owner of the service.
      * 
      * @return the status value.
      */
@@ -43,7 +45,8 @@ public final class PrivateLinkServiceConnectionState {
     }
 
     /**
-     * Set the status property: The private endpoint connection status.
+     * Set the status property: Indicates whether the connection has been
+     * Approved/Rejected/Removed by the owner of the service.
      * 
      * @param status the status value to set.
      * @return the PrivateLinkServiceConnectionState object itself.

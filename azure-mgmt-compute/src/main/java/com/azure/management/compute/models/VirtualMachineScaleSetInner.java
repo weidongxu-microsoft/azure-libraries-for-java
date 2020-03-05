@@ -28,7 +28,7 @@ import java.util.List;
 @Fluent
 public class VirtualMachineScaleSetInner extends Resource {
     /*
-     * Describes a virtual machine scale set sku.
+     * The virtual machine scale set sku.
      */
     @JsonProperty(value = "sku")
     private Sku sku;
@@ -46,7 +46,7 @@ public class VirtualMachineScaleSetInner extends Resource {
     private Plan plan;
 
     /*
-     * Identity for the virtual machine scale set.
+     * The identity of the virtual machine scale set, if configured.
      */
     @JsonProperty(value = "identity")
     private VirtualMachineScaleSetIdentity identity;
@@ -58,20 +58,19 @@ public class VirtualMachineScaleSetInner extends Resource {
     private List<String> zones;
 
     /*
-     * Describes an upgrade policy - automatic, manual, or rolling.
+     * The upgrade policy.
      */
     @JsonProperty(value = "properties.upgradePolicy")
     private UpgradePolicy upgradePolicy;
 
     /*
-     * Specifies the configuration parameters for automatic repairs on the
-     * virtual machine scale set.
+     * Policy for automatic repairs.
      */
     @JsonProperty(value = "properties.automaticRepairsPolicy")
     private AutomaticRepairsPolicy automaticRepairsPolicy;
 
     /*
-     * Describes a virtual machine scale set virtual machine profile.
+     * The virtual machine profile.
      */
     @JsonProperty(value = "properties.virtualMachineProfile")
     private VirtualMachineScaleSetVMProfile virtualMachineProfile;
@@ -124,26 +123,31 @@ public class VirtualMachineScaleSetInner extends Resource {
     private Integer platformFaultDomainCount;
 
     /*
-     * The proximityPlacementGroup property.
+     * Specifies information about the proximity placement group that the
+     * virtual machine scale set should be assigned to. <br><br>Minimum
+     * api-version: 2018-04-01.
      */
     @JsonProperty(value = "properties.proximityPlacementGroup")
     private SubResource proximityPlacementGroup;
 
     /*
-     * Enables or disables a capability on the virtual machine or virtual
-     * machine scale set.
+     * Specifies additional capabilities enabled or disabled on the Virtual
+     * Machines in the Virtual Machine Scale Set. For instance: whether the
+     * Virtual Machines have the capability to support attaching managed data
+     * disks with UltraSSD_LRS storage account type.
      */
     @JsonProperty(value = "properties.additionalCapabilities")
     private AdditionalCapabilities additionalCapabilities;
 
     /*
-     * Describes a scale-in policy for a virtual machine scale set.
+     * Specifies the scale-in policy that decides which virtual machines are
+     * chosen for removal when a Virtual Machine Scale Set is scaled-in.
      */
     @JsonProperty(value = "properties.scaleInPolicy")
     private ScaleInPolicy scaleInPolicy;
 
     /**
-     * Get the sku property: Describes a virtual machine scale set sku.
+     * Get the sku property: The virtual machine scale set sku.
      * 
      * @return the sku value.
      */
@@ -152,7 +156,7 @@ public class VirtualMachineScaleSetInner extends Resource {
     }
 
     /**
-     * Set the sku property: Describes a virtual machine scale set sku.
+     * Set the sku property: The virtual machine scale set sku.
      * 
      * @param sku the sku value to set.
      * @return the VirtualMachineScaleSetInner object itself.
@@ -195,7 +199,8 @@ public class VirtualMachineScaleSetInner extends Resource {
     }
 
     /**
-     * Get the identity property: Identity for the virtual machine scale set.
+     * Get the identity property: The identity of the virtual machine scale
+     * set, if configured.
      * 
      * @return the identity value.
      */
@@ -204,7 +209,8 @@ public class VirtualMachineScaleSetInner extends Resource {
     }
 
     /**
-     * Set the identity property: Identity for the virtual machine scale set.
+     * Set the identity property: The identity of the virtual machine scale
+     * set, if configured.
      * 
      * @param identity the identity value to set.
      * @return the VirtualMachineScaleSetInner object itself.
@@ -235,8 +241,7 @@ public class VirtualMachineScaleSetInner extends Resource {
     }
 
     /**
-     * Get the upgradePolicy property: Describes an upgrade policy - automatic,
-     * manual, or rolling.
+     * Get the upgradePolicy property: The upgrade policy.
      * 
      * @return the upgradePolicy value.
      */
@@ -245,8 +250,7 @@ public class VirtualMachineScaleSetInner extends Resource {
     }
 
     /**
-     * Set the upgradePolicy property: Describes an upgrade policy - automatic,
-     * manual, or rolling.
+     * Set the upgradePolicy property: The upgrade policy.
      * 
      * @param upgradePolicy the upgradePolicy value to set.
      * @return the VirtualMachineScaleSetInner object itself.
@@ -257,8 +261,7 @@ public class VirtualMachineScaleSetInner extends Resource {
     }
 
     /**
-     * Get the automaticRepairsPolicy property: Specifies the configuration
-     * parameters for automatic repairs on the virtual machine scale set.
+     * Get the automaticRepairsPolicy property: Policy for automatic repairs.
      * 
      * @return the automaticRepairsPolicy value.
      */
@@ -267,8 +270,7 @@ public class VirtualMachineScaleSetInner extends Resource {
     }
 
     /**
-     * Set the automaticRepairsPolicy property: Specifies the configuration
-     * parameters for automatic repairs on the virtual machine scale set.
+     * Set the automaticRepairsPolicy property: Policy for automatic repairs.
      * 
      * @param automaticRepairsPolicy the automaticRepairsPolicy value to set.
      * @return the VirtualMachineScaleSetInner object itself.
@@ -279,8 +281,7 @@ public class VirtualMachineScaleSetInner extends Resource {
     }
 
     /**
-     * Get the virtualMachineProfile property: Describes a virtual machine
-     * scale set virtual machine profile.
+     * Get the virtualMachineProfile property: The virtual machine profile.
      * 
      * @return the virtualMachineProfile value.
      */
@@ -289,8 +290,7 @@ public class VirtualMachineScaleSetInner extends Resource {
     }
 
     /**
-     * Set the virtualMachineProfile property: Describes a virtual machine
-     * scale set virtual machine profile.
+     * Set the virtualMachineProfile property: The virtual machine profile.
      * 
      * @param virtualMachineProfile the virtualMachineProfile value to set.
      * @return the VirtualMachineScaleSetInner object itself.
@@ -437,8 +437,9 @@ public class VirtualMachineScaleSetInner extends Resource {
     }
 
     /**
-     * Get the proximityPlacementGroup property: The proximityPlacementGroup
-     * property.
+     * Get the proximityPlacementGroup property: Specifies information about
+     * the proximity placement group that the virtual machine scale set should
+     * be assigned to. &lt;br&gt;&lt;br&gt;Minimum api-version: 2018-04-01.
      * 
      * @return the proximityPlacementGroup value.
      */
@@ -447,8 +448,9 @@ public class VirtualMachineScaleSetInner extends Resource {
     }
 
     /**
-     * Set the proximityPlacementGroup property: The proximityPlacementGroup
-     * property.
+     * Set the proximityPlacementGroup property: Specifies information about
+     * the proximity placement group that the virtual machine scale set should
+     * be assigned to. &lt;br&gt;&lt;br&gt;Minimum api-version: 2018-04-01.
      * 
      * @param proximityPlacementGroup the proximityPlacementGroup value to set.
      * @return the VirtualMachineScaleSetInner object itself.
@@ -459,8 +461,11 @@ public class VirtualMachineScaleSetInner extends Resource {
     }
 
     /**
-     * Get the additionalCapabilities property: Enables or disables a
-     * capability on the virtual machine or virtual machine scale set.
+     * Get the additionalCapabilities property: Specifies additional
+     * capabilities enabled or disabled on the Virtual Machines in the Virtual
+     * Machine Scale Set. For instance: whether the Virtual Machines have the
+     * capability to support attaching managed data disks with UltraSSD_LRS
+     * storage account type.
      * 
      * @return the additionalCapabilities value.
      */
@@ -469,8 +474,11 @@ public class VirtualMachineScaleSetInner extends Resource {
     }
 
     /**
-     * Set the additionalCapabilities property: Enables or disables a
-     * capability on the virtual machine or virtual machine scale set.
+     * Set the additionalCapabilities property: Specifies additional
+     * capabilities enabled or disabled on the Virtual Machines in the Virtual
+     * Machine Scale Set. For instance: whether the Virtual Machines have the
+     * capability to support attaching managed data disks with UltraSSD_LRS
+     * storage account type.
      * 
      * @param additionalCapabilities the additionalCapabilities value to set.
      * @return the VirtualMachineScaleSetInner object itself.
@@ -481,8 +489,9 @@ public class VirtualMachineScaleSetInner extends Resource {
     }
 
     /**
-     * Get the scaleInPolicy property: Describes a scale-in policy for a
-     * virtual machine scale set.
+     * Get the scaleInPolicy property: Specifies the scale-in policy that
+     * decides which virtual machines are chosen for removal when a Virtual
+     * Machine Scale Set is scaled-in.
      * 
      * @return the scaleInPolicy value.
      */
@@ -491,8 +500,9 @@ public class VirtualMachineScaleSetInner extends Resource {
     }
 
     /**
-     * Set the scaleInPolicy property: Describes a scale-in policy for a
-     * virtual machine scale set.
+     * Set the scaleInPolicy property: Specifies the scale-in policy that
+     * decides which virtual machines are chosen for removal when a Virtual
+     * Machine Scale Set is scaled-in.
      * 
      * @param scaleInPolicy the scaleInPolicy value to set.
      * @return the VirtualMachineScaleSetInner object itself.

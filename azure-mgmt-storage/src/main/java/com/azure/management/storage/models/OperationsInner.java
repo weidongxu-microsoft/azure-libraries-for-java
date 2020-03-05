@@ -58,7 +58,7 @@ public final class OperationsInner {
     @Host("{$host}")
     @ServiceInterface(name = "StorageManagementClientOperations")
     private interface OperationsService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/providers/Microsoft.Storage/operations")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)

@@ -59,7 +59,7 @@ public final class TransparentDataEncryptionActivitiesInner {
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientTransparentDataEncryptionActivities")
     private interface TransparentDataEncryptionActivitiesService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{transparentDataEncryptionName}/operationResults")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)

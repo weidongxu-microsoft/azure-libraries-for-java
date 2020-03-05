@@ -29,7 +29,7 @@ public class WebApplicationFirewallPolicyInner extends Resource {
     private String etag;
 
     /*
-     * Defines contents of a web application firewall global configuration.
+     * Describes policySettings for policy.
      */
     @JsonProperty(value = "properties.policySettings")
     private PolicySettings policySettings;
@@ -87,8 +87,7 @@ public class WebApplicationFirewallPolicyInner extends Resource {
     }
 
     /**
-     * Get the policySettings property: Defines contents of a web application
-     * firewall global configuration.
+     * Get the policySettings property: Describes policySettings for policy.
      * 
      * @return the policySettings value.
      */
@@ -97,8 +96,7 @@ public class WebApplicationFirewallPolicyInner extends Resource {
     }
 
     /**
-     * Set the policySettings property: Defines contents of a web application
-     * firewall global configuration.
+     * Set the policySettings property: Describes policySettings for policy.
      * 
      * @param policySettings the policySettings value to set.
      * @return the WebApplicationFirewallPolicyInner object itself.

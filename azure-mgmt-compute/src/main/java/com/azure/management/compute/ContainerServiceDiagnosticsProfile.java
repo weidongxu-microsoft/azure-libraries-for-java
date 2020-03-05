@@ -15,14 +15,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class ContainerServiceDiagnosticsProfile {
     /*
-     * Profile for diagnostics on the container service VMs.
+     * Profile for the container service VM diagnostic agent.
      */
     @JsonProperty(value = "vmDiagnostics", required = true)
     private ContainerServiceVMDiagnostics vmDiagnostics;
 
     /**
-     * Get the vmDiagnostics property: Profile for diagnostics on the container
-     * service VMs.
+     * Get the vmDiagnostics property: Profile for the container service VM
+     * diagnostic agent.
      * 
      * @return the vmDiagnostics value.
      */
@@ -31,8 +31,8 @@ public final class ContainerServiceDiagnosticsProfile {
     }
 
     /**
-     * Set the vmDiagnostics property: Profile for diagnostics on the container
-     * service VMs.
+     * Set the vmDiagnostics property: Profile for the container service VM
+     * diagnostic agent.
      * 
      * @param vmDiagnostics the vmDiagnostics value to set.
      * @return the ContainerServiceDiagnosticsProfile object itself.

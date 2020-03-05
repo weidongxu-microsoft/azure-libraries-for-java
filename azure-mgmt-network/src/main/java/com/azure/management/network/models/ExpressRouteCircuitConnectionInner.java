@@ -38,13 +38,15 @@ public class ExpressRouteCircuitConnectionInner extends SubResource {
     private String type;
 
     /*
-     * Reference to another subresource.
+     * Reference to Express Route Circuit Private Peering Resource of the
+     * circuit initiating connection.
      */
     @JsonProperty(value = "properties.expressRouteCircuitPeering")
     private SubResource expressRouteCircuitPeering;
 
     /*
-     * Reference to another subresource.
+     * Reference to Express Route Circuit Private Peering Resource of the
+     * peered circuit.
      */
     @JsonProperty(value = "properties.peerExpressRouteCircuitPeering")
     private SubResource peerExpressRouteCircuitPeering;
@@ -116,8 +118,8 @@ public class ExpressRouteCircuitConnectionInner extends SubResource {
     }
 
     /**
-     * Get the expressRouteCircuitPeering property: Reference to another
-     * subresource.
+     * Get the expressRouteCircuitPeering property: Reference to Express Route
+     * Circuit Private Peering Resource of the circuit initiating connection.
      * 
      * @return the expressRouteCircuitPeering value.
      */
@@ -126,8 +128,8 @@ public class ExpressRouteCircuitConnectionInner extends SubResource {
     }
 
     /**
-     * Set the expressRouteCircuitPeering property: Reference to another
-     * subresource.
+     * Set the expressRouteCircuitPeering property: Reference to Express Route
+     * Circuit Private Peering Resource of the circuit initiating connection.
      * 
      * @param expressRouteCircuitPeering the expressRouteCircuitPeering value
      * to set.
@@ -139,8 +141,8 @@ public class ExpressRouteCircuitConnectionInner extends SubResource {
     }
 
     /**
-     * Get the peerExpressRouteCircuitPeering property: Reference to another
-     * subresource.
+     * Get the peerExpressRouteCircuitPeering property: Reference to Express
+     * Route Circuit Private Peering Resource of the peered circuit.
      * 
      * @return the peerExpressRouteCircuitPeering value.
      */
@@ -149,8 +151,8 @@ public class ExpressRouteCircuitConnectionInner extends SubResource {
     }
 
     /**
-     * Set the peerExpressRouteCircuitPeering property: Reference to another
-     * subresource.
+     * Set the peerExpressRouteCircuitPeering property: Reference to Express
+     * Route Circuit Private Peering Resource of the peered circuit.
      * 
      * @param peerExpressRouteCircuitPeering the peerExpressRouteCircuitPeering
      * value to set.

@@ -28,7 +28,7 @@ public final class TagValueInner {
     private String tagValue;
 
     /*
-     * Tag count.
+     * The tag value count.
      */
     @JsonProperty(value = "count")
     private TagCount count;
@@ -63,7 +63,7 @@ public final class TagValueInner {
     }
 
     /**
-     * Get the count property: Tag count.
+     * Get the count property: The tag value count.
      * 
      * @return the count value.
      */
@@ -72,7 +72,7 @@ public final class TagValueInner {
     }
 
     /**
-     * Set the count property: Tag count.
+     * Set the count property: The tag value count.
      * 
      * @param count the count value to set.
      * @return the TagValueInner object itself.

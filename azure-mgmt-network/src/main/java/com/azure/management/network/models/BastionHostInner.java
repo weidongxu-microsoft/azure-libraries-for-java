@@ -40,7 +40,7 @@ public class BastionHostInner extends Resource {
     private String dnsName;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -106,7 +106,8 @@ public class BastionHostInner extends Resource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -115,7 +116,8 @@ public class BastionHostInner extends Resource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the BastionHostInner object itself.

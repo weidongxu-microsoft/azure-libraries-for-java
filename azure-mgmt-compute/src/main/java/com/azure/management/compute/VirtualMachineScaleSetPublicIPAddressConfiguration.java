@@ -31,8 +31,7 @@ public class VirtualMachineScaleSetPublicIPAddressConfiguration {
     private Integer idleTimeoutInMinutes;
 
     /*
-     * Describes a virtual machines scale sets network configuration's DNS
-     * settings.
+     * The dns settings to be applied on the publicIP addresses .
      */
     @JsonProperty(value = "properties.dnsSettings")
     private VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings dnsSettings;
@@ -44,7 +43,7 @@ public class VirtualMachineScaleSetPublicIPAddressConfiguration {
     private List<VirtualMachineScaleSetIpTag> ipTags;
 
     /*
-     * The publicIPPrefix property.
+     * The PublicIPPrefix from which to allocate publicIP addresses.
      */
     @JsonProperty(value = "properties.publicIPPrefix")
     private SubResource publicIPPrefix;
@@ -94,8 +93,8 @@ public class VirtualMachineScaleSetPublicIPAddressConfiguration {
     }
 
     /**
-     * Get the dnsSettings property: Describes a virtual machines scale sets
-     * network configuration's DNS settings.
+     * Get the dnsSettings property: The dns settings to be applied on the
+     * publicIP addresses .
      * 
      * @return the dnsSettings value.
      */
@@ -104,8 +103,8 @@ public class VirtualMachineScaleSetPublicIPAddressConfiguration {
     }
 
     /**
-     * Set the dnsSettings property: Describes a virtual machines scale sets
-     * network configuration's DNS settings.
+     * Set the dnsSettings property: The dns settings to be applied on the
+     * publicIP addresses .
      * 
      * @param dnsSettings the dnsSettings value to set.
      * @return the VirtualMachineScaleSetPublicIPAddressConfiguration object
@@ -140,7 +139,8 @@ public class VirtualMachineScaleSetPublicIPAddressConfiguration {
     }
 
     /**
-     * Get the publicIPPrefix property: The publicIPPrefix property.
+     * Get the publicIPPrefix property: The PublicIPPrefix from which to
+     * allocate publicIP addresses.
      * 
      * @return the publicIPPrefix value.
      */
@@ -149,7 +149,8 @@ public class VirtualMachineScaleSetPublicIPAddressConfiguration {
     }
 
     /**
-     * Set the publicIPPrefix property: The publicIPPrefix property.
+     * Set the publicIPPrefix property: The PublicIPPrefix from which to
+     * allocate publicIP addresses.
      * 
      * @param publicIPPrefix the publicIPPrefix value to set.
      * @return the VirtualMachineScaleSetPublicIPAddressConfiguration object

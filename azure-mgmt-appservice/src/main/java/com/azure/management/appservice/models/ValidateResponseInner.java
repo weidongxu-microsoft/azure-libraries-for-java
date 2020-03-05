@@ -22,7 +22,7 @@ public final class ValidateResponseInner {
     private String status;
 
     /*
-     * Error details for when validation fails.
+     * Error details for the case when validation fails.
      */
     @JsonProperty(value = "error")
     private ValidateResponseError error;
@@ -48,7 +48,8 @@ public final class ValidateResponseInner {
     }
 
     /**
-     * Get the error property: Error details for when validation fails.
+     * Get the error property: Error details for the case when validation
+     * fails.
      * 
      * @return the error value.
      */
@@ -57,7 +58,8 @@ public final class ValidateResponseInner {
     }
 
     /**
-     * Set the error property: Error details for when validation fails.
+     * Set the error property: Error details for the case when validation
+     * fails.
      * 
      * @param error the error value to set.
      * @return the ValidateResponseInner object itself.

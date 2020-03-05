@@ -15,19 +15,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class AutoHealRules {
     /*
-     * Triggers for auto-heal.
+     * Conditions that describe when to execute the auto-heal actions.
      */
     @JsonProperty(value = "triggers")
     private AutoHealTriggers triggers;
 
     /*
-     * Actions which to take by the auto-heal module when a rule is triggered.
+     * Actions to be executed when a rule is triggered.
      */
     @JsonProperty(value = "actions")
     private AutoHealActions actions;
 
     /**
-     * Get the triggers property: Triggers for auto-heal.
+     * Get the triggers property: Conditions that describe when to execute the
+     * auto-heal actions.
      * 
      * @return the triggers value.
      */
@@ -36,7 +37,8 @@ public final class AutoHealRules {
     }
 
     /**
-     * Set the triggers property: Triggers for auto-heal.
+     * Set the triggers property: Conditions that describe when to execute the
+     * auto-heal actions.
      * 
      * @param triggers the triggers value to set.
      * @return the AutoHealRules object itself.
@@ -47,8 +49,8 @@ public final class AutoHealRules {
     }
 
     /**
-     * Get the actions property: Actions which to take by the auto-heal module
-     * when a rule is triggered.
+     * Get the actions property: Actions to be executed when a rule is
+     * triggered.
      * 
      * @return the actions value.
      */
@@ -57,8 +59,8 @@ public final class AutoHealRules {
     }
 
     /**
-     * Set the actions property: Actions which to take by the auto-heal module
-     * when a rule is triggered.
+     * Set the actions property: Actions to be executed when a rule is
+     * triggered.
      * 
      * @param actions the actions value to set.
      * @return the AutoHealRules object itself.

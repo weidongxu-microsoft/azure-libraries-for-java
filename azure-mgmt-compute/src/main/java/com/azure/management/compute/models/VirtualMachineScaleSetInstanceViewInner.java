@@ -19,8 +19,7 @@ import java.util.List;
 @Fluent
 public final class VirtualMachineScaleSetInstanceViewInner {
     /*
-     * Instance view statuses summary for virtual machines of a virtual machine
-     * scale set.
+     * The instance view status summary for the virtual machine scale set.
      */
     @JsonProperty(value = "virtualMachine", access = JsonProperty.Access.WRITE_ONLY)
     private VirtualMachineScaleSetInstanceViewStatusesSummary virtualMachine;
@@ -38,8 +37,8 @@ public final class VirtualMachineScaleSetInstanceViewInner {
     private List<InstanceViewStatus> statuses;
 
     /**
-     * Get the virtualMachine property: Instance view statuses summary for
-     * virtual machines of a virtual machine scale set.
+     * Get the virtualMachine property: The instance view status summary for
+     * the virtual machine scale set.
      * 
      * @return the virtualMachine value.
      */

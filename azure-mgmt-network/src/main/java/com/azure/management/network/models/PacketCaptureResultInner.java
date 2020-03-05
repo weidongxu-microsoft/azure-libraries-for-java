@@ -75,7 +75,7 @@ public class PacketCaptureResultInner {
     private List<PacketCaptureFilter> filters;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the packet capture session.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -251,7 +251,8 @@ public class PacketCaptureResultInner {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the packet
+     * capture session.
      * 
      * @return the provisioningState value.
      */
@@ -260,7 +261,8 @@ public class PacketCaptureResultInner {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the packet
+     * capture session.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the PacketCaptureResultInner object itself.

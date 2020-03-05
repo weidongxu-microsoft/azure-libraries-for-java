@@ -41,7 +41,7 @@ public final class CsmUsageQuotaInner {
     private Long limit;
 
     /*
-     * Localizable string object containing the name and a localized value.
+     * Quota name.
      */
     @JsonProperty(value = "name")
     private LocalizableString name;
@@ -131,8 +131,7 @@ public final class CsmUsageQuotaInner {
     }
 
     /**
-     * Get the name property: Localizable string object containing the name and
-     * a localized value.
+     * Get the name property: Quota name.
      * 
      * @return the name value.
      */
@@ -141,8 +140,7 @@ public final class CsmUsageQuotaInner {
     }
 
     /**
-     * Set the name property: Localizable string object containing the name and
-     * a localized value.
+     * Set the name property: Quota name.
      * 
      * @param name the name value to set.
      * @return the CsmUsageQuotaInner object itself.

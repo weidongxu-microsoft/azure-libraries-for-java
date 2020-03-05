@@ -70,7 +70,7 @@ public class ReplicationLinkInner extends ProxyResource {
     private ReplicationRole role;
 
     /*
-     * The role of the database in the replication link.
+     * The role of the partner database in the replication link.
      */
     @JsonProperty(value = "properties.partnerRole", access = JsonProperty.Access.WRITE_ONLY)
     private ReplicationRole partnerRole;
@@ -171,7 +171,7 @@ public class ReplicationLinkInner extends ProxyResource {
     }
 
     /**
-     * Get the partnerRole property: The role of the database in the
+     * Get the partnerRole property: The role of the partner database in the
      * replication link.
      * 
      * @return the partnerRole value.

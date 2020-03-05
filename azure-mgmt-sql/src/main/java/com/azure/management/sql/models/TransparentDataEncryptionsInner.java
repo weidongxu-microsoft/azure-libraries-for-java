@@ -58,13 +58,13 @@ public final class TransparentDataEncryptionsInner {
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientTransparentDataEncryptions")
     private interface TransparentDataEncryptionsService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{transparentDataEncryptionName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<TransparentDataEncryptionInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("transparentDataEncryptionName") String transparentDataEncryptionName, @BodyParam("application/json") TransparentDataEncryptionInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<TransparentDataEncryptionInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("transparentDataEncryptionName") String transparentDataEncryptionName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TransparentDataEncryptionInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{transparentDataEncryptionName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -88,7 +88,7 @@ public final class TransparentDataEncryptionsInner {
         final String apiVersion = "2014-04-01";
         TransparentDataEncryptionInner parameters = new TransparentDataEncryptionInner();
         parameters.withStatus(status);
-        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, transparentDataEncryptionName, parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, transparentDataEncryptionName, apiVersion, parameters);
     }
 
     /**

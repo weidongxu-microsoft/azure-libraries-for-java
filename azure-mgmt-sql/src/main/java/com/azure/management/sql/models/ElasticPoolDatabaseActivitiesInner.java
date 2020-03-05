@@ -59,7 +59,7 @@ public final class ElasticPoolDatabaseActivitiesInner {
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientElasticPoolDatabaseActivities")
     private interface ElasticPoolDatabaseActivitiesService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/elasticPoolDatabaseActivity")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)

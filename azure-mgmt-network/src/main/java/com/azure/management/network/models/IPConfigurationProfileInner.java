@@ -36,7 +36,8 @@ public class IPConfigurationProfileInner extends SubResource {
     private String etag;
 
     /*
-     * Subnet in a virtual network resource.
+     * The reference of the subnet resource to create a container network
+     * interface ip configuration.
      */
     @JsonProperty(value = "properties.subnet")
     private SubnetInner subnet;
@@ -101,7 +102,8 @@ public class IPConfigurationProfileInner extends SubResource {
     }
 
     /**
-     * Get the subnet property: Subnet in a virtual network resource.
+     * Get the subnet property: The reference of the subnet resource to create
+     * a container network interface ip configuration.
      * 
      * @return the subnet value.
      */
@@ -110,7 +112,8 @@ public class IPConfigurationProfileInner extends SubResource {
     }
 
     /**
-     * Set the subnet property: Subnet in a virtual network resource.
+     * Set the subnet property: The reference of the subnet resource to create
+     * a container network interface ip configuration.
      * 
      * @param subnet the subnet value to set.
      * @return the IPConfigurationProfileInner object itself.

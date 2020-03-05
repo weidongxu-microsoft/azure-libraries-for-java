@@ -38,7 +38,7 @@ public class ApplicationGatewayProbeInner extends SubResource {
     private String type;
 
     /*
-     * Application Gateway protocol.
+     * The protocol used for the probe.
      */
     @JsonProperty(value = "properties.protocol")
     private ApplicationGatewayProtocol protocol;
@@ -95,7 +95,7 @@ public class ApplicationGatewayProbeInner extends SubResource {
     private Integer minServers;
 
     /*
-     * Application gateway probe health response match.
+     * Criterion for classifying a healthy probe response.
      */
     @JsonProperty(value = "properties.match")
     private ApplicationGatewayProbeHealthResponseMatch match;
@@ -181,7 +181,7 @@ public class ApplicationGatewayProbeInner extends SubResource {
     }
 
     /**
-     * Get the protocol property: Application Gateway protocol.
+     * Get the protocol property: The protocol used for the probe.
      * 
      * @return the protocol value.
      */
@@ -190,7 +190,7 @@ public class ApplicationGatewayProbeInner extends SubResource {
     }
 
     /**
-     * Set the protocol property: Application Gateway protocol.
+     * Set the protocol property: The protocol used for the probe.
      * 
      * @param protocol the protocol value to set.
      * @return the ApplicationGatewayProbeInner object itself.
@@ -364,7 +364,8 @@ public class ApplicationGatewayProbeInner extends SubResource {
     }
 
     /**
-     * Get the match property: Application gateway probe health response match.
+     * Get the match property: Criterion for classifying a healthy probe
+     * response.
      * 
      * @return the match value.
      */
@@ -373,7 +374,8 @@ public class ApplicationGatewayProbeInner extends SubResource {
     }
 
     /**
-     * Set the match property: Application gateway probe health response match.
+     * Set the match property: Criterion for classifying a healthy probe
+     * response.
      * 
      * @param match the match value to set.
      * @return the ApplicationGatewayProbeInner object itself.

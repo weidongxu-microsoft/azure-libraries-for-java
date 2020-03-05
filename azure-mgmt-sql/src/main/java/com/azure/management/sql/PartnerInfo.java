@@ -27,7 +27,7 @@ public final class PartnerInfo {
     private String location;
 
     /*
-     * Local replication role of the failover group instance.
+     * Replication role of the partner server.
      */
     @JsonProperty(value = "replicationRole", access = JsonProperty.Access.WRITE_ONLY)
     private FailoverGroupReplicationRole replicationRole;
@@ -62,8 +62,8 @@ public final class PartnerInfo {
     }
 
     /**
-     * Get the replicationRole property: Local replication role of the failover
-     * group instance.
+     * Get the replicationRole property: Replication role of the partner
+     * server.
      * 
      * @return the replicationRole value.
      */

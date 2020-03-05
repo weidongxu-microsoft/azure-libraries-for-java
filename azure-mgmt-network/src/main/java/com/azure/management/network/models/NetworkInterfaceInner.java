@@ -27,19 +27,20 @@ public class NetworkInterfaceInner extends Resource {
     private String etag;
 
     /*
-     * Reference to another subresource.
+     * The reference of a virtual machine.
      */
     @JsonProperty(value = "properties.virtualMachine", access = JsonProperty.Access.WRITE_ONLY)
     private SubResource virtualMachine;
 
     /*
-     * NetworkSecurityGroup resource.
+     * The reference of the NetworkSecurityGroup resource.
      */
     @JsonProperty(value = "properties.networkSecurityGroup")
     private NetworkSecurityGroupInner networkSecurityGroup;
 
     /*
-     * Private endpoint resource.
+     * A reference to the private endpoint to which the network interface is
+     * linked.
      */
     @JsonProperty(value = "properties.privateEndpoint", access = JsonProperty.Access.WRITE_ONLY)
     private PrivateEndpointInner privateEndpoint;
@@ -57,7 +58,7 @@ public class NetworkInterfaceInner extends Resource {
     private List<NetworkInterfaceTapConfigurationInner> tapConfigurations;
 
     /*
-     * DNS settings of a network interface.
+     * The DNS settings in network interface.
      */
     @JsonProperty(value = "properties.dnsSettings")
     private NetworkInterfaceDnsSettings dnsSettings;
@@ -134,7 +135,7 @@ public class NetworkInterfaceInner extends Resource {
     }
 
     /**
-     * Get the virtualMachine property: Reference to another subresource.
+     * Get the virtualMachine property: The reference of a virtual machine.
      * 
      * @return the virtualMachine value.
      */
@@ -143,7 +144,8 @@ public class NetworkInterfaceInner extends Resource {
     }
 
     /**
-     * Get the networkSecurityGroup property: NetworkSecurityGroup resource.
+     * Get the networkSecurityGroup property: The reference of the
+     * NetworkSecurityGroup resource.
      * 
      * @return the networkSecurityGroup value.
      */
@@ -152,7 +154,8 @@ public class NetworkInterfaceInner extends Resource {
     }
 
     /**
-     * Set the networkSecurityGroup property: NetworkSecurityGroup resource.
+     * Set the networkSecurityGroup property: The reference of the
+     * NetworkSecurityGroup resource.
      * 
      * @param networkSecurityGroup the networkSecurityGroup value to set.
      * @return the NetworkInterfaceInner object itself.
@@ -163,7 +166,8 @@ public class NetworkInterfaceInner extends Resource {
     }
 
     /**
-     * Get the privateEndpoint property: Private endpoint resource.
+     * Get the privateEndpoint property: A reference to the private endpoint to
+     * which the network interface is linked.
      * 
      * @return the privateEndpoint value.
      */
@@ -216,7 +220,7 @@ public class NetworkInterfaceInner extends Resource {
     }
 
     /**
-     * Get the dnsSettings property: DNS settings of a network interface.
+     * Get the dnsSettings property: The DNS settings in network interface.
      * 
      * @return the dnsSettings value.
      */
@@ -225,7 +229,7 @@ public class NetworkInterfaceInner extends Resource {
     }
 
     /**
-     * Set the dnsSettings property: DNS settings of a network interface.
+     * Set the dnsSettings property: The DNS settings in network interface.
      * 
      * @param dnsSettings the dnsSettings value to set.
      * @return the NetworkInterfaceInner object itself.

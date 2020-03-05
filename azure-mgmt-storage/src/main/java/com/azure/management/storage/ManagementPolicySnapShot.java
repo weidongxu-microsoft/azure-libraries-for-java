@@ -15,14 +15,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class ManagementPolicySnapShot {
     /*
-     * Object to define the number of days after creation.
+     * The function to delete the blob snapshot
      */
     @JsonProperty(value = "delete")
     private DateAfterCreation delete;
 
     /**
-     * Get the delete property: Object to define the number of days after
-     * creation.
+     * Get the delete property: The function to delete the blob snapshot.
      * 
      * @return the delete value.
      */
@@ -31,8 +30,7 @@ public final class ManagementPolicySnapShot {
     }
 
     /**
-     * Set the delete property: Object to define the number of days after
-     * creation.
+     * Set the delete property: The function to delete the blob snapshot.
      * 
      * @param delete the delete value to set.
      * @return the ManagementPolicySnapShot object itself.

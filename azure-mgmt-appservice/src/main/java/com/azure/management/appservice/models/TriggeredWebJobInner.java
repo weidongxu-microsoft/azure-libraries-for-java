@@ -21,7 +21,7 @@ import java.util.Map;
 @Fluent
 public class TriggeredWebJobInner extends ProxyOnlyResource {
     /*
-     * Triggered Web Job Run Information.
+     * Latest job run information.
      */
     @JsonProperty(value = "properties.latest_run")
     private TriggeredJobRun latestRun;
@@ -81,7 +81,7 @@ public class TriggeredWebJobInner extends ProxyOnlyResource {
     private Map<String, Object> settings;
 
     /**
-     * Get the latestRun property: Triggered Web Job Run Information.
+     * Get the latestRun property: Latest job run information.
      * 
      * @return the latestRun value.
      */
@@ -90,7 +90,7 @@ public class TriggeredWebJobInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the latestRun property: Triggered Web Job Run Information.
+     * Set the latestRun property: Latest job run information.
      * 
      * @param latestRun the latestRun value to set.
      * @return the TriggeredWebJobInner object itself.

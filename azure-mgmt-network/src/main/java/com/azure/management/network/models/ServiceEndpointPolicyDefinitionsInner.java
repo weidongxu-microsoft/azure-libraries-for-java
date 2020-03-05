@@ -66,43 +66,43 @@ public final class ServiceEndpointPolicyDefinitionsInner {
     @Host("{$host}")
     @ServiceInterface(name = "NetworkManagementClientServiceEndpointPolicyDefinitions")
     private interface ServiceEndpointPolicyDefinitionsService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("serviceEndpointPolicyDefinitionName") String serviceEndpointPolicyDefinitionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ServiceEndpointPolicyDefinitionInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("serviceEndpointPolicyDefinitionName") String serviceEndpointPolicyDefinitionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("serviceEndpointPolicyDefinitionName") String serviceEndpointPolicyDefinitionName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ServiceEndpointPolicyDefinitionInner serviceEndpointPolicyDefinitions, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("serviceEndpointPolicyDefinitionName") String serviceEndpointPolicyDefinitionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ServiceEndpointPolicyDefinitionInner serviceEndpointPolicyDefinitions);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ServiceEndpointPolicyDefinitionListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("serviceEndpointPolicyDefinitionName") String serviceEndpointPolicyDefinitionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ServiceEndpointPolicyDefinitionInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("serviceEndpointPolicyDefinitionName") String serviceEndpointPolicyDefinitionName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ServiceEndpointPolicyDefinitionInner serviceEndpointPolicyDefinitions, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ServiceEndpointPolicyDefinitionInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("serviceEndpointPolicyDefinitionName") String serviceEndpointPolicyDefinitionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ServiceEndpointPolicyDefinitionInner serviceEndpointPolicyDefinitions);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -225,7 +225,7 @@ public final class ServiceEndpointPolicyDefinitionsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String serviceEndpointPolicyName, String serviceEndpointPolicyDefinitionName, ServiceEndpointPolicyDefinitionInner serviceEndpointPolicyDefinitions) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, serviceEndpointPolicyDefinitionName, this.client.getSubscriptionId(), serviceEndpointPolicyDefinitions, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, serviceEndpointPolicyDefinitionName, this.client.getSubscriptionId(), apiVersion, serviceEndpointPolicyDefinitions);
     }
 
     /**
@@ -375,7 +375,7 @@ public final class ServiceEndpointPolicyDefinitionsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ServiceEndpointPolicyDefinitionInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String serviceEndpointPolicyName, String serviceEndpointPolicyDefinitionName, ServiceEndpointPolicyDefinitionInner serviceEndpointPolicyDefinitions) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, serviceEndpointPolicyDefinitionName, this.client.getSubscriptionId(), serviceEndpointPolicyDefinitions, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, serviceEndpointPolicyDefinitionName, this.client.getSubscriptionId(), apiVersion, serviceEndpointPolicyDefinitions);
     }
 
     /**

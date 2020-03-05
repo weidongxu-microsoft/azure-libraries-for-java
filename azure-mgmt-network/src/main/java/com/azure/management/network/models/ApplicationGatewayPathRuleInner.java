@@ -43,25 +43,25 @@ public class ApplicationGatewayPathRuleInner extends SubResource {
     private List<String> paths;
 
     /*
-     * Reference to another subresource.
+     * Backend address pool resource of URL path map path rule.
      */
     @JsonProperty(value = "properties.backendAddressPool")
     private SubResource backendAddressPool;
 
     /*
-     * Reference to another subresource.
+     * Backend http settings resource of URL path map path rule.
      */
     @JsonProperty(value = "properties.backendHttpSettings")
     private SubResource backendHttpSettings;
 
     /*
-     * Reference to another subresource.
+     * Redirect configuration resource of URL path map path rule.
      */
     @JsonProperty(value = "properties.redirectConfiguration")
     private SubResource redirectConfiguration;
 
     /*
-     * Reference to another subresource.
+     * Rewrite rule set resource of URL path map path rule.
      */
     @JsonProperty(value = "properties.rewriteRuleSet")
     private SubResource rewriteRuleSet;
@@ -158,7 +158,8 @@ public class ApplicationGatewayPathRuleInner extends SubResource {
     }
 
     /**
-     * Get the backendAddressPool property: Reference to another subresource.
+     * Get the backendAddressPool property: Backend address pool resource of
+     * URL path map path rule.
      * 
      * @return the backendAddressPool value.
      */
@@ -167,7 +168,8 @@ public class ApplicationGatewayPathRuleInner extends SubResource {
     }
 
     /**
-     * Set the backendAddressPool property: Reference to another subresource.
+     * Set the backendAddressPool property: Backend address pool resource of
+     * URL path map path rule.
      * 
      * @param backendAddressPool the backendAddressPool value to set.
      * @return the ApplicationGatewayPathRuleInner object itself.
@@ -178,7 +180,8 @@ public class ApplicationGatewayPathRuleInner extends SubResource {
     }
 
     /**
-     * Get the backendHttpSettings property: Reference to another subresource.
+     * Get the backendHttpSettings property: Backend http settings resource of
+     * URL path map path rule.
      * 
      * @return the backendHttpSettings value.
      */
@@ -187,7 +190,8 @@ public class ApplicationGatewayPathRuleInner extends SubResource {
     }
 
     /**
-     * Set the backendHttpSettings property: Reference to another subresource.
+     * Set the backendHttpSettings property: Backend http settings resource of
+     * URL path map path rule.
      * 
      * @param backendHttpSettings the backendHttpSettings value to set.
      * @return the ApplicationGatewayPathRuleInner object itself.
@@ -198,8 +202,8 @@ public class ApplicationGatewayPathRuleInner extends SubResource {
     }
 
     /**
-     * Get the redirectConfiguration property: Reference to another
-     * subresource.
+     * Get the redirectConfiguration property: Redirect configuration resource
+     * of URL path map path rule.
      * 
      * @return the redirectConfiguration value.
      */
@@ -208,8 +212,8 @@ public class ApplicationGatewayPathRuleInner extends SubResource {
     }
 
     /**
-     * Set the redirectConfiguration property: Reference to another
-     * subresource.
+     * Set the redirectConfiguration property: Redirect configuration resource
+     * of URL path map path rule.
      * 
      * @param redirectConfiguration the redirectConfiguration value to set.
      * @return the ApplicationGatewayPathRuleInner object itself.
@@ -220,7 +224,8 @@ public class ApplicationGatewayPathRuleInner extends SubResource {
     }
 
     /**
-     * Get the rewriteRuleSet property: Reference to another subresource.
+     * Get the rewriteRuleSet property: Rewrite rule set resource of URL path
+     * map path rule.
      * 
      * @return the rewriteRuleSet value.
      */
@@ -229,7 +234,8 @@ public class ApplicationGatewayPathRuleInner extends SubResource {
     }
 
     /**
-     * Set the rewriteRuleSet property: Reference to another subresource.
+     * Set the rewriteRuleSet property: Rewrite rule set resource of URL path
+     * map path rule.
      * 
      * @param rewriteRuleSet the rewriteRuleSet value to set.
      * @return the ApplicationGatewayPathRuleInner object itself.

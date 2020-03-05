@@ -39,7 +39,7 @@ public class AppServiceEnvironmentResourceInner extends Resource {
     private String locationPropertiesLocation;
 
     /*
-     * Status of certificate order.
+     * Provisioning state of the App Service Environment.
      */
     @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
     private ProvisioningState provisioningState;
@@ -69,7 +69,7 @@ public class AppServiceEnvironmentResourceInner extends Resource {
     private String vnetSubnetName;
 
     /*
-     * Specification for using a Virtual Network.
+     * Description of the Virtual Network.
      */
     @JsonProperty(value = "properties.virtualNetwork")
     private VirtualNetworkProfile virtualNetwork;
@@ -328,7 +328,8 @@ public class AppServiceEnvironmentResourceInner extends Resource {
     }
 
     /**
-     * Get the provisioningState property: Status of certificate order.
+     * Get the provisioningState property: Provisioning state of the App
+     * Service Environment.
      * 
      * @return the provisioningState value.
      */
@@ -410,8 +411,7 @@ public class AppServiceEnvironmentResourceInner extends Resource {
     }
 
     /**
-     * Get the virtualNetwork property: Specification for using a Virtual
-     * Network.
+     * Get the virtualNetwork property: Description of the Virtual Network.
      * 
      * @return the virtualNetwork value.
      */
@@ -420,8 +420,7 @@ public class AppServiceEnvironmentResourceInner extends Resource {
     }
 
     /**
-     * Set the virtualNetwork property: Specification for using a Virtual
-     * Network.
+     * Set the virtualNetwork property: Description of the Virtual Network.
      * 
      * @param virtualNetwork the virtualNetwork value to set.
      * @return the AppServiceEnvironmentResourceInner object itself.

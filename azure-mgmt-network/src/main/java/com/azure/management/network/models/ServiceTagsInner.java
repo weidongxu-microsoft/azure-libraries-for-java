@@ -55,7 +55,7 @@ public final class ServiceTagsInner {
     @Host("{$host}")
     @ServiceInterface(name = "NetworkManagementClientServiceTags")
     private interface ServiceTagsService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/serviceTags")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)

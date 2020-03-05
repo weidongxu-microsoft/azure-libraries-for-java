@@ -20,13 +20,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public class PrivateEndpointConnectionInner extends ProxyResource {
     /*
-     * The privateEndpoint property.
+     * Private endpoint which the connection belongs to.
      */
     @JsonProperty(value = "properties.privateEndpoint")
     private PrivateEndpointProperty privateEndpoint;
 
     /*
-     * The privateLinkServiceConnectionState property.
+     * Connection state of the private endpoint connection.
      */
     @JsonProperty(value = "properties.privateLinkServiceConnectionState")
     private PrivateLinkServiceConnectionStateProperty privateLinkServiceConnectionState;
@@ -38,7 +38,8 @@ public class PrivateEndpointConnectionInner extends ProxyResource {
     private String provisioningState;
 
     /**
-     * Get the privateEndpoint property: The privateEndpoint property.
+     * Get the privateEndpoint property: Private endpoint which the connection
+     * belongs to.
      * 
      * @return the privateEndpoint value.
      */
@@ -47,7 +48,8 @@ public class PrivateEndpointConnectionInner extends ProxyResource {
     }
 
     /**
-     * Set the privateEndpoint property: The privateEndpoint property.
+     * Set the privateEndpoint property: Private endpoint which the connection
+     * belongs to.
      * 
      * @param privateEndpoint the privateEndpoint value to set.
      * @return the PrivateEndpointConnectionInner object itself.
@@ -58,8 +60,8 @@ public class PrivateEndpointConnectionInner extends ProxyResource {
     }
 
     /**
-     * Get the privateLinkServiceConnectionState property: The
-     * privateLinkServiceConnectionState property.
+     * Get the privateLinkServiceConnectionState property: Connection state of
+     * the private endpoint connection.
      * 
      * @return the privateLinkServiceConnectionState value.
      */
@@ -68,8 +70,8 @@ public class PrivateEndpointConnectionInner extends ProxyResource {
     }
 
     /**
-     * Set the privateLinkServiceConnectionState property: The
-     * privateLinkServiceConnectionState property.
+     * Set the privateLinkServiceConnectionState property: Connection state of
+     * the private endpoint connection.
      * 
      * @param privateLinkServiceConnectionState the
      * privateLinkServiceConnectionState value to set.

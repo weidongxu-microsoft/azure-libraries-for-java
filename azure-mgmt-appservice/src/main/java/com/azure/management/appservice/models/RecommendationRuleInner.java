@@ -60,13 +60,13 @@ public class RecommendationRuleInner extends ProxyOnlyResource {
     private String actionName;
 
     /*
-     * Level indicating how critical this recommendation can impact.
+     * Level of impact indicating how critical this rule is.
      */
     @JsonProperty(value = "properties.level")
     private NotificationLevel level;
 
     /*
-     * List of channels that this recommendation can apply.
+     * List of available channels that this rule applies.
      */
     @JsonProperty(value = "properties.channels")
     private Channels channels;
@@ -231,8 +231,8 @@ public class RecommendationRuleInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the level property: Level indicating how critical this
-     * recommendation can impact.
+     * Get the level property: Level of impact indicating how critical this
+     * rule is.
      * 
      * @return the level value.
      */
@@ -241,8 +241,8 @@ public class RecommendationRuleInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the level property: Level indicating how critical this
-     * recommendation can impact.
+     * Set the level property: Level of impact indicating how critical this
+     * rule is.
      * 
      * @param level the level value to set.
      * @return the RecommendationRuleInner object itself.
@@ -253,8 +253,8 @@ public class RecommendationRuleInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the channels property: List of channels that this recommendation can
-     * apply.
+     * Get the channels property: List of available channels that this rule
+     * applies.
      * 
      * @return the channels value.
      */
@@ -263,8 +263,8 @@ public class RecommendationRuleInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the channels property: List of channels that this recommendation can
-     * apply.
+     * Set the channels property: List of available channels that this rule
+     * applies.
      * 
      * @param channels the channels value to set.
      * @return the RecommendationRuleInner object itself.

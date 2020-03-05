@@ -39,7 +39,7 @@ public class AzureFirewallNetworkRuleCollection extends SubResource {
     private Integer priority;
 
     /*
-     * Properties of the AzureFirewallRCAction.
+     * The action type of a rule collection.
      */
     @JsonProperty(value = "properties.action")
     private AzureFirewallRCAction action;
@@ -51,7 +51,7 @@ public class AzureFirewallNetworkRuleCollection extends SubResource {
     private List<AzureFirewallNetworkRule> rules;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -111,7 +111,7 @@ public class AzureFirewallNetworkRuleCollection extends SubResource {
     }
 
     /**
-     * Get the action property: Properties of the AzureFirewallRCAction.
+     * Get the action property: The action type of a rule collection.
      * 
      * @return the action value.
      */
@@ -120,7 +120,7 @@ public class AzureFirewallNetworkRuleCollection extends SubResource {
     }
 
     /**
-     * Set the action property: Properties of the AzureFirewallRCAction.
+     * Set the action property: The action type of a rule collection.
      * 
      * @param action the action value to set.
      * @return the AzureFirewallNetworkRuleCollection object itself.
@@ -153,7 +153,8 @@ public class AzureFirewallNetworkRuleCollection extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -162,7 +163,8 @@ public class AzureFirewallNetworkRuleCollection extends SubResource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the AzureFirewallNetworkRuleCollection object itself.

@@ -21,7 +21,11 @@ public final class CsmCopySlotEntityInner {
     private String targetSlot;
 
     /*
-     * Configuration of an App Service app.
+     * The site object which will be merged with the source slot site
+     * to produce new destination slot site object.
+     * <code>null</code> to just copy source slot content. Otherwise a
+     * <code>Site</code>
+     * object with properties to override source slot site.
      */
     @JsonProperty(value = "siteConfig", required = true)
     private SiteConfigInner siteConfig;
@@ -49,7 +53,12 @@ public final class CsmCopySlotEntityInner {
     }
 
     /**
-     * Get the siteConfig property: Configuration of an App Service app.
+     * Get the siteConfig property: The site object which will be merged with
+     * the source slot site
+     * to produce new destination slot site object.
+     * &lt;code&gt;null&lt;/code&gt; to just copy source slot content.
+     * Otherwise a &lt;code&gt;Site&lt;/code&gt;
+     * object with properties to override source slot site.
      * 
      * @return the siteConfig value.
      */
@@ -58,7 +67,12 @@ public final class CsmCopySlotEntityInner {
     }
 
     /**
-     * Set the siteConfig property: Configuration of an App Service app.
+     * Set the siteConfig property: The site object which will be merged with
+     * the source slot site
+     * to produce new destination slot site object.
+     * &lt;code&gt;null&lt;/code&gt; to just copy source slot content.
+     * Otherwise a &lt;code&gt;Site&lt;/code&gt;
+     * object with properties to override source slot site.
      * 
      * @param siteConfig the siteConfig value to set.
      * @return the CsmCopySlotEntityInner object itself.

@@ -22,13 +22,13 @@ public final class TopologyParameters {
     private String targetResourceGroupName;
 
     /*
-     * Reference to another subresource.
+     * The reference of the Virtual Network resource.
      */
     @JsonProperty(value = "targetVirtualNetwork")
     private SubResource targetVirtualNetwork;
 
     /*
-     * Reference to another subresource.
+     * The reference of the Subnet resource.
      */
     @JsonProperty(value = "targetSubnet")
     private SubResource targetSubnet;
@@ -56,7 +56,8 @@ public final class TopologyParameters {
     }
 
     /**
-     * Get the targetVirtualNetwork property: Reference to another subresource.
+     * Get the targetVirtualNetwork property: The reference of the Virtual
+     * Network resource.
      * 
      * @return the targetVirtualNetwork value.
      */
@@ -65,7 +66,8 @@ public final class TopologyParameters {
     }
 
     /**
-     * Set the targetVirtualNetwork property: Reference to another subresource.
+     * Set the targetVirtualNetwork property: The reference of the Virtual
+     * Network resource.
      * 
      * @param targetVirtualNetwork the targetVirtualNetwork value to set.
      * @return the TopologyParameters object itself.
@@ -76,7 +78,7 @@ public final class TopologyParameters {
     }
 
     /**
-     * Get the targetSubnet property: Reference to another subresource.
+     * Get the targetSubnet property: The reference of the Subnet resource.
      * 
      * @return the targetSubnet value.
      */
@@ -85,7 +87,7 @@ public final class TopologyParameters {
     }
 
     /**
-     * Set the targetSubnet property: Reference to another subresource.
+     * Set the targetSubnet property: The reference of the Subnet resource.
      * 
      * @param targetSubnet the targetSubnet value to set.
      * @return the TopologyParameters object itself.

@@ -16,9 +16,7 @@ import java.util.List;
 @Fluent
 public final class VirtualMachineScaleSetUpdateOSDisk {
     /*
-     * Specifies the caching requirements. <br><br> Possible values are:
-     * <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br>
-     * Default: **None for Standard storage. ReadOnly for Premium storage**
+     * The caching type.
      */
     @JsonProperty(value = "caching")
     private CachingTypes caching;
@@ -39,7 +37,9 @@ public final class VirtualMachineScaleSetUpdateOSDisk {
     private Integer diskSizeGB;
 
     /*
-     * Describes the uri of a disk.
+     * The Source User Image VirtualHardDisk. This VirtualHardDisk will be
+     * copied before using it to attach to the Virtual Machine. If SourceImage
+     * is provided, the destination VirtualHardDisk should not exist.
      */
     @JsonProperty(value = "image")
     private VirtualHardDisk image;
@@ -51,17 +51,13 @@ public final class VirtualMachineScaleSetUpdateOSDisk {
     private List<String> vhdContainers;
 
     /*
-     * Describes the parameters of a ScaleSet managed disk.
+     * The managed disk parameters.
      */
     @JsonProperty(value = "managedDisk")
     private VirtualMachineScaleSetManagedDiskParameters managedDisk;
 
     /**
-     * Get the caching property: Specifies the caching requirements.
-     * &lt;br&gt;&lt;br&gt; Possible values are: &lt;br&gt;&lt;br&gt; **None**
-     * &lt;br&gt;&lt;br&gt; **ReadOnly** &lt;br&gt;&lt;br&gt; **ReadWrite**
-     * &lt;br&gt;&lt;br&gt; Default: **None for Standard storage. ReadOnly for
-     * Premium storage**.
+     * Get the caching property: The caching type.
      * 
      * @return the caching value.
      */
@@ -70,11 +66,7 @@ public final class VirtualMachineScaleSetUpdateOSDisk {
     }
 
     /**
-     * Set the caching property: Specifies the caching requirements.
-     * &lt;br&gt;&lt;br&gt; Possible values are: &lt;br&gt;&lt;br&gt; **None**
-     * &lt;br&gt;&lt;br&gt; **ReadOnly** &lt;br&gt;&lt;br&gt; **ReadWrite**
-     * &lt;br&gt;&lt;br&gt; Default: **None for Standard storage. ReadOnly for
-     * Premium storage**.
+     * Set the caching property: The caching type.
      * 
      * @param caching the caching value to set.
      * @return the VirtualMachineScaleSetUpdateOSDisk object itself.
@@ -133,7 +125,10 @@ public final class VirtualMachineScaleSetUpdateOSDisk {
     }
 
     /**
-     * Get the image property: Describes the uri of a disk.
+     * Get the image property: The Source User Image VirtualHardDisk. This
+     * VirtualHardDisk will be copied before using it to attach to the Virtual
+     * Machine. If SourceImage is provided, the destination VirtualHardDisk
+     * should not exist.
      * 
      * @return the image value.
      */
@@ -142,7 +137,10 @@ public final class VirtualMachineScaleSetUpdateOSDisk {
     }
 
     /**
-     * Set the image property: Describes the uri of a disk.
+     * Set the image property: The Source User Image VirtualHardDisk. This
+     * VirtualHardDisk will be copied before using it to attach to the Virtual
+     * Machine. If SourceImage is provided, the destination VirtualHardDisk
+     * should not exist.
      * 
      * @param image the image value to set.
      * @return the VirtualMachineScaleSetUpdateOSDisk object itself.
@@ -175,8 +173,7 @@ public final class VirtualMachineScaleSetUpdateOSDisk {
     }
 
     /**
-     * Get the managedDisk property: Describes the parameters of a ScaleSet
-     * managed disk.
+     * Get the managedDisk property: The managed disk parameters.
      * 
      * @return the managedDisk value.
      */
@@ -185,8 +182,7 @@ public final class VirtualMachineScaleSetUpdateOSDisk {
     }
 
     /**
-     * Set the managedDisk property: Describes the parameters of a ScaleSet
-     * managed disk.
+     * Set the managedDisk property: The managed disk parameters.
      * 
      * @param managedDisk the managedDisk value to set.
      * @return the VirtualMachineScaleSetUpdateOSDisk object itself.

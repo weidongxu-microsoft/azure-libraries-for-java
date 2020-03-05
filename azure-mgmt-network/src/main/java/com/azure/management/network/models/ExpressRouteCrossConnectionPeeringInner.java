@@ -41,7 +41,7 @@ public class ExpressRouteCrossConnectionPeeringInner extends SubResource {
     private ExpressRoutePeeringType peeringType;
 
     /*
-     * The state of peering.
+     * The peering state.
      */
     @JsonProperty(value = "properties.state")
     private ExpressRoutePeeringState state;
@@ -95,7 +95,7 @@ public class ExpressRouteCrossConnectionPeeringInner extends SubResource {
     private Integer vlanId;
 
     /*
-     * Specifies the peering configuration.
+     * The Microsoft peering configuration.
      */
     @JsonProperty(value = "properties.microsoftPeeringConfig")
     private ExpressRouteCircuitPeeringConfig microsoftPeeringConfig;
@@ -120,7 +120,7 @@ public class ExpressRouteCrossConnectionPeeringInner extends SubResource {
     private String lastModifiedBy;
 
     /*
-     * Contains IPv6 peering config.
+     * The IPv6 peering configuration.
      */
     @JsonProperty(value = "properties.ipv6PeeringConfig")
     private Ipv6ExpressRouteCircuitPeeringConfig ipv6PeeringConfig;
@@ -178,7 +178,7 @@ public class ExpressRouteCrossConnectionPeeringInner extends SubResource {
     }
 
     /**
-     * Get the state property: The state of peering.
+     * Get the state property: The peering state.
      * 
      * @return the state value.
      */
@@ -187,7 +187,7 @@ public class ExpressRouteCrossConnectionPeeringInner extends SubResource {
     }
 
     /**
-     * Set the state property: The state of peering.
+     * Set the state property: The peering state.
      * 
      * @param state the state value to set.
      * @return the ExpressRouteCrossConnectionPeeringInner object itself.
@@ -329,7 +329,7 @@ public class ExpressRouteCrossConnectionPeeringInner extends SubResource {
     }
 
     /**
-     * Get the microsoftPeeringConfig property: Specifies the peering
+     * Get the microsoftPeeringConfig property: The Microsoft peering
      * configuration.
      * 
      * @return the microsoftPeeringConfig value.
@@ -339,7 +339,7 @@ public class ExpressRouteCrossConnectionPeeringInner extends SubResource {
     }
 
     /**
-     * Set the microsoftPeeringConfig property: Specifies the peering
+     * Set the microsoftPeeringConfig property: The Microsoft peering
      * configuration.
      * 
      * @param microsoftPeeringConfig the microsoftPeeringConfig value to set.
@@ -404,7 +404,7 @@ public class ExpressRouteCrossConnectionPeeringInner extends SubResource {
     }
 
     /**
-     * Get the ipv6PeeringConfig property: Contains IPv6 peering config.
+     * Get the ipv6PeeringConfig property: The IPv6 peering configuration.
      * 
      * @return the ipv6PeeringConfig value.
      */
@@ -413,7 +413,7 @@ public class ExpressRouteCrossConnectionPeeringInner extends SubResource {
     }
 
     /**
-     * Set the ipv6PeeringConfig property: Contains IPv6 peering config.
+     * Set the ipv6PeeringConfig property: The IPv6 peering configuration.
      * 
      * @param ipv6PeeringConfig the ipv6PeeringConfig value to set.
      * @return the ExpressRouteCrossConnectionPeeringInner object itself.

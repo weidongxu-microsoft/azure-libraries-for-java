@@ -17,7 +17,8 @@ import java.util.List;
 @Fluent
 public final class VaultSecretGroup {
     /*
-     * The sourceVault property.
+     * The relative URL of the Key Vault containing all of the certificates in
+     * VaultCertificates.
      */
     @JsonProperty(value = "sourceVault")
     private SubResource sourceVault;
@@ -30,7 +31,8 @@ public final class VaultSecretGroup {
     private List<VaultCertificate> vaultCertificates;
 
     /**
-     * Get the sourceVault property: The sourceVault property.
+     * Get the sourceVault property: The relative URL of the Key Vault
+     * containing all of the certificates in VaultCertificates.
      * 
      * @return the sourceVault value.
      */
@@ -39,7 +41,8 @@ public final class VaultSecretGroup {
     }
 
     /**
-     * Set the sourceVault property: The sourceVault property.
+     * Set the sourceVault property: The relative URL of the Key Vault
+     * containing all of the certificates in VaultCertificates.
      * 
      * @param sourceVault the sourceVault value to set.
      * @return the VaultSecretGroup object itself.

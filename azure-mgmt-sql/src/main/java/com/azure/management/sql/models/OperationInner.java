@@ -24,7 +24,8 @@ public final class OperationInner {
     private String name;
 
     /*
-     * Display metadata associated with the operation.
+     * The localized display information for this particular operation /
+     * action.
      */
     @JsonProperty(value = "display", access = JsonProperty.Access.WRITE_ONLY)
     private OperationDisplay display;
@@ -52,8 +53,8 @@ public final class OperationInner {
     }
 
     /**
-     * Get the display property: Display metadata associated with the
-     * operation.
+     * Get the display property: The localized display information for this
+     * particular operation / action.
      * 
      * @return the display value.
      */

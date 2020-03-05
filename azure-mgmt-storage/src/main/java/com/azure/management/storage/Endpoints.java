@@ -51,15 +51,13 @@ public final class Endpoints {
     private String dfs;
 
     /*
-     * The URIs that are used to perform a retrieval of a public blob, queue,
-     * table, web or dfs object via a microsoft routing endpoint.
+     * Gets the microsoft routing storage endpoints.
      */
     @JsonProperty(value = "microsoftEndpoints")
     private StorageAccountMicrosoftEndpoints microsoftEndpoints;
 
     /*
-     * The URIs that are used to perform a retrieval of a public blob, file,
-     * web or dfs object via a internet routing endpoint.
+     * Gets the internet routing storage endpoints
      */
     @JsonProperty(value = "internetEndpoints")
     private StorageAccountInternetEndpoints internetEndpoints;
@@ -119,9 +117,8 @@ public final class Endpoints {
     }
 
     /**
-     * Get the microsoftEndpoints property: The URIs that are used to perform a
-     * retrieval of a public blob, queue, table, web or dfs object via a
-     * microsoft routing endpoint.
+     * Get the microsoftEndpoints property: Gets the microsoft routing storage
+     * endpoints.
      * 
      * @return the microsoftEndpoints value.
      */
@@ -130,9 +127,8 @@ public final class Endpoints {
     }
 
     /**
-     * Set the microsoftEndpoints property: The URIs that are used to perform a
-     * retrieval of a public blob, queue, table, web or dfs object via a
-     * microsoft routing endpoint.
+     * Set the microsoftEndpoints property: Gets the microsoft routing storage
+     * endpoints.
      * 
      * @param microsoftEndpoints the microsoftEndpoints value to set.
      * @return the Endpoints object itself.
@@ -143,9 +139,8 @@ public final class Endpoints {
     }
 
     /**
-     * Get the internetEndpoints property: The URIs that are used to perform a
-     * retrieval of a public blob, file, web or dfs object via a internet
-     * routing endpoint.
+     * Get the internetEndpoints property: Gets the internet routing storage
+     * endpoints.
      * 
      * @return the internetEndpoints value.
      */
@@ -154,9 +149,8 @@ public final class Endpoints {
     }
 
     /**
-     * Set the internetEndpoints property: The URIs that are used to perform a
-     * retrieval of a public blob, file, web or dfs object via a internet
-     * routing endpoint.
+     * Set the internetEndpoints property: Gets the internet routing storage
+     * endpoints.
      * 
      * @param internetEndpoints the internetEndpoints value to set.
      * @return the Endpoints object itself.

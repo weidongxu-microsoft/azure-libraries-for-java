@@ -15,13 +15,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Immutable
 public final class VirtualMachineHealthStatus {
     /*
-     * Instance view status.
+     * The health status information for the VM.
      */
     @JsonProperty(value = "status", access = JsonProperty.Access.WRITE_ONLY)
     private InstanceViewStatus status;
 
     /**
-     * Get the status property: Instance view status.
+     * Get the status property: The health status information for the VM.
      * 
      * @return the status value.
      */

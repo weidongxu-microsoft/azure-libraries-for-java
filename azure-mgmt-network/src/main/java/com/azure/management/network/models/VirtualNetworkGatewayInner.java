@@ -63,32 +63,37 @@ public class VirtualNetworkGatewayInner extends Resource {
     private Boolean active;
 
     /*
-     * Reference to another subresource.
+     * The reference of the LocalNetworkGateway resource which represents local
+     * network site having default routes. Assign Null value in case of
+     * removing existing default site setting.
      */
     @JsonProperty(value = "properties.gatewayDefaultSite")
     private SubResource gatewayDefaultSite;
 
     /*
-     * VirtualNetworkGatewaySku details.
+     * The reference of the VirtualNetworkGatewaySku resource which represents
+     * the SKU selected for Virtual network gateway.
      */
     @JsonProperty(value = "properties.sku")
     private VirtualNetworkGatewaySku sku;
 
     /*
-     * VpnClientConfiguration for P2S client.
+     * The reference of the VpnClientConfiguration resource which represents
+     * the P2S VpnClient configurations.
      */
     @JsonProperty(value = "properties.vpnClientConfiguration")
     private VpnClientConfiguration vpnClientConfiguration;
 
     /*
-     * BGP settings details.
+     * Virtual network gateway's BGP speaker settings.
      */
     @JsonProperty(value = "properties.bgpSettings")
     private BgpSettings bgpSettings;
 
     /*
-     * AddressSpace contains an array of IP address ranges that can be used by
-     * subnets of the virtual network.
+     * The reference of the address space resource which represents the custom
+     * routes address space specified by the customer for virtual network
+     * gateway and VpnClient.
      */
     @JsonProperty(value = "properties.customRoutes")
     private AddressSpace customRoutes;
@@ -239,7 +244,10 @@ public class VirtualNetworkGatewayInner extends Resource {
     }
 
     /**
-     * Get the gatewayDefaultSite property: Reference to another subresource.
+     * Get the gatewayDefaultSite property: The reference of the
+     * LocalNetworkGateway resource which represents local network site having
+     * default routes. Assign Null value in case of removing existing default
+     * site setting.
      * 
      * @return the gatewayDefaultSite value.
      */
@@ -248,7 +256,10 @@ public class VirtualNetworkGatewayInner extends Resource {
     }
 
     /**
-     * Set the gatewayDefaultSite property: Reference to another subresource.
+     * Set the gatewayDefaultSite property: The reference of the
+     * LocalNetworkGateway resource which represents local network site having
+     * default routes. Assign Null value in case of removing existing default
+     * site setting.
      * 
      * @param gatewayDefaultSite the gatewayDefaultSite value to set.
      * @return the VirtualNetworkGatewayInner object itself.
@@ -259,7 +270,8 @@ public class VirtualNetworkGatewayInner extends Resource {
     }
 
     /**
-     * Get the sku property: VirtualNetworkGatewaySku details.
+     * Get the sku property: The reference of the VirtualNetworkGatewaySku
+     * resource which represents the SKU selected for Virtual network gateway.
      * 
      * @return the sku value.
      */
@@ -268,7 +280,8 @@ public class VirtualNetworkGatewayInner extends Resource {
     }
 
     /**
-     * Set the sku property: VirtualNetworkGatewaySku details.
+     * Set the sku property: The reference of the VirtualNetworkGatewaySku
+     * resource which represents the SKU selected for Virtual network gateway.
      * 
      * @param sku the sku value to set.
      * @return the VirtualNetworkGatewayInner object itself.
@@ -279,8 +292,9 @@ public class VirtualNetworkGatewayInner extends Resource {
     }
 
     /**
-     * Get the vpnClientConfiguration property: VpnClientConfiguration for P2S
-     * client.
+     * Get the vpnClientConfiguration property: The reference of the
+     * VpnClientConfiguration resource which represents the P2S VpnClient
+     * configurations.
      * 
      * @return the vpnClientConfiguration value.
      */
@@ -289,8 +303,9 @@ public class VirtualNetworkGatewayInner extends Resource {
     }
 
     /**
-     * Set the vpnClientConfiguration property: VpnClientConfiguration for P2S
-     * client.
+     * Set the vpnClientConfiguration property: The reference of the
+     * VpnClientConfiguration resource which represents the P2S VpnClient
+     * configurations.
      * 
      * @param vpnClientConfiguration the vpnClientConfiguration value to set.
      * @return the VirtualNetworkGatewayInner object itself.
@@ -301,7 +316,8 @@ public class VirtualNetworkGatewayInner extends Resource {
     }
 
     /**
-     * Get the bgpSettings property: BGP settings details.
+     * Get the bgpSettings property: Virtual network gateway's BGP speaker
+     * settings.
      * 
      * @return the bgpSettings value.
      */
@@ -310,7 +326,8 @@ public class VirtualNetworkGatewayInner extends Resource {
     }
 
     /**
-     * Set the bgpSettings property: BGP settings details.
+     * Set the bgpSettings property: Virtual network gateway's BGP speaker
+     * settings.
      * 
      * @param bgpSettings the bgpSettings value to set.
      * @return the VirtualNetworkGatewayInner object itself.
@@ -321,8 +338,9 @@ public class VirtualNetworkGatewayInner extends Resource {
     }
 
     /**
-     * Get the customRoutes property: AddressSpace contains an array of IP
-     * address ranges that can be used by subnets of the virtual network.
+     * Get the customRoutes property: The reference of the address space
+     * resource which represents the custom routes address space specified by
+     * the customer for virtual network gateway and VpnClient.
      * 
      * @return the customRoutes value.
      */
@@ -331,8 +349,9 @@ public class VirtualNetworkGatewayInner extends Resource {
     }
 
     /**
-     * Set the customRoutes property: AddressSpace contains an array of IP
-     * address ranges that can be used by subnets of the virtual network.
+     * Set the customRoutes property: The reference of the address space
+     * resource which represents the custom routes address space specified by
+     * the customer for virtual network gateway and VpnClient.
      * 
      * @param customRoutes the customRoutes value to set.
      * @return the VirtualNetworkGatewayInner object itself.

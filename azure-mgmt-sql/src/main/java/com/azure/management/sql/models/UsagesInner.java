@@ -58,13 +58,13 @@ public final class UsagesInner {
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientUsages")
     private interface UsagesService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}/usages")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<UsageListResultInner>> listByInstancePool(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("instancePoolName") String instancePoolName, @QueryParam("expandChildren") Boolean expandChildren, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)

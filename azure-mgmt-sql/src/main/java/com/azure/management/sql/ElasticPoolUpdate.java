@@ -36,7 +36,7 @@ public class ElasticPoolUpdate {
     private Long maxSizeBytes;
 
     /*
-     * Per database settings of an elastic pool.
+     * The per database settings for the elastic pool.
      */
     @JsonProperty(value = "properties.perDatabaseSettings")
     private ElasticPoolPerDatabaseSettings perDatabaseSettings;
@@ -118,7 +118,7 @@ public class ElasticPoolUpdate {
     }
 
     /**
-     * Get the perDatabaseSettings property: Per database settings of an
+     * Get the perDatabaseSettings property: The per database settings for the
      * elastic pool.
      * 
      * @return the perDatabaseSettings value.
@@ -128,7 +128,7 @@ public class ElasticPoolUpdate {
     }
 
     /**
-     * Set the perDatabaseSettings property: Per database settings of an
+     * Set the perDatabaseSettings property: The per database settings for the
      * elastic pool.
      * 
      * @param perDatabaseSettings the perDatabaseSettings value to set.

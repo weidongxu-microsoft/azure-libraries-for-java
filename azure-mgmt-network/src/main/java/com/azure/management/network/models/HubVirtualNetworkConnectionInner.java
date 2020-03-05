@@ -33,7 +33,7 @@ public class HubVirtualNetworkConnectionInner extends SubResource {
     private String etag;
 
     /*
-     * Reference to another subresource.
+     * Reference to the remote virtual network.
      */
     @JsonProperty(value = "properties.remoteVirtualNetwork")
     private SubResource remoteVirtualNetwork;
@@ -57,7 +57,7 @@ public class HubVirtualNetworkConnectionInner extends SubResource {
     private Boolean enableInternetSecurity;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -95,7 +95,8 @@ public class HubVirtualNetworkConnectionInner extends SubResource {
     }
 
     /**
-     * Get the remoteVirtualNetwork property: Reference to another subresource.
+     * Get the remoteVirtualNetwork property: Reference to the remote virtual
+     * network.
      * 
      * @return the remoteVirtualNetwork value.
      */
@@ -104,7 +105,8 @@ public class HubVirtualNetworkConnectionInner extends SubResource {
     }
 
     /**
-     * Set the remoteVirtualNetwork property: Reference to another subresource.
+     * Set the remoteVirtualNetwork property: Reference to the remote virtual
+     * network.
      * 
      * @param remoteVirtualNetwork the remoteVirtualNetwork value to set.
      * @return the HubVirtualNetworkConnectionInner object itself.
@@ -181,7 +183,8 @@ public class HubVirtualNetworkConnectionInner extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -190,7 +193,8 @@ public class HubVirtualNetworkConnectionInner extends SubResource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the HubVirtualNetworkConnectionInner object itself.

@@ -38,7 +38,7 @@ public final class BlobRestoreStatusInner {
     private String restoreId;
 
     /*
-     * Blob restore parameters
+     * Blob restore request parameters.
      */
     @JsonProperty(value = "parameters", access = JsonProperty.Access.WRITE_ONLY)
     private BlobRestoreParameters parameters;
@@ -75,7 +75,7 @@ public final class BlobRestoreStatusInner {
     }
 
     /**
-     * Get the parameters property: Blob restore parameters.
+     * Get the parameters property: Blob restore request parameters.
      * 
      * @return the parameters value.
      */

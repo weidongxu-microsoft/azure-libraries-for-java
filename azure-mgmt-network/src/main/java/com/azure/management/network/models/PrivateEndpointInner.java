@@ -27,7 +27,7 @@ public class PrivateEndpointInner extends Resource {
     private String etag;
 
     /*
-     * Subnet in a virtual network resource.
+     * The ID of the subnet from which the private IP will be allocated.
      */
     @JsonProperty(value = "properties.subnet")
     private SubnetInner subnet;
@@ -40,7 +40,7 @@ public class PrivateEndpointInner extends Resource {
     private List<NetworkInterfaceInner> networkInterfaces;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the private endpoint.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -88,7 +88,8 @@ public class PrivateEndpointInner extends Resource {
     }
 
     /**
-     * Get the subnet property: Subnet in a virtual network resource.
+     * Get the subnet property: The ID of the subnet from which the private IP
+     * will be allocated.
      * 
      * @return the subnet value.
      */
@@ -97,7 +98,8 @@ public class PrivateEndpointInner extends Resource {
     }
 
     /**
-     * Set the subnet property: Subnet in a virtual network resource.
+     * Set the subnet property: The ID of the subnet from which the private IP
+     * will be allocated.
      * 
      * @param subnet the subnet value to set.
      * @return the PrivateEndpointInner object itself.
@@ -118,7 +120,8 @@ public class PrivateEndpointInner extends Resource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * private endpoint.
      * 
      * @return the provisioningState value.
      */
@@ -127,7 +130,8 @@ public class PrivateEndpointInner extends Resource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * private endpoint.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the PrivateEndpointInner object itself.

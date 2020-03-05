@@ -19,37 +19,25 @@ import java.util.List;
 @Fluent
 public class DomainPatchResource extends ProxyOnlyResource {
     /*
-     * Contact information for domain registration. If 'Domain Privacy' option
-     * is not selected then the contact information is made publicly available
-     * through the Whois
-     * directories as per ICANN requirements.
+     * Administrative contact.
      */
     @JsonProperty(value = "properties.contactAdmin")
     private Contact contactAdmin;
 
     /*
-     * Contact information for domain registration. If 'Domain Privacy' option
-     * is not selected then the contact information is made publicly available
-     * through the Whois
-     * directories as per ICANN requirements.
+     * Billing contact.
      */
     @JsonProperty(value = "properties.contactBilling")
     private Contact contactBilling;
 
     /*
-     * Contact information for domain registration. If 'Domain Privacy' option
-     * is not selected then the contact information is made publicly available
-     * through the Whois
-     * directories as per ICANN requirements.
+     * Registrant contact.
      */
     @JsonProperty(value = "properties.contactRegistrant")
     private Contact contactRegistrant;
 
     /*
-     * Contact information for domain registration. If 'Domain Privacy' option
-     * is not selected then the contact information is made publicly available
-     * through the Whois
-     * directories as per ICANN requirements.
+     * Technical contact.
      */
     @JsonProperty(value = "properties.contactTech")
     private Contact contactTech;
@@ -61,7 +49,7 @@ public class DomainPatchResource extends ProxyOnlyResource {
     private DomainStatus registrationStatus;
 
     /*
-     * Status of certificate order.
+     * Domain provisioning state.
      */
     @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
     private ProvisioningState provisioningState;
@@ -120,8 +108,7 @@ public class DomainPatchResource extends ProxyOnlyResource {
     private List<HostName> managedHostNames;
 
     /*
-     * Domain purchase consent object, representing acceptance of applicable
-     * legal agreements.
+     * Legal agreement consent.
      */
     @JsonProperty(value = "properties.consent")
     private DomainPurchaseConsent consent;
@@ -145,7 +132,7 @@ public class DomainPatchResource extends ProxyOnlyResource {
     private String dnsZoneId;
 
     /*
-     * Current DNS type
+     * Target DNS type (would be used for migration)
      */
     @JsonProperty(value = "properties.targetDnsType")
     private DnsType targetDnsType;
@@ -157,10 +144,7 @@ public class DomainPatchResource extends ProxyOnlyResource {
     private String authCode;
 
     /**
-     * Get the contactAdmin property: Contact information for domain
-     * registration. If 'Domain Privacy' option is not selected then the
-     * contact information is made publicly available through the Whois
-     * directories as per ICANN requirements.
+     * Get the contactAdmin property: Administrative contact.
      * 
      * @return the contactAdmin value.
      */
@@ -169,10 +153,7 @@ public class DomainPatchResource extends ProxyOnlyResource {
     }
 
     /**
-     * Set the contactAdmin property: Contact information for domain
-     * registration. If 'Domain Privacy' option is not selected then the
-     * contact information is made publicly available through the Whois
-     * directories as per ICANN requirements.
+     * Set the contactAdmin property: Administrative contact.
      * 
      * @param contactAdmin the contactAdmin value to set.
      * @return the DomainPatchResource object itself.
@@ -183,10 +164,7 @@ public class DomainPatchResource extends ProxyOnlyResource {
     }
 
     /**
-     * Get the contactBilling property: Contact information for domain
-     * registration. If 'Domain Privacy' option is not selected then the
-     * contact information is made publicly available through the Whois
-     * directories as per ICANN requirements.
+     * Get the contactBilling property: Billing contact.
      * 
      * @return the contactBilling value.
      */
@@ -195,10 +173,7 @@ public class DomainPatchResource extends ProxyOnlyResource {
     }
 
     /**
-     * Set the contactBilling property: Contact information for domain
-     * registration. If 'Domain Privacy' option is not selected then the
-     * contact information is made publicly available through the Whois
-     * directories as per ICANN requirements.
+     * Set the contactBilling property: Billing contact.
      * 
      * @param contactBilling the contactBilling value to set.
      * @return the DomainPatchResource object itself.
@@ -209,10 +184,7 @@ public class DomainPatchResource extends ProxyOnlyResource {
     }
 
     /**
-     * Get the contactRegistrant property: Contact information for domain
-     * registration. If 'Domain Privacy' option is not selected then the
-     * contact information is made publicly available through the Whois
-     * directories as per ICANN requirements.
+     * Get the contactRegistrant property: Registrant contact.
      * 
      * @return the contactRegistrant value.
      */
@@ -221,10 +193,7 @@ public class DomainPatchResource extends ProxyOnlyResource {
     }
 
     /**
-     * Set the contactRegistrant property: Contact information for domain
-     * registration. If 'Domain Privacy' option is not selected then the
-     * contact information is made publicly available through the Whois
-     * directories as per ICANN requirements.
+     * Set the contactRegistrant property: Registrant contact.
      * 
      * @param contactRegistrant the contactRegistrant value to set.
      * @return the DomainPatchResource object itself.
@@ -235,10 +204,7 @@ public class DomainPatchResource extends ProxyOnlyResource {
     }
 
     /**
-     * Get the contactTech property: Contact information for domain
-     * registration. If 'Domain Privacy' option is not selected then the
-     * contact information is made publicly available through the Whois
-     * directories as per ICANN requirements.
+     * Get the contactTech property: Technical contact.
      * 
      * @return the contactTech value.
      */
@@ -247,10 +213,7 @@ public class DomainPatchResource extends ProxyOnlyResource {
     }
 
     /**
-     * Set the contactTech property: Contact information for domain
-     * registration. If 'Domain Privacy' option is not selected then the
-     * contact information is made publicly available through the Whois
-     * directories as per ICANN requirements.
+     * Set the contactTech property: Technical contact.
      * 
      * @param contactTech the contactTech value to set.
      * @return the DomainPatchResource object itself.
@@ -270,7 +233,7 @@ public class DomainPatchResource extends ProxyOnlyResource {
     }
 
     /**
-     * Get the provisioningState property: Status of certificate order.
+     * Get the provisioningState property: Domain provisioning state.
      * 
      * @return the provisioningState value.
      */
@@ -388,8 +351,7 @@ public class DomainPatchResource extends ProxyOnlyResource {
     }
 
     /**
-     * Get the consent property: Domain purchase consent object, representing
-     * acceptance of applicable legal agreements.
+     * Get the consent property: Legal agreement consent.
      * 
      * @return the consent value.
      */
@@ -398,8 +360,7 @@ public class DomainPatchResource extends ProxyOnlyResource {
     }
 
     /**
-     * Set the consent property: Domain purchase consent object, representing
-     * acceptance of applicable legal agreements.
+     * Set the consent property: Legal agreement consent.
      * 
      * @param consent the consent value to set.
      * @return the DomainPatchResource object itself.
@@ -460,7 +421,8 @@ public class DomainPatchResource extends ProxyOnlyResource {
     }
 
     /**
-     * Get the targetDnsType property: Current DNS type.
+     * Get the targetDnsType property: Target DNS type (would be used for
+     * migration).
      * 
      * @return the targetDnsType value.
      */
@@ -469,7 +431,8 @@ public class DomainPatchResource extends ProxyOnlyResource {
     }
 
     /**
-     * Set the targetDnsType property: Current DNS type.
+     * Set the targetDnsType property: Target DNS type (would be used for
+     * migration).
      * 
      * @param targetDnsType the targetDnsType value to set.
      * @return the DomainPatchResource object itself.

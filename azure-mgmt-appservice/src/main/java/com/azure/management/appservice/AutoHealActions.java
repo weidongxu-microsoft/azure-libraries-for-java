@@ -21,8 +21,7 @@ public final class AutoHealActions {
     private AutoHealActionType actionType;
 
     /*
-     * Custom action to be executed
-     * when an auto heal rule is triggered.
+     * Custom action to be taken.
      */
     @JsonProperty(value = "customAction")
     private AutoHealCustomAction customAction;
@@ -55,8 +54,7 @@ public final class AutoHealActions {
     }
 
     /**
-     * Get the customAction property: Custom action to be executed
-     * when an auto heal rule is triggered.
+     * Get the customAction property: Custom action to be taken.
      * 
      * @return the customAction value.
      */
@@ -65,8 +63,7 @@ public final class AutoHealActions {
     }
 
     /**
-     * Set the customAction property: Custom action to be executed
-     * when an auto heal rule is triggered.
+     * Set the customAction property: Custom action to be taken.
      * 
      * @param customAction the customAction value to set.
      * @return the AutoHealActions object itself.

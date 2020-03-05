@@ -24,13 +24,14 @@ import java.time.OffsetDateTime;
 @Fluent
 public class ManagedInstanceInner extends Resource {
     /*
-     * Azure Active Directory identity configuration for a resource.
+     * The Azure Active Directory identity of the managed instance.
      */
     @JsonProperty(value = "identity")
     private ResourceIdentity identity;
 
     /*
-     * An ARM Resource SKU.
+     * Managed instance SKU. Allowed values for sku.name: GP_Gen4, GP_Gen5,
+     * BC_Gen4, BC_Gen5
      */
     @JsonProperty(value = "sku")
     private Sku sku;
@@ -175,8 +176,8 @@ public class ManagedInstanceInner extends Resource {
     private String minimalTlsVersion;
 
     /**
-     * Get the identity property: Azure Active Directory identity configuration
-     * for a resource.
+     * Get the identity property: The Azure Active Directory identity of the
+     * managed instance.
      * 
      * @return the identity value.
      */
@@ -185,8 +186,8 @@ public class ManagedInstanceInner extends Resource {
     }
 
     /**
-     * Set the identity property: Azure Active Directory identity configuration
-     * for a resource.
+     * Set the identity property: The Azure Active Directory identity of the
+     * managed instance.
      * 
      * @param identity the identity value to set.
      * @return the ManagedInstanceInner object itself.
@@ -197,7 +198,8 @@ public class ManagedInstanceInner extends Resource {
     }
 
     /**
-     * Get the sku property: An ARM Resource SKU.
+     * Get the sku property: Managed instance SKU. Allowed values for sku.name:
+     * GP_Gen4, GP_Gen5, BC_Gen4, BC_Gen5.
      * 
      * @return the sku value.
      */
@@ -206,7 +208,8 @@ public class ManagedInstanceInner extends Resource {
     }
 
     /**
-     * Set the sku property: An ARM Resource SKU.
+     * Set the sku property: Managed instance SKU. Allowed values for sku.name:
+     * GP_Gen4, GP_Gen5, BC_Gen4, BC_Gen5.
      * 
      * @param sku the sku value to set.
      * @return the ManagedInstanceInner object itself.

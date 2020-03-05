@@ -28,7 +28,7 @@ public final class VirtualMachineExtensionHandlerInstanceView {
     private String typeHandlerVersion;
 
     /*
-     * Instance view status.
+     * The extension handler status.
      */
     @JsonProperty(value = "status")
     private InstanceViewStatus status;
@@ -78,7 +78,7 @@ public final class VirtualMachineExtensionHandlerInstanceView {
     }
 
     /**
-     * Get the status property: Instance view status.
+     * Get the status property: The extension handler status.
      * 
      * @return the status value.
      */
@@ -87,7 +87,7 @@ public final class VirtualMachineExtensionHandlerInstanceView {
     }
 
     /**
-     * Set the status property: Instance view status.
+     * Set the status property: The extension handler status.
      * 
      * @param status the status value to set.
      * @return the VirtualMachineExtensionHandlerInstanceView object itself.

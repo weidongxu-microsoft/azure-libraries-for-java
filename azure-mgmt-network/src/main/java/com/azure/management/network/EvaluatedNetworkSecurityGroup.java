@@ -28,7 +28,7 @@ public final class EvaluatedNetworkSecurityGroup {
     private String appliedTo;
 
     /*
-     * Matched rule.
+     * Matched network security rule.
      */
     @JsonProperty(value = "matchedRule")
     private MatchedRule matchedRule;
@@ -82,7 +82,7 @@ public final class EvaluatedNetworkSecurityGroup {
     }
 
     /**
-     * Get the matchedRule property: Matched rule.
+     * Get the matchedRule property: Matched network security rule.
      * 
      * @return the matchedRule value.
      */
@@ -91,7 +91,7 @@ public final class EvaluatedNetworkSecurityGroup {
     }
 
     /**
-     * Set the matchedRule property: Matched rule.
+     * Set the matchedRule property: Matched network security rule.
      * 
      * @param matchedRule the matchedRule value to set.
      * @return the EvaluatedNetworkSecurityGroup object itself.

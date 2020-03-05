@@ -32,7 +32,7 @@ public final class UpgradePolicy {
     private RollingUpgradePolicy rollingUpgradePolicy;
 
     /*
-     * The configuration parameters used for performing automatic OS upgrade.
+     * Configuration parameters used for performing automatic OS Upgrade.
      */
     @JsonProperty(value = "automaticOSUpgradePolicy")
     private AutomaticOSUpgradePolicy automaticOSUpgradePolicy;
@@ -92,8 +92,8 @@ public final class UpgradePolicy {
     }
 
     /**
-     * Get the automaticOSUpgradePolicy property: The configuration parameters
-     * used for performing automatic OS upgrade.
+     * Get the automaticOSUpgradePolicy property: Configuration parameters used
+     * for performing automatic OS Upgrade.
      * 
      * @return the automaticOSUpgradePolicy value.
      */
@@ -102,8 +102,8 @@ public final class UpgradePolicy {
     }
 
     /**
-     * Set the automaticOSUpgradePolicy property: The configuration parameters
-     * used for performing automatic OS upgrade.
+     * Set the automaticOSUpgradePolicy property: Configuration parameters used
+     * for performing automatic OS Upgrade.
      * 
      * @param automaticOSUpgradePolicy the automaticOSUpgradePolicy value to
      * set.

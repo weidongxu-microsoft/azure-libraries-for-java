@@ -24,13 +24,13 @@ public final class ImageDataDisk {
     private int lun;
 
     /*
-     * The snapshot property.
+     * The snapshot.
      */
     @JsonProperty(value = "snapshot")
     private SubResource snapshot;
 
     /*
-     * The managedDisk property.
+     * The managedDisk.
      */
     @JsonProperty(value = "managedDisk")
     private SubResource managedDisk;
@@ -59,12 +59,8 @@ public final class ImageDataDisk {
 
     /*
      * Specifies the storage account type for the managed disk. NOTE:
-     * UltraSSD_LRS can only be used with data disks. It cannot be used with OS
-     * Disk. Standard_LRS uses Standard HDD. StandardSSD_LRS uses Standard SSD.
-     * Premium_LRS uses Premium SSD. UltraSSD_LRS uses Ultra disk. For more
-     * information regarding disks supported for Windows Virtual Machines,
-     * refer to
-     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types and, for Linux Virtual Machines, refer to https://docs.microsoft.com/en-us/azure/virtual-machines/linux/disks-types
+     * UltraSSD_LRS can only be used with data disks, it cannot be used with OS
+     * Disk.
      */
     @JsonProperty(value = "storageAccountType")
     private StorageAccountTypes storageAccountType;
@@ -94,7 +90,7 @@ public final class ImageDataDisk {
     }
 
     /**
-     * Get the snapshot property: The snapshot property.
+     * Get the snapshot property: The snapshot.
      * 
      * @return the snapshot value.
      */
@@ -103,7 +99,7 @@ public final class ImageDataDisk {
     }
 
     /**
-     * Set the snapshot property: The snapshot property.
+     * Set the snapshot property: The snapshot.
      * 
      * @param snapshot the snapshot value to set.
      * @return the ImageDataDisk object itself.
@@ -114,7 +110,7 @@ public final class ImageDataDisk {
     }
 
     /**
-     * Get the managedDisk property: The managedDisk property.
+     * Get the managedDisk property: The managedDisk.
      * 
      * @return the managedDisk value.
      */
@@ -123,7 +119,7 @@ public final class ImageDataDisk {
     }
 
     /**
-     * Set the managedDisk property: The managedDisk property.
+     * Set the managedDisk property: The managedDisk.
      * 
      * @param managedDisk the managedDisk value to set.
      * @return the ImageDataDisk object itself.
@@ -210,11 +206,7 @@ public final class ImageDataDisk {
     /**
      * Get the storageAccountType property: Specifies the storage account type
      * for the managed disk. NOTE: UltraSSD_LRS can only be used with data
-     * disks. It cannot be used with OS Disk. Standard_LRS uses Standard HDD.
-     * StandardSSD_LRS uses Standard SSD. Premium_LRS uses Premium SSD.
-     * UltraSSD_LRS uses Ultra disk. For more information regarding disks
-     * supported for Windows Virtual Machines, refer to
-     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types and, for Linux Virtual Machines, refer to https://docs.microsoft.com/en-us/azure/virtual-machines/linux/disks-types.
+     * disks, it cannot be used with OS Disk.
      * 
      * @return the storageAccountType value.
      */
@@ -225,11 +217,7 @@ public final class ImageDataDisk {
     /**
      * Set the storageAccountType property: Specifies the storage account type
      * for the managed disk. NOTE: UltraSSD_LRS can only be used with data
-     * disks. It cannot be used with OS Disk. Standard_LRS uses Standard HDD.
-     * StandardSSD_LRS uses Standard SSD. Premium_LRS uses Premium SSD.
-     * UltraSSD_LRS uses Ultra disk. For more information regarding disks
-     * supported for Windows Virtual Machines, refer to
-     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types and, for Linux Virtual Machines, refer to https://docs.microsoft.com/en-us/azure/virtual-machines/linux/disks-types.
+     * disks, it cannot be used with OS Disk.
      * 
      * @param storageAccountType the storageAccountType value to set.
      * @return the ImageDataDisk object itself.

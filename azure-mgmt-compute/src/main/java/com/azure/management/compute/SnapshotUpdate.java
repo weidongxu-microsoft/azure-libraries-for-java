@@ -31,7 +31,7 @@ public class SnapshotUpdate {
     private SnapshotSku sku;
 
     /*
-     * The operating system of the osDiskImage.
+     * the Operating System type.
      */
     @JsonProperty(value = "properties.osType")
     private OperatingSystemTypes osType;
@@ -47,7 +47,8 @@ public class SnapshotUpdate {
     private Integer diskSizeGB;
 
     /*
-     * Encryption settings for disk or snapshot
+     * Encryption settings collection used be Azure Disk Encryption, can
+     * contain multiple encryption settings per disk or snapshot.
      */
     @JsonProperty(value = "properties.encryptionSettingsCollection")
     private EncryptionSettingsCollection encryptionSettingsCollection;
@@ -95,7 +96,7 @@ public class SnapshotUpdate {
     }
 
     /**
-     * Get the osType property: The operating system of the osDiskImage.
+     * Get the osType property: the Operating System type.
      * 
      * @return the osType value.
      */
@@ -104,7 +105,7 @@ public class SnapshotUpdate {
     }
 
     /**
-     * Set the osType property: The operating system of the osDiskImage.
+     * Set the osType property: the Operating System type.
      * 
      * @param osType the osType value to set.
      * @return the SnapshotUpdate object itself.
@@ -143,8 +144,9 @@ public class SnapshotUpdate {
     }
 
     /**
-     * Get the encryptionSettingsCollection property: Encryption settings for
-     * disk or snapshot.
+     * Get the encryptionSettingsCollection property: Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple
+     * encryption settings per disk or snapshot.
      * 
      * @return the encryptionSettingsCollection value.
      */
@@ -153,8 +155,9 @@ public class SnapshotUpdate {
     }
 
     /**
-     * Set the encryptionSettingsCollection property: Encryption settings for
-     * disk or snapshot.
+     * Set the encryptionSettingsCollection property: Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple
+     * encryption settings per disk or snapshot.
      * 
      * @param encryptionSettingsCollection the encryptionSettingsCollection
      * value to set.

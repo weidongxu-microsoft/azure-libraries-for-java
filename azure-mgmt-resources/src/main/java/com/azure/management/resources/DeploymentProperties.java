@@ -24,7 +24,8 @@ public class DeploymentProperties {
     private Object template;
 
     /*
-     * Entity representing the reference to the template.
+     * The URI of the template. Use either the templateLink property or the
+     * template property, but not both.
      */
     @JsonProperty(value = "templateLink")
     private TemplateLink templateLink;
@@ -40,7 +41,9 @@ public class DeploymentProperties {
     private Object parameters;
 
     /*
-     * Entity representing the reference to the deployment parameters.
+     * The URI of parameters file. You use this element to link to an existing
+     * parameters file. Use either the parametersLink property or the
+     * parameters property, but not both.
      */
     @JsonProperty(value = "parametersLink")
     private ParametersLink parametersLink;
@@ -58,13 +61,13 @@ public class DeploymentProperties {
     private DeploymentMode mode;
 
     /*
-     * The debug setting.
+     * The debug setting of the deployment.
      */
     @JsonProperty(value = "debugSetting")
     private DebugSetting debugSetting;
 
     /*
-     * Deployment on error behavior.
+     * The deployment on error behavior.
      */
     @JsonProperty(value = "onErrorDeployment")
     private OnErrorDeployment onErrorDeployment;
@@ -98,8 +101,8 @@ public class DeploymentProperties {
     }
 
     /**
-     * Get the templateLink property: Entity representing the reference to the
-     * template.
+     * Get the templateLink property: The URI of the template. Use either the
+     * templateLink property or the template property, but not both.
      * 
      * @return the templateLink value.
      */
@@ -108,8 +111,8 @@ public class DeploymentProperties {
     }
 
     /**
-     * Set the templateLink property: Entity representing the reference to the
-     * template.
+     * Set the templateLink property: The URI of the template. Use either the
+     * templateLink property or the template property, but not both.
      * 
      * @param templateLink the templateLink value to set.
      * @return the DeploymentProperties object itself.
@@ -150,8 +153,9 @@ public class DeploymentProperties {
     }
 
     /**
-     * Get the parametersLink property: Entity representing the reference to
-     * the deployment parameters.
+     * Get the parametersLink property: The URI of parameters file. You use
+     * this element to link to an existing parameters file. Use either the
+     * parametersLink property or the parameters property, but not both.
      * 
      * @return the parametersLink value.
      */
@@ -160,8 +164,9 @@ public class DeploymentProperties {
     }
 
     /**
-     * Set the parametersLink property: Entity representing the reference to
-     * the deployment parameters.
+     * Set the parametersLink property: The URI of parameters file. You use
+     * this element to link to an existing parameters file. Use either the
+     * parametersLink property or the parameters property, but not both.
      * 
      * @param parametersLink the parametersLink value to set.
      * @return the DeploymentProperties object itself.
@@ -204,7 +209,7 @@ public class DeploymentProperties {
     }
 
     /**
-     * Get the debugSetting property: The debug setting.
+     * Get the debugSetting property: The debug setting of the deployment.
      * 
      * @return the debugSetting value.
      */
@@ -213,7 +218,7 @@ public class DeploymentProperties {
     }
 
     /**
-     * Set the debugSetting property: The debug setting.
+     * Set the debugSetting property: The debug setting of the deployment.
      * 
      * @param debugSetting the debugSetting value to set.
      * @return the DeploymentProperties object itself.
@@ -224,7 +229,7 @@ public class DeploymentProperties {
     }
 
     /**
-     * Get the onErrorDeployment property: Deployment on error behavior.
+     * Get the onErrorDeployment property: The deployment on error behavior.
      * 
      * @return the onErrorDeployment value.
      */
@@ -233,7 +238,7 @@ public class DeploymentProperties {
     }
 
     /**
-     * Set the onErrorDeployment property: Deployment on error behavior.
+     * Set the onErrorDeployment property: The deployment on error behavior.
      * 
      * @param onErrorDeployment the onErrorDeployment value to set.
      * @return the DeploymentProperties object itself.

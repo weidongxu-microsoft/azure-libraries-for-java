@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class ApplicationGatewayOnDemandProbe {
     /*
-     * Application Gateway protocol.
+     * The protocol used for the probe.
      */
     @JsonProperty(value = "protocol")
     private ApplicationGatewayProtocol protocol;
@@ -50,25 +50,27 @@ public final class ApplicationGatewayOnDemandProbe {
     private Boolean pickHostNameFromBackendHttpSettings;
 
     /*
-     * Application gateway probe health response match.
+     * Criterion for classifying a healthy probe response.
      */
     @JsonProperty(value = "match")
     private ApplicationGatewayProbeHealthResponseMatch match;
 
     /*
-     * Reference to another subresource.
+     * Reference of backend pool of application gateway to which probe request
+     * will be sent.
      */
     @JsonProperty(value = "backendAddressPool")
     private SubResource backendAddressPool;
 
     /*
-     * Reference to another subresource.
+     * Reference of backend http setting of application gateway to be used for
+     * test probe.
      */
     @JsonProperty(value = "backendHttpSettings")
     private SubResource backendHttpSettings;
 
     /**
-     * Get the protocol property: Application Gateway protocol.
+     * Get the protocol property: The protocol used for the probe.
      * 
      * @return the protocol value.
      */
@@ -77,7 +79,7 @@ public final class ApplicationGatewayOnDemandProbe {
     }
 
     /**
-     * Set the protocol property: Application Gateway protocol.
+     * Set the protocol property: The protocol used for the probe.
      * 
      * @param protocol the protocol value to set.
      * @return the ApplicationGatewayOnDemandProbe object itself.
@@ -181,7 +183,8 @@ public final class ApplicationGatewayOnDemandProbe {
     }
 
     /**
-     * Get the match property: Application gateway probe health response match.
+     * Get the match property: Criterion for classifying a healthy probe
+     * response.
      * 
      * @return the match value.
      */
@@ -190,7 +193,8 @@ public final class ApplicationGatewayOnDemandProbe {
     }
 
     /**
-     * Set the match property: Application gateway probe health response match.
+     * Set the match property: Criterion for classifying a healthy probe
+     * response.
      * 
      * @param match the match value to set.
      * @return the ApplicationGatewayOnDemandProbe object itself.
@@ -201,7 +205,8 @@ public final class ApplicationGatewayOnDemandProbe {
     }
 
     /**
-     * Get the backendAddressPool property: Reference to another subresource.
+     * Get the backendAddressPool property: Reference of backend pool of
+     * application gateway to which probe request will be sent.
      * 
      * @return the backendAddressPool value.
      */
@@ -210,7 +215,8 @@ public final class ApplicationGatewayOnDemandProbe {
     }
 
     /**
-     * Set the backendAddressPool property: Reference to another subresource.
+     * Set the backendAddressPool property: Reference of backend pool of
+     * application gateway to which probe request will be sent.
      * 
      * @param backendAddressPool the backendAddressPool value to set.
      * @return the ApplicationGatewayOnDemandProbe object itself.
@@ -221,7 +227,8 @@ public final class ApplicationGatewayOnDemandProbe {
     }
 
     /**
-     * Get the backendHttpSettings property: Reference to another subresource.
+     * Get the backendHttpSettings property: Reference of backend http setting
+     * of application gateway to be used for test probe.
      * 
      * @return the backendHttpSettings value.
      */
@@ -230,7 +237,8 @@ public final class ApplicationGatewayOnDemandProbe {
     }
 
     /**
-     * Set the backendHttpSettings property: Reference to another subresource.
+     * Set the backendHttpSettings property: Reference of backend http setting
+     * of application gateway to be used for test probe.
      * 
      * @param backendHttpSettings the backendHttpSettings value to set.
      * @return the ApplicationGatewayOnDemandProbe object itself.

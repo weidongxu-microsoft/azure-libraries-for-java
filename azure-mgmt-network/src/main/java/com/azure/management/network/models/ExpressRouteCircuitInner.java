@@ -23,7 +23,7 @@ import java.util.List;
 @Fluent
 public class ExpressRouteCircuitInner extends Resource {
     /*
-     * Contains SKU in an ExpressRouteCircuit.
+     * The SKU.
      */
     @JsonProperty(value = "sku")
     private ExpressRouteCircuitSku sku;
@@ -78,13 +78,14 @@ public class ExpressRouteCircuitInner extends Resource {
     private String serviceProviderNotes;
 
     /*
-     * Contains ServiceProviderProperties in an ExpressRouteCircuit.
+     * The ServiceProviderProperties.
      */
     @JsonProperty(value = "properties.serviceProviderProperties")
     private ExpressRouteCircuitServiceProviderProperties serviceProviderProperties;
 
     /*
-     * Reference to another subresource.
+     * The reference to the ExpressRoutePort resource when the circuit is
+     * provisioned on an ExpressRoutePort resource.
      */
     @JsonProperty(value = "properties.expressRoutePort")
     private SubResource expressRoutePort;
@@ -128,7 +129,7 @@ public class ExpressRouteCircuitInner extends Resource {
     private String id;
 
     /**
-     * Get the sku property: Contains SKU in an ExpressRouteCircuit.
+     * Get the sku property: The SKU.
      * 
      * @return the sku value.
      */
@@ -137,7 +138,7 @@ public class ExpressRouteCircuitInner extends Resource {
     }
 
     /**
-     * Set the sku property: Contains SKU in an ExpressRouteCircuit.
+     * Set the sku property: The SKU.
      * 
      * @param sku the sku value to set.
      * @return the ExpressRouteCircuitInner object itself.
@@ -304,8 +305,8 @@ public class ExpressRouteCircuitInner extends Resource {
     }
 
     /**
-     * Get the serviceProviderProperties property: Contains
-     * ServiceProviderProperties in an ExpressRouteCircuit.
+     * Get the serviceProviderProperties property: The
+     * ServiceProviderProperties.
      * 
      * @return the serviceProviderProperties value.
      */
@@ -314,8 +315,8 @@ public class ExpressRouteCircuitInner extends Resource {
     }
 
     /**
-     * Set the serviceProviderProperties property: Contains
-     * ServiceProviderProperties in an ExpressRouteCircuit.
+     * Set the serviceProviderProperties property: The
+     * ServiceProviderProperties.
      * 
      * @param serviceProviderProperties the serviceProviderProperties value to
      * set.
@@ -327,7 +328,9 @@ public class ExpressRouteCircuitInner extends Resource {
     }
 
     /**
-     * Get the expressRoutePort property: Reference to another subresource.
+     * Get the expressRoutePort property: The reference to the ExpressRoutePort
+     * resource when the circuit is provisioned on an ExpressRoutePort
+     * resource.
      * 
      * @return the expressRoutePort value.
      */
@@ -336,7 +339,9 @@ public class ExpressRouteCircuitInner extends Resource {
     }
 
     /**
-     * Set the expressRoutePort property: Reference to another subresource.
+     * Set the expressRoutePort property: The reference to the ExpressRoutePort
+     * resource when the circuit is provisioned on an ExpressRoutePort
+     * resource.
      * 
      * @param expressRoutePort the expressRoutePort value to set.
      * @return the ExpressRouteCircuitInner object itself.

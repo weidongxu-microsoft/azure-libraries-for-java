@@ -28,7 +28,7 @@ public final class PerfMonResponseInner {
     private String message;
 
     /*
-     * Metric information.
+     * The performance monitor counters.
      */
     @JsonProperty(value = "data")
     private PerfMonSet data;
@@ -74,7 +74,7 @@ public final class PerfMonResponseInner {
     }
 
     /**
-     * Get the data property: Metric information.
+     * Get the data property: The performance monitor counters.
      * 
      * @return the data value.
      */
@@ -83,7 +83,7 @@ public final class PerfMonResponseInner {
     }
 
     /**
-     * Set the data property: Metric information.
+     * Set the data property: The performance monitor counters.
      * 
      * @param data the data value to set.
      * @return the PerfMonResponseInner object itself.

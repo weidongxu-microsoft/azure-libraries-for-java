@@ -41,7 +41,7 @@ public final class StampCapacityInner {
     private String unit;
 
     /*
-     * Shared or dedicated app hosting.
+     * Shared/dedicated workers.
      */
     @JsonProperty(value = "computeMode")
     private ComputeModeOptions computeMode;
@@ -172,7 +172,7 @@ public final class StampCapacityInner {
     }
 
     /**
-     * Get the computeMode property: Shared or dedicated app hosting.
+     * Get the computeMode property: Shared/dedicated workers.
      * 
      * @return the computeMode value.
      */
@@ -181,7 +181,7 @@ public final class StampCapacityInner {
     }
 
     /**
-     * Set the computeMode property: Shared or dedicated app hosting.
+     * Set the computeMode property: Shared/dedicated workers.
      * 
      * @param computeMode the computeMode value to set.
      * @return the StampCapacityInner object itself.

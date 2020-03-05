@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @Fluent
 public final class FirewallPolicyNatRule extends FirewallPolicyRule {
     /*
-     * Properties of the FirewallPolicyNatRuleAction.
+     * The action type of a Nat rule, SNAT or DNAT
      */
     @JsonProperty(value = "action")
     private FirewallPolicyNatRuleAction action;
@@ -37,13 +37,13 @@ public final class FirewallPolicyNatRule extends FirewallPolicyRule {
     private String translatedPort;
 
     /*
-     * Properties of a rule.
+     * The match conditions for incoming traffic
      */
     @JsonProperty(value = "ruleCondition")
     private FirewallPolicyRuleCondition ruleCondition;
 
     /**
-     * Get the action property: Properties of the FirewallPolicyNatRuleAction.
+     * Get the action property: The action type of a Nat rule, SNAT or DNAT.
      * 
      * @return the action value.
      */
@@ -52,7 +52,7 @@ public final class FirewallPolicyNatRule extends FirewallPolicyRule {
     }
 
     /**
-     * Set the action property: Properties of the FirewallPolicyNatRuleAction.
+     * Set the action property: The action type of a Nat rule, SNAT or DNAT.
      * 
      * @param action the action value to set.
      * @return the FirewallPolicyNatRule object itself.
@@ -105,7 +105,8 @@ public final class FirewallPolicyNatRule extends FirewallPolicyRule {
     }
 
     /**
-     * Get the ruleCondition property: Properties of a rule.
+     * Get the ruleCondition property: The match conditions for incoming
+     * traffic.
      * 
      * @return the ruleCondition value.
      */
@@ -114,7 +115,8 @@ public final class FirewallPolicyNatRule extends FirewallPolicyRule {
     }
 
     /**
-     * Set the ruleCondition property: Properties of a rule.
+     * Set the ruleCondition property: The match conditions for incoming
+     * traffic.
      * 
      * @param ruleCondition the ruleCondition value to set.
      * @return the FirewallPolicyNatRule object itself.

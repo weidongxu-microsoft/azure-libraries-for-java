@@ -44,7 +44,7 @@ public class ApplicationGatewayBackendHttpSettings extends SubResource {
     private Integer port;
 
     /*
-     * Application Gateway protocol.
+     * The protocol used to communicate with the backend.
      */
     @JsonProperty(value = "properties.protocol")
     private ApplicationGatewayProtocol protocol;
@@ -64,7 +64,7 @@ public class ApplicationGatewayBackendHttpSettings extends SubResource {
     private Integer requestTimeout;
 
     /*
-     * Reference to another subresource.
+     * Probe resource of an application gateway.
      */
     @JsonProperty(value = "properties.probe")
     private SubResource probe;
@@ -82,9 +82,7 @@ public class ApplicationGatewayBackendHttpSettings extends SubResource {
     private List<SubResource> trustedRootCertificates;
 
     /*
-     * Connection draining allows open connections to a backend server to be
-     * active for a specified time after the backend server got removed from
-     * the configuration.
+     * Connection draining of the backend http settings resource.
      */
     @JsonProperty(value = "properties.connectionDraining")
     private ApplicationGatewayConnectionDraining connectionDraining;
@@ -213,7 +211,8 @@ public class ApplicationGatewayBackendHttpSettings extends SubResource {
     }
 
     /**
-     * Get the protocol property: Application Gateway protocol.
+     * Get the protocol property: The protocol used to communicate with the
+     * backend.
      * 
      * @return the protocol value.
      */
@@ -222,7 +221,8 @@ public class ApplicationGatewayBackendHttpSettings extends SubResource {
     }
 
     /**
-     * Set the protocol property: Application Gateway protocol.
+     * Set the protocol property: The protocol used to communicate with the
+     * backend.
      * 
      * @param protocol the protocol value to set.
      * @return the ApplicationGatewayBackendHttpSettings object itself.
@@ -277,7 +277,7 @@ public class ApplicationGatewayBackendHttpSettings extends SubResource {
     }
 
     /**
-     * Get the probe property: Reference to another subresource.
+     * Get the probe property: Probe resource of an application gateway.
      * 
      * @return the probe value.
      */
@@ -286,7 +286,7 @@ public class ApplicationGatewayBackendHttpSettings extends SubResource {
     }
 
     /**
-     * Set the probe property: Reference to another subresource.
+     * Set the probe property: Probe resource of an application gateway.
      * 
      * @param probe the probe value to set.
      * @return the ApplicationGatewayBackendHttpSettings object itself.
@@ -342,9 +342,8 @@ public class ApplicationGatewayBackendHttpSettings extends SubResource {
     }
 
     /**
-     * Get the connectionDraining property: Connection draining allows open
-     * connections to a backend server to be active for a specified time after
-     * the backend server got removed from the configuration.
+     * Get the connectionDraining property: Connection draining of the backend
+     * http settings resource.
      * 
      * @return the connectionDraining value.
      */
@@ -353,9 +352,8 @@ public class ApplicationGatewayBackendHttpSettings extends SubResource {
     }
 
     /**
-     * Set the connectionDraining property: Connection draining allows open
-     * connections to a backend server to be active for a specified time after
-     * the backend server got removed from the configuration.
+     * Set the connectionDraining property: Connection draining of the backend
+     * http settings resource.
      * 
      * @param connectionDraining the connectionDraining value to set.
      * @return the ApplicationGatewayBackendHttpSettings object itself.

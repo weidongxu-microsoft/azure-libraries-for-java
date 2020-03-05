@@ -44,7 +44,7 @@ public final class MetricInner {
     private UnitType unit;
 
     /*
-     * A database metric name.
+     * The name information for the metric.
      */
     @JsonProperty(value = "name", access = JsonProperty.Access.WRITE_ONLY)
     private MetricName name;
@@ -94,7 +94,7 @@ public final class MetricInner {
     }
 
     /**
-     * Get the name property: A database metric name.
+     * Get the name property: The name information for the metric.
      * 
      * @return the name value.
      */

@@ -26,13 +26,13 @@ public class ExpressRouteConnectionInner extends SubResource {
     private String name;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
 
     /*
-     * ExpressRoute circuit peering identifier.
+     * The ExpressRoute circuit peering.
      */
     @JsonProperty(value = "properties.expressRouteCircuitPeering")
     private ExpressRouteCircuitPeeringId expressRouteCircuitPeering;
@@ -70,7 +70,8 @@ public class ExpressRouteConnectionInner extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -79,7 +80,8 @@ public class ExpressRouteConnectionInner extends SubResource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the ExpressRouteConnectionInner object itself.
@@ -90,8 +92,8 @@ public class ExpressRouteConnectionInner extends SubResource {
     }
 
     /**
-     * Get the expressRouteCircuitPeering property: ExpressRoute circuit
-     * peering identifier.
+     * Get the expressRouteCircuitPeering property: The ExpressRoute circuit
+     * peering.
      * 
      * @return the expressRouteCircuitPeering value.
      */
@@ -100,8 +102,8 @@ public class ExpressRouteConnectionInner extends SubResource {
     }
 
     /**
-     * Set the expressRouteCircuitPeering property: ExpressRoute circuit
-     * peering identifier.
+     * Set the expressRouteCircuitPeering property: The ExpressRoute circuit
+     * peering.
      * 
      * @param expressRouteCircuitPeering the expressRouteCircuitPeering value
      * to set.

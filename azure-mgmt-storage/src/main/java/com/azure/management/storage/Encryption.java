@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class Encryption {
     /*
-     * A list of services that support encryption.
+     * List of services which support encryption.
      */
     @JsonProperty(value = "services")
     private EncryptionServices services;
@@ -28,13 +28,13 @@ public final class Encryption {
     private KeySource keySource;
 
     /*
-     * Properties of key vault.
+     * Properties provided by key vault.
      */
     @JsonProperty(value = "keyvaultproperties")
     private KeyVaultProperties keyVaultProperties;
 
     /**
-     * Get the services property: A list of services that support encryption.
+     * Get the services property: List of services which support encryption.
      * 
      * @return the services value.
      */
@@ -43,7 +43,7 @@ public final class Encryption {
     }
 
     /**
-     * Set the services property: A list of services that support encryption.
+     * Set the services property: List of services which support encryption.
      * 
      * @param services the services value to set.
      * @return the Encryption object itself.
@@ -78,7 +78,7 @@ public final class Encryption {
     }
 
     /**
-     * Get the keyVaultProperties property: Properties of key vault.
+     * Get the keyVaultProperties property: Properties provided by key vault.
      * 
      * @return the keyVaultProperties value.
      */
@@ -87,7 +87,7 @@ public final class Encryption {
     }
 
     /**
-     * Set the keyVaultProperties property: Properties of key vault.
+     * Set the keyVaultProperties property: Properties provided by key vault.
      * 
      * @param keyVaultProperties the keyVaultProperties value to set.
      * @return the Encryption object itself.

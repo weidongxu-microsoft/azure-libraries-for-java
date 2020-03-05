@@ -29,7 +29,7 @@ public final class ServiceSasParameters {
     private SignedResource resource;
 
     /*
-     * The signed permissions for the account SAS. Possible values include:
+     * The signed permissions for the service SAS. Possible values include:
      * Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update
      * (u) and Process (p).
      */
@@ -174,7 +174,7 @@ public final class ServiceSasParameters {
     }
 
     /**
-     * Get the permissions property: The signed permissions for the account
+     * Get the permissions property: The signed permissions for the service
      * SAS. Possible values include: Read (r), Write (w), Delete (d), List (l),
      * Add (a), Create (c), Update (u) and Process (p).
      * 
@@ -185,7 +185,7 @@ public final class ServiceSasParameters {
     }
 
     /**
-     * Set the permissions property: The signed permissions for the account
+     * Set the permissions property: The signed permissions for the service
      * SAS. Possible values include: Read (r), Write (w), Delete (d), List (l),
      * Add (a), Create (c), Update (u) and Process (p).
      * 

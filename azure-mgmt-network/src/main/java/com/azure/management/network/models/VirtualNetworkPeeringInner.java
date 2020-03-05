@@ -64,14 +64,16 @@ public class VirtualNetworkPeeringInner extends SubResource {
     private Boolean useRemoteGateways;
 
     /*
-     * Reference to another subresource.
+     * The reference of the remote virtual network. The remote virtual network
+     * can be in the same or different region (preview). See here to register
+     * for the preview and learn more
+     * (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
      */
     @JsonProperty(value = "properties.remoteVirtualNetwork")
     private SubResource remoteVirtualNetwork;
 
     /*
-     * AddressSpace contains an array of IP address ranges that can be used by
-     * subnets of the virtual network.
+     * The reference of the remote virtual network address space.
      */
     @JsonProperty(value = "properties.remoteAddressSpace")
     private AddressSpace remoteAddressSpace;
@@ -234,7 +236,11 @@ public class VirtualNetworkPeeringInner extends SubResource {
     }
 
     /**
-     * Get the remoteVirtualNetwork property: Reference to another subresource.
+     * Get the remoteVirtualNetwork property: The reference of the remote
+     * virtual network. The remote virtual network can be in the same or
+     * different region (preview). See here to register for the preview and
+     * learn more
+     * (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
      * 
      * @return the remoteVirtualNetwork value.
      */
@@ -243,7 +249,11 @@ public class VirtualNetworkPeeringInner extends SubResource {
     }
 
     /**
-     * Set the remoteVirtualNetwork property: Reference to another subresource.
+     * Set the remoteVirtualNetwork property: The reference of the remote
+     * virtual network. The remote virtual network can be in the same or
+     * different region (preview). See here to register for the preview and
+     * learn more
+     * (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
      * 
      * @param remoteVirtualNetwork the remoteVirtualNetwork value to set.
      * @return the VirtualNetworkPeeringInner object itself.
@@ -254,8 +264,8 @@ public class VirtualNetworkPeeringInner extends SubResource {
     }
 
     /**
-     * Get the remoteAddressSpace property: AddressSpace contains an array of
-     * IP address ranges that can be used by subnets of the virtual network.
+     * Get the remoteAddressSpace property: The reference of the remote virtual
+     * network address space.
      * 
      * @return the remoteAddressSpace value.
      */
@@ -264,8 +274,8 @@ public class VirtualNetworkPeeringInner extends SubResource {
     }
 
     /**
-     * Set the remoteAddressSpace property: AddressSpace contains an array of
-     * IP address ranges that can be used by subnets of the virtual network.
+     * Set the remoteAddressSpace property: The reference of the remote virtual
+     * network address space.
      * 
      * @param remoteAddressSpace the remoteAddressSpace value to set.
      * @return the VirtualNetworkPeeringInner object itself.

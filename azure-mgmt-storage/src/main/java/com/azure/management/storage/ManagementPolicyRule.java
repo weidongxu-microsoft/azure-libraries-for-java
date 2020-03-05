@@ -34,8 +34,7 @@ public final class ManagementPolicyRule {
     private String type;
 
     /*
-     * An object that defines the Lifecycle rule. Each definition is made up
-     * with a filters set and an actions set.
+     * An object that defines the Lifecycle rule.
      */
     @JsonProperty(value = "definition", required = true)
     private ManagementPolicyDefinition definition;
@@ -113,7 +112,6 @@ public final class ManagementPolicyRule {
 
     /**
      * Get the definition property: An object that defines the Lifecycle rule.
-     * Each definition is made up with a filters set and an actions set.
      * 
      * @return the definition value.
      */
@@ -123,7 +121,6 @@ public final class ManagementPolicyRule {
 
     /**
      * Set the definition property: An object that defines the Lifecycle rule.
-     * Each definition is made up with a filters set and an actions set.
      * 
      * @param definition the definition value to set.
      * @return the ManagementPolicyRule object itself.

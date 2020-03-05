@@ -42,7 +42,7 @@ public class DiagnosticDetectorResponseInner extends ProxyOnlyResource {
     private Boolean issueDetected;
 
     /*
-     * Class representing detector definition
+     * Detector's definition
      */
     @JsonProperty(value = "properties.detectorDefinition")
     private DetectorDefinitionInner detectorDefinition;
@@ -66,7 +66,7 @@ public class DiagnosticDetectorResponseInner extends ProxyOnlyResource {
     private List<List<NameValuePair>> data;
 
     /*
-     * The responseMetaData property.
+     * Meta Data
      */
     @JsonProperty(value = "properties.responseMetaData")
     private ResponseMetaData responseMetaData;
@@ -132,8 +132,7 @@ public class DiagnosticDetectorResponseInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the detectorDefinition property: Class representing detector
-     * definition.
+     * Get the detectorDefinition property: Detector's definition.
      * 
      * @return the detectorDefinition value.
      */
@@ -142,8 +141,7 @@ public class DiagnosticDetectorResponseInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the detectorDefinition property: Class representing detector
-     * definition.
+     * Set the detectorDefinition property: Detector's definition.
      * 
      * @param detectorDefinition the detectorDefinition value to set.
      * @return the DiagnosticDetectorResponseInner object itself.
@@ -216,7 +214,7 @@ public class DiagnosticDetectorResponseInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the responseMetaData property: The responseMetaData property.
+     * Get the responseMetaData property: Meta Data.
      * 
      * @return the responseMetaData value.
      */
@@ -225,7 +223,7 @@ public class DiagnosticDetectorResponseInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the responseMetaData property: The responseMetaData property.
+     * Set the responseMetaData property: Meta Data.
      * 
      * @param responseMetaData the responseMetaData value to set.
      * @return the DiagnosticDetectorResponseInner object itself.

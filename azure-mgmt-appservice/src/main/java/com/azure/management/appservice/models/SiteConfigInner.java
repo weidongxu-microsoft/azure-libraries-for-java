@@ -146,7 +146,7 @@ public final class SiteConfigInner {
     private List<ConnStringInfo> connectionStrings;
 
     /*
-     * MachineKey of an app.
+     * Site MachineKey.
      */
     @JsonProperty(value = "machineKey", access = JsonProperty.Access.WRITE_ONLY)
     private SiteMachineKey machineKey;
@@ -233,13 +233,13 @@ public final class SiteConfigInner {
     private SiteLoadBalancing loadBalancing;
 
     /*
-     * Routing rules in production experiments.
+     * This is work around for polymorphic types.
      */
     @JsonProperty(value = "experiments")
     private Experiments experiments;
 
     /*
-     * Metric limits set on an app.
+     * Site limits.
      */
     @JsonProperty(value = "limits")
     private SiteLimits limits;
@@ -252,7 +252,7 @@ public final class SiteConfigInner {
     private Boolean autoHealEnabled;
 
     /*
-     * Rules that can be defined for auto-heal.
+     * Auto Heal rules.
      */
     @JsonProperty(value = "autoHealRules")
     private AutoHealRules autoHealRules;
@@ -270,13 +270,13 @@ public final class SiteConfigInner {
     private String vnetName;
 
     /*
-     * Cross-Origin Resource Sharing (CORS) settings for the app.
+     * Cross-Origin Resource Sharing (CORS) settings.
      */
     @JsonProperty(value = "cors")
     private CorsSettings cors;
 
     /*
-     * Push settings for the App.
+     * Push endpoint settings.
      */
     @JsonProperty(value = "push")
     private PushSettingsInner push;
@@ -288,7 +288,7 @@ public final class SiteConfigInner {
     private ApiDefinitionInfo apiDefinition;
 
     /*
-     * Azure API management (APIM) configuration linked to the app.
+     * Azure API management settings linked to the app.
      */
     @JsonProperty(value = "apiManagementConfig")
     private ApiManagementConfig apiManagementConfig;
@@ -745,7 +745,7 @@ public final class SiteConfigInner {
     }
 
     /**
-     * Get the machineKey property: MachineKey of an app.
+     * Get the machineKey property: Site MachineKey.
      * 
      * @return the machineKey value.
      */
@@ -1020,7 +1020,7 @@ public final class SiteConfigInner {
     }
 
     /**
-     * Get the experiments property: Routing rules in production experiments.
+     * Get the experiments property: This is work around for polymorphic types.
      * 
      * @return the experiments value.
      */
@@ -1029,7 +1029,7 @@ public final class SiteConfigInner {
     }
 
     /**
-     * Set the experiments property: Routing rules in production experiments.
+     * Set the experiments property: This is work around for polymorphic types.
      * 
      * @param experiments the experiments value to set.
      * @return the SiteConfigInner object itself.
@@ -1040,7 +1040,7 @@ public final class SiteConfigInner {
     }
 
     /**
-     * Get the limits property: Metric limits set on an app.
+     * Get the limits property: Site limits.
      * 
      * @return the limits value.
      */
@@ -1049,7 +1049,7 @@ public final class SiteConfigInner {
     }
 
     /**
-     * Set the limits property: Metric limits set on an app.
+     * Set the limits property: Site limits.
      * 
      * @param limits the limits value to set.
      * @return the SiteConfigInner object itself.
@@ -1082,7 +1082,7 @@ public final class SiteConfigInner {
     }
 
     /**
-     * Get the autoHealRules property: Rules that can be defined for auto-heal.
+     * Get the autoHealRules property: Auto Heal rules.
      * 
      * @return the autoHealRules value.
      */
@@ -1091,7 +1091,7 @@ public final class SiteConfigInner {
     }
 
     /**
-     * Set the autoHealRules property: Rules that can be defined for auto-heal.
+     * Set the autoHealRules property: Auto Heal rules.
      * 
      * @param autoHealRules the autoHealRules value to set.
      * @return the SiteConfigInner object itself.
@@ -1142,8 +1142,7 @@ public final class SiteConfigInner {
     }
 
     /**
-     * Get the cors property: Cross-Origin Resource Sharing (CORS) settings for
-     * the app.
+     * Get the cors property: Cross-Origin Resource Sharing (CORS) settings.
      * 
      * @return the cors value.
      */
@@ -1152,8 +1151,7 @@ public final class SiteConfigInner {
     }
 
     /**
-     * Set the cors property: Cross-Origin Resource Sharing (CORS) settings for
-     * the app.
+     * Set the cors property: Cross-Origin Resource Sharing (CORS) settings.
      * 
      * @param cors the cors value to set.
      * @return the SiteConfigInner object itself.
@@ -1164,7 +1162,7 @@ public final class SiteConfigInner {
     }
 
     /**
-     * Get the push property: Push settings for the App.
+     * Get the push property: Push endpoint settings.
      * 
      * @return the push value.
      */
@@ -1173,7 +1171,7 @@ public final class SiteConfigInner {
     }
 
     /**
-     * Set the push property: Push settings for the App.
+     * Set the push property: Push endpoint settings.
      * 
      * @param push the push value to set.
      * @return the SiteConfigInner object itself.
@@ -1206,8 +1204,8 @@ public final class SiteConfigInner {
     }
 
     /**
-     * Get the apiManagementConfig property: Azure API management (APIM)
-     * configuration linked to the app.
+     * Get the apiManagementConfig property: Azure API management settings
+     * linked to the app.
      * 
      * @return the apiManagementConfig value.
      */
@@ -1216,8 +1214,8 @@ public final class SiteConfigInner {
     }
 
     /**
-     * Set the apiManagementConfig property: Azure API management (APIM)
-     * configuration linked to the app.
+     * Set the apiManagementConfig property: Azure API management settings
+     * linked to the app.
      * 
      * @param apiManagementConfig the apiManagementConfig value to set.
      * @return the SiteConfigInner object itself.

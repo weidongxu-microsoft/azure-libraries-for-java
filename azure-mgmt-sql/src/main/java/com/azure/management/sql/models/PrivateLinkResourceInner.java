@@ -17,13 +17,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Immutable
 public final class PrivateLinkResourceInner extends ProxyResource {
     /*
-     * Properties of a private link resource.
+     * The private link resource group id.
      */
     @JsonProperty(value = "properties", access = JsonProperty.Access.WRITE_ONLY)
     private PrivateLinkResourceProperties properties;
 
     /**
-     * Get the properties property: Properties of a private link resource.
+     * Get the properties property: The private link resource group id.
      * 
      * @return the properties value.
      */

@@ -57,17 +57,17 @@ public final class DatabaseThreatDetectionPoliciesInner {
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientDatabaseThreatDetectionPolicies")
     private interface DatabaseThreatDetectionPoliciesService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/securityAlertPolicies/{securityAlertPolicyName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DatabaseSecurityAlertPolicyInner>> get(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("securityAlertPolicyName") String securityAlertPolicyName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/securityAlertPolicies/{securityAlertPolicyName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DatabaseSecurityAlertPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("securityAlertPolicyName") String securityAlertPolicyName, @BodyParam("application/json") DatabaseSecurityAlertPolicyInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DatabaseSecurityAlertPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("securityAlertPolicyName") String securityAlertPolicyName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DatabaseSecurityAlertPolicyInner parameters);
     }
 
     /**
@@ -139,7 +139,7 @@ public final class DatabaseThreatDetectionPoliciesInner {
     public Mono<SimpleResponse<DatabaseSecurityAlertPolicyInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String serverName, String databaseName, DatabaseSecurityAlertPolicyInner parameters) {
         final String securityAlertPolicyName = "default";
         final String apiVersion = "2014-04-01";
-        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, securityAlertPolicyName, parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, securityAlertPolicyName, apiVersion, parameters);
     }
 
     /**

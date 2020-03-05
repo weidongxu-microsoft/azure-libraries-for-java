@@ -17,19 +17,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class DeploymentValidateResultInner {
     /*
-     * The resource management error response.
+     * The deployment validation error.
      */
     @JsonProperty(value = "error")
     private ErrorResponse error;
 
     /*
-     * Deployment properties with additional details.
+     * The template deployment properties.
      */
     @JsonProperty(value = "properties")
     private DeploymentPropertiesExtended properties;
 
     /**
-     * Get the error property: The resource management error response.
+     * Get the error property: The deployment validation error.
      * 
      * @return the error value.
      */
@@ -38,7 +38,7 @@ public final class DeploymentValidateResultInner {
     }
 
     /**
-     * Set the error property: The resource management error response.
+     * Set the error property: The deployment validation error.
      * 
      * @param error the error value to set.
      * @return the DeploymentValidateResultInner object itself.
@@ -49,8 +49,7 @@ public final class DeploymentValidateResultInner {
     }
 
     /**
-     * Get the properties property: Deployment properties with additional
-     * details.
+     * Get the properties property: The template deployment properties.
      * 
      * @return the properties value.
      */
@@ -59,8 +58,7 @@ public final class DeploymentValidateResultInner {
     }
 
     /**
-     * Set the properties property: Deployment properties with additional
-     * details.
+     * Set the properties property: The template deployment properties.
      * 
      * @param properties the properties value to set.
      * @return the DeploymentValidateResultInner object itself.

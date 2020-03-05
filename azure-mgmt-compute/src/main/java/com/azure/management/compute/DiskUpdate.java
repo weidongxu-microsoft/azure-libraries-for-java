@@ -31,7 +31,7 @@ public class DiskUpdate {
     private DiskSku sku;
 
     /*
-     * The operating system of the osDiskImage.
+     * the Operating System type.
      */
     @JsonProperty(value = "properties.osType")
     private OperatingSystemTypes osType;
@@ -47,7 +47,8 @@ public class DiskUpdate {
     private Integer diskSizeGB;
 
     /*
-     * Encryption settings for disk or snapshot
+     * Encryption settings collection used be Azure Disk Encryption, can
+     * contain multiple encryption settings per disk or snapshot.
      */
     @JsonProperty(value = "properties.encryptionSettingsCollection")
     private EncryptionSettingsCollection encryptionSettingsCollection;
@@ -110,7 +111,7 @@ public class DiskUpdate {
     }
 
     /**
-     * Get the osType property: The operating system of the osDiskImage.
+     * Get the osType property: the Operating System type.
      * 
      * @return the osType value.
      */
@@ -119,7 +120,7 @@ public class DiskUpdate {
     }
 
     /**
-     * Set the osType property: The operating system of the osDiskImage.
+     * Set the osType property: the Operating System type.
      * 
      * @param osType the osType value to set.
      * @return the DiskUpdate object itself.
@@ -158,8 +159,9 @@ public class DiskUpdate {
     }
 
     /**
-     * Get the encryptionSettingsCollection property: Encryption settings for
-     * disk or snapshot.
+     * Get the encryptionSettingsCollection property: Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple
+     * encryption settings per disk or snapshot.
      * 
      * @return the encryptionSettingsCollection value.
      */
@@ -168,8 +170,9 @@ public class DiskUpdate {
     }
 
     /**
-     * Set the encryptionSettingsCollection property: Encryption settings for
-     * disk or snapshot.
+     * Set the encryptionSettingsCollection property: Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple
+     * encryption settings per disk or snapshot.
      * 
      * @param encryptionSettingsCollection the encryptionSettingsCollection
      * value to set.

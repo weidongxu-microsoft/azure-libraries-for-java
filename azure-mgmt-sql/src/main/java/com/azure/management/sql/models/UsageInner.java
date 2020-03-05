@@ -22,7 +22,7 @@ public final class UsageInner {
     private String id;
 
     /*
-     * ARM Usage Name
+     * Resource name.
      */
     @JsonProperty(value = "name", access = JsonProperty.Access.WRITE_ONLY)
     private Name name;
@@ -67,7 +67,7 @@ public final class UsageInner {
     }
 
     /**
-     * Get the name property: ARM Usage Name.
+     * Get the name property: Resource name.
      * 
      * @return the name value.
      */

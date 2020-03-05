@@ -39,7 +39,7 @@ public class RouteFilterRuleInner extends SubResource {
     private String etag;
 
     /*
-     * Access to be allowed or denied.
+     * The access type of the rule.
      */
     @JsonProperty(value = "properties.access")
     private Access access;
@@ -124,7 +124,7 @@ public class RouteFilterRuleInner extends SubResource {
     }
 
     /**
-     * Get the access property: Access to be allowed or denied.
+     * Get the access property: The access type of the rule.
      * 
      * @return the access value.
      */
@@ -133,7 +133,7 @@ public class RouteFilterRuleInner extends SubResource {
     }
 
     /**
-     * Set the access property: Access to be allowed or denied.
+     * Set the access property: The access type of the rule.
      * 
      * @param access the access value to set.
      * @return the RouteFilterRuleInner object itself.

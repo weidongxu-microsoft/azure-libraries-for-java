@@ -21,7 +21,7 @@ public final class AzureAsyncOperationResult {
     private NetworkOperationStatus status;
 
     /*
-     * Common error representation.
+     * Details of the error occurred during specified asynchronous operation.
      */
     @JsonProperty(value = "error")
     private Error error;
@@ -47,7 +47,8 @@ public final class AzureAsyncOperationResult {
     }
 
     /**
-     * Get the error property: Common error representation.
+     * Get the error property: Details of the error occurred during specified
+     * asynchronous operation.
      * 
      * @return the error value.
      */
@@ -56,7 +57,8 @@ public final class AzureAsyncOperationResult {
     }
 
     /**
-     * Set the error property: Common error representation.
+     * Set the error property: Details of the error occurred during specified
+     * asynchronous operation.
      * 
      * @param error the error value to set.
      * @return the AzureAsyncOperationResult object itself.

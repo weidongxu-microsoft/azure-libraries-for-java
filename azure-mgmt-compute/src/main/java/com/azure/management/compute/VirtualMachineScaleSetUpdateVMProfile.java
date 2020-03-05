@@ -15,32 +15,31 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class VirtualMachineScaleSetUpdateVMProfile {
     /*
-     * Describes a virtual machine scale set OS profile.
+     * The virtual machine scale set OS profile.
      */
     @JsonProperty(value = "osProfile")
     private VirtualMachineScaleSetUpdateOSProfile osProfile;
 
     /*
-     * Describes a virtual machine scale set storage profile.
+     * The virtual machine scale set storage profile.
      */
     @JsonProperty(value = "storageProfile")
     private VirtualMachineScaleSetUpdateStorageProfile storageProfile;
 
     /*
-     * Describes a virtual machine scale set network profile.
+     * The virtual machine scale set network profile.
      */
     @JsonProperty(value = "networkProfile")
     private VirtualMachineScaleSetUpdateNetworkProfile networkProfile;
 
     /*
-     * Specifies the boot diagnostic settings state. <br><br>Minimum
-     * api-version: 2015-06-15.
+     * The virtual machine scale set diagnostics profile.
      */
     @JsonProperty(value = "diagnosticsProfile")
     private DiagnosticsProfile diagnosticsProfile;
 
     /*
-     * Describes a virtual machine scale set extension profile.
+     * The virtual machine scale set extension profile.
      */
     @JsonProperty(value = "extensionProfile")
     private VirtualMachineScaleSetExtensionProfile extensionProfile;
@@ -52,21 +51,20 @@ public final class VirtualMachineScaleSetUpdateVMProfile {
     private String licenseType;
 
     /*
-     * Specifies the billing related details of a Azure Spot VM or VMSS.
+     * Specifies the billing related details of a low priority VMSS.
      * <br><br>Minimum api-version: 2019-03-01.
      */
     @JsonProperty(value = "billingProfile")
     private BillingProfile billingProfile;
 
     /*
-     * The scheduledEventsProfile property.
+     * Specifies Scheduled Event related configurations.
      */
     @JsonProperty(value = "scheduledEventsProfile")
     private ScheduledEventsProfile scheduledEventsProfile;
 
     /**
-     * Get the osProfile property: Describes a virtual machine scale set OS
-     * profile.
+     * Get the osProfile property: The virtual machine scale set OS profile.
      * 
      * @return the osProfile value.
      */
@@ -75,8 +73,7 @@ public final class VirtualMachineScaleSetUpdateVMProfile {
     }
 
     /**
-     * Set the osProfile property: Describes a virtual machine scale set OS
-     * profile.
+     * Set the osProfile property: The virtual machine scale set OS profile.
      * 
      * @param osProfile the osProfile value to set.
      * @return the VirtualMachineScaleSetUpdateVMProfile object itself.
@@ -87,8 +84,8 @@ public final class VirtualMachineScaleSetUpdateVMProfile {
     }
 
     /**
-     * Get the storageProfile property: Describes a virtual machine scale set
-     * storage profile.
+     * Get the storageProfile property: The virtual machine scale set storage
+     * profile.
      * 
      * @return the storageProfile value.
      */
@@ -97,8 +94,8 @@ public final class VirtualMachineScaleSetUpdateVMProfile {
     }
 
     /**
-     * Set the storageProfile property: Describes a virtual machine scale set
-     * storage profile.
+     * Set the storageProfile property: The virtual machine scale set storage
+     * profile.
      * 
      * @param storageProfile the storageProfile value to set.
      * @return the VirtualMachineScaleSetUpdateVMProfile object itself.
@@ -109,8 +106,8 @@ public final class VirtualMachineScaleSetUpdateVMProfile {
     }
 
     /**
-     * Get the networkProfile property: Describes a virtual machine scale set
-     * network profile.
+     * Get the networkProfile property: The virtual machine scale set network
+     * profile.
      * 
      * @return the networkProfile value.
      */
@@ -119,8 +116,8 @@ public final class VirtualMachineScaleSetUpdateVMProfile {
     }
 
     /**
-     * Set the networkProfile property: Describes a virtual machine scale set
-     * network profile.
+     * Set the networkProfile property: The virtual machine scale set network
+     * profile.
      * 
      * @param networkProfile the networkProfile value to set.
      * @return the VirtualMachineScaleSetUpdateVMProfile object itself.
@@ -131,8 +128,8 @@ public final class VirtualMachineScaleSetUpdateVMProfile {
     }
 
     /**
-     * Get the diagnosticsProfile property: Specifies the boot diagnostic
-     * settings state. &lt;br&gt;&lt;br&gt;Minimum api-version: 2015-06-15.
+     * Get the diagnosticsProfile property: The virtual machine scale set
+     * diagnostics profile.
      * 
      * @return the diagnosticsProfile value.
      */
@@ -141,8 +138,8 @@ public final class VirtualMachineScaleSetUpdateVMProfile {
     }
 
     /**
-     * Set the diagnosticsProfile property: Specifies the boot diagnostic
-     * settings state. &lt;br&gt;&lt;br&gt;Minimum api-version: 2015-06-15.
+     * Set the diagnosticsProfile property: The virtual machine scale set
+     * diagnostics profile.
      * 
      * @param diagnosticsProfile the diagnosticsProfile value to set.
      * @return the VirtualMachineScaleSetUpdateVMProfile object itself.
@@ -153,7 +150,7 @@ public final class VirtualMachineScaleSetUpdateVMProfile {
     }
 
     /**
-     * Get the extensionProfile property: Describes a virtual machine scale set
+     * Get the extensionProfile property: The virtual machine scale set
      * extension profile.
      * 
      * @return the extensionProfile value.
@@ -163,7 +160,7 @@ public final class VirtualMachineScaleSetUpdateVMProfile {
     }
 
     /**
-     * Set the extensionProfile property: Describes a virtual machine scale set
+     * Set the extensionProfile property: The virtual machine scale set
      * extension profile.
      * 
      * @param extensionProfile the extensionProfile value to set.
@@ -198,7 +195,7 @@ public final class VirtualMachineScaleSetUpdateVMProfile {
 
     /**
      * Get the billingProfile property: Specifies the billing related details
-     * of a Azure Spot VM or VMSS. &lt;br&gt;&lt;br&gt;Minimum api-version:
+     * of a low priority VMSS. &lt;br&gt;&lt;br&gt;Minimum api-version:
      * 2019-03-01.
      * 
      * @return the billingProfile value.
@@ -209,7 +206,7 @@ public final class VirtualMachineScaleSetUpdateVMProfile {
 
     /**
      * Set the billingProfile property: Specifies the billing related details
-     * of a Azure Spot VM or VMSS. &lt;br&gt;&lt;br&gt;Minimum api-version:
+     * of a low priority VMSS. &lt;br&gt;&lt;br&gt;Minimum api-version:
      * 2019-03-01.
      * 
      * @param billingProfile the billingProfile value to set.
@@ -221,8 +218,8 @@ public final class VirtualMachineScaleSetUpdateVMProfile {
     }
 
     /**
-     * Get the scheduledEventsProfile property: The scheduledEventsProfile
-     * property.
+     * Get the scheduledEventsProfile property: Specifies Scheduled Event
+     * related configurations.
      * 
      * @return the scheduledEventsProfile value.
      */
@@ -231,8 +228,8 @@ public final class VirtualMachineScaleSetUpdateVMProfile {
     }
 
     /**
-     * Set the scheduledEventsProfile property: The scheduledEventsProfile
-     * property.
+     * Set the scheduledEventsProfile property: Specifies Scheduled Event
+     * related configurations.
      * 
      * @param scheduledEventsProfile the scheduledEventsProfile value to set.
      * @return the VirtualMachineScaleSetUpdateVMProfile object itself.

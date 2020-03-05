@@ -56,7 +56,7 @@ public final class CapabilitiesInner {
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientCapabilities")
     private interface CapabilitiesService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/capabilities")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)

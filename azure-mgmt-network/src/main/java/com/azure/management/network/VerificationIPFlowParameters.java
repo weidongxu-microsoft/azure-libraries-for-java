@@ -21,7 +21,7 @@ public final class VerificationIPFlowParameters {
     private String targetResourceId;
 
     /*
-     * The direction of the traffic.
+     * The direction of the packet represented as a 5-tuple.
      */
     @JsonProperty(value = "direction", required = true)
     private Direction direction;
@@ -90,7 +90,8 @@ public final class VerificationIPFlowParameters {
     }
 
     /**
-     * Get the direction property: The direction of the traffic.
+     * Get the direction property: The direction of the packet represented as a
+     * 5-tuple.
      * 
      * @return the direction value.
      */
@@ -99,7 +100,8 @@ public final class VerificationIPFlowParameters {
     }
 
     /**
-     * Set the direction property: The direction of the traffic.
+     * Set the direction property: The direction of the packet represented as a
+     * 5-tuple.
      * 
      * @param direction the direction value to set.
      * @return the VerificationIPFlowParameters object itself.

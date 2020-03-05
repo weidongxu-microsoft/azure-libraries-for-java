@@ -28,7 +28,7 @@ public final class DeploymentOperationInner {
     private String operationId;
 
     /*
-     * Deployment operation properties.
+     * Deployment properties.
      */
     @JsonProperty(value = "properties")
     private DeploymentOperationProperties properties;
@@ -52,7 +52,7 @@ public final class DeploymentOperationInner {
     }
 
     /**
-     * Get the properties property: Deployment operation properties.
+     * Get the properties property: Deployment properties.
      * 
      * @return the properties value.
      */
@@ -61,7 +61,7 @@ public final class DeploymentOperationInner {
     }
 
     /**
-     * Set the properties property: Deployment operation properties.
+     * Set the properties property: Deployment properties.
      * 
      * @param properties the properties value to set.
      * @return the DeploymentOperationInner object itself.

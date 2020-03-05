@@ -15,23 +15,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class ManagementPolicyDefinition {
     /*
-     * Actions are applied to the filtered blobs when the execution condition
-     * is met.
+     * An object that defines the action set.
      */
     @JsonProperty(value = "actions", required = true)
     private ManagementPolicyAction actions;
 
     /*
-     * Filters limit rule actions to a subset of blobs within the storage
-     * account. If multiple filters are defined, a logical AND is performed on
-     * all filters.
+     * An object that defines the filter set.
      */
     @JsonProperty(value = "filters")
     private ManagementPolicyFilter filters;
 
     /**
-     * Get the actions property: Actions are applied to the filtered blobs when
-     * the execution condition is met.
+     * Get the actions property: An object that defines the action set.
      * 
      * @return the actions value.
      */
@@ -40,8 +36,7 @@ public final class ManagementPolicyDefinition {
     }
 
     /**
-     * Set the actions property: Actions are applied to the filtered blobs when
-     * the execution condition is met.
+     * Set the actions property: An object that defines the action set.
      * 
      * @param actions the actions value to set.
      * @return the ManagementPolicyDefinition object itself.
@@ -52,9 +47,7 @@ public final class ManagementPolicyDefinition {
     }
 
     /**
-     * Get the filters property: Filters limit rule actions to a subset of
-     * blobs within the storage account. If multiple filters are defined, a
-     * logical AND is performed on all filters.
+     * Get the filters property: An object that defines the filter set.
      * 
      * @return the filters value.
      */
@@ -63,9 +56,7 @@ public final class ManagementPolicyDefinition {
     }
 
     /**
-     * Set the filters property: Filters limit rule actions to a subset of
-     * blobs within the storage account. If multiple filters are defined, a
-     * logical AND is performed on all filters.
+     * Set the filters property: An object that defines the filter set.
      * 
      * @param filters the filters value to set.
      * @return the ManagementPolicyDefinition object itself.

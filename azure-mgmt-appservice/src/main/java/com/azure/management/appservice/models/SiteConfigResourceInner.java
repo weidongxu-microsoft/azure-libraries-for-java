@@ -149,7 +149,7 @@ public class SiteConfigResourceInner extends ProxyOnlyResource {
     private List<ConnStringInfo> connectionStrings;
 
     /*
-     * MachineKey of an app.
+     * Site MachineKey.
      */
     @JsonProperty(value = "properties.machineKey", access = JsonProperty.Access.WRITE_ONLY)
     private SiteMachineKey machineKey;
@@ -236,13 +236,13 @@ public class SiteConfigResourceInner extends ProxyOnlyResource {
     private SiteLoadBalancing loadBalancing;
 
     /*
-     * Routing rules in production experiments.
+     * This is work around for polymorphic types.
      */
     @JsonProperty(value = "properties.experiments")
     private Experiments experiments;
 
     /*
-     * Metric limits set on an app.
+     * Site limits.
      */
     @JsonProperty(value = "properties.limits")
     private SiteLimits limits;
@@ -255,7 +255,7 @@ public class SiteConfigResourceInner extends ProxyOnlyResource {
     private Boolean autoHealEnabled;
 
     /*
-     * Rules that can be defined for auto-heal.
+     * Auto Heal rules.
      */
     @JsonProperty(value = "properties.autoHealRules")
     private AutoHealRules autoHealRules;
@@ -273,13 +273,13 @@ public class SiteConfigResourceInner extends ProxyOnlyResource {
     private String vnetName;
 
     /*
-     * Cross-Origin Resource Sharing (CORS) settings for the app.
+     * Cross-Origin Resource Sharing (CORS) settings.
      */
     @JsonProperty(value = "properties.cors")
     private CorsSettings cors;
 
     /*
-     * Push settings for the App.
+     * Push endpoint settings.
      */
     @JsonProperty(value = "properties.push")
     private PushSettingsInner push;
@@ -291,7 +291,7 @@ public class SiteConfigResourceInner extends ProxyOnlyResource {
     private ApiDefinitionInfo apiDefinition;
 
     /*
-     * Azure API management (APIM) configuration linked to the app.
+     * Azure API management settings linked to the app.
      */
     @JsonProperty(value = "properties.apiManagementConfig")
     private ApiManagementConfig apiManagementConfig;
@@ -748,7 +748,7 @@ public class SiteConfigResourceInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the machineKey property: MachineKey of an app.
+     * Get the machineKey property: Site MachineKey.
      * 
      * @return the machineKey value.
      */
@@ -1023,7 +1023,7 @@ public class SiteConfigResourceInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the experiments property: Routing rules in production experiments.
+     * Get the experiments property: This is work around for polymorphic types.
      * 
      * @return the experiments value.
      */
@@ -1032,7 +1032,7 @@ public class SiteConfigResourceInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the experiments property: Routing rules in production experiments.
+     * Set the experiments property: This is work around for polymorphic types.
      * 
      * @param experiments the experiments value to set.
      * @return the SiteConfigResourceInner object itself.
@@ -1043,7 +1043,7 @@ public class SiteConfigResourceInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the limits property: Metric limits set on an app.
+     * Get the limits property: Site limits.
      * 
      * @return the limits value.
      */
@@ -1052,7 +1052,7 @@ public class SiteConfigResourceInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the limits property: Metric limits set on an app.
+     * Set the limits property: Site limits.
      * 
      * @param limits the limits value to set.
      * @return the SiteConfigResourceInner object itself.
@@ -1085,7 +1085,7 @@ public class SiteConfigResourceInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the autoHealRules property: Rules that can be defined for auto-heal.
+     * Get the autoHealRules property: Auto Heal rules.
      * 
      * @return the autoHealRules value.
      */
@@ -1094,7 +1094,7 @@ public class SiteConfigResourceInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the autoHealRules property: Rules that can be defined for auto-heal.
+     * Set the autoHealRules property: Auto Heal rules.
      * 
      * @param autoHealRules the autoHealRules value to set.
      * @return the SiteConfigResourceInner object itself.
@@ -1145,8 +1145,7 @@ public class SiteConfigResourceInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the cors property: Cross-Origin Resource Sharing (CORS) settings for
-     * the app.
+     * Get the cors property: Cross-Origin Resource Sharing (CORS) settings.
      * 
      * @return the cors value.
      */
@@ -1155,8 +1154,7 @@ public class SiteConfigResourceInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the cors property: Cross-Origin Resource Sharing (CORS) settings for
-     * the app.
+     * Set the cors property: Cross-Origin Resource Sharing (CORS) settings.
      * 
      * @param cors the cors value to set.
      * @return the SiteConfigResourceInner object itself.
@@ -1167,7 +1165,7 @@ public class SiteConfigResourceInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the push property: Push settings for the App.
+     * Get the push property: Push endpoint settings.
      * 
      * @return the push value.
      */
@@ -1176,7 +1174,7 @@ public class SiteConfigResourceInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the push property: Push settings for the App.
+     * Set the push property: Push endpoint settings.
      * 
      * @param push the push value to set.
      * @return the SiteConfigResourceInner object itself.
@@ -1209,8 +1207,8 @@ public class SiteConfigResourceInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the apiManagementConfig property: Azure API management (APIM)
-     * configuration linked to the app.
+     * Get the apiManagementConfig property: Azure API management settings
+     * linked to the app.
      * 
      * @return the apiManagementConfig value.
      */
@@ -1219,8 +1217,8 @@ public class SiteConfigResourceInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the apiManagementConfig property: Azure API management (APIM)
-     * configuration linked to the app.
+     * Set the apiManagementConfig property: Azure API management settings
+     * linked to the app.
      * 
      * @param apiManagementConfig the apiManagementConfig value to set.
      * @return the SiteConfigResourceInner object itself.

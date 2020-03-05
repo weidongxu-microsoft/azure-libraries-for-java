@@ -55,7 +55,7 @@ public final class PrivateLinkResourcesInner {
     @Host("{$host}")
     @ServiceInterface(name = "StorageManagementClientPrivateLinkResources")
     private interface PrivateLinkResourcesService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateLinkResources")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)

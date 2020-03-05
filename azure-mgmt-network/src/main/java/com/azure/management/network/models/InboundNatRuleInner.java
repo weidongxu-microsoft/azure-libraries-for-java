@@ -39,19 +39,21 @@ public class InboundNatRuleInner extends SubResource {
     private String type;
 
     /*
-     * Reference to another subresource.
+     * A reference to frontend IP addresses.
      */
     @JsonProperty(value = "properties.frontendIPConfiguration")
     private SubResource frontendIPConfiguration;
 
     /*
-     * IPConfiguration in a network interface.
+     * A reference to a private IP address defined on a network interface of a
+     * VM. Traffic sent to the frontend port of each of the frontend IP
+     * configurations is forwarded to the backend IP.
      */
     @JsonProperty(value = "properties.backendIPConfiguration", access = JsonProperty.Access.WRITE_ONLY)
     private NetworkInterfaceIPConfigurationInner backendIPConfiguration;
 
     /*
-     * The transport protocol for the endpoint.
+     * The reference to the transport protocol used by the load balancing rule.
      */
     @JsonProperty(value = "properties.protocol")
     private TransportProtocol protocol;
@@ -159,8 +161,8 @@ public class InboundNatRuleInner extends SubResource {
     }
 
     /**
-     * Get the frontendIPConfiguration property: Reference to another
-     * subresource.
+     * Get the frontendIPConfiguration property: A reference to frontend IP
+     * addresses.
      * 
      * @return the frontendIPConfiguration value.
      */
@@ -169,8 +171,8 @@ public class InboundNatRuleInner extends SubResource {
     }
 
     /**
-     * Set the frontendIPConfiguration property: Reference to another
-     * subresource.
+     * Set the frontendIPConfiguration property: A reference to frontend IP
+     * addresses.
      * 
      * @param frontendIPConfiguration the frontendIPConfiguration value to set.
      * @return the InboundNatRuleInner object itself.
@@ -181,8 +183,10 @@ public class InboundNatRuleInner extends SubResource {
     }
 
     /**
-     * Get the backendIPConfiguration property: IPConfiguration in a network
-     * interface.
+     * Get the backendIPConfiguration property: A reference to a private IP
+     * address defined on a network interface of a VM. Traffic sent to the
+     * frontend port of each of the frontend IP configurations is forwarded to
+     * the backend IP.
      * 
      * @return the backendIPConfiguration value.
      */
@@ -191,7 +195,8 @@ public class InboundNatRuleInner extends SubResource {
     }
 
     /**
-     * Get the protocol property: The transport protocol for the endpoint.
+     * Get the protocol property: The reference to the transport protocol used
+     * by the load balancing rule.
      * 
      * @return the protocol value.
      */
@@ -200,7 +205,8 @@ public class InboundNatRuleInner extends SubResource {
     }
 
     /**
-     * Set the protocol property: The transport protocol for the endpoint.
+     * Set the protocol property: The reference to the transport protocol used
+     * by the load balancing rule.
      * 
      * @param protocol the protocol value to set.
      * @return the InboundNatRuleInner object itself.

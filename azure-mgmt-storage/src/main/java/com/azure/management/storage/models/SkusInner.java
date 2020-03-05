@@ -58,7 +58,7 @@ public final class SkusInner {
     @Host("{$host}")
     @ServiceInterface(name = "StorageManagementClientSkus")
     private interface SkusService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Storage/skus")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)

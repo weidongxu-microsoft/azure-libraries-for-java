@@ -59,7 +59,7 @@ public final class VirtualMachineSizesInner {
     @Host("{$host}")
     @ServiceInterface(name = "ComputeManagementClientVirtualMachineSizes")
     private interface VirtualMachineSizesService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/vmSizes")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)

@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class VerificationIPFlowResultInner {
     /*
-     * Access to be allowed or denied.
+     * Indicates whether the traffic is allowed or denied.
      */
     @JsonProperty(value = "access")
     private Access access;
@@ -29,7 +29,8 @@ public final class VerificationIPFlowResultInner {
     private String ruleName;
 
     /**
-     * Get the access property: Access to be allowed or denied.
+     * Get the access property: Indicates whether the traffic is allowed or
+     * denied.
      * 
      * @return the access value.
      */
@@ -38,7 +39,8 @@ public final class VerificationIPFlowResultInner {
     }
 
     /**
-     * Set the access property: Access to be allowed or denied.
+     * Set the access property: Indicates whether the traffic is allowed or
+     * denied.
      * 
      * @param access the access value to set.
      * @return the VerificationIPFlowResultInner object itself.

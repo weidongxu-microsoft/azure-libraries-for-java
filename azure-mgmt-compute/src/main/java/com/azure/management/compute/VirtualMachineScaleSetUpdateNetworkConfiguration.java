@@ -38,14 +38,13 @@ public class VirtualMachineScaleSetUpdateNetworkConfiguration extends SubResourc
     private Boolean enableAcceleratedNetworking;
 
     /*
-     * The networkSecurityGroup property.
+     * The network security group.
      */
     @JsonProperty(value = "properties.networkSecurityGroup")
     private SubResource networkSecurityGroup;
 
     /*
-     * Describes a virtual machines scale sets network configuration's DNS
-     * settings.
+     * The dns settings to be applied on the network interfaces.
      */
     @JsonProperty(value = "properties.dnsSettings")
     private VirtualMachineScaleSetNetworkConfigurationDnsSettings dnsSettings;
@@ -131,8 +130,7 @@ public class VirtualMachineScaleSetUpdateNetworkConfiguration extends SubResourc
     }
 
     /**
-     * Get the networkSecurityGroup property: The networkSecurityGroup
-     * property.
+     * Get the networkSecurityGroup property: The network security group.
      * 
      * @return the networkSecurityGroup value.
      */
@@ -141,8 +139,7 @@ public class VirtualMachineScaleSetUpdateNetworkConfiguration extends SubResourc
     }
 
     /**
-     * Set the networkSecurityGroup property: The networkSecurityGroup
-     * property.
+     * Set the networkSecurityGroup property: The network security group.
      * 
      * @param networkSecurityGroup the networkSecurityGroup value to set.
      * @return the VirtualMachineScaleSetUpdateNetworkConfiguration object
@@ -154,8 +151,8 @@ public class VirtualMachineScaleSetUpdateNetworkConfiguration extends SubResourc
     }
 
     /**
-     * Get the dnsSettings property: Describes a virtual machines scale sets
-     * network configuration's DNS settings.
+     * Get the dnsSettings property: The dns settings to be applied on the
+     * network interfaces.
      * 
      * @return the dnsSettings value.
      */
@@ -164,8 +161,8 @@ public class VirtualMachineScaleSetUpdateNetworkConfiguration extends SubResourc
     }
 
     /**
-     * Set the dnsSettings property: Describes a virtual machines scale sets
-     * network configuration's DNS settings.
+     * Set the dnsSettings property: The dns settings to be applied on the
+     * network interfaces.
      * 
      * @param dnsSettings the dnsSettings value to set.
      * @return the VirtualMachineScaleSetUpdateNetworkConfiguration object

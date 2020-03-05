@@ -40,8 +40,7 @@ public class BackupRequestInner extends ProxyOnlyResource {
     private String storageAccountUrl;
 
     /*
-     * Description of a backup schedule. Describes how often should be the
-     * backup performed and what should be the retention policy.
+     * Schedule for the backup if it is executed periodically.
      */
     @JsonProperty(value = "properties.backupSchedule")
     private BackupSchedule backupSchedule;
@@ -117,9 +116,8 @@ public class BackupRequestInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the backupSchedule property: Description of a backup schedule.
-     * Describes how often should be the backup performed and what should be
-     * the retention policy.
+     * Get the backupSchedule property: Schedule for the backup if it is
+     * executed periodically.
      * 
      * @return the backupSchedule value.
      */
@@ -128,9 +126,8 @@ public class BackupRequestInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the backupSchedule property: Description of a backup schedule.
-     * Describes how often should be the backup performed and what should be
-     * the retention policy.
+     * Set the backupSchedule property: Schedule for the backup if it is
+     * executed periodically.
      * 
      * @param backupSchedule the backupSchedule value to set.
      * @return the BackupRequestInner object itself.

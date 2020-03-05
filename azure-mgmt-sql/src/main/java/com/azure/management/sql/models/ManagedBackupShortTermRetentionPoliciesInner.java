@@ -65,43 +65,43 @@ public final class ManagedBackupShortTermRetentionPoliciesInner {
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientManagedBackupShortTermRetentionPolicies")
     private interface ManagedBackupShortTermRetentionPoliciesService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ManagedBackupShortTermRetentionPolicyInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ManagedBackupShortTermRetentionPolicyInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ManagedBackupShortTermRetentionPolicyInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ManagedBackupShortTermRetentionPolicyInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ManagedBackupShortTermRetentionPolicyInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ManagedBackupShortTermRetentionPolicyListResultInner>> listByDatabase(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ManagedBackupShortTermRetentionPolicyInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ManagedBackupShortTermRetentionPolicyInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ManagedBackupShortTermRetentionPolicyInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ManagedBackupShortTermRetentionPolicyInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ManagedBackupShortTermRetentionPolicyInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ManagedBackupShortTermRetentionPolicyInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ManagedBackupShortTermRetentionPolicyInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ManagedBackupShortTermRetentionPolicyInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -179,7 +179,7 @@ public final class ManagedBackupShortTermRetentionPoliciesInner {
         final String apiVersion = "2017-03-01-preview";
         ManagedBackupShortTermRetentionPolicyInner parameters = new ManagedBackupShortTermRetentionPolicyInner();
         parameters.withRetentionDays(retentionDays);
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, policyName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, policyName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -234,7 +234,7 @@ public final class ManagedBackupShortTermRetentionPoliciesInner {
         final String apiVersion = "2017-03-01-preview";
         ManagedBackupShortTermRetentionPolicyInner parameters = new ManagedBackupShortTermRetentionPolicyInner();
         parameters.withRetentionDays(retentionDays);
-        return service.update(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, policyName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.update(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, policyName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -343,7 +343,7 @@ public final class ManagedBackupShortTermRetentionPoliciesInner {
         final String apiVersion = "2017-03-01-preview";
         ManagedBackupShortTermRetentionPolicyInner parameters = new ManagedBackupShortTermRetentionPolicyInner();
         parameters.withRetentionDays(retentionDays);
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, policyName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, policyName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -402,7 +402,7 @@ public final class ManagedBackupShortTermRetentionPoliciesInner {
         final String apiVersion = "2017-03-01-preview";
         ManagedBackupShortTermRetentionPolicyInner parameters = new ManagedBackupShortTermRetentionPolicyInner();
         parameters.withRetentionDays(retentionDays);
-        return service.beginUpdate(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, policyName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginUpdate(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, policyName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**

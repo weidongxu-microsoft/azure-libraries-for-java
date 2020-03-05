@@ -23,13 +23,13 @@ public final class VirtualMachineScaleSetSkuInner {
     private String resourceType;
 
     /*
-     * Describes a virtual machine scale set sku.
+     * The Sku.
      */
     @JsonProperty(value = "sku", access = JsonProperty.Access.WRITE_ONLY)
     private Sku sku;
 
     /*
-     * Describes scaling information of a sku.
+     * Specifies the number of virtual machines in the scale set.
      */
     @JsonProperty(value = "capacity", access = JsonProperty.Access.WRITE_ONLY)
     private VirtualMachineScaleSetSkuCapacity capacity;
@@ -44,7 +44,7 @@ public final class VirtualMachineScaleSetSkuInner {
     }
 
     /**
-     * Get the sku property: Describes a virtual machine scale set sku.
+     * Get the sku property: The Sku.
      * 
      * @return the sku value.
      */
@@ -53,7 +53,8 @@ public final class VirtualMachineScaleSetSkuInner {
     }
 
     /**
-     * Get the capacity property: Describes scaling information of a sku.
+     * Get the capacity property: Specifies the number of virtual machines in
+     * the scale set.
      * 
      * @return the capacity value.
      */

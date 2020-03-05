@@ -65,19 +65,20 @@ public class NetworkInterfaceIPConfigurationInner extends SubResource {
     private String privateIPAddress;
 
     /*
-     * IP address allocation method.
+     * The private IP address allocation method.
      */
     @JsonProperty(value = "properties.privateIPAllocationMethod")
     private IPAllocationMethod privateIPAllocationMethod;
 
     /*
-     * IP address version.
+     * Available from Api-Version 2016-03-30 onwards, it represents whether the
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
      */
     @JsonProperty(value = "properties.privateIPAddressVersion")
     private IPVersion privateIPAddressVersion;
 
     /*
-     * Subnet in a virtual network resource.
+     * Subnet bound to the IP configuration.
      */
     @JsonProperty(value = "properties.subnet")
     private SubnetInner subnet;
@@ -90,7 +91,7 @@ public class NetworkInterfaceIPConfigurationInner extends SubResource {
     private Boolean primary;
 
     /*
-     * Public IP address resource.
+     * Public IP address bound to the IP configuration.
      */
     @JsonProperty(value = "properties.publicIPAddress")
     private PublicIPAddressInner publicIPAddress;
@@ -266,8 +267,8 @@ public class NetworkInterfaceIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the privateIPAllocationMethod property: IP address allocation
-     * method.
+     * Get the privateIPAllocationMethod property: The private IP address
+     * allocation method.
      * 
      * @return the privateIPAllocationMethod value.
      */
@@ -276,8 +277,8 @@ public class NetworkInterfaceIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Set the privateIPAllocationMethod property: IP address allocation
-     * method.
+     * Set the privateIPAllocationMethod property: The private IP address
+     * allocation method.
      * 
      * @param privateIPAllocationMethod the privateIPAllocationMethod value to
      * set.
@@ -289,7 +290,9 @@ public class NetworkInterfaceIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the privateIPAddressVersion property: IP address version.
+     * Get the privateIPAddressVersion property: Available from Api-Version
+     * 2016-03-30 onwards, it represents whether the specific ipconfiguration
+     * is IPv4 or IPv6. Default is taken as IPv4.
      * 
      * @return the privateIPAddressVersion value.
      */
@@ -298,7 +301,9 @@ public class NetworkInterfaceIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Set the privateIPAddressVersion property: IP address version.
+     * Set the privateIPAddressVersion property: Available from Api-Version
+     * 2016-03-30 onwards, it represents whether the specific ipconfiguration
+     * is IPv4 or IPv6. Default is taken as IPv4.
      * 
      * @param privateIPAddressVersion the privateIPAddressVersion value to set.
      * @return the NetworkInterfaceIPConfigurationInner object itself.
@@ -309,7 +314,7 @@ public class NetworkInterfaceIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the subnet property: Subnet in a virtual network resource.
+     * Get the subnet property: Subnet bound to the IP configuration.
      * 
      * @return the subnet value.
      */
@@ -318,7 +323,7 @@ public class NetworkInterfaceIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Set the subnet property: Subnet in a virtual network resource.
+     * Set the subnet property: Subnet bound to the IP configuration.
      * 
      * @param subnet the subnet value to set.
      * @return the NetworkInterfaceIPConfigurationInner object itself.
@@ -351,7 +356,8 @@ public class NetworkInterfaceIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the publicIPAddress property: Public IP address resource.
+     * Get the publicIPAddress property: Public IP address bound to the IP
+     * configuration.
      * 
      * @return the publicIPAddress value.
      */
@@ -360,7 +366,8 @@ public class NetworkInterfaceIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Set the publicIPAddress property: Public IP address resource.
+     * Set the publicIPAddress property: Public IP address bound to the IP
+     * configuration.
      * 
      * @param publicIPAddress the publicIPAddress value to set.
      * @return the NetworkInterfaceIPConfigurationInner object itself.

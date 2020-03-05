@@ -15,8 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class KeyVaultAndSecretReference {
     /*
-     * The vault id is an Azure Resource Manager Resource id in the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}
+     * Resource id of the KeyVault containing the key or secret
      */
     @JsonProperty(value = "sourceVault", required = true)
     private SourceVault sourceVault;
@@ -28,9 +27,8 @@ public final class KeyVaultAndSecretReference {
     private String secretUrl;
 
     /**
-     * Get the sourceVault property: The vault id is an Azure Resource Manager
-     * Resource id in the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}.
+     * Get the sourceVault property: Resource id of the KeyVault containing the
+     * key or secret.
      * 
      * @return the sourceVault value.
      */
@@ -39,9 +37,8 @@ public final class KeyVaultAndSecretReference {
     }
 
     /**
-     * Set the sourceVault property: The vault id is an Azure Resource Manager
-     * Resource id in the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}.
+     * Set the sourceVault property: Resource id of the KeyVault containing the
+     * key or secret.
      * 
      * @param sourceVault the sourceVault value to set.
      * @return the KeyVaultAndSecretReference object itself.

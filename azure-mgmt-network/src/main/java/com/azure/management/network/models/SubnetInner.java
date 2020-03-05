@@ -48,19 +48,19 @@ public class SubnetInner extends SubResource {
     private List<String> addressPrefixes;
 
     /*
-     * NetworkSecurityGroup resource.
+     * The reference of the NetworkSecurityGroup resource.
      */
     @JsonProperty(value = "properties.networkSecurityGroup")
     private NetworkSecurityGroupInner networkSecurityGroup;
 
     /*
-     * Route table resource.
+     * The reference of the RouteTable resource.
      */
     @JsonProperty(value = "properties.routeTable")
     private RouteTableInner routeTable;
 
     /*
-     * Reference to another subresource.
+     * Nat gateway associated with this subnet.
      */
     @JsonProperty(value = "properties.natGateway")
     private SubResource natGateway;
@@ -228,7 +228,8 @@ public class SubnetInner extends SubResource {
     }
 
     /**
-     * Get the networkSecurityGroup property: NetworkSecurityGroup resource.
+     * Get the networkSecurityGroup property: The reference of the
+     * NetworkSecurityGroup resource.
      * 
      * @return the networkSecurityGroup value.
      */
@@ -237,7 +238,8 @@ public class SubnetInner extends SubResource {
     }
 
     /**
-     * Set the networkSecurityGroup property: NetworkSecurityGroup resource.
+     * Set the networkSecurityGroup property: The reference of the
+     * NetworkSecurityGroup resource.
      * 
      * @param networkSecurityGroup the networkSecurityGroup value to set.
      * @return the SubnetInner object itself.
@@ -248,7 +250,7 @@ public class SubnetInner extends SubResource {
     }
 
     /**
-     * Get the routeTable property: Route table resource.
+     * Get the routeTable property: The reference of the RouteTable resource.
      * 
      * @return the routeTable value.
      */
@@ -257,7 +259,7 @@ public class SubnetInner extends SubResource {
     }
 
     /**
-     * Set the routeTable property: Route table resource.
+     * Set the routeTable property: The reference of the RouteTable resource.
      * 
      * @param routeTable the routeTable value to set.
      * @return the SubnetInner object itself.
@@ -268,7 +270,7 @@ public class SubnetInner extends SubResource {
     }
 
     /**
-     * Get the natGateway property: Reference to another subresource.
+     * Get the natGateway property: Nat gateway associated with this subnet.
      * 
      * @return the natGateway value.
      */
@@ -277,7 +279,7 @@ public class SubnetInner extends SubResource {
     }
 
     /**
-     * Set the natGateway property: Reference to another subresource.
+     * Set the natGateway property: Nat gateway associated with this subnet.
      * 
      * @param natGateway the natGateway value to set.
      * @return the SubnetInner object itself.

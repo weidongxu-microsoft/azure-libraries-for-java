@@ -49,7 +49,8 @@ public final class WindowsConfiguration {
     private List<AdditionalUnattendContent> additionalUnattendContent;
 
     /*
-     * Describes Windows Remote Management configuration of the VM
+     * Specifies the Windows Remote Management listeners. This enables remote
+     * Windows PowerShell.
      */
     @JsonProperty(value = "winRM")
     private WinRMConfiguration winRM;
@@ -156,8 +157,8 @@ public final class WindowsConfiguration {
     }
 
     /**
-     * Get the winRM property: Describes Windows Remote Management
-     * configuration of the VM.
+     * Get the winRM property: Specifies the Windows Remote Management
+     * listeners. This enables remote Windows PowerShell.
      * 
      * @return the winRM value.
      */
@@ -166,8 +167,8 @@ public final class WindowsConfiguration {
     }
 
     /**
-     * Set the winRM property: Describes Windows Remote Management
-     * configuration of the VM.
+     * Set the winRM property: Specifies the Windows Remote Management
+     * listeners. This enables remote Windows PowerShell.
      * 
      * @param winRM the winRM value to set.
      * @return the WindowsConfiguration object itself.

@@ -16,13 +16,13 @@ import java.util.List;
 @Fluent
 public final class ElasticPoolPerformanceLevelCapability {
     /*
-     * The performance level capability.
+     * The performance level for the pool.
      */
     @JsonProperty(value = "performanceLevel", access = JsonProperty.Access.WRITE_ONLY)
     private PerformanceLevelCapability performanceLevel;
 
     /*
-     * An ARM Resource SKU.
+     * The sku.
      */
     @JsonProperty(value = "sku", access = JsonProperty.Access.WRITE_ONLY)
     private Sku sku;
@@ -40,7 +40,7 @@ public final class ElasticPoolPerformanceLevelCapability {
     private Integer maxDatabaseCount;
 
     /*
-     * The maximum size capability.
+     * The included (free) max size for this performance level.
      */
     @JsonProperty(value = "includedMaxSize", access = JsonProperty.Access.WRITE_ONLY)
     private MaxSizeCapability includedMaxSize;
@@ -82,7 +82,7 @@ public final class ElasticPoolPerformanceLevelCapability {
     private String reason;
 
     /**
-     * Get the performanceLevel property: The performance level capability.
+     * Get the performanceLevel property: The performance level for the pool.
      * 
      * @return the performanceLevel value.
      */
@@ -91,7 +91,7 @@ public final class ElasticPoolPerformanceLevelCapability {
     }
 
     /**
-     * Get the sku property: An ARM Resource SKU.
+     * Get the sku property: The sku.
      * 
      * @return the sku value.
      */
@@ -119,7 +119,8 @@ public final class ElasticPoolPerformanceLevelCapability {
     }
 
     /**
-     * Get the includedMaxSize property: The maximum size capability.
+     * Get the includedMaxSize property: The included (free) max size for this
+     * performance level.
      * 
      * @return the includedMaxSize value.
      */

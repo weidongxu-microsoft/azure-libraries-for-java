@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class AzureFirewallApplicationRuleProtocol {
     /*
-     * The protocol type of a Application Rule resource.
+     * Protocol type.
      */
     @JsonProperty(value = "protocolType")
     private AzureFirewallApplicationRuleProtocolType protocolType;
@@ -28,8 +28,7 @@ public final class AzureFirewallApplicationRuleProtocol {
     private Integer port;
 
     /**
-     * Get the protocolType property: The protocol type of a Application Rule
-     * resource.
+     * Get the protocolType property: Protocol type.
      * 
      * @return the protocolType value.
      */
@@ -38,8 +37,7 @@ public final class AzureFirewallApplicationRuleProtocol {
     }
 
     /**
-     * Set the protocolType property: The protocol type of a Application Rule
-     * resource.
+     * Set the protocolType property: Protocol type.
      * 
      * @param protocolType the protocolType value to set.
      * @return the AzureFirewallApplicationRuleProtocol object itself.

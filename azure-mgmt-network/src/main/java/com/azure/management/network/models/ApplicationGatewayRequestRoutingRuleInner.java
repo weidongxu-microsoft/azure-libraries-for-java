@@ -44,37 +44,37 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
     private ApplicationGatewayRequestRoutingRuleType ruleType;
 
     /*
-     * Reference to another subresource.
+     * Backend address pool resource of the application gateway.
      */
     @JsonProperty(value = "properties.backendAddressPool")
     private SubResource backendAddressPool;
 
     /*
-     * Reference to another subresource.
+     * Backend http settings resource of the application gateway.
      */
     @JsonProperty(value = "properties.backendHttpSettings")
     private SubResource backendHttpSettings;
 
     /*
-     * Reference to another subresource.
+     * Http listener resource of the application gateway.
      */
     @JsonProperty(value = "properties.httpListener")
     private SubResource httpListener;
 
     /*
-     * Reference to another subresource.
+     * URL path map resource of the application gateway.
      */
     @JsonProperty(value = "properties.urlPathMap")
     private SubResource urlPathMap;
 
     /*
-     * Reference to another subresource.
+     * Rewrite Rule Set resource in Basic rule of the application gateway.
      */
     @JsonProperty(value = "properties.rewriteRuleSet")
     private SubResource rewriteRuleSet;
 
     /*
-     * Reference to another subresource.
+     * Redirect configuration resource of the application gateway.
      */
     @JsonProperty(value = "properties.redirectConfiguration")
     private SubResource redirectConfiguration;
@@ -171,7 +171,8 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
     }
 
     /**
-     * Get the backendAddressPool property: Reference to another subresource.
+     * Get the backendAddressPool property: Backend address pool resource of
+     * the application gateway.
      * 
      * @return the backendAddressPool value.
      */
@@ -180,7 +181,8 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
     }
 
     /**
-     * Set the backendAddressPool property: Reference to another subresource.
+     * Set the backendAddressPool property: Backend address pool resource of
+     * the application gateway.
      * 
      * @param backendAddressPool the backendAddressPool value to set.
      * @return the ApplicationGatewayRequestRoutingRuleInner object itself.
@@ -191,7 +193,8 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
     }
 
     /**
-     * Get the backendHttpSettings property: Reference to another subresource.
+     * Get the backendHttpSettings property: Backend http settings resource of
+     * the application gateway.
      * 
      * @return the backendHttpSettings value.
      */
@@ -200,7 +203,8 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
     }
 
     /**
-     * Set the backendHttpSettings property: Reference to another subresource.
+     * Set the backendHttpSettings property: Backend http settings resource of
+     * the application gateway.
      * 
      * @param backendHttpSettings the backendHttpSettings value to set.
      * @return the ApplicationGatewayRequestRoutingRuleInner object itself.
@@ -211,7 +215,8 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
     }
 
     /**
-     * Get the httpListener property: Reference to another subresource.
+     * Get the httpListener property: Http listener resource of the application
+     * gateway.
      * 
      * @return the httpListener value.
      */
@@ -220,7 +225,8 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
     }
 
     /**
-     * Set the httpListener property: Reference to another subresource.
+     * Set the httpListener property: Http listener resource of the application
+     * gateway.
      * 
      * @param httpListener the httpListener value to set.
      * @return the ApplicationGatewayRequestRoutingRuleInner object itself.
@@ -231,7 +237,8 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
     }
 
     /**
-     * Get the urlPathMap property: Reference to another subresource.
+     * Get the urlPathMap property: URL path map resource of the application
+     * gateway.
      * 
      * @return the urlPathMap value.
      */
@@ -240,7 +247,8 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
     }
 
     /**
-     * Set the urlPathMap property: Reference to another subresource.
+     * Set the urlPathMap property: URL path map resource of the application
+     * gateway.
      * 
      * @param urlPathMap the urlPathMap value to set.
      * @return the ApplicationGatewayRequestRoutingRuleInner object itself.
@@ -251,7 +259,8 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
     }
 
     /**
-     * Get the rewriteRuleSet property: Reference to another subresource.
+     * Get the rewriteRuleSet property: Rewrite Rule Set resource in Basic rule
+     * of the application gateway.
      * 
      * @return the rewriteRuleSet value.
      */
@@ -260,7 +269,8 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
     }
 
     /**
-     * Set the rewriteRuleSet property: Reference to another subresource.
+     * Set the rewriteRuleSet property: Rewrite Rule Set resource in Basic rule
+     * of the application gateway.
      * 
      * @param rewriteRuleSet the rewriteRuleSet value to set.
      * @return the ApplicationGatewayRequestRoutingRuleInner object itself.
@@ -271,8 +281,8 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
     }
 
     /**
-     * Get the redirectConfiguration property: Reference to another
-     * subresource.
+     * Get the redirectConfiguration property: Redirect configuration resource
+     * of the application gateway.
      * 
      * @return the redirectConfiguration value.
      */
@@ -281,8 +291,8 @@ public class ApplicationGatewayRequestRoutingRuleInner extends SubResource {
     }
 
     /**
-     * Set the redirectConfiguration property: Reference to another
-     * subresource.
+     * Set the redirectConfiguration property: Redirect configuration resource
+     * of the application gateway.
      * 
      * @param redirectConfiguration the redirectConfiguration value to set.
      * @return the ApplicationGatewayRequestRoutingRuleInner object itself.

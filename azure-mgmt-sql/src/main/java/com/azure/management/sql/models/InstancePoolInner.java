@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public class InstancePoolInner extends Resource {
     /*
-     * An ARM Resource SKU.
+     * The name and tier of the SKU.
      */
     @JsonProperty(value = "sku")
     private Sku sku;
@@ -45,7 +45,7 @@ public class InstancePoolInner extends Resource {
     private InstancePoolLicenseType licenseType;
 
     /**
-     * Get the sku property: An ARM Resource SKU.
+     * Get the sku property: The name and tier of the SKU.
      * 
      * @return the sku value.
      */
@@ -54,7 +54,7 @@ public class InstancePoolInner extends Resource {
     }
 
     /**
-     * Set the sku property: An ARM Resource SKU.
+     * Set the sku property: The name and tier of the SKU.
      * 
      * @param sku the sku value to set.
      * @return the InstancePoolInner object itself.

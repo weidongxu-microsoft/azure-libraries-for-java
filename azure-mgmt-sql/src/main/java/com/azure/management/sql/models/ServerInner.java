@@ -22,7 +22,7 @@ import java.util.List;
 @Fluent
 public class ServerInner extends Resource {
     /*
-     * Azure Active Directory identity configuration for a resource.
+     * The Azure Active Directory identity of the server.
      */
     @JsonProperty(value = "identity")
     private ResourceIdentity identity;
@@ -85,8 +85,8 @@ public class ServerInner extends Resource {
     private ServerPublicNetworkAccess publicNetworkAccess;
 
     /**
-     * Get the identity property: Azure Active Directory identity configuration
-     * for a resource.
+     * Get the identity property: The Azure Active Directory identity of the
+     * server.
      * 
      * @return the identity value.
      */
@@ -95,8 +95,8 @@ public class ServerInner extends Resource {
     }
 
     /**
-     * Set the identity property: Azure Active Directory identity configuration
-     * for a resource.
+     * Set the identity property: The Azure Active Directory identity of the
+     * server.
      * 
      * @param identity the identity value to set.
      * @return the ServerInner object itself.

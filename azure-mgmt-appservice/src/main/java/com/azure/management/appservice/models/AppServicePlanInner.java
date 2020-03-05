@@ -47,7 +47,8 @@ public class AppServicePlanInner extends Resource {
     private String subscription;
 
     /*
-     * Specification for an App Service Environment to use for this resource.
+     * Specification for the App Service Environment to use for the App Service
+     * plan.
      */
     @JsonProperty(value = "properties.hostingEnvironmentProfile")
     private HostingEnvironmentProfile hostingEnvironmentProfile;
@@ -146,7 +147,7 @@ public class AppServicePlanInner extends Resource {
     private Integer targetWorkerSizeId;
 
     /*
-     * Status of certificate order.
+     * Provisioning state of the App Service Environment.
      */
     @JsonProperty(value = "properties.provisioningState", access = JsonProperty.Access.WRITE_ONLY)
     private ProvisioningState provisioningState;
@@ -218,8 +219,8 @@ public class AppServicePlanInner extends Resource {
     }
 
     /**
-     * Get the hostingEnvironmentProfile property: Specification for an App
-     * Service Environment to use for this resource.
+     * Get the hostingEnvironmentProfile property: Specification for the App
+     * Service Environment to use for the App Service plan.
      * 
      * @return the hostingEnvironmentProfile value.
      */
@@ -228,8 +229,8 @@ public class AppServicePlanInner extends Resource {
     }
 
     /**
-     * Set the hostingEnvironmentProfile property: Specification for an App
-     * Service Environment to use for this resource.
+     * Set the hostingEnvironmentProfile property: Specification for the App
+     * Service Environment to use for the App Service plan.
      * 
      * @param hostingEnvironmentProfile the hostingEnvironmentProfile value to
      * set.
@@ -503,7 +504,8 @@ public class AppServicePlanInner extends Resource {
     }
 
     /**
-     * Get the provisioningState property: Status of certificate order.
+     * Get the provisioningState property: Provisioning state of the App
+     * Service Environment.
      * 
      * @return the provisioningState value.
      */

@@ -16,7 +16,7 @@ import java.util.List;
 @Fluent
 public final class NetworkSecurityGroupResult {
     /*
-     * Whether network traffic is allowed or denied.
+     * The network traffic is allowed or denied.
      */
     @JsonProperty(value = "securityRuleAccessResult")
     private SecurityRuleAccess securityRuleAccessResult;
@@ -28,7 +28,7 @@ public final class NetworkSecurityGroupResult {
     private List<EvaluatedNetworkSecurityGroup> evaluatedNetworkSecurityGroups;
 
     /**
-     * Get the securityRuleAccessResult property: Whether network traffic is
+     * Get the securityRuleAccessResult property: The network traffic is
      * allowed or denied.
      * 
      * @return the securityRuleAccessResult value.
@@ -38,7 +38,7 @@ public final class NetworkSecurityGroupResult {
     }
 
     /**
-     * Set the securityRuleAccessResult property: Whether network traffic is
+     * Set the securityRuleAccessResult property: The network traffic is
      * allowed or denied.
      * 
      * @param securityRuleAccessResult the securityRuleAccessResult value to

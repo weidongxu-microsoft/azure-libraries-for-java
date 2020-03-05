@@ -26,7 +26,7 @@ import java.util.List;
 @Fluent
 public class PublicIPAddressInner extends Resource {
     /*
-     * SKU of a public IP address.
+     * The public IP address SKU.
      */
     @JsonProperty(value = "sku")
     private PublicIPAddressSku sku;
@@ -45,31 +45,31 @@ public class PublicIPAddressInner extends Resource {
     private List<String> zones;
 
     /*
-     * IP address allocation method.
+     * The public IP address allocation method.
      */
     @JsonProperty(value = "properties.publicIPAllocationMethod")
     private IPAllocationMethod publicIPAllocationMethod;
 
     /*
-     * IP address version.
+     * The public IP address version.
      */
     @JsonProperty(value = "properties.publicIPAddressVersion")
     private IPVersion publicIPAddressVersion;
 
     /*
-     * IP configuration.
+     * The IP configuration associated with the public IP address.
      */
     @JsonProperty(value = "properties.ipConfiguration", access = JsonProperty.Access.WRITE_ONLY)
     private IPConfigurationInner ipConfiguration;
 
     /*
-     * Contains FQDN of the DNS record associated with the public IP address.
+     * The FQDN of the DNS record associated with the public IP address.
      */
     @JsonProperty(value = "properties.dnsSettings")
     private PublicIPAddressDnsSettings dnsSettings;
 
     /*
-     * Contains the DDoS protection settings of the public IP.
+     * The DDoS protection custom policy associated with the public IP address.
      */
     @JsonProperty(value = "properties.ddosSettings")
     private DdosSettings ddosSettings;
@@ -87,7 +87,7 @@ public class PublicIPAddressInner extends Resource {
     private String ipAddress;
 
     /*
-     * Reference to another subresource.
+     * The Public IP Prefix this Public IP Address should be allocated from.
      */
     @JsonProperty(value = "properties.publicIPPrefix")
     private SubResource publicIPPrefix;
@@ -118,7 +118,7 @@ public class PublicIPAddressInner extends Resource {
     private String id;
 
     /**
-     * Get the sku property: SKU of a public IP address.
+     * Get the sku property: The public IP address SKU.
      * 
      * @return the sku value.
      */
@@ -127,7 +127,7 @@ public class PublicIPAddressInner extends Resource {
     }
 
     /**
-     * Set the sku property: SKU of a public IP address.
+     * Set the sku property: The public IP address SKU.
      * 
      * @param sku the sku value to set.
      * @return the PublicIPAddressInner object itself.
@@ -182,7 +182,8 @@ public class PublicIPAddressInner extends Resource {
     }
 
     /**
-     * Get the publicIPAllocationMethod property: IP address allocation method.
+     * Get the publicIPAllocationMethod property: The public IP address
+     * allocation method.
      * 
      * @return the publicIPAllocationMethod value.
      */
@@ -191,7 +192,8 @@ public class PublicIPAddressInner extends Resource {
     }
 
     /**
-     * Set the publicIPAllocationMethod property: IP address allocation method.
+     * Set the publicIPAllocationMethod property: The public IP address
+     * allocation method.
      * 
      * @param publicIPAllocationMethod the publicIPAllocationMethod value to
      * set.
@@ -203,7 +205,7 @@ public class PublicIPAddressInner extends Resource {
     }
 
     /**
-     * Get the publicIPAddressVersion property: IP address version.
+     * Get the publicIPAddressVersion property: The public IP address version.
      * 
      * @return the publicIPAddressVersion value.
      */
@@ -212,7 +214,7 @@ public class PublicIPAddressInner extends Resource {
     }
 
     /**
-     * Set the publicIPAddressVersion property: IP address version.
+     * Set the publicIPAddressVersion property: The public IP address version.
      * 
      * @param publicIPAddressVersion the publicIPAddressVersion value to set.
      * @return the PublicIPAddressInner object itself.
@@ -223,7 +225,8 @@ public class PublicIPAddressInner extends Resource {
     }
 
     /**
-     * Get the ipConfiguration property: IP configuration.
+     * Get the ipConfiguration property: The IP configuration associated with
+     * the public IP address.
      * 
      * @return the ipConfiguration value.
      */
@@ -232,8 +235,8 @@ public class PublicIPAddressInner extends Resource {
     }
 
     /**
-     * Get the dnsSettings property: Contains FQDN of the DNS record associated
-     * with the public IP address.
+     * Get the dnsSettings property: The FQDN of the DNS record associated with
+     * the public IP address.
      * 
      * @return the dnsSettings value.
      */
@@ -242,8 +245,8 @@ public class PublicIPAddressInner extends Resource {
     }
 
     /**
-     * Set the dnsSettings property: Contains FQDN of the DNS record associated
-     * with the public IP address.
+     * Set the dnsSettings property: The FQDN of the DNS record associated with
+     * the public IP address.
      * 
      * @param dnsSettings the dnsSettings value to set.
      * @return the PublicIPAddressInner object itself.
@@ -254,8 +257,8 @@ public class PublicIPAddressInner extends Resource {
     }
 
     /**
-     * Get the ddosSettings property: Contains the DDoS protection settings of
-     * the public IP.
+     * Get the ddosSettings property: The DDoS protection custom policy
+     * associated with the public IP address.
      * 
      * @return the ddosSettings value.
      */
@@ -264,8 +267,8 @@ public class PublicIPAddressInner extends Resource {
     }
 
     /**
-     * Set the ddosSettings property: Contains the DDoS protection settings of
-     * the public IP.
+     * Set the ddosSettings property: The DDoS protection custom policy
+     * associated with the public IP address.
      * 
      * @param ddosSettings the ddosSettings value to set.
      * @return the PublicIPAddressInner object itself.
@@ -320,7 +323,8 @@ public class PublicIPAddressInner extends Resource {
     }
 
     /**
-     * Get the publicIPPrefix property: Reference to another subresource.
+     * Get the publicIPPrefix property: The Public IP Prefix this Public IP
+     * Address should be allocated from.
      * 
      * @return the publicIPPrefix value.
      */
@@ -329,7 +333,8 @@ public class PublicIPAddressInner extends Resource {
     }
 
     /**
-     * Set the publicIPPrefix property: Reference to another subresource.
+     * Set the publicIPPrefix property: The Public IP Prefix this Public IP
+     * Address should be allocated from.
      * 
      * @param publicIPPrefix the publicIPPrefix value to set.
      * @return the PublicIPAddressInner object itself.

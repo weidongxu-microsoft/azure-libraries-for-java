@@ -66,7 +66,7 @@ public class DedicatedHostUpdate extends UpdateResource {
     private String provisioningState;
 
     /*
-     * The instance view of a dedicated host.
+     * The dedicated host instance view.
      */
     @JsonProperty(value = "properties.instanceView", access = JsonProperty.Access.WRITE_ONLY)
     private DedicatedHostInstanceView instanceView;
@@ -187,7 +187,7 @@ public class DedicatedHostUpdate extends UpdateResource {
     }
 
     /**
-     * Get the instanceView property: The instance view of a dedicated host.
+     * Get the instanceView property: The dedicated host instance view.
      * 
      * @return the instanceView value.
      */

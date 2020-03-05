@@ -16,7 +16,7 @@ import java.util.UUID;
 @Immutable
 public final class SloUsageMetric {
     /*
-     * The name of the service objective to assign to the database.
+     * The serviceLevelObjective for SLO usage metric.
      */
     @JsonProperty(value = "serviceLevelObjective", access = JsonProperty.Access.WRITE_ONLY)
     private ServiceObjectiveName serviceLevelObjective;
@@ -34,8 +34,8 @@ public final class SloUsageMetric {
     private Double inRangeTimeRatio;
 
     /**
-     * Get the serviceLevelObjective property: The name of the service
-     * objective to assign to the database.
+     * Get the serviceLevelObjective property: The serviceLevelObjective for
+     * SLO usage metric.
      * 
      * @return the serviceLevelObjective value.
      */

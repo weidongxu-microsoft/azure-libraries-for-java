@@ -27,19 +27,19 @@ public class SiteLogsConfigInner extends ProxyOnlyResource {
     private ApplicationLogsConfig applicationLogs;
 
     /*
-     * Http logs configuration.
+     * HTTP logs configuration.
      */
     @JsonProperty(value = "properties.httpLogs")
     private HttpLogsConfig httpLogs;
 
     /*
-     * Enabled configuration.
+     * Failed requests tracing configuration.
      */
     @JsonProperty(value = "properties.failedRequestsTracing")
     private EnabledConfig failedRequestsTracing;
 
     /*
-     * Enabled configuration.
+     * Detailed error messages configuration.
      */
     @JsonProperty(value = "properties.detailedErrorMessages")
     private EnabledConfig detailedErrorMessages;
@@ -65,7 +65,7 @@ public class SiteLogsConfigInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the httpLogs property: Http logs configuration.
+     * Get the httpLogs property: HTTP logs configuration.
      * 
      * @return the httpLogs value.
      */
@@ -74,7 +74,7 @@ public class SiteLogsConfigInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the httpLogs property: Http logs configuration.
+     * Set the httpLogs property: HTTP logs configuration.
      * 
      * @param httpLogs the httpLogs value to set.
      * @return the SiteLogsConfigInner object itself.
@@ -85,7 +85,8 @@ public class SiteLogsConfigInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the failedRequestsTracing property: Enabled configuration.
+     * Get the failedRequestsTracing property: Failed requests tracing
+     * configuration.
      * 
      * @return the failedRequestsTracing value.
      */
@@ -94,7 +95,8 @@ public class SiteLogsConfigInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the failedRequestsTracing property: Enabled configuration.
+     * Set the failedRequestsTracing property: Failed requests tracing
+     * configuration.
      * 
      * @param failedRequestsTracing the failedRequestsTracing value to set.
      * @return the SiteLogsConfigInner object itself.
@@ -105,7 +107,8 @@ public class SiteLogsConfigInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the detailedErrorMessages property: Enabled configuration.
+     * Get the detailedErrorMessages property: Detailed error messages
+     * configuration.
      * 
      * @return the detailedErrorMessages value.
      */
@@ -114,7 +117,8 @@ public class SiteLogsConfigInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the detailedErrorMessages property: Enabled configuration.
+     * Set the detailedErrorMessages property: Detailed error messages
+     * configuration.
      * 
      * @param detailedErrorMessages the detailedErrorMessages value to set.
      * @return the SiteLogsConfigInner object itself.

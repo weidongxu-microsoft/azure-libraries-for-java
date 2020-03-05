@@ -29,7 +29,7 @@ public final class CreationData {
     private String storageAccountId;
 
     /*
-     * The source image used for creating the disk.
+     * Disk source information.
      */
     @JsonProperty(value = "imageReference")
     private ImageDiskReference imageReference;
@@ -113,8 +113,7 @@ public final class CreationData {
     }
 
     /**
-     * Get the imageReference property: The source image used for creating the
-     * disk.
+     * Get the imageReference property: Disk source information.
      * 
      * @return the imageReference value.
      */
@@ -123,8 +122,7 @@ public final class CreationData {
     }
 
     /**
-     * Set the imageReference property: The source image used for creating the
-     * disk.
+     * Set the imageReference property: Disk source information.
      * 
      * @param imageReference the imageReference value to set.
      * @return the CreationData object itself.

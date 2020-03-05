@@ -65,31 +65,31 @@ public class AzureFirewallInner extends Resource {
     private List<AzureFirewallIPConfiguration> ipConfigurations;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
 
     /*
-     * The operation mode for Threat Intel.
+     * The operation mode for Threat Intelligence.
      */
     @JsonProperty(value = "properties.threatIntelMode")
     private AzureFirewallThreatIntelMode threatIntelMode;
 
     /*
-     * Reference to another subresource.
+     * The virtualHub to which the firewall belongs.
      */
     @JsonProperty(value = "properties.virtualHub")
     private SubResource virtualHub;
 
     /*
-     * Reference to another subresource.
+     * The firewallPolicy associated with this azure firewall.
      */
     @JsonProperty(value = "properties.firewallPolicy")
     private SubResource firewallPolicy;
 
     /*
-     * IP addresses associated with azure firewall.
+     * IP addresses associated with AzureFirewall.
      */
     @JsonProperty(value = "properties.hubIpAddresses", access = JsonProperty.Access.WRITE_ONLY)
     private HubIPAddresses hubIpAddresses;
@@ -222,7 +222,8 @@ public class AzureFirewallInner extends Resource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -231,7 +232,8 @@ public class AzureFirewallInner extends Resource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the AzureFirewallInner object itself.
@@ -242,7 +244,8 @@ public class AzureFirewallInner extends Resource {
     }
 
     /**
-     * Get the threatIntelMode property: The operation mode for Threat Intel.
+     * Get the threatIntelMode property: The operation mode for Threat
+     * Intelligence.
      * 
      * @return the threatIntelMode value.
      */
@@ -251,7 +254,8 @@ public class AzureFirewallInner extends Resource {
     }
 
     /**
-     * Set the threatIntelMode property: The operation mode for Threat Intel.
+     * Set the threatIntelMode property: The operation mode for Threat
+     * Intelligence.
      * 
      * @param threatIntelMode the threatIntelMode value to set.
      * @return the AzureFirewallInner object itself.
@@ -262,7 +266,8 @@ public class AzureFirewallInner extends Resource {
     }
 
     /**
-     * Get the virtualHub property: Reference to another subresource.
+     * Get the virtualHub property: The virtualHub to which the firewall
+     * belongs.
      * 
      * @return the virtualHub value.
      */
@@ -271,7 +276,8 @@ public class AzureFirewallInner extends Resource {
     }
 
     /**
-     * Set the virtualHub property: Reference to another subresource.
+     * Set the virtualHub property: The virtualHub to which the firewall
+     * belongs.
      * 
      * @param virtualHub the virtualHub value to set.
      * @return the AzureFirewallInner object itself.
@@ -282,7 +288,8 @@ public class AzureFirewallInner extends Resource {
     }
 
     /**
-     * Get the firewallPolicy property: Reference to another subresource.
+     * Get the firewallPolicy property: The firewallPolicy associated with this
+     * azure firewall.
      * 
      * @return the firewallPolicy value.
      */
@@ -291,7 +298,8 @@ public class AzureFirewallInner extends Resource {
     }
 
     /**
-     * Set the firewallPolicy property: Reference to another subresource.
+     * Set the firewallPolicy property: The firewallPolicy associated with this
+     * azure firewall.
      * 
      * @param firewallPolicy the firewallPolicy value to set.
      * @return the AzureFirewallInner object itself.
@@ -302,8 +310,8 @@ public class AzureFirewallInner extends Resource {
     }
 
     /**
-     * Get the hubIpAddresses property: IP addresses associated with azure
-     * firewall.
+     * Get the hubIpAddresses property: IP addresses associated with
+     * AzureFirewall.
      * 
      * @return the hubIpAddresses value.
      */

@@ -29,25 +29,25 @@ public class VirtualHubInner extends Resource {
     private String etag;
 
     /*
-     * Reference to another subresource.
+     * The VirtualWAN to which the VirtualHub belongs.
      */
     @JsonProperty(value = "properties.virtualWan")
     private SubResource virtualWan;
 
     /*
-     * Reference to another subresource.
+     * The VpnGateway associated with this VirtualHub.
      */
     @JsonProperty(value = "properties.vpnGateway")
     private SubResource vpnGateway;
 
     /*
-     * Reference to another subresource.
+     * The P2SVpnGateway associated with this VirtualHub.
      */
     @JsonProperty(value = "properties.p2SVpnGateway")
     private SubResource p2SVpnGateway;
 
     /*
-     * Reference to another subresource.
+     * The expressRouteGateway associated with this VirtualHub.
      */
     @JsonProperty(value = "properties.expressRouteGateway")
     private SubResource expressRouteGateway;
@@ -65,13 +65,13 @@ public class VirtualHubInner extends Resource {
     private String addressPrefix;
 
     /*
-     * VirtualHub route table.
+     * The routeTable associated with this virtual hub.
      */
     @JsonProperty(value = "properties.routeTable")
     private VirtualHubRouteTable routeTable;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -93,7 +93,8 @@ public class VirtualHubInner extends Resource {
     }
 
     /**
-     * Get the virtualWan property: Reference to another subresource.
+     * Get the virtualWan property: The VirtualWAN to which the VirtualHub
+     * belongs.
      * 
      * @return the virtualWan value.
      */
@@ -102,7 +103,8 @@ public class VirtualHubInner extends Resource {
     }
 
     /**
-     * Set the virtualWan property: Reference to another subresource.
+     * Set the virtualWan property: The VirtualWAN to which the VirtualHub
+     * belongs.
      * 
      * @param virtualWan the virtualWan value to set.
      * @return the VirtualHubInner object itself.
@@ -113,7 +115,8 @@ public class VirtualHubInner extends Resource {
     }
 
     /**
-     * Get the vpnGateway property: Reference to another subresource.
+     * Get the vpnGateway property: The VpnGateway associated with this
+     * VirtualHub.
      * 
      * @return the vpnGateway value.
      */
@@ -122,7 +125,8 @@ public class VirtualHubInner extends Resource {
     }
 
     /**
-     * Set the vpnGateway property: Reference to another subresource.
+     * Set the vpnGateway property: The VpnGateway associated with this
+     * VirtualHub.
      * 
      * @param vpnGateway the vpnGateway value to set.
      * @return the VirtualHubInner object itself.
@@ -133,7 +137,8 @@ public class VirtualHubInner extends Resource {
     }
 
     /**
-     * Get the p2SVpnGateway property: Reference to another subresource.
+     * Get the p2SVpnGateway property: The P2SVpnGateway associated with this
+     * VirtualHub.
      * 
      * @return the p2SVpnGateway value.
      */
@@ -142,7 +147,8 @@ public class VirtualHubInner extends Resource {
     }
 
     /**
-     * Set the p2SVpnGateway property: Reference to another subresource.
+     * Set the p2SVpnGateway property: The P2SVpnGateway associated with this
+     * VirtualHub.
      * 
      * @param p2SVpnGateway the p2SVpnGateway value to set.
      * @return the VirtualHubInner object itself.
@@ -153,7 +159,8 @@ public class VirtualHubInner extends Resource {
     }
 
     /**
-     * Get the expressRouteGateway property: Reference to another subresource.
+     * Get the expressRouteGateway property: The expressRouteGateway associated
+     * with this VirtualHub.
      * 
      * @return the expressRouteGateway value.
      */
@@ -162,7 +169,8 @@ public class VirtualHubInner extends Resource {
     }
 
     /**
-     * Set the expressRouteGateway property: Reference to another subresource.
+     * Set the expressRouteGateway property: The expressRouteGateway associated
+     * with this VirtualHub.
      * 
      * @param expressRouteGateway the expressRouteGateway value to set.
      * @return the VirtualHubInner object itself.
@@ -216,7 +224,8 @@ public class VirtualHubInner extends Resource {
     }
 
     /**
-     * Get the routeTable property: VirtualHub route table.
+     * Get the routeTable property: The routeTable associated with this virtual
+     * hub.
      * 
      * @return the routeTable value.
      */
@@ -225,7 +234,8 @@ public class VirtualHubInner extends Resource {
     }
 
     /**
-     * Set the routeTable property: VirtualHub route table.
+     * Set the routeTable property: The routeTable associated with this virtual
+     * hub.
      * 
      * @param routeTable the routeTable value to set.
      * @return the VirtualHubInner object itself.
@@ -236,7 +246,8 @@ public class VirtualHubInner extends Resource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -245,7 +256,8 @@ public class VirtualHubInner extends Resource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the VirtualHubInner object itself.

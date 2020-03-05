@@ -65,7 +65,7 @@ public class VirtualWANInner extends Resource {
     private Boolean allowVnetToVnetTraffic;
 
     /*
-     * The office traffic category.
+     * The office local breakout category.
      */
     @JsonProperty(value = "properties.office365LocalBreakoutCategory")
     private OfficeTrafficCategory office365LocalBreakoutCategory;
@@ -77,7 +77,7 @@ public class VirtualWANInner extends Resource {
     private List<P2SVpnServerConfigurationInner> p2SVpnServerConfigurations;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -204,8 +204,8 @@ public class VirtualWANInner extends Resource {
     }
 
     /**
-     * Get the office365LocalBreakoutCategory property: The office traffic
-     * category.
+     * Get the office365LocalBreakoutCategory property: The office local
+     * breakout category.
      * 
      * @return the office365LocalBreakoutCategory value.
      */
@@ -214,8 +214,8 @@ public class VirtualWANInner extends Resource {
     }
 
     /**
-     * Set the office365LocalBreakoutCategory property: The office traffic
-     * category.
+     * Set the office365LocalBreakoutCategory property: The office local
+     * breakout category.
      * 
      * @param office365LocalBreakoutCategory the office365LocalBreakoutCategory
      * value to set.
@@ -250,7 +250,8 @@ public class VirtualWANInner extends Resource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -259,7 +260,8 @@ public class VirtualWANInner extends Resource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the VirtualWANInner object itself.

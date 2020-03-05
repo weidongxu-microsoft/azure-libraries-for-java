@@ -29,16 +29,15 @@ public class VirtualNetworkInner extends Resource {
     private String etag;
 
     /*
-     * AddressSpace contains an array of IP address ranges that can be used by
-     * subnets of the virtual network.
+     * The AddressSpace that contains an array of IP address ranges that can be
+     * used by subnets.
      */
     @JsonProperty(value = "properties.addressSpace")
     private AddressSpace addressSpace;
 
     /*
-     * DhcpOptions contains an array of DNS servers available to VMs deployed
-     * in the virtual network. Standard DHCP option for a subnet overrides VNET
-     * DHCP options.
+     * The dhcpOptions that contains an array of DNS servers available to VMs
+     * deployed in the virtual network.
      */
     @JsonProperty(value = "properties.dhcpOptions")
     private DhcpOptions dhcpOptions;
@@ -84,7 +83,7 @@ public class VirtualNetworkInner extends Resource {
     private Boolean enableVmProtection;
 
     /*
-     * Reference to another subresource.
+     * The DDoS protection plan associated with the virtual network.
      */
     @JsonProperty(value = "properties.ddosProtectionPlan")
     private SubResource ddosProtectionPlan;
@@ -118,8 +117,8 @@ public class VirtualNetworkInner extends Resource {
     }
 
     /**
-     * Get the addressSpace property: AddressSpace contains an array of IP
-     * address ranges that can be used by subnets of the virtual network.
+     * Get the addressSpace property: The AddressSpace that contains an array
+     * of IP address ranges that can be used by subnets.
      * 
      * @return the addressSpace value.
      */
@@ -128,8 +127,8 @@ public class VirtualNetworkInner extends Resource {
     }
 
     /**
-     * Set the addressSpace property: AddressSpace contains an array of IP
-     * address ranges that can be used by subnets of the virtual network.
+     * Set the addressSpace property: The AddressSpace that contains an array
+     * of IP address ranges that can be used by subnets.
      * 
      * @param addressSpace the addressSpace value to set.
      * @return the VirtualNetworkInner object itself.
@@ -140,9 +139,8 @@ public class VirtualNetworkInner extends Resource {
     }
 
     /**
-     * Get the dhcpOptions property: DhcpOptions contains an array of DNS
-     * servers available to VMs deployed in the virtual network. Standard DHCP
-     * option for a subnet overrides VNET DHCP options.
+     * Get the dhcpOptions property: The dhcpOptions that contains an array of
+     * DNS servers available to VMs deployed in the virtual network.
      * 
      * @return the dhcpOptions value.
      */
@@ -151,9 +149,8 @@ public class VirtualNetworkInner extends Resource {
     }
 
     /**
-     * Set the dhcpOptions property: DhcpOptions contains an array of DNS
-     * servers available to VMs deployed in the virtual network. Standard DHCP
-     * option for a subnet overrides VNET DHCP options.
+     * Set the dhcpOptions property: The dhcpOptions that contains an array of
+     * DNS servers available to VMs deployed in the virtual network.
      * 
      * @param dhcpOptions the dhcpOptions value to set.
      * @return the VirtualNetworkInner object itself.
@@ -298,7 +295,8 @@ public class VirtualNetworkInner extends Resource {
     }
 
     /**
-     * Get the ddosProtectionPlan property: Reference to another subresource.
+     * Get the ddosProtectionPlan property: The DDoS protection plan associated
+     * with the virtual network.
      * 
      * @return the ddosProtectionPlan value.
      */
@@ -307,7 +305,8 @@ public class VirtualNetworkInner extends Resource {
     }
 
     /**
-     * Set the ddosProtectionPlan property: Reference to another subresource.
+     * Set the ddosProtectionPlan property: The DDoS protection plan associated
+     * with the virtual network.
      * 
      * @param ddosProtectionPlan the ddosProtectionPlan value to set.
      * @return the VirtualNetworkInner object itself.

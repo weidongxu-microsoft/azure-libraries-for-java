@@ -24,7 +24,9 @@ public class SnapshotRestoreRequest extends ProxyOnlyResource {
     private String snapshotTime;
 
     /*
-     * Specifies the web app that snapshot contents will be retrieved from.
+     * Optional. Specifies the web app that snapshot contents will be retrieved
+     * from.
+     * If empty, the targeted web app will be used as the source.
      */
     @JsonProperty(value = "properties.recoverySource")
     private SnapshotRecoverySource recoverySource;
@@ -79,8 +81,9 @@ public class SnapshotRestoreRequest extends ProxyOnlyResource {
     }
 
     /**
-     * Get the recoverySource property: Specifies the web app that snapshot
-     * contents will be retrieved from.
+     * Get the recoverySource property: Optional. Specifies the web app that
+     * snapshot contents will be retrieved from.
+     * If empty, the targeted web app will be used as the source.
      * 
      * @return the recoverySource value.
      */
@@ -89,8 +92,9 @@ public class SnapshotRestoreRequest extends ProxyOnlyResource {
     }
 
     /**
-     * Set the recoverySource property: Specifies the web app that snapshot
-     * contents will be retrieved from.
+     * Set the recoverySource property: Optional. Specifies the web app that
+     * snapshot contents will be retrieved from.
+     * If empty, the targeted web app will be used as the source.
      * 
      * @param recoverySource the recoverySource value to set.
      * @return the SnapshotRestoreRequest object itself.

@@ -15,19 +15,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class VirtualMachineScaleSetVMProfile {
     /*
-     * Describes a virtual machine scale set OS profile.
+     * Specifies the operating system settings for the virtual machines in the
+     * scale set.
      */
     @JsonProperty(value = "osProfile")
     private VirtualMachineScaleSetOSProfile osProfile;
 
     /*
-     * Describes a virtual machine scale set storage profile.
+     * Specifies the storage settings for the virtual machine disks.
      */
     @JsonProperty(value = "storageProfile")
     private VirtualMachineScaleSetStorageProfile storageProfile;
 
     /*
-     * Describes a virtual machine scale set network profile.
+     * Specifies properties of the network interfaces of the virtual machines
+     * in the scale set.
      */
     @JsonProperty(value = "networkProfile")
     private VirtualMachineScaleSetNetworkProfile networkProfile;
@@ -40,7 +42,8 @@ public final class VirtualMachineScaleSetVMProfile {
     private DiagnosticsProfile diagnosticsProfile;
 
     /*
-     * Describes a virtual machine scale set extension profile.
+     * Specifies a collection of settings for extensions installed on virtual
+     * machines in the scale set.
      */
     @JsonProperty(value = "extensionProfile")
     private VirtualMachineScaleSetExtensionProfile extensionProfile;
@@ -59,35 +62,35 @@ public final class VirtualMachineScaleSetVMProfile {
     private String licenseType;
 
     /*
-     * Specifies the priority for a standalone virtual machine or the virtual
-     * machines in the scale set. <br><br> 'Low' enum will be deprecated in the
-     * future, please use 'Spot' as the enum to deploy Azure Spot VM/VMSS.
+     * Specifies the priority for the virtual machines in the scale set.
+     * <br><br>Minimum api-version: 2017-10-30-preview
      */
     @JsonProperty(value = "priority")
     private VirtualMachinePriorityTypes priority;
 
     /*
-     * Specifies the eviction policy for the Azure Spot VM/VMSS
+     * Specifies the eviction policy for virtual machines in a Azure Spot scale
+     * set. <br><br>Minimum api-version: 2017-10-30-preview
      */
     @JsonProperty(value = "evictionPolicy")
     private VirtualMachineEvictionPolicyTypes evictionPolicy;
 
     /*
-     * Specifies the billing related details of a Azure Spot VM or VMSS.
+     * Specifies the billing related details of a Azure Spot VMSS.
      * <br><br>Minimum api-version: 2019-03-01.
      */
     @JsonProperty(value = "billingProfile")
     private BillingProfile billingProfile;
 
     /*
-     * The scheduledEventsProfile property.
+     * Specifies Scheduled Event related configurations.
      */
     @JsonProperty(value = "scheduledEventsProfile")
     private ScheduledEventsProfile scheduledEventsProfile;
 
     /**
-     * Get the osProfile property: Describes a virtual machine scale set OS
-     * profile.
+     * Get the osProfile property: Specifies the operating system settings for
+     * the virtual machines in the scale set.
      * 
      * @return the osProfile value.
      */
@@ -96,8 +99,8 @@ public final class VirtualMachineScaleSetVMProfile {
     }
 
     /**
-     * Set the osProfile property: Describes a virtual machine scale set OS
-     * profile.
+     * Set the osProfile property: Specifies the operating system settings for
+     * the virtual machines in the scale set.
      * 
      * @param osProfile the osProfile value to set.
      * @return the VirtualMachineScaleSetVMProfile object itself.
@@ -108,8 +111,8 @@ public final class VirtualMachineScaleSetVMProfile {
     }
 
     /**
-     * Get the storageProfile property: Describes a virtual machine scale set
-     * storage profile.
+     * Get the storageProfile property: Specifies the storage settings for the
+     * virtual machine disks.
      * 
      * @return the storageProfile value.
      */
@@ -118,8 +121,8 @@ public final class VirtualMachineScaleSetVMProfile {
     }
 
     /**
-     * Set the storageProfile property: Describes a virtual machine scale set
-     * storage profile.
+     * Set the storageProfile property: Specifies the storage settings for the
+     * virtual machine disks.
      * 
      * @param storageProfile the storageProfile value to set.
      * @return the VirtualMachineScaleSetVMProfile object itself.
@@ -130,8 +133,8 @@ public final class VirtualMachineScaleSetVMProfile {
     }
 
     /**
-     * Get the networkProfile property: Describes a virtual machine scale set
-     * network profile.
+     * Get the networkProfile property: Specifies properties of the network
+     * interfaces of the virtual machines in the scale set.
      * 
      * @return the networkProfile value.
      */
@@ -140,8 +143,8 @@ public final class VirtualMachineScaleSetVMProfile {
     }
 
     /**
-     * Set the networkProfile property: Describes a virtual machine scale set
-     * network profile.
+     * Set the networkProfile property: Specifies properties of the network
+     * interfaces of the virtual machines in the scale set.
      * 
      * @param networkProfile the networkProfile value to set.
      * @return the VirtualMachineScaleSetVMProfile object itself.
@@ -174,8 +177,8 @@ public final class VirtualMachineScaleSetVMProfile {
     }
 
     /**
-     * Get the extensionProfile property: Describes a virtual machine scale set
-     * extension profile.
+     * Get the extensionProfile property: Specifies a collection of settings
+     * for extensions installed on virtual machines in the scale set.
      * 
      * @return the extensionProfile value.
      */
@@ -184,8 +187,8 @@ public final class VirtualMachineScaleSetVMProfile {
     }
 
     /**
-     * Set the extensionProfile property: Describes a virtual machine scale set
-     * extension profile.
+     * Set the extensionProfile property: Specifies a collection of settings
+     * for extensions installed on virtual machines in the scale set.
      * 
      * @param extensionProfile the extensionProfile value to set.
      * @return the VirtualMachineScaleSetVMProfile object itself.
@@ -234,10 +237,9 @@ public final class VirtualMachineScaleSetVMProfile {
     }
 
     /**
-     * Get the priority property: Specifies the priority for a standalone
-     * virtual machine or the virtual machines in the scale set.
-     * &lt;br&gt;&lt;br&gt; 'Low' enum will be deprecated in the future, please
-     * use 'Spot' as the enum to deploy Azure Spot VM/VMSS.
+     * Get the priority property: Specifies the priority for the virtual
+     * machines in the scale set. &lt;br&gt;&lt;br&gt;Minimum api-version:
+     * 2017-10-30-preview.
      * 
      * @return the priority value.
      */
@@ -246,10 +248,9 @@ public final class VirtualMachineScaleSetVMProfile {
     }
 
     /**
-     * Set the priority property: Specifies the priority for a standalone
-     * virtual machine or the virtual machines in the scale set.
-     * &lt;br&gt;&lt;br&gt; 'Low' enum will be deprecated in the future, please
-     * use 'Spot' as the enum to deploy Azure Spot VM/VMSS.
+     * Set the priority property: Specifies the priority for the virtual
+     * machines in the scale set. &lt;br&gt;&lt;br&gt;Minimum api-version:
+     * 2017-10-30-preview.
      * 
      * @param priority the priority value to set.
      * @return the VirtualMachineScaleSetVMProfile object itself.
@@ -260,8 +261,9 @@ public final class VirtualMachineScaleSetVMProfile {
     }
 
     /**
-     * Get the evictionPolicy property: Specifies the eviction policy for the
-     * Azure Spot VM/VMSS.
+     * Get the evictionPolicy property: Specifies the eviction policy for
+     * virtual machines in a Azure Spot scale set. &lt;br&gt;&lt;br&gt;Minimum
+     * api-version: 2017-10-30-preview.
      * 
      * @return the evictionPolicy value.
      */
@@ -270,8 +272,9 @@ public final class VirtualMachineScaleSetVMProfile {
     }
 
     /**
-     * Set the evictionPolicy property: Specifies the eviction policy for the
-     * Azure Spot VM/VMSS.
+     * Set the evictionPolicy property: Specifies the eviction policy for
+     * virtual machines in a Azure Spot scale set. &lt;br&gt;&lt;br&gt;Minimum
+     * api-version: 2017-10-30-preview.
      * 
      * @param evictionPolicy the evictionPolicy value to set.
      * @return the VirtualMachineScaleSetVMProfile object itself.
@@ -283,7 +286,7 @@ public final class VirtualMachineScaleSetVMProfile {
 
     /**
      * Get the billingProfile property: Specifies the billing related details
-     * of a Azure Spot VM or VMSS. &lt;br&gt;&lt;br&gt;Minimum api-version:
+     * of a Azure Spot VMSS. &lt;br&gt;&lt;br&gt;Minimum api-version:
      * 2019-03-01.
      * 
      * @return the billingProfile value.
@@ -294,7 +297,7 @@ public final class VirtualMachineScaleSetVMProfile {
 
     /**
      * Set the billingProfile property: Specifies the billing related details
-     * of a Azure Spot VM or VMSS. &lt;br&gt;&lt;br&gt;Minimum api-version:
+     * of a Azure Spot VMSS. &lt;br&gt;&lt;br&gt;Minimum api-version:
      * 2019-03-01.
      * 
      * @param billingProfile the billingProfile value to set.
@@ -306,8 +309,8 @@ public final class VirtualMachineScaleSetVMProfile {
     }
 
     /**
-     * Get the scheduledEventsProfile property: The scheduledEventsProfile
-     * property.
+     * Get the scheduledEventsProfile property: Specifies Scheduled Event
+     * related configurations.
      * 
      * @return the scheduledEventsProfile value.
      */
@@ -316,8 +319,8 @@ public final class VirtualMachineScaleSetVMProfile {
     }
 
     /**
-     * Set the scheduledEventsProfile property: The scheduledEventsProfile
-     * property.
+     * Set the scheduledEventsProfile property: Specifies Scheduled Event
+     * related configurations.
      * 
      * @param scheduledEventsProfile the scheduledEventsProfile value to set.
      * @return the VirtualMachineScaleSetVMProfile object itself.

@@ -51,13 +51,16 @@ public class GalleryImageInner extends Resource {
     private String releaseNoteUri;
 
     /*
-     * The operating system of the osDiskImage.
+     * This property allows you to specify the type of the OS that is included
+     * in the disk when creating a VM from a managed image. <br><br> Possible
+     * values are: <br><br> **Windows** <br><br> **Linux**
      */
     @JsonProperty(value = "properties.osType")
     private OperatingSystemTypes osType;
 
     /*
-     * The OS State.
+     * This property allows the user to specify whether the virtual machines
+     * created under this image are 'Generalized' or 'Specialized'.
      */
     @JsonProperty(value = "properties.osState")
     private OperatingSystemStateTypes osState;
@@ -186,7 +189,10 @@ public class GalleryImageInner extends Resource {
     }
 
     /**
-     * Get the osType property: The operating system of the osDiskImage.
+     * Get the osType property: This property allows you to specify the type of
+     * the OS that is included in the disk when creating a VM from a managed
+     * image. &lt;br&gt;&lt;br&gt; Possible values are: &lt;br&gt;&lt;br&gt;
+     * **Windows** &lt;br&gt;&lt;br&gt; **Linux**.
      * 
      * @return the osType value.
      */
@@ -195,7 +201,10 @@ public class GalleryImageInner extends Resource {
     }
 
     /**
-     * Set the osType property: The operating system of the osDiskImage.
+     * Set the osType property: This property allows you to specify the type of
+     * the OS that is included in the disk when creating a VM from a managed
+     * image. &lt;br&gt;&lt;br&gt; Possible values are: &lt;br&gt;&lt;br&gt;
+     * **Windows** &lt;br&gt;&lt;br&gt; **Linux**.
      * 
      * @param osType the osType value to set.
      * @return the GalleryImageInner object itself.
@@ -206,7 +215,9 @@ public class GalleryImageInner extends Resource {
     }
 
     /**
-     * Get the osState property: The OS State.
+     * Get the osState property: This property allows the user to specify
+     * whether the virtual machines created under this image are 'Generalized'
+     * or 'Specialized'.
      * 
      * @return the osState value.
      */
@@ -215,7 +226,9 @@ public class GalleryImageInner extends Resource {
     }
 
     /**
-     * Set the osState property: The OS State.
+     * Set the osState property: This property allows the user to specify
+     * whether the virtual machines created under this image are 'Generalized'
+     * or 'Specialized'.
      * 
      * @param osState the osState value to set.
      * @return the GalleryImageInner object itself.

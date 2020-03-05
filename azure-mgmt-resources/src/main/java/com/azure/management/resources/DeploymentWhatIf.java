@@ -21,7 +21,7 @@ public final class DeploymentWhatIf {
     private String location;
 
     /*
-     * Deployment What-if properties.
+     * The deployment properties.
      */
     @JsonProperty(value = "properties", required = true)
     private DeploymentWhatIfProperties properties;
@@ -47,7 +47,7 @@ public final class DeploymentWhatIf {
     }
 
     /**
-     * Get the properties property: Deployment What-if properties.
+     * Get the properties property: The deployment properties.
      * 
      * @return the properties value.
      */
@@ -56,7 +56,7 @@ public final class DeploymentWhatIf {
     }
 
     /**
-     * Set the properties property: Deployment What-if properties.
+     * Set the properties property: The deployment properties.
      * 
      * @param properties the properties value to set.
      * @return the DeploymentWhatIf object itself.

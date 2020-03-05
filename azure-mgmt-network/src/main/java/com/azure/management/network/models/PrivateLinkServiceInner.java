@@ -47,7 +47,7 @@ public class PrivateLinkServiceInner extends Resource {
     private List<NetworkInterfaceInner> networkInterfaces;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the private link service.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -166,7 +166,8 @@ public class PrivateLinkServiceInner extends Resource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * private link service.
      * 
      * @return the provisioningState value.
      */
@@ -175,7 +176,8 @@ public class PrivateLinkServiceInner extends Resource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * private link service.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the PrivateLinkServiceInner object itself.

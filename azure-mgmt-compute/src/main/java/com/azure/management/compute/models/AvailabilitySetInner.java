@@ -22,7 +22,10 @@ import java.util.List;
 @Fluent
 public class AvailabilitySetInner extends Resource {
     /*
-     * Describes a virtual machine scale set sku.
+     * Sku of the availability set, only name is required to be set. See
+     * AvailabilitySetSkuTypes for possible set of values. Use 'Aligned' for
+     * virtual machines with managed disks and 'Classic' for virtual machines
+     * with unmanaged disks. Default value is 'Classic'.
      */
     @JsonProperty(value = "sku")
     private Sku sku;
@@ -46,7 +49,9 @@ public class AvailabilitySetInner extends Resource {
     private List<SubResource> virtualMachines;
 
     /*
-     * The proximityPlacementGroup property.
+     * Specifies information about the proximity placement group that the
+     * availability set should be assigned to. <br><br>Minimum api-version:
+     * 2018-04-01.
      */
     @JsonProperty(value = "properties.proximityPlacementGroup")
     private SubResource proximityPlacementGroup;
@@ -58,7 +63,10 @@ public class AvailabilitySetInner extends Resource {
     private List<InstanceViewStatus> statuses;
 
     /**
-     * Get the sku property: Describes a virtual machine scale set sku.
+     * Get the sku property: Sku of the availability set, only name is required
+     * to be set. See AvailabilitySetSkuTypes for possible set of values. Use
+     * 'Aligned' for virtual machines with managed disks and 'Classic' for
+     * virtual machines with unmanaged disks. Default value is 'Classic'.
      * 
      * @return the sku value.
      */
@@ -67,7 +75,10 @@ public class AvailabilitySetInner extends Resource {
     }
 
     /**
-     * Set the sku property: Describes a virtual machine scale set sku.
+     * Set the sku property: Sku of the availability set, only name is required
+     * to be set. See AvailabilitySetSkuTypes for possible set of values. Use
+     * 'Aligned' for virtual machines with managed disks and 'Classic' for
+     * virtual machines with unmanaged disks. Default value is 'Classic'.
      * 
      * @param sku the sku value to set.
      * @return the AvailabilitySetInner object itself.
@@ -142,8 +153,9 @@ public class AvailabilitySetInner extends Resource {
     }
 
     /**
-     * Get the proximityPlacementGroup property: The proximityPlacementGroup
-     * property.
+     * Get the proximityPlacementGroup property: Specifies information about
+     * the proximity placement group that the availability set should be
+     * assigned to. &lt;br&gt;&lt;br&gt;Minimum api-version: 2018-04-01.
      * 
      * @return the proximityPlacementGroup value.
      */
@@ -152,8 +164,9 @@ public class AvailabilitySetInner extends Resource {
     }
 
     /**
-     * Set the proximityPlacementGroup property: The proximityPlacementGroup
-     * property.
+     * Set the proximityPlacementGroup property: Specifies information about
+     * the proximity placement group that the availability set should be
+     * assigned to. &lt;br&gt;&lt;br&gt;Minimum api-version: 2018-04-01.
      * 
      * @param proximityPlacementGroup the proximityPlacementGroup value to set.
      * @return the AvailabilitySetInner object itself.

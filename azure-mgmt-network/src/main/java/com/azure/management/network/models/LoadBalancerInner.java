@@ -21,7 +21,7 @@ import java.util.List;
 @Fluent
 public class LoadBalancerInner extends Resource {
     /*
-     * SKU of a load balancer.
+     * The load balancer SKU.
      */
     @JsonProperty(value = "sku")
     private LoadBalancerSku sku;
@@ -107,7 +107,7 @@ public class LoadBalancerInner extends Resource {
     private String id;
 
     /**
-     * Get the sku property: SKU of a load balancer.
+     * Get the sku property: The load balancer SKU.
      * 
      * @return the sku value.
      */
@@ -116,7 +116,7 @@ public class LoadBalancerInner extends Resource {
     }
 
     /**
-     * Set the sku property: SKU of a load balancer.
+     * Set the sku property: The load balancer SKU.
      * 
      * @param sku the sku value to set.
      * @return the LoadBalancerInner object itself.

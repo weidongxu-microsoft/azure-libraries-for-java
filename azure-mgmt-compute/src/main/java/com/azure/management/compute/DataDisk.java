@@ -29,13 +29,15 @@ public final class DataDisk {
     private String name;
 
     /*
-     * Describes the uri of a disk.
+     * The virtual hard disk.
      */
     @JsonProperty(value = "vhd")
     private VirtualHardDisk vhd;
 
     /*
-     * Describes the uri of a disk.
+     * The source user image virtual hard disk. The virtual hard disk will be
+     * copied before being attached to the virtual machine. If SourceImage is
+     * provided, the destination virtual hard drive must not exist.
      */
     @JsonProperty(value = "image")
     private VirtualHardDisk image;
@@ -76,7 +78,7 @@ public final class DataDisk {
     private Integer diskSizeGB;
 
     /*
-     * The parameters of a managed disk.
+     * The managed disk parameters.
      */
     @JsonProperty(value = "managedDisk")
     private ManagedDiskParameters managedDisk;
@@ -133,7 +135,7 @@ public final class DataDisk {
     }
 
     /**
-     * Get the vhd property: Describes the uri of a disk.
+     * Get the vhd property: The virtual hard disk.
      * 
      * @return the vhd value.
      */
@@ -142,7 +144,7 @@ public final class DataDisk {
     }
 
     /**
-     * Set the vhd property: Describes the uri of a disk.
+     * Set the vhd property: The virtual hard disk.
      * 
      * @param vhd the vhd value to set.
      * @return the DataDisk object itself.
@@ -153,7 +155,10 @@ public final class DataDisk {
     }
 
     /**
-     * Get the image property: Describes the uri of a disk.
+     * Get the image property: The source user image virtual hard disk. The
+     * virtual hard disk will be copied before being attached to the virtual
+     * machine. If SourceImage is provided, the destination virtual hard drive
+     * must not exist.
      * 
      * @return the image value.
      */
@@ -162,7 +167,10 @@ public final class DataDisk {
     }
 
     /**
-     * Set the image property: Describes the uri of a disk.
+     * Set the image property: The source user image virtual hard disk. The
+     * virtual hard disk will be copied before being attached to the virtual
+     * machine. If SourceImage is provided, the destination virtual hard drive
+     * must not exist.
      * 
      * @param image the image value to set.
      * @return the DataDisk object itself.
@@ -283,7 +291,7 @@ public final class DataDisk {
     }
 
     /**
-     * Get the managedDisk property: The parameters of a managed disk.
+     * Get the managedDisk property: The managed disk parameters.
      * 
      * @return the managedDisk value.
      */
@@ -292,7 +300,7 @@ public final class DataDisk {
     }
 
     /**
-     * Set the managedDisk property: The parameters of a managed disk.
+     * Set the managedDisk property: The managed disk parameters.
      * 
      * @param managedDisk the managedDisk value to set.
      * @return the DataDisk object itself.

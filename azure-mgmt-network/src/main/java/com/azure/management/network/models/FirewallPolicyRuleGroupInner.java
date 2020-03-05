@@ -53,7 +53,7 @@ public class FirewallPolicyRuleGroupInner extends SubResource {
     private List<FirewallPolicyRule> rules;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -142,7 +142,8 @@ public class FirewallPolicyRuleGroupInner extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -151,7 +152,8 @@ public class FirewallPolicyRuleGroupInner extends SubResource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the FirewallPolicyRuleGroupInner object itself.

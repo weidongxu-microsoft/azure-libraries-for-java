@@ -21,7 +21,7 @@ public final class ServerPrivateEndpointConnection {
     private String id;
 
     /*
-     * Properties of a private endpoint connection.
+     * Private endpoint connection properties
      */
     @JsonProperty(value = "properties", access = JsonProperty.Access.WRITE_ONLY)
     private PrivateEndpointConnectionProperties properties;
@@ -36,8 +36,7 @@ public final class ServerPrivateEndpointConnection {
     }
 
     /**
-     * Get the properties property: Properties of a private endpoint
-     * connection.
+     * Get the properties property: Private endpoint connection properties.
      * 
      * @return the properties value.
      */

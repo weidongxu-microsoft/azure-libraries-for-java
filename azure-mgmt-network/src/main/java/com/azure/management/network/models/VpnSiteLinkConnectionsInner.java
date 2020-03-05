@@ -55,7 +55,7 @@ public final class VpnSiteLinkConnectionsInner {
     @Host("{$host}")
     @ServiceInterface(name = "NetworkManagementClientVpnSiteLinkConnections")
     private interface VpnSiteLinkConnectionsService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections/{linkConnectionName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorException.class)

@@ -31,13 +31,13 @@ public class VpnSiteInner extends Resource {
     private String etag;
 
     /*
-     * Reference to another subresource.
+     * The VirtualWAN to which the vpnSite belongs.
      */
     @JsonProperty(value = "properties.virtualWan")
     private SubResource virtualWan;
 
     /*
-     * List of properties of the device.
+     * The device properties.
      */
     @JsonProperty(value = "properties.deviceProperties")
     private DeviceProperties deviceProperties;
@@ -55,20 +55,19 @@ public class VpnSiteInner extends Resource {
     private String siteKey;
 
     /*
-     * AddressSpace contains an array of IP address ranges that can be used by
-     * subnets of the virtual network.
+     * The AddressSpace that contains an array of IP address ranges.
      */
     @JsonProperty(value = "properties.addressSpace")
     private AddressSpace addressSpace;
 
     /*
-     * BGP settings details.
+     * The set of bgp properties.
      */
     @JsonProperty(value = "properties.bgpProperties")
     private BgpSettings bgpProperties;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -102,7 +101,8 @@ public class VpnSiteInner extends Resource {
     }
 
     /**
-     * Get the virtualWan property: Reference to another subresource.
+     * Get the virtualWan property: The VirtualWAN to which the vpnSite
+     * belongs.
      * 
      * @return the virtualWan value.
      */
@@ -111,7 +111,8 @@ public class VpnSiteInner extends Resource {
     }
 
     /**
-     * Set the virtualWan property: Reference to another subresource.
+     * Set the virtualWan property: The VirtualWAN to which the vpnSite
+     * belongs.
      * 
      * @param virtualWan the virtualWan value to set.
      * @return the VpnSiteInner object itself.
@@ -122,7 +123,7 @@ public class VpnSiteInner extends Resource {
     }
 
     /**
-     * Get the deviceProperties property: List of properties of the device.
+     * Get the deviceProperties property: The device properties.
      * 
      * @return the deviceProperties value.
      */
@@ -131,7 +132,7 @@ public class VpnSiteInner extends Resource {
     }
 
     /**
-     * Set the deviceProperties property: List of properties of the device.
+     * Set the deviceProperties property: The device properties.
      * 
      * @param deviceProperties the deviceProperties value to set.
      * @return the VpnSiteInner object itself.
@@ -184,8 +185,8 @@ public class VpnSiteInner extends Resource {
     }
 
     /**
-     * Get the addressSpace property: AddressSpace contains an array of IP
-     * address ranges that can be used by subnets of the virtual network.
+     * Get the addressSpace property: The AddressSpace that contains an array
+     * of IP address ranges.
      * 
      * @return the addressSpace value.
      */
@@ -194,8 +195,8 @@ public class VpnSiteInner extends Resource {
     }
 
     /**
-     * Set the addressSpace property: AddressSpace contains an array of IP
-     * address ranges that can be used by subnets of the virtual network.
+     * Set the addressSpace property: The AddressSpace that contains an array
+     * of IP address ranges.
      * 
      * @param addressSpace the addressSpace value to set.
      * @return the VpnSiteInner object itself.
@@ -206,7 +207,7 @@ public class VpnSiteInner extends Resource {
     }
 
     /**
-     * Get the bgpProperties property: BGP settings details.
+     * Get the bgpProperties property: The set of bgp properties.
      * 
      * @return the bgpProperties value.
      */
@@ -215,7 +216,7 @@ public class VpnSiteInner extends Resource {
     }
 
     /**
-     * Set the bgpProperties property: BGP settings details.
+     * Set the bgpProperties property: The set of bgp properties.
      * 
      * @param bgpProperties the bgpProperties value to set.
      * @return the VpnSiteInner object itself.
@@ -226,7 +227,8 @@ public class VpnSiteInner extends Resource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -235,7 +237,8 @@ public class VpnSiteInner extends Resource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the VpnSiteInner object itself.

@@ -29,7 +29,7 @@ public final class AppServiceEnvironment {
     private String location;
 
     /*
-     * Status of certificate order.
+     * Provisioning state of the App Service Environment.
      */
     @JsonProperty(value = "provisioningState", access = JsonProperty.Access.WRITE_ONLY)
     private ProvisioningState provisioningState;
@@ -59,7 +59,7 @@ public final class AppServiceEnvironment {
     private String vnetSubnetName;
 
     /*
-     * Specification for using a Virtual Network.
+     * Description of the Virtual Network.
      */
     @JsonProperty(value = "virtualNetwork", required = true)
     private VirtualNetworkProfile virtualNetwork;
@@ -309,7 +309,8 @@ public final class AppServiceEnvironment {
     }
 
     /**
-     * Get the provisioningState property: Status of certificate order.
+     * Get the provisioningState property: Provisioning state of the App
+     * Service Environment.
      * 
      * @return the provisioningState value.
      */
@@ -391,8 +392,7 @@ public final class AppServiceEnvironment {
     }
 
     /**
-     * Get the virtualNetwork property: Specification for using a Virtual
-     * Network.
+     * Get the virtualNetwork property: Description of the Virtual Network.
      * 
      * @return the virtualNetwork value.
      */
@@ -401,8 +401,7 @@ public final class AppServiceEnvironment {
     }
 
     /**
-     * Set the virtualNetwork property: Specification for using a Virtual
-     * Network.
+     * Set the virtualNetwork property: Description of the Virtual Network.
      * 
      * @param virtualNetwork the virtualNetwork value to set.
      * @return the AppServiceEnvironment object itself.

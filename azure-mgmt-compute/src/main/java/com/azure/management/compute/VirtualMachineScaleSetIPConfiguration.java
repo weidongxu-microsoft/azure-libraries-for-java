@@ -25,7 +25,7 @@ public class VirtualMachineScaleSetIPConfiguration extends SubResource {
     private String name;
 
     /*
-     * The API entity reference.
+     * Specifies the identifier of the subnet.
      */
     @JsonProperty(value = "properties.subnet")
     private ApiEntityReference subnet;
@@ -38,8 +38,7 @@ public class VirtualMachineScaleSetIPConfiguration extends SubResource {
     private Boolean primary;
 
     /*
-     * Describes a virtual machines scale set IP Configuration's
-     * PublicIPAddress configuration
+     * The publicIPAddressConfiguration.
      */
     @JsonProperty(value = "properties.publicIPAddressConfiguration")
     private VirtualMachineScaleSetPublicIPAddressConfiguration publicIPAddressConfiguration;
@@ -106,7 +105,7 @@ public class VirtualMachineScaleSetIPConfiguration extends SubResource {
     }
 
     /**
-     * Get the subnet property: The API entity reference.
+     * Get the subnet property: Specifies the identifier of the subnet.
      * 
      * @return the subnet value.
      */
@@ -115,7 +114,7 @@ public class VirtualMachineScaleSetIPConfiguration extends SubResource {
     }
 
     /**
-     * Set the subnet property: The API entity reference.
+     * Set the subnet property: Specifies the identifier of the subnet.
      * 
      * @param subnet the subnet value to set.
      * @return the VirtualMachineScaleSetIPConfiguration object itself.
@@ -148,8 +147,8 @@ public class VirtualMachineScaleSetIPConfiguration extends SubResource {
     }
 
     /**
-     * Get the publicIPAddressConfiguration property: Describes a virtual
-     * machines scale set IP Configuration's PublicIPAddress configuration.
+     * Get the publicIPAddressConfiguration property: The
+     * publicIPAddressConfiguration.
      * 
      * @return the publicIPAddressConfiguration value.
      */
@@ -158,8 +157,8 @@ public class VirtualMachineScaleSetIPConfiguration extends SubResource {
     }
 
     /**
-     * Set the publicIPAddressConfiguration property: Describes a virtual
-     * machines scale set IP Configuration's PublicIPAddress configuration.
+     * Set the publicIPAddressConfiguration property: The
+     * publicIPAddressConfiguration.
      * 
      * @param publicIPAddressConfiguration the publicIPAddressConfiguration
      * value to set.

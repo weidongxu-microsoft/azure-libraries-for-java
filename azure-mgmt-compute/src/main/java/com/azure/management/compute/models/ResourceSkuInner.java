@@ -58,7 +58,7 @@ public final class ResourceSkuInner {
     private String kind;
 
     /*
-     * Describes scaling information of a SKU.
+     * Specifies the number of virtual machines in the scale set.
      */
     @JsonProperty(value = "capacity", access = JsonProperty.Access.WRITE_ONLY)
     private ResourceSkuCapacity capacity;
@@ -159,7 +159,8 @@ public final class ResourceSkuInner {
     }
 
     /**
-     * Get the capacity property: Describes scaling information of a SKU.
+     * Get the capacity property: Specifies the number of virtual machines in
+     * the scale set.
      * 
      * @return the capacity value.
      */

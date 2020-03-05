@@ -52,7 +52,7 @@ public class BackendAddressPoolInner extends SubResource {
     private List<SubResource> loadBalancingRules;
 
     /*
-     * Reference to another subresource.
+     * Gets outbound rules that use this backend address pool.
      */
     @JsonProperty(value = "properties.outboundRule", access = JsonProperty.Access.WRITE_ONLY)
     private SubResource outboundRule;
@@ -146,7 +146,8 @@ public class BackendAddressPoolInner extends SubResource {
     }
 
     /**
-     * Get the outboundRule property: Reference to another subresource.
+     * Get the outboundRule property: Gets outbound rules that use this backend
+     * address pool.
      * 
      * @return the outboundRule value.
      */

@@ -59,7 +59,7 @@ public final class DatabaseUsagesInner {
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientDatabaseUsages")
     private interface DatabaseUsagesService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/usages")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)

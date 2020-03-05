@@ -82,109 +82,109 @@ public final class StorageAccountsInner implements InnerSupportsGet<StorageAccou
     @Host("{$host}")
     @ServiceInterface(name = "StorageManagementClientStorageAccounts")
     private interface StorageAccountsService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Storage/checkNameAvailability")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<CheckNameAvailabilityResultInner>> checkNameAvailability(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") StorageAccountCheckNameAvailabilityParameters accountName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<CheckNameAvailabilityResultInner>> checkNameAvailability(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") StorageAccountCheckNameAvailabilityParameters accountName);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> create(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") StorageAccountCreateParameters parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> create(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") StorageAccountCreateParameters parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<StorageAccountInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("$expand") StorageAccountExpand expand, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<StorageAccountInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") StorageAccountUpdateParameters parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<StorageAccountInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") StorageAccountUpdateParameters parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Storage/storageAccounts")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<StorageAccountListResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<StorageAccountListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listKeys")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<StorageAccountListKeysResultInner>> listKeys(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("$expand") String expand, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/regenerateKey")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<StorageAccountListKeysResultInner>> regenerateKey(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") StorageAccountRegenerateKeyParameters regenerateKey, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<StorageAccountListKeysResultInner>> regenerateKey(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") StorageAccountRegenerateKeyParameters regenerateKey);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/ListAccountSas")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ListAccountSasResponseInner>> listAccountSAS(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AccountSasParameters parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ListAccountSasResponseInner>> listAccountSAS(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") AccountSasParameters parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/ListServiceSas")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ListServiceSasResponseInner>> listServiceSAS(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ServiceSasParameters parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ListServiceSasResponseInner>> listServiceSAS(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ServiceSasParameters parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/failover")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> failover(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/restoreBlobRanges")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> restoreBlobRanges(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BlobRestoreParameters parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> restoreBlobRanges(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") BlobRestoreParameters parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/revokeUserDelegationKeys")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> revokeUserDelegationKeys(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<StorageAccountInner>> beginCreate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") StorageAccountCreateParameters parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<StorageAccountInner>> beginCreate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") StorageAccountCreateParameters parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/failover")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginFailover(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/restoreBlobRanges")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<BlobRestoreStatusInner>> beginRestoreBlobRanges(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BlobRestoreParameters parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<BlobRestoreStatusInner>> beginRestoreBlobRanges(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") BlobRestoreParameters parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -203,7 +203,7 @@ public final class StorageAccountsInner implements InnerSupportsGet<StorageAccou
     public Mono<SimpleResponse<CheckNameAvailabilityResultInner>> checkNameAvailabilityWithResponseAsync(String name) {
         StorageAccountCheckNameAvailabilityParameters accountName = new StorageAccountCheckNameAvailabilityParameters();
         accountName.setName(name);
-        return service.checkNameAvailability(this.client.getHost(), this.client.getSubscriptionId(), accountName, this.client.getApiVersion());
+        return service.checkNameAvailability(this.client.getHost(), this.client.getSubscriptionId(), this.client.getApiVersion(), accountName);
     }
 
     /**
@@ -251,7 +251,7 @@ public final class StorageAccountsInner implements InnerSupportsGet<StorageAccou
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createWithResponseAsync(String resourceGroupName, String accountName, StorageAccountCreateParameters parameters) {
-        return service.create(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.create(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -431,7 +431,7 @@ public final class StorageAccountsInner implements InnerSupportsGet<StorageAccou
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<StorageAccountInner>> updateWithResponseAsync(String resourceGroupName, String accountName, StorageAccountUpdateParameters parameters) {
-        return service.update(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.update(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -622,7 +622,7 @@ public final class StorageAccountsInner implements InnerSupportsGet<StorageAccou
     public Mono<SimpleResponse<StorageAccountListKeysResultInner>> regenerateKeyWithResponseAsync(String resourceGroupName, String accountName, String keyName) {
         StorageAccountRegenerateKeyParameters regenerateKey = new StorageAccountRegenerateKeyParameters();
         regenerateKey.setKeyName(keyName);
-        return service.regenerateKey(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), regenerateKey, this.client.getApiVersion());
+        return service.regenerateKey(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), this.client.getApiVersion(), regenerateKey);
     }
 
     /**
@@ -674,7 +674,7 @@ public final class StorageAccountsInner implements InnerSupportsGet<StorageAccou
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ListAccountSasResponseInner>> listAccountSASWithResponseAsync(String resourceGroupName, String accountName, AccountSasParameters parameters) {
-        return service.listAccountSAS(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.listAccountSAS(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -726,7 +726,7 @@ public final class StorageAccountsInner implements InnerSupportsGet<StorageAccou
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ListServiceSasResponseInner>> listServiceSASWithResponseAsync(String resourceGroupName, String accountName, ServiceSasParameters parameters) {
-        return service.listServiceSAS(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.listServiceSAS(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -827,7 +827,7 @@ public final class StorageAccountsInner implements InnerSupportsGet<StorageAccou
         BlobRestoreParameters parameters = new BlobRestoreParameters();
         parameters.setTimeToRestore(timeToRestore);
         parameters.setBlobRanges(blobRanges);
-        return service.restoreBlobRanges(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.restoreBlobRanges(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -920,7 +920,7 @@ public final class StorageAccountsInner implements InnerSupportsGet<StorageAccou
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<StorageAccountInner>> beginCreateWithResponseAsync(String resourceGroupName, String accountName, StorageAccountCreateParameters parameters) {
-        return service.beginCreate(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.beginCreate(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -1019,7 +1019,7 @@ public final class StorageAccountsInner implements InnerSupportsGet<StorageAccou
         BlobRestoreParameters parameters = new BlobRestoreParameters();
         parameters.setTimeToRestore(timeToRestore);
         parameters.setBlobRanges(blobRanges);
-        return service.beginRestoreBlobRanges(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.beginRestoreBlobRanges(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), this.client.getApiVersion(), parameters);
     }
 
     /**

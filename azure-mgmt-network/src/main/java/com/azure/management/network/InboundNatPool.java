@@ -38,13 +38,13 @@ public class InboundNatPool extends SubResource {
     private String type;
 
     /*
-     * Reference to another subresource.
+     * A reference to frontend IP addresses.
      */
     @JsonProperty(value = "properties.frontendIPConfiguration")
     private SubResource frontendIPConfiguration;
 
     /*
-     * The transport protocol for the endpoint.
+     * The reference to the transport protocol used by the inbound NAT pool.
      */
     @JsonProperty(value = "properties.protocol")
     private TransportProtocol protocol;
@@ -160,8 +160,8 @@ public class InboundNatPool extends SubResource {
     }
 
     /**
-     * Get the frontendIPConfiguration property: Reference to another
-     * subresource.
+     * Get the frontendIPConfiguration property: A reference to frontend IP
+     * addresses.
      * 
      * @return the frontendIPConfiguration value.
      */
@@ -170,8 +170,8 @@ public class InboundNatPool extends SubResource {
     }
 
     /**
-     * Set the frontendIPConfiguration property: Reference to another
-     * subresource.
+     * Set the frontendIPConfiguration property: A reference to frontend IP
+     * addresses.
      * 
      * @param frontendIPConfiguration the frontendIPConfiguration value to set.
      * @return the InboundNatPool object itself.
@@ -182,7 +182,8 @@ public class InboundNatPool extends SubResource {
     }
 
     /**
-     * Get the protocol property: The transport protocol for the endpoint.
+     * Get the protocol property: The reference to the transport protocol used
+     * by the inbound NAT pool.
      * 
      * @return the protocol value.
      */
@@ -191,7 +192,8 @@ public class InboundNatPool extends SubResource {
     }
 
     /**
-     * Set the protocol property: The transport protocol for the endpoint.
+     * Set the protocol property: The reference to the transport protocol used
+     * by the inbound NAT pool.
      * 
      * @param protocol the protocol value to set.
      * @return the InboundNatPool object itself.

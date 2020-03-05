@@ -27,7 +27,7 @@ public final class VirtualWanSecurityProvider {
     private String url;
 
     /*
-     * The virtual wan security provider type.
+     * Name of the security provider.
      */
     @JsonProperty(value = "type")
     private VirtualWanSecurityProviderType type;
@@ -73,7 +73,7 @@ public final class VirtualWanSecurityProvider {
     }
 
     /**
-     * Get the type property: The virtual wan security provider type.
+     * Get the type property: Name of the security provider.
      * 
      * @return the type value.
      */
@@ -82,7 +82,7 @@ public final class VirtualWanSecurityProvider {
     }
 
     /**
-     * Set the type property: The virtual wan security provider type.
+     * Set the type property: Name of the security provider.
      * 
      * @param type the type value to set.
      * @return the VirtualWanSecurityProvider object itself.

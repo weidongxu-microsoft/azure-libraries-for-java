@@ -23,7 +23,17 @@ import java.time.OffsetDateTime;
 @Fluent
 public class ElasticPoolInner extends Resource {
     /*
-     * An ARM Resource SKU.
+     * The elastic pool SKU.
+     * 
+     * The list of SKUs may vary by region and support offer. To determine the
+     * SKUs (including the SKU name, tier/edition, family, and capacity) that
+     * are available to your subscription in an Azure region, use the
+     * `Capabilities_ListByLocation` REST API or the following command:
+     * 
+     * ```azurecli
+     * az sql elastic-pool list-editions -l <location> -o table
+     * ````
+     * 
      */
     @JsonProperty(value = "sku")
     private Sku sku;
@@ -54,7 +64,7 @@ public class ElasticPoolInner extends Resource {
     private Long maxSizeBytes;
 
     /*
-     * Per database settings of an elastic pool.
+     * The per database settings for the elastic pool.
      */
     @JsonProperty(value = "properties.perDatabaseSettings")
     private ElasticPoolPerDatabaseSettings perDatabaseSettings;
@@ -74,7 +84,16 @@ public class ElasticPoolInner extends Resource {
     private ElasticPoolLicenseType licenseType;
 
     /**
-     * Get the sku property: An ARM Resource SKU.
+     * Get the sku property: The elastic pool SKU.
+     * 
+     * The list of SKUs may vary by region and support offer. To determine the
+     * SKUs (including the SKU name, tier/edition, family, and capacity) that
+     * are available to your subscription in an Azure region, use the
+     * `Capabilities_ListByLocation` REST API or the following command:
+     * 
+     * ```azurecli
+     * az sql elastic-pool list-editions -l &lt;location&gt; -o table
+     * ````.
      * 
      * @return the sku value.
      */
@@ -83,7 +102,16 @@ public class ElasticPoolInner extends Resource {
     }
 
     /**
-     * Set the sku property: An ARM Resource SKU.
+     * Set the sku property: The elastic pool SKU.
+     * 
+     * The list of SKUs may vary by region and support offer. To determine the
+     * SKUs (including the SKU name, tier/edition, family, and capacity) that
+     * are available to your subscription in an Azure region, use the
+     * `Capabilities_ListByLocation` REST API or the following command:
+     * 
+     * ```azurecli
+     * az sql elastic-pool list-editions -l &lt;location&gt; -o table
+     * ````.
      * 
      * @param sku the sku value to set.
      * @return the ElasticPoolInner object itself.
@@ -145,7 +173,7 @@ public class ElasticPoolInner extends Resource {
     }
 
     /**
-     * Get the perDatabaseSettings property: Per database settings of an
+     * Get the perDatabaseSettings property: The per database settings for the
      * elastic pool.
      * 
      * @return the perDatabaseSettings value.
@@ -155,7 +183,7 @@ public class ElasticPoolInner extends Resource {
     }
 
     /**
-     * Set the perDatabaseSettings property: Per database settings of an
+     * Set the perDatabaseSettings property: The per database settings for the
      * elastic pool.
      * 
      * @param perDatabaseSettings the perDatabaseSettings value to set.

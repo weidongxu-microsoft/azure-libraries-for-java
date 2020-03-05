@@ -15,14 +15,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class ResponseMetaData {
     /*
-     * Class representing data source used by the detectors
+     * Source of the Data
      */
     @JsonProperty(value = "dataSource")
     private DataSource dataSource;
 
     /**
-     * Get the dataSource property: Class representing data source used by the
-     * detectors.
+     * Get the dataSource property: Source of the Data.
      * 
      * @return the dataSource value.
      */
@@ -31,8 +30,7 @@ public final class ResponseMetaData {
     }
 
     /**
-     * Set the dataSource property: Class representing data source used by the
-     * detectors.
+     * Set the dataSource property: Source of the Data.
      * 
      * @param dataSource the dataSource value to set.
      * @return the ResponseMetaData object itself.

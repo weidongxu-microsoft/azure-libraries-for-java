@@ -57,13 +57,13 @@ public final class DataMaskingPoliciesInner {
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientDataMaskingPolicies")
     private interface DataMaskingPoliciesService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DataMaskingPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("dataMaskingPolicyName") String dataMaskingPolicyName, @BodyParam("application/json") DataMaskingPolicyInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DataMaskingPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("dataMaskingPolicyName") String dataMaskingPolicyName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DataMaskingPolicyInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -85,7 +85,7 @@ public final class DataMaskingPoliciesInner {
     public Mono<SimpleResponse<DataMaskingPolicyInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String serverName, String databaseName, DataMaskingPolicyInner parameters) {
         final String dataMaskingPolicyName = "Default";
         final String apiVersion = "2014-04-01";
-        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, dataMaskingPolicyName, parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, dataMaskingPolicyName, apiVersion, parameters);
     }
 
     /**

@@ -20,7 +20,7 @@ import java.util.List;
 @Immutable
 public final class MetricDefinitionInner {
     /*
-     * A database metric name.
+     * The name information for the metric.
      */
     @JsonProperty(value = "name", access = JsonProperty.Access.WRITE_ONLY)
     private MetricName name;
@@ -50,7 +50,7 @@ public final class MetricDefinitionInner {
     private List<MetricAvailability> metricAvailabilities;
 
     /**
-     * Get the name property: A database metric name.
+     * Get the name property: The name information for the metric.
      * 
      * @return the name value.
      */

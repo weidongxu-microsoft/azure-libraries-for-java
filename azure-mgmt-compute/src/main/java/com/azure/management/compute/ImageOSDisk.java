@@ -16,7 +16,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class ImageOSDisk {
     /*
-     * The operating system of the osDiskImage.
+     * This property allows you to specify the type of the OS that is included
+     * in the disk if creating a VM from a custom image. <br><br> Possible
+     * values are: <br><br> **Windows** <br><br> **Linux**
      */
     @JsonProperty(value = "osType", required = true)
     private OperatingSystemTypes osType;
@@ -28,13 +30,13 @@ public final class ImageOSDisk {
     private OperatingSystemStateTypes osState;
 
     /*
-     * The snapshot property.
+     * The snapshot.
      */
     @JsonProperty(value = "snapshot")
     private SubResource snapshot;
 
     /*
-     * The managedDisk property.
+     * The managedDisk.
      */
     @JsonProperty(value = "managedDisk")
     private SubResource managedDisk;
@@ -62,19 +64,17 @@ public final class ImageOSDisk {
     private Integer diskSizeGB;
 
     /*
-     * Specifies the storage account type for the managed disk. NOTE:
-     * UltraSSD_LRS can only be used with data disks. It cannot be used with OS
-     * Disk. Standard_LRS uses Standard HDD. StandardSSD_LRS uses Standard SSD.
-     * Premium_LRS uses Premium SSD. UltraSSD_LRS uses Ultra disk. For more
-     * information regarding disks supported for Windows Virtual Machines,
-     * refer to
-     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types and, for Linux Virtual Machines, refer to https://docs.microsoft.com/en-us/azure/virtual-machines/linux/disks-types
+     * Specifies the storage account type for the managed disk. UltraSSD_LRS
+     * cannot be used with OS Disk.
      */
     @JsonProperty(value = "storageAccountType")
     private StorageAccountTypes storageAccountType;
 
     /**
-     * Get the osType property: The operating system of the osDiskImage.
+     * Get the osType property: This property allows you to specify the type of
+     * the OS that is included in the disk if creating a VM from a custom
+     * image. &lt;br&gt;&lt;br&gt; Possible values are: &lt;br&gt;&lt;br&gt;
+     * **Windows** &lt;br&gt;&lt;br&gt; **Linux**.
      * 
      * @return the osType value.
      */
@@ -83,7 +83,10 @@ public final class ImageOSDisk {
     }
 
     /**
-     * Set the osType property: The operating system of the osDiskImage.
+     * Set the osType property: This property allows you to specify the type of
+     * the OS that is included in the disk if creating a VM from a custom
+     * image. &lt;br&gt;&lt;br&gt; Possible values are: &lt;br&gt;&lt;br&gt;
+     * **Windows** &lt;br&gt;&lt;br&gt; **Linux**.
      * 
      * @param osType the osType value to set.
      * @return the ImageOSDisk object itself.
@@ -114,7 +117,7 @@ public final class ImageOSDisk {
     }
 
     /**
-     * Get the snapshot property: The snapshot property.
+     * Get the snapshot property: The snapshot.
      * 
      * @return the snapshot value.
      */
@@ -123,7 +126,7 @@ public final class ImageOSDisk {
     }
 
     /**
-     * Set the snapshot property: The snapshot property.
+     * Set the snapshot property: The snapshot.
      * 
      * @param snapshot the snapshot value to set.
      * @return the ImageOSDisk object itself.
@@ -134,7 +137,7 @@ public final class ImageOSDisk {
     }
 
     /**
-     * Get the managedDisk property: The managedDisk property.
+     * Get the managedDisk property: The managedDisk.
      * 
      * @return the managedDisk value.
      */
@@ -143,7 +146,7 @@ public final class ImageOSDisk {
     }
 
     /**
-     * Set the managedDisk property: The managedDisk property.
+     * Set the managedDisk property: The managedDisk.
      * 
      * @param managedDisk the managedDisk value to set.
      * @return the ImageOSDisk object itself.
@@ -229,12 +232,7 @@ public final class ImageOSDisk {
 
     /**
      * Get the storageAccountType property: Specifies the storage account type
-     * for the managed disk. NOTE: UltraSSD_LRS can only be used with data
-     * disks. It cannot be used with OS Disk. Standard_LRS uses Standard HDD.
-     * StandardSSD_LRS uses Standard SSD. Premium_LRS uses Premium SSD.
-     * UltraSSD_LRS uses Ultra disk. For more information regarding disks
-     * supported for Windows Virtual Machines, refer to
-     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types and, for Linux Virtual Machines, refer to https://docs.microsoft.com/en-us/azure/virtual-machines/linux/disks-types.
+     * for the managed disk. UltraSSD_LRS cannot be used with OS Disk.
      * 
      * @return the storageAccountType value.
      */
@@ -244,12 +242,7 @@ public final class ImageOSDisk {
 
     /**
      * Set the storageAccountType property: Specifies the storage account type
-     * for the managed disk. NOTE: UltraSSD_LRS can only be used with data
-     * disks. It cannot be used with OS Disk. Standard_LRS uses Standard HDD.
-     * StandardSSD_LRS uses Standard SSD. Premium_LRS uses Premium SSD.
-     * UltraSSD_LRS uses Ultra disk. For more information regarding disks
-     * supported for Windows Virtual Machines, refer to
-     * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types and, for Linux Virtual Machines, refer to https://docs.microsoft.com/en-us/azure/virtual-machines/linux/disks-types.
+     * for the managed disk. UltraSSD_LRS cannot be used with OS Disk.
      * 
      * @param storageAccountType the storageAccountType value to set.
      * @return the ImageOSDisk object itself.

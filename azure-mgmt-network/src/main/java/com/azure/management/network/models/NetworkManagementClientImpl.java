@@ -1368,13 +1368,13 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
     @Host("{$host}")
     @ServiceInterface(name = "NetworkManagementClient")
     private interface NetworkManagementClientService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/CheckDnsNameAvailability")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DnsNameAvailabilityResultInner>> checkDnsNameAvailability(@HostParam("$host") String host, @PathParam("location") String location, @QueryParam("domainNameLabel") String domainNameLabel, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/supportedSecurityProviders")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorException.class)

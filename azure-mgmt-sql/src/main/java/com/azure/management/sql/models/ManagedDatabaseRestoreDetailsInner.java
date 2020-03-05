@@ -55,7 +55,7 @@ public final class ManagedDatabaseRestoreDetailsInner {
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientManagedDatabaseRestoreDetails")
     private interface ManagedDatabaseRestoreDetailsService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/restoreDetails/{restoreDetailsName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)

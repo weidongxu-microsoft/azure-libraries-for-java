@@ -23,7 +23,7 @@ public final class DeploymentExtendedInner extends ProxyResource {
     private String location;
 
     /*
-     * Deployment properties with additional details.
+     * Deployment properties.
      */
     @JsonProperty(value = "properties")
     private DeploymentPropertiesExtended properties;
@@ -49,8 +49,7 @@ public final class DeploymentExtendedInner extends ProxyResource {
     }
 
     /**
-     * Get the properties property: Deployment properties with additional
-     * details.
+     * Get the properties property: Deployment properties.
      * 
      * @return the properties value.
      */
@@ -59,8 +58,7 @@ public final class DeploymentExtendedInner extends ProxyResource {
     }
 
     /**
-     * Set the properties property: Deployment properties with additional
-     * details.
+     * Set the properties property: Deployment properties.
      * 
      * @param properties the properties value to set.
      * @return the DeploymentExtendedInner object itself.

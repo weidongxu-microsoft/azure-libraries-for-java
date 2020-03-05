@@ -40,25 +40,25 @@ public class HostNameBindingInner extends ProxyOnlyResource {
     private String azureResourceName;
 
     /*
-     * Type of the Azure resource the hostname is assigned to.
+     * Azure resource type.
      */
     @JsonProperty(value = "properties.azureResourceType")
     private AzureResourceType azureResourceType;
 
     /*
-     * Type of the DNS record.
+     * Custom DNS record type.
      */
     @JsonProperty(value = "properties.customHostNameDnsRecordType")
     private CustomHostNameDnsRecordType customHostNameDnsRecordType;
 
     /*
-     * Type of the hostname.
+     * Hostname type.
      */
     @JsonProperty(value = "properties.hostNameType")
     private HostNameType hostNameType;
 
     /*
-     * SSL type.
+     * SSL type
      */
     @JsonProperty(value = "properties.sslState")
     private SslState sslState;
@@ -136,8 +136,7 @@ public class HostNameBindingInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the azureResourceType property: Type of the Azure resource the
-     * hostname is assigned to.
+     * Get the azureResourceType property: Azure resource type.
      * 
      * @return the azureResourceType value.
      */
@@ -146,8 +145,7 @@ public class HostNameBindingInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the azureResourceType property: Type of the Azure resource the
-     * hostname is assigned to.
+     * Set the azureResourceType property: Azure resource type.
      * 
      * @param azureResourceType the azureResourceType value to set.
      * @return the HostNameBindingInner object itself.
@@ -158,7 +156,7 @@ public class HostNameBindingInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the customHostNameDnsRecordType property: Type of the DNS record.
+     * Get the customHostNameDnsRecordType property: Custom DNS record type.
      * 
      * @return the customHostNameDnsRecordType value.
      */
@@ -167,7 +165,7 @@ public class HostNameBindingInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the customHostNameDnsRecordType property: Type of the DNS record.
+     * Set the customHostNameDnsRecordType property: Custom DNS record type.
      * 
      * @param customHostNameDnsRecordType the customHostNameDnsRecordType value
      * to set.
@@ -179,7 +177,7 @@ public class HostNameBindingInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the hostNameType property: Type of the hostname.
+     * Get the hostNameType property: Hostname type.
      * 
      * @return the hostNameType value.
      */
@@ -188,7 +186,7 @@ public class HostNameBindingInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the hostNameType property: Type of the hostname.
+     * Set the hostNameType property: Hostname type.
      * 
      * @param hostNameType the hostNameType value to set.
      * @return the HostNameBindingInner object itself.

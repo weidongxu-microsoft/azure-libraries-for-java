@@ -17,7 +17,7 @@ import java.util.List;
 @Fluent
 public final class ApplicationGatewayBackendHealthHttpSettings {
     /*
-     * Backend address pool settings of an application gateway.
+     * Reference of an ApplicationGatewayBackendHttpSettings resource.
      */
     @JsonProperty(value = "backendHttpSettings")
     private ApplicationGatewayBackendHttpSettings backendHttpSettings;
@@ -29,8 +29,8 @@ public final class ApplicationGatewayBackendHealthHttpSettings {
     private List<ApplicationGatewayBackendHealthServerInner> servers;
 
     /**
-     * Get the backendHttpSettings property: Backend address pool settings of
-     * an application gateway.
+     * Get the backendHttpSettings property: Reference of an
+     * ApplicationGatewayBackendHttpSettings resource.
      * 
      * @return the backendHttpSettings value.
      */
@@ -39,8 +39,8 @@ public final class ApplicationGatewayBackendHealthHttpSettings {
     }
 
     /**
-     * Set the backendHttpSettings property: Backend address pool settings of
-     * an application gateway.
+     * Set the backendHttpSettings property: Reference of an
+     * ApplicationGatewayBackendHttpSettings resource.
      * 
      * @param backendHttpSettings the backendHttpSettings value to set.
      * @return the ApplicationGatewayBackendHealthHttpSettings object itself.

@@ -68,55 +68,55 @@ public final class AvailabilitySetsInner implements InnerSupportsGet<Availabilit
     @Host("{$host}")
     @ServiceInterface(name = "ComputeManagementClientAvailabilitySets")
     private interface AvailabilitySetsService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<AvailabilitySetInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AvailabilitySetInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<AvailabilitySetInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") AvailabilitySetInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<AvailabilitySetInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AvailabilitySetUpdate parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<AvailabilitySetInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") AvailabilitySetUpdate parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<AvailabilitySetInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/availabilitySets")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<AvailabilitySetListResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("$expand") String expand, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<AvailabilitySetListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/vmSizes")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<VirtualMachineSizeListResultInner>> listAvailableSizes(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<AvailabilitySetListResultInner>> listBySubscriptionNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -136,7 +136,7 @@ public final class AvailabilitySetsInner implements InnerSupportsGet<Availabilit
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<AvailabilitySetInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String availabilitySetName, AvailabilitySetInner parameters) {
         final String apiVersion = "2019-03-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, availabilitySetName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, availabilitySetName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -189,7 +189,7 @@ public final class AvailabilitySetsInner implements InnerSupportsGet<Availabilit
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<AvailabilitySetInner>> updateWithResponseAsync(String resourceGroupName, String availabilitySetName, AvailabilitySetUpdate parameters) {
         final String apiVersion = "2019-03-01";
-        return service.update(this.client.getHost(), resourceGroupName, availabilitySetName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.update(this.client.getHost(), resourceGroupName, availabilitySetName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**

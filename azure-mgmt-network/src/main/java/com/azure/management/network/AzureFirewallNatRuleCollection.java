@@ -39,7 +39,7 @@ public class AzureFirewallNatRuleCollection extends SubResource {
     private Integer priority;
 
     /*
-     * AzureFirewall NAT Rule Collection Action.
+     * The action type of a NAT rule collection.
      */
     @JsonProperty(value = "properties.action")
     private AzureFirewallNatRCAction action;
@@ -51,7 +51,7 @@ public class AzureFirewallNatRuleCollection extends SubResource {
     private List<AzureFirewallNatRule> rules;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -109,7 +109,7 @@ public class AzureFirewallNatRuleCollection extends SubResource {
     }
 
     /**
-     * Get the action property: AzureFirewall NAT Rule Collection Action.
+     * Get the action property: The action type of a NAT rule collection.
      * 
      * @return the action value.
      */
@@ -118,7 +118,7 @@ public class AzureFirewallNatRuleCollection extends SubResource {
     }
 
     /**
-     * Set the action property: AzureFirewall NAT Rule Collection Action.
+     * Set the action property: The action type of a NAT rule collection.
      * 
      * @param action the action value to set.
      * @return the AzureFirewallNatRuleCollection object itself.
@@ -151,7 +151,8 @@ public class AzureFirewallNatRuleCollection extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -160,7 +161,8 @@ public class AzureFirewallNatRuleCollection extends SubResource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the AzureFirewallNatRuleCollection object itself.

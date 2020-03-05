@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Immutable
 public class RollingUpgradeStatusInfoInner extends Resource {
     /*
-     * The configuration parameters used while performing a rolling upgrade.
+     * The rolling upgrade policies applied for this upgrade.
      */
     @JsonProperty(value = "properties.policy", access = JsonProperty.Access.WRITE_ONLY)
     private RollingUpgradePolicy policy;
@@ -41,14 +41,14 @@ public class RollingUpgradeStatusInfoInner extends Resource {
     private RollingUpgradeProgressInfo progress;
 
     /*
-     * Api error.
+     * Error details for this upgrade, if there are any.
      */
     @JsonProperty(value = "properties.error", access = JsonProperty.Access.WRITE_ONLY)
     private ApiError error;
 
     /**
-     * Get the policy property: The configuration parameters used while
-     * performing a rolling upgrade.
+     * Get the policy property: The rolling upgrade policies applied for this
+     * upgrade.
      * 
      * @return the policy value.
      */
@@ -77,7 +77,8 @@ public class RollingUpgradeStatusInfoInner extends Resource {
     }
 
     /**
-     * Get the error property: Api error.
+     * Get the error property: Error details for this upgrade, if there are
+     * any.
      * 
      * @return the error value.
      */

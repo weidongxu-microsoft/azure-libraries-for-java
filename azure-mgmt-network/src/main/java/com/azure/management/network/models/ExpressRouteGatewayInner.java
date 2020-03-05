@@ -40,13 +40,13 @@ public class ExpressRouteGatewayInner extends Resource {
     private List<ExpressRouteConnectionInner> expressRouteConnections;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
 
     /*
-     * Virtual Hub identifier.
+     * The Virtual Hub where the ExpressRoute gateway is or will be deployed.
      */
     @JsonProperty(value = "properties.virtualHub")
     private VirtualHubId virtualHub;
@@ -98,7 +98,8 @@ public class ExpressRouteGatewayInner extends Resource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -107,7 +108,8 @@ public class ExpressRouteGatewayInner extends Resource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the ExpressRouteGatewayInner object itself.
@@ -118,7 +120,8 @@ public class ExpressRouteGatewayInner extends Resource {
     }
 
     /**
-     * Get the virtualHub property: Virtual Hub identifier.
+     * Get the virtualHub property: The Virtual Hub where the ExpressRoute
+     * gateway is or will be deployed.
      * 
      * @return the virtualHub value.
      */
@@ -127,7 +130,8 @@ public class ExpressRouteGatewayInner extends Resource {
     }
 
     /**
-     * Set the virtualHub property: Virtual Hub identifier.
+     * Set the virtualHub property: The Virtual Hub where the ExpressRoute
+     * gateway is or will be deployed.
      * 
      * @param virtualHub the virtualHub value to set.
      * @return the ExpressRouteGatewayInner object itself.

@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public class PrivateEndpointConnectionInner extends ProxyResource {
     /*
-     * The Private Endpoint resource.
+     * The resource of private end point.
      */
     @JsonProperty(value = "properties.privateEndpoint")
     private PrivateEndpoint privateEndpoint;
@@ -34,13 +34,13 @@ public class PrivateEndpointConnectionInner extends ProxyResource {
     private PrivateLinkServiceConnectionState privateLinkServiceConnectionState;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the private endpoint connection resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private PrivateEndpointConnectionProvisioningState provisioningState;
 
     /**
-     * Get the privateEndpoint property: The Private Endpoint resource.
+     * Get the privateEndpoint property: The resource of private end point.
      * 
      * @return the privateEndpoint value.
      */
@@ -49,7 +49,7 @@ public class PrivateEndpointConnectionInner extends ProxyResource {
     }
 
     /**
-     * Set the privateEndpoint property: The Private Endpoint resource.
+     * Set the privateEndpoint property: The resource of private end point.
      * 
      * @param privateEndpoint the privateEndpoint value to set.
      * @return the PrivateEndpointConnectionInner object itself.
@@ -85,7 +85,8 @@ public class PrivateEndpointConnectionInner extends ProxyResource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * private endpoint connection resource.
      * 
      * @return the provisioningState value.
      */
@@ -94,7 +95,8 @@ public class PrivateEndpointConnectionInner extends ProxyResource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * private endpoint connection resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the PrivateEndpointConnectionInner object itself.

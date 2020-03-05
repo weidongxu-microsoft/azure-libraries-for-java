@@ -53,7 +53,9 @@ public class GalleryApplicationInner extends Resource {
     private OffsetDateTime endOfLifeDate;
 
     /*
-     * The operating system of the osDiskImage.
+     * This property allows you to specify the supported type of the OS that
+     * application is built for. <br><br> Possible values are: <br><br>
+     * **Windows** <br><br> **Linux**
      */
     @JsonProperty(value = "properties.supportedOSType")
     private OperatingSystemTypes supportedOSType;
@@ -167,8 +169,10 @@ public class GalleryApplicationInner extends Resource {
     }
 
     /**
-     * Get the supportedOSType property: The operating system of the
-     * osDiskImage.
+     * Get the supportedOSType property: This property allows you to specify
+     * the supported type of the OS that application is built for.
+     * &lt;br&gt;&lt;br&gt; Possible values are: &lt;br&gt;&lt;br&gt;
+     * **Windows** &lt;br&gt;&lt;br&gt; **Linux**.
      * 
      * @return the supportedOSType value.
      */
@@ -177,8 +181,10 @@ public class GalleryApplicationInner extends Resource {
     }
 
     /**
-     * Set the supportedOSType property: The operating system of the
-     * osDiskImage.
+     * Set the supportedOSType property: This property allows you to specify
+     * the supported type of the OS that application is built for.
+     * &lt;br&gt;&lt;br&gt; Possible values are: &lt;br&gt;&lt;br&gt;
+     * **Windows** &lt;br&gt;&lt;br&gt; **Linux**.
      * 
      * @param supportedOSType the supportedOSType value to set.
      * @return the GalleryApplicationInner object itself.

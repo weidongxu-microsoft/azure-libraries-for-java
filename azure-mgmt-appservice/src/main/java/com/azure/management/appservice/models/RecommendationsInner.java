@@ -61,121 +61,121 @@ public final class RecommendationsInner {
     @Host("{$host}")
     @ServiceInterface(name = "WebSiteManagementClientRecommendations")
     private interface RecommendationsService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Web/recommendations")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<RecommendationCollectionInner>> list(@HostParam("$host") String host, @QueryParam("featured") Boolean featured, @QueryParam(value = "$filter", encoded = true) String filter, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Web/recommendations/reset")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> resetAllFilters(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Web/recommendations/{name}/disable")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> disableRecommendationForSubscription(@HostParam("$host") String host, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{hostingEnvironmentName}/recommendationHistory")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<RecommendationCollectionInner>> listHistoryForHostingEnvironment(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostingEnvironmentName") String hostingEnvironmentName, @QueryParam("expiredOnly") Boolean expiredOnly, @QueryParam(value = "$filter", encoded = true) String filter, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{hostingEnvironmentName}/recommendations")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<RecommendationCollectionInner>> listRecommendedRulesForHostingEnvironment(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostingEnvironmentName") String hostingEnvironmentName, @QueryParam("featured") Boolean featured, @QueryParam(value = "$filter", encoded = true) String filter, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{hostingEnvironmentName}/recommendations/disable")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> disableAllForHostingEnvironment(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("environmentName") String environmentName, @PathParam("hostingEnvironmentName") String hostingEnvironmentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{hostingEnvironmentName}/recommendations/reset")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> resetAllFiltersForHostingEnvironment(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("environmentName") String environmentName, @PathParam("hostingEnvironmentName") String hostingEnvironmentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{hostingEnvironmentName}/recommendations/{name}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<RecommendationRuleInner>> getRuleDetailsByHostingEnvironment(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostingEnvironmentName") String hostingEnvironmentName, @PathParam("name") String name, @QueryParam("updateSeen") Boolean updateSeen, @QueryParam("recommendationId") String recommendationId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{hostingEnvironmentName}/recommendations/{name}/disable")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> disableRecommendationForHostingEnvironment(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("environmentName") String environmentName, @PathParam("name") String name, @PathParam("hostingEnvironmentName") String hostingEnvironmentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/recommendationHistory")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<RecommendationCollectionInner>> listHistoryForWebApp(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("siteName") String siteName, @QueryParam("expiredOnly") Boolean expiredOnly, @QueryParam(value = "$filter", encoded = true) String filter, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/recommendations")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<RecommendationCollectionInner>> listRecommendedRulesForWebApp(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("siteName") String siteName, @QueryParam("featured") Boolean featured, @QueryParam(value = "$filter", encoded = true) String filter, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/recommendations/disable")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> disableAllForWebApp(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("siteName") String siteName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/recommendations/reset")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> resetAllFiltersForWebApp(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("siteName") String siteName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/recommendations/{name}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<RecommendationRuleInner>> getRuleDetailsByWebApp(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("siteName") String siteName, @PathParam("name") String name, @QueryParam("updateSeen") Boolean updateSeen, @QueryParam("recommendationId") String recommendationId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/recommendations/{name}/disable")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> disableRecommendationForSite(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("siteName") String siteName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<RecommendationCollectionInner>> listNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<RecommendationCollectionInner>> listHistoryForHostingEnvironmentNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<RecommendationCollectionInner>> listRecommendedRulesForHostingEnvironmentNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<RecommendationCollectionInner>> listHistoryForWebAppNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)

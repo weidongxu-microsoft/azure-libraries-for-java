@@ -25,7 +25,7 @@ public class NetworkFeaturesInner extends ProxyOnlyResource {
     private String virtualNetworkName;
 
     /*
-     * Virtual Network information contract.
+     * The Virtual Network summary view.
      */
     @JsonProperty(value = "properties.virtualNetworkConnection", access = JsonProperty.Access.WRITE_ONLY)
     private VnetInfoInner virtualNetworkConnection;
@@ -52,8 +52,8 @@ public class NetworkFeaturesInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the virtualNetworkConnection property: Virtual Network information
-     * contract.
+     * Get the virtualNetworkConnection property: The Virtual Network summary
+     * view.
      * 
      * @return the virtualNetworkConnection value.
      */

@@ -40,7 +40,7 @@ public final class UsageInner {
     private long limit;
 
     /*
-     * The usage names.
+     * The name of the type of usage.
      */
     @JsonProperty(value = "name", required = true)
     private UsageName name;
@@ -122,7 +122,7 @@ public final class UsageInner {
     }
 
     /**
-     * Get the name property: The usage names.
+     * Get the name property: The name of the type of usage.
      * 
      * @return the name value.
      */
@@ -131,7 +131,7 @@ public final class UsageInner {
     }
 
     /**
-     * Set the name property: The usage names.
+     * Set the name property: The name of the type of usage.
      * 
      * @param name the name value to set.
      * @return the UsageInner object itself.

@@ -31,7 +31,7 @@ public class JobInner extends ProxyResource {
     private Integer version;
 
     /*
-     * Scheduling properties of a job.
+     * Schedule properties of the job.
      */
     @JsonProperty(value = "properties.schedule")
     private JobSchedule schedule;
@@ -66,7 +66,7 @@ public class JobInner extends ProxyResource {
     }
 
     /**
-     * Get the schedule property: Scheduling properties of a job.
+     * Get the schedule property: Schedule properties of the job.
      * 
      * @return the schedule value.
      */
@@ -75,7 +75,7 @@ public class JobInner extends ProxyResource {
     }
 
     /**
-     * Set the schedule property: Scheduling properties of a job.
+     * Set the schedule property: Schedule properties of the job.
      * 
      * @param schedule the schedule value to set.
      * @return the JobInner object itself.

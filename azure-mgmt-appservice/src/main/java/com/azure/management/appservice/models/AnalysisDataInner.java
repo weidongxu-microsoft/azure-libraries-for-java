@@ -25,7 +25,7 @@ public final class AnalysisDataInner {
     private String source;
 
     /*
-     * Class representing detector definition
+     * Detector Definition
      */
     @JsonProperty(value = "detectorDefinition")
     private DetectorDefinitionInner detectorDefinition;
@@ -43,7 +43,7 @@ public final class AnalysisDataInner {
     private List<List<NameValuePair>> data;
 
     /*
-     * The detectorMetaData property.
+     * Detector Meta Data
      */
     @JsonProperty(value = "detectorMetaData")
     private ResponseMetaData detectorMetaData;
@@ -69,8 +69,7 @@ public final class AnalysisDataInner {
     }
 
     /**
-     * Get the detectorDefinition property: Class representing detector
-     * definition.
+     * Get the detectorDefinition property: Detector Definition.
      * 
      * @return the detectorDefinition value.
      */
@@ -79,8 +78,7 @@ public final class AnalysisDataInner {
     }
 
     /**
-     * Set the detectorDefinition property: Class representing detector
-     * definition.
+     * Set the detectorDefinition property: Detector Definition.
      * 
      * @param detectorDefinition the detectorDefinition value to set.
      * @return the AnalysisDataInner object itself.
@@ -131,7 +129,7 @@ public final class AnalysisDataInner {
     }
 
     /**
-     * Get the detectorMetaData property: The detectorMetaData property.
+     * Get the detectorMetaData property: Detector Meta Data.
      * 
      * @return the detectorMetaData value.
      */
@@ -140,7 +138,7 @@ public final class AnalysisDataInner {
     }
 
     /**
-     * Set the detectorMetaData property: The detectorMetaData property.
+     * Set the detectorMetaData property: Detector Meta Data.
      * 
      * @param detectorMetaData the detectorMetaData value to set.
      * @return the AnalysisDataInner object itself.

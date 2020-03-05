@@ -15,19 +15,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class ManagementPolicyAction {
     /*
-     * Management policy action for base blob.
+     * The management policy action for base blob
      */
     @JsonProperty(value = "baseBlob")
     private ManagementPolicyBaseBlob baseBlob;
 
     /*
-     * Management policy action for snapshot.
+     * The management policy action for snapshot
      */
     @JsonProperty(value = "snapshot")
     private ManagementPolicySnapShot snapshot;
 
     /**
-     * Get the baseBlob property: Management policy action for base blob.
+     * Get the baseBlob property: The management policy action for base blob.
      * 
      * @return the baseBlob value.
      */
@@ -36,7 +36,7 @@ public final class ManagementPolicyAction {
     }
 
     /**
-     * Set the baseBlob property: Management policy action for base blob.
+     * Set the baseBlob property: The management policy action for base blob.
      * 
      * @param baseBlob the baseBlob value to set.
      * @return the ManagementPolicyAction object itself.
@@ -47,7 +47,7 @@ public final class ManagementPolicyAction {
     }
 
     /**
-     * Get the snapshot property: Management policy action for snapshot.
+     * Get the snapshot property: The management policy action for snapshot.
      * 
      * @return the snapshot value.
      */
@@ -56,7 +56,7 @@ public final class ManagementPolicyAction {
     }
 
     /**
-     * Set the snapshot property: Management policy action for snapshot.
+     * Set the snapshot property: The management policy action for snapshot.
      * 
      * @param snapshot the snapshot value to set.
      * @return the ManagementPolicyAction object itself.

@@ -44,7 +44,7 @@ public class EncryptionProtectorInner extends ProxyResource {
     private String serverKeyName;
 
     /*
-     * The key type like 'ServiceManaged', 'AzureKeyVault'.
+     * The encryption protector type like 'ServiceManaged', 'AzureKeyVault'.
      */
     @JsonProperty(value = "properties.serverKeyType")
     private ServerKeyType serverKeyType;
@@ -110,8 +110,8 @@ public class EncryptionProtectorInner extends ProxyResource {
     }
 
     /**
-     * Get the serverKeyType property: The key type like 'ServiceManaged',
-     * 'AzureKeyVault'.
+     * Get the serverKeyType property: The encryption protector type like
+     * 'ServiceManaged', 'AzureKeyVault'.
      * 
      * @return the serverKeyType value.
      */
@@ -120,8 +120,8 @@ public class EncryptionProtectorInner extends ProxyResource {
     }
 
     /**
-     * Set the serverKeyType property: The key type like 'ServiceManaged',
-     * 'AzureKeyVault'.
+     * Set the serverKeyType property: The encryption protector type like
+     * 'ServiceManaged', 'AzureKeyVault'.
      * 
      * @param serverKeyType the serverKeyType value to set.
      * @return the EncryptionProtectorInner object itself.

@@ -38,19 +38,19 @@ public class VirtualNetworkGatewayConnectionInner extends Resource {
     private String authorizationKey;
 
     /*
-     * A common class for general resource information.
+     * The reference to virtual network gateway resource.
      */
     @JsonProperty(value = "properties.virtualNetworkGateway1", required = true)
     private VirtualNetworkGatewayInner virtualNetworkGateway1;
 
     /*
-     * A common class for general resource information.
+     * The reference to virtual network gateway resource.
      */
     @JsonProperty(value = "properties.virtualNetworkGateway2")
     private VirtualNetworkGatewayInner virtualNetworkGateway2;
 
     /*
-     * A common class for general resource information.
+     * The reference to local network gateway resource.
      */
     @JsonProperty(value = "properties.localNetworkGateway2")
     private LocalNetworkGatewayInner localNetworkGateway2;
@@ -62,7 +62,7 @@ public class VirtualNetworkGatewayConnectionInner extends Resource {
     private VirtualNetworkGatewayConnectionType connectionType;
 
     /*
-     * Gateway connection protocol.
+     * Connection protocol used for this connection.
      */
     @JsonProperty(value = "properties.connectionProtocol")
     private VirtualNetworkGatewayConnectionProtocol connectionProtocol;
@@ -104,7 +104,7 @@ public class VirtualNetworkGatewayConnectionInner extends Resource {
     private Long ingressBytesTransferred;
 
     /*
-     * Reference to another subresource.
+     * The reference to peerings resource.
      */
     @JsonProperty(value = "properties.peer")
     private SubResource peer;
@@ -196,8 +196,8 @@ public class VirtualNetworkGatewayConnectionInner extends Resource {
     }
 
     /**
-     * Get the virtualNetworkGateway1 property: A common class for general
-     * resource information.
+     * Get the virtualNetworkGateway1 property: The reference to virtual
+     * network gateway resource.
      * 
      * @return the virtualNetworkGateway1 value.
      */
@@ -206,8 +206,8 @@ public class VirtualNetworkGatewayConnectionInner extends Resource {
     }
 
     /**
-     * Set the virtualNetworkGateway1 property: A common class for general
-     * resource information.
+     * Set the virtualNetworkGateway1 property: The reference to virtual
+     * network gateway resource.
      * 
      * @param virtualNetworkGateway1 the virtualNetworkGateway1 value to set.
      * @return the VirtualNetworkGatewayConnectionInner object itself.
@@ -218,8 +218,8 @@ public class VirtualNetworkGatewayConnectionInner extends Resource {
     }
 
     /**
-     * Get the virtualNetworkGateway2 property: A common class for general
-     * resource information.
+     * Get the virtualNetworkGateway2 property: The reference to virtual
+     * network gateway resource.
      * 
      * @return the virtualNetworkGateway2 value.
      */
@@ -228,8 +228,8 @@ public class VirtualNetworkGatewayConnectionInner extends Resource {
     }
 
     /**
-     * Set the virtualNetworkGateway2 property: A common class for general
-     * resource information.
+     * Set the virtualNetworkGateway2 property: The reference to virtual
+     * network gateway resource.
      * 
      * @param virtualNetworkGateway2 the virtualNetworkGateway2 value to set.
      * @return the VirtualNetworkGatewayConnectionInner object itself.
@@ -240,8 +240,8 @@ public class VirtualNetworkGatewayConnectionInner extends Resource {
     }
 
     /**
-     * Get the localNetworkGateway2 property: A common class for general
-     * resource information.
+     * Get the localNetworkGateway2 property: The reference to local network
+     * gateway resource.
      * 
      * @return the localNetworkGateway2 value.
      */
@@ -250,8 +250,8 @@ public class VirtualNetworkGatewayConnectionInner extends Resource {
     }
 
     /**
-     * Set the localNetworkGateway2 property: A common class for general
-     * resource information.
+     * Set the localNetworkGateway2 property: The reference to local network
+     * gateway resource.
      * 
      * @param localNetworkGateway2 the localNetworkGateway2 value to set.
      * @return the VirtualNetworkGatewayConnectionInner object itself.
@@ -282,7 +282,8 @@ public class VirtualNetworkGatewayConnectionInner extends Resource {
     }
 
     /**
-     * Get the connectionProtocol property: Gateway connection protocol.
+     * Get the connectionProtocol property: Connection protocol used for this
+     * connection.
      * 
      * @return the connectionProtocol value.
      */
@@ -291,7 +292,8 @@ public class VirtualNetworkGatewayConnectionInner extends Resource {
     }
 
     /**
-     * Set the connectionProtocol property: Gateway connection protocol.
+     * Set the connectionProtocol property: Connection protocol used for this
+     * connection.
      * 
      * @param connectionProtocol the connectionProtocol value to set.
      * @return the VirtualNetworkGatewayConnectionInner object itself.
@@ -382,7 +384,7 @@ public class VirtualNetworkGatewayConnectionInner extends Resource {
     }
 
     /**
-     * Get the peer property: Reference to another subresource.
+     * Get the peer property: The reference to peerings resource.
      * 
      * @return the peer value.
      */
@@ -391,7 +393,7 @@ public class VirtualNetworkGatewayConnectionInner extends Resource {
     }
 
     /**
-     * Set the peer property: Reference to another subresource.
+     * Set the peer property: The reference to peerings resource.
      * 
      * @param peer the peer value to set.
      * @return the VirtualNetworkGatewayConnectionInner object itself.

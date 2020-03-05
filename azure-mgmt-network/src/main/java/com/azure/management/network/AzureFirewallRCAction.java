@@ -15,13 +15,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class AzureFirewallRCAction {
     /*
-     * The action type of a rule collection.
+     * The type of action.
      */
     @JsonProperty(value = "type")
     private AzureFirewallRCActionType type;
 
     /**
-     * Get the type property: The action type of a rule collection.
+     * Get the type property: The type of action.
      * 
      * @return the type value.
      */
@@ -30,7 +30,7 @@ public final class AzureFirewallRCAction {
     }
 
     /**
-     * Set the type property: The action type of a rule collection.
+     * Set the type property: The type of action.
      * 
      * @param type the type value to set.
      * @return the AzureFirewallRCAction object itself.

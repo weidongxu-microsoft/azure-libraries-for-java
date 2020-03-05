@@ -76,7 +76,7 @@ public class AppServiceCertificateOrderPatchResource extends ProxyOnlyResource {
     private CertificateOrderStatus status;
 
     /*
-     * SSL certificate details.
+     * Signed certificate.
      */
     @JsonProperty(value = "properties.signedCertificate", access = JsonProperty.Access.WRITE_ONLY)
     private CertificateDetails signedCertificate;
@@ -88,13 +88,13 @@ public class AppServiceCertificateOrderPatchResource extends ProxyOnlyResource {
     private String csr;
 
     /*
-     * SSL certificate details.
+     * Intermediate certificate.
      */
     @JsonProperty(value = "properties.intermediate", access = JsonProperty.Access.WRITE_ONLY)
     private CertificateDetails intermediate;
 
     /*
-     * SSL certificate details.
+     * Root certificate.
      */
     @JsonProperty(value = "properties.root", access = JsonProperty.Access.WRITE_ONLY)
     private CertificateDetails root;
@@ -291,7 +291,7 @@ public class AppServiceCertificateOrderPatchResource extends ProxyOnlyResource {
     }
 
     /**
-     * Get the signedCertificate property: SSL certificate details.
+     * Get the signedCertificate property: Signed certificate.
      * 
      * @return the signedCertificate value.
      */
@@ -320,7 +320,7 @@ public class AppServiceCertificateOrderPatchResource extends ProxyOnlyResource {
     }
 
     /**
-     * Get the intermediate property: SSL certificate details.
+     * Get the intermediate property: Intermediate certificate.
      * 
      * @return the intermediate value.
      */
@@ -329,7 +329,7 @@ public class AppServiceCertificateOrderPatchResource extends ProxyOnlyResource {
     }
 
     /**
-     * Get the root property: SSL certificate details.
+     * Get the root property: Root certificate.
      * 
      * @return the root value.
      */

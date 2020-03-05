@@ -46,13 +46,15 @@ public class VirtualNetworkTapInner extends Resource {
     private String provisioningState;
 
     /*
-     * IPConfiguration in a network interface.
+     * The reference to the private IP Address of the collector nic that will
+     * receive the tap.
      */
     @JsonProperty(value = "properties.destinationNetworkInterfaceIPConfiguration")
     private NetworkInterfaceIPConfigurationInner destinationNetworkInterfaceIPConfiguration;
 
     /*
-     * Frontend IP address of the load balancer.
+     * The reference to the private IP address on the internal Load Balancer
+     * that will receive the tap.
      */
     @JsonProperty(value = "properties.destinationLoadBalancerFrontEndIPConfiguration")
     private FrontendIPConfigurationInner destinationLoadBalancerFrontEndIPConfiguration;
@@ -124,8 +126,9 @@ public class VirtualNetworkTapInner extends Resource {
     }
 
     /**
-     * Get the destinationNetworkInterfaceIPConfiguration property:
-     * IPConfiguration in a network interface.
+     * Get the destinationNetworkInterfaceIPConfiguration property: The
+     * reference to the private IP Address of the collector nic that will
+     * receive the tap.
      * 
      * @return the destinationNetworkInterfaceIPConfiguration value.
      */
@@ -134,8 +137,9 @@ public class VirtualNetworkTapInner extends Resource {
     }
 
     /**
-     * Set the destinationNetworkInterfaceIPConfiguration property:
-     * IPConfiguration in a network interface.
+     * Set the destinationNetworkInterfaceIPConfiguration property: The
+     * reference to the private IP Address of the collector nic that will
+     * receive the tap.
      * 
      * @param destinationNetworkInterfaceIPConfiguration the
      * destinationNetworkInterfaceIPConfiguration value to set.
@@ -147,8 +151,9 @@ public class VirtualNetworkTapInner extends Resource {
     }
 
     /**
-     * Get the destinationLoadBalancerFrontEndIPConfiguration property:
-     * Frontend IP address of the load balancer.
+     * Get the destinationLoadBalancerFrontEndIPConfiguration property: The
+     * reference to the private IP address on the internal Load Balancer that
+     * will receive the tap.
      * 
      * @return the destinationLoadBalancerFrontEndIPConfiguration value.
      */
@@ -157,8 +162,9 @@ public class VirtualNetworkTapInner extends Resource {
     }
 
     /**
-     * Set the destinationLoadBalancerFrontEndIPConfiguration property:
-     * Frontend IP address of the load balancer.
+     * Set the destinationLoadBalancerFrontEndIPConfiguration property: The
+     * reference to the private IP address on the internal Load Balancer that
+     * will receive the tap.
      * 
      * @param destinationLoadBalancerFrontEndIPConfiguration the
      * destinationLoadBalancerFrontEndIPConfiguration value to set.

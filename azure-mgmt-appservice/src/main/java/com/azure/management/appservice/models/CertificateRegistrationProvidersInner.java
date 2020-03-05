@@ -59,13 +59,13 @@ public final class CertificateRegistrationProvidersInner {
     @Host("{$host}")
     @ServiceInterface(name = "WebSiteManagementClientCertificateRegistrationProviders")
     private interface CertificateRegistrationProvidersService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/providers/Microsoft.CertificateRegistration/operations")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<CsmOperationCollectionInner>> listOperations(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)

@@ -34,19 +34,19 @@ import java.util.List;
 @Fluent
 public class StorageAccountInner extends Resource {
     /*
-     * The SKU of the storage account.
+     * Gets the SKU.
      */
     @JsonProperty(value = "sku", access = JsonProperty.Access.WRITE_ONLY)
     private Sku sku;
 
     /*
-     * Indicates the type of storage account.
+     * Gets the Kind.
      */
     @JsonProperty(value = "kind", access = JsonProperty.Access.WRITE_ONLY)
     private Kind kind;
 
     /*
-     * Identity for the resource.
+     * The identity of the resource.
      */
     @JsonProperty(value = "identity")
     private Identity identity;
@@ -59,8 +59,9 @@ public class StorageAccountInner extends Resource {
     private ProvisioningState provisioningState;
 
     /*
-     * The URIs that are used to perform a retrieval of a public blob, queue,
-     * table, web or dfs object.
+     * Gets the URLs that are used to perform a retrieval of a public blob,
+     * queue, or table object. Note that Standard_ZRS and Premium_LRS accounts
+     * only return the blob endpoint.
      */
     @JsonProperty(value = "properties.primaryEndpoints", access = JsonProperty.Access.WRITE_ONLY)
     private Endpoints primaryEndpoints;
@@ -96,8 +97,9 @@ public class StorageAccountInner extends Resource {
     private String secondaryLocation;
 
     /*
-     * Gets the status indicating whether the primary location of the storage
-     * account is available or unavailable.
+     * Gets the status indicating whether the secondary location of the storage
+     * account is available or unavailable. Only available if the SKU name is
+     * Standard_GRS or Standard_RAGRS.
      */
     @JsonProperty(value = "properties.statusOfSecondary", access = JsonProperty.Access.WRITE_ONLY)
     private AccountStatus statusOfSecondary;
@@ -109,21 +111,22 @@ public class StorageAccountInner extends Resource {
     private OffsetDateTime creationTime;
 
     /*
-     * The custom domain assigned to this storage account. This can be set via
-     * Update.
+     * Gets the custom domain the user assigned to this storage account.
      */
     @JsonProperty(value = "properties.customDomain", access = JsonProperty.Access.WRITE_ONLY)
     private CustomDomain customDomain;
 
     /*
-     * The URIs that are used to perform a retrieval of a public blob, queue,
-     * table, web or dfs object.
+     * Gets the URLs that are used to perform a retrieval of a public blob,
+     * queue, or table object from the secondary location of the storage
+     * account. Only available if the SKU name is Standard_RAGRS.
      */
     @JsonProperty(value = "properties.secondaryEndpoints", access = JsonProperty.Access.WRITE_ONLY)
     private Endpoints secondaryEndpoints;
 
     /*
-     * The encryption settings on the storage account.
+     * Gets the encryption settings on the account. If unspecified, the account
+     * is unencrypted.
      */
     @JsonProperty(value = "properties.encryption", access = JsonProperty.Access.WRITE_ONLY)
     private Encryption encryption;
@@ -136,7 +139,7 @@ public class StorageAccountInner extends Resource {
     private AccessTier accessTier;
 
     /*
-     * Settings for Azure Files identity based authentication.
+     * Provides the identity based authentication settings for Azure Files.
      */
     @JsonProperty(value = "properties.azureFilesIdentityBasedAuthentication")
     private AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication;
@@ -160,9 +163,7 @@ public class StorageAccountInner extends Resource {
     private Boolean isHnsEnabled;
 
     /*
-     * Statistics related to replication for storage account's Blob, Table,
-     * Queue and File services. It is only available when geo-redundant
-     * replication is enabled for the storage account.
+     * Geo Replication Stats
      */
     @JsonProperty(value = "properties.geoReplicationStats", access = JsonProperty.Access.WRITE_ONLY)
     private GeoReplicationStats geoReplicationStats;
@@ -189,21 +190,20 @@ public class StorageAccountInner extends Resource {
     private List<PrivateEndpointConnectionInner> privateEndpointConnections;
 
     /*
-     * Routing preference defines the type of network, either microsoft or
-     * internet routing to be used to deliver the user data, the default option
-     * is microsoft routing
+     * Maintains information about the network routing choice opted by the user
+     * for data transfer
      */
     @JsonProperty(value = "properties.routingPreference")
     private RoutingPreference routingPreference;
 
     /*
-     * Blob restore status.
+     * Blob restore status
      */
     @JsonProperty(value = "properties.blobRestoreStatus", access = JsonProperty.Access.WRITE_ONLY)
     private BlobRestoreStatusInner blobRestoreStatus;
 
     /**
-     * Get the sku property: The SKU of the storage account.
+     * Get the sku property: Gets the SKU.
      * 
      * @return the sku value.
      */
@@ -212,7 +212,7 @@ public class StorageAccountInner extends Resource {
     }
 
     /**
-     * Get the kind property: Indicates the type of storage account.
+     * Get the kind property: Gets the Kind.
      * 
      * @return the kind value.
      */
@@ -221,7 +221,7 @@ public class StorageAccountInner extends Resource {
     }
 
     /**
-     * Get the identity property: Identity for the resource.
+     * Get the identity property: The identity of the resource.
      * 
      * @return the identity value.
      */
@@ -230,7 +230,7 @@ public class StorageAccountInner extends Resource {
     }
 
     /**
-     * Set the identity property: Identity for the resource.
+     * Set the identity property: The identity of the resource.
      * 
      * @param identity the identity value to set.
      * @return the StorageAccountInner object itself.
@@ -251,8 +251,9 @@ public class StorageAccountInner extends Resource {
     }
 
     /**
-     * Get the primaryEndpoints property: The URIs that are used to perform a
-     * retrieval of a public blob, queue, table, web or dfs object.
+     * Get the primaryEndpoints property: Gets the URLs that are used to
+     * perform a retrieval of a public blob, queue, or table object. Note that
+     * Standard_ZRS and Premium_LRS accounts only return the blob endpoint.
      * 
      * @return the primaryEndpoints value.
      */
@@ -306,7 +307,9 @@ public class StorageAccountInner extends Resource {
 
     /**
      * Get the statusOfSecondary property: Gets the status indicating whether
-     * the primary location of the storage account is available or unavailable.
+     * the secondary location of the storage account is available or
+     * unavailable. Only available if the SKU name is Standard_GRS or
+     * Standard_RAGRS.
      * 
      * @return the statusOfSecondary value.
      */
@@ -325,8 +328,8 @@ public class StorageAccountInner extends Resource {
     }
 
     /**
-     * Get the customDomain property: The custom domain assigned to this
-     * storage account. This can be set via Update.
+     * Get the customDomain property: Gets the custom domain the user assigned
+     * to this storage account.
      * 
      * @return the customDomain value.
      */
@@ -335,8 +338,10 @@ public class StorageAccountInner extends Resource {
     }
 
     /**
-     * Get the secondaryEndpoints property: The URIs that are used to perform a
-     * retrieval of a public blob, queue, table, web or dfs object.
+     * Get the secondaryEndpoints property: Gets the URLs that are used to
+     * perform a retrieval of a public blob, queue, or table object from the
+     * secondary location of the storage account. Only available if the SKU
+     * name is Standard_RAGRS.
      * 
      * @return the secondaryEndpoints value.
      */
@@ -345,8 +350,8 @@ public class StorageAccountInner extends Resource {
     }
 
     /**
-     * Get the encryption property: The encryption settings on the storage
-     * account.
+     * Get the encryption property: Gets the encryption settings on the
+     * account. If unspecified, the account is unencrypted.
      * 
      * @return the encryption value.
      */
@@ -365,8 +370,8 @@ public class StorageAccountInner extends Resource {
     }
 
     /**
-     * Get the azureFilesIdentityBasedAuthentication property: Settings for
-     * Azure Files identity based authentication.
+     * Get the azureFilesIdentityBasedAuthentication property: Provides the
+     * identity based authentication settings for Azure Files.
      * 
      * @return the azureFilesIdentityBasedAuthentication value.
      */
@@ -375,8 +380,8 @@ public class StorageAccountInner extends Resource {
     }
 
     /**
-     * Set the azureFilesIdentityBasedAuthentication property: Settings for
-     * Azure Files identity based authentication.
+     * Set the azureFilesIdentityBasedAuthentication property: Provides the
+     * identity based authentication settings for Azure Files.
      * 
      * @param azureFilesIdentityBasedAuthentication the
      * azureFilesIdentityBasedAuthentication value to set.
@@ -441,10 +446,7 @@ public class StorageAccountInner extends Resource {
     }
 
     /**
-     * Get the geoReplicationStats property: Statistics related to replication
-     * for storage account's Blob, Table, Queue and File services. It is only
-     * available when geo-redundant replication is enabled for the storage
-     * account.
+     * Get the geoReplicationStats property: Geo Replication Stats.
      * 
      * @return the geoReplicationStats value.
      */
@@ -495,9 +497,8 @@ public class StorageAccountInner extends Resource {
     }
 
     /**
-     * Get the routingPreference property: Routing preference defines the type
-     * of network, either microsoft or internet routing to be used to deliver
-     * the user data, the default option is microsoft routing.
+     * Get the routingPreference property: Maintains information about the
+     * network routing choice opted by the user for data transfer.
      * 
      * @return the routingPreference value.
      */
@@ -506,9 +507,8 @@ public class StorageAccountInner extends Resource {
     }
 
     /**
-     * Set the routingPreference property: Routing preference defines the type
-     * of network, either microsoft or internet routing to be used to deliver
-     * the user data, the default option is microsoft routing.
+     * Set the routingPreference property: Maintains information about the
+     * network routing choice opted by the user for data transfer.
      * 
      * @param routingPreference the routingPreference value to set.
      * @return the StorageAccountInner object itself.

@@ -29,7 +29,7 @@ public final class ResourceSkuRestrictions {
     private List<String> values;
 
     /*
-     * The restrictionInfo property.
+     * The information about the restriction where the SKU cannot be used.
      */
     @JsonProperty(value = "restrictionInfo", access = JsonProperty.Access.WRITE_ONLY)
     private ResourceSkuRestrictionInfo restrictionInfo;
@@ -61,7 +61,8 @@ public final class ResourceSkuRestrictions {
     }
 
     /**
-     * Get the restrictionInfo property: The restrictionInfo property.
+     * Get the restrictionInfo property: The information about the restriction
+     * where the SKU cannot be used.
      * 
      * @return the restrictionInfo value.
      */

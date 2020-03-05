@@ -34,7 +34,7 @@ public final class EditionCapability {
     private Boolean zoneRedundant;
 
     /*
-     * The read scale capability.
+     * The read scale capability for the edition.
      */
     @JsonProperty(value = "readScale", access = JsonProperty.Access.WRITE_ONLY)
     private ReadScaleCapability readScale;
@@ -87,7 +87,7 @@ public final class EditionCapability {
     }
 
     /**
-     * Get the readScale property: The read scale capability.
+     * Get the readScale property: The read scale capability for the edition.
      * 
      * @return the readScale value.
      */

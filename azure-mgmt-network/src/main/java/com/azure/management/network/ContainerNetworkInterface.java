@@ -37,13 +37,15 @@ public class ContainerNetworkInterface extends SubResource {
     private String etag;
 
     /*
-     * Container network interface configuration child resource.
+     * Container network interface configuration from which this container
+     * network interface is created.
      */
     @JsonProperty(value = "properties.containerNetworkInterfaceConfiguration")
     private ContainerNetworkInterfaceConfiguration containerNetworkInterfaceConfiguration;
 
     /*
-     * Reference to container resource in remote resource provider.
+     * Reference to the container to which this container network interface is
+     * attached.
      */
     @JsonProperty(value = "properties.container")
     private Container container;
@@ -115,7 +117,8 @@ public class ContainerNetworkInterface extends SubResource {
 
     /**
      * Get the containerNetworkInterfaceConfiguration property: Container
-     * network interface configuration child resource.
+     * network interface configuration from which this container network
+     * interface is created.
      * 
      * @return the containerNetworkInterfaceConfiguration value.
      */
@@ -125,7 +128,8 @@ public class ContainerNetworkInterface extends SubResource {
 
     /**
      * Set the containerNetworkInterfaceConfiguration property: Container
-     * network interface configuration child resource.
+     * network interface configuration from which this container network
+     * interface is created.
      * 
      * @param containerNetworkInterfaceConfiguration the
      * containerNetworkInterfaceConfiguration value to set.
@@ -137,8 +141,8 @@ public class ContainerNetworkInterface extends SubResource {
     }
 
     /**
-     * Get the container property: Reference to container resource in remote
-     * resource provider.
+     * Get the container property: Reference to the container to which this
+     * container network interface is attached.
      * 
      * @return the container value.
      */
@@ -147,8 +151,8 @@ public class ContainerNetworkInterface extends SubResource {
     }
 
     /**
-     * Set the container property: Reference to container resource in remote
-     * resource provider.
+     * Set the container property: Reference to the container to which this
+     * container network interface is attached.
      * 
      * @param container the container value to set.
      * @return the ContainerNetworkInterface object itself.

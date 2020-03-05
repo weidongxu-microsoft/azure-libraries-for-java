@@ -16,18 +16,13 @@ import java.util.List;
 @Fluent
 public final class VirtualMachineScaleSetUpdateStorageProfile {
     /*
-     * Specifies information about the image to use. You can specify
-     * information about platform images, marketplace images, or virtual
-     * machine images. This element is required when you want to use a platform
-     * image, marketplace image, or virtual machine image, but is not used in
-     * other creation operations.
+     * The image reference.
      */
     @JsonProperty(value = "imageReference")
     private ImageReference imageReference;
 
     /*
-     * Describes virtual machine scale set operating system disk Update Object.
-     * This should be used for Updating VMSS OS Disk.
+     * The OS disk.
      */
     @JsonProperty(value = "osDisk")
     private VirtualMachineScaleSetUpdateOSDisk osDisk;
@@ -39,11 +34,7 @@ public final class VirtualMachineScaleSetUpdateStorageProfile {
     private List<VirtualMachineScaleSetDataDisk> dataDisks;
 
     /**
-     * Get the imageReference property: Specifies information about the image
-     * to use. You can specify information about platform images, marketplace
-     * images, or virtual machine images. This element is required when you
-     * want to use a platform image, marketplace image, or virtual machine
-     * image, but is not used in other creation operations.
+     * Get the imageReference property: The image reference.
      * 
      * @return the imageReference value.
      */
@@ -52,11 +43,7 @@ public final class VirtualMachineScaleSetUpdateStorageProfile {
     }
 
     /**
-     * Set the imageReference property: Specifies information about the image
-     * to use. You can specify information about platform images, marketplace
-     * images, or virtual machine images. This element is required when you
-     * want to use a platform image, marketplace image, or virtual machine
-     * image, but is not used in other creation operations.
+     * Set the imageReference property: The image reference.
      * 
      * @param imageReference the imageReference value to set.
      * @return the VirtualMachineScaleSetUpdateStorageProfile object itself.
@@ -67,9 +54,7 @@ public final class VirtualMachineScaleSetUpdateStorageProfile {
     }
 
     /**
-     * Get the osDisk property: Describes virtual machine scale set operating
-     * system disk Update Object. This should be used for Updating VMSS OS
-     * Disk.
+     * Get the osDisk property: The OS disk.
      * 
      * @return the osDisk value.
      */
@@ -78,9 +63,7 @@ public final class VirtualMachineScaleSetUpdateStorageProfile {
     }
 
     /**
-     * Set the osDisk property: Describes virtual machine scale set operating
-     * system disk Update Object. This should be used for Updating VMSS OS
-     * Disk.
+     * Set the osDisk property: The OS disk.
      * 
      * @param osDisk the osDisk value to set.
      * @return the VirtualMachineScaleSetUpdateStorageProfile object itself.

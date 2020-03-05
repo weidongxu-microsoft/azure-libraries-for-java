@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Immutable
 public class MigrateMySqlStatusInner extends ProxyOnlyResource {
     /*
-     * The current status of the operation.
+     * Status of the migration task.
      */
     @JsonProperty(value = "properties.migrationOperationStatus", access = JsonProperty.Access.WRITE_ONLY)
     private OperationStatus migrationOperationStatus;
@@ -37,8 +37,7 @@ public class MigrateMySqlStatusInner extends ProxyOnlyResource {
     private Boolean localMySqlEnabled;
 
     /**
-     * Get the migrationOperationStatus property: The current status of the
-     * operation.
+     * Get the migrationOperationStatus property: Status of the migration task.
      * 
      * @return the migrationOperationStatus value.
      */

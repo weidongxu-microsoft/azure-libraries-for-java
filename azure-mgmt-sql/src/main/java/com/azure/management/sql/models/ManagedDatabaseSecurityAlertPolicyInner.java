@@ -21,8 +21,8 @@ import java.util.List;
 @Fluent
 public class ManagedDatabaseSecurityAlertPolicyInner extends ProxyResource {
     /*
-     * Specifies the state of the policy. If state is Enabled, storageEndpoint
-     * and storageAccountAccessKey are required.
+     * Specifies the state of the policy, whether it is enabled or disabled or
+     * a policy has not been applied yet on the specific database.
      */
     @JsonProperty(value = "properties.state")
     private SecurityAlertPolicyState state;
@@ -75,8 +75,9 @@ public class ManagedDatabaseSecurityAlertPolicyInner extends ProxyResource {
     private OffsetDateTime creationTime;
 
     /**
-     * Get the state property: Specifies the state of the policy. If state is
-     * Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Get the state property: Specifies the state of the policy, whether it is
+     * enabled or disabled or a policy has not been applied yet on the specific
+     * database.
      * 
      * @return the state value.
      */
@@ -85,8 +86,9 @@ public class ManagedDatabaseSecurityAlertPolicyInner extends ProxyResource {
     }
 
     /**
-     * Set the state property: Specifies the state of the policy. If state is
-     * Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Set the state property: Specifies the state of the policy, whether it is
+     * enabled or disabled or a policy has not been applied yet on the specific
+     * database.
      * 
      * @param state the state value to set.
      * @return the ManagedDatabaseSecurityAlertPolicyInner object itself.

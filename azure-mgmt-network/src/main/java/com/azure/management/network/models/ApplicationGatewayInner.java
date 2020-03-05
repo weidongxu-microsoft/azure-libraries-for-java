@@ -47,19 +47,19 @@ public class ApplicationGatewayInner extends Resource {
     private List<String> zones;
 
     /*
-     * Identity for the resource.
+     * The identity of the application gateway, if configured.
      */
     @JsonProperty(value = "identity")
     private ManagedServiceIdentity identity;
 
     /*
-     * SKU of an application gateway.
+     * SKU of the application gateway resource.
      */
     @JsonProperty(value = "properties.sku")
     private ApplicationGatewaySku sku;
 
     /*
-     * Application Gateway Ssl policy.
+     * SSL policy of the application gateway resource.
      */
     @JsonProperty(value = "properties.sslPolicy")
     private ApplicationGatewaySslPolicy sslPolicy;
@@ -177,13 +177,13 @@ public class ApplicationGatewayInner extends Resource {
     private List<ApplicationGatewayRedirectConfigurationInner> redirectConfigurations;
 
     /*
-     * Application gateway web application firewall configuration.
+     * Web application firewall configuration.
      */
     @JsonProperty(value = "properties.webApplicationFirewallConfiguration")
     private ApplicationGatewayWebApplicationFirewallConfiguration webApplicationFirewallConfiguration;
 
     /*
-     * Reference to another subresource.
+     * Reference of the FirewallPolicy resource.
      */
     @JsonProperty(value = "properties.firewallPolicy")
     private SubResource firewallPolicy;
@@ -201,7 +201,7 @@ public class ApplicationGatewayInner extends Resource {
     private Boolean enableFips;
 
     /*
-     * Application Gateway autoscale configuration.
+     * Autoscale Configuration.
      */
     @JsonProperty(value = "properties.autoscaleConfiguration")
     private ApplicationGatewayAutoscaleConfiguration autoscaleConfiguration;
@@ -276,7 +276,8 @@ public class ApplicationGatewayInner extends Resource {
     }
 
     /**
-     * Get the identity property: Identity for the resource.
+     * Get the identity property: The identity of the application gateway, if
+     * configured.
      * 
      * @return the identity value.
      */
@@ -285,7 +286,8 @@ public class ApplicationGatewayInner extends Resource {
     }
 
     /**
-     * Set the identity property: Identity for the resource.
+     * Set the identity property: The identity of the application gateway, if
+     * configured.
      * 
      * @param identity the identity value to set.
      * @return the ApplicationGatewayInner object itself.
@@ -296,7 +298,7 @@ public class ApplicationGatewayInner extends Resource {
     }
 
     /**
-     * Get the sku property: SKU of an application gateway.
+     * Get the sku property: SKU of the application gateway resource.
      * 
      * @return the sku value.
      */
@@ -305,7 +307,7 @@ public class ApplicationGatewayInner extends Resource {
     }
 
     /**
-     * Set the sku property: SKU of an application gateway.
+     * Set the sku property: SKU of the application gateway resource.
      * 
      * @param sku the sku value to set.
      * @return the ApplicationGatewayInner object itself.
@@ -316,7 +318,8 @@ public class ApplicationGatewayInner extends Resource {
     }
 
     /**
-     * Get the sslPolicy property: Application Gateway Ssl policy.
+     * Get the sslPolicy property: SSL policy of the application gateway
+     * resource.
      * 
      * @return the sslPolicy value.
      */
@@ -325,7 +328,8 @@ public class ApplicationGatewayInner extends Resource {
     }
 
     /**
-     * Set the sslPolicy property: Application Gateway Ssl policy.
+     * Set the sslPolicy property: SSL policy of the application gateway
+     * resource.
      * 
      * @param sslPolicy the sslPolicy value to set.
      * @return the ApplicationGatewayInner object itself.
@@ -689,8 +693,8 @@ public class ApplicationGatewayInner extends Resource {
     }
 
     /**
-     * Get the webApplicationFirewallConfiguration property: Application
-     * gateway web application firewall configuration.
+     * Get the webApplicationFirewallConfiguration property: Web application
+     * firewall configuration.
      * 
      * @return the webApplicationFirewallConfiguration value.
      */
@@ -699,8 +703,8 @@ public class ApplicationGatewayInner extends Resource {
     }
 
     /**
-     * Set the webApplicationFirewallConfiguration property: Application
-     * gateway web application firewall configuration.
+     * Set the webApplicationFirewallConfiguration property: Web application
+     * firewall configuration.
      * 
      * @param webApplicationFirewallConfiguration the
      * webApplicationFirewallConfiguration value to set.
@@ -712,7 +716,8 @@ public class ApplicationGatewayInner extends Resource {
     }
 
     /**
-     * Get the firewallPolicy property: Reference to another subresource.
+     * Get the firewallPolicy property: Reference of the FirewallPolicy
+     * resource.
      * 
      * @return the firewallPolicy value.
      */
@@ -721,7 +726,8 @@ public class ApplicationGatewayInner extends Resource {
     }
 
     /**
-     * Set the firewallPolicy property: Reference to another subresource.
+     * Set the firewallPolicy property: Reference of the FirewallPolicy
+     * resource.
      * 
      * @param firewallPolicy the firewallPolicy value to set.
      * @return the ApplicationGatewayInner object itself.
@@ -776,8 +782,7 @@ public class ApplicationGatewayInner extends Resource {
     }
 
     /**
-     * Get the autoscaleConfiguration property: Application Gateway autoscale
-     * configuration.
+     * Get the autoscaleConfiguration property: Autoscale Configuration.
      * 
      * @return the autoscaleConfiguration value.
      */
@@ -786,8 +791,7 @@ public class ApplicationGatewayInner extends Resource {
     }
 
     /**
-     * Set the autoscaleConfiguration property: Application Gateway autoscale
-     * configuration.
+     * Set the autoscaleConfiguration property: Autoscale Configuration.
      * 
      * @param autoscaleConfiguration the autoscaleConfiguration value to set.
      * @return the ApplicationGatewayInner object itself.

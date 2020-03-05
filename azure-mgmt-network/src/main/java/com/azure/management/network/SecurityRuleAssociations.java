@@ -17,7 +17,7 @@ import java.util.List;
 @Fluent
 public final class SecurityRuleAssociations {
     /*
-     * Network interface and its custom security rules.
+     * Network interface and it's custom security rules.
      */
     @JsonProperty(value = "networkInterfaceAssociation")
     private NetworkInterfaceAssociation networkInterfaceAssociation;
@@ -41,7 +41,7 @@ public final class SecurityRuleAssociations {
     private List<EffectiveNetworkSecurityRule> effectiveSecurityRules;
 
     /**
-     * Get the networkInterfaceAssociation property: Network interface and its
+     * Get the networkInterfaceAssociation property: Network interface and it's
      * custom security rules.
      * 
      * @return the networkInterfaceAssociation value.
@@ -51,7 +51,7 @@ public final class SecurityRuleAssociations {
     }
 
     /**
-     * Set the networkInterfaceAssociation property: Network interface and its
+     * Set the networkInterfaceAssociation property: Network interface and it's
      * custom security rules.
      * 
      * @param networkInterfaceAssociation the networkInterfaceAssociation value

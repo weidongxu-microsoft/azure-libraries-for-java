@@ -61,13 +61,13 @@ public final class DataMaskingRulesInner {
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientDataMaskingRules")
     private interface DataMaskingRulesService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DataMaskingRuleInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("dataMaskingPolicyName") String dataMaskingPolicyName, @PathParam("dataMaskingRuleName") String dataMaskingRuleName, @BodyParam("application/json") DataMaskingRuleInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DataMaskingRuleInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("dataMaskingPolicyName") String dataMaskingPolicyName, @PathParam("dataMaskingRuleName") String dataMaskingRuleName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DataMaskingRuleInner parameters);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -90,7 +90,7 @@ public final class DataMaskingRulesInner {
     public Mono<SimpleResponse<DataMaskingRuleInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String serverName, String databaseName, String dataMaskingRuleName, DataMaskingRuleInner parameters) {
         final String dataMaskingPolicyName = "Default";
         final String apiVersion = "2014-04-01";
-        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, dataMaskingPolicyName, dataMaskingRuleName, parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, dataMaskingPolicyName, dataMaskingRuleName, apiVersion, parameters);
     }
 
     /**

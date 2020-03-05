@@ -37,7 +37,7 @@ public class NetworkInterfaceTapConfigurationInner extends SubResource {
     private String type;
 
     /*
-     * Virtual Network Tap resource.
+     * The reference of the Virtual Network Tap resource.
      */
     @JsonProperty(value = "properties.virtualNetworkTap")
     private VirtualNetworkTapInner virtualNetworkTap;
@@ -103,7 +103,8 @@ public class NetworkInterfaceTapConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the virtualNetworkTap property: Virtual Network Tap resource.
+     * Get the virtualNetworkTap property: The reference of the Virtual Network
+     * Tap resource.
      * 
      * @return the virtualNetworkTap value.
      */
@@ -112,7 +113,8 @@ public class NetworkInterfaceTapConfigurationInner extends SubResource {
     }
 
     /**
-     * Set the virtualNetworkTap property: Virtual Network Tap resource.
+     * Set the virtualNetworkTap property: The reference of the Virtual Network
+     * Tap resource.
      * 
      * @param virtualNetworkTap the virtualNetworkTap value to set.
      * @return the NetworkInterfaceTapConfigurationInner object itself.

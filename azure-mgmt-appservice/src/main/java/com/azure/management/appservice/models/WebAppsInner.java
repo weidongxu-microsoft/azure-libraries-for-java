@@ -87,2701 +87,2701 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
     @Host("{$host}")
     @ServiceInterface(name = "WebSiteManagementClientWebApps")
     private interface WebAppsService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Web/sites")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebAppCollectionInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebAppCollectionInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("includeSlots") Boolean includeSlots, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteInner siteEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SiteInner siteEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}")
         @ExpectedResponses({200, 204, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam("deleteMetrics") Boolean deleteMetrics, @QueryParam("deleteEmptyServerFarm") Boolean deleteEmptyServerFarm, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SiteInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SitePatchResourceInner siteEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SiteInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SitePatchResourceInner siteEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/analyzeCustomHostname")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<CustomHostnameAnalysisResultInner>> analyzeCustomHostname(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam("hostName") String hostName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/applySlotConfig")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> applySlotConfigToProduction(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CsmSlotEntity slotSwapEntity, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> applySlotConfigToProduction(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CsmSlotEntity slotSwapEntity);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backup")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<BackupItemInner>> backup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BackupRequestInner request, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<BackupItemInner>> backup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") BackupRequestInner request);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<BackupItemCollectionInner>> listBackups(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<BackupItemInner>> getBackupStatus(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("backupId") String backupId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteBackup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("backupId") String backupId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<BackupItemInner>> listBackupStatusSecrets(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("backupId") String backupId, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BackupRequestInner request, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<BackupItemInner>> listBackupStatusSecrets(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("backupId") String backupId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") BackupRequestInner request);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}/restore")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> restore(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("backupId") String backupId, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RestoreRequestInner request, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> restore(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("backupId") String backupId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RestoreRequestInner request);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteConfigResourceCollectionInner>> listConfigurations(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/appsettings")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<StringDictionaryInner>> updateApplicationSettings(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") StringDictionaryInner appSettings, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<StringDictionaryInner>> updateApplicationSettings(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") StringDictionaryInner appSettings);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/appsettings/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<StringDictionaryInner>> listApplicationSettings(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettings")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SiteAuthSettingsInner>> updateAuthSettings(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteAuthSettingsInner siteAuthSettings, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SiteAuthSettingsInner>> updateAuthSettings(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SiteAuthSettingsInner siteAuthSettings);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettings/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteAuthSettingsInner>> getAuthSettings(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/azurestorageaccounts")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<AzureStoragePropertyDictionaryResourceInner>> updateAzureStorageAccounts(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AzureStoragePropertyDictionaryResourceInner azureStorageAccounts, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<AzureStoragePropertyDictionaryResourceInner>> updateAzureStorageAccounts(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") AzureStoragePropertyDictionaryResourceInner azureStorageAccounts);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/azurestorageaccounts/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AzureStoragePropertyDictionaryResourceInner>> listAzureStorageAccounts(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/backup")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<BackupRequestInner>> updateBackupConfiguration(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BackupRequestInner request, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<BackupRequestInner>> updateBackupConfiguration(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") BackupRequestInner request);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/backup")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteBackupConfiguration(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/backup/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<BackupRequestInner>> getBackupConfiguration(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/configreferences/appsettings")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<KeyVaultReferenceCollectionInner>> getAppSettingsKeyVaultReferences(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/configreferences/appsettings/{appSettingKey}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<KeyVaultReferenceResourceInner>> getAppSettingKeyVaultReference(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("appSettingKey") String appSettingKey, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/connectionstrings")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<ConnectionStringDictionaryInner>> updateConnectionStrings(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ConnectionStringDictionaryInner connectionStrings, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ConnectionStringDictionaryInner>> updateConnectionStrings(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ConnectionStringDictionaryInner connectionStrings);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/connectionstrings/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ConnectionStringDictionaryInner>> listConnectionStrings(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/logs")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteLogsConfigInner>> getDiagnosticLogsConfiguration(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/logs")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SiteLogsConfigInner>> updateDiagnosticLogsConfig(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteLogsConfigInner siteLogsConfig, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SiteLogsConfigInner>> updateDiagnosticLogsConfig(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SiteLogsConfigInner siteLogsConfig);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/metadata")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<StringDictionaryInner>> updateMetadata(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") StringDictionaryInner metadata, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<StringDictionaryInner>> updateMetadata(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") StringDictionaryInner metadata);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/metadata/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<StringDictionaryInner>> listMetadata(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/publishingcredentials/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> listPublishingCredentials(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/pushsettings")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<PushSettingsInner>> updateSitePushSettings(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PushSettingsInner pushSettings, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PushSettingsInner>> updateSitePushSettings(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PushSettingsInner pushSettings);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/pushsettings/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<PushSettingsInner>> listSitePushSettings(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/slotConfigNames")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SlotConfigNamesResourceInner>> listSlotConfigurationNames(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/slotConfigNames")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SlotConfigNamesResourceInner>> updateSlotConfigurationNames(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SlotConfigNamesResourceInner slotConfigNames, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SlotConfigNamesResourceInner>> updateSlotConfigurationNames(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SlotConfigNamesResourceInner slotConfigNames);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteConfigResourceInner>> getConfiguration(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SiteConfigResourceInner>> createOrUpdateConfiguration(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteConfigResourceInner siteConfig, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SiteConfigResourceInner>> createOrUpdateConfiguration(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SiteConfigResourceInner siteConfig);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SiteConfigResourceInner>> updateConfiguration(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteConfigResourceInner siteConfig, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SiteConfigResourceInner>> updateConfiguration(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SiteConfigResourceInner siteConfig);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web/snapshots")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteConfigurationSnapshotInfoCollectionInner>> listConfigurationSnapshotInfo(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web/snapshots/{snapshotId}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteConfigResourceInner>> getConfigurationSnapshot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("snapshotId") String snapshotId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web/snapshots/{snapshotId}/recover")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> recoverSiteConfigurationSnapshot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("snapshotId") String snapshotId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/octet-stream,application/json;q=0.9" })
+        @Headers({ "Accept: application/octet-stream,application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/containerlogs")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<StreamResponse> getWebSiteContainerLogs(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/zip,application/json;q=0.9" })
+        @Headers({ "Accept: application/zip,application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/containerlogs/zip/download")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<StreamResponse> getContainerLogsZip(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ContinuousWebJobCollectionInner>> listContinuousWebJobs(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ContinuousWebJobInner>> getContinuousWebJob(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteContinuousWebJob(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}/start")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> startContinuousWebJob(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}/stop")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> stopContinuousWebJob(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<DeploymentCollectionInner>> listDeployments(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<DeploymentInner>> getDeployment(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("id") String id, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<DeploymentInner>> createDeployment(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("id") String id, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DeploymentInner deployment, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DeploymentInner>> createDeployment(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("id") String id, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeploymentInner deployment);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteDeployment(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("id") String id, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}/log")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<DeploymentInner>> listDeploymentLog(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("id") String id, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/discoverbackup")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<RestoreRequestInner>> discoverBackup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RestoreRequestInner request, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<RestoreRequestInner>> discoverBackup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RestoreRequestInner request);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/domainOwnershipIdentifiers")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<IdentifierCollectionInner>> listDomainOwnershipIdentifiers(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<IdentifierInner>> getDomainOwnershipIdentifier(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("domainOwnershipIdentifierName") String domainOwnershipIdentifierName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<IdentifierInner>> createOrUpdateDomainOwnershipIdentifier(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("domainOwnershipIdentifierName") String domainOwnershipIdentifierName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") IdentifierInner domainOwnershipIdentifier, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<IdentifierInner>> createOrUpdateDomainOwnershipIdentifier(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("domainOwnershipIdentifierName") String domainOwnershipIdentifierName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") IdentifierInner domainOwnershipIdentifier);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteDomainOwnershipIdentifier(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("domainOwnershipIdentifierName") String domainOwnershipIdentifierName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<IdentifierInner>> updateDomainOwnershipIdentifier(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("domainOwnershipIdentifierName") String domainOwnershipIdentifierName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") IdentifierInner domainOwnershipIdentifier, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<IdentifierInner>> updateDomainOwnershipIdentifier(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("domainOwnershipIdentifierName") String domainOwnershipIdentifierName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") IdentifierInner domainOwnershipIdentifier);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<MSDeployStatusInner>> getMSDeployStatus(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy")
         @ExpectedResponses({201, 409})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createMSDeployOperation(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") MSDeploy mSDeploy, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createMSDeployOperation(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") MSDeploy mSDeploy);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy/log")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<MSDeployLogInner>> getMSDeployLog(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<FunctionEnvelopeCollectionInner>> listFunctions(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/admin/token")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<String>> getFunctionsAdminToken(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<FunctionEnvelopeInner>> getFunction(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}")
         @ExpectedResponses({201})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createFunction(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") FunctionEnvelopeInner functionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createFunction(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") FunctionEnvelopeInner functionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}")
         @ExpectedResponses({204, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteFunction(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}/keys/{keyName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<KeyInfoInner>> createOrUpdateFunctionSecret(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("keyName") String keyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") KeyInfoInner key, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<KeyInfoInner>> createOrUpdateFunctionSecret(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("keyName") String keyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") KeyInfoInner key);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}/keys/{keyName}")
         @ExpectedResponses({204, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteFunctionSecret(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("keyName") String keyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}/listkeys")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<StringDictionaryInner>> listFunctionKeys(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}/listsecrets")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<FunctionSecretsInner>> listFunctionSecrets(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/listkeys")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<HostKeysInner>> listHostKeys(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/listsyncstatus")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> listSyncStatus(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/sync")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> syncFunctions(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/{keyType}/{keyName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<KeyInfoInner>> createOrUpdateHostSecret(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("keyType") String keyType, @PathParam("keyName") String keyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") KeyInfoInner key, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<KeyInfoInner>> createOrUpdateHostSecret(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("keyType") String keyType, @PathParam("keyName") String keyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") KeyInfoInner key);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/{keyType}/{keyName}")
         @ExpectedResponses({204, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteHostSecret(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("keyType") String keyType, @PathParam("keyName") String keyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostNameBindings")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<HostNameBindingCollectionInner>> listHostNameBindings(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostNameBindings/{hostName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<HostNameBindingInner>> getHostNameBinding(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("hostName") String hostName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostNameBindings/{hostName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<HostNameBindingInner>> createOrUpdateHostNameBinding(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("hostName") String hostName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") HostNameBindingInner hostNameBinding, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<HostNameBindingInner>> createOrUpdateHostNameBinding(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("hostName") String hostName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") HostNameBindingInner hostNameBinding);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostNameBindings/{hostName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteHostNameBinding(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("hostName") String hostName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<HybridConnectionInner>> getHybridConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("namespaceName") String namespaceName, @PathParam("relayName") String relayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<HybridConnectionInner>> createOrUpdateHybridConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("namespaceName") String namespaceName, @PathParam("relayName") String relayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") HybridConnectionInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<HybridConnectionInner>> createOrUpdateHybridConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("namespaceName") String namespaceName, @PathParam("relayName") String relayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") HybridConnectionInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteHybridConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("namespaceName") String namespaceName, @PathParam("relayName") String relayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<HybridConnectionInner>> updateHybridConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("namespaceName") String namespaceName, @PathParam("relayName") String relayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") HybridConnectionInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<HybridConnectionInner>> updateHybridConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("namespaceName") String namespaceName, @PathParam("relayName") String relayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") HybridConnectionInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionRelays")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<HybridConnectionInner>> listHybridConnections(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridconnection")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<RelayServiceConnectionEntityInner>> listRelayServiceConnections(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridconnection/{entityName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<RelayServiceConnectionEntityInner>> getRelayServiceConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("entityName") String entityName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridconnection/{entityName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<RelayServiceConnectionEntityInner>> createOrUpdateRelayServiceConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("entityName") String entityName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RelayServiceConnectionEntityInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<RelayServiceConnectionEntityInner>> createOrUpdateRelayServiceConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("entityName") String entityName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RelayServiceConnectionEntityInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridconnection/{entityName}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteRelayServiceConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("entityName") String entityName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridconnection/{entityName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<RelayServiceConnectionEntityInner>> updateRelayServiceConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("entityName") String entityName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RelayServiceConnectionEntityInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<RelayServiceConnectionEntityInner>> updateRelayServiceConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("entityName") String entityName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RelayServiceConnectionEntityInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebAppInstanceCollectionInner>> listInstanceIdentifiers(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebSiteInstanceStatusInner>> getInstanceInfo(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/extensions/MSDeploy")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<MSDeployStatusInner>> getInstanceMsDeployStatus(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/extensions/MSDeploy")
         @ExpectedResponses({201, 409})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createInstanceMSDeployOperation(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") MSDeploy mSDeploy, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createInstanceMSDeployOperation(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") MSDeploy mSDeploy);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/extensions/MSDeploy/log")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<MSDeployLogInner>> getInstanceMSDeployLog(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessInfoCollectionInner>> listInstanceProcesses(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessInfoInner>> getInstanceProcess(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}")
         @ExpectedResponses({204, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteInstanceProcess(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}/dump")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> getInstanceProcessDump(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<StreamResponse> getInstanceProcessDump(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}/modules")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessModuleInfoCollectionInner>> listInstanceProcessModules(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}/modules/{baseAddress}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessModuleInfoInner>> getInstanceProcessModule(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("baseAddress") String baseAddress, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}/threads")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessThreadInfoCollectionInner>> listInstanceProcessThreads(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/iscloneable")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteCloneabilityInner>> isCloneable(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/listbackups")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<BackupItemCollectionInner>> listSiteBackups(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/listsyncfunctiontriggerstatus")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<FunctionSecretsInner>> listSyncFunctionTriggers(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migrate")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> migrateStorage(@HostParam("$host") String host, @QueryParam("subscriptionName") String subscriptionName, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") StorageMigrationOptions migrationOptions, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> migrateStorage(@HostParam("$host") String host, @QueryParam("subscriptionName") String subscriptionName, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") StorageMigrationOptions migrationOptions);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migratemysql")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> migrateMySql(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") MigrateMySqlRequest migrationRequestEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> migrateMySql(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") MigrateMySqlRequest migrationRequestEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migratemysql/status")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<MigrateMySqlStatusInner>> getMigrateMySqlStatus(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkConfig/virtualNetwork")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SwiftVirtualNetworkInner>> getSwiftVirtualNetworkConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkConfig/virtualNetwork")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SwiftVirtualNetworkInner>> createOrUpdateSwiftVirtualNetworkConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SwiftVirtualNetworkInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SwiftVirtualNetworkInner>> createOrUpdateSwiftVirtualNetworkConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SwiftVirtualNetworkInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkConfig/virtualNetwork")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteSwiftVirtualNetwork(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkConfig/virtualNetwork")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SwiftVirtualNetworkInner>> updateSwiftVirtualNetworkConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SwiftVirtualNetworkInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SwiftVirtualNetworkInner>> updateSwiftVirtualNetworkConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SwiftVirtualNetworkInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkFeatures/{view}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<NetworkFeaturesInner>> listNetworkFeatures(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("view") String view, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/operationresults/{operationId}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<List<NetworkTraceInner>>> getNetworkTraceOperation(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("operationId") String operationId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/start")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<String>> startWebSiteNetworkTrace(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam("durationInSeconds") Integer durationInSeconds, @QueryParam("maxFrameLength") Integer maxFrameLength, @QueryParam("sasUrl") String sasUrl, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/startOperation")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> startWebSiteNetworkTraceOperation(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam("durationInSeconds") Integer durationInSeconds, @QueryParam("maxFrameLength") Integer maxFrameLength, @QueryParam("sasUrl") String sasUrl, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/stop")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> stopWebSiteNetworkTrace(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/{operationId}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<List<NetworkTraceInner>>> getNetworkTraces(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("operationId") String operationId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTraces/current/operationresults/{operationId}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<List<NetworkTraceInner>>> getNetworkTraceOperationV2(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("operationId") String operationId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTraces/{operationId}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<List<NetworkTraceInner>>> getNetworkTracesV2(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("operationId") String operationId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/newpassword")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> generateNewSitePublishingPassword(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/perfcounters")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<PerfMonCounterCollectionInner>> listPerfMonCounters(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam(value = "$filter", encoded = true) String filter, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/phplogging")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SitePhpErrorLogFlagInner>> getSitePhpErrorLogFlag(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<PremierAddOnInner>> listPremierAddOns(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<PremierAddOnInner>> getPremierAddOn(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("premierAddOnName") String premierAddOnName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<PremierAddOnInner>> addPremierAddOn(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("premierAddOnName") String premierAddOnName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PremierAddOnInner premierAddOn, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PremierAddOnInner>> addPremierAddOn(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("premierAddOnName") String premierAddOnName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PremierAddOnInner premierAddOn);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deletePremierAddOn(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("premierAddOnName") String premierAddOnName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<PremierAddOnInner>> updatePremierAddOn(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("premierAddOnName") String premierAddOnName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PremierAddOnPatchResource premierAddOn, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PremierAddOnInner>> updatePremierAddOn(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("premierAddOnName") String premierAddOnName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PremierAddOnPatchResource premierAddOn);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateAccess/virtualNetworks")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<PrivateAccessInner>> getPrivateAccess(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateAccess/virtualNetworks")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<PrivateAccessInner>> putPrivateAccessVnet(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PrivateAccessInner access, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PrivateAccessInner>> putPrivateAccessVnet(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PrivateAccessInner access);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessInfoCollectionInner>> listProcesses(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessInfoInner>> getProcess(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}")
         @ExpectedResponses({204, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteProcess(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/dump")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> getProcessDump(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<StreamResponse> getProcessDump(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/modules")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessModuleInfoCollectionInner>> listProcessModules(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/modules/{baseAddress}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessModuleInfoInner>> getProcessModule(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("baseAddress") String baseAddress, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/threads")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessThreadInfoCollectionInner>> listProcessThreads(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<PublicCertificateCollectionInner>> listPublicCertificates(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates/{publicCertificateName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<PublicCertificateInner>> getPublicCertificate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("publicCertificateName") String publicCertificateName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates/{publicCertificateName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<PublicCertificateInner>> createOrUpdatePublicCertificate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("publicCertificateName") String publicCertificateName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PublicCertificateInner publicCertificate, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PublicCertificateInner>> createOrUpdatePublicCertificate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("publicCertificateName") String publicCertificateName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PublicCertificateInner publicCertificate);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates/{publicCertificateName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deletePublicCertificate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("publicCertificateName") String publicCertificateName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/xml,application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publishxml")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> listPublishingProfileXmlWithSecrets(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CsmPublishingProfileOptions publishingProfileOptions, @QueryParam("api-version") String apiVersion);
+        Mono<StreamResponse> listPublishingProfileXmlWithSecrets(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CsmPublishingProfileOptions publishingProfileOptions);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/resetSlotConfig")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> resetProductionSlotConfig(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restart")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> restart(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam("softRestart") Boolean softRestart, @QueryParam("synchronous") Boolean synchronous, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreFromBackupBlob")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> restoreFromBackupBlob(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RestoreRequestInner request, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> restoreFromBackupBlob(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RestoreRequestInner request);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreFromDeletedApp")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> restoreFromDeletedApp(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DeletedAppRestoreRequest restoreRequest, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> restoreFromDeletedApp(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeletedAppRestoreRequest restoreRequest);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreSnapshot")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> restoreSnapshot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SnapshotRestoreRequest restoreRequest, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> restoreSnapshot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SnapshotRestoreRequest restoreRequest);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteExtensionInfoCollectionInner>> listSiteExtensions(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{siteExtensionId}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteExtensionInfoInner>> getSiteExtension(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("siteExtensionId") String siteExtensionId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{siteExtensionId}")
         @ExpectedResponses({200, 201, 429})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> installSiteExtension(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("siteExtensionId") String siteExtensionId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{siteExtensionId}")
         @ExpectedResponses({204, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteSiteExtension(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("siteExtensionId") String siteExtensionId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slotcopy")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> copyProductionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CsmCopySlotEntityInner copySlotEntity, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> copyProductionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CsmCopySlotEntityInner copySlotEntity);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebAppCollectionInner>> listSlots(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteInner>> getSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteInner siteEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SiteInner siteEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}")
         @ExpectedResponses({200, 204, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @QueryParam("deleteMetrics") Boolean deleteMetrics, @QueryParam("deleteEmptyServerFarm") Boolean deleteEmptyServerFarm, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SiteInner>> updateSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SitePatchResourceInner siteEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SiteInner>> updateSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SitePatchResourceInner siteEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/analyzeCustomHostname")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<CustomHostnameAnalysisResultInner>> analyzeCustomHostnameSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @QueryParam("hostName") String hostName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/applySlotConfig")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> applySlotConfigurationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CsmSlotEntity slotSwapEntity, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> applySlotConfigurationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CsmSlotEntity slotSwapEntity);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backup")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<BackupItemInner>> backupSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BackupRequestInner request, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<BackupItemInner>> backupSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") BackupRequestInner request);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<BackupItemCollectionInner>> listBackupsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<BackupItemInner>> getBackupStatusSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("backupId") String backupId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteBackupSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("backupId") String backupId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<BackupItemInner>> listBackupStatusSecretsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("backupId") String backupId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BackupRequestInner request, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<BackupItemInner>> listBackupStatusSecretsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("backupId") String backupId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") BackupRequestInner request);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}/restore")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> restoreSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("backupId") String backupId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RestoreRequestInner request, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> restoreSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("backupId") String backupId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RestoreRequestInner request);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteConfigResourceCollectionInner>> listConfigurationsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/appsettings")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<StringDictionaryInner>> updateApplicationSettingsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") StringDictionaryInner appSettings, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<StringDictionaryInner>> updateApplicationSettingsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") StringDictionaryInner appSettings);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/appsettings/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<StringDictionaryInner>> listApplicationSettingsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettings")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SiteAuthSettingsInner>> updateAuthSettingsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteAuthSettingsInner siteAuthSettings, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SiteAuthSettingsInner>> updateAuthSettingsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SiteAuthSettingsInner siteAuthSettings);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettings/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteAuthSettingsInner>> getAuthSettingsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/azurestorageaccounts")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<AzureStoragePropertyDictionaryResourceInner>> updateAzureStorageAccountsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AzureStoragePropertyDictionaryResourceInner azureStorageAccounts, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<AzureStoragePropertyDictionaryResourceInner>> updateAzureStorageAccountsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") AzureStoragePropertyDictionaryResourceInner azureStorageAccounts);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/azurestorageaccounts/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AzureStoragePropertyDictionaryResourceInner>> listAzureStorageAccountsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/backup")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<BackupRequestInner>> updateBackupConfigurationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BackupRequestInner request, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<BackupRequestInner>> updateBackupConfigurationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") BackupRequestInner request);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/backup")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteBackupConfigurationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/backup/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<BackupRequestInner>> getBackupConfigurationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/connectionstrings")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<ConnectionStringDictionaryInner>> updateConnectionStringsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ConnectionStringDictionaryInner connectionStrings, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ConnectionStringDictionaryInner>> updateConnectionStringsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ConnectionStringDictionaryInner connectionStrings);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/connectionstrings/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ConnectionStringDictionaryInner>> listConnectionStringsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/logs")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteLogsConfigInner>> getDiagnosticLogsConfigurationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/logs")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SiteLogsConfigInner>> updateDiagnosticLogsConfigSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteLogsConfigInner siteLogsConfig, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SiteLogsConfigInner>> updateDiagnosticLogsConfigSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SiteLogsConfigInner siteLogsConfig);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/metadata")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<StringDictionaryInner>> updateMetadataSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") StringDictionaryInner metadata, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<StringDictionaryInner>> updateMetadataSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") StringDictionaryInner metadata);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/metadata/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<StringDictionaryInner>> listMetadataSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/publishingcredentials/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> listPublishingCredentialsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/pushsettings")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<PushSettingsInner>> updateSitePushSettingsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PushSettingsInner pushSettings, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PushSettingsInner>> updateSitePushSettingsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PushSettingsInner pushSettings);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/pushsettings/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<PushSettingsInner>> listSitePushSettingsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteConfigResourceInner>> getConfigurationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SiteConfigResourceInner>> createOrUpdateConfigurationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteConfigResourceInner siteConfig, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SiteConfigResourceInner>> createOrUpdateConfigurationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SiteConfigResourceInner siteConfig);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SiteConfigResourceInner>> updateConfigurationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteConfigResourceInner siteConfig, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SiteConfigResourceInner>> updateConfigurationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SiteConfigResourceInner siteConfig);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web/snapshots")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteConfigurationSnapshotInfoCollectionInner>> listConfigurationSnapshotInfoSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web/snapshots/{snapshotId}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteConfigResourceInner>> getConfigurationSnapshotSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("snapshotId") String snapshotId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web/snapshots/{snapshotId}/recover")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> recoverSiteConfigurationSnapshotSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("snapshotId") String snapshotId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/octet-stream,application/json;q=0.9" })
+        @Headers({ "Accept: application/octet-stream,application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/containerlogs")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<StreamResponse> getWebSiteContainerLogsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/zip,application/json;q=0.9" })
+        @Headers({ "Accept: application/zip,application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/containerlogs/zip/download")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<StreamResponse> getContainerLogsZipSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ContinuousWebJobCollectionInner>> listContinuousWebJobsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ContinuousWebJobInner>> getContinuousWebJobSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteContinuousWebJobSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}/start")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> startContinuousWebJobSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}/stop")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> stopContinuousWebJobSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<DeploymentCollectionInner>> listDeploymentsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments/{id}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<DeploymentInner>> getDeploymentSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("id") String id, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments/{id}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<DeploymentInner>> createDeploymentSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("id") String id, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DeploymentInner deployment, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DeploymentInner>> createDeploymentSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("id") String id, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeploymentInner deployment);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments/{id}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteDeploymentSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("id") String id, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments/{id}/log")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<DeploymentInner>> listDeploymentLogSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("id") String id, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/discoverbackup")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<RestoreRequestInner>> discoverBackupSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RestoreRequestInner request, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<RestoreRequestInner>> discoverBackupSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RestoreRequestInner request);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/domainOwnershipIdentifiers")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<IdentifierCollectionInner>> listDomainOwnershipIdentifiersSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<IdentifierInner>> getDomainOwnershipIdentifierSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("domainOwnershipIdentifierName") String domainOwnershipIdentifierName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<IdentifierInner>> createOrUpdateDomainOwnershipIdentifierSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("domainOwnershipIdentifierName") String domainOwnershipIdentifierName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") IdentifierInner domainOwnershipIdentifier, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<IdentifierInner>> createOrUpdateDomainOwnershipIdentifierSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("domainOwnershipIdentifierName") String domainOwnershipIdentifierName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") IdentifierInner domainOwnershipIdentifier);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteDomainOwnershipIdentifierSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("domainOwnershipIdentifierName") String domainOwnershipIdentifierName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<IdentifierInner>> updateDomainOwnershipIdentifierSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("domainOwnershipIdentifierName") String domainOwnershipIdentifierName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") IdentifierInner domainOwnershipIdentifier, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<IdentifierInner>> updateDomainOwnershipIdentifierSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("domainOwnershipIdentifierName") String domainOwnershipIdentifierName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") IdentifierInner domainOwnershipIdentifier);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/extensions/MSDeploy")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<MSDeployStatusInner>> getMSDeployStatusSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/extensions/MSDeploy")
         @ExpectedResponses({201, 409})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createMSDeployOperationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") MSDeploy mSDeploy, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createMSDeployOperationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") MSDeploy mSDeploy);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/extensions/MSDeploy/log")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<MSDeployLogInner>> getMSDeployLogSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<FunctionEnvelopeCollectionInner>> listInstanceFunctionsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/admin/token")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<String>> getFunctionsAdminTokenSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<FunctionEnvelopeInner>> getInstanceFunctionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}")
         @ExpectedResponses({201})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createInstanceFunctionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") FunctionEnvelopeInner functionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createInstanceFunctionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") FunctionEnvelopeInner functionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}")
         @ExpectedResponses({204, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteInstanceFunctionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}/keys/{keyName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<KeyInfoInner>> createOrUpdateFunctionSecretSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("keyName") String keyName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") KeyInfoInner key, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<KeyInfoInner>> createOrUpdateFunctionSecretSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("keyName") String keyName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") KeyInfoInner key);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}/keys/{keyName}")
         @ExpectedResponses({204, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteFunctionSecretSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("keyName") String keyName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}/listkeys")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<StringDictionaryInner>> listFunctionKeysSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}/listsecrets")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<FunctionSecretsInner>> listFunctionSecretsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/listkeys")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<HostKeysInner>> listHostKeysSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/listsyncstatus")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> listSyncStatusSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/sync")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> syncFunctionsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/{keyType}/{keyName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<KeyInfoInner>> createOrUpdateHostSecretSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("keyType") String keyType, @PathParam("keyName") String keyName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") KeyInfoInner key, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<KeyInfoInner>> createOrUpdateHostSecretSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("keyType") String keyType, @PathParam("keyName") String keyName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") KeyInfoInner key);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/{keyType}/{keyName}")
         @ExpectedResponses({204, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteHostSecretSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("keyType") String keyType, @PathParam("keyName") String keyName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hostNameBindings")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<HostNameBindingCollectionInner>> listHostNameBindingsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hostNameBindings/{hostName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<HostNameBindingInner>> getHostNameBindingSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("hostName") String hostName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hostNameBindings/{hostName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<HostNameBindingInner>> createOrUpdateHostNameBindingSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("hostName") String hostName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") HostNameBindingInner hostNameBinding, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<HostNameBindingInner>> createOrUpdateHostNameBindingSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("hostName") String hostName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") HostNameBindingInner hostNameBinding);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hostNameBindings/{hostName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteHostNameBindingSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("hostName") String hostName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<HybridConnectionInner>> getHybridConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("namespaceName") String namespaceName, @PathParam("relayName") String relayName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<HybridConnectionInner>> createOrUpdateHybridConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("namespaceName") String namespaceName, @PathParam("relayName") String relayName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") HybridConnectionInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<HybridConnectionInner>> createOrUpdateHybridConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("namespaceName") String namespaceName, @PathParam("relayName") String relayName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") HybridConnectionInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteHybridConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("namespaceName") String namespaceName, @PathParam("relayName") String relayName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<HybridConnectionInner>> updateHybridConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("namespaceName") String namespaceName, @PathParam("relayName") String relayName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") HybridConnectionInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<HybridConnectionInner>> updateHybridConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("namespaceName") String namespaceName, @PathParam("relayName") String relayName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") HybridConnectionInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridConnectionRelays")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<HybridConnectionInner>> listHybridConnectionsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridconnection")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<RelayServiceConnectionEntityInner>> listRelayServiceConnectionsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridconnection/{entityName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<RelayServiceConnectionEntityInner>> getRelayServiceConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("entityName") String entityName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridconnection/{entityName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<RelayServiceConnectionEntityInner>> createOrUpdateRelayServiceConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("entityName") String entityName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RelayServiceConnectionEntityInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<RelayServiceConnectionEntityInner>> createOrUpdateRelayServiceConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("entityName") String entityName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RelayServiceConnectionEntityInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridconnection/{entityName}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteRelayServiceConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("entityName") String entityName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridconnection/{entityName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<RelayServiceConnectionEntityInner>> updateRelayServiceConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("entityName") String entityName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RelayServiceConnectionEntityInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<RelayServiceConnectionEntityInner>> updateRelayServiceConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("entityName") String entityName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RelayServiceConnectionEntityInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebAppInstanceCollectionInner>> listInstanceIdentifiersSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebSiteInstanceStatusInner>> getInstanceInfoSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("instanceId") String instanceId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/extensions/MSDeploy")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<MSDeployStatusInner>> getInstanceMsDeployStatusSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/extensions/MSDeploy")
         @ExpectedResponses({201, 409})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createInstanceMSDeployOperationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") MSDeploy mSDeploy, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createInstanceMSDeployOperationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") MSDeploy mSDeploy);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/extensions/MSDeploy/log")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<MSDeployLogInner>> getInstanceMSDeployLogSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessInfoCollectionInner>> listInstanceProcessesSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessInfoInner>> getInstanceProcessSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("slot") String slot, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}")
         @ExpectedResponses({204, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteInstanceProcessSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("slot") String slot, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}/dump")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> getInstanceProcessDumpSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("slot") String slot, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<StreamResponse> getInstanceProcessDumpSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("slot") String slot, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}/modules")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessModuleInfoCollectionInner>> listInstanceProcessModulesSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("slot") String slot, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}/modules/{baseAddress}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessModuleInfoInner>> getInstanceProcessModuleSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("baseAddress") String baseAddress, @PathParam("slot") String slot, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}/threads")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessThreadInfoCollectionInner>> listInstanceProcessThreadsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("slot") String slot, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/iscloneable")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteCloneabilityInner>> isCloneableSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/listbackups")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<BackupItemCollectionInner>> listSiteBackupsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/listsyncfunctiontriggerstatus")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<FunctionSecretsInner>> listSyncFunctionTriggersSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/migratemysql/status")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<MigrateMySqlStatusInner>> getMigrateMySqlStatusSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkConfig/virtualNetwork")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SwiftVirtualNetworkInner>> getSwiftVirtualNetworkConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkConfig/virtualNetwork")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SwiftVirtualNetworkInner>> createOrUpdateSwiftVirtualNetworkConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SwiftVirtualNetworkInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SwiftVirtualNetworkInner>> createOrUpdateSwiftVirtualNetworkConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SwiftVirtualNetworkInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkConfig/virtualNetwork")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteSwiftVirtualNetworkSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkConfig/virtualNetwork")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SwiftVirtualNetworkInner>> updateSwiftVirtualNetworkConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SwiftVirtualNetworkInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SwiftVirtualNetworkInner>> updateSwiftVirtualNetworkConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SwiftVirtualNetworkInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkFeatures/{view}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<NetworkFeaturesInner>> listNetworkFeaturesSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("view") String view, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/operationresults/{operationId}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<List<NetworkTraceInner>>> getNetworkTraceOperationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("operationId") String operationId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/start")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<String>> startWebSiteNetworkTraceSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam("durationInSeconds") Integer durationInSeconds, @PathParam("slot") String slot, @QueryParam("maxFrameLength") Integer maxFrameLength, @QueryParam("sasUrl") String sasUrl, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/startOperation")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> startWebSiteNetworkTraceOperationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam("durationInSeconds") Integer durationInSeconds, @PathParam("slot") String slot, @QueryParam("maxFrameLength") Integer maxFrameLength, @QueryParam("sasUrl") String sasUrl, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/stop")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> stopWebSiteNetworkTraceSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/{operationId}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<List<NetworkTraceInner>>> getNetworkTracesSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("operationId") String operationId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTraces/current/operationresults/{operationId}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<List<NetworkTraceInner>>> getNetworkTraceOperationSlotV2(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("operationId") String operationId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTraces/{operationId}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<List<NetworkTraceInner>>> getNetworkTracesSlotV2(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("operationId") String operationId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/newpassword")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> generateNewSitePublishingPasswordSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/perfcounters")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<PerfMonCounterCollectionInner>> listPerfMonCountersSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @QueryParam(value = "$filter", encoded = true) String filter, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/phplogging")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SitePhpErrorLogFlagInner>> getSitePhpErrorLogFlagSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<PremierAddOnInner>> listPremierAddOnsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons/{premierAddOnName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<PremierAddOnInner>> getPremierAddOnSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("premierAddOnName") String premierAddOnName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons/{premierAddOnName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<PremierAddOnInner>> addPremierAddOnSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("premierAddOnName") String premierAddOnName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PremierAddOnInner premierAddOn, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PremierAddOnInner>> addPremierAddOnSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("premierAddOnName") String premierAddOnName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PremierAddOnInner premierAddOn);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons/{premierAddOnName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deletePremierAddOnSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("premierAddOnName") String premierAddOnName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons/{premierAddOnName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<PremierAddOnInner>> updatePremierAddOnSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("premierAddOnName") String premierAddOnName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PremierAddOnPatchResource premierAddOn, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PremierAddOnInner>> updatePremierAddOnSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("premierAddOnName") String premierAddOnName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PremierAddOnPatchResource premierAddOn);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateAccess/virtualNetworks")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<PrivateAccessInner>> getPrivateAccessSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateAccess/virtualNetworks")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<PrivateAccessInner>> putPrivateAccessVnetSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PrivateAccessInner access, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PrivateAccessInner>> putPrivateAccessVnetSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PrivateAccessInner access);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessInfoCollectionInner>> listProcessesSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessInfoInner>> getProcessSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}")
         @ExpectedResponses({204, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteProcessSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/dump")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> getProcessDumpSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<StreamResponse> getProcessDumpSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/modules")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessModuleInfoCollectionInner>> listProcessModulesSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/modules/{baseAddress}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessModuleInfoInner>> getProcessModuleSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("baseAddress") String baseAddress, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/threads")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessThreadInfoCollectionInner>> listProcessThreadsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("processId") String processId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publicCertificates")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<PublicCertificateCollectionInner>> listPublicCertificatesSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publicCertificates/{publicCertificateName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<PublicCertificateInner>> getPublicCertificateSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("publicCertificateName") String publicCertificateName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publicCertificates/{publicCertificateName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<PublicCertificateInner>> createOrUpdatePublicCertificateSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("publicCertificateName") String publicCertificateName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PublicCertificateInner publicCertificate, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PublicCertificateInner>> createOrUpdatePublicCertificateSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("publicCertificateName") String publicCertificateName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PublicCertificateInner publicCertificate);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publicCertificates/{publicCertificateName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deletePublicCertificateSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("publicCertificateName") String publicCertificateName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/xml,application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publishxml")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> listPublishingProfileXmlWithSecretsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CsmPublishingProfileOptions publishingProfileOptions, @QueryParam("api-version") String apiVersion);
+        Mono<StreamResponse> listPublishingProfileXmlWithSecretsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CsmPublishingProfileOptions publishingProfileOptions);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/resetSlotConfig")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> resetSlotConfigurationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restart")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> restartSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @QueryParam("softRestart") Boolean softRestart, @QueryParam("synchronous") Boolean synchronous, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restoreFromBackupBlob")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> restoreFromBackupBlobSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RestoreRequestInner request, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> restoreFromBackupBlobSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RestoreRequestInner request);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restoreFromDeletedApp")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> restoreFromDeletedAppSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DeletedAppRestoreRequest restoreRequest, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> restoreFromDeletedAppSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeletedAppRestoreRequest restoreRequest);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restoreSnapshot")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> restoreSnapshotSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SnapshotRestoreRequest restoreRequest, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> restoreSnapshotSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SnapshotRestoreRequest restoreRequest);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteExtensionInfoCollectionInner>> listSiteExtensionsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{siteExtensionId}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteExtensionInfoInner>> getSiteExtensionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("siteExtensionId") String siteExtensionId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{siteExtensionId}")
         @ExpectedResponses({200, 201, 429})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> installSiteExtensionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("siteExtensionId") String siteExtensionId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{siteExtensionId}")
         @ExpectedResponses({204, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteSiteExtensionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("siteExtensionId") String siteExtensionId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/slotcopy")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> copySlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CsmCopySlotEntityInner copySlotEntity, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> copySlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CsmCopySlotEntityInner copySlotEntity);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/slotsdiffs")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SlotDifferenceCollectionInner>> listSlotDifferencesSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CsmSlotEntity slotSwapEntity, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SlotDifferenceCollectionInner>> listSlotDifferencesSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CsmSlotEntity slotSwapEntity);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/slotsswap")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> swapSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CsmSlotEntity slotSwapEntity, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> swapSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CsmSlotEntity slotSwapEntity);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/snapshots")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SnapshotCollectionInner>> listSnapshotsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/snapshotsdr")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SnapshotCollectionInner>> listSnapshotsFromDRSecondarySlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteSourceControlInner>> getSourceControlSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateSourceControlSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteSourceControlInner siteSourceControl, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateSourceControlSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SiteSourceControlInner siteSourceControl);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web")
         @ExpectedResponses({200, 202, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteSourceControlSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SiteSourceControlInner>> updateSourceControlSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteSourceControlInner siteSourceControl, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SiteSourceControlInner>> updateSourceControlSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SiteSourceControlInner siteSourceControl);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/start")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> startSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/startNetworkTrace")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> startNetworkTraceSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam("durationInSeconds") Integer durationInSeconds, @PathParam("slot") String slot, @QueryParam("maxFrameLength") Integer maxFrameLength, @QueryParam("sasUrl") String sasUrl, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/stop")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> stopSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/stopNetworkTrace")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> stopNetworkTraceSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sync")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> syncRepositorySlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/syncfunctiontriggers")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> syncFunctionTriggersSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<TriggeredWebJobCollectionInner>> listTriggeredWebJobsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<TriggeredWebJobInner>> getTriggeredWebJobSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteTriggeredWebJobSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/history")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<TriggeredJobHistoryCollectionInner>> listTriggeredWebJobHistorySlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/history/{id}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<TriggeredJobHistoryInner>> getTriggeredWebJobHistorySlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("id") String id, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/run")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> runTriggeredWebJobSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/usages")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<CsmUsageQuotaCollectionInner>> listUsagesSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @QueryParam(value = "$filter", encoded = true) String filter, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<List<VnetInfoInner>>> listVnetConnectionsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<VnetInfoInner>> getVnetConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<VnetInfoInner>> createOrUpdateVnetConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VnetInfoInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VnetInfoInner>> createOrUpdateVnetConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VnetInfoInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteVnetConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<VnetInfoInner>> updateVnetConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VnetInfoInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VnetInfoInner>> updateVnetConnectionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VnetInfoInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<VnetGatewayInner>> getVnetConnectionGatewaySlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("gatewayName") String gatewayName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<VnetGatewayInner>> createOrUpdateVnetConnectionGatewaySlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("gatewayName") String gatewayName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VnetGatewayInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VnetGatewayInner>> createOrUpdateVnetConnectionGatewaySlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("gatewayName") String gatewayName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VnetGatewayInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<VnetGatewayInner>> updateVnetConnectionGatewaySlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("gatewayName") String gatewayName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VnetGatewayInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VnetGatewayInner>> updateVnetConnectionGatewaySlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("gatewayName") String gatewayName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VnetGatewayInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/webjobs")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebJobCollectionInner>> listWebJobsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/webjobs/{webJobName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebJobInner>> getWebJobSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slotsdiffs")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SlotDifferenceCollectionInner>> listSlotDifferencesFromProduction(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CsmSlotEntity slotSwapEntity, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SlotDifferenceCollectionInner>> listSlotDifferencesFromProduction(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CsmSlotEntity slotSwapEntity);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slotsswap")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> swapSlotWithProduction(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CsmSlotEntity slotSwapEntity, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> swapSlotWithProduction(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CsmSlotEntity slotSwapEntity);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/snapshots")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SnapshotCollectionInner>> listSnapshots(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/snapshotsdr")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SnapshotCollectionInner>> listSnapshotsFromDRSecondary(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteSourceControlInner>> getSourceControl(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateSourceControl(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteSourceControlInner siteSourceControl, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateSourceControl(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SiteSourceControlInner siteSourceControl);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web")
         @ExpectedResponses({200, 202, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteSourceControl(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SiteSourceControlInner>> updateSourceControl(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteSourceControlInner siteSourceControl, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SiteSourceControlInner>> updateSourceControl(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SiteSourceControlInner siteSourceControl);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/start")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> start(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/startNetworkTrace")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> startNetworkTrace(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam("durationInSeconds") Integer durationInSeconds, @QueryParam("maxFrameLength") Integer maxFrameLength, @QueryParam("sasUrl") String sasUrl, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/stop")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> stop(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/stopNetworkTrace")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> stopNetworkTrace(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sync")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> syncRepository(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/syncfunctiontriggers")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> syncFunctionTriggers(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<TriggeredWebJobCollectionInner>> listTriggeredWebJobs(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<TriggeredWebJobInner>> getTriggeredWebJob(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteTriggeredWebJob(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/history")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<TriggeredJobHistoryCollectionInner>> listTriggeredWebJobHistory(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/history/{id}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<TriggeredJobHistoryInner>> getTriggeredWebJobHistory(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("id") String id, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/run")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> runTriggeredWebJob(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/usages")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<CsmUsageQuotaCollectionInner>> listUsages(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam(value = "$filter", encoded = true) String filter, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<List<VnetInfoInner>>> listVnetConnections(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<VnetInfoInner>> getVnetConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<VnetInfoInner>> createOrUpdateVnetConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VnetInfoInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VnetInfoInner>> createOrUpdateVnetConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VnetInfoInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteVnetConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<VnetInfoInner>> updateVnetConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VnetInfoInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VnetInfoInner>> updateVnetConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VnetInfoInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<VnetGatewayInner>> getVnetConnectionGateway(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("gatewayName") String gatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<VnetGatewayInner>> createOrUpdateVnetConnectionGateway(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("gatewayName") String gatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VnetGatewayInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VnetGatewayInner>> createOrUpdateVnetConnectionGateway(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("gatewayName") String gatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VnetGatewayInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<VnetGatewayInner>> updateVnetConnectionGateway(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("gatewayName") String gatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VnetGatewayInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VnetGatewayInner>> updateVnetConnectionGateway(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("gatewayName") String gatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VnetGatewayInner connectionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/webjobs")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebJobCollectionInner>> listWebJobs(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/webjobs/{webJobName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebJobInner>> getWebJob(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("webJobName") String webJobName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SiteInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteInner siteEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SiteInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SiteInner siteEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}/restore")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> beginRestore(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("backupId") String backupId, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RestoreRequestInner request, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginRestore(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("backupId") String backupId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RestoreRequestInner request);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/publishingcredentials/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<UserInner>> beginListPublishingCredentials(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy")
         @ExpectedResponses({201, 409})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<MSDeployStatusInner>> beginCreateMSDeployOperation(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") MSDeploy mSDeploy, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<MSDeployStatusInner>> beginCreateMSDeployOperation(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") MSDeploy mSDeploy);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}")
         @ExpectedResponses({201})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<FunctionEnvelopeInner>> beginCreateFunction(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") FunctionEnvelopeInner functionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<FunctionEnvelopeInner>> beginCreateFunction(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") FunctionEnvelopeInner functionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/extensions/MSDeploy")
         @ExpectedResponses({201, 409})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<MSDeployStatusInner>> beginCreateInstanceMSDeployOperation(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") MSDeploy mSDeploy, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<MSDeployStatusInner>> beginCreateInstanceMSDeployOperation(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") MSDeploy mSDeploy);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migrate")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<StorageMigrationResponseInner>> beginMigrateStorage(@HostParam("$host") String host, @QueryParam("subscriptionName") String subscriptionName, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") StorageMigrationOptions migrationOptions, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<StorageMigrationResponseInner>> beginMigrateStorage(@HostParam("$host") String host, @QueryParam("subscriptionName") String subscriptionName, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") StorageMigrationOptions migrationOptions);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migratemysql")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<OperationInner>> beginMigrateMySql(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") MigrateMySqlRequest migrationRequestEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<OperationInner>> beginMigrateMySql(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") MigrateMySqlRequest migrationRequestEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/startOperation")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<List<NetworkTraceInner>>> beginStartWebSiteNetworkTraceOperation(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam("durationInSeconds") Integer durationInSeconds, @QueryParam("maxFrameLength") Integer maxFrameLength, @QueryParam("sasUrl") String sasUrl, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreFromBackupBlob")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> beginRestoreFromBackupBlob(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RestoreRequestInner request, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginRestoreFromBackupBlob(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RestoreRequestInner request);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreFromDeletedApp")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> beginRestoreFromDeletedApp(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DeletedAppRestoreRequest restoreRequest, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginRestoreFromDeletedApp(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeletedAppRestoreRequest restoreRequest);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreSnapshot")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> beginRestoreSnapshot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SnapshotRestoreRequest restoreRequest, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginRestoreSnapshot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SnapshotRestoreRequest restoreRequest);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{siteExtensionId}")
         @ExpectedResponses({200, 201, 429})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteExtensionInfoInner>> beginInstallSiteExtension(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("siteExtensionId") String siteExtensionId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slotcopy")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> beginCopyProductionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CsmCopySlotEntityInner copySlotEntity, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginCopyProductionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CsmCopySlotEntityInner copySlotEntity);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SiteInner>> beginCreateOrUpdateSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteInner siteEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SiteInner>> beginCreateOrUpdateSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SiteInner siteEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}/restore")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> beginRestoreSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("backupId") String backupId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RestoreRequestInner request, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginRestoreSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("backupId") String backupId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RestoreRequestInner request);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/publishingcredentials/list")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<UserInner>> beginListPublishingCredentialsSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/extensions/MSDeploy")
         @ExpectedResponses({201, 409})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<MSDeployStatusInner>> beginCreateMSDeployOperationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") MSDeploy mSDeploy, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<MSDeployStatusInner>> beginCreateMSDeployOperationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") MSDeploy mSDeploy);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}")
         @ExpectedResponses({201})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<FunctionEnvelopeInner>> beginCreateInstanceFunctionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") FunctionEnvelopeInner functionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<FunctionEnvelopeInner>> beginCreateInstanceFunctionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("functionName") String functionName, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") FunctionEnvelopeInner functionEnvelope);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/extensions/MSDeploy")
         @ExpectedResponses({201, 409})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<MSDeployStatusInner>> beginCreateInstanceMSDeployOperationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") MSDeploy mSDeploy, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<MSDeployStatusInner>> beginCreateInstanceMSDeployOperationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") MSDeploy mSDeploy);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/startOperation")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<List<NetworkTraceInner>>> beginStartWebSiteNetworkTraceOperationSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam("durationInSeconds") Integer durationInSeconds, @PathParam("slot") String slot, @QueryParam("maxFrameLength") Integer maxFrameLength, @QueryParam("sasUrl") String sasUrl, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restoreFromBackupBlob")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> beginRestoreFromBackupBlobSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RestoreRequestInner request, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginRestoreFromBackupBlobSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RestoreRequestInner request);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restoreFromDeletedApp")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> beginRestoreFromDeletedAppSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DeletedAppRestoreRequest restoreRequest, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginRestoreFromDeletedAppSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DeletedAppRestoreRequest restoreRequest);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restoreSnapshot")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> beginRestoreSnapshotSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SnapshotRestoreRequest restoreRequest, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginRestoreSnapshotSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SnapshotRestoreRequest restoreRequest);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{siteExtensionId}")
         @ExpectedResponses({200, 201, 429})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteExtensionInfoInner>> beginInstallSiteExtensionSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("siteExtensionId") String siteExtensionId, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/slotcopy")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> beginCopySlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CsmCopySlotEntityInner copySlotEntity, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginCopySlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CsmCopySlotEntityInner copySlotEntity);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/slotsswap")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> beginSwapSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CsmSlotEntity slotSwapEntity, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginSwapSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CsmSlotEntity slotSwapEntity);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SiteSourceControlInner>> beginCreateOrUpdateSourceControlSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteSourceControlInner siteSourceControl, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SiteSourceControlInner>> beginCreateOrUpdateSourceControlSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("slot") String slot, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SiteSourceControlInner siteSourceControl);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/startNetworkTrace")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<List<NetworkTraceInner>>> beginStartNetworkTraceSlot(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam("durationInSeconds") Integer durationInSeconds, @PathParam("slot") String slot, @QueryParam("maxFrameLength") Integer maxFrameLength, @QueryParam("sasUrl") String sasUrl, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
+        @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slotsswap")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> beginSwapSlotWithProduction(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CsmSlotEntity slotSwapEntity, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginSwapSlotWithProduction(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CsmSlotEntity slotSwapEntity);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SiteSourceControlInner>> beginCreateOrUpdateSourceControl(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteSourceControlInner siteSourceControl, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SiteSourceControlInner>> beginCreateOrUpdateSourceControl(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SiteSourceControlInner siteSourceControl);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/startNetworkTrace")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<List<NetworkTraceInner>>> beginStartNetworkTrace(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @QueryParam("durationInSeconds") Integer durationInSeconds, @QueryParam("maxFrameLength") Integer maxFrameLength, @QueryParam("sasUrl") String sasUrl, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebAppCollectionInner>> listNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebAppCollectionInner>> listByResourceGroupNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<BackupItemCollectionInner>> listBackupsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteConfigResourceCollectionInner>> listConfigurationsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteConfigurationSnapshotInfoCollectionInner>> listConfigurationSnapshotInfoNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ContinuousWebJobCollectionInner>> listContinuousWebJobsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<DeploymentCollectionInner>> listDeploymentsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<IdentifierCollectionInner>> listDomainOwnershipIdentifiersNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<FunctionEnvelopeCollectionInner>> listFunctionsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<HostNameBindingCollectionInner>> listHostNameBindingsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebAppInstanceCollectionInner>> listInstanceIdentifiersNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessInfoCollectionInner>> listInstanceProcessesNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessModuleInfoCollectionInner>> listInstanceProcessModulesNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessThreadInfoCollectionInner>> listInstanceProcessThreadsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<BackupItemCollectionInner>> listSiteBackupsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<PerfMonCounterCollectionInner>> listPerfMonCountersNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessInfoCollectionInner>> listProcessesNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessModuleInfoCollectionInner>> listProcessModulesNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessThreadInfoCollectionInner>> listProcessThreadsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<PublicCertificateCollectionInner>> listPublicCertificatesNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteExtensionInfoCollectionInner>> listSiteExtensionsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebAppCollectionInner>> listSlotsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<BackupItemCollectionInner>> listBackupsSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteConfigResourceCollectionInner>> listConfigurationsSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteConfigurationSnapshotInfoCollectionInner>> listConfigurationSnapshotInfoSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ContinuousWebJobCollectionInner>> listContinuousWebJobsSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<DeploymentCollectionInner>> listDeploymentsSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<IdentifierCollectionInner>> listDomainOwnershipIdentifiersSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<FunctionEnvelopeCollectionInner>> listInstanceFunctionsSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<HostNameBindingCollectionInner>> listHostNameBindingsSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebAppInstanceCollectionInner>> listInstanceIdentifiersSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessInfoCollectionInner>> listInstanceProcessesSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessModuleInfoCollectionInner>> listInstanceProcessModulesSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessThreadInfoCollectionInner>> listInstanceProcessThreadsSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<BackupItemCollectionInner>> listSiteBackupsSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<PerfMonCounterCollectionInner>> listPerfMonCountersSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessInfoCollectionInner>> listProcessesSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessModuleInfoCollectionInner>> listProcessModulesSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<ProcessThreadInfoCollectionInner>> listProcessThreadsSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<PublicCertificateCollectionInner>> listPublicCertificatesSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteExtensionInfoCollectionInner>> listSiteExtensionsSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SlotDifferenceCollectionInner>> listSlotDifferencesSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SnapshotCollectionInner>> listSnapshotsSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SnapshotCollectionInner>> listSnapshotsFromDRSecondarySlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<TriggeredWebJobCollectionInner>> listTriggeredWebJobsSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<TriggeredJobHistoryCollectionInner>> listTriggeredWebJobHistorySlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<CsmUsageQuotaCollectionInner>> listUsagesSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<WebJobCollectionInner>> listWebJobsSlotNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SlotDifferenceCollectionInner>> listSlotDifferencesFromProductionNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SnapshotCollectionInner>> listSnapshotsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SnapshotCollectionInner>> listSnapshotsFromDRSecondaryNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<TriggeredWebJobCollectionInner>> listTriggeredWebJobsNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<TriggeredJobHistoryCollectionInner>> listTriggeredWebJobHistoryNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<CsmUsageQuotaCollectionInner>> listUsagesNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
@@ -2970,7 +2970,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String name, SiteInner siteEnvelope) {
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), siteEnvelope, this.client.getApiVersion());
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), siteEnvelope);
     }
 
     /**
@@ -3100,7 +3100,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SiteInner>> updateWithResponseAsync(String resourceGroupName, String name, SitePatchResourceInner siteEnvelope) {
-        return service.update(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), siteEnvelope, this.client.getApiVersion());
+        return service.update(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), siteEnvelope);
     }
 
     /**
@@ -3241,7 +3241,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> applySlotConfigToProductionWithResponseAsync(String resourceGroupName, String name, CsmSlotEntity slotSwapEntity) {
-        return service.applySlotConfigToProduction(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), slotSwapEntity, this.client.getApiVersion());
+        return service.applySlotConfigToProduction(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), slotSwapEntity);
     }
 
     /**
@@ -3287,7 +3287,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<BackupItemInner>> backupWithResponseAsync(String resourceGroupName, String name, BackupRequestInner request) {
-        return service.backup(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), request, this.client.getApiVersion());
+        return service.backup(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), request);
     }
 
     /**
@@ -3488,7 +3488,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<BackupItemInner>> listBackupStatusSecretsWithResponseAsync(String resourceGroupName, String name, String backupId, BackupRequestInner request) {
-        return service.listBackupStatusSecrets(this.client.getHost(), resourceGroupName, name, backupId, this.client.getSubscriptionId(), request, this.client.getApiVersion());
+        return service.listBackupStatusSecrets(this.client.getHost(), resourceGroupName, name, backupId, this.client.getSubscriptionId(), this.client.getApiVersion(), request);
     }
 
     /**
@@ -3543,7 +3543,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> restoreWithResponseAsync(String resourceGroupName, String name, String backupId, RestoreRequestInner request) {
-        return service.restore(this.client.getHost(), resourceGroupName, name, backupId, this.client.getSubscriptionId(), request, this.client.getApiVersion());
+        return service.restore(this.client.getHost(), resourceGroupName, name, backupId, this.client.getSubscriptionId(), this.client.getApiVersion(), request);
     }
 
     /**
@@ -3643,7 +3643,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<StringDictionaryInner>> updateApplicationSettingsWithResponseAsync(String resourceGroupName, String name, StringDictionaryInner appSettings) {
-        return service.updateApplicationSettings(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), appSettings, this.client.getApiVersion());
+        return service.updateApplicationSettings(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), appSettings);
     }
 
     /**
@@ -3744,7 +3744,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SiteAuthSettingsInner>> updateAuthSettingsWithResponseAsync(String resourceGroupName, String name, SiteAuthSettingsInner siteAuthSettings) {
-        return service.updateAuthSettings(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), siteAuthSettings, this.client.getApiVersion());
+        return service.updateAuthSettings(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), siteAuthSettings);
     }
 
     /**
@@ -3845,7 +3845,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<AzureStoragePropertyDictionaryResourceInner>> updateAzureStorageAccountsWithResponseAsync(String resourceGroupName, String name, AzureStoragePropertyDictionaryResourceInner azureStorageAccounts) {
-        return service.updateAzureStorageAccounts(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), azureStorageAccounts, this.client.getApiVersion());
+        return service.updateAzureStorageAccounts(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), azureStorageAccounts);
     }
 
     /**
@@ -3946,7 +3946,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<BackupRequestInner>> updateBackupConfigurationWithResponseAsync(String resourceGroupName, String name, BackupRequestInner request) {
-        return service.updateBackupConfiguration(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), request, this.client.getApiVersion());
+        return service.updateBackupConfiguration(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), request);
     }
 
     /**
@@ -4191,7 +4191,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ConnectionStringDictionaryInner>> updateConnectionStringsWithResponseAsync(String resourceGroupName, String name, ConnectionStringDictionaryInner connectionStrings) {
-        return service.updateConnectionStrings(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), connectionStrings, this.client.getApiVersion());
+        return service.updateConnectionStrings(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionStrings);
     }
 
     /**
@@ -4341,7 +4341,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SiteLogsConfigInner>> updateDiagnosticLogsConfigWithResponseAsync(String resourceGroupName, String name, SiteLogsConfigInner siteLogsConfig) {
-        return service.updateDiagnosticLogsConfig(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), siteLogsConfig, this.client.getApiVersion());
+        return service.updateDiagnosticLogsConfig(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), siteLogsConfig);
     }
 
     /**
@@ -4393,7 +4393,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<StringDictionaryInner>> updateMetadataWithResponseAsync(String resourceGroupName, String name, StringDictionaryInner metadata) {
-        return service.updateMetadata(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), metadata, this.client.getApiVersion());
+        return service.updateMetadata(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), metadata);
     }
 
     /**
@@ -4539,7 +4539,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PushSettingsInner>> updateSitePushSettingsWithResponseAsync(String resourceGroupName, String name, PushSettingsInner pushSettings) {
-        return service.updateSitePushSettings(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), pushSettings, this.client.getApiVersion());
+        return service.updateSitePushSettings(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), pushSettings);
     }
 
     /**
@@ -4689,7 +4689,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SlotConfigNamesResourceInner>> updateSlotConfigurationNamesWithResponseAsync(String resourceGroupName, String name, SlotConfigNamesResourceInner slotConfigNames) {
-        return service.updateSlotConfigurationNames(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), slotConfigNames, this.client.getApiVersion());
+        return service.updateSlotConfigurationNames(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), slotConfigNames);
     }
 
     /**
@@ -4790,7 +4790,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SiteConfigResourceInner>> createOrUpdateConfigurationWithResponseAsync(String resourceGroupName, String name, SiteConfigResourceInner siteConfig) {
-        return service.createOrUpdateConfiguration(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), siteConfig, this.client.getApiVersion());
+        return service.createOrUpdateConfiguration(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), siteConfig);
     }
 
     /**
@@ -4842,7 +4842,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SiteConfigResourceInner>> updateConfigurationWithResponseAsync(String resourceGroupName, String name, SiteConfigResourceInner siteConfig) {
-        return service.updateConfiguration(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), siteConfig, this.client.getApiVersion());
+        return service.updateConfiguration(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), siteConfig);
     }
 
     /**
@@ -5477,7 +5477,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DeploymentInner>> createDeploymentWithResponseAsync(String resourceGroupName, String name, String id, DeploymentInner deployment) {
-        return service.createDeployment(this.client.getHost(), resourceGroupName, name, id, this.client.getSubscriptionId(), deployment, this.client.getApiVersion());
+        return service.createDeployment(this.client.getHost(), resourceGroupName, name, id, this.client.getSubscriptionId(), this.client.getApiVersion(), deployment);
     }
 
     /**
@@ -5629,7 +5629,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<RestoreRequestInner>> discoverBackupWithResponseAsync(String resourceGroupName, String name, RestoreRequestInner request) {
-        return service.discoverBackup(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), request, this.client.getApiVersion());
+        return service.discoverBackup(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), request);
     }
 
     /**
@@ -5784,7 +5784,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<IdentifierInner>> createOrUpdateDomainOwnershipIdentifierWithResponseAsync(String resourceGroupName, String name, String domainOwnershipIdentifierName, IdentifierInner domainOwnershipIdentifier) {
-        return service.createOrUpdateDomainOwnershipIdentifier(this.client.getHost(), resourceGroupName, name, domainOwnershipIdentifierName, this.client.getSubscriptionId(), domainOwnershipIdentifier, this.client.getApiVersion());
+        return service.createOrUpdateDomainOwnershipIdentifier(this.client.getHost(), resourceGroupName, name, domainOwnershipIdentifierName, this.client.getSubscriptionId(), this.client.getApiVersion(), domainOwnershipIdentifier);
     }
 
     /**
@@ -5885,7 +5885,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<IdentifierInner>> updateDomainOwnershipIdentifierWithResponseAsync(String resourceGroupName, String name, String domainOwnershipIdentifierName, IdentifierInner domainOwnershipIdentifier) {
-        return service.updateDomainOwnershipIdentifier(this.client.getHost(), resourceGroupName, name, domainOwnershipIdentifierName, this.client.getSubscriptionId(), domainOwnershipIdentifier, this.client.getApiVersion());
+        return service.updateDomainOwnershipIdentifier(this.client.getHost(), resourceGroupName, name, domainOwnershipIdentifierName, this.client.getSubscriptionId(), this.client.getApiVersion(), domainOwnershipIdentifier);
     }
 
     /**
@@ -5988,7 +5988,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createMSDeployOperationWithResponseAsync(String resourceGroupName, String name, MSDeploy mSDeploy) {
-        return service.createMSDeployOperation(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), mSDeploy, this.client.getApiVersion());
+        return service.createMSDeployOperation(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), mSDeploy);
     }
 
     /**
@@ -6237,7 +6237,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createFunctionWithResponseAsync(String resourceGroupName, String name, String functionName, FunctionEnvelopeInner functionEnvelope) {
-        return service.createFunction(this.client.getHost(), resourceGroupName, name, functionName, this.client.getSubscriptionId(), functionEnvelope, this.client.getApiVersion());
+        return service.createFunction(this.client.getHost(), resourceGroupName, name, functionName, this.client.getSubscriptionId(), this.client.getApiVersion(), functionEnvelope);
     }
 
     /**
@@ -6335,7 +6335,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<KeyInfoInner>> createOrUpdateFunctionSecretWithResponseAsync(String resourceGroupName, String name, String functionName, String keyName, KeyInfoInner key) {
-        return service.createOrUpdateFunctionSecret(this.client.getHost(), resourceGroupName, name, functionName, keyName, this.client.getSubscriptionId(), key, this.client.getApiVersion());
+        return service.createOrUpdateFunctionSecret(this.client.getHost(), resourceGroupName, name, functionName, keyName, this.client.getSubscriptionId(), this.client.getApiVersion(), key);
     }
 
     /**
@@ -6681,7 +6681,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<KeyInfoInner>> createOrUpdateHostSecretWithResponseAsync(String resourceGroupName, String name, String keyType, String keyName, KeyInfoInner key) {
-        return service.createOrUpdateHostSecret(this.client.getHost(), resourceGroupName, name, keyType, keyName, this.client.getSubscriptionId(), key, this.client.getApiVersion());
+        return service.createOrUpdateHostSecret(this.client.getHost(), resourceGroupName, name, keyType, keyName, this.client.getSubscriptionId(), this.client.getApiVersion(), key);
     }
 
     /**
@@ -6889,7 +6889,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<HostNameBindingInner>> createOrUpdateHostNameBindingWithResponseAsync(String resourceGroupName, String name, String hostName, HostNameBindingInner hostNameBinding) {
-        return service.createOrUpdateHostNameBinding(this.client.getHost(), resourceGroupName, name, hostName, this.client.getSubscriptionId(), hostNameBinding, this.client.getApiVersion());
+        return service.createOrUpdateHostNameBinding(this.client.getHost(), resourceGroupName, name, hostName, this.client.getSubscriptionId(), this.client.getApiVersion(), hostNameBinding);
     }
 
     /**
@@ -7046,7 +7046,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<HybridConnectionInner>> createOrUpdateHybridConnectionWithResponseAsync(String resourceGroupName, String name, String namespaceName, String relayName, HybridConnectionInner connectionEnvelope) {
-        return service.createOrUpdateHybridConnection(this.client.getHost(), resourceGroupName, name, namespaceName, relayName, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.createOrUpdateHybridConnection(this.client.getHost(), resourceGroupName, name, namespaceName, relayName, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -7153,7 +7153,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<HybridConnectionInner>> updateHybridConnectionWithResponseAsync(String resourceGroupName, String name, String namespaceName, String relayName, HybridConnectionInner connectionEnvelope) {
-        return service.updateHybridConnection(this.client.getHost(), resourceGroupName, name, namespaceName, relayName, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.updateHybridConnection(this.client.getHost(), resourceGroupName, name, namespaceName, relayName, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -7360,7 +7360,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<RelayServiceConnectionEntityInner>> createOrUpdateRelayServiceConnectionWithResponseAsync(String resourceGroupName, String name, String entityName, RelayServiceConnectionEntityInner connectionEnvelope) {
-        return service.createOrUpdateRelayServiceConnection(this.client.getHost(), resourceGroupName, name, entityName, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.createOrUpdateRelayServiceConnection(this.client.getHost(), resourceGroupName, name, entityName, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -7461,7 +7461,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<RelayServiceConnectionEntityInner>> updateRelayServiceConnectionWithResponseAsync(String resourceGroupName, String name, String entityName, RelayServiceConnectionEntityInner connectionEnvelope) {
-        return service.updateRelayServiceConnection(this.client.getHost(), resourceGroupName, name, entityName, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.updateRelayServiceConnection(this.client.getHost(), resourceGroupName, name, entityName, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -7670,7 +7670,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createInstanceMSDeployOperationWithResponseAsync(String resourceGroupName, String name, String instanceId, MSDeploy mSDeploy) {
-        return service.createInstanceMSDeployOperation(this.client.getHost(), resourceGroupName, name, instanceId, this.client.getSubscriptionId(), mSDeploy, this.client.getApiVersion());
+        return service.createInstanceMSDeployOperation(this.client.getHost(), resourceGroupName, name, instanceId, this.client.getSubscriptionId(), this.client.getApiVersion(), mSDeploy);
     }
 
     /**
@@ -7929,7 +7929,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<Response<Void>> getInstanceProcessDumpWithResponseAsync(String resourceGroupName, String name, String processId, String instanceId) {
+    public Mono<StreamResponse> getInstanceProcessDumpWithResponseAsync(String resourceGroupName, String name, String processId, String instanceId) {
         return service.getInstanceProcessDump(this.client.getHost(), resourceGroupName, name, processId, instanceId, this.client.getSubscriptionId(), this.client.getApiVersion());
     }
 
@@ -7945,10 +7945,9 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<Void> getInstanceProcessDumpAsync(String resourceGroupName, String name, String processId, String instanceId) {
+    public Flux<ByteBuffer> getInstanceProcessDumpAsync(String resourceGroupName, String name, String processId, String instanceId) {
         return getInstanceProcessDumpWithResponseAsync(resourceGroupName, name, processId, instanceId)
-            .flatMap((Response<Void> res) -> Mono.empty());
-    }
+            .flatMapMany(StreamResponse::getValue);}
 
     /**
      * Description for Get a memory dump of a process by its ID for a specific scaled-out instance in a web site.
@@ -7962,8 +7961,12 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public void getInstanceProcessDump(String resourceGroupName, String name, String processId, String instanceId) {
-        getInstanceProcessDumpAsync(resourceGroupName, name, processId, instanceId).block();
+    public InputStream getInstanceProcessDump(String resourceGroupName, String name, String processId, String instanceId) {
+        return getInstanceProcessDumpAsync(resourceGroupName, name, processId, instanceId)
+            .map(ByteBufferBackedInputStream::new)
+            .collectList()
+            .map(list -> new SequenceInputStream(Collections.enumeration(list)))
+            .block();
     }
 
     /**
@@ -8297,7 +8300,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> migrateStorageWithResponseAsync(String subscriptionName, String resourceGroupName, String name, StorageMigrationOptions migrationOptions) {
-        return service.migrateStorage(this.client.getHost(), subscriptionName, resourceGroupName, name, this.client.getSubscriptionId(), migrationOptions, this.client.getApiVersion());
+        return service.migrateStorage(this.client.getHost(), subscriptionName, resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), migrationOptions);
     }
 
     /**
@@ -8347,7 +8350,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> migrateMySqlWithResponseAsync(String resourceGroupName, String name, MigrateMySqlRequest migrationRequestEnvelope) {
-        return service.migrateMySql(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), migrationRequestEnvelope, this.client.getApiVersion());
+        return service.migrateMySql(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), migrationRequestEnvelope);
     }
 
     /**
@@ -8494,7 +8497,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SwiftVirtualNetworkInner>> createOrUpdateSwiftVirtualNetworkConnectionWithResponseAsync(String resourceGroupName, String name, SwiftVirtualNetworkInner connectionEnvelope) {
-        return service.createOrUpdateSwiftVirtualNetworkConnection(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.createOrUpdateSwiftVirtualNetworkConnection(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -8592,7 +8595,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SwiftVirtualNetworkInner>> updateSwiftVirtualNetworkConnectionWithResponseAsync(String resourceGroupName, String name, SwiftVirtualNetworkInner connectionEnvelope) {
-        return service.updateSwiftVirtualNetworkConnection(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.updateSwiftVirtualNetworkConnection(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -9418,7 +9421,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PremierAddOnInner>> addPremierAddOnWithResponseAsync(String resourceGroupName, String name, String premierAddOnName, PremierAddOnInner premierAddOn) {
-        return service.addPremierAddOn(this.client.getHost(), resourceGroupName, name, premierAddOnName, this.client.getSubscriptionId(), premierAddOn, this.client.getApiVersion());
+        return service.addPremierAddOn(this.client.getHost(), resourceGroupName, name, premierAddOnName, this.client.getSubscriptionId(), this.client.getApiVersion(), premierAddOn);
     }
 
     /**
@@ -9519,7 +9522,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PremierAddOnInner>> updatePremierAddOnWithResponseAsync(String resourceGroupName, String name, String premierAddOnName, PremierAddOnPatchResource premierAddOn) {
-        return service.updatePremierAddOn(this.client.getHost(), resourceGroupName, name, premierAddOnName, this.client.getSubscriptionId(), premierAddOn, this.client.getApiVersion());
+        return service.updatePremierAddOn(this.client.getHost(), resourceGroupName, name, premierAddOnName, this.client.getSubscriptionId(), this.client.getApiVersion(), premierAddOn);
     }
 
     /**
@@ -9622,7 +9625,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PrivateAccessInner>> putPrivateAccessVnetWithResponseAsync(String resourceGroupName, String name, PrivateAccessInner access) {
-        return service.putPrivateAccessVnet(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), access, this.client.getApiVersion());
+        return service.putPrivateAccessVnet(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), access);
     }
 
     /**
@@ -9821,7 +9824,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<Response<Void>> getProcessDumpWithResponseAsync(String resourceGroupName, String name, String processId) {
+    public Mono<StreamResponse> getProcessDumpWithResponseAsync(String resourceGroupName, String name, String processId) {
         return service.getProcessDump(this.client.getHost(), resourceGroupName, name, processId, this.client.getSubscriptionId(), this.client.getApiVersion());
     }
 
@@ -9836,10 +9839,9 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<Void> getProcessDumpAsync(String resourceGroupName, String name, String processId) {
+    public Flux<ByteBuffer> getProcessDumpAsync(String resourceGroupName, String name, String processId) {
         return getProcessDumpWithResponseAsync(resourceGroupName, name, processId)
-            .flatMap((Response<Void> res) -> Mono.empty());
-    }
+            .flatMapMany(StreamResponse::getValue);}
 
     /**
      * Description for Get a memory dump of a process by its ID for a specific scaled-out instance in a web site.
@@ -9852,8 +9854,12 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public void getProcessDump(String resourceGroupName, String name, String processId) {
-        getProcessDumpAsync(resourceGroupName, name, processId).block();
+    public InputStream getProcessDump(String resourceGroupName, String name, String processId) {
+        return getProcessDumpAsync(resourceGroupName, name, processId)
+            .map(ByteBufferBackedInputStream::new)
+            .collectList()
+            .map(list -> new SequenceInputStream(Collections.enumeration(list)))
+            .block();
     }
 
     /**
@@ -10132,7 +10138,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PublicCertificateInner>> createOrUpdatePublicCertificateWithResponseAsync(String resourceGroupName, String name, String publicCertificateName, PublicCertificateInner publicCertificate) {
-        return service.createOrUpdatePublicCertificate(this.client.getHost(), resourceGroupName, name, publicCertificateName, this.client.getSubscriptionId(), publicCertificate, this.client.getApiVersion());
+        return service.createOrUpdatePublicCertificate(this.client.getHost(), resourceGroupName, name, publicCertificateName, this.client.getSubscriptionId(), this.client.getApiVersion(), publicCertificate);
     }
 
     /**
@@ -10231,8 +10237,8 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<Response<Void>> listPublishingProfileXmlWithSecretsWithResponseAsync(String resourceGroupName, String name, CsmPublishingProfileOptions publishingProfileOptions) {
-        return service.listPublishingProfileXmlWithSecrets(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), publishingProfileOptions, this.client.getApiVersion());
+    public Mono<StreamResponse> listPublishingProfileXmlWithSecretsWithResponseAsync(String resourceGroupName, String name, CsmPublishingProfileOptions publishingProfileOptions) {
+        return service.listPublishingProfileXmlWithSecrets(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), publishingProfileOptions);
     }
 
     /**
@@ -10246,10 +10252,9 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<Void> listPublishingProfileXmlWithSecretsAsync(String resourceGroupName, String name, CsmPublishingProfileOptions publishingProfileOptions) {
+    public Flux<ByteBuffer> listPublishingProfileXmlWithSecretsAsync(String resourceGroupName, String name, CsmPublishingProfileOptions publishingProfileOptions) {
         return listPublishingProfileXmlWithSecretsWithResponseAsync(resourceGroupName, name, publishingProfileOptions)
-            .flatMap((Response<Void> res) -> Mono.empty());
-    }
+            .flatMapMany(StreamResponse::getValue);}
 
     /**
      * Description for Gets the publishing profile for an app (or deployment slot, if specified).
@@ -10262,8 +10267,12 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public void listPublishingProfileXmlWithSecrets(String resourceGroupName, String name, CsmPublishingProfileOptions publishingProfileOptions) {
-        listPublishingProfileXmlWithSecretsAsync(resourceGroupName, name, publishingProfileOptions).block();
+    public InputStream listPublishingProfileXmlWithSecrets(String resourceGroupName, String name, CsmPublishingProfileOptions publishingProfileOptions) {
+        return listPublishingProfileXmlWithSecretsAsync(resourceGroupName, name, publishingProfileOptions)
+            .map(ByteBufferBackedInputStream::new)
+            .collectList()
+            .map(list -> new SequenceInputStream(Collections.enumeration(list)))
+            .block();
     }
 
     /**
@@ -10403,7 +10412,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> restoreFromBackupBlobWithResponseAsync(String resourceGroupName, String name, RestoreRequestInner request) {
-        return service.restoreFromBackupBlob(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), request, this.client.getApiVersion());
+        return service.restoreFromBackupBlob(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), request);
     }
 
     /**
@@ -10451,7 +10460,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> restoreFromDeletedAppWithResponseAsync(String resourceGroupName, String name, DeletedAppRestoreRequest restoreRequest) {
-        return service.restoreFromDeletedApp(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), restoreRequest, this.client.getApiVersion());
+        return service.restoreFromDeletedApp(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), restoreRequest);
     }
 
     /**
@@ -10499,7 +10508,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> restoreSnapshotWithResponseAsync(String resourceGroupName, String name, SnapshotRestoreRequest restoreRequest) {
-        return service.restoreSnapshot(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), restoreRequest, this.client.getApiVersion());
+        return service.restoreSnapshot(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), restoreRequest);
     }
 
     /**
@@ -10743,7 +10752,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> copyProductionSlotWithResponseAsync(String resourceGroupName, String name, CsmCopySlotEntityInner copySlotEntity) {
-        return service.copyProductionSlot(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), copySlotEntity, this.client.getApiVersion());
+        return service.copyProductionSlot(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), copySlotEntity);
     }
 
     /**
@@ -10894,7 +10903,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateSlotWithResponseAsync(String resourceGroupName, String name, String slot, SiteInner siteEnvelope) {
-        return service.createOrUpdateSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), siteEnvelope, this.client.getApiVersion());
+        return service.createOrUpdateSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), siteEnvelope);
     }
 
     /**
@@ -11032,7 +11041,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SiteInner>> updateSlotWithResponseAsync(String resourceGroupName, String name, String slot, SitePatchResourceInner siteEnvelope) {
-        return service.updateSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), siteEnvelope, this.client.getApiVersion());
+        return service.updateSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), siteEnvelope);
     }
 
     /**
@@ -11181,7 +11190,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> applySlotConfigurationSlotWithResponseAsync(String resourceGroupName, String name, String slot, CsmSlotEntity slotSwapEntity) {
-        return service.applySlotConfigurationSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), slotSwapEntity, this.client.getApiVersion());
+        return service.applySlotConfigurationSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), slotSwapEntity);
     }
 
     /**
@@ -11230,7 +11239,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<BackupItemInner>> backupSlotWithResponseAsync(String resourceGroupName, String name, String slot, BackupRequestInner request) {
-        return service.backupSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), request, this.client.getApiVersion());
+        return service.backupSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), request);
     }
 
     /**
@@ -11443,7 +11452,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<BackupItemInner>> listBackupStatusSecretsSlotWithResponseAsync(String resourceGroupName, String name, String backupId, String slot, BackupRequestInner request) {
-        return service.listBackupStatusSecretsSlot(this.client.getHost(), resourceGroupName, name, backupId, slot, this.client.getSubscriptionId(), request, this.client.getApiVersion());
+        return service.listBackupStatusSecretsSlot(this.client.getHost(), resourceGroupName, name, backupId, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), request);
     }
 
     /**
@@ -11501,7 +11510,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> restoreSlotWithResponseAsync(String resourceGroupName, String name, String backupId, String slot, RestoreRequestInner request) {
-        return service.restoreSlot(this.client.getHost(), resourceGroupName, name, backupId, slot, this.client.getSubscriptionId(), request, this.client.getApiVersion());
+        return service.restoreSlot(this.client.getHost(), resourceGroupName, name, backupId, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), request);
     }
 
     /**
@@ -11607,7 +11616,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<StringDictionaryInner>> updateApplicationSettingsSlotWithResponseAsync(String resourceGroupName, String name, String slot, StringDictionaryInner appSettings) {
-        return service.updateApplicationSettingsSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), appSettings, this.client.getApiVersion());
+        return service.updateApplicationSettingsSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), appSettings);
     }
 
     /**
@@ -11714,7 +11723,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SiteAuthSettingsInner>> updateAuthSettingsSlotWithResponseAsync(String resourceGroupName, String name, String slot, SiteAuthSettingsInner siteAuthSettings) {
-        return service.updateAuthSettingsSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), siteAuthSettings, this.client.getApiVersion());
+        return service.updateAuthSettingsSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), siteAuthSettings);
     }
 
     /**
@@ -11821,7 +11830,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<AzureStoragePropertyDictionaryResourceInner>> updateAzureStorageAccountsSlotWithResponseAsync(String resourceGroupName, String name, String slot, AzureStoragePropertyDictionaryResourceInner azureStorageAccounts) {
-        return service.updateAzureStorageAccountsSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), azureStorageAccounts, this.client.getApiVersion());
+        return service.updateAzureStorageAccountsSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), azureStorageAccounts);
     }
 
     /**
@@ -11928,7 +11937,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<BackupRequestInner>> updateBackupConfigurationSlotWithResponseAsync(String resourceGroupName, String name, String slot, BackupRequestInner request) {
-        return service.updateBackupConfigurationSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), request, this.client.getApiVersion());
+        return service.updateBackupConfigurationSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), request);
     }
 
     /**
@@ -12081,7 +12090,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ConnectionStringDictionaryInner>> updateConnectionStringsSlotWithResponseAsync(String resourceGroupName, String name, String slot, ConnectionStringDictionaryInner connectionStrings) {
-        return service.updateConnectionStringsSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), connectionStrings, this.client.getApiVersion());
+        return service.updateConnectionStringsSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionStrings);
     }
 
     /**
@@ -12240,7 +12249,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SiteLogsConfigInner>> updateDiagnosticLogsConfigSlotWithResponseAsync(String resourceGroupName, String name, String slot, SiteLogsConfigInner siteLogsConfig) {
-        return service.updateDiagnosticLogsConfigSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), siteLogsConfig, this.client.getApiVersion());
+        return service.updateDiagnosticLogsConfigSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), siteLogsConfig);
     }
 
     /**
@@ -12295,7 +12304,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<StringDictionaryInner>> updateMetadataSlotWithResponseAsync(String resourceGroupName, String name, String slot, StringDictionaryInner metadata) {
-        return service.updateMetadataSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), metadata, this.client.getApiVersion());
+        return service.updateMetadataSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), metadata);
     }
 
     /**
@@ -12450,7 +12459,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PushSettingsInner>> updateSitePushSettingsSlotWithResponseAsync(String resourceGroupName, String name, String slot, PushSettingsInner pushSettings) {
-        return service.updateSitePushSettingsSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), pushSettings, this.client.getApiVersion());
+        return service.updateSitePushSettingsSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), pushSettings);
     }
 
     /**
@@ -12609,7 +12618,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SiteConfigResourceInner>> createOrUpdateConfigurationSlotWithResponseAsync(String resourceGroupName, String name, String slot, SiteConfigResourceInner siteConfig) {
-        return service.createOrUpdateConfigurationSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), siteConfig, this.client.getApiVersion());
+        return service.createOrUpdateConfigurationSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), siteConfig);
     }
 
     /**
@@ -12664,7 +12673,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SiteConfigResourceInner>> updateConfigurationSlotWithResponseAsync(String resourceGroupName, String name, String slot, SiteConfigResourceInner siteConfig) {
-        return service.updateConfigurationSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), siteConfig, this.client.getApiVersion());
+        return service.updateConfigurationSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), siteConfig);
     }
 
     /**
@@ -13338,7 +13347,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DeploymentInner>> createDeploymentSlotWithResponseAsync(String resourceGroupName, String name, String id, String slot, DeploymentInner deployment) {
-        return service.createDeploymentSlot(this.client.getHost(), resourceGroupName, name, id, slot, this.client.getSubscriptionId(), deployment, this.client.getApiVersion());
+        return service.createDeploymentSlot(this.client.getHost(), resourceGroupName, name, id, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), deployment);
     }
 
     /**
@@ -13499,7 +13508,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<RestoreRequestInner>> discoverBackupSlotWithResponseAsync(String resourceGroupName, String name, String slot, RestoreRequestInner request) {
-        return service.discoverBackupSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), request, this.client.getApiVersion());
+        return service.discoverBackupSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), request);
     }
 
     /**
@@ -13663,7 +13672,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<IdentifierInner>> createOrUpdateDomainOwnershipIdentifierSlotWithResponseAsync(String resourceGroupName, String name, String domainOwnershipIdentifierName, String slot, IdentifierInner domainOwnershipIdentifier) {
-        return service.createOrUpdateDomainOwnershipIdentifierSlot(this.client.getHost(), resourceGroupName, name, domainOwnershipIdentifierName, slot, this.client.getSubscriptionId(), domainOwnershipIdentifier, this.client.getApiVersion());
+        return service.createOrUpdateDomainOwnershipIdentifierSlot(this.client.getHost(), resourceGroupName, name, domainOwnershipIdentifierName, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), domainOwnershipIdentifier);
     }
 
     /**
@@ -13770,7 +13779,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<IdentifierInner>> updateDomainOwnershipIdentifierSlotWithResponseAsync(String resourceGroupName, String name, String domainOwnershipIdentifierName, String slot, IdentifierInner domainOwnershipIdentifier) {
-        return service.updateDomainOwnershipIdentifierSlot(this.client.getHost(), resourceGroupName, name, domainOwnershipIdentifierName, slot, this.client.getSubscriptionId(), domainOwnershipIdentifier, this.client.getApiVersion());
+        return service.updateDomainOwnershipIdentifierSlot(this.client.getHost(), resourceGroupName, name, domainOwnershipIdentifierName, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), domainOwnershipIdentifier);
     }
 
     /**
@@ -13879,7 +13888,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createMSDeployOperationSlotWithResponseAsync(String resourceGroupName, String name, String slot, MSDeploy mSDeploy) {
-        return service.createMSDeployOperationSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), mSDeploy, this.client.getApiVersion());
+        return service.createMSDeployOperationSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), mSDeploy);
     }
 
     /**
@@ -14143,7 +14152,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createInstanceFunctionSlotWithResponseAsync(String resourceGroupName, String name, String functionName, String slot, FunctionEnvelopeInner functionEnvelope) {
-        return service.createInstanceFunctionSlot(this.client.getHost(), resourceGroupName, name, functionName, slot, this.client.getSubscriptionId(), functionEnvelope, this.client.getApiVersion());
+        return service.createInstanceFunctionSlot(this.client.getHost(), resourceGroupName, name, functionName, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), functionEnvelope);
     }
 
     /**
@@ -14247,7 +14256,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<KeyInfoInner>> createOrUpdateFunctionSecretSlotWithResponseAsync(String resourceGroupName, String name, String functionName, String keyName, String slot, KeyInfoInner key) {
-        return service.createOrUpdateFunctionSecretSlot(this.client.getHost(), resourceGroupName, name, functionName, keyName, slot, this.client.getSubscriptionId(), key, this.client.getApiVersion());
+        return service.createOrUpdateFunctionSecretSlot(this.client.getHost(), resourceGroupName, name, functionName, keyName, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), key);
     }
 
     /**
@@ -14614,7 +14623,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<KeyInfoInner>> createOrUpdateHostSecretSlotWithResponseAsync(String resourceGroupName, String name, String keyType, String keyName, String slot, KeyInfoInner key) {
-        return service.createOrUpdateHostSecretSlot(this.client.getHost(), resourceGroupName, name, keyType, keyName, slot, this.client.getSubscriptionId(), key, this.client.getApiVersion());
+        return service.createOrUpdateHostSecretSlot(this.client.getHost(), resourceGroupName, name, keyType, keyName, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), key);
     }
 
     /**
@@ -14834,7 +14843,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<HostNameBindingInner>> createOrUpdateHostNameBindingSlotWithResponseAsync(String resourceGroupName, String name, String hostName, String slot, HostNameBindingInner hostNameBinding) {
-        return service.createOrUpdateHostNameBindingSlot(this.client.getHost(), resourceGroupName, name, hostName, slot, this.client.getSubscriptionId(), hostNameBinding, this.client.getApiVersion());
+        return service.createOrUpdateHostNameBindingSlot(this.client.getHost(), resourceGroupName, name, hostName, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), hostNameBinding);
     }
 
     /**
@@ -15000,7 +15009,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<HybridConnectionInner>> createOrUpdateHybridConnectionSlotWithResponseAsync(String resourceGroupName, String name, String namespaceName, String relayName, String slot, HybridConnectionInner connectionEnvelope) {
-        return service.createOrUpdateHybridConnectionSlot(this.client.getHost(), resourceGroupName, name, namespaceName, relayName, slot, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.createOrUpdateHybridConnectionSlot(this.client.getHost(), resourceGroupName, name, namespaceName, relayName, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -15113,7 +15122,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<HybridConnectionInner>> updateHybridConnectionSlotWithResponseAsync(String resourceGroupName, String name, String namespaceName, String relayName, String slot, HybridConnectionInner connectionEnvelope) {
-        return service.updateHybridConnectionSlot(this.client.getHost(), resourceGroupName, name, namespaceName, relayName, slot, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.updateHybridConnectionSlot(this.client.getHost(), resourceGroupName, name, namespaceName, relayName, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -15332,7 +15341,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<RelayServiceConnectionEntityInner>> createOrUpdateRelayServiceConnectionSlotWithResponseAsync(String resourceGroupName, String name, String entityName, String slot, RelayServiceConnectionEntityInner connectionEnvelope) {
-        return service.createOrUpdateRelayServiceConnectionSlot(this.client.getHost(), resourceGroupName, name, entityName, slot, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.createOrUpdateRelayServiceConnectionSlot(this.client.getHost(), resourceGroupName, name, entityName, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -15439,7 +15448,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<RelayServiceConnectionEntityInner>> updateRelayServiceConnectionSlotWithResponseAsync(String resourceGroupName, String name, String entityName, String slot, RelayServiceConnectionEntityInner connectionEnvelope) {
-        return service.updateRelayServiceConnectionSlot(this.client.getHost(), resourceGroupName, name, entityName, slot, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.updateRelayServiceConnectionSlot(this.client.getHost(), resourceGroupName, name, entityName, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -15660,7 +15669,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createInstanceMSDeployOperationSlotWithResponseAsync(String resourceGroupName, String name, String slot, String instanceId, MSDeploy mSDeploy) {
-        return service.createInstanceMSDeployOperationSlot(this.client.getHost(), resourceGroupName, name, slot, instanceId, this.client.getSubscriptionId(), mSDeploy, this.client.getApiVersion());
+        return service.createInstanceMSDeployOperationSlot(this.client.getHost(), resourceGroupName, name, slot, instanceId, this.client.getSubscriptionId(), this.client.getApiVersion(), mSDeploy);
     }
 
     /**
@@ -15934,7 +15943,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<Response<Void>> getInstanceProcessDumpSlotWithResponseAsync(String resourceGroupName, String name, String processId, String slot, String instanceId) {
+    public Mono<StreamResponse> getInstanceProcessDumpSlotWithResponseAsync(String resourceGroupName, String name, String processId, String slot, String instanceId) {
         return service.getInstanceProcessDumpSlot(this.client.getHost(), resourceGroupName, name, processId, slot, instanceId, this.client.getSubscriptionId(), this.client.getApiVersion());
     }
 
@@ -15951,10 +15960,9 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<Void> getInstanceProcessDumpSlotAsync(String resourceGroupName, String name, String processId, String slot, String instanceId) {
+    public Flux<ByteBuffer> getInstanceProcessDumpSlotAsync(String resourceGroupName, String name, String processId, String slot, String instanceId) {
         return getInstanceProcessDumpSlotWithResponseAsync(resourceGroupName, name, processId, slot, instanceId)
-            .flatMap((Response<Void> res) -> Mono.empty());
-    }
+            .flatMapMany(StreamResponse::getValue);}
 
     /**
      * Description for Get a memory dump of a process by its ID for a specific scaled-out instance in a web site.
@@ -15969,8 +15977,12 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public void getInstanceProcessDumpSlot(String resourceGroupName, String name, String processId, String slot, String instanceId) {
-        getInstanceProcessDumpSlotAsync(resourceGroupName, name, processId, slot, instanceId).block();
+    public InputStream getInstanceProcessDumpSlot(String resourceGroupName, String name, String processId, String slot, String instanceId) {
+        return getInstanceProcessDumpSlotAsync(resourceGroupName, name, processId, slot, instanceId)
+            .map(ByteBufferBackedInputStream::new)
+            .collectList()
+            .map(list -> new SequenceInputStream(Collections.enumeration(list)))
+            .block();
     }
 
     /**
@@ -16427,7 +16439,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SwiftVirtualNetworkInner>> createOrUpdateSwiftVirtualNetworkConnectionSlotWithResponseAsync(String resourceGroupName, String name, String slot, SwiftVirtualNetworkInner connectionEnvelope) {
-        return service.createOrUpdateSwiftVirtualNetworkConnectionSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.createOrUpdateSwiftVirtualNetworkConnectionSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -16531,7 +16543,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SwiftVirtualNetworkInner>> updateSwiftVirtualNetworkConnectionSlotWithResponseAsync(String resourceGroupName, String name, String slot, SwiftVirtualNetworkInner connectionEnvelope) {
-        return service.updateSwiftVirtualNetworkConnectionSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.updateSwiftVirtualNetworkConnectionSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -17405,7 +17417,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PremierAddOnInner>> addPremierAddOnSlotWithResponseAsync(String resourceGroupName, String name, String premierAddOnName, String slot, PremierAddOnInner premierAddOn) {
-        return service.addPremierAddOnSlot(this.client.getHost(), resourceGroupName, name, premierAddOnName, slot, this.client.getSubscriptionId(), premierAddOn, this.client.getApiVersion());
+        return service.addPremierAddOnSlot(this.client.getHost(), resourceGroupName, name, premierAddOnName, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), premierAddOn);
     }
 
     /**
@@ -17512,7 +17524,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PremierAddOnInner>> updatePremierAddOnSlotWithResponseAsync(String resourceGroupName, String name, String premierAddOnName, String slot, PremierAddOnPatchResource premierAddOn) {
-        return service.updatePremierAddOnSlot(this.client.getHost(), resourceGroupName, name, premierAddOnName, slot, this.client.getSubscriptionId(), premierAddOn, this.client.getApiVersion());
+        return service.updatePremierAddOnSlot(this.client.getHost(), resourceGroupName, name, premierAddOnName, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), premierAddOn);
     }
 
     /**
@@ -17621,7 +17633,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PrivateAccessInner>> putPrivateAccessVnetSlotWithResponseAsync(String resourceGroupName, String name, String slot, PrivateAccessInner access) {
-        return service.putPrivateAccessVnetSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), access, this.client.getApiVersion());
+        return service.putPrivateAccessVnetSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), access);
     }
 
     /**
@@ -17832,7 +17844,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<Response<Void>> getProcessDumpSlotWithResponseAsync(String resourceGroupName, String name, String processId, String slot) {
+    public Mono<StreamResponse> getProcessDumpSlotWithResponseAsync(String resourceGroupName, String name, String processId, String slot) {
         return service.getProcessDumpSlot(this.client.getHost(), resourceGroupName, name, processId, slot, this.client.getSubscriptionId(), this.client.getApiVersion());
     }
 
@@ -17848,10 +17860,9 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<Void> getProcessDumpSlotAsync(String resourceGroupName, String name, String processId, String slot) {
+    public Flux<ByteBuffer> getProcessDumpSlotAsync(String resourceGroupName, String name, String processId, String slot) {
         return getProcessDumpSlotWithResponseAsync(resourceGroupName, name, processId, slot)
-            .flatMap((Response<Void> res) -> Mono.empty());
-    }
+            .flatMapMany(StreamResponse::getValue);}
 
     /**
      * Description for Get a memory dump of a process by its ID for a specific scaled-out instance in a web site.
@@ -17865,8 +17876,12 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public void getProcessDumpSlot(String resourceGroupName, String name, String processId, String slot) {
-        getProcessDumpSlotAsync(resourceGroupName, name, processId, slot).block();
+    public InputStream getProcessDumpSlot(String resourceGroupName, String name, String processId, String slot) {
+        return getProcessDumpSlotAsync(resourceGroupName, name, processId, slot)
+            .map(ByteBufferBackedInputStream::new)
+            .collectList()
+            .map(list -> new SequenceInputStream(Collections.enumeration(list)))
+            .block();
     }
 
     /**
@@ -18161,7 +18176,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PublicCertificateInner>> createOrUpdatePublicCertificateSlotWithResponseAsync(String resourceGroupName, String name, String publicCertificateName, String slot, PublicCertificateInner publicCertificate) {
-        return service.createOrUpdatePublicCertificateSlot(this.client.getHost(), resourceGroupName, name, publicCertificateName, slot, this.client.getSubscriptionId(), publicCertificate, this.client.getApiVersion());
+        return service.createOrUpdatePublicCertificateSlot(this.client.getHost(), resourceGroupName, name, publicCertificateName, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), publicCertificate);
     }
 
     /**
@@ -18266,8 +18281,8 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<Response<Void>> listPublishingProfileXmlWithSecretsSlotWithResponseAsync(String resourceGroupName, String name, String slot, CsmPublishingProfileOptions publishingProfileOptions) {
-        return service.listPublishingProfileXmlWithSecretsSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), publishingProfileOptions, this.client.getApiVersion());
+    public Mono<StreamResponse> listPublishingProfileXmlWithSecretsSlotWithResponseAsync(String resourceGroupName, String name, String slot, CsmPublishingProfileOptions publishingProfileOptions) {
+        return service.listPublishingProfileXmlWithSecretsSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), publishingProfileOptions);
     }
 
     /**
@@ -18282,10 +18297,9 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<Void> listPublishingProfileXmlWithSecretsSlotAsync(String resourceGroupName, String name, String slot, CsmPublishingProfileOptions publishingProfileOptions) {
+    public Flux<ByteBuffer> listPublishingProfileXmlWithSecretsSlotAsync(String resourceGroupName, String name, String slot, CsmPublishingProfileOptions publishingProfileOptions) {
         return listPublishingProfileXmlWithSecretsSlotWithResponseAsync(resourceGroupName, name, slot, publishingProfileOptions)
-            .flatMap((Response<Void> res) -> Mono.empty());
-    }
+            .flatMapMany(StreamResponse::getValue);}
 
     /**
      * Description for Gets the publishing profile for an app (or deployment slot, if specified).
@@ -18299,8 +18313,12 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public void listPublishingProfileXmlWithSecretsSlot(String resourceGroupName, String name, String slot, CsmPublishingProfileOptions publishingProfileOptions) {
-        listPublishingProfileXmlWithSecretsSlotAsync(resourceGroupName, name, slot, publishingProfileOptions).block();
+    public InputStream listPublishingProfileXmlWithSecretsSlot(String resourceGroupName, String name, String slot, CsmPublishingProfileOptions publishingProfileOptions) {
+        return listPublishingProfileXmlWithSecretsSlotAsync(resourceGroupName, name, slot, publishingProfileOptions)
+            .map(ByteBufferBackedInputStream::new)
+            .collectList()
+            .map(list -> new SequenceInputStream(Collections.enumeration(list)))
+            .block();
     }
 
     /**
@@ -18449,7 +18467,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> restoreFromBackupBlobSlotWithResponseAsync(String resourceGroupName, String name, String slot, RestoreRequestInner request) {
-        return service.restoreFromBackupBlobSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), request, this.client.getApiVersion());
+        return service.restoreFromBackupBlobSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), request);
     }
 
     /**
@@ -18500,7 +18518,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> restoreFromDeletedAppSlotWithResponseAsync(String resourceGroupName, String name, String slot, DeletedAppRestoreRequest restoreRequest) {
-        return service.restoreFromDeletedAppSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), restoreRequest, this.client.getApiVersion());
+        return service.restoreFromDeletedAppSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), restoreRequest);
     }
 
     /**
@@ -18551,7 +18569,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> restoreSnapshotSlotWithResponseAsync(String resourceGroupName, String name, String slot, SnapshotRestoreRequest restoreRequest) {
-        return service.restoreSnapshotSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), restoreRequest, this.client.getApiVersion());
+        return service.restoreSnapshotSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), restoreRequest);
     }
 
     /**
@@ -18810,7 +18828,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> copySlotWithResponseAsync(String resourceGroupName, String name, String slot, CsmCopySlotEntityInner copySlotEntity) {
-        return service.copySlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), copySlotEntity, this.client.getApiVersion());
+        return service.copySlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), copySlotEntity);
     }
 
     /**
@@ -18861,7 +18879,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<SlotDifferenceInner>> listSlotDifferencesSlotSinglePageAsync(String resourceGroupName, String name, String slot, CsmSlotEntity slotSwapEntity) {
-        return service.listSlotDifferencesSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), slotSwapEntity, this.client.getApiVersion()).map(res -> new PagedResponseBase<>(
+        return service.listSlotDifferencesSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), slotSwapEntity).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -18917,7 +18935,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> swapSlotWithResponseAsync(String resourceGroupName, String name, String slot, CsmSlotEntity slotSwapEntity) {
-        return service.swapSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), slotSwapEntity, this.client.getApiVersion());
+        return service.swapSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), slotSwapEntity);
     }
 
     /**
@@ -19126,7 +19144,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateSourceControlSlotWithResponseAsync(String resourceGroupName, String name, String slot, SiteSourceControlInner siteSourceControl) {
-        return service.createOrUpdateSourceControlSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), siteSourceControl, this.client.getApiVersion());
+        return service.createOrUpdateSourceControlSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), siteSourceControl);
     }
 
     /**
@@ -19223,7 +19241,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SiteSourceControlInner>> updateSourceControlSlotWithResponseAsync(String resourceGroupName, String name, String slot, SiteSourceControlInner siteSourceControl) {
-        return service.updateSourceControlSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), siteSourceControl, this.client.getApiVersion());
+        return service.updateSourceControlSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), siteSourceControl);
     }
 
     /**
@@ -20122,7 +20140,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VnetInfoInner>> createOrUpdateVnetConnectionSlotWithResponseAsync(String resourceGroupName, String name, String vnetName, String slot, VnetInfoInner connectionEnvelope) {
-        return service.createOrUpdateVnetConnectionSlot(this.client.getHost(), resourceGroupName, name, vnetName, slot, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.createOrUpdateVnetConnectionSlot(this.client.getHost(), resourceGroupName, name, vnetName, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -20229,7 +20247,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VnetInfoInner>> updateVnetConnectionSlotWithResponseAsync(String resourceGroupName, String name, String vnetName, String slot, VnetInfoInner connectionEnvelope) {
-        return service.updateVnetConnectionSlot(this.client.getHost(), resourceGroupName, name, vnetName, slot, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.updateVnetConnectionSlot(this.client.getHost(), resourceGroupName, name, vnetName, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -20346,7 +20364,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VnetGatewayInner>> createOrUpdateVnetConnectionGatewaySlotWithResponseAsync(String resourceGroupName, String name, String vnetName, String gatewayName, String slot, VnetGatewayInner connectionEnvelope) {
-        return service.createOrUpdateVnetConnectionGatewaySlot(this.client.getHost(), resourceGroupName, name, vnetName, gatewayName, slot, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.createOrUpdateVnetConnectionGatewaySlot(this.client.getHost(), resourceGroupName, name, vnetName, gatewayName, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -20407,7 +20425,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VnetGatewayInner>> updateVnetConnectionGatewaySlotWithResponseAsync(String resourceGroupName, String name, String vnetName, String gatewayName, String slot, VnetGatewayInner connectionEnvelope) {
-        return service.updateVnetConnectionGatewaySlot(this.client.getHost(), resourceGroupName, name, vnetName, gatewayName, slot, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.updateVnetConnectionGatewaySlot(this.client.getHost(), resourceGroupName, name, vnetName, gatewayName, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -20573,7 +20591,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<SlotDifferenceInner>> listSlotDifferencesFromProductionSinglePageAsync(String resourceGroupName, String name, CsmSlotEntity slotSwapEntity) {
-        return service.listSlotDifferencesFromProduction(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), slotSwapEntity, this.client.getApiVersion()).map(res -> new PagedResponseBase<>(
+        return service.listSlotDifferencesFromProduction(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), slotSwapEntity).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -20626,7 +20644,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> swapSlotWithProductionWithResponseAsync(String resourceGroupName, String name, CsmSlotEntity slotSwapEntity) {
-        return service.swapSlotWithProduction(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), slotSwapEntity, this.client.getApiVersion());
+        return service.swapSlotWithProduction(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), slotSwapEntity);
     }
 
     /**
@@ -20823,7 +20841,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateSourceControlWithResponseAsync(String resourceGroupName, String name, SiteSourceControlInner siteSourceControl) {
-        return service.createOrUpdateSourceControl(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), siteSourceControl, this.client.getApiVersion());
+        return service.createOrUpdateSourceControl(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), siteSourceControl);
     }
 
     /**
@@ -20914,7 +20932,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SiteSourceControlInner>> updateSourceControlWithResponseAsync(String resourceGroupName, String name, SiteSourceControlInner siteSourceControl) {
-        return service.updateSourceControl(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), siteSourceControl, this.client.getApiVersion());
+        return service.updateSourceControl(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), siteSourceControl);
     }
 
     /**
@@ -21761,7 +21779,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VnetInfoInner>> createOrUpdateVnetConnectionWithResponseAsync(String resourceGroupName, String name, String vnetName, VnetInfoInner connectionEnvelope) {
-        return service.createOrUpdateVnetConnection(this.client.getHost(), resourceGroupName, name, vnetName, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.createOrUpdateVnetConnection(this.client.getHost(), resourceGroupName, name, vnetName, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -21862,7 +21880,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VnetInfoInner>> updateVnetConnectionWithResponseAsync(String resourceGroupName, String name, String vnetName, VnetInfoInner connectionEnvelope) {
-        return service.updateVnetConnection(this.client.getHost(), resourceGroupName, name, vnetName, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.updateVnetConnection(this.client.getHost(), resourceGroupName, name, vnetName, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -21973,7 +21991,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VnetGatewayInner>> createOrUpdateVnetConnectionGatewayWithResponseAsync(String resourceGroupName, String name, String vnetName, String gatewayName, VnetGatewayInner connectionEnvelope) {
-        return service.createOrUpdateVnetConnectionGateway(this.client.getHost(), resourceGroupName, name, vnetName, gatewayName, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.createOrUpdateVnetConnectionGateway(this.client.getHost(), resourceGroupName, name, vnetName, gatewayName, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -22031,7 +22049,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VnetGatewayInner>> updateVnetConnectionGatewayWithResponseAsync(String resourceGroupName, String name, String vnetName, String gatewayName, VnetGatewayInner connectionEnvelope) {
-        return service.updateVnetConnectionGateway(this.client.getHost(), resourceGroupName, name, vnetName, gatewayName, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.updateVnetConnectionGateway(this.client.getHost(), resourceGroupName, name, vnetName, gatewayName, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -22189,7 +22207,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SiteInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String name, SiteInner siteEnvelope) {
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), siteEnvelope, this.client.getApiVersion());
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), siteEnvelope);
     }
 
     /**
@@ -22242,7 +22260,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginRestoreWithResponseAsync(String resourceGroupName, String name, String backupId, RestoreRequestInner request) {
-        return service.beginRestore(this.client.getHost(), resourceGroupName, name, backupId, this.client.getSubscriptionId(), request, this.client.getApiVersion());
+        return service.beginRestore(this.client.getHost(), resourceGroupName, name, backupId, this.client.getSubscriptionId(), this.client.getApiVersion(), request);
     }
 
     /**
@@ -22339,7 +22357,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<MSDeployStatusInner>> beginCreateMSDeployOperationWithResponseAsync(String resourceGroupName, String name, MSDeploy mSDeploy) {
-        return service.beginCreateMSDeployOperation(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), mSDeploy, this.client.getApiVersion());
+        return service.beginCreateMSDeployOperation(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), mSDeploy);
     }
 
     /**
@@ -22392,7 +22410,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<FunctionEnvelopeInner>> beginCreateFunctionWithResponseAsync(String resourceGroupName, String name, String functionName, FunctionEnvelopeInner functionEnvelope) {
-        return service.beginCreateFunction(this.client.getHost(), resourceGroupName, name, functionName, this.client.getSubscriptionId(), functionEnvelope, this.client.getApiVersion());
+        return service.beginCreateFunction(this.client.getHost(), resourceGroupName, name, functionName, this.client.getSubscriptionId(), this.client.getApiVersion(), functionEnvelope);
     }
 
     /**
@@ -22447,7 +22465,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<MSDeployStatusInner>> beginCreateInstanceMSDeployOperationWithResponseAsync(String resourceGroupName, String name, String instanceId, MSDeploy mSDeploy) {
-        return service.beginCreateInstanceMSDeployOperation(this.client.getHost(), resourceGroupName, name, instanceId, this.client.getSubscriptionId(), mSDeploy, this.client.getApiVersion());
+        return service.beginCreateInstanceMSDeployOperation(this.client.getHost(), resourceGroupName, name, instanceId, this.client.getSubscriptionId(), this.client.getApiVersion(), mSDeploy);
     }
 
     /**
@@ -22502,7 +22520,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<StorageMigrationResponseInner>> beginMigrateStorageWithResponseAsync(String subscriptionName, String resourceGroupName, String name, StorageMigrationOptions migrationOptions) {
-        return service.beginMigrateStorage(this.client.getHost(), subscriptionName, resourceGroupName, name, this.client.getSubscriptionId(), migrationOptions, this.client.getApiVersion());
+        return service.beginMigrateStorage(this.client.getHost(), subscriptionName, resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), migrationOptions);
     }
 
     /**
@@ -22556,7 +22574,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<OperationInner>> beginMigrateMySqlWithResponseAsync(String resourceGroupName, String name, MigrateMySqlRequest migrationRequestEnvelope) {
-        return service.beginMigrateMySql(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), migrationRequestEnvelope, this.client.getApiVersion());
+        return service.beginMigrateMySql(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), migrationRequestEnvelope);
     }
 
     /**
@@ -22707,7 +22725,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginRestoreFromBackupBlobWithResponseAsync(String resourceGroupName, String name, RestoreRequestInner request) {
-        return service.beginRestoreFromBackupBlob(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), request, this.client.getApiVersion());
+        return service.beginRestoreFromBackupBlob(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), request);
     }
 
     /**
@@ -22753,7 +22771,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginRestoreFromDeletedAppWithResponseAsync(String resourceGroupName, String name, DeletedAppRestoreRequest restoreRequest) {
-        return service.beginRestoreFromDeletedApp(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), restoreRequest, this.client.getApiVersion());
+        return service.beginRestoreFromDeletedApp(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), restoreRequest);
     }
 
     /**
@@ -22799,7 +22817,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginRestoreSnapshotWithResponseAsync(String resourceGroupName, String name, SnapshotRestoreRequest restoreRequest) {
-        return service.beginRestoreSnapshot(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), restoreRequest, this.client.getApiVersion());
+        return service.beginRestoreSnapshot(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), restoreRequest);
     }
 
     /**
@@ -22897,7 +22915,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginCopyProductionSlotWithResponseAsync(String resourceGroupName, String name, CsmCopySlotEntityInner copySlotEntity) {
-        return service.beginCopyProductionSlot(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), copySlotEntity, this.client.getApiVersion());
+        return service.beginCopyProductionSlot(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), copySlotEntity);
     }
 
     /**
@@ -22944,7 +22962,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SiteInner>> beginCreateOrUpdateSlotWithResponseAsync(String resourceGroupName, String name, String slot, SiteInner siteEnvelope) {
-        return service.beginCreateOrUpdateSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), siteEnvelope, this.client.getApiVersion());
+        return service.beginCreateOrUpdateSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), siteEnvelope);
     }
 
     /**
@@ -23000,7 +23018,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginRestoreSlotWithResponseAsync(String resourceGroupName, String name, String backupId, String slot, RestoreRequestInner request) {
-        return service.beginRestoreSlot(this.client.getHost(), resourceGroupName, name, backupId, slot, this.client.getSubscriptionId(), request, this.client.getApiVersion());
+        return service.beginRestoreSlot(this.client.getHost(), resourceGroupName, name, backupId, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), request);
     }
 
     /**
@@ -23103,7 +23121,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<MSDeployStatusInner>> beginCreateMSDeployOperationSlotWithResponseAsync(String resourceGroupName, String name, String slot, MSDeploy mSDeploy) {
-        return service.beginCreateMSDeployOperationSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), mSDeploy, this.client.getApiVersion());
+        return service.beginCreateMSDeployOperationSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), mSDeploy);
     }
 
     /**
@@ -23159,7 +23177,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<FunctionEnvelopeInner>> beginCreateInstanceFunctionSlotWithResponseAsync(String resourceGroupName, String name, String functionName, String slot, FunctionEnvelopeInner functionEnvelope) {
-        return service.beginCreateInstanceFunctionSlot(this.client.getHost(), resourceGroupName, name, functionName, slot, this.client.getSubscriptionId(), functionEnvelope, this.client.getApiVersion());
+        return service.beginCreateInstanceFunctionSlot(this.client.getHost(), resourceGroupName, name, functionName, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), functionEnvelope);
     }
 
     /**
@@ -23217,7 +23235,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<MSDeployStatusInner>> beginCreateInstanceMSDeployOperationSlotWithResponseAsync(String resourceGroupName, String name, String slot, String instanceId, MSDeploy mSDeploy) {
-        return service.beginCreateInstanceMSDeployOperationSlot(this.client.getHost(), resourceGroupName, name, slot, instanceId, this.client.getSubscriptionId(), mSDeploy, this.client.getApiVersion());
+        return service.beginCreateInstanceMSDeployOperationSlot(this.client.getHost(), resourceGroupName, name, slot, instanceId, this.client.getSubscriptionId(), this.client.getApiVersion(), mSDeploy);
     }
 
     /**
@@ -23378,7 +23396,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginRestoreFromBackupBlobSlotWithResponseAsync(String resourceGroupName, String name, String slot, RestoreRequestInner request) {
-        return service.beginRestoreFromBackupBlobSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), request, this.client.getApiVersion());
+        return service.beginRestoreFromBackupBlobSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), request);
     }
 
     /**
@@ -23427,7 +23445,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginRestoreFromDeletedAppSlotWithResponseAsync(String resourceGroupName, String name, String slot, DeletedAppRestoreRequest restoreRequest) {
-        return service.beginRestoreFromDeletedAppSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), restoreRequest, this.client.getApiVersion());
+        return service.beginRestoreFromDeletedAppSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), restoreRequest);
     }
 
     /**
@@ -23476,7 +23494,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginRestoreSnapshotSlotWithResponseAsync(String resourceGroupName, String name, String slot, SnapshotRestoreRequest restoreRequest) {
-        return service.beginRestoreSnapshotSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), restoreRequest, this.client.getApiVersion());
+        return service.beginRestoreSnapshotSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), restoreRequest);
     }
 
     /**
@@ -23580,7 +23598,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginCopySlotWithResponseAsync(String resourceGroupName, String name, String slot, CsmCopySlotEntityInner copySlotEntity) {
-        return service.beginCopySlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), copySlotEntity, this.client.getApiVersion());
+        return service.beginCopySlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), copySlotEntity);
     }
 
     /**
@@ -23629,7 +23647,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginSwapSlotWithResponseAsync(String resourceGroupName, String name, String slot, CsmSlotEntity slotSwapEntity) {
-        return service.beginSwapSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), slotSwapEntity, this.client.getApiVersion());
+        return service.beginSwapSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), slotSwapEntity);
     }
 
     /**
@@ -23678,7 +23696,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SiteSourceControlInner>> beginCreateOrUpdateSourceControlSlotWithResponseAsync(String resourceGroupName, String name, String slot, SiteSourceControlInner siteSourceControl) {
-        return service.beginCreateOrUpdateSourceControlSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), siteSourceControl, this.client.getApiVersion());
+        return service.beginCreateOrUpdateSourceControlSlot(this.client.getHost(), resourceGroupName, name, slot, this.client.getSubscriptionId(), this.client.getApiVersion(), siteSourceControl);
     }
 
     /**
@@ -23836,7 +23854,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginSwapSlotWithProductionWithResponseAsync(String resourceGroupName, String name, CsmSlotEntity slotSwapEntity) {
-        return service.beginSwapSlotWithProduction(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), slotSwapEntity, this.client.getApiVersion());
+        return service.beginSwapSlotWithProduction(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), slotSwapEntity);
     }
 
     /**
@@ -23882,7 +23900,7 @@ public final class WebAppsInner implements InnerSupportsGet<SiteInner>, InnerSup
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SiteSourceControlInner>> beginCreateOrUpdateSourceControlWithResponseAsync(String resourceGroupName, String name, SiteSourceControlInner siteSourceControl) {
-        return service.beginCreateOrUpdateSourceControl(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), siteSourceControl, this.client.getApiVersion());
+        return service.beginCreateOrUpdateSourceControl(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), siteSourceControl);
     }
 
     /**

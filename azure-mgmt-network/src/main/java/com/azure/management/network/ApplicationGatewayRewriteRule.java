@@ -35,7 +35,7 @@ public final class ApplicationGatewayRewriteRule {
     private List<ApplicationGatewayRewriteRuleCondition> conditions;
 
     /*
-     * Set of actions in the Rewrite Rule in Application Gateway.
+     * Set of actions to be done as part of the rewrite Rule.
      */
     @JsonProperty(value = "actionSet")
     private ApplicationGatewayRewriteRuleActionSet actionSet;
@@ -109,8 +109,8 @@ public final class ApplicationGatewayRewriteRule {
     }
 
     /**
-     * Get the actionSet property: Set of actions in the Rewrite Rule in
-     * Application Gateway.
+     * Get the actionSet property: Set of actions to be done as part of the
+     * rewrite Rule.
      * 
      * @return the actionSet value.
      */
@@ -119,8 +119,8 @@ public final class ApplicationGatewayRewriteRule {
     }
 
     /**
-     * Set the actionSet property: Set of actions in the Rewrite Rule in
-     * Application Gateway.
+     * Set the actionSet property: Set of actions to be done as part of the
+     * rewrite Rule.
      * 
      * @param actionSet the actionSet value to set.
      * @return the ApplicationGatewayRewriteRule object itself.

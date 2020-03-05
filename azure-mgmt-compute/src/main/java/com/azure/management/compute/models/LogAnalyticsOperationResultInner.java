@@ -16,13 +16,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Immutable
 public final class LogAnalyticsOperationResultInner {
     /*
-     * LogAnalytics output properties
+     * LogAnalyticsOutput
      */
     @JsonProperty(value = "properties", access = JsonProperty.Access.WRITE_ONLY)
     private LogAnalyticsOutput properties;
 
     /**
-     * Get the properties property: LogAnalytics output properties.
+     * Get the properties property: LogAnalyticsOutput.
      * 
      * @return the properties value.
      */

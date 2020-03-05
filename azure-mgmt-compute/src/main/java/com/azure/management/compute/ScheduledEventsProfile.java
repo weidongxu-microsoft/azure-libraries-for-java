@@ -15,14 +15,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class ScheduledEventsProfile {
     /*
-     * The terminateNotificationProfile property.
+     * Specifies Terminate Scheduled Event related configurations.
      */
     @JsonProperty(value = "terminateNotificationProfile")
     private TerminateNotificationProfile terminateNotificationProfile;
 
     /**
-     * Get the terminateNotificationProfile property: The
-     * terminateNotificationProfile property.
+     * Get the terminateNotificationProfile property: Specifies Terminate
+     * Scheduled Event related configurations.
      * 
      * @return the terminateNotificationProfile value.
      */
@@ -31,8 +31,8 @@ public final class ScheduledEventsProfile {
     }
 
     /**
-     * Set the terminateNotificationProfile property: The
-     * terminateNotificationProfile property.
+     * Set the terminateNotificationProfile property: Specifies Terminate
+     * Scheduled Event related configurations.
      * 
      * @param terminateNotificationProfile the terminateNotificationProfile
      * value to set.

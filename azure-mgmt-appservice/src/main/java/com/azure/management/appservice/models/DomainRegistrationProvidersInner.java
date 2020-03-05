@@ -59,13 +59,13 @@ public final class DomainRegistrationProvidersInner {
     @Host("{$host}")
     @ServiceInterface(name = "WebSiteManagementClientDomainRegistrationProviders")
     private interface DomainRegistrationProvidersService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/providers/Microsoft.DomainRegistration/operations")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<CsmOperationCollectionInner>> listOperations(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)

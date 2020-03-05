@@ -23,13 +23,13 @@ public final class SkuInfoInner {
     private String resourceType;
 
     /*
-     * Description of a SKU for a scalable resource.
+     * Name and tier of the SKU.
      */
     @JsonProperty(value = "sku")
     private SkuDescription sku;
 
     /*
-     * Description of the App Service plan scale options.
+     * Min, max, and default scale values of the SKU.
      */
     @JsonProperty(value = "capacity")
     private SkuCapacity capacity;
@@ -55,7 +55,7 @@ public final class SkuInfoInner {
     }
 
     /**
-     * Get the sku property: Description of a SKU for a scalable resource.
+     * Get the sku property: Name and tier of the SKU.
      * 
      * @return the sku value.
      */
@@ -64,7 +64,7 @@ public final class SkuInfoInner {
     }
 
     /**
-     * Set the sku property: Description of a SKU for a scalable resource.
+     * Set the sku property: Name and tier of the SKU.
      * 
      * @param sku the sku value to set.
      * @return the SkuInfoInner object itself.
@@ -75,8 +75,8 @@ public final class SkuInfoInner {
     }
 
     /**
-     * Get the capacity property: Description of the App Service plan scale
-     * options.
+     * Get the capacity property: Min, max, and default scale values of the
+     * SKU.
      * 
      * @return the capacity value.
      */
@@ -85,8 +85,8 @@ public final class SkuInfoInner {
     }
 
     /**
-     * Set the capacity property: Description of the App Service plan scale
-     * options.
+     * Set the capacity property: Min, max, and default scale values of the
+     * SKU.
      * 
      * @param capacity the capacity value to set.
      * @return the SkuInfoInner object itself.

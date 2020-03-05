@@ -19,7 +19,7 @@ import java.util.Map;
 @Fluent
 public class ManagedInstanceUpdate {
     /*
-     * An ARM Resource SKU.
+     * Managed instance sku
      */
     @JsonProperty(value = "sku")
     private Sku sku;
@@ -170,7 +170,7 @@ public class ManagedInstanceUpdate {
     private String minimalTlsVersion;
 
     /**
-     * Get the sku property: An ARM Resource SKU.
+     * Get the sku property: Managed instance sku.
      * 
      * @return the sku value.
      */
@@ -179,7 +179,7 @@ public class ManagedInstanceUpdate {
     }
 
     /**
-     * Set the sku property: An ARM Resource SKU.
+     * Set the sku property: Managed instance sku.
      * 
      * @param sku the sku value to set.
      * @return the ManagedInstanceUpdate object itself.

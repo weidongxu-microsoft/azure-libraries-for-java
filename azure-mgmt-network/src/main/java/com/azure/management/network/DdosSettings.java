@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class DdosSettings {
     /*
-     * Reference to another subresource.
+     * The DDoS custom policy associated with the public IP.
      */
     @JsonProperty(value = "ddosCustomPolicy")
     private SubResource ddosCustomPolicy;
@@ -29,7 +29,8 @@ public final class DdosSettings {
     private DdosSettingsProtectionCoverage protectionCoverage;
 
     /**
-     * Get the ddosCustomPolicy property: Reference to another subresource.
+     * Get the ddosCustomPolicy property: The DDoS custom policy associated
+     * with the public IP.
      * 
      * @return the ddosCustomPolicy value.
      */
@@ -38,7 +39,8 @@ public final class DdosSettings {
     }
 
     /**
-     * Set the ddosCustomPolicy property: Reference to another subresource.
+     * Set the ddosCustomPolicy property: The DDoS custom policy associated
+     * with the public IP.
      * 
      * @param ddosCustomPolicy the ddosCustomPolicy value to set.
      * @return the DdosSettings object itself.

@@ -64,7 +64,7 @@ public class SyncGroupInner extends ProxyResource {
     private SyncGroupState syncState;
 
     /*
-     * Properties of sync group schema.
+     * Sync schema of the sync group.
      */
     @JsonProperty(value = "properties.schema")
     private SyncGroupSchema schema;
@@ -197,7 +197,7 @@ public class SyncGroupInner extends ProxyResource {
     }
 
     /**
-     * Get the schema property: Properties of sync group schema.
+     * Get the schema property: Sync schema of the sync group.
      * 
      * @return the schema value.
      */
@@ -206,7 +206,7 @@ public class SyncGroupInner extends ProxyResource {
     }
 
     /**
-     * Set the schema property: Properties of sync group schema.
+     * Set the schema property: Sync schema of the sync group.
      * 
      * @param schema the schema value to set.
      * @return the SyncGroupInner object itself.

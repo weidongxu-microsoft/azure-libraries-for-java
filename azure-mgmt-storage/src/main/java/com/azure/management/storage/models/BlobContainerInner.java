@@ -64,13 +64,13 @@ public class BlobContainerInner extends AzureEntityResource {
     private Map<String, String> metadata;
 
     /*
-     * The properties of an ImmutabilityPolicy of a blob container.
+     * The ImmutabilityPolicy property of the container.
      */
     @JsonProperty(value = "properties.immutabilityPolicy", access = JsonProperty.Access.WRITE_ONLY)
     private ImmutabilityPolicyProperties immutabilityPolicy;
 
     /*
-     * The LegalHold property of a blob container.
+     * The LegalHold property of the container.
      */
     @JsonProperty(value = "properties.legalHold", access = JsonProperty.Access.WRITE_ONLY)
     private LegalHoldProperties legalHold;
@@ -178,8 +178,8 @@ public class BlobContainerInner extends AzureEntityResource {
     }
 
     /**
-     * Get the immutabilityPolicy property: The properties of an
-     * ImmutabilityPolicy of a blob container.
+     * Get the immutabilityPolicy property: The ImmutabilityPolicy property of
+     * the container.
      * 
      * @return the immutabilityPolicy value.
      */
@@ -188,7 +188,7 @@ public class BlobContainerInner extends AzureEntityResource {
     }
 
     /**
-     * Get the legalHold property: The LegalHold property of a blob container.
+     * Get the legalHold property: The LegalHold property of the container.
      * 
      * @return the legalHold value.
      */

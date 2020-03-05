@@ -28,7 +28,7 @@ public class RunCommandDocumentBaseInner {
     private String id;
 
     /*
-     * The operating system of the osDiskImage.
+     * The Operating System type.
      */
     @JsonProperty(value = "osType", required = true)
     private OperatingSystemTypes osType;
@@ -86,7 +86,7 @@ public class RunCommandDocumentBaseInner {
     }
 
     /**
-     * Get the osType property: The operating system of the osDiskImage.
+     * Get the osType property: The Operating System type.
      * 
      * @return the osType value.
      */
@@ -95,7 +95,7 @@ public class RunCommandDocumentBaseInner {
     }
 
     /**
-     * Set the osType property: The operating system of the osDiskImage.
+     * Set the osType property: The Operating System type.
      * 
      * @param osType the osType value to set.
      * @return the RunCommandDocumentBaseInner object itself.

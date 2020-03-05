@@ -119,7 +119,7 @@ public class SiteInner extends Resource {
     private OffsetDateTime lastModifiedTimeUtc;
 
     /*
-     * Configuration of an App Service app.
+     * Configuration of the app.
      */
     @JsonProperty(value = "properties.siteConfig")
     private SiteConfigInner siteConfig;
@@ -144,7 +144,7 @@ public class SiteInner extends Resource {
     private String targetSwapSlot;
 
     /*
-     * Specification for an App Service Environment to use for this resource.
+     * App Service Environment to use for the app.
      */
     @JsonProperty(value = "properties.hostingEnvironmentProfile")
     private HostingEnvironmentProfile hostingEnvironmentProfile;
@@ -223,7 +223,7 @@ public class SiteInner extends Resource {
     private Integer maxNumberOfWorkers;
 
     /*
-     * Information needed for cloning operation.
+     * If specified during app creation, the app is cloned from a source app.
      */
     @JsonProperty(value = "properties.cloningInfo")
     private CloningInfo cloningInfo;
@@ -248,7 +248,7 @@ public class SiteInner extends Resource {
     private String defaultHostName;
 
     /*
-     * The status of the last successful slot swap operation.
+     * Status of the last deployment slot swap operation.
      */
     @JsonProperty(value = "properties.slotSwapStatus", access = JsonProperty.Access.WRITE_ONLY)
     private SlotSwapStatus slotSwapStatus;
@@ -501,7 +501,7 @@ public class SiteInner extends Resource {
     }
 
     /**
-     * Get the siteConfig property: Configuration of an App Service app.
+     * Get the siteConfig property: Configuration of the app.
      * 
      * @return the siteConfig value.
      */
@@ -510,7 +510,7 @@ public class SiteInner extends Resource {
     }
 
     /**
-     * Set the siteConfig property: Configuration of an App Service app.
+     * Set the siteConfig property: Configuration of the app.
      * 
      * @param siteConfig the siteConfig value to set.
      * @return the SiteInner object itself.
@@ -567,8 +567,8 @@ public class SiteInner extends Resource {
     }
 
     /**
-     * Get the hostingEnvironmentProfile property: Specification for an App
-     * Service Environment to use for this resource.
+     * Get the hostingEnvironmentProfile property: App Service Environment to
+     * use for the app.
      * 
      * @return the hostingEnvironmentProfile value.
      */
@@ -577,8 +577,8 @@ public class SiteInner extends Resource {
     }
 
     /**
-     * Set the hostingEnvironmentProfile property: Specification for an App
-     * Service Environment to use for this resource.
+     * Set the hostingEnvironmentProfile property: App Service Environment to
+     * use for the app.
      * 
      * @param hostingEnvironmentProfile the hostingEnvironmentProfile value to
      * set.
@@ -777,7 +777,8 @@ public class SiteInner extends Resource {
     }
 
     /**
-     * Get the cloningInfo property: Information needed for cloning operation.
+     * Get the cloningInfo property: If specified during app creation, the app
+     * is cloned from a source app.
      * 
      * @return the cloningInfo value.
      */
@@ -786,7 +787,8 @@ public class SiteInner extends Resource {
     }
 
     /**
-     * Set the cloningInfo property: Information needed for cloning operation.
+     * Set the cloningInfo property: If specified during app creation, the app
+     * is cloned from a source app.
      * 
      * @param cloningInfo the cloningInfo value to set.
      * @return the SiteInner object itself.
@@ -828,8 +830,8 @@ public class SiteInner extends Resource {
     }
 
     /**
-     * Get the slotSwapStatus property: The status of the last successful slot
-     * swap operation.
+     * Get the slotSwapStatus property: Status of the last deployment slot swap
+     * operation.
      * 
      * @return the slotSwapStatus value.
      */

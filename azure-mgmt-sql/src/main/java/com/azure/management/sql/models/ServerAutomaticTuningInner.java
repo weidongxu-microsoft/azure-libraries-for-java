@@ -27,7 +27,7 @@ public class ServerAutomaticTuningInner extends ProxyResource {
     private AutomaticTuningServerMode desiredState;
 
     /*
-     * Automatic tuning desired state.
+     * Automatic tuning actual state.
      */
     @JsonProperty(value = "properties.actualState", access = JsonProperty.Access.WRITE_ONLY)
     private AutomaticTuningServerMode actualState;
@@ -59,7 +59,7 @@ public class ServerAutomaticTuningInner extends ProxyResource {
     }
 
     /**
-     * Get the actualState property: Automatic tuning desired state.
+     * Get the actualState property: Automatic tuning actual state.
      * 
      * @return the actualState value.
      */

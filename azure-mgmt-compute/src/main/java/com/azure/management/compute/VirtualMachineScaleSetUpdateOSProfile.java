@@ -22,16 +22,13 @@ public final class VirtualMachineScaleSetUpdateOSProfile {
     private String customData;
 
     /*
-     * Specifies Windows operating system settings on the virtual machine.
+     * The Windows Configuration of the OS profile.
      */
     @JsonProperty(value = "windowsConfiguration")
     private WindowsConfiguration windowsConfiguration;
 
     /*
-     * Specifies the Linux operating system settings on the virtual machine.
-     * <br><br>For a list of supported Linux distributions, see [Linux on
-     * Azure-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) <br><br> For running non-endorsed distributions, see [Information for Non-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+     * The Linux Configuration of the OS profile.
      */
     @JsonProperty(value = "linuxConfiguration")
     private LinuxConfiguration linuxConfiguration;
@@ -63,8 +60,8 @@ public final class VirtualMachineScaleSetUpdateOSProfile {
     }
 
     /**
-     * Get the windowsConfiguration property: Specifies Windows operating
-     * system settings on the virtual machine.
+     * Get the windowsConfiguration property: The Windows Configuration of the
+     * OS profile.
      * 
      * @return the windowsConfiguration value.
      */
@@ -73,8 +70,8 @@ public final class VirtualMachineScaleSetUpdateOSProfile {
     }
 
     /**
-     * Set the windowsConfiguration property: Specifies Windows operating
-     * system settings on the virtual machine.
+     * Set the windowsConfiguration property: The Windows Configuration of the
+     * OS profile.
      * 
      * @param windowsConfiguration the windowsConfiguration value to set.
      * @return the VirtualMachineScaleSetUpdateOSProfile object itself.
@@ -85,10 +82,8 @@ public final class VirtualMachineScaleSetUpdateOSProfile {
     }
 
     /**
-     * Get the linuxConfiguration property: Specifies the Linux operating
-     * system settings on the virtual machine. &lt;br&gt;&lt;br&gt;For a list
-     * of supported Linux distributions, see [Linux on Azure-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) &lt;br&gt;&lt;br&gt; For running non-endorsed distributions, see [Information for Non-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+     * Get the linuxConfiguration property: The Linux Configuration of the OS
+     * profile.
      * 
      * @return the linuxConfiguration value.
      */
@@ -97,10 +92,8 @@ public final class VirtualMachineScaleSetUpdateOSProfile {
     }
 
     /**
-     * Set the linuxConfiguration property: Specifies the Linux operating
-     * system settings on the virtual machine. &lt;br&gt;&lt;br&gt;For a list
-     * of supported Linux distributions, see [Linux on Azure-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) &lt;br&gt;&lt;br&gt; For running non-endorsed distributions, see [Information for Non-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+     * Set the linuxConfiguration property: The Linux Configuration of the OS
+     * profile.
      * 
      * @param linuxConfiguration the linuxConfiguration value to set.
      * @return the VirtualMachineScaleSetUpdateOSProfile object itself.

@@ -37,25 +37,25 @@ public class BastionHostIPConfiguration extends SubResource {
     private String type;
 
     /*
-     * Reference to another subresource.
+     * Reference of the subnet resource.
      */
     @JsonProperty(value = "properties.subnet")
     private SubResource subnet;
 
     /*
-     * Reference to another subresource.
+     * Reference of the PublicIP resource.
      */
     @JsonProperty(value = "properties.publicIPAddress")
     private SubResource publicIPAddress;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
 
     /*
-     * IP address allocation method.
+     * Private IP allocation method.
      */
     @JsonProperty(value = "properties.privateIPAllocationMethod")
     private IPAllocationMethod privateIPAllocationMethod;
@@ -102,7 +102,7 @@ public class BastionHostIPConfiguration extends SubResource {
     }
 
     /**
-     * Get the subnet property: Reference to another subresource.
+     * Get the subnet property: Reference of the subnet resource.
      * 
      * @return the subnet value.
      */
@@ -111,7 +111,7 @@ public class BastionHostIPConfiguration extends SubResource {
     }
 
     /**
-     * Set the subnet property: Reference to another subresource.
+     * Set the subnet property: Reference of the subnet resource.
      * 
      * @param subnet the subnet value to set.
      * @return the BastionHostIPConfiguration object itself.
@@ -122,7 +122,7 @@ public class BastionHostIPConfiguration extends SubResource {
     }
 
     /**
-     * Get the publicIPAddress property: Reference to another subresource.
+     * Get the publicIPAddress property: Reference of the PublicIP resource.
      * 
      * @return the publicIPAddress value.
      */
@@ -131,7 +131,7 @@ public class BastionHostIPConfiguration extends SubResource {
     }
 
     /**
-     * Set the publicIPAddress property: Reference to another subresource.
+     * Set the publicIPAddress property: Reference of the PublicIP resource.
      * 
      * @param publicIPAddress the publicIPAddress value to set.
      * @return the BastionHostIPConfiguration object itself.
@@ -142,7 +142,8 @@ public class BastionHostIPConfiguration extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -151,7 +152,8 @@ public class BastionHostIPConfiguration extends SubResource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the BastionHostIPConfiguration object itself.
@@ -162,7 +164,7 @@ public class BastionHostIPConfiguration extends SubResource {
     }
 
     /**
-     * Get the privateIPAllocationMethod property: IP address allocation
+     * Get the privateIPAllocationMethod property: Private IP allocation
      * method.
      * 
      * @return the privateIPAllocationMethod value.
@@ -172,7 +174,7 @@ public class BastionHostIPConfiguration extends SubResource {
     }
 
     /**
-     * Set the privateIPAllocationMethod property: IP address allocation
+     * Set the privateIPAllocationMethod property: Private IP allocation
      * method.
      * 
      * @param privateIPAllocationMethod the privateIPAllocationMethod value to

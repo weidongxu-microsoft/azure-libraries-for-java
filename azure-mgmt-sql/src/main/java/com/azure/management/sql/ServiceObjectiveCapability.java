@@ -35,13 +35,13 @@ public final class ServiceObjectiveCapability {
     private List<MaxSizeRangeCapability> supportedMaxSizes;
 
     /*
-     * The performance level capability.
+     * The performance level.
      */
     @JsonProperty(value = "performanceLevel", access = JsonProperty.Access.WRITE_ONLY)
     private PerformanceLevelCapability performanceLevel;
 
     /*
-     * An ARM Resource SKU.
+     * The sku.
      */
     @JsonProperty(value = "sku", access = JsonProperty.Access.WRITE_ONLY)
     private Sku sku;
@@ -53,7 +53,7 @@ public final class ServiceObjectiveCapability {
     private List<LicenseTypeCapability> supportedLicenseTypes;
 
     /*
-     * The maximum size capability.
+     * The included (free) max size.
      */
     @JsonProperty(value = "includedMaxSize", access = JsonProperty.Access.WRITE_ONLY)
     private MaxSizeCapability includedMaxSize;
@@ -65,7 +65,7 @@ public final class ServiceObjectiveCapability {
     private Boolean zoneRedundant;
 
     /*
-     * Supported auto pause delay time range
+     * Supported time range for auto pause delay
      */
     @JsonProperty(value = "supportedAutoPauseDelay", access = JsonProperty.Access.WRITE_ONLY)
     private AutoPauseDelayTimeRange supportedAutoPauseDelay;
@@ -123,7 +123,7 @@ public final class ServiceObjectiveCapability {
     }
 
     /**
-     * Get the performanceLevel property: The performance level capability.
+     * Get the performanceLevel property: The performance level.
      * 
      * @return the performanceLevel value.
      */
@@ -132,7 +132,7 @@ public final class ServiceObjectiveCapability {
     }
 
     /**
-     * Get the sku property: An ARM Resource SKU.
+     * Get the sku property: The sku.
      * 
      * @return the sku value.
      */
@@ -150,7 +150,7 @@ public final class ServiceObjectiveCapability {
     }
 
     /**
-     * Get the includedMaxSize property: The maximum size capability.
+     * Get the includedMaxSize property: The included (free) max size.
      * 
      * @return the includedMaxSize value.
      */
@@ -169,8 +169,8 @@ public final class ServiceObjectiveCapability {
     }
 
     /**
-     * Get the supportedAutoPauseDelay property: Supported auto pause delay
-     * time range.
+     * Get the supportedAutoPauseDelay property: Supported time range for auto
+     * pause delay.
      * 
      * @return the supportedAutoPauseDelay value.
      */

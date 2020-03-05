@@ -34,7 +34,7 @@ public final class VirtualNetworkUsageInner {
     private Double limit;
 
     /*
-     * Usage strings container.
+     * The name containing common and localized value for usage.
      */
     @JsonProperty(value = "name", access = JsonProperty.Access.WRITE_ONLY)
     private VirtualNetworkUsageName name;
@@ -74,7 +74,8 @@ public final class VirtualNetworkUsageInner {
     }
 
     /**
-     * Get the name property: Usage strings container.
+     * Get the name property: The name containing common and localized value
+     * for usage.
      * 
      * @return the name value.
      */

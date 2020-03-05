@@ -20,7 +20,7 @@ import java.util.UUID;
 @Fluent
 public class DatabaseUpdate {
     /*
-     * An ARM Resource SKU.
+     * The name and tier of the SKU.
      */
     @JsonProperty(value = "sku")
     private Sku sku;
@@ -235,7 +235,7 @@ public class DatabaseUpdate {
     private Integer readReplicaCount;
 
     /*
-     * An ARM Resource SKU.
+     * The name and tier of the SKU.
      */
     @JsonProperty(value = "properties.currentSku", access = JsonProperty.Access.WRITE_ONLY)
     private Sku currentSku;
@@ -268,7 +268,7 @@ public class DatabaseUpdate {
     private OffsetDateTime resumedDate;
 
     /**
-     * Get the sku property: An ARM Resource SKU.
+     * Get the sku property: The name and tier of the SKU.
      * 
      * @return the sku value.
      */
@@ -277,7 +277,7 @@ public class DatabaseUpdate {
     }
 
     /**
-     * Set the sku property: An ARM Resource SKU.
+     * Set the sku property: The name and tier of the SKU.
      * 
      * @param sku the sku value to set.
      * @return the DatabaseUpdate object itself.
@@ -854,7 +854,7 @@ public class DatabaseUpdate {
     }
 
     /**
-     * Get the currentSku property: An ARM Resource SKU.
+     * Get the currentSku property: The name and tier of the SKU.
      * 
      * @return the currentSku value.
      */

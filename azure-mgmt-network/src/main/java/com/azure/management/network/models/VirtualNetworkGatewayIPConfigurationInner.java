@@ -32,19 +32,19 @@ public class VirtualNetworkGatewayIPConfigurationInner extends SubResource {
     private String etag;
 
     /*
-     * IP address allocation method.
+     * The private IP address allocation method.
      */
     @JsonProperty(value = "properties.privateIPAllocationMethod")
     private IPAllocationMethod privateIPAllocationMethod;
 
     /*
-     * Reference to another subresource.
+     * The reference of the subnet resource.
      */
     @JsonProperty(value = "properties.subnet")
     private SubResource subnet;
 
     /*
-     * Reference to another subresource.
+     * The reference of the public IP resource.
      */
     @JsonProperty(value = "properties.publicIPAddress")
     private SubResource publicIPAddress;
@@ -101,8 +101,8 @@ public class VirtualNetworkGatewayIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the privateIPAllocationMethod property: IP address allocation
-     * method.
+     * Get the privateIPAllocationMethod property: The private IP address
+     * allocation method.
      * 
      * @return the privateIPAllocationMethod value.
      */
@@ -111,8 +111,8 @@ public class VirtualNetworkGatewayIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Set the privateIPAllocationMethod property: IP address allocation
-     * method.
+     * Set the privateIPAllocationMethod property: The private IP address
+     * allocation method.
      * 
      * @param privateIPAllocationMethod the privateIPAllocationMethod value to
      * set.
@@ -124,7 +124,7 @@ public class VirtualNetworkGatewayIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the subnet property: Reference to another subresource.
+     * Get the subnet property: The reference of the subnet resource.
      * 
      * @return the subnet value.
      */
@@ -133,7 +133,7 @@ public class VirtualNetworkGatewayIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Set the subnet property: Reference to another subresource.
+     * Set the subnet property: The reference of the subnet resource.
      * 
      * @param subnet the subnet value to set.
      * @return the VirtualNetworkGatewayIPConfigurationInner object itself.
@@ -144,7 +144,8 @@ public class VirtualNetworkGatewayIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Get the publicIPAddress property: Reference to another subresource.
+     * Get the publicIPAddress property: The reference of the public IP
+     * resource.
      * 
      * @return the publicIPAddress value.
      */
@@ -153,7 +154,8 @@ public class VirtualNetworkGatewayIPConfigurationInner extends SubResource {
     }
 
     /**
-     * Set the publicIPAddress property: Reference to another subresource.
+     * Set the publicIPAddress property: The reference of the public IP
+     * resource.
      * 
      * @param publicIPAddress the publicIPAddress value to set.
      * @return the VirtualNetworkGatewayIPConfigurationInner object itself.

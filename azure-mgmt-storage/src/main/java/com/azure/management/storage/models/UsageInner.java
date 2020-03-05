@@ -36,7 +36,7 @@ public final class UsageInner {
     private Integer limit;
 
     /*
-     * The usage names that can be used; currently limited to StorageAccount.
+     * Gets the name of the type of usage.
      */
     @JsonProperty(value = "name", access = JsonProperty.Access.WRITE_ONLY)
     private UsageName name;
@@ -71,8 +71,7 @@ public final class UsageInner {
     }
 
     /**
-     * Get the name property: The usage names that can be used; currently
-     * limited to StorageAccount.
+     * Get the name property: Gets the name of the type of usage.
      * 
      * @return the name value.
      */

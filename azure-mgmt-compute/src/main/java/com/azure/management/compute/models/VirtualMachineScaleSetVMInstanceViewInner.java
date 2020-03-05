@@ -41,13 +41,13 @@ public final class VirtualMachineScaleSetVMInstanceViewInner {
     private String rdpThumbPrint;
 
     /*
-     * The instance view of the VM Agent running on the virtual machine.
+     * The VM Agent running on the virtual machine.
      */
     @JsonProperty(value = "vmAgent")
     private VirtualMachineAgentInstanceView vmAgent;
 
     /*
-     * Maintenance Operation Status.
+     * The Maintenance Operation status on the virtual machine.
      */
     @JsonProperty(value = "maintenanceRedeployStatus")
     private MaintenanceRedeployStatus maintenanceRedeployStatus;
@@ -65,13 +65,16 @@ public final class VirtualMachineScaleSetVMInstanceViewInner {
     private List<VirtualMachineExtensionInstanceView> extensions;
 
     /*
-     * The health status of the VM.
+     * The health status for the VM.
      */
     @JsonProperty(value = "vmHealth", access = JsonProperty.Access.WRITE_ONLY)
     private VirtualMachineHealthStatus vmHealth;
 
     /*
-     * The instance view of a virtual machine boot diagnostics.
+     * Boot Diagnostics is a debugging feature which allows you to view Console
+     * Output and Screenshot to diagnose VM status. <br><br> You can easily
+     * view the output of your console log. <br><br> Azure also enables you to
+     * see a screenshot of the VM from the hypervisor.
      */
     @JsonProperty(value = "bootDiagnostics")
     private BootDiagnosticsInstanceView bootDiagnostics;
@@ -152,8 +155,7 @@ public final class VirtualMachineScaleSetVMInstanceViewInner {
     }
 
     /**
-     * Get the vmAgent property: The instance view of the VM Agent running on
-     * the virtual machine.
+     * Get the vmAgent property: The VM Agent running on the virtual machine.
      * 
      * @return the vmAgent value.
      */
@@ -162,8 +164,7 @@ public final class VirtualMachineScaleSetVMInstanceViewInner {
     }
 
     /**
-     * Set the vmAgent property: The instance view of the VM Agent running on
-     * the virtual machine.
+     * Set the vmAgent property: The VM Agent running on the virtual machine.
      * 
      * @param vmAgent the vmAgent value to set.
      * @return the VirtualMachineScaleSetVMInstanceViewInner object itself.
@@ -174,8 +175,8 @@ public final class VirtualMachineScaleSetVMInstanceViewInner {
     }
 
     /**
-     * Get the maintenanceRedeployStatus property: Maintenance Operation
-     * Status.
+     * Get the maintenanceRedeployStatus property: The Maintenance Operation
+     * status on the virtual machine.
      * 
      * @return the maintenanceRedeployStatus value.
      */
@@ -184,8 +185,8 @@ public final class VirtualMachineScaleSetVMInstanceViewInner {
     }
 
     /**
-     * Set the maintenanceRedeployStatus property: Maintenance Operation
-     * Status.
+     * Set the maintenanceRedeployStatus property: The Maintenance Operation
+     * status on the virtual machine.
      * 
      * @param maintenanceRedeployStatus the maintenanceRedeployStatus value to
      * set.
@@ -237,7 +238,7 @@ public final class VirtualMachineScaleSetVMInstanceViewInner {
     }
 
     /**
-     * Get the vmHealth property: The health status of the VM.
+     * Get the vmHealth property: The health status for the VM.
      * 
      * @return the vmHealth value.
      */
@@ -246,8 +247,11 @@ public final class VirtualMachineScaleSetVMInstanceViewInner {
     }
 
     /**
-     * Get the bootDiagnostics property: The instance view of a virtual machine
-     * boot diagnostics.
+     * Get the bootDiagnostics property: Boot Diagnostics is a debugging
+     * feature which allows you to view Console Output and Screenshot to
+     * diagnose VM status. &lt;br&gt;&lt;br&gt; You can easily view the output
+     * of your console log. &lt;br&gt;&lt;br&gt; Azure also enables you to see
+     * a screenshot of the VM from the hypervisor.
      * 
      * @return the bootDiagnostics value.
      */
@@ -256,8 +260,11 @@ public final class VirtualMachineScaleSetVMInstanceViewInner {
     }
 
     /**
-     * Set the bootDiagnostics property: The instance view of a virtual machine
-     * boot diagnostics.
+     * Set the bootDiagnostics property: Boot Diagnostics is a debugging
+     * feature which allows you to view Console Output and Screenshot to
+     * diagnose VM status. &lt;br&gt;&lt;br&gt; You can easily view the output
+     * of your console log. &lt;br&gt;&lt;br&gt; Azure also enables you to see
+     * a screenshot of the VM from the hypervisor.
      * 
      * @param bootDiagnostics the bootDiagnostics value to set.
      * @return the VirtualMachineScaleSetVMInstanceViewInner object itself.

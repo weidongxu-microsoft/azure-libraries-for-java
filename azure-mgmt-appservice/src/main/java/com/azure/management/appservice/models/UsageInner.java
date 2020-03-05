@@ -56,7 +56,7 @@ public class UsageInner extends ProxyOnlyResource {
     private OffsetDateTime nextResetTime;
 
     /*
-     * Shared or dedicated app hosting.
+     * Compute mode used for this usage.
      */
     @JsonProperty(value = "properties.computeMode", access = JsonProperty.Access.WRITE_ONLY)
     private ComputeModeOptions computeMode;
@@ -124,7 +124,7 @@ public class UsageInner extends ProxyOnlyResource {
     }
 
     /**
-     * Get the computeMode property: Shared or dedicated app hosting.
+     * Get the computeMode property: Compute mode used for this usage.
      * 
      * @return the computeMode value.
      */

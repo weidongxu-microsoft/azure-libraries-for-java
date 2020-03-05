@@ -28,13 +28,13 @@ public final class Ipv6ExpressRouteCircuitPeeringConfig {
     private String secondaryPeerAddressPrefix;
 
     /*
-     * Specifies the peering configuration.
+     * The Microsoft peering configuration.
      */
     @JsonProperty(value = "microsoftPeeringConfig")
     private ExpressRouteCircuitPeeringConfig microsoftPeeringConfig;
 
     /*
-     * Reference to another subresource.
+     * The reference of the RouteFilter resource.
      */
     @JsonProperty(value = "routeFilter")
     private SubResource routeFilter;
@@ -90,7 +90,7 @@ public final class Ipv6ExpressRouteCircuitPeeringConfig {
     }
 
     /**
-     * Get the microsoftPeeringConfig property: Specifies the peering
+     * Get the microsoftPeeringConfig property: The Microsoft peering
      * configuration.
      * 
      * @return the microsoftPeeringConfig value.
@@ -100,7 +100,7 @@ public final class Ipv6ExpressRouteCircuitPeeringConfig {
     }
 
     /**
-     * Set the microsoftPeeringConfig property: Specifies the peering
+     * Set the microsoftPeeringConfig property: The Microsoft peering
      * configuration.
      * 
      * @param microsoftPeeringConfig the microsoftPeeringConfig value to set.
@@ -112,7 +112,7 @@ public final class Ipv6ExpressRouteCircuitPeeringConfig {
     }
 
     /**
-     * Get the routeFilter property: Reference to another subresource.
+     * Get the routeFilter property: The reference of the RouteFilter resource.
      * 
      * @return the routeFilter value.
      */
@@ -121,7 +121,7 @@ public final class Ipv6ExpressRouteCircuitPeeringConfig {
     }
 
     /**
-     * Set the routeFilter property: Reference to another subresource.
+     * Set the routeFilter property: The reference of the RouteFilter resource.
      * 
      * @param routeFilter the routeFilter value to set.
      * @return the Ipv6ExpressRouteCircuitPeeringConfig object itself.

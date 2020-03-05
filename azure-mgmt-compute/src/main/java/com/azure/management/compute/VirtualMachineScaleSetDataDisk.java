@@ -44,13 +44,7 @@ public final class VirtualMachineScaleSetDataDisk {
     private Boolean writeAcceleratorEnabled;
 
     /*
-     * Specifies how the virtual machine should be created.<br><br> Possible
-     * values are:<br><br> **Attach** \u2013 This value is used when you are
-     * using a specialized disk to create the virtual machine.<br><br>
-     * **FromImage** \u2013 This value is used when you are using an image to
-     * create the virtual machine. If you are using a platform image, you also
-     * use the imageReference element described above. If you are using a
-     * marketplace image, you  also use the plan element previously described.
+     * The create option.
      */
     @JsonProperty(value = "createOption", required = true)
     private DiskCreateOptionTypes createOption;
@@ -64,7 +58,7 @@ public final class VirtualMachineScaleSetDataDisk {
     private Integer diskSizeGB;
 
     /*
-     * Describes the parameters of a ScaleSet managed disk.
+     * The managed disk parameters.
      */
     @JsonProperty(value = "managedDisk")
     private VirtualMachineScaleSetManagedDiskParameters managedDisk;
@@ -164,14 +158,7 @@ public final class VirtualMachineScaleSetDataDisk {
     }
 
     /**
-     * Get the createOption property: Specifies how the virtual machine should
-     * be created.&lt;br&gt;&lt;br&gt; Possible values are:&lt;br&gt;&lt;br&gt;
-     * **Attach** \u2013 This value is used when you are using a specialized
-     * disk to create the virtual machine.&lt;br&gt;&lt;br&gt; **FromImage**
-     * \u2013 This value is used when you are using an image to create the
-     * virtual machine. If you are using a platform image, you also use the
-     * imageReference element described above. If you are using a marketplace
-     * image, you  also use the plan element previously described.
+     * Get the createOption property: The create option.
      * 
      * @return the createOption value.
      */
@@ -180,14 +167,7 @@ public final class VirtualMachineScaleSetDataDisk {
     }
 
     /**
-     * Set the createOption property: Specifies how the virtual machine should
-     * be created.&lt;br&gt;&lt;br&gt; Possible values are:&lt;br&gt;&lt;br&gt;
-     * **Attach** \u2013 This value is used when you are using a specialized
-     * disk to create the virtual machine.&lt;br&gt;&lt;br&gt; **FromImage**
-     * \u2013 This value is used when you are using an image to create the
-     * virtual machine. If you are using a platform image, you also use the
-     * imageReference element described above. If you are using a marketplace
-     * image, you  also use the plan element previously described.
+     * Set the createOption property: The create option.
      * 
      * @param createOption the createOption value to set.
      * @return the VirtualMachineScaleSetDataDisk object itself.
@@ -224,8 +204,7 @@ public final class VirtualMachineScaleSetDataDisk {
     }
 
     /**
-     * Get the managedDisk property: Describes the parameters of a ScaleSet
-     * managed disk.
+     * Get the managedDisk property: The managed disk parameters.
      * 
      * @return the managedDisk value.
      */
@@ -234,8 +213,7 @@ public final class VirtualMachineScaleSetDataDisk {
     }
 
     /**
-     * Set the managedDisk property: Describes the parameters of a ScaleSet
-     * managed disk.
+     * Set the managedDisk property: The managed disk parameters.
      * 
      * @param managedDisk the managedDisk value to set.
      * @return the VirtualMachineScaleSetDataDisk object itself.

@@ -28,7 +28,7 @@ public final class ManagedInstanceVcoresCapability {
     private Integer value;
 
     /*
-     * The maximum size capability.
+     * Included size.
      */
     @JsonProperty(value = "includedMaxSize", access = JsonProperty.Access.WRITE_ONLY)
     private MaxSizeCapability includedMaxSize;
@@ -84,7 +84,7 @@ public final class ManagedInstanceVcoresCapability {
     }
 
     /**
-     * Get the includedMaxSize property: The maximum size capability.
+     * Get the includedMaxSize property: Included size.
      * 
      * @return the includedMaxSize value.
      */

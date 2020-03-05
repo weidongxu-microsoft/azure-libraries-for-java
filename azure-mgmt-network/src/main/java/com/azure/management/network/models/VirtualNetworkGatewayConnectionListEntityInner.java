@@ -39,19 +39,19 @@ public class VirtualNetworkGatewayConnectionListEntityInner extends Resource {
     private String authorizationKey;
 
     /*
-     * A reference to VirtualNetworkGateway or LocalNetworkGateway resource.
+     * The reference to virtual network gateway resource.
      */
     @JsonProperty(value = "properties.virtualNetworkGateway1", required = true)
     private VirtualNetworkConnectionGatewayReference virtualNetworkGateway1;
 
     /*
-     * A reference to VirtualNetworkGateway or LocalNetworkGateway resource.
+     * The reference to virtual network gateway resource.
      */
     @JsonProperty(value = "properties.virtualNetworkGateway2")
     private VirtualNetworkConnectionGatewayReference virtualNetworkGateway2;
 
     /*
-     * A reference to VirtualNetworkGateway or LocalNetworkGateway resource.
+     * The reference to local network gateway resource.
      */
     @JsonProperty(value = "properties.localNetworkGateway2")
     private VirtualNetworkConnectionGatewayReference localNetworkGateway2;
@@ -63,7 +63,7 @@ public class VirtualNetworkGatewayConnectionListEntityInner extends Resource {
     private VirtualNetworkGatewayConnectionType connectionType;
 
     /*
-     * Gateway connection protocol.
+     * Connection protocol used for this connection.
      */
     @JsonProperty(value = "properties.connectionProtocol")
     private VirtualNetworkGatewayConnectionProtocol connectionProtocol;
@@ -105,7 +105,7 @@ public class VirtualNetworkGatewayConnectionListEntityInner extends Resource {
     private Long ingressBytesTransferred;
 
     /*
-     * Reference to another subresource.
+     * The reference to peerings resource.
      */
     @JsonProperty(value = "properties.peer")
     private SubResource peer;
@@ -199,8 +199,8 @@ public class VirtualNetworkGatewayConnectionListEntityInner extends Resource {
     }
 
     /**
-     * Get the virtualNetworkGateway1 property: A reference to
-     * VirtualNetworkGateway or LocalNetworkGateway resource.
+     * Get the virtualNetworkGateway1 property: The reference to virtual
+     * network gateway resource.
      * 
      * @return the virtualNetworkGateway1 value.
      */
@@ -209,8 +209,8 @@ public class VirtualNetworkGatewayConnectionListEntityInner extends Resource {
     }
 
     /**
-     * Set the virtualNetworkGateway1 property: A reference to
-     * VirtualNetworkGateway or LocalNetworkGateway resource.
+     * Set the virtualNetworkGateway1 property: The reference to virtual
+     * network gateway resource.
      * 
      * @param virtualNetworkGateway1 the virtualNetworkGateway1 value to set.
      * @return the VirtualNetworkGatewayConnectionListEntityInner object
@@ -222,8 +222,8 @@ public class VirtualNetworkGatewayConnectionListEntityInner extends Resource {
     }
 
     /**
-     * Get the virtualNetworkGateway2 property: A reference to
-     * VirtualNetworkGateway or LocalNetworkGateway resource.
+     * Get the virtualNetworkGateway2 property: The reference to virtual
+     * network gateway resource.
      * 
      * @return the virtualNetworkGateway2 value.
      */
@@ -232,8 +232,8 @@ public class VirtualNetworkGatewayConnectionListEntityInner extends Resource {
     }
 
     /**
-     * Set the virtualNetworkGateway2 property: A reference to
-     * VirtualNetworkGateway or LocalNetworkGateway resource.
+     * Set the virtualNetworkGateway2 property: The reference to virtual
+     * network gateway resource.
      * 
      * @param virtualNetworkGateway2 the virtualNetworkGateway2 value to set.
      * @return the VirtualNetworkGatewayConnectionListEntityInner object
@@ -245,8 +245,8 @@ public class VirtualNetworkGatewayConnectionListEntityInner extends Resource {
     }
 
     /**
-     * Get the localNetworkGateway2 property: A reference to
-     * VirtualNetworkGateway or LocalNetworkGateway resource.
+     * Get the localNetworkGateway2 property: The reference to local network
+     * gateway resource.
      * 
      * @return the localNetworkGateway2 value.
      */
@@ -255,8 +255,8 @@ public class VirtualNetworkGatewayConnectionListEntityInner extends Resource {
     }
 
     /**
-     * Set the localNetworkGateway2 property: A reference to
-     * VirtualNetworkGateway or LocalNetworkGateway resource.
+     * Set the localNetworkGateway2 property: The reference to local network
+     * gateway resource.
      * 
      * @param localNetworkGateway2 the localNetworkGateway2 value to set.
      * @return the VirtualNetworkGatewayConnectionListEntityInner object
@@ -289,7 +289,8 @@ public class VirtualNetworkGatewayConnectionListEntityInner extends Resource {
     }
 
     /**
-     * Get the connectionProtocol property: Gateway connection protocol.
+     * Get the connectionProtocol property: Connection protocol used for this
+     * connection.
      * 
      * @return the connectionProtocol value.
      */
@@ -298,7 +299,8 @@ public class VirtualNetworkGatewayConnectionListEntityInner extends Resource {
     }
 
     /**
-     * Set the connectionProtocol property: Gateway connection protocol.
+     * Set the connectionProtocol property: Connection protocol used for this
+     * connection.
      * 
      * @param connectionProtocol the connectionProtocol value to set.
      * @return the VirtualNetworkGatewayConnectionListEntityInner object
@@ -392,7 +394,7 @@ public class VirtualNetworkGatewayConnectionListEntityInner extends Resource {
     }
 
     /**
-     * Get the peer property: Reference to another subresource.
+     * Get the peer property: The reference to peerings resource.
      * 
      * @return the peer value.
      */
@@ -401,7 +403,7 @@ public class VirtualNetworkGatewayConnectionListEntityInner extends Resource {
     }
 
     /**
-     * Set the peer property: Reference to another subresource.
+     * Set the peer property: The reference to peerings resource.
      * 
      * @param peer the peer value to set.
      * @return the VirtualNetworkGatewayConnectionListEntityInner object

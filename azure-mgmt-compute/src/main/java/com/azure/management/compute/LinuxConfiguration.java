@@ -21,7 +21,7 @@ public final class LinuxConfiguration {
     private Boolean disablePasswordAuthentication;
 
     /*
-     * SSH configuration for Linux based VMs running on Azure
+     * Specifies the ssh key configuration for a Linux OS.
      */
     @JsonProperty(value = "ssh")
     private SshConfiguration ssh;
@@ -60,8 +60,8 @@ public final class LinuxConfiguration {
     }
 
     /**
-     * Get the ssh property: SSH configuration for Linux based VMs running on
-     * Azure.
+     * Get the ssh property: Specifies the ssh key configuration for a Linux
+     * OS.
      * 
      * @return the ssh value.
      */
@@ -70,8 +70,8 @@ public final class LinuxConfiguration {
     }
 
     /**
-     * Set the ssh property: SSH configuration for Linux based VMs running on
-     * Azure.
+     * Set the ssh property: Specifies the ssh key configuration for a Linux
+     * OS.
      * 
      * @param ssh the ssh value to set.
      * @return the LinuxConfiguration object itself.

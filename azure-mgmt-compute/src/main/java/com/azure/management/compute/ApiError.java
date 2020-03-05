@@ -22,7 +22,7 @@ public final class ApiError {
     private List<ApiErrorBase> details;
 
     /*
-     * Inner error details.
+     * The Api inner error
      */
     @JsonProperty(value = "innererror")
     private InnerError innererror;
@@ -66,7 +66,7 @@ public final class ApiError {
     }
 
     /**
-     * Get the innererror property: Inner error details.
+     * Get the innererror property: The Api inner error.
      * 
      * @return the innererror value.
      */
@@ -75,7 +75,7 @@ public final class ApiError {
     }
 
     /**
-     * Set the innererror property: Inner error details.
+     * Set the innererror property: The Api inner error.
      * 
      * @param innererror the innererror value to set.
      * @return the ApiError object itself.

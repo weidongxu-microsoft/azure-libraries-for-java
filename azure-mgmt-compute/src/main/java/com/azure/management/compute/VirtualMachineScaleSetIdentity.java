@@ -30,10 +30,10 @@ public final class VirtualMachineScaleSetIdentity {
     private String tenantId;
 
     /*
-     * The type of identity used for the virtual machine. The type
+     * The type of identity used for the virtual machine scale set. The type
      * 'SystemAssigned, UserAssigned' includes both an implicitly created
      * identity and a set of user assigned identities. The type 'None' will
-     * remove any identities from the virtual machine.
+     * remove any identities from the virtual machine scale set.
      */
     @JsonProperty(value = "type")
     private ResourceIdentityType type;
@@ -70,10 +70,11 @@ public final class VirtualMachineScaleSetIdentity {
     }
 
     /**
-     * Get the type property: The type of identity used for the virtual
-     * machine. The type 'SystemAssigned, UserAssigned' includes both an
+     * Get the type property: The type of identity used for the virtual machine
+     * scale set. The type 'SystemAssigned, UserAssigned' includes both an
      * implicitly created identity and a set of user assigned identities. The
-     * type 'None' will remove any identities from the virtual machine.
+     * type 'None' will remove any identities from the virtual machine scale
+     * set.
      * 
      * @return the type value.
      */
@@ -82,10 +83,11 @@ public final class VirtualMachineScaleSetIdentity {
     }
 
     /**
-     * Set the type property: The type of identity used for the virtual
-     * machine. The type 'SystemAssigned, UserAssigned' includes both an
+     * Set the type property: The type of identity used for the virtual machine
+     * scale set. The type 'SystemAssigned, UserAssigned' includes both an
      * implicitly created identity and a set of user assigned identities. The
-     * type 'None' will remove any identities from the virtual machine.
+     * type 'None' will remove any identities from the virtual machine scale
+     * set.
      * 
      * @param type the type value to set.
      * @return the VirtualMachineScaleSetIdentity object itself.

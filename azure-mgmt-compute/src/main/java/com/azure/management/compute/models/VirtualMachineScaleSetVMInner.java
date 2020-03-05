@@ -36,7 +36,7 @@ public class VirtualMachineScaleSetVMInner extends Resource {
     private String instanceId;
 
     /*
-     * Describes a virtual machine scale set sku.
+     * The virtual machine SKU.
      */
     @JsonProperty(value = "sku", access = JsonProperty.Access.WRITE_ONLY)
     private Sku sku;
@@ -79,7 +79,7 @@ public class VirtualMachineScaleSetVMInner extends Resource {
     private String vmId;
 
     /*
-     * The instance view of a virtual machine scale set VM.
+     * The virtual machine instance view.
      */
     @JsonProperty(value = "properties.instanceView", access = JsonProperty.Access.WRITE_ONLY)
     private VirtualMachineScaleSetVMInstanceViewInner instanceView;
@@ -97,8 +97,10 @@ public class VirtualMachineScaleSetVMInner extends Resource {
     private StorageProfile storageProfile;
 
     /*
-     * Enables or disables a capability on the virtual machine or virtual
-     * machine scale set.
+     * Specifies additional capabilities enabled or disabled on the virtual
+     * machine in the scale set. For instance: whether the virtual machine has
+     * the capability to support attaching managed data disks with UltraSSD_LRS
+     * storage account type.
      */
     @JsonProperty(value = "properties.additionalCapabilities")
     private AdditionalCapabilities additionalCapabilities;
@@ -116,7 +118,7 @@ public class VirtualMachineScaleSetVMInner extends Resource {
     private NetworkProfile networkProfile;
 
     /*
-     * Describes a virtual machine scale set VM network profile.
+     * Specifies the network profile configuration of the virtual machine.
      */
     @JsonProperty(value = "properties.networkProfileConfiguration")
     private VirtualMachineScaleSetVMNetworkProfileConfiguration networkProfileConfiguration;
@@ -129,7 +131,12 @@ public class VirtualMachineScaleSetVMInner extends Resource {
     private DiagnosticsProfile diagnosticsProfile;
 
     /*
-     * The availabilitySet property.
+     * Specifies information about the availability set that the virtual
+     * machine should be assigned to. Virtual machines specified in the same
+     * availability set are allocated to different nodes to maximize
+     * availability. For more information about availability sets, see [Manage
+     * the availability of virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). <br><br> For more information on Azure planned maintenance, see [Planned maintenance for virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) <br><br> Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.
      */
     @JsonProperty(value = "properties.availabilitySet")
     private SubResource availabilitySet;
@@ -162,7 +169,7 @@ public class VirtualMachineScaleSetVMInner extends Resource {
     private String modelDefinitionApplied;
 
     /*
-     * The protection policy of a virtual machine scale set VM.
+     * Specifies the protection policy of the virtual machine.
      */
     @JsonProperty(value = "properties.protectionPolicy")
     private VirtualMachineScaleSetVMProtectionPolicy protectionPolicy;
@@ -177,7 +184,7 @@ public class VirtualMachineScaleSetVMInner extends Resource {
     }
 
     /**
-     * Get the sku property: Describes a virtual machine scale set sku.
+     * Get the sku property: The virtual machine SKU.
      * 
      * @return the sku value.
      */
@@ -256,8 +263,7 @@ public class VirtualMachineScaleSetVMInner extends Resource {
     }
 
     /**
-     * Get the instanceView property: The instance view of a virtual machine
-     * scale set VM.
+     * Get the instanceView property: The virtual machine instance view.
      * 
      * @return the instanceView value.
      */
@@ -310,8 +316,11 @@ public class VirtualMachineScaleSetVMInner extends Resource {
     }
 
     /**
-     * Get the additionalCapabilities property: Enables or disables a
-     * capability on the virtual machine or virtual machine scale set.
+     * Get the additionalCapabilities property: Specifies additional
+     * capabilities enabled or disabled on the virtual machine in the scale
+     * set. For instance: whether the virtual machine has the capability to
+     * support attaching managed data disks with UltraSSD_LRS storage account
+     * type.
      * 
      * @return the additionalCapabilities value.
      */
@@ -320,8 +329,11 @@ public class VirtualMachineScaleSetVMInner extends Resource {
     }
 
     /**
-     * Set the additionalCapabilities property: Enables or disables a
-     * capability on the virtual machine or virtual machine scale set.
+     * Set the additionalCapabilities property: Specifies additional
+     * capabilities enabled or disabled on the virtual machine in the scale
+     * set. For instance: whether the virtual machine has the capability to
+     * support attaching managed data disks with UltraSSD_LRS storage account
+     * type.
      * 
      * @param additionalCapabilities the additionalCapabilities value to set.
      * @return the VirtualMachineScaleSetVMInner object itself.
@@ -376,8 +388,8 @@ public class VirtualMachineScaleSetVMInner extends Resource {
     }
 
     /**
-     * Get the networkProfileConfiguration property: Describes a virtual
-     * machine scale set VM network profile.
+     * Get the networkProfileConfiguration property: Specifies the network
+     * profile configuration of the virtual machine.
      * 
      * @return the networkProfileConfiguration value.
      */
@@ -386,8 +398,8 @@ public class VirtualMachineScaleSetVMInner extends Resource {
     }
 
     /**
-     * Set the networkProfileConfiguration property: Describes a virtual
-     * machine scale set VM network profile.
+     * Set the networkProfileConfiguration property: Specifies the network
+     * profile configuration of the virtual machine.
      * 
      * @param networkProfileConfiguration the networkProfileConfiguration value
      * to set.
@@ -421,7 +433,12 @@ public class VirtualMachineScaleSetVMInner extends Resource {
     }
 
     /**
-     * Get the availabilitySet property: The availabilitySet property.
+     * Get the availabilitySet property: Specifies information about the
+     * availability set that the virtual machine should be assigned to. Virtual
+     * machines specified in the same availability set are allocated to
+     * different nodes to maximize availability. For more information about
+     * availability sets, see [Manage the availability of virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). &lt;br&gt;&lt;br&gt; For more information on Azure planned maintenance, see [Planned maintenance for virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) &lt;br&gt;&lt;br&gt; Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.
      * 
      * @return the availabilitySet value.
      */
@@ -430,7 +447,12 @@ public class VirtualMachineScaleSetVMInner extends Resource {
     }
 
     /**
-     * Set the availabilitySet property: The availabilitySet property.
+     * Set the availabilitySet property: Specifies information about the
+     * availability set that the virtual machine should be assigned to. Virtual
+     * machines specified in the same availability set are allocated to
+     * different nodes to maximize availability. For more information about
+     * availability sets, see [Manage the availability of virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). &lt;br&gt;&lt;br&gt; For more information on Azure planned maintenance, see [Planned maintenance for virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) &lt;br&gt;&lt;br&gt; Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.
      * 
      * @param availabilitySet the availabilitySet value to set.
      * @return the VirtualMachineScaleSetVMInner object itself.
@@ -500,8 +522,8 @@ public class VirtualMachineScaleSetVMInner extends Resource {
     }
 
     /**
-     * Get the protectionPolicy property: The protection policy of a virtual
-     * machine scale set VM.
+     * Get the protectionPolicy property: Specifies the protection policy of
+     * the virtual machine.
      * 
      * @return the protectionPolicy value.
      */
@@ -510,8 +532,8 @@ public class VirtualMachineScaleSetVMInner extends Resource {
     }
 
     /**
-     * Set the protectionPolicy property: The protection policy of a virtual
-     * machine scale set VM.
+     * Set the protectionPolicy property: Specifies the protection policy of
+     * the virtual machine.
      * 
      * @param protectionPolicy the protectionPolicy value to set.
      * @return the VirtualMachineScaleSetVMInner object itself.

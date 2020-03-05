@@ -20,7 +20,7 @@ import java.util.List;
 @Fluent
 public final class FirewallPolicyFilterRule extends FirewallPolicyRule {
     /*
-     * Properties of the FirewallPolicyFilterRuleAction.
+     * The action type of a Filter rule
      */
     @JsonProperty(value = "action")
     private FirewallPolicyFilterRuleAction action;
@@ -32,8 +32,7 @@ public final class FirewallPolicyFilterRule extends FirewallPolicyRule {
     private List<FirewallPolicyRuleCondition> ruleConditions;
 
     /**
-     * Get the action property: Properties of the
-     * FirewallPolicyFilterRuleAction.
+     * Get the action property: The action type of a Filter rule.
      * 
      * @return the action value.
      */
@@ -42,8 +41,7 @@ public final class FirewallPolicyFilterRule extends FirewallPolicyRule {
     }
 
     /**
-     * Set the action property: Properties of the
-     * FirewallPolicyFilterRuleAction.
+     * Set the action property: The action type of a Filter rule.
      * 
      * @param action the action value to set.
      * @return the FirewallPolicyFilterRule object itself.

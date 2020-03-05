@@ -35,13 +35,13 @@ public class FirewallPolicyInner extends Resource {
     private List<SubResource> ruleGroups;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
 
     /*
-     * Reference to another subresource.
+     * The parent firewall policy from which rules are inherited.
      */
     @JsonProperty(value = "properties.basePolicy")
     private SubResource basePolicy;
@@ -60,7 +60,7 @@ public class FirewallPolicyInner extends Resource {
     private List<SubResource> childPolicies;
 
     /*
-     * The operation mode for Threat Intel.
+     * The operation mode for Threat Intelligence.
      */
     @JsonProperty(value = "properties.threatIntelMode")
     private AzureFirewallThreatIntelMode threatIntelMode;
@@ -92,7 +92,8 @@ public class FirewallPolicyInner extends Resource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -101,7 +102,8 @@ public class FirewallPolicyInner extends Resource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the FirewallPolicyInner object itself.
@@ -112,7 +114,8 @@ public class FirewallPolicyInner extends Resource {
     }
 
     /**
-     * Get the basePolicy property: Reference to another subresource.
+     * Get the basePolicy property: The parent firewall policy from which rules
+     * are inherited.
      * 
      * @return the basePolicy value.
      */
@@ -121,7 +124,8 @@ public class FirewallPolicyInner extends Resource {
     }
 
     /**
-     * Set the basePolicy property: Reference to another subresource.
+     * Set the basePolicy property: The parent firewall policy from which rules
+     * are inherited.
      * 
      * @param basePolicy the basePolicy value to set.
      * @return the FirewallPolicyInner object itself.
@@ -152,7 +156,8 @@ public class FirewallPolicyInner extends Resource {
     }
 
     /**
-     * Get the threatIntelMode property: The operation mode for Threat Intel.
+     * Get the threatIntelMode property: The operation mode for Threat
+     * Intelligence.
      * 
      * @return the threatIntelMode value.
      */
@@ -161,7 +166,8 @@ public class FirewallPolicyInner extends Resource {
     }
 
     /**
-     * Set the threatIntelMode property: The operation mode for Threat Intel.
+     * Set the threatIntelMode property: The operation mode for Threat
+     * Intelligence.
      * 
      * @param threatIntelMode the threatIntelMode value to set.
      * @return the FirewallPolicyInner object itself.

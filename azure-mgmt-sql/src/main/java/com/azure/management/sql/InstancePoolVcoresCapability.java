@@ -27,7 +27,7 @@ public final class InstancePoolVcoresCapability {
     private Integer value;
 
     /*
-     * The maximum size capability.
+     * Storage limit.
      */
     @JsonProperty(value = "storageLimit", access = JsonProperty.Access.WRITE_ONLY)
     private MaxSizeCapability storageLimit;
@@ -63,7 +63,7 @@ public final class InstancePoolVcoresCapability {
     }
 
     /**
-     * Get the storageLimit property: The maximum size capability.
+     * Get the storageLimit property: Storage limit.
      * 
      * @return the storageLimit value.
      */

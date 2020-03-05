@@ -21,7 +21,7 @@ import java.util.List;
 @Fluent
 public class DetectorResponseInner extends ProxyOnlyResource {
     /*
-     * Definition of Detector
+     * metadata for the detector
      */
     @JsonProperty(value = "properties.metadata")
     private DetectorInfo metadata;
@@ -33,7 +33,7 @@ public class DetectorResponseInner extends ProxyOnlyResource {
     private List<DiagnosticData> dataset;
 
     /**
-     * Get the metadata property: Definition of Detector.
+     * Get the metadata property: metadata for the detector.
      * 
      * @return the metadata value.
      */
@@ -42,7 +42,7 @@ public class DetectorResponseInner extends ProxyOnlyResource {
     }
 
     /**
-     * Set the metadata property: Definition of Detector.
+     * Set the metadata property: metadata for the detector.
      * 
      * @param metadata the metadata value to set.
      * @return the DetectorResponseInner object itself.

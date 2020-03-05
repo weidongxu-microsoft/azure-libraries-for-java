@@ -21,7 +21,7 @@ public final class Address {
     private String address1;
 
     /*
-     * First line of an Address.
+     * The second line of the Address. Optional.
      */
     @JsonProperty(value = "address2")
     private String address2;
@@ -71,7 +71,7 @@ public final class Address {
     }
 
     /**
-     * Get the address2 property: First line of an Address.
+     * Get the address2 property: The second line of the Address. Optional.
      * 
      * @return the address2 value.
      */
@@ -80,7 +80,7 @@ public final class Address {
     }
 
     /**
-     * Set the address2 property: First line of an Address.
+     * Set the address2 property: The second line of the Address. Optional.
      * 
      * @param address2 the address2 value to set.
      * @return the Address object itself.

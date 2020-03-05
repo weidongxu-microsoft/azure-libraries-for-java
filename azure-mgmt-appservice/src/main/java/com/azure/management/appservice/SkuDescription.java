@@ -47,7 +47,7 @@ public final class SkuDescription {
     private Integer capacity;
 
     /*
-     * Description of the App Service plan scale options.
+     * Min, max, and default scale values of the SKU.
      */
     @JsonProperty(value = "skuCapacity")
     private SkuCapacity skuCapacity;
@@ -167,8 +167,8 @@ public final class SkuDescription {
     }
 
     /**
-     * Get the skuCapacity property: Description of the App Service plan scale
-     * options.
+     * Get the skuCapacity property: Min, max, and default scale values of the
+     * SKU.
      * 
      * @return the skuCapacity value.
      */
@@ -177,8 +177,8 @@ public final class SkuDescription {
     }
 
     /**
-     * Set the skuCapacity property: Description of the App Service plan scale
-     * options.
+     * Set the skuCapacity property: Min, max, and default scale values of the
+     * SKU.
      * 
      * @param skuCapacity the skuCapacity value to set.
      * @return the SkuDescription object itself.

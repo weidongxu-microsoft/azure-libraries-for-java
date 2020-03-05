@@ -37,25 +37,25 @@ public class ApplicationGatewayUrlPathMapInner extends SubResource {
     private String type;
 
     /*
-     * Reference to another subresource.
+     * Default backend address pool resource of URL path map.
      */
     @JsonProperty(value = "properties.defaultBackendAddressPool")
     private SubResource defaultBackendAddressPool;
 
     /*
-     * Reference to another subresource.
+     * Default backend http settings resource of URL path map.
      */
     @JsonProperty(value = "properties.defaultBackendHttpSettings")
     private SubResource defaultBackendHttpSettings;
 
     /*
-     * Reference to another subresource.
+     * Default Rewrite rule set resource of URL path map.
      */
     @JsonProperty(value = "properties.defaultRewriteRuleSet")
     private SubResource defaultRewriteRuleSet;
 
     /*
-     * Reference to another subresource.
+     * Default redirect configuration resource of URL path map.
      */
     @JsonProperty(value = "properties.defaultRedirectConfiguration")
     private SubResource defaultRedirectConfiguration;
@@ -138,8 +138,8 @@ public class ApplicationGatewayUrlPathMapInner extends SubResource {
     }
 
     /**
-     * Get the defaultBackendAddressPool property: Reference to another
-     * subresource.
+     * Get the defaultBackendAddressPool property: Default backend address pool
+     * resource of URL path map.
      * 
      * @return the defaultBackendAddressPool value.
      */
@@ -148,8 +148,8 @@ public class ApplicationGatewayUrlPathMapInner extends SubResource {
     }
 
     /**
-     * Set the defaultBackendAddressPool property: Reference to another
-     * subresource.
+     * Set the defaultBackendAddressPool property: Default backend address pool
+     * resource of URL path map.
      * 
      * @param defaultBackendAddressPool the defaultBackendAddressPool value to
      * set.
@@ -161,8 +161,8 @@ public class ApplicationGatewayUrlPathMapInner extends SubResource {
     }
 
     /**
-     * Get the defaultBackendHttpSettings property: Reference to another
-     * subresource.
+     * Get the defaultBackendHttpSettings property: Default backend http
+     * settings resource of URL path map.
      * 
      * @return the defaultBackendHttpSettings value.
      */
@@ -171,8 +171,8 @@ public class ApplicationGatewayUrlPathMapInner extends SubResource {
     }
 
     /**
-     * Set the defaultBackendHttpSettings property: Reference to another
-     * subresource.
+     * Set the defaultBackendHttpSettings property: Default backend http
+     * settings resource of URL path map.
      * 
      * @param defaultBackendHttpSettings the defaultBackendHttpSettings value
      * to set.
@@ -184,8 +184,8 @@ public class ApplicationGatewayUrlPathMapInner extends SubResource {
     }
 
     /**
-     * Get the defaultRewriteRuleSet property: Reference to another
-     * subresource.
+     * Get the defaultRewriteRuleSet property: Default Rewrite rule set
+     * resource of URL path map.
      * 
      * @return the defaultRewriteRuleSet value.
      */
@@ -194,8 +194,8 @@ public class ApplicationGatewayUrlPathMapInner extends SubResource {
     }
 
     /**
-     * Set the defaultRewriteRuleSet property: Reference to another
-     * subresource.
+     * Set the defaultRewriteRuleSet property: Default Rewrite rule set
+     * resource of URL path map.
      * 
      * @param defaultRewriteRuleSet the defaultRewriteRuleSet value to set.
      * @return the ApplicationGatewayUrlPathMapInner object itself.
@@ -206,8 +206,8 @@ public class ApplicationGatewayUrlPathMapInner extends SubResource {
     }
 
     /**
-     * Get the defaultRedirectConfiguration property: Reference to another
-     * subresource.
+     * Get the defaultRedirectConfiguration property: Default redirect
+     * configuration resource of URL path map.
      * 
      * @return the defaultRedirectConfiguration value.
      */
@@ -216,8 +216,8 @@ public class ApplicationGatewayUrlPathMapInner extends SubResource {
     }
 
     /**
-     * Set the defaultRedirectConfiguration property: Reference to another
-     * subresource.
+     * Set the defaultRedirectConfiguration property: Default redirect
+     * configuration resource of URL path map.
      * 
      * @param defaultRedirectConfiguration the defaultRedirectConfiguration
      * value to set.

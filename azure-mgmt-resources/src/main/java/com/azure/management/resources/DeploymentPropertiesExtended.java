@@ -66,7 +66,8 @@ public final class DeploymentPropertiesExtended {
     private Object template;
 
     /*
-     * Entity representing the reference to the template.
+     * The URI referencing the template. Use only one of Template or
+     * TemplateLink.
      */
     @JsonProperty(value = "templateLink")
     private TemplateLink templateLink;
@@ -78,31 +79,26 @@ public final class DeploymentPropertiesExtended {
     private Object parameters;
 
     /*
-     * Entity representing the reference to the deployment parameters.
+     * The URI referencing the parameters. Use only one of Parameters or
+     * ParametersLink.
      */
     @JsonProperty(value = "parametersLink")
     private ParametersLink parametersLink;
 
     /*
-     * The mode that is used to deploy resources. This value can be either
-     * Incremental or Complete. In Incremental mode, resources are deployed
-     * without deleting existing resources that are not included in the
-     * template. In Complete mode, resources are deployed and existing
-     * resources in the resource group that are not included in the template
-     * are deleted. Be careful when using Complete mode as you may
-     * unintentionally delete resources.
+     * The deployment mode. Possible values are Incremental and Complete.
      */
     @JsonProperty(value = "mode")
     private DeploymentMode mode;
 
     /*
-     * The debug setting.
+     * The debug setting of the deployment.
      */
     @JsonProperty(value = "debugSetting")
     private DebugSetting debugSetting;
 
     /*
-     * Deployment on error behavior with additional details.
+     * The deployment on error behavior.
      */
     @JsonProperty(value = "onErrorDeployment")
     private OnErrorDeploymentExtended onErrorDeployment;
@@ -230,8 +226,8 @@ public final class DeploymentPropertiesExtended {
     }
 
     /**
-     * Get the templateLink property: Entity representing the reference to the
-     * template.
+     * Get the templateLink property: The URI referencing the template. Use
+     * only one of Template or TemplateLink.
      * 
      * @return the templateLink value.
      */
@@ -240,8 +236,8 @@ public final class DeploymentPropertiesExtended {
     }
 
     /**
-     * Set the templateLink property: Entity representing the reference to the
-     * template.
+     * Set the templateLink property: The URI referencing the template. Use
+     * only one of Template or TemplateLink.
      * 
      * @param templateLink the templateLink value to set.
      * @return the DeploymentPropertiesExtended object itself.
@@ -274,8 +270,8 @@ public final class DeploymentPropertiesExtended {
     }
 
     /**
-     * Get the parametersLink property: Entity representing the reference to
-     * the deployment parameters.
+     * Get the parametersLink property: The URI referencing the parameters. Use
+     * only one of Parameters or ParametersLink.
      * 
      * @return the parametersLink value.
      */
@@ -284,8 +280,8 @@ public final class DeploymentPropertiesExtended {
     }
 
     /**
-     * Set the parametersLink property: Entity representing the reference to
-     * the deployment parameters.
+     * Set the parametersLink property: The URI referencing the parameters. Use
+     * only one of Parameters or ParametersLink.
      * 
      * @param parametersLink the parametersLink value to set.
      * @return the DeploymentPropertiesExtended object itself.
@@ -296,13 +292,8 @@ public final class DeploymentPropertiesExtended {
     }
 
     /**
-     * Get the mode property: The mode that is used to deploy resources. This
-     * value can be either Incremental or Complete. In Incremental mode,
-     * resources are deployed without deleting existing resources that are not
-     * included in the template. In Complete mode, resources are deployed and
-     * existing resources in the resource group that are not included in the
-     * template are deleted. Be careful when using Complete mode as you may
-     * unintentionally delete resources.
+     * Get the mode property: The deployment mode. Possible values are
+     * Incremental and Complete.
      * 
      * @return the mode value.
      */
@@ -311,13 +302,8 @@ public final class DeploymentPropertiesExtended {
     }
 
     /**
-     * Set the mode property: The mode that is used to deploy resources. This
-     * value can be either Incremental or Complete. In Incremental mode,
-     * resources are deployed without deleting existing resources that are not
-     * included in the template. In Complete mode, resources are deployed and
-     * existing resources in the resource group that are not included in the
-     * template are deleted. Be careful when using Complete mode as you may
-     * unintentionally delete resources.
+     * Set the mode property: The deployment mode. Possible values are
+     * Incremental and Complete.
      * 
      * @param mode the mode value to set.
      * @return the DeploymentPropertiesExtended object itself.
@@ -328,7 +314,7 @@ public final class DeploymentPropertiesExtended {
     }
 
     /**
-     * Get the debugSetting property: The debug setting.
+     * Get the debugSetting property: The debug setting of the deployment.
      * 
      * @return the debugSetting value.
      */
@@ -337,7 +323,7 @@ public final class DeploymentPropertiesExtended {
     }
 
     /**
-     * Set the debugSetting property: The debug setting.
+     * Set the debugSetting property: The debug setting of the deployment.
      * 
      * @param debugSetting the debugSetting value to set.
      * @return the DeploymentPropertiesExtended object itself.
@@ -348,8 +334,7 @@ public final class DeploymentPropertiesExtended {
     }
 
     /**
-     * Get the onErrorDeployment property: Deployment on error behavior with
-     * additional details.
+     * Get the onErrorDeployment property: The deployment on error behavior.
      * 
      * @return the onErrorDeployment value.
      */
@@ -358,8 +343,7 @@ public final class DeploymentPropertiesExtended {
     }
 
     /**
-     * Set the onErrorDeployment property: Deployment on error behavior with
-     * additional details.
+     * Set the onErrorDeployment property: The deployment on error behavior.
      * 
      * @param onErrorDeployment the onErrorDeployment value to set.
      * @return the DeploymentPropertiesExtended object itself.

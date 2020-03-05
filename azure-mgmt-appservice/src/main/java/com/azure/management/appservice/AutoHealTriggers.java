@@ -16,7 +16,7 @@ import java.util.List;
 @Fluent
 public final class AutoHealTriggers {
     /*
-     * Trigger based on total requests.
+     * A rule based on total requests.
      */
     @JsonProperty(value = "requests")
     private RequestsBasedTrigger requests;
@@ -34,13 +34,13 @@ public final class AutoHealTriggers {
     private List<StatusCodesBasedTrigger> statusCodes;
 
     /*
-     * Trigger based on request execution time.
+     * A rule based on request execution time.
      */
     @JsonProperty(value = "slowRequests")
     private SlowRequestsBasedTrigger slowRequests;
 
     /**
-     * Get the requests property: Trigger based on total requests.
+     * Get the requests property: A rule based on total requests.
      * 
      * @return the requests value.
      */
@@ -49,7 +49,7 @@ public final class AutoHealTriggers {
     }
 
     /**
-     * Set the requests property: Trigger based on total requests.
+     * Set the requests property: A rule based on total requests.
      * 
      * @param requests the requests value to set.
      * @return the AutoHealTriggers object itself.
@@ -100,7 +100,7 @@ public final class AutoHealTriggers {
     }
 
     /**
-     * Get the slowRequests property: Trigger based on request execution time.
+     * Get the slowRequests property: A rule based on request execution time.
      * 
      * @return the slowRequests value.
      */
@@ -109,7 +109,7 @@ public final class AutoHealTriggers {
     }
 
     /**
-     * Set the slowRequests property: Trigger based on request execution time.
+     * Set the slowRequests property: A rule based on request execution time.
      * 
      * @param slowRequests the slowRequests value to set.
      * @return the AutoHealTriggers object itself.

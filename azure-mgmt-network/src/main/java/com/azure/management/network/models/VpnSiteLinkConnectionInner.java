@@ -43,7 +43,7 @@ public class VpnSiteLinkConnectionInner extends SubResource {
     private String type;
 
     /*
-     * Reference to another subresource.
+     * Id of the connected vpn site link.
      */
     @JsonProperty(value = "properties.vpnSiteLink")
     private SubResource vpnSiteLink;
@@ -55,13 +55,13 @@ public class VpnSiteLinkConnectionInner extends SubResource {
     private Integer routingWeight;
 
     /*
-     * The current state of the vpn connection.
+     * The connection status.
      */
     @JsonProperty(value = "properties.connectionStatus")
     private VpnConnectionStatus connectionStatus;
 
     /*
-     * Gateway connection protocol.
+     * Connection protocol used for this connection.
      */
     @JsonProperty(value = "properties.vpnConnectionProtocolType")
     private VirtualNetworkGatewayConnectionProtocol vpnConnectionProtocolType;
@@ -121,7 +121,7 @@ public class VpnSiteLinkConnectionInner extends SubResource {
     private Boolean useLocalAzureIpAddress;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -168,7 +168,7 @@ public class VpnSiteLinkConnectionInner extends SubResource {
     }
 
     /**
-     * Get the vpnSiteLink property: Reference to another subresource.
+     * Get the vpnSiteLink property: Id of the connected vpn site link.
      * 
      * @return the vpnSiteLink value.
      */
@@ -177,7 +177,7 @@ public class VpnSiteLinkConnectionInner extends SubResource {
     }
 
     /**
-     * Set the vpnSiteLink property: Reference to another subresource.
+     * Set the vpnSiteLink property: Id of the connected vpn site link.
      * 
      * @param vpnSiteLink the vpnSiteLink value to set.
      * @return the VpnSiteLinkConnectionInner object itself.
@@ -208,8 +208,7 @@ public class VpnSiteLinkConnectionInner extends SubResource {
     }
 
     /**
-     * Get the connectionStatus property: The current state of the vpn
-     * connection.
+     * Get the connectionStatus property: The connection status.
      * 
      * @return the connectionStatus value.
      */
@@ -218,8 +217,7 @@ public class VpnSiteLinkConnectionInner extends SubResource {
     }
 
     /**
-     * Set the connectionStatus property: The current state of the vpn
-     * connection.
+     * Set the connectionStatus property: The connection status.
      * 
      * @param connectionStatus the connectionStatus value to set.
      * @return the VpnSiteLinkConnectionInner object itself.
@@ -230,7 +228,8 @@ public class VpnSiteLinkConnectionInner extends SubResource {
     }
 
     /**
-     * Get the vpnConnectionProtocolType property: Gateway connection protocol.
+     * Get the vpnConnectionProtocolType property: Connection protocol used for
+     * this connection.
      * 
      * @return the vpnConnectionProtocolType value.
      */
@@ -239,7 +238,8 @@ public class VpnSiteLinkConnectionInner extends SubResource {
     }
 
     /**
-     * Set the vpnConnectionProtocolType property: Gateway connection protocol.
+     * Set the vpnConnectionProtocolType property: Connection protocol used for
+     * this connection.
      * 
      * @param vpnConnectionProtocolType the vpnConnectionProtocolType value to
      * set.
@@ -416,7 +416,8 @@ public class VpnSiteLinkConnectionInner extends SubResource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -425,7 +426,8 @@ public class VpnSiteLinkConnectionInner extends SubResource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the VpnSiteLinkConnectionInner object itself.

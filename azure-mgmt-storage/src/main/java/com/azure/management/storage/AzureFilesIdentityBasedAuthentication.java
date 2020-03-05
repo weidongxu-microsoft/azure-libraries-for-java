@@ -21,7 +21,7 @@ public final class AzureFilesIdentityBasedAuthentication {
     private DirectoryServiceOptions directoryServiceOptions;
 
     /*
-     * Settings properties for Active Directory (AD).
+     * Required if choose AD.
      */
     @JsonProperty(value = "activeDirectoryProperties")
     private ActiveDirectoryProperties activeDirectoryProperties;
@@ -49,8 +49,7 @@ public final class AzureFilesIdentityBasedAuthentication {
     }
 
     /**
-     * Get the activeDirectoryProperties property: Settings properties for
-     * Active Directory (AD).
+     * Get the activeDirectoryProperties property: Required if choose AD.
      * 
      * @return the activeDirectoryProperties value.
      */
@@ -59,8 +58,7 @@ public final class AzureFilesIdentityBasedAuthentication {
     }
 
     /**
-     * Set the activeDirectoryProperties property: Settings properties for
-     * Active Directory (AD).
+     * Set the activeDirectoryProperties property: Required if choose AD.
      * 
      * @param activeDirectoryProperties the activeDirectoryProperties value to
      * set.

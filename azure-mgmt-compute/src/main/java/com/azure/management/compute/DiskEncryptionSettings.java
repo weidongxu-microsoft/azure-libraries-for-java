@@ -15,13 +15,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class DiskEncryptionSettings {
     /*
-     * Describes a reference to Key Vault Secret
+     * Specifies the location of the disk encryption key, which is a Key Vault
+     * Secret.
      */
     @JsonProperty(value = "diskEncryptionKey")
     private KeyVaultSecretReference diskEncryptionKey;
 
     /*
-     * Describes a reference to Key Vault Key
+     * Specifies the location of the key encryption key in Key Vault.
      */
     @JsonProperty(value = "keyEncryptionKey")
     private KeyVaultKeyReference keyEncryptionKey;
@@ -34,8 +35,8 @@ public final class DiskEncryptionSettings {
     private Boolean enabled;
 
     /**
-     * Get the diskEncryptionKey property: Describes a reference to Key Vault
-     * Secret.
+     * Get the diskEncryptionKey property: Specifies the location of the disk
+     * encryption key, which is a Key Vault Secret.
      * 
      * @return the diskEncryptionKey value.
      */
@@ -44,8 +45,8 @@ public final class DiskEncryptionSettings {
     }
 
     /**
-     * Set the diskEncryptionKey property: Describes a reference to Key Vault
-     * Secret.
+     * Set the diskEncryptionKey property: Specifies the location of the disk
+     * encryption key, which is a Key Vault Secret.
      * 
      * @param diskEncryptionKey the diskEncryptionKey value to set.
      * @return the DiskEncryptionSettings object itself.
@@ -56,8 +57,8 @@ public final class DiskEncryptionSettings {
     }
 
     /**
-     * Get the keyEncryptionKey property: Describes a reference to Key Vault
-     * Key.
+     * Get the keyEncryptionKey property: Specifies the location of the key
+     * encryption key in Key Vault.
      * 
      * @return the keyEncryptionKey value.
      */
@@ -66,8 +67,8 @@ public final class DiskEncryptionSettings {
     }
 
     /**
-     * Set the keyEncryptionKey property: Describes a reference to Key Vault
-     * Key.
+     * Set the keyEncryptionKey property: Specifies the location of the key
+     * encryption key in Key Vault.
      * 
      * @param keyEncryptionKey the keyEncryptionKey value to set.
      * @return the DiskEncryptionSettings object itself.

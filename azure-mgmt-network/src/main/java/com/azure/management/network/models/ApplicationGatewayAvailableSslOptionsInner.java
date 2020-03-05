@@ -29,7 +29,8 @@ public class ApplicationGatewayAvailableSslOptionsInner extends Resource {
     private List<SubResource> predefinedPolicies;
 
     /*
-     * Ssl predefined policy name enums.
+     * Name of the Ssl predefined policy applied by default to application
+     * gateway.
      */
     @JsonProperty(value = "properties.defaultPolicy")
     private ApplicationGatewaySslPolicyName defaultPolicy;
@@ -75,7 +76,8 @@ public class ApplicationGatewayAvailableSslOptionsInner extends Resource {
     }
 
     /**
-     * Get the defaultPolicy property: Ssl predefined policy name enums.
+     * Get the defaultPolicy property: Name of the Ssl predefined policy
+     * applied by default to application gateway.
      * 
      * @return the defaultPolicy value.
      */
@@ -84,7 +86,8 @@ public class ApplicationGatewayAvailableSslOptionsInner extends Resource {
     }
 
     /**
-     * Set the defaultPolicy property: Ssl predefined policy name enums.
+     * Set the defaultPolicy property: Name of the Ssl predefined policy
+     * applied by default to application gateway.
      * 
      * @param defaultPolicy the defaultPolicy value to set.
      * @return the ApplicationGatewayAvailableSslOptionsInner object itself.

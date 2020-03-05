@@ -51,7 +51,8 @@ public class OutboundRuleInner extends SubResource {
     private List<SubResource> frontendIPConfigurations;
 
     /*
-     * Reference to another subresource.
+     * A reference to a pool of DIPs. Outbound traffic is randomly load
+     * balanced across IPs in the backend IPs.
      */
     @JsonProperty(value = "properties.backendAddressPool")
     private SubResource backendAddressPool;
@@ -184,7 +185,9 @@ public class OutboundRuleInner extends SubResource {
     }
 
     /**
-     * Get the backendAddressPool property: Reference to another subresource.
+     * Get the backendAddressPool property: A reference to a pool of DIPs.
+     * Outbound traffic is randomly load balanced across IPs in the backend
+     * IPs.
      * 
      * @return the backendAddressPool value.
      */
@@ -193,7 +196,9 @@ public class OutboundRuleInner extends SubResource {
     }
 
     /**
-     * Set the backendAddressPool property: Reference to another subresource.
+     * Set the backendAddressPool property: A reference to a pool of DIPs.
+     * Outbound traffic is randomly load balanced across IPs in the backend
+     * IPs.
      * 
      * @param backendAddressPool the backendAddressPool value to set.
      * @return the OutboundRuleInner object itself.

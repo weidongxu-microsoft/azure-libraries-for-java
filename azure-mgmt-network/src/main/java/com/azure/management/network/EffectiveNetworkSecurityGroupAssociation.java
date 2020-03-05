@@ -16,19 +16,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public final class EffectiveNetworkSecurityGroupAssociation {
     /*
-     * Reference to another subresource.
+     * The ID of the subnet if assigned.
      */
     @JsonProperty(value = "subnet")
     private SubResource subnet;
 
     /*
-     * Reference to another subresource.
+     * The ID of the network interface if assigned.
      */
     @JsonProperty(value = "networkInterface")
     private SubResource networkInterface;
 
     /**
-     * Get the subnet property: Reference to another subresource.
+     * Get the subnet property: The ID of the subnet if assigned.
      * 
      * @return the subnet value.
      */
@@ -37,7 +37,7 @@ public final class EffectiveNetworkSecurityGroupAssociation {
     }
 
     /**
-     * Set the subnet property: Reference to another subresource.
+     * Set the subnet property: The ID of the subnet if assigned.
      * 
      * @param subnet the subnet value to set.
      * @return the EffectiveNetworkSecurityGroupAssociation object itself.
@@ -48,7 +48,8 @@ public final class EffectiveNetworkSecurityGroupAssociation {
     }
 
     /**
-     * Get the networkInterface property: Reference to another subresource.
+     * Get the networkInterface property: The ID of the network interface if
+     * assigned.
      * 
      * @return the networkInterface value.
      */
@@ -57,7 +58,8 @@ public final class EffectiveNetworkSecurityGroupAssociation {
     }
 
     /**
-     * Set the networkInterface property: Reference to another subresource.
+     * Set the networkInterface property: The ID of the network interface if
+     * assigned.
      * 
      * @param networkInterface the networkInterface value to set.
      * @return the EffectiveNetworkSecurityGroupAssociation object itself.

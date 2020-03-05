@@ -18,13 +18,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Fluent
 public class ImageUpdate extends UpdateResource {
     /*
-     * The sourceVirtualMachine property.
+     * The source virtual machine from which Image is created.
      */
     @JsonProperty(value = "properties.sourceVirtualMachine")
     private SubResource sourceVirtualMachine;
 
     /*
-     * Describes a storage profile.
+     * Specifies the storage settings for the virtual machine disks.
      */
     @JsonProperty(value = "properties.storageProfile")
     private ImageStorageProfile storageProfile;
@@ -36,14 +36,15 @@ public class ImageUpdate extends UpdateResource {
     private String provisioningState;
 
     /*
-     * Specifies the HyperVGeneration Type
+     * Gets the HyperVGenerationType of the VirtualMachine created from the
+     * image
      */
     @JsonProperty(value = "properties.hyperVGeneration")
     private HyperVGenerationTypes hyperVGeneration;
 
     /**
-     * Get the sourceVirtualMachine property: The sourceVirtualMachine
-     * property.
+     * Get the sourceVirtualMachine property: The source virtual machine from
+     * which Image is created.
      * 
      * @return the sourceVirtualMachine value.
      */
@@ -52,8 +53,8 @@ public class ImageUpdate extends UpdateResource {
     }
 
     /**
-     * Set the sourceVirtualMachine property: The sourceVirtualMachine
-     * property.
+     * Set the sourceVirtualMachine property: The source virtual machine from
+     * which Image is created.
      * 
      * @param sourceVirtualMachine the sourceVirtualMachine value to set.
      * @return the ImageUpdate object itself.
@@ -64,7 +65,8 @@ public class ImageUpdate extends UpdateResource {
     }
 
     /**
-     * Get the storageProfile property: Describes a storage profile.
+     * Get the storageProfile property: Specifies the storage settings for the
+     * virtual machine disks.
      * 
      * @return the storageProfile value.
      */
@@ -73,7 +75,8 @@ public class ImageUpdate extends UpdateResource {
     }
 
     /**
-     * Set the storageProfile property: Describes a storage profile.
+     * Set the storageProfile property: Specifies the storage settings for the
+     * virtual machine disks.
      * 
      * @param storageProfile the storageProfile value to set.
      * @return the ImageUpdate object itself.
@@ -93,7 +96,8 @@ public class ImageUpdate extends UpdateResource {
     }
 
     /**
-     * Get the hyperVGeneration property: Specifies the HyperVGeneration Type.
+     * Get the hyperVGeneration property: Gets the HyperVGenerationType of the
+     * VirtualMachine created from the image.
      * 
      * @return the hyperVGeneration value.
      */
@@ -102,7 +106,8 @@ public class ImageUpdate extends UpdateResource {
     }
 
     /**
-     * Set the hyperVGeneration property: Specifies the HyperVGeneration Type.
+     * Set the hyperVGeneration property: Gets the HyperVGenerationType of the
+     * VirtualMachine created from the image.
      * 
      * @param hyperVGeneration the hyperVGeneration value to set.
      * @return the ImageUpdate object itself.

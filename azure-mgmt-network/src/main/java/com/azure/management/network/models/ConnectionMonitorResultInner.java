@@ -53,7 +53,7 @@ public class ConnectionMonitorResultInner extends Resource {
     private Integer monitoringIntervalInSeconds;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the connection monitor.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -180,7 +180,8 @@ public class ConnectionMonitorResultInner extends Resource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * connection monitor.
      * 
      * @return the provisioningState value.
      */
@@ -189,7 +190,8 @@ public class ConnectionMonitorResultInner extends Resource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * connection monitor.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the ConnectionMonitorResultInner object itself.

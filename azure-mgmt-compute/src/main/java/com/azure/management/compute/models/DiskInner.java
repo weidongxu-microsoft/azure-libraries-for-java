@@ -51,7 +51,7 @@ public class DiskInner extends Resource {
     private OffsetDateTime timeCreated;
 
     /*
-     * The operating system of the osDiskImage.
+     * The Operating System type.
      */
     @JsonProperty(value = "properties.osType")
     private OperatingSystemTypes osType;
@@ -64,7 +64,8 @@ public class DiskInner extends Resource {
     private HyperVGeneration hyperVGeneration;
 
     /*
-     * Data used when creating a disk.
+     * Disk source information. CreationData information cannot be changed
+     * after the disk has been created.
      */
     @JsonProperty(value = "properties.creationData")
     private CreationData creationData;
@@ -92,7 +93,8 @@ public class DiskInner extends Resource {
     private String uniqueId;
 
     /*
-     * Encryption settings for disk or snapshot
+     * Encryption settings collection used for Azure Disk Encryption, can
+     * contain multiple encryption settings per disk or snapshot.
      */
     @JsonProperty(value = "properties.encryptionSettingsCollection")
     private EncryptionSettingsCollection encryptionSettingsCollection;
@@ -186,7 +188,7 @@ public class DiskInner extends Resource {
     }
 
     /**
-     * Get the osType property: The operating system of the osDiskImage.
+     * Get the osType property: The Operating System type.
      * 
      * @return the osType value.
      */
@@ -195,7 +197,7 @@ public class DiskInner extends Resource {
     }
 
     /**
-     * Set the osType property: The operating system of the osDiskImage.
+     * Set the osType property: The Operating System type.
      * 
      * @param osType the osType value to set.
      * @return the DiskInner object itself.
@@ -228,7 +230,8 @@ public class DiskInner extends Resource {
     }
 
     /**
-     * Get the creationData property: Data used when creating a disk.
+     * Get the creationData property: Disk source information. CreationData
+     * information cannot be changed after the disk has been created.
      * 
      * @return the creationData value.
      */
@@ -237,7 +240,8 @@ public class DiskInner extends Resource {
     }
 
     /**
-     * Set the creationData property: Data used when creating a disk.
+     * Set the creationData property: Disk source information. CreationData
+     * information cannot be changed after the disk has been created.
      * 
      * @param creationData the creationData value to set.
      * @return the DiskInner object itself.
@@ -295,8 +299,9 @@ public class DiskInner extends Resource {
     }
 
     /**
-     * Get the encryptionSettingsCollection property: Encryption settings for
-     * disk or snapshot.
+     * Get the encryptionSettingsCollection property: Encryption settings
+     * collection used for Azure Disk Encryption, can contain multiple
+     * encryption settings per disk or snapshot.
      * 
      * @return the encryptionSettingsCollection value.
      */
@@ -305,8 +310,9 @@ public class DiskInner extends Resource {
     }
 
     /**
-     * Set the encryptionSettingsCollection property: Encryption settings for
-     * disk or snapshot.
+     * Set the encryptionSettingsCollection property: Encryption settings
+     * collection used for Azure Disk Encryption, can contain multiple
+     * encryption settings per disk or snapshot.
      * 
      * @param encryptionSettingsCollection the encryptionSettingsCollection
      * value to set.

@@ -26,7 +26,8 @@ public class ManagementPolicyInner extends ProxyResource {
     private OffsetDateTime lastModifiedTime;
 
     /*
-     * The Storage Account ManagementPolicies Rules. See more details in:
+     * The Storage Account ManagementPolicy, in JSON format. See more details
+     * in:
      * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
      */
     @JsonProperty(value = "properties.policy")
@@ -43,8 +44,8 @@ public class ManagementPolicyInner extends ProxyResource {
     }
 
     /**
-     * Get the policy property: The Storage Account ManagementPolicies Rules.
-     * See more details in:
+     * Get the policy property: The Storage Account ManagementPolicy, in JSON
+     * format. See more details in:
      * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
      * 
      * @return the policy value.
@@ -54,8 +55,8 @@ public class ManagementPolicyInner extends ProxyResource {
     }
 
     /**
-     * Set the policy property: The Storage Account ManagementPolicies Rules.
-     * See more details in:
+     * Set the policy property: The Storage Account ManagementPolicy, in JSON
+     * format. See more details in:
      * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
      * 
      * @param policy the policy value to set.

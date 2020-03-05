@@ -59,19 +59,19 @@ public final class VirtualMachineRunCommandsInner {
     @Host("{$host}")
     @ServiceInterface(name = "ComputeManagementClientVirtualMachineRunCommands")
     private interface VirtualMachineRunCommandsService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json,text/json" })
+        @Headers({ "Accept: application/json,text/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<RunCommandListResultInner>> list(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json,text/json" })
+        @Headers({ "Accept: application/json,text/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands/{commandId}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<RunCommandDocumentInner>> get(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("commandId") String commandId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
-        @Headers({ "Content-Type: application/json", "Accept: application/json,text/json" })
+        @Headers({ "Accept: application/json,text/json", "Content-Type: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)

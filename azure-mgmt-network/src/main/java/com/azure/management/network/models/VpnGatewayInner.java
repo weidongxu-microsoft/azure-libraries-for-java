@@ -29,7 +29,7 @@ public class VpnGatewayInner extends Resource {
     private String etag;
 
     /*
-     * Reference to another subresource.
+     * The VirtualHub to which the gateway belongs.
      */
     @JsonProperty(value = "properties.virtualHub")
     private SubResource virtualHub;
@@ -41,13 +41,13 @@ public class VpnGatewayInner extends Resource {
     private List<VpnConnectionInner> connections;
 
     /*
-     * BGP settings details.
+     * Local network gateway's BGP speaker settings.
      */
     @JsonProperty(value = "properties.bgpSettings")
     private BgpSettings bgpSettings;
 
     /*
-     * The current provisioning state.
+     * The provisioning state of the resource.
      */
     @JsonProperty(value = "properties.provisioningState")
     private ProvisioningState provisioningState;
@@ -75,7 +75,8 @@ public class VpnGatewayInner extends Resource {
     }
 
     /**
-     * Get the virtualHub property: Reference to another subresource.
+     * Get the virtualHub property: The VirtualHub to which the gateway
+     * belongs.
      * 
      * @return the virtualHub value.
      */
@@ -84,7 +85,8 @@ public class VpnGatewayInner extends Resource {
     }
 
     /**
-     * Set the virtualHub property: Reference to another subresource.
+     * Set the virtualHub property: The VirtualHub to which the gateway
+     * belongs.
      * 
      * @param virtualHub the virtualHub value to set.
      * @return the VpnGatewayInner object itself.
@@ -117,7 +119,8 @@ public class VpnGatewayInner extends Resource {
     }
 
     /**
-     * Get the bgpSettings property: BGP settings details.
+     * Get the bgpSettings property: Local network gateway's BGP speaker
+     * settings.
      * 
      * @return the bgpSettings value.
      */
@@ -126,7 +129,8 @@ public class VpnGatewayInner extends Resource {
     }
 
     /**
-     * Set the bgpSettings property: BGP settings details.
+     * Set the bgpSettings property: Local network gateway's BGP speaker
+     * settings.
      * 
      * @param bgpSettings the bgpSettings value to set.
      * @return the VpnGatewayInner object itself.
@@ -137,7 +141,8 @@ public class VpnGatewayInner extends Resource {
     }
 
     /**
-     * Get the provisioningState property: The current provisioning state.
+     * Get the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @return the provisioningState value.
      */
@@ -146,7 +151,8 @@ public class VpnGatewayInner extends Resource {
     }
 
     /**
-     * Set the provisioningState property: The current provisioning state.
+     * Set the provisioningState property: The provisioning state of the
+     * resource.
      * 
      * @param provisioningState the provisioningState value to set.
      * @return the VpnGatewayInner object itself.

@@ -37,19 +37,19 @@ public class ApplicationGatewayHttpListener extends SubResource {
     private String type;
 
     /*
-     * Reference to another subresource.
+     * Frontend IP configuration resource of an application gateway.
      */
     @JsonProperty(value = "properties.frontendIPConfiguration")
     private SubResource frontendIPConfiguration;
 
     /*
-     * Reference to another subresource.
+     * Frontend port resource of an application gateway.
      */
     @JsonProperty(value = "properties.frontendPort")
     private SubResource frontendPort;
 
     /*
-     * Application Gateway protocol.
+     * Protocol of the HTTP listener.
      */
     @JsonProperty(value = "properties.protocol")
     private ApplicationGatewayProtocol protocol;
@@ -61,7 +61,7 @@ public class ApplicationGatewayHttpListener extends SubResource {
     private String hostName;
 
     /*
-     * Reference to another subresource.
+     * SSL certificate resource of an application gateway.
      */
     @JsonProperty(value = "properties.sslCertificate")
     private SubResource sslCertificate;
@@ -150,8 +150,8 @@ public class ApplicationGatewayHttpListener extends SubResource {
     }
 
     /**
-     * Get the frontendIPConfiguration property: Reference to another
-     * subresource.
+     * Get the frontendIPConfiguration property: Frontend IP configuration
+     * resource of an application gateway.
      * 
      * @return the frontendIPConfiguration value.
      */
@@ -160,8 +160,8 @@ public class ApplicationGatewayHttpListener extends SubResource {
     }
 
     /**
-     * Set the frontendIPConfiguration property: Reference to another
-     * subresource.
+     * Set the frontendIPConfiguration property: Frontend IP configuration
+     * resource of an application gateway.
      * 
      * @param frontendIPConfiguration the frontendIPConfiguration value to set.
      * @return the ApplicationGatewayHttpListener object itself.
@@ -172,7 +172,8 @@ public class ApplicationGatewayHttpListener extends SubResource {
     }
 
     /**
-     * Get the frontendPort property: Reference to another subresource.
+     * Get the frontendPort property: Frontend port resource of an application
+     * gateway.
      * 
      * @return the frontendPort value.
      */
@@ -181,7 +182,8 @@ public class ApplicationGatewayHttpListener extends SubResource {
     }
 
     /**
-     * Set the frontendPort property: Reference to another subresource.
+     * Set the frontendPort property: Frontend port resource of an application
+     * gateway.
      * 
      * @param frontendPort the frontendPort value to set.
      * @return the ApplicationGatewayHttpListener object itself.
@@ -192,7 +194,7 @@ public class ApplicationGatewayHttpListener extends SubResource {
     }
 
     /**
-     * Get the protocol property: Application Gateway protocol.
+     * Get the protocol property: Protocol of the HTTP listener.
      * 
      * @return the protocol value.
      */
@@ -201,7 +203,7 @@ public class ApplicationGatewayHttpListener extends SubResource {
     }
 
     /**
-     * Set the protocol property: Application Gateway protocol.
+     * Set the protocol property: Protocol of the HTTP listener.
      * 
      * @param protocol the protocol value to set.
      * @return the ApplicationGatewayHttpListener object itself.
@@ -232,7 +234,8 @@ public class ApplicationGatewayHttpListener extends SubResource {
     }
 
     /**
-     * Get the sslCertificate property: Reference to another subresource.
+     * Get the sslCertificate property: SSL certificate resource of an
+     * application gateway.
      * 
      * @return the sslCertificate value.
      */
@@ -241,7 +244,8 @@ public class ApplicationGatewayHttpListener extends SubResource {
     }
 
     /**
-     * Set the sslCertificate property: Reference to another subresource.
+     * Set the sslCertificate property: SSL certificate resource of an
+     * application gateway.
      * 
      * @param sslCertificate the sslCertificate value to set.
      * @return the ApplicationGatewayHttpListener object itself.

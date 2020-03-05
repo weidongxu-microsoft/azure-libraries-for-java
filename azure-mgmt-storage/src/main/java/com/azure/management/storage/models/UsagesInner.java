@@ -59,7 +59,7 @@ public final class UsagesInner {
     @Host("{$host}")
     @ServiceInterface(name = "StorageManagementClientUsages")
     private interface UsagesService {
-        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
