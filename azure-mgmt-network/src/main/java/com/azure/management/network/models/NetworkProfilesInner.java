@@ -88,13 +88,13 @@ public final class NetworkProfilesInner implements InnerSupportsGet<NetworkProfi
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles/{networkProfileName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<NetworkProfileInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkProfileName") String networkProfileName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") NetworkProfileInner parameters);
+        Mono<SimpleResponse<NetworkProfileInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkProfileName") String networkProfileName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") NetworkProfileInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles/{networkProfileName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<NetworkProfileInner>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkProfileName") String networkProfileName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TagsObject parameters);
+        Mono<SimpleResponse<NetworkProfileInner>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkProfileName") String networkProfileName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkProfiles")
@@ -278,7 +278,7 @@ public final class NetworkProfilesInner implements InnerSupportsGet<NetworkProfi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<NetworkProfileInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String networkProfileName, NetworkProfileInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, networkProfileName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, networkProfileName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -333,7 +333,7 @@ public final class NetworkProfilesInner implements InnerSupportsGet<NetworkProfi
         final String apiVersion = "2019-06-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
-        return service.updateTags(this.client.getHost(), resourceGroupName, networkProfileName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.updateTags(this.client.getHost(), resourceGroupName, networkProfileName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**

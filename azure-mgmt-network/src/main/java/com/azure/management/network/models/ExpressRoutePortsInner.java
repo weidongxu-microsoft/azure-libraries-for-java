@@ -88,13 +88,13 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRoutePortName") String expressRoutePortName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ExpressRoutePortInner parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRoutePortName") String expressRoutePortName, @BodyParam("application/json") ExpressRoutePortInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRoutePortName") String expressRoutePortName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TagsObject parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRoutePortName") String expressRoutePortName, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts")
@@ -118,13 +118,13 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ExpressRoutePortInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRoutePortName") String expressRoutePortName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ExpressRoutePortInner parameters);
+        Mono<SimpleResponse<ExpressRoutePortInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRoutePortName") String expressRoutePortName, @BodyParam("application/json") ExpressRoutePortInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ExpressRoutePortInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRoutePortName") String expressRoutePortName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TagsObject parameters);
+        Mono<SimpleResponse<ExpressRoutePortInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRoutePortName") String expressRoutePortName, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -248,7 +248,7 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String expressRoutePortName, ExpressRoutePortInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, expressRoutePortName, apiVersion, parameters);
+        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, expressRoutePortName, parameters, apiVersion);
     }
 
     /**
@@ -299,7 +299,7 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
         final String apiVersion = "2019-06-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
-        return service.updateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, expressRoutePortName, apiVersion, parameters);
+        return service.updateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, expressRoutePortName, parameters, apiVersion);
     }
 
     /**
@@ -482,7 +482,7 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRoutePortInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String expressRoutePortName, ExpressRoutePortInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, expressRoutePortName, apiVersion, parameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, expressRoutePortName, parameters, apiVersion);
     }
 
     /**
@@ -537,7 +537,7 @@ public final class ExpressRoutePortsInner implements InnerSupportsGet<ExpressRou
         final String apiVersion = "2019-06-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, expressRoutePortName, apiVersion, parameters);
+        return service.beginUpdateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, expressRoutePortName, parameters, apiVersion);
     }
 
     /**

@@ -62,7 +62,7 @@ public final class ServerConnectionPoliciesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/connectionPolicies/{connectionPolicyName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ServerConnectionPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("connectionPolicyName") String connectionPolicyName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ServerConnectionPolicyInner parameters);
+        Mono<SimpleResponse<ServerConnectionPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("connectionPolicyName") String connectionPolicyName, @BodyParam("application/json") ServerConnectionPolicyInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/connectionPolicies/{connectionPolicyName}")
@@ -87,7 +87,7 @@ public final class ServerConnectionPoliciesInner {
         final String apiVersion = "2014-04-01";
         ServerConnectionPolicyInner parameters = new ServerConnectionPolicyInner();
         parameters.withConnectionType(connectionType);
-        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, connectionPolicyName, apiVersion, parameters);
+        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, connectionPolicyName, parameters, apiVersion);
     }
 
     /**

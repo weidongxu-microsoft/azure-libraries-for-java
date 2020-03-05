@@ -77,7 +77,7 @@ public final class SyncAgentsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/syncAgents/{syncAgentName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("syncAgentName") String syncAgentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SyncAgentInner parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("syncAgentName") String syncAgentName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SyncAgentInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/syncAgents/{syncAgentName}")
@@ -107,7 +107,7 @@ public final class SyncAgentsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/syncAgents/{syncAgentName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<SyncAgentInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("syncAgentName") String syncAgentName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SyncAgentInner parameters);
+        Mono<SimpleResponse<SyncAgentInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("syncAgentName") String syncAgentName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SyncAgentInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/syncAgents/{syncAgentName}")
@@ -197,7 +197,7 @@ public final class SyncAgentsInner {
         final String apiVersion = "2015-05-01-preview";
         SyncAgentInner parameters = new SyncAgentInner();
         parameters.withSyncDatabaseId(syncDatabaseId);
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, syncAgentName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, syncAgentName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -458,7 +458,7 @@ public final class SyncAgentsInner {
         final String apiVersion = "2015-05-01-preview";
         SyncAgentInner parameters = new SyncAgentInner();
         parameters.withSyncDatabaseId(syncDatabaseId);
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serverName, syncAgentName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serverName, syncAgentName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**

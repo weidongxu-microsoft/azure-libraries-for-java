@@ -88,13 +88,13 @@ public final class PublicIPPrefixesInner implements InnerSupportsGet<PublicIPPre
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("publicIpPrefixName") String publicIpPrefixName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PublicIPPrefixInner parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("publicIpPrefixName") String publicIpPrefixName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PublicIPPrefixInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("publicIpPrefixName") String publicIpPrefixName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TagsObject parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("publicIpPrefixName") String publicIpPrefixName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/publicIPPrefixes")
@@ -118,13 +118,13 @@ public final class PublicIPPrefixesInner implements InnerSupportsGet<PublicIPPre
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<PublicIPPrefixInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("publicIpPrefixName") String publicIpPrefixName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PublicIPPrefixInner parameters);
+        Mono<SimpleResponse<PublicIPPrefixInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("publicIpPrefixName") String publicIpPrefixName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PublicIPPrefixInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<PublicIPPrefixInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("publicIpPrefixName") String publicIpPrefixName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TagsObject parameters);
+        Mono<SimpleResponse<PublicIPPrefixInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("publicIpPrefixName") String publicIpPrefixName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -290,7 +290,7 @@ public final class PublicIPPrefixesInner implements InnerSupportsGet<PublicIPPre
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String publicIpPrefixName, PublicIPPrefixInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, publicIpPrefixName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, publicIpPrefixName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -341,7 +341,7 @@ public final class PublicIPPrefixesInner implements InnerSupportsGet<PublicIPPre
         final String apiVersion = "2019-06-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
-        return service.updateTags(this.client.getHost(), resourceGroupName, publicIpPrefixName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.updateTags(this.client.getHost(), resourceGroupName, publicIpPrefixName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -524,7 +524,7 @@ public final class PublicIPPrefixesInner implements InnerSupportsGet<PublicIPPre
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PublicIPPrefixInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String publicIpPrefixName, PublicIPPrefixInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, publicIpPrefixName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, publicIpPrefixName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -579,7 +579,7 @@ public final class PublicIPPrefixesInner implements InnerSupportsGet<PublicIPPre
         final String apiVersion = "2019-06-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), resourceGroupName, publicIpPrefixName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginUpdateTags(this.client.getHost(), resourceGroupName, publicIpPrefixName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**

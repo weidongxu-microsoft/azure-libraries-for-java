@@ -88,13 +88,13 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ServiceEndpointPolicyInner parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ServiceEndpointPolicyInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TagsObject parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/ServiceEndpointPolicies")
@@ -118,13 +118,13 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ServiceEndpointPolicyInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ServiceEndpointPolicyInner parameters);
+        Mono<SimpleResponse<ServiceEndpointPolicyInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ServiceEndpointPolicyInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ServiceEndpointPolicyInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TagsObject parameters);
+        Mono<SimpleResponse<ServiceEndpointPolicyInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceEndpointPolicyName") String serviceEndpointPolicyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -290,7 +290,7 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String serviceEndpointPolicyName, ServiceEndpointPolicyInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -341,7 +341,7 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
         final String apiVersion = "2019-06-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
-        return service.update(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.update(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -524,7 +524,7 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ServiceEndpointPolicyInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String serviceEndpointPolicyName, ServiceEndpointPolicyInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -579,7 +579,7 @@ public final class ServiceEndpointPoliciesInner implements InnerSupportsGet<Serv
         final String apiVersion = "2019-06-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
-        return service.beginUpdate(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginUpdate(this.client.getHost(), resourceGroupName, serviceEndpointPolicyName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**

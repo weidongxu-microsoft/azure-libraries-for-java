@@ -92,13 +92,13 @@ public final class ApplicationGatewaysInner implements InnerSupportsGet<Applicat
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("applicationGatewayName") String applicationGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ApplicationGatewayInner parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("applicationGatewayName") String applicationGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ApplicationGatewayInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("applicationGatewayName") String applicationGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TagsObject parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("applicationGatewayName") String applicationGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways")
@@ -134,7 +134,7 @@ public final class ApplicationGatewaysInner implements InnerSupportsGet<Applicat
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/getBackendHealthOnDemand")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> backendHealthOnDemand(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("applicationGatewayName") String applicationGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("$expand") String expand, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ApplicationGatewayOnDemandProbe probeRequest);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> backendHealthOnDemand(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("applicationGatewayName") String applicationGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("$expand") String expand, @BodyParam("application/json") ApplicationGatewayOnDemandProbe probeRequest, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableServerVariables")
@@ -188,13 +188,13 @@ public final class ApplicationGatewaysInner implements InnerSupportsGet<Applicat
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ApplicationGatewayInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("applicationGatewayName") String applicationGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ApplicationGatewayInner parameters);
+        Mono<SimpleResponse<ApplicationGatewayInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("applicationGatewayName") String applicationGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ApplicationGatewayInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ApplicationGatewayInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("applicationGatewayName") String applicationGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TagsObject parameters);
+        Mono<SimpleResponse<ApplicationGatewayInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("applicationGatewayName") String applicationGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/start")
@@ -218,7 +218,7 @@ public final class ApplicationGatewaysInner implements InnerSupportsGet<Applicat
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/getBackendHealthOnDemand")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ApplicationGatewayBackendHealthOnDemandInner>> beginBackendHealthOnDemand(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("applicationGatewayName") String applicationGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("$expand") String expand, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ApplicationGatewayOnDemandProbe probeRequest);
+        Mono<SimpleResponse<ApplicationGatewayBackendHealthOnDemandInner>> beginBackendHealthOnDemand(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("applicationGatewayName") String applicationGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("$expand") String expand, @BodyParam("application/json") ApplicationGatewayOnDemandProbe probeRequest, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -348,7 +348,7 @@ public final class ApplicationGatewaysInner implements InnerSupportsGet<Applicat
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String applicationGatewayName, ApplicationGatewayInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, applicationGatewayName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, applicationGatewayName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -399,7 +399,7 @@ public final class ApplicationGatewaysInner implements InnerSupportsGet<Applicat
         final String apiVersion = "2019-06-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
-        return service.updateTags(this.client.getHost(), resourceGroupName, applicationGatewayName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.updateTags(this.client.getHost(), resourceGroupName, applicationGatewayName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -715,7 +715,7 @@ public final class ApplicationGatewaysInner implements InnerSupportsGet<Applicat
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> backendHealthOnDemandWithResponseAsync(String resourceGroupName, String applicationGatewayName, ApplicationGatewayOnDemandProbe probeRequest, String expand) {
         final String apiVersion = "2019-06-01";
-        return service.backendHealthOnDemand(this.client.getHost(), resourceGroupName, applicationGatewayName, this.client.getSubscriptionId(), expand, apiVersion, probeRequest);
+        return service.backendHealthOnDemand(this.client.getHost(), resourceGroupName, applicationGatewayName, this.client.getSubscriptionId(), expand, probeRequest, apiVersion);
     }
 
     /**
@@ -1141,7 +1141,7 @@ public final class ApplicationGatewaysInner implements InnerSupportsGet<Applicat
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ApplicationGatewayInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String applicationGatewayName, ApplicationGatewayInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, applicationGatewayName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, applicationGatewayName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -1196,7 +1196,7 @@ public final class ApplicationGatewaysInner implements InnerSupportsGet<Applicat
         final String apiVersion = "2019-06-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), resourceGroupName, applicationGatewayName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginUpdateTags(this.client.getHost(), resourceGroupName, applicationGatewayName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -1430,7 +1430,7 @@ public final class ApplicationGatewaysInner implements InnerSupportsGet<Applicat
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ApplicationGatewayBackendHealthOnDemandInner>> beginBackendHealthOnDemandWithResponseAsync(String resourceGroupName, String applicationGatewayName, ApplicationGatewayOnDemandProbe probeRequest, String expand) {
         final String apiVersion = "2019-06-01";
-        return service.beginBackendHealthOnDemand(this.client.getHost(), resourceGroupName, applicationGatewayName, this.client.getSubscriptionId(), expand, apiVersion, probeRequest);
+        return service.beginBackendHealthOnDemand(this.client.getHost(), resourceGroupName, applicationGatewayName, this.client.getSubscriptionId(), expand, probeRequest, apiVersion);
     }
 
     /**

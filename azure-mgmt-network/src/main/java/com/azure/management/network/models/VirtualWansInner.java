@@ -82,13 +82,13 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("VirtualWANName") String virtualWANName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VirtualWANInner wANParameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("VirtualWANName") String virtualWANName, @BodyParam("application/json") VirtualWANInner wANParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("VirtualWANName") String virtualWANName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TagsObject wANParameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("VirtualWANName") String virtualWANName, @BodyParam("application/json") TagsObject wANParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}")
@@ -112,13 +112,13 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<VirtualWANInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("VirtualWANName") String virtualWANName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VirtualWANInner wANParameters);
+        Mono<SimpleResponse<VirtualWANInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("VirtualWANName") String virtualWANName, @BodyParam("application/json") VirtualWANInner wANParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<VirtualWANInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("VirtualWANName") String virtualWANName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TagsObject wANParameters);
+        Mono<SimpleResponse<VirtualWANInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("VirtualWANName") String virtualWANName, @BodyParam("application/json") TagsObject wANParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{VirtualWANName}")
@@ -202,7 +202,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String virtualWANName, VirtualWANInner wANParameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, apiVersion, wANParameters);
+        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, wANParameters, apiVersion);
     }
 
     /**
@@ -253,7 +253,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
         final String apiVersion = "2019-06-01";
         TagsObject wANParameters = new TagsObject();
         wANParameters.withTags(tags);
-        return service.updateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, apiVersion, wANParameters);
+        return service.updateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, wANParameters, apiVersion);
     }
 
     /**
@@ -438,7 +438,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VirtualWANInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String virtualWANName, VirtualWANInner wANParameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, apiVersion, wANParameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, wANParameters, apiVersion);
     }
 
     /**
@@ -493,7 +493,7 @@ public final class VirtualWansInner implements InnerSupportsGet<VirtualWANInner>
         final String apiVersion = "2019-06-01";
         TagsObject wANParameters = new TagsObject();
         wANParameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, apiVersion, wANParameters);
+        return service.beginUpdateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, wANParameters, apiVersion);
     }
 
     /**

@@ -86,13 +86,13 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") P2SVpnGatewayInner p2SVpnGatewayParameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @BodyParam("application/json") P2SVpnGatewayInner p2SVpnGatewayParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TagsObject p2SVpnGatewayParameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @BodyParam("application/json") TagsObject p2SVpnGatewayParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}")
@@ -116,7 +116,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/generatevpnprofile")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> generateVpnProfile(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") P2SVpnProfileParameters parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> generateVpnProfile(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") P2SVpnProfileParameters parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/getP2sVpnConnectionHealth")
@@ -128,13 +128,13 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<P2SVpnGatewayInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") P2SVpnGatewayInner p2SVpnGatewayParameters);
+        Mono<SimpleResponse<P2SVpnGatewayInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @BodyParam("application/json") P2SVpnGatewayInner p2SVpnGatewayParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<P2SVpnGatewayInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TagsObject p2SVpnGatewayParameters);
+        Mono<SimpleResponse<P2SVpnGatewayInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @BodyParam("application/json") TagsObject p2SVpnGatewayParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}")
@@ -146,7 +146,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/generatevpnprofile")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VpnProfileResponseInner>> beginGenerateVpnProfile(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") P2SVpnProfileParameters parameters);
+        Mono<SimpleResponse<VpnProfileResponseInner>> beginGenerateVpnProfile(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("gatewayName") String gatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") P2SVpnProfileParameters parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways/{gatewayName}/getP2sVpnConnectionHealth")
@@ -230,7 +230,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String gatewayName, P2SVpnGatewayInner p2SVpnGatewayParameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, apiVersion, p2SVpnGatewayParameters);
+        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, p2SVpnGatewayParameters, apiVersion);
     }
 
     /**
@@ -281,7 +281,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
         final String apiVersion = "2019-06-01";
         TagsObject p2SVpnGatewayParameters = new TagsObject();
         p2SVpnGatewayParameters.withTags(tags);
-        return service.updateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, apiVersion, p2SVpnGatewayParameters);
+        return service.updateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, p2SVpnGatewayParameters, apiVersion);
     }
 
     /**
@@ -468,7 +468,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
         final String apiVersion = "2019-06-01";
         P2SVpnProfileParameters parameters = new P2SVpnProfileParameters();
         parameters.withAuthenticationMethod(authenticationMethod);
-        return service.generateVpnProfile(this.client.getHost(), resourceGroupName, gatewayName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.generateVpnProfile(this.client.getHost(), resourceGroupName, gatewayName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -563,7 +563,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<P2SVpnGatewayInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String gatewayName, P2SVpnGatewayInner p2SVpnGatewayParameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, apiVersion, p2SVpnGatewayParameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, p2SVpnGatewayParameters, apiVersion);
     }
 
     /**
@@ -618,7 +618,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
         final String apiVersion = "2019-06-01";
         TagsObject p2SVpnGatewayParameters = new TagsObject();
         p2SVpnGatewayParameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, apiVersion, p2SVpnGatewayParameters);
+        return service.beginUpdateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, gatewayName, p2SVpnGatewayParameters, apiVersion);
     }
 
     /**
@@ -717,7 +717,7 @@ public final class P2SVpnGatewaysInner implements InnerSupportsGet<P2SVpnGateway
         final String apiVersion = "2019-06-01";
         P2SVpnProfileParameters parameters = new P2SVpnProfileParameters();
         parameters.withAuthenticationMethod(authenticationMethod);
-        return service.beginGenerateVpnProfile(this.client.getHost(), resourceGroupName, gatewayName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginGenerateVpnProfile(this.client.getHost(), resourceGroupName, gatewayName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**

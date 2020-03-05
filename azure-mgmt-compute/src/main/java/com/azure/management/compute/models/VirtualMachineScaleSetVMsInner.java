@@ -73,7 +73,7 @@ public final class VirtualMachineScaleSetVMsInner {
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> reimage(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VirtualMachineScaleSetVMReimageParameters vmScaleSetVMReimageInput);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> reimage(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineScaleSetVMReimageParameters vmScaleSetVMReimageInput, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimageall")
@@ -91,7 +91,7 @@ public final class VirtualMachineScaleSetVMsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VirtualMachineScaleSetVMInner parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineScaleSetVMInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}")
@@ -151,13 +151,13 @@ public final class VirtualMachineScaleSetVMsInner {
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/runCommand")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> runCommand(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RunCommandInput parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> runCommand(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RunCommandInput parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginReimage(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VirtualMachineScaleSetVMReimageParameters vmScaleSetVMReimageInput);
+        Mono<Response<Void>> beginReimage(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineScaleSetVMReimageParameters vmScaleSetVMReimageInput, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimageall")
@@ -175,7 +175,7 @@ public final class VirtualMachineScaleSetVMsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualMachineScaleSetVMInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VirtualMachineScaleSetVMInner parameters);
+        Mono<SimpleResponse<VirtualMachineScaleSetVMInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineScaleSetVMInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}")
@@ -217,7 +217,7 @@ public final class VirtualMachineScaleSetVMsInner {
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/runCommand")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<RunCommandResultInner>> beginRunCommand(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RunCommandInput parameters);
+        Mono<SimpleResponse<RunCommandResultInner>> beginRunCommand(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("instanceId") String instanceId, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RunCommandInput parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -245,7 +245,7 @@ public final class VirtualMachineScaleSetVMsInner {
             vmScaleSetVMReimageInput = new VirtualMachineScaleSetVMReimageParameters();
             vmScaleSetVMReimageInput.withTempDisk(tempDisk);
         }
-        return service.reimage(this.client.getHost(), resourceGroupName, vmScaleSetName, instanceId, this.client.getSubscriptionId(), apiVersion, vmScaleSetVMReimageInput);
+        return service.reimage(this.client.getHost(), resourceGroupName, vmScaleSetName, instanceId, this.client.getSubscriptionId(), vmScaleSetVMReimageInput, apiVersion);
     }
 
     /**
@@ -395,7 +395,7 @@ public final class VirtualMachineScaleSetVMsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> updateWithResponseAsync(String resourceGroupName, String vmScaleSetName, String instanceId, VirtualMachineScaleSetVMInner parameters) {
         final String apiVersion = "2019-03-01";
-        return service.update(this.client.getHost(), resourceGroupName, vmScaleSetName, instanceId, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.update(this.client.getHost(), resourceGroupName, vmScaleSetName, instanceId, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -986,7 +986,7 @@ public final class VirtualMachineScaleSetVMsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> runCommandWithResponseAsync(String resourceGroupName, String vmScaleSetName, String instanceId, RunCommandInput parameters) {
         final String apiVersion = "2019-03-01";
-        return service.runCommand(this.client.getHost(), resourceGroupName, vmScaleSetName, instanceId, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.runCommand(this.client.getHost(), resourceGroupName, vmScaleSetName, instanceId, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -1043,7 +1043,7 @@ public final class VirtualMachineScaleSetVMsInner {
             vmScaleSetVMReimageInput = new VirtualMachineScaleSetVMReimageParameters();
             vmScaleSetVMReimageInput.withTempDisk(tempDisk);
         }
-        return service.beginReimage(this.client.getHost(), resourceGroupName, vmScaleSetName, instanceId, this.client.getSubscriptionId(), apiVersion, vmScaleSetVMReimageInput);
+        return service.beginReimage(this.client.getHost(), resourceGroupName, vmScaleSetName, instanceId, this.client.getSubscriptionId(), vmScaleSetVMReimageInput, apiVersion);
     }
 
     /**
@@ -1187,7 +1187,7 @@ public final class VirtualMachineScaleSetVMsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VirtualMachineScaleSetVMInner>> beginUpdateWithResponseAsync(String resourceGroupName, String vmScaleSetName, String instanceId, VirtualMachineScaleSetVMInner parameters) {
         final String apiVersion = "2019-03-01";
-        return service.beginUpdate(this.client.getHost(), resourceGroupName, vmScaleSetName, instanceId, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginUpdate(this.client.getHost(), resourceGroupName, vmScaleSetName, instanceId, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -1563,7 +1563,7 @@ public final class VirtualMachineScaleSetVMsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<RunCommandResultInner>> beginRunCommandWithResponseAsync(String resourceGroupName, String vmScaleSetName, String instanceId, RunCommandInput parameters) {
         final String apiVersion = "2019-03-01";
-        return service.beginRunCommand(this.client.getHost(), resourceGroupName, vmScaleSetName, instanceId, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginRunCommand(this.client.getHost(), resourceGroupName, vmScaleSetName, instanceId, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**

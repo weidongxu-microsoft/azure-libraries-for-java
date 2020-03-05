@@ -76,13 +76,13 @@ public final class DisksInner implements InnerSupportsGet<DiskInner>, InnerSuppo
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DiskInner disk);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @BodyParam("application/json") DiskInner disk, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DiskUpdate disk);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @BodyParam("application/json") DiskUpdate disk, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}")
@@ -112,7 +112,7 @@ public final class DisksInner implements InnerSupportsGet<DiskInner>, InnerSuppo
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/beginGetAccess")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> grantAccess(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") GrantAccessData grantAccessData);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> grantAccess(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @BodyParam("application/json") GrantAccessData grantAccessData, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/endGetAccess")
@@ -124,13 +124,13 @@ public final class DisksInner implements InnerSupportsGet<DiskInner>, InnerSuppo
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DiskInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DiskInner disk);
+        Mono<SimpleResponse<DiskInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @BodyParam("application/json") DiskInner disk, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DiskInner>> beginUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DiskUpdate disk);
+        Mono<SimpleResponse<DiskInner>> beginUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @BodyParam("application/json") DiskUpdate disk, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}")
@@ -142,7 +142,7 @@ public final class DisksInner implements InnerSupportsGet<DiskInner>, InnerSuppo
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/beginGetAccess")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<AccessUriInner>> beginGrantAccess(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") GrantAccessData grantAccessData);
+        Mono<SimpleResponse<AccessUriInner>> beginGrantAccess(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @BodyParam("application/json") GrantAccessData grantAccessData, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/endGetAccess")
@@ -176,7 +176,7 @@ public final class DisksInner implements InnerSupportsGet<DiskInner>, InnerSuppo
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String diskName, DiskInner disk) {
         final String apiVersion = "2019-03-01";
-        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, diskName, apiVersion, disk);
+        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, diskName, disk, apiVersion);
     }
 
     /**
@@ -225,7 +225,7 @@ public final class DisksInner implements InnerSupportsGet<DiskInner>, InnerSuppo
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> updateWithResponseAsync(String resourceGroupName, String diskName, DiskUpdate disk) {
         final String apiVersion = "2019-03-01";
-        return service.update(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, diskName, apiVersion, disk);
+        return service.update(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, diskName, disk, apiVersion);
     }
 
     /**
@@ -460,7 +460,7 @@ public final class DisksInner implements InnerSupportsGet<DiskInner>, InnerSuppo
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> grantAccessWithResponseAsync(String resourceGroupName, String diskName, GrantAccessData grantAccessData) {
         final String apiVersion = "2019-03-01";
-        return service.grantAccess(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, diskName, apiVersion, grantAccessData);
+        return service.grantAccess(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, diskName, grantAccessData, apiVersion);
     }
 
     /**
@@ -555,7 +555,7 @@ public final class DisksInner implements InnerSupportsGet<DiskInner>, InnerSuppo
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DiskInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String diskName, DiskInner disk) {
         final String apiVersion = "2019-03-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, diskName, apiVersion, disk);
+        return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, diskName, disk, apiVersion);
     }
 
     /**
@@ -608,7 +608,7 @@ public final class DisksInner implements InnerSupportsGet<DiskInner>, InnerSuppo
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DiskInner>> beginUpdateWithResponseAsync(String resourceGroupName, String diskName, DiskUpdate disk) {
         final String apiVersion = "2019-03-01";
-        return service.beginUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, diskName, apiVersion, disk);
+        return service.beginUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, diskName, disk, apiVersion);
     }
 
     /**
@@ -705,7 +705,7 @@ public final class DisksInner implements InnerSupportsGet<DiskInner>, InnerSuppo
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<AccessUriInner>> beginGrantAccessWithResponseAsync(String resourceGroupName, String diskName, GrantAccessData grantAccessData) {
         final String apiVersion = "2019-03-01";
-        return service.beginGrantAccess(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, diskName, apiVersion, grantAccessData);
+        return service.beginGrantAccess(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, diskName, grantAccessData, apiVersion);
     }
 
     /**

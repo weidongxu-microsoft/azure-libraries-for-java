@@ -75,13 +75,13 @@ public final class FileSharesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<FileShareInner>> create(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("shareName") String shareName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") FileShareInner fileShare);
+        Mono<SimpleResponse<FileShareInner>> create(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("shareName") String shareName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") FileShareInner fileShare, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<FileShareInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("shareName") String shareName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") FileShareInner fileShare);
+        Mono<SimpleResponse<FileShareInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("shareName") String shareName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") FileShareInner fileShare, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}")
@@ -209,7 +209,7 @@ public final class FileSharesInner {
         FileShareInner fileShare = new FileShareInner();
         fileShare.setMetadata(metadata);
         fileShare.setShareQuota(shareQuota);
-        return service.create(this.client.getHost(), resourceGroupName, accountName, shareName, this.client.getSubscriptionId(), this.client.getApiVersion(), fileShare);
+        return service.create(this.client.getHost(), resourceGroupName, accountName, shareName, this.client.getSubscriptionId(), fileShare, this.client.getApiVersion());
     }
 
     /**
@@ -270,7 +270,7 @@ public final class FileSharesInner {
         FileShareInner fileShare = new FileShareInner();
         fileShare.setMetadata(metadata);
         fileShare.setShareQuota(shareQuota);
-        return service.update(this.client.getHost(), resourceGroupName, accountName, shareName, this.client.getSubscriptionId(), this.client.getApiVersion(), fileShare);
+        return service.update(this.client.getHost(), resourceGroupName, accountName, shareName, this.client.getSubscriptionId(), fileShare, this.client.getApiVersion());
     }
 
     /**

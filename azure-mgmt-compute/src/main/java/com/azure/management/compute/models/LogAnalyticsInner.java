@@ -65,25 +65,25 @@ public final class LogAnalyticsInner {
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getRequestRateByInterval")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> exportRequestRateByInterval(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RequestRateByIntervalInput parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> exportRequestRateByInterval(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RequestRateByIntervalInput parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getThrottledRequests")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> exportThrottledRequests(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ThrottledRequestsInput parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> exportThrottledRequests(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ThrottledRequestsInput parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getRequestRateByInterval")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<LogAnalyticsOperationResultInner>> beginExportRequestRateByInterval(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RequestRateByIntervalInput parameters);
+        Mono<SimpleResponse<LogAnalyticsOperationResultInner>> beginExportRequestRateByInterval(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RequestRateByIntervalInput parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getThrottledRequests")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<LogAnalyticsOperationResultInner>> beginExportThrottledRequests(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ThrottledRequestsInput parameters);
+        Mono<SimpleResponse<LogAnalyticsOperationResultInner>> beginExportThrottledRequests(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ThrottledRequestsInput parameters, @QueryParam("api-version") String apiVersion);
     }
 
     /**
@@ -98,7 +98,7 @@ public final class LogAnalyticsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> exportRequestRateByIntervalWithResponseAsync(String location, RequestRateByIntervalInput parameters) {
         final String apiVersion = "2019-03-01";
-        return service.exportRequestRateByInterval(this.client.getHost(), location, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.exportRequestRateByInterval(this.client.getHost(), location, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -144,7 +144,7 @@ public final class LogAnalyticsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> exportThrottledRequestsWithResponseAsync(String location, ThrottledRequestsInput parameters) {
         final String apiVersion = "2019-03-01";
-        return service.exportThrottledRequests(this.client.getHost(), location, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.exportThrottledRequests(this.client.getHost(), location, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -190,7 +190,7 @@ public final class LogAnalyticsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<LogAnalyticsOperationResultInner>> beginExportRequestRateByIntervalWithResponseAsync(String location, RequestRateByIntervalInput parameters) {
         final String apiVersion = "2019-03-01";
-        return service.beginExportRequestRateByInterval(this.client.getHost(), location, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginExportRequestRateByInterval(this.client.getHost(), location, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -240,7 +240,7 @@ public final class LogAnalyticsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<LogAnalyticsOperationResultInner>> beginExportThrottledRequestsWithResponseAsync(String location, ThrottledRequestsInput parameters) {
         final String apiVersion = "2019-03-01";
-        return service.beginExportThrottledRequests(this.client.getHost(), location, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginExportThrottledRequests(this.client.getHost(), location, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**

@@ -68,13 +68,13 @@ public final class VirtualMachineExtensionsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("vmExtensionName") String vmExtensionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VirtualMachineExtensionInner extensionParameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("vmExtensionName") String vmExtensionName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineExtensionInner extensionParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("vmExtensionName") String vmExtensionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VirtualMachineExtensionUpdate extensionParameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("vmExtensionName") String vmExtensionName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineExtensionUpdate extensionParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}")
@@ -98,13 +98,13 @@ public final class VirtualMachineExtensionsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualMachineExtensionInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("vmExtensionName") String vmExtensionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VirtualMachineExtensionInner extensionParameters);
+        Mono<SimpleResponse<VirtualMachineExtensionInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("vmExtensionName") String vmExtensionName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineExtensionInner extensionParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualMachineExtensionInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("vmExtensionName") String vmExtensionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VirtualMachineExtensionUpdate extensionParameters);
+        Mono<SimpleResponse<VirtualMachineExtensionInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("vmExtensionName") String vmExtensionName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineExtensionUpdate extensionParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}")
@@ -127,7 +127,7 @@ public final class VirtualMachineExtensionsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String vmName, String vmExtensionName, VirtualMachineExtensionInner extensionParameters) {
         final String apiVersion = "2019-03-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, vmName, vmExtensionName, this.client.getSubscriptionId(), apiVersion, extensionParameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, vmName, vmExtensionName, this.client.getSubscriptionId(), extensionParameters, apiVersion);
     }
 
     /**
@@ -179,7 +179,7 @@ public final class VirtualMachineExtensionsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> updateWithResponseAsync(String resourceGroupName, String vmName, String vmExtensionName, VirtualMachineExtensionUpdate extensionParameters) {
         final String apiVersion = "2019-03-01";
-        return service.update(this.client.getHost(), resourceGroupName, vmName, vmExtensionName, this.client.getSubscriptionId(), apiVersion, extensionParameters);
+        return service.update(this.client.getHost(), resourceGroupName, vmName, vmExtensionName, this.client.getSubscriptionId(), extensionParameters, apiVersion);
     }
 
     /**
@@ -469,7 +469,7 @@ public final class VirtualMachineExtensionsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VirtualMachineExtensionInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String vmName, String vmExtensionName, VirtualMachineExtensionInner extensionParameters) {
         final String apiVersion = "2019-03-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, vmName, vmExtensionName, this.client.getSubscriptionId(), apiVersion, extensionParameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, vmName, vmExtensionName, this.client.getSubscriptionId(), extensionParameters, apiVersion);
     }
 
     /**
@@ -525,7 +525,7 @@ public final class VirtualMachineExtensionsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VirtualMachineExtensionInner>> beginUpdateWithResponseAsync(String resourceGroupName, String vmName, String vmExtensionName, VirtualMachineExtensionUpdate extensionParameters) {
         final String apiVersion = "2019-03-01";
-        return service.beginUpdate(this.client.getHost(), resourceGroupName, vmName, vmExtensionName, this.client.getSubscriptionId(), apiVersion, extensionParameters);
+        return service.beginUpdate(this.client.getHost(), resourceGroupName, vmName, vmExtensionName, this.client.getSubscriptionId(), extensionParameters, apiVersion);
     }
 
     /**

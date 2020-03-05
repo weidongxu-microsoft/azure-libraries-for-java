@@ -82,7 +82,7 @@ public final class RoutesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("routeTableName") String routeTableName, @PathParam("routeName") String routeName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RouteInner routeParameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("routeTableName") String routeTableName, @PathParam("routeName") String routeName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RouteInner routeParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes")
@@ -100,7 +100,7 @@ public final class RoutesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<RouteInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("routeTableName") String routeTableName, @PathParam("routeName") String routeName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RouteInner routeParameters);
+        Mono<SimpleResponse<RouteInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("routeTableName") String routeTableName, @PathParam("routeName") String routeName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RouteInner routeParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -225,7 +225,7 @@ public final class RoutesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String routeTableName, String routeName, RouteInner routeParameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, routeTableName, routeName, this.client.getSubscriptionId(), apiVersion, routeParameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, routeTableName, routeName, this.client.getSubscriptionId(), routeParameters, apiVersion);
     }
 
     /**
@@ -375,7 +375,7 @@ public final class RoutesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<RouteInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String routeTableName, String routeName, RouteInner routeParameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, routeTableName, routeName, this.client.getSubscriptionId(), apiVersion, routeParameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, routeTableName, routeName, this.client.getSubscriptionId(), routeParameters, apiVersion);
     }
 
     /**

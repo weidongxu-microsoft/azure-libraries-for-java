@@ -72,13 +72,13 @@ public final class AvailabilitySetsInner implements InnerSupportsGet<Availabilit
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<AvailabilitySetInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") AvailabilitySetInner parameters);
+        Mono<SimpleResponse<AvailabilitySetInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AvailabilitySetInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<AvailabilitySetInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") AvailabilitySetUpdate parameters);
+        Mono<SimpleResponse<AvailabilitySetInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AvailabilitySetUpdate parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}")
@@ -136,7 +136,7 @@ public final class AvailabilitySetsInner implements InnerSupportsGet<Availabilit
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<AvailabilitySetInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String availabilitySetName, AvailabilitySetInner parameters) {
         final String apiVersion = "2019-03-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, availabilitySetName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, availabilitySetName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -189,7 +189,7 @@ public final class AvailabilitySetsInner implements InnerSupportsGet<Availabilit
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<AvailabilitySetInner>> updateWithResponseAsync(String resourceGroupName, String availabilitySetName, AvailabilitySetUpdate parameters) {
         final String apiVersion = "2019-03-01";
-        return service.update(this.client.getHost(), resourceGroupName, availabilitySetName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.update(this.client.getHost(), resourceGroupName, availabilitySetName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**

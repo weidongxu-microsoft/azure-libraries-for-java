@@ -89,13 +89,13 @@ public final class BastionHostsInner implements InnerSupportsGet<BastionHostInne
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") BastionHostInner parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BastionHostInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TagsObject bastionHostParameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @BodyParam("application/json") TagsObject bastionHostParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/bastionHosts")
@@ -119,13 +119,13 @@ public final class BastionHostsInner implements InnerSupportsGet<BastionHostInne
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<BastionHostInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") BastionHostInner parameters);
+        Mono<SimpleResponse<BastionHostInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BastionHostInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<BastionHostInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TagsObject bastionHostParameters);
+        Mono<SimpleResponse<BastionHostInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("bastionHostName") String bastionHostName, @BodyParam("application/json") TagsObject bastionHostParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -249,7 +249,7 @@ public final class BastionHostsInner implements InnerSupportsGet<BastionHostInne
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String bastionHostName, BastionHostInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, bastionHostName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, bastionHostName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -300,7 +300,7 @@ public final class BastionHostsInner implements InnerSupportsGet<BastionHostInne
         final String apiVersion = "2019-06-01";
         TagsObject bastionHostParameters = new TagsObject();
         bastionHostParameters.withTags(tags);
-        return service.updateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, bastionHostName, apiVersion, bastionHostParameters);
+        return service.updateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, bastionHostName, bastionHostParameters, apiVersion);
     }
 
     /**
@@ -483,7 +483,7 @@ public final class BastionHostsInner implements InnerSupportsGet<BastionHostInne
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<BastionHostInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String bastionHostName, BastionHostInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, bastionHostName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, bastionHostName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -538,7 +538,7 @@ public final class BastionHostsInner implements InnerSupportsGet<BastionHostInne
         final String apiVersion = "2019-06-01";
         TagsObject bastionHostParameters = new TagsObject();
         bastionHostParameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, bastionHostName, apiVersion, bastionHostParameters);
+        return service.beginUpdateTags(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, bastionHostName, bastionHostParameters, apiVersion);
     }
 
     /**

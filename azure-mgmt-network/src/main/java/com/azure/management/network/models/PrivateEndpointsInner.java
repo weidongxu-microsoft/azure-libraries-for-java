@@ -85,7 +85,7 @@ public final class PrivateEndpointsInner implements InnerSupportsGet<PrivateEndp
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("privateEndpointName") String privateEndpointName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PrivateEndpointInner parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("privateEndpointName") String privateEndpointName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PrivateEndpointInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints")
@@ -109,7 +109,7 @@ public final class PrivateEndpointsInner implements InnerSupportsGet<PrivateEndp
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<PrivateEndpointInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("privateEndpointName") String privateEndpointName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PrivateEndpointInner parameters);
+        Mono<SimpleResponse<PrivateEndpointInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("privateEndpointName") String privateEndpointName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PrivateEndpointInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -275,7 +275,7 @@ public final class PrivateEndpointsInner implements InnerSupportsGet<PrivateEndp
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String privateEndpointName, PrivateEndpointInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, privateEndpointName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, privateEndpointName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -458,7 +458,7 @@ public final class PrivateEndpointsInner implements InnerSupportsGet<PrivateEndp
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PrivateEndpointInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String privateEndpointName, PrivateEndpointInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, privateEndpointName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, privateEndpointName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**

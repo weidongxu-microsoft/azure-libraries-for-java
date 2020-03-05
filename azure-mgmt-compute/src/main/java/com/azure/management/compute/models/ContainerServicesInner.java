@@ -79,7 +79,7 @@ public final class ContainerServicesInner implements InnerSupportsGet<ContainerS
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("containerServiceName") String containerServiceName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ContainerServiceInner parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("containerServiceName") String containerServiceName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ContainerServiceInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}")
@@ -103,7 +103,7 @@ public final class ContainerServicesInner implements InnerSupportsGet<ContainerS
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ContainerServiceInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("containerServiceName") String containerServiceName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ContainerServiceInner parameters);
+        Mono<SimpleResponse<ContainerServiceInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("containerServiceName") String containerServiceName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ContainerServiceInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}")
@@ -179,7 +179,7 @@ public final class ContainerServicesInner implements InnerSupportsGet<ContainerS
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String containerServiceName, ContainerServiceInner parameters) {
         final String apiVersion = "2017-01-31";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, containerServiceName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, containerServiceName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -372,7 +372,7 @@ public final class ContainerServicesInner implements InnerSupportsGet<ContainerS
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ContainerServiceInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String containerServiceName, ContainerServiceInner parameters) {
         final String apiVersion = "2017-01-31";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, containerServiceName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, containerServiceName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**

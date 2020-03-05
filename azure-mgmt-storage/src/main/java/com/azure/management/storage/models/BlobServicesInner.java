@@ -71,7 +71,7 @@ public final class BlobServicesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/{BlobServicesName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<BlobServicePropertiesInner>> setServiceProperties(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @PathParam("BlobServicesName") String blobServicesName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") BlobServicePropertiesInner parameters);
+        Mono<SimpleResponse<BlobServicePropertiesInner>> setServiceProperties(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @PathParam("BlobServicesName") String blobServicesName, @BodyParam("application/json") BlobServicePropertiesInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/{BlobServicesName}")
@@ -142,7 +142,7 @@ public final class BlobServicesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<BlobServicePropertiesInner>> setServicePropertiesWithResponseAsync(String resourceGroupName, String accountName, BlobServicePropertiesInner parameters) {
         final String blobServicesName = "default";
-        return service.setServiceProperties(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), blobServicesName, this.client.getApiVersion(), parameters);
+        return service.setServiceProperties(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), blobServicesName, parameters, this.client.getApiVersion());
     }
 
     /**

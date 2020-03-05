@@ -81,7 +81,7 @@ public final class JobTargetGroupsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/targetGroups/{targetGroupName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<JobTargetGroupInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("jobAgentName") String jobAgentName, @PathParam("targetGroupName") String targetGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") JobTargetGroupInner parameters);
+        Mono<SimpleResponse<JobTargetGroupInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("jobAgentName") String jobAgentName, @PathParam("targetGroupName") String targetGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") JobTargetGroupInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/targetGroups/{targetGroupName}")
@@ -223,7 +223,7 @@ public final class JobTargetGroupsInner {
         final String apiVersion = "2017-03-01-preview";
         JobTargetGroupInner parameters = new JobTargetGroupInner();
         parameters.withMembers(members);
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, jobAgentName, targetGroupName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, jobAgentName, targetGroupName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**

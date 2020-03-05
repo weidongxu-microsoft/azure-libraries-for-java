@@ -96,7 +96,7 @@ public final class ServerDnsAliasesInner {
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/dnsAliases/{dnsAliasName}/acquire")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> acquire(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("dnsAliasName") String dnsAliasName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ServerDnsAliasAcquisition parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> acquire(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("dnsAliasName") String dnsAliasName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ServerDnsAliasAcquisition parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/dnsAliases/{dnsAliasName}")
@@ -114,7 +114,7 @@ public final class ServerDnsAliasesInner {
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/dnsAliases/{dnsAliasName}/acquire")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginAcquire(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("dnsAliasName") String dnsAliasName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ServerDnsAliasAcquisition parameters);
+        Mono<Response<Void>> beginAcquire(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("dnsAliasName") String dnsAliasName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ServerDnsAliasAcquisition parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -341,7 +341,7 @@ public final class ServerDnsAliasesInner {
         final String apiVersion = "2017-03-01-preview";
         ServerDnsAliasAcquisition parameters = new ServerDnsAliasAcquisition();
         parameters.withOldServerDnsAliasId(oldServerDnsAliasId);
-        return service.acquire(this.client.getHost(), resourceGroupName, serverName, dnsAliasName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.acquire(this.client.getHost(), resourceGroupName, serverName, dnsAliasName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -495,7 +495,7 @@ public final class ServerDnsAliasesInner {
         final String apiVersion = "2017-03-01-preview";
         ServerDnsAliasAcquisition parameters = new ServerDnsAliasAcquisition();
         parameters.withOldServerDnsAliasId(oldServerDnsAliasId);
-        return service.beginAcquire(this.client.getHost(), resourceGroupName, serverName, dnsAliasName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginAcquire(this.client.getHost(), resourceGroupName, serverName, dnsAliasName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**

@@ -78,7 +78,7 @@ public final class SyncMembersInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("syncGroupName") String syncGroupName, @PathParam("syncMemberName") String syncMemberName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SyncMemberInner parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("syncGroupName") String syncGroupName, @PathParam("syncMemberName") String syncMemberName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SyncMemberInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}")
@@ -90,7 +90,7 @@ public final class SyncMembersInner {
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("syncGroupName") String syncGroupName, @PathParam("syncMemberName") String syncMemberName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SyncMemberInner parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("syncGroupName") String syncGroupName, @PathParam("syncMemberName") String syncMemberName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SyncMemberInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers")
@@ -114,7 +114,7 @@ public final class SyncMembersInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<SyncMemberInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("syncGroupName") String syncGroupName, @PathParam("syncMemberName") String syncMemberName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SyncMemberInner parameters);
+        Mono<SimpleResponse<SyncMemberInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("syncGroupName") String syncGroupName, @PathParam("syncMemberName") String syncMemberName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SyncMemberInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}")
@@ -126,7 +126,7 @@ public final class SyncMembersInner {
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<SyncMemberInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("syncGroupName") String syncGroupName, @PathParam("syncMemberName") String syncMemberName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SyncMemberInner parameters);
+        Mono<SimpleResponse<SyncMemberInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("syncGroupName") String syncGroupName, @PathParam("syncMemberName") String syncMemberName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SyncMemberInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}/refreshSchema")
@@ -222,7 +222,7 @@ public final class SyncMembersInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String serverName, String databaseName, String syncGroupName, String syncMemberName, SyncMemberInner parameters) {
         final String apiVersion = "2015-05-01-preview";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -335,7 +335,7 @@ public final class SyncMembersInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> updateWithResponseAsync(String resourceGroupName, String serverName, String databaseName, String syncGroupName, String syncMemberName, SyncMemberInner parameters) {
         final String apiVersion = "2015-05-01-preview";
-        return service.update(this.client.getHost(), resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.update(this.client.getHost(), resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -565,7 +565,7 @@ public final class SyncMembersInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SyncMemberInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String serverName, String databaseName, String syncGroupName, String syncMemberName, SyncMemberInner parameters) {
         final String apiVersion = "2015-05-01-preview";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -680,7 +680,7 @@ public final class SyncMembersInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SyncMemberInner>> beginUpdateWithResponseAsync(String resourceGroupName, String serverName, String databaseName, String syncGroupName, String syncMemberName, SyncMemberInner parameters) {
         final String apiVersion = "2015-05-01-preview";
-        return service.beginUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**

@@ -75,7 +75,7 @@ public final class ManagedDatabaseSensitivityLabelsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<SensitivityLabelInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("schemaName") String schemaName, @PathParam("tableName") String tableName, @PathParam("columnName") String columnName, @PathParam("sensitivityLabelSource") String sensitivityLabelSource, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SensitivityLabelInner parameters);
+        Mono<SimpleResponse<SensitivityLabelInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("schemaName") String schemaName, @PathParam("tableName") String tableName, @PathParam("columnName") String columnName, @PathParam("sensitivityLabelSource") String sensitivityLabelSource, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SensitivityLabelInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}")
@@ -203,7 +203,7 @@ public final class ManagedDatabaseSensitivityLabelsInner {
     public Mono<SimpleResponse<SensitivityLabelInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String managedInstanceName, String databaseName, String schemaName, String tableName, String columnName, SensitivityLabelInner parameters) {
         final String sensitivityLabelSource = "current";
         final String apiVersion = "2018-06-01-preview";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, schemaName, tableName, columnName, sensitivityLabelSource, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, schemaName, tableName, columnName, sensitivityLabelSource, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**

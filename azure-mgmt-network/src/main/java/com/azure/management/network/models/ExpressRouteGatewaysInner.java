@@ -80,7 +80,7 @@ public final class ExpressRouteGatewaysInner implements InnerSupportsGet<Express
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRouteGatewayName") String expressRouteGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ExpressRouteGatewayInner putExpressRouteGatewayParameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRouteGatewayName") String expressRouteGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ExpressRouteGatewayInner putExpressRouteGatewayParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}")
@@ -98,7 +98,7 @@ public final class ExpressRouteGatewaysInner implements InnerSupportsGet<Express
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ExpressRouteGatewayInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRouteGatewayName") String expressRouteGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ExpressRouteGatewayInner putExpressRouteGatewayParameters);
+        Mono<SimpleResponse<ExpressRouteGatewayInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRouteGatewayName") String expressRouteGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ExpressRouteGatewayInner putExpressRouteGatewayParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}")
@@ -208,7 +208,7 @@ public final class ExpressRouteGatewaysInner implements InnerSupportsGet<Express
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String expressRouteGatewayName, ExpressRouteGatewayInner putExpressRouteGatewayParameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, expressRouteGatewayName, this.client.getSubscriptionId(), apiVersion, putExpressRouteGatewayParameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, expressRouteGatewayName, this.client.getSubscriptionId(), putExpressRouteGatewayParameters, apiVersion);
     }
 
     /**
@@ -353,7 +353,7 @@ public final class ExpressRouteGatewaysInner implements InnerSupportsGet<Express
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteGatewayInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String expressRouteGatewayName, ExpressRouteGatewayInner putExpressRouteGatewayParameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, expressRouteGatewayName, this.client.getSubscriptionId(), apiVersion, putExpressRouteGatewayParameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, expressRouteGatewayName, this.client.getSubscriptionId(), putExpressRouteGatewayParameters, apiVersion);
     }
 
     /**

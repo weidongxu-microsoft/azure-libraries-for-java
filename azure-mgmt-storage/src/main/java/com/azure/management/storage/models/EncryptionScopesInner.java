@@ -67,13 +67,13 @@ public final class EncryptionScopesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<EncryptionScopeInner>> put(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @PathParam("encryptionScopeName") String encryptionScopeName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") EncryptionScopeInner encryptionScope);
+        Mono<SimpleResponse<EncryptionScopeInner>> put(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @PathParam("encryptionScopeName") String encryptionScopeName, @BodyParam("application/json") EncryptionScopeInner encryptionScope, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<EncryptionScopeInner>> patch(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @PathParam("encryptionScopeName") String encryptionScopeName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") EncryptionScopeInner encryptionScope);
+        Mono<SimpleResponse<EncryptionScopeInner>> patch(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @PathParam("encryptionScopeName") String encryptionScopeName, @BodyParam("application/json") EncryptionScopeInner encryptionScope, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}")
@@ -107,7 +107,7 @@ public final class EncryptionScopesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<EncryptionScopeInner>> putWithResponseAsync(String resourceGroupName, String accountName, String encryptionScopeName, EncryptionScopeInner encryptionScope) {
-        return service.put(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), encryptionScopeName, this.client.getApiVersion(), encryptionScope);
+        return service.put(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), encryptionScopeName, encryptionScope, this.client.getApiVersion());
     }
 
     /**
@@ -162,7 +162,7 @@ public final class EncryptionScopesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<EncryptionScopeInner>> patchWithResponseAsync(String resourceGroupName, String accountName, String encryptionScopeName, EncryptionScopeInner encryptionScope) {
-        return service.patch(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), encryptionScopeName, this.client.getApiVersion(), encryptionScope);
+        return service.patch(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), encryptionScopeName, encryptionScope, this.client.getApiVersion());
     }
 
     /**

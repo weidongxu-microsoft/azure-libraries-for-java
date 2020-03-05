@@ -65,13 +65,13 @@ public final class TdeCertificatesInner {
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/tdeCertificates")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> create(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TdeCertificate parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> create(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TdeCertificate parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/tdeCertificates")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginCreate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TdeCertificate parameters);
+        Mono<Response<Void>> beginCreate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TdeCertificate parameters, @QueryParam("api-version") String apiVersion);
     }
 
     /**
@@ -87,7 +87,7 @@ public final class TdeCertificatesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createWithResponseAsync(String resourceGroupName, String serverName, TdeCertificate parameters) {
         final String apiVersion = "2017-10-01-preview";
-        return service.create(this.client.getHost(), resourceGroupName, serverName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.create(this.client.getHost(), resourceGroupName, serverName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -136,7 +136,7 @@ public final class TdeCertificatesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginCreateWithResponseAsync(String resourceGroupName, String serverName, TdeCertificate parameters) {
         final String apiVersion = "2017-10-01-preview";
-        return service.beginCreate(this.client.getHost(), resourceGroupName, serverName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginCreate(this.client.getHost(), resourceGroupName, serverName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**

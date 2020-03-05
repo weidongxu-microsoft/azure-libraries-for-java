@@ -88,13 +88,13 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("ddosProtectionPlanName") String ddosProtectionPlanName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DdosProtectionPlanInner parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("ddosProtectionPlanName") String ddosProtectionPlanName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DdosProtectionPlanInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("ddosProtectionPlanName") String ddosProtectionPlanName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TagsObject parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("ddosProtectionPlanName") String ddosProtectionPlanName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/ddosProtectionPlans")
@@ -118,13 +118,13 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DdosProtectionPlanInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("ddosProtectionPlanName") String ddosProtectionPlanName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DdosProtectionPlanInner parameters);
+        Mono<SimpleResponse<DdosProtectionPlanInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("ddosProtectionPlanName") String ddosProtectionPlanName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DdosProtectionPlanInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DdosProtectionPlanInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("ddosProtectionPlanName") String ddosProtectionPlanName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TagsObject parameters);
+        Mono<SimpleResponse<DdosProtectionPlanInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("ddosProtectionPlanName") String ddosProtectionPlanName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -248,7 +248,7 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String ddosProtectionPlanName, DdosProtectionPlanInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, ddosProtectionPlanName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, ddosProtectionPlanName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -299,7 +299,7 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
         final String apiVersion = "2019-06-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
-        return service.updateTags(this.client.getHost(), resourceGroupName, ddosProtectionPlanName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.updateTags(this.client.getHost(), resourceGroupName, ddosProtectionPlanName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -482,7 +482,7 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DdosProtectionPlanInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String ddosProtectionPlanName, DdosProtectionPlanInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, ddosProtectionPlanName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, ddosProtectionPlanName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**
@@ -537,7 +537,7 @@ public final class DdosProtectionPlansInner implements InnerSupportsGet<DdosProt
         final String apiVersion = "2019-06-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
-        return service.beginUpdateTags(this.client.getHost(), resourceGroupName, ddosProtectionPlanName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.beginUpdateTags(this.client.getHost(), resourceGroupName, ddosProtectionPlanName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**

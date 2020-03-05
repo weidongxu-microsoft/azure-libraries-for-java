@@ -69,7 +69,7 @@ public final class FileServicesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<FileServicePropertiesInner>> setServiceProperties(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @PathParam("FileServicesName") String fileServicesName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") FileServicePropertiesInner parameters);
+        Mono<SimpleResponse<FileServicePropertiesInner>> setServiceProperties(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @PathParam("FileServicesName") String fileServicesName, @BodyParam("application/json") FileServicePropertiesInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}")
@@ -144,7 +144,7 @@ public final class FileServicesInner {
         FileServicePropertiesInner parameters = new FileServicePropertiesInner();
         parameters.setCors(cors);
         parameters.setShareDeleteRetentionPolicy(shareDeleteRetentionPolicy);
-        return service.setServiceProperties(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), fileServicesName, this.client.getApiVersion(), parameters);
+        return service.setServiceProperties(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), fileServicesName, parameters, this.client.getApiVersion());
     }
 
     /**

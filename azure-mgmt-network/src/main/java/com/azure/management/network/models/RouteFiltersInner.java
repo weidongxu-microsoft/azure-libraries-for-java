@@ -87,13 +87,13 @@ public final class RouteFiltersInner implements InnerSupportsGet<RouteFilterInne
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("routeFilterName") String routeFilterName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RouteFilterInner routeFilterParameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("routeFilterName") String routeFilterName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RouteFilterInner routeFilterParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("routeFilterName") String routeFilterName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PatchRouteFilter routeFilterParameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("routeFilterName") String routeFilterName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PatchRouteFilter routeFilterParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters")
@@ -117,13 +117,13 @@ public final class RouteFiltersInner implements InnerSupportsGet<RouteFilterInne
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<RouteFilterInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("routeFilterName") String routeFilterName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") RouteFilterInner routeFilterParameters);
+        Mono<SimpleResponse<RouteFilterInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("routeFilterName") String routeFilterName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RouteFilterInner routeFilterParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<RouteFilterInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("routeFilterName") String routeFilterName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PatchRouteFilter routeFilterParameters);
+        Mono<SimpleResponse<RouteFilterInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("routeFilterName") String routeFilterName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PatchRouteFilter routeFilterParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -289,7 +289,7 @@ public final class RouteFiltersInner implements InnerSupportsGet<RouteFilterInne
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String routeFilterName, RouteFilterInner routeFilterParameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, routeFilterName, this.client.getSubscriptionId(), apiVersion, routeFilterParameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, routeFilterName, this.client.getSubscriptionId(), routeFilterParameters, apiVersion);
     }
 
     /**
@@ -338,7 +338,7 @@ public final class RouteFiltersInner implements InnerSupportsGet<RouteFilterInne
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> updateWithResponseAsync(String resourceGroupName, String routeFilterName, PatchRouteFilter routeFilterParameters) {
         final String apiVersion = "2019-06-01";
-        return service.update(this.client.getHost(), resourceGroupName, routeFilterName, this.client.getSubscriptionId(), apiVersion, routeFilterParameters);
+        return service.update(this.client.getHost(), resourceGroupName, routeFilterName, this.client.getSubscriptionId(), routeFilterParameters, apiVersion);
     }
 
     /**
@@ -521,7 +521,7 @@ public final class RouteFiltersInner implements InnerSupportsGet<RouteFilterInne
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<RouteFilterInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String routeFilterName, RouteFilterInner routeFilterParameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, routeFilterName, this.client.getSubscriptionId(), apiVersion, routeFilterParameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, routeFilterName, this.client.getSubscriptionId(), routeFilterParameters, apiVersion);
     }
 
     /**
@@ -574,7 +574,7 @@ public final class RouteFiltersInner implements InnerSupportsGet<RouteFilterInne
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<RouteFilterInner>> beginUpdateWithResponseAsync(String resourceGroupName, String routeFilterName, PatchRouteFilter routeFilterParameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginUpdate(this.client.getHost(), resourceGroupName, routeFilterName, this.client.getSubscriptionId(), apiVersion, routeFilterParameters);
+        return service.beginUpdate(this.client.getHost(), resourceGroupName, routeFilterName, this.client.getSubscriptionId(), routeFilterParameters, apiVersion);
     }
 
     /**

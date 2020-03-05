@@ -80,13 +80,13 @@ public final class BlobContainersInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<BlobContainerInner>> create(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("containerName") String containerName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") BlobContainerInner blobContainer);
+        Mono<SimpleResponse<BlobContainerInner>> create(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("containerName") String containerName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BlobContainerInner blobContainer, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<BlobContainerInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("containerName") String containerName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") BlobContainerInner blobContainer);
+        Mono<SimpleResponse<BlobContainerInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("containerName") String containerName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BlobContainerInner blobContainer, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}")
@@ -104,19 +104,19 @@ public final class BlobContainersInner {
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/setLegalHold")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<LegalHoldInner>> setLegalHold(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("containerName") String containerName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") LegalHoldInner legalHold);
+        Mono<SimpleResponse<LegalHoldInner>> setLegalHold(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("containerName") String containerName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") LegalHoldInner legalHold, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/clearLegalHold")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<LegalHoldInner>> clearLegalHold(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("containerName") String containerName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") LegalHoldInner legalHold);
+        Mono<SimpleResponse<LegalHoldInner>> clearLegalHold(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("containerName") String containerName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") LegalHoldInner legalHold, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/{immutabilityPolicyName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<BlobContainersCreateOrUpdateImmutabilityPolicyResponse> createOrUpdateImmutabilityPolicy(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("containerName") String containerName, @PathParam("immutabilityPolicyName") String immutabilityPolicyName, @PathParam("subscriptionId") String subscriptionId, @HeaderParam("If-Match") String ifMatch, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ImmutabilityPolicyInner parameters);
+        Mono<BlobContainersCreateOrUpdateImmutabilityPolicyResponse> createOrUpdateImmutabilityPolicy(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("containerName") String containerName, @PathParam("immutabilityPolicyName") String immutabilityPolicyName, @PathParam("subscriptionId") String subscriptionId, @HeaderParam("If-Match") String ifMatch, @BodyParam("application/json") ImmutabilityPolicyInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/{immutabilityPolicyName}")
@@ -140,13 +140,13 @@ public final class BlobContainersInner {
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/extend")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<BlobContainersExtendImmutabilityPolicyResponse> extendImmutabilityPolicy(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("containerName") String containerName, @PathParam("subscriptionId") String subscriptionId, @HeaderParam("If-Match") String ifMatch, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ImmutabilityPolicyInner parameters);
+        Mono<BlobContainersExtendImmutabilityPolicyResponse> extendImmutabilityPolicy(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("containerName") String containerName, @PathParam("subscriptionId") String subscriptionId, @HeaderParam("If-Match") String ifMatch, @BodyParam("application/json") ImmutabilityPolicyInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/lease")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<LeaseContainerResponseInner>> lease(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("containerName") String containerName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") LeaseContainerRequest parameters);
+        Mono<SimpleResponse<LeaseContainerResponseInner>> lease(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("containerName") String containerName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") LeaseContainerRequest parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -262,7 +262,7 @@ public final class BlobContainersInner {
         BlobContainerInner blobContainer = new BlobContainerInner();
         blobContainer.setPublicAccess(publicAccess);
         blobContainer.setMetadata(metadata);
-        return service.create(this.client.getHost(), resourceGroupName, accountName, containerName, this.client.getSubscriptionId(), this.client.getApiVersion(), blobContainer);
+        return service.create(this.client.getHost(), resourceGroupName, accountName, containerName, this.client.getSubscriptionId(), blobContainer, this.client.getApiVersion());
     }
 
     /**
@@ -323,7 +323,7 @@ public final class BlobContainersInner {
         BlobContainerInner blobContainer = new BlobContainerInner();
         blobContainer.setPublicAccess(publicAccess);
         blobContainer.setMetadata(metadata);
-        return service.update(this.client.getHost(), resourceGroupName, accountName, containerName, this.client.getSubscriptionId(), this.client.getApiVersion(), blobContainer);
+        return service.update(this.client.getHost(), resourceGroupName, accountName, containerName, this.client.getSubscriptionId(), blobContainer, this.client.getApiVersion());
     }
 
     /**
@@ -480,7 +480,7 @@ public final class BlobContainersInner {
     public Mono<SimpleResponse<LegalHoldInner>> setLegalHoldWithResponseAsync(String resourceGroupName, String accountName, String containerName, List<String> tags) {
         LegalHoldInner legalHold = new LegalHoldInner();
         legalHold.setTags(tags);
-        return service.setLegalHold(this.client.getHost(), resourceGroupName, accountName, containerName, this.client.getSubscriptionId(), this.client.getApiVersion(), legalHold);
+        return service.setLegalHold(this.client.getHost(), resourceGroupName, accountName, containerName, this.client.getSubscriptionId(), legalHold, this.client.getApiVersion());
     }
 
     /**
@@ -537,7 +537,7 @@ public final class BlobContainersInner {
     public Mono<SimpleResponse<LegalHoldInner>> clearLegalHoldWithResponseAsync(String resourceGroupName, String accountName, String containerName, List<String> tags) {
         LegalHoldInner legalHold = new LegalHoldInner();
         legalHold.setTags(tags);
-        return service.clearLegalHold(this.client.getHost(), resourceGroupName, accountName, containerName, this.client.getSubscriptionId(), this.client.getApiVersion(), legalHold);
+        return service.clearLegalHold(this.client.getHost(), resourceGroupName, accountName, containerName, this.client.getSubscriptionId(), legalHold, this.client.getApiVersion());
     }
 
     /**
@@ -601,7 +601,7 @@ public final class BlobContainersInner {
             parameters.setImmutabilityPeriodSinceCreationInDays(immutabilityPeriodSinceCreationInDays);
             parameters.setAllowProtectedAppendWrites(allowProtectedAppendWrites);
         }
-        return service.createOrUpdateImmutabilityPolicy(this.client.getHost(), resourceGroupName, accountName, containerName, immutabilityPolicyName, this.client.getSubscriptionId(), ifMatch, this.client.getApiVersion(), parameters);
+        return service.createOrUpdateImmutabilityPolicy(this.client.getHost(), resourceGroupName, accountName, containerName, immutabilityPolicyName, this.client.getSubscriptionId(), ifMatch, parameters, this.client.getApiVersion());
     }
 
     /**
@@ -874,7 +874,7 @@ public final class BlobContainersInner {
             parameters.setImmutabilityPeriodSinceCreationInDays(immutabilityPeriodSinceCreationInDays);
             parameters.setAllowProtectedAppendWrites(allowProtectedAppendWrites);
         }
-        return service.extendImmutabilityPolicy(this.client.getHost(), resourceGroupName, accountName, containerName, this.client.getSubscriptionId(), ifMatch, this.client.getApiVersion(), parameters);
+        return service.extendImmutabilityPolicy(this.client.getHost(), resourceGroupName, accountName, containerName, this.client.getSubscriptionId(), ifMatch, parameters, this.client.getApiVersion());
     }
 
     /**
@@ -933,7 +933,7 @@ public final class BlobContainersInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<LeaseContainerResponseInner>> leaseWithResponseAsync(String resourceGroupName, String accountName, String containerName, LeaseContainerRequest parameters) {
-        return service.lease(this.client.getHost(), resourceGroupName, accountName, containerName, this.client.getSubscriptionId(), this.client.getApiVersion(), parameters);
+        return service.lease(this.client.getHost(), resourceGroupName, accountName, containerName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
     }
 
     /**

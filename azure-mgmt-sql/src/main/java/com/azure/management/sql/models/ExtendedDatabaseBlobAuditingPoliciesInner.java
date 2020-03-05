@@ -67,7 +67,7 @@ public final class ExtendedDatabaseBlobAuditingPoliciesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extendedAuditingSettings/{blobAuditingPolicyName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ExtendedDatabaseBlobAuditingPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("blobAuditingPolicyName") String blobAuditingPolicyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ExtendedDatabaseBlobAuditingPolicyInner parameters);
+        Mono<SimpleResponse<ExtendedDatabaseBlobAuditingPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("blobAuditingPolicyName") String blobAuditingPolicyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ExtendedDatabaseBlobAuditingPolicyInner parameters, @QueryParam("api-version") String apiVersion);
     }
 
     /**
@@ -139,7 +139,7 @@ public final class ExtendedDatabaseBlobAuditingPoliciesInner {
     public Mono<SimpleResponse<ExtendedDatabaseBlobAuditingPolicyInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String serverName, String databaseName, ExtendedDatabaseBlobAuditingPolicyInner parameters) {
         final String blobAuditingPolicyName = "default";
         final String apiVersion = "2017-03-01-preview";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, blobAuditingPolicyName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, blobAuditingPolicyName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**

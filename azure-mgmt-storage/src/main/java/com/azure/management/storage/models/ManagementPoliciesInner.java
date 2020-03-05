@@ -71,7 +71,7 @@ public final class ManagementPoliciesInner implements InnerSupportsDelete<Void> 
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ManagementPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @PathParam("managementPolicyName") String managementPolicyName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ManagementPolicyInner properties);
+        Mono<SimpleResponse<ManagementPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @PathParam("managementPolicyName") String managementPolicyName, @BodyParam("application/json") ManagementPolicyInner properties, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}")
@@ -145,7 +145,7 @@ public final class ManagementPoliciesInner implements InnerSupportsDelete<Void> 
         final String managementPolicyName = "default";
         ManagementPolicyInner properties = new ManagementPolicyInner();
         properties.setPolicy(policy);
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), managementPolicyName, this.client.getApiVersion(), properties);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), managementPolicyName, properties, this.client.getApiVersion());
     }
 
     /**

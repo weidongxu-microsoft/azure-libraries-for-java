@@ -71,7 +71,7 @@ public final class ManagedDatabaseSecurityAlertPoliciesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/securityAlertPolicies/{securityAlertPolicyName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ManagedDatabaseSecurityAlertPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("securityAlertPolicyName") String securityAlertPolicyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ManagedDatabaseSecurityAlertPolicyInner parameters);
+        Mono<SimpleResponse<ManagedDatabaseSecurityAlertPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("securityAlertPolicyName") String securityAlertPolicyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ManagedDatabaseSecurityAlertPolicyInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/securityAlertPolicies")
@@ -155,7 +155,7 @@ public final class ManagedDatabaseSecurityAlertPoliciesInner {
     public Mono<SimpleResponse<ManagedDatabaseSecurityAlertPolicyInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String managedInstanceName, String databaseName, ManagedDatabaseSecurityAlertPolicyInner parameters) {
         final String securityAlertPolicyName = "default";
         final String apiVersion = "2017-03-01-preview";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, securityAlertPolicyName, this.client.getSubscriptionId(), apiVersion, parameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, securityAlertPolicyName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
     /**

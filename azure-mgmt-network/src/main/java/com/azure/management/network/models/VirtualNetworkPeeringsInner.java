@@ -82,7 +82,7 @@ public final class VirtualNetworkPeeringsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkName") String virtualNetworkName, @PathParam("virtualNetworkPeeringName") String virtualNetworkPeeringName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VirtualNetworkPeeringInner virtualNetworkPeeringParameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkName") String virtualNetworkName, @PathParam("virtualNetworkPeeringName") String virtualNetworkPeeringName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualNetworkPeeringInner virtualNetworkPeeringParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings")
@@ -100,7 +100,7 @@ public final class VirtualNetworkPeeringsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualNetworkPeeringInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkName") String virtualNetworkName, @PathParam("virtualNetworkPeeringName") String virtualNetworkPeeringName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VirtualNetworkPeeringInner virtualNetworkPeeringParameters);
+        Mono<SimpleResponse<VirtualNetworkPeeringInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkName") String virtualNetworkName, @PathParam("virtualNetworkPeeringName") String virtualNetworkPeeringName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualNetworkPeeringInner virtualNetworkPeeringParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -225,7 +225,7 @@ public final class VirtualNetworkPeeringsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String virtualNetworkName, String virtualNetworkPeeringName, VirtualNetworkPeeringInner virtualNetworkPeeringParameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, this.client.getSubscriptionId(), apiVersion, virtualNetworkPeeringParameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, this.client.getSubscriptionId(), virtualNetworkPeeringParameters, apiVersion);
     }
 
     /**
@@ -375,7 +375,7 @@ public final class VirtualNetworkPeeringsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VirtualNetworkPeeringInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String virtualNetworkName, String virtualNetworkPeeringName, VirtualNetworkPeeringInner virtualNetworkPeeringParameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, this.client.getSubscriptionId(), apiVersion, virtualNetworkPeeringParameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, this.client.getSubscriptionId(), virtualNetworkPeeringParameters, apiVersion);
     }
 
     /**

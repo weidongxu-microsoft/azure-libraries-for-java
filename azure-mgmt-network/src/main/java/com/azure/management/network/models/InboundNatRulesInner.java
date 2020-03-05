@@ -88,7 +88,7 @@ public final class InboundNatRulesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("loadBalancerName") String loadBalancerName, @PathParam("inboundNatRuleName") String inboundNatRuleName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") InboundNatRuleInner inboundNatRuleParameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("loadBalancerName") String loadBalancerName, @PathParam("inboundNatRuleName") String inboundNatRuleName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") InboundNatRuleInner inboundNatRuleParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}")
@@ -100,7 +100,7 @@ public final class InboundNatRulesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<InboundNatRuleInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("loadBalancerName") String loadBalancerName, @PathParam("inboundNatRuleName") String inboundNatRuleName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") InboundNatRuleInner inboundNatRuleParameters);
+        Mono<SimpleResponse<InboundNatRuleInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("loadBalancerName") String loadBalancerName, @PathParam("inboundNatRuleName") String inboundNatRuleName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") InboundNatRuleInner inboundNatRuleParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -320,7 +320,7 @@ public final class InboundNatRulesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String loadBalancerName, String inboundNatRuleName, InboundNatRuleInner inboundNatRuleParameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, loadBalancerName, inboundNatRuleName, this.client.getSubscriptionId(), apiVersion, inboundNatRuleParameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, loadBalancerName, inboundNatRuleName, this.client.getSubscriptionId(), inboundNatRuleParameters, apiVersion);
     }
 
     /**
@@ -419,7 +419,7 @@ public final class InboundNatRulesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<InboundNatRuleInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String loadBalancerName, String inboundNatRuleName, InboundNatRuleInner inboundNatRuleParameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, loadBalancerName, inboundNatRuleName, this.client.getSubscriptionId(), apiVersion, inboundNatRuleParameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, loadBalancerName, inboundNatRuleName, this.client.getSubscriptionId(), inboundNatRuleParameters, apiVersion);
     }
 
     /**

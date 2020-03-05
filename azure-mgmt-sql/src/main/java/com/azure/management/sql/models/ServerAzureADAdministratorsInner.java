@@ -78,7 +78,7 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators/{administratorName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("administratorName") String administratorName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ServerAzureADAdministratorInner parameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("administratorName") String administratorName, @BodyParam("application/json") ServerAzureADAdministratorInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators/{administratorName}")
@@ -102,7 +102,7 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators/{administratorName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ServerAzureADAdministratorInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("administratorName") String administratorName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ServerAzureADAdministratorInner parameters);
+        Mono<SimpleResponse<ServerAzureADAdministratorInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("administratorName") String administratorName, @BodyParam("application/json") ServerAzureADAdministratorInner parameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators/{administratorName}")
@@ -188,7 +188,7 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String serverName, ServerAzureADAdministratorInner parameters) {
         final String administratorName = "ActiveDirectory";
         final String apiVersion = "2019-06-01-preview";
-        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, administratorName, apiVersion, parameters);
+        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, administratorName, parameters, apiVersion);
     }
 
     /**
@@ -382,7 +382,7 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     public Mono<SimpleResponse<ServerAzureADAdministratorInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String serverName, ServerAzureADAdministratorInner parameters) {
         final String administratorName = "ActiveDirectory";
         final String apiVersion = "2019-06-01-preview";
-        return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, administratorName, apiVersion, parameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, administratorName, parameters, apiVersion);
     }
 
     /**

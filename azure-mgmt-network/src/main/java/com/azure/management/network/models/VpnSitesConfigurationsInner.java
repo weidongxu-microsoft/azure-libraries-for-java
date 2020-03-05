@@ -65,13 +65,13 @@ public final class VpnSitesConfigurationsInner {
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnConfiguration")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> download(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualWANName") String virtualWANName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") GetVpnSitesConfigurationRequest request);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> download(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualWANName") String virtualWANName, @BodyParam("application/json") GetVpnSitesConfigurationRequest request, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnConfiguration")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<Response<Void>> beginDownload(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualWANName") String virtualWANName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") GetVpnSitesConfigurationRequest request);
+        Mono<Response<Void>> beginDownload(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualWANName") String virtualWANName, @BodyParam("application/json") GetVpnSitesConfigurationRequest request, @QueryParam("api-version") String apiVersion);
     }
 
     /**
@@ -87,7 +87,7 @@ public final class VpnSitesConfigurationsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> downloadWithResponseAsync(String resourceGroupName, String virtualWANName, GetVpnSitesConfigurationRequest request) {
         final String apiVersion = "2019-06-01";
-        return service.download(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, apiVersion, request);
+        return service.download(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, request, apiVersion);
     }
 
     /**
@@ -136,7 +136,7 @@ public final class VpnSitesConfigurationsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDownloadWithResponseAsync(String resourceGroupName, String virtualWANName, GetVpnSitesConfigurationRequest request) {
         final String apiVersion = "2019-06-01";
-        return service.beginDownload(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, apiVersion, request);
+        return service.beginDownload(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, virtualWANName, request, apiVersion);
     }
 
     /**

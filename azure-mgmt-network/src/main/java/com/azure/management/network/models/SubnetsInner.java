@@ -85,19 +85,19 @@ public final class SubnetsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkName") String virtualNetworkName, @PathParam("subnetName") String subnetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SubnetInner subnetParameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkName") String virtualNetworkName, @PathParam("subnetName") String subnetName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SubnetInner subnetParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/PrepareNetworkPolicies")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> prepareNetworkPolicies(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkName") String virtualNetworkName, @PathParam("subnetName") String subnetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> prepareNetworkPolicies(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkName") String virtualNetworkName, @PathParam("subnetName") String subnetName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/UnprepareNetworkPolicies")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> unprepareNetworkPolicies(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkName") String virtualNetworkName, @PathParam("subnetName") String subnetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> unprepareNetworkPolicies(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkName") String virtualNetworkName, @PathParam("subnetName") String subnetName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets")
@@ -115,19 +115,19 @@ public final class SubnetsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<SubnetInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkName") String virtualNetworkName, @PathParam("subnetName") String subnetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SubnetInner subnetParameters);
+        Mono<SimpleResponse<SubnetInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkName") String virtualNetworkName, @PathParam("subnetName") String subnetName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SubnetInner subnetParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/PrepareNetworkPolicies")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginPrepareNetworkPolicies(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkName") String virtualNetworkName, @PathParam("subnetName") String subnetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters);
+        Mono<Response<Void>> beginPrepareNetworkPolicies(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkName") String virtualNetworkName, @PathParam("subnetName") String subnetName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/UnprepareNetworkPolicies")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginUnprepareNetworkPolicies(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkName") String virtualNetworkName, @PathParam("subnetName") String subnetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters);
+        Mono<Response<Void>> beginUnprepareNetworkPolicies(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkName") String virtualNetworkName, @PathParam("subnetName") String subnetName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters, @QueryParam("api-version") String apiVersion);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -296,7 +296,7 @@ public final class SubnetsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String virtualNetworkName, String subnetName, SubnetInner subnetParameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), apiVersion, subnetParameters);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), subnetParameters, apiVersion);
     }
 
     /**
@@ -348,7 +348,7 @@ public final class SubnetsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> prepareNetworkPoliciesWithResponseAsync(String resourceGroupName, String virtualNetworkName, String subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters) {
         final String apiVersion = "2019-06-01";
-        return service.prepareNetworkPolicies(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), apiVersion, prepareNetworkPoliciesRequestParameters);
+        return service.prepareNetworkPolicies(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), prepareNetworkPoliciesRequestParameters, apiVersion);
     }
 
     /**
@@ -402,7 +402,7 @@ public final class SubnetsInner {
         final String apiVersion = "2019-06-01";
         UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters = new UnprepareNetworkPoliciesRequest();
         unprepareNetworkPoliciesRequestParameters.withServiceName(serviceName);
-        return service.unprepareNetworkPolicies(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), apiVersion, unprepareNetworkPoliciesRequestParameters);
+        return service.unprepareNetworkPolicies(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), unprepareNetworkPoliciesRequestParameters, apiVersion);
     }
 
     /**
@@ -552,7 +552,7 @@ public final class SubnetsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SubnetInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String virtualNetworkName, String subnetName, SubnetInner subnetParameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), apiVersion, subnetParameters);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), subnetParameters, apiVersion);
     }
 
     /**
@@ -608,7 +608,7 @@ public final class SubnetsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginPrepareNetworkPoliciesWithResponseAsync(String resourceGroupName, String virtualNetworkName, String subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginPrepareNetworkPolicies(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), apiVersion, prepareNetworkPoliciesRequestParameters);
+        return service.beginPrepareNetworkPolicies(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), prepareNetworkPoliciesRequestParameters, apiVersion);
     }
 
     /**
@@ -660,7 +660,7 @@ public final class SubnetsInner {
         final String apiVersion = "2019-06-01";
         UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters = new UnprepareNetworkPoliciesRequest();
         unprepareNetworkPoliciesRequestParameters.withServiceName(serviceName);
-        return service.beginUnprepareNetworkPolicies(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), apiVersion, unprepareNetworkPoliciesRequestParameters);
+        return service.beginUnprepareNetworkPolicies(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), unprepareNetworkPoliciesRequestParameters, apiVersion);
     }
 
     /**
