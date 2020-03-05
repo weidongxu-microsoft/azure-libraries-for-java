@@ -10,6 +10,7 @@ import com.azure.core.annotation.BodyParam;
 import com.azure.core.annotation.Delete;
 import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
+import com.azure.core.annotation.Headers;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
 import com.azure.core.annotation.Patch;
@@ -71,56 +72,67 @@ public final class VirtualHubsInner implements InnerSupportsGet<VirtualHubInner>
     @Host("{$host}")
     @ServiceInterface(name = "NetworkManagementClientVirtualHubs")
     private interface VirtualHubsService {
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorException.class)
         Mono<SimpleResponse<VirtualHubInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualHubName") String virtualHubName, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualHubName") String virtualHubName, @BodyParam("application/json") VirtualHubInner virtualHubParameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualHubName") String virtualHubName, @BodyParam("application/json") TagsObject virtualHubParameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(ErrorException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualHubName") String virtualHubName, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorException.class)
         Mono<SimpleResponse<ListVirtualHubsResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualHubs")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorException.class)
         Mono<SimpleResponse<ListVirtualHubsResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
         Mono<SimpleResponse<VirtualHubInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualHubName") String virtualHubName, @BodyParam("application/json") VirtualHubInner virtualHubParameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
         Mono<SimpleResponse<VirtualHubInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualHubName") String virtualHubName, @BodyParam("application/json") TagsObject virtualHubParameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(ErrorException.class)
         Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualHubName") String virtualHubName, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorException.class)
         Mono<SimpleResponse<ListVirtualHubsResultInner>> listByResourceGroupNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorException.class)
@@ -206,7 +218,7 @@ public final class VirtualHubsInner implements InnerSupportsGet<VirtualHubInner>
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<VirtualHubInner> createOrUpdateAsync(String resourceGroupName, String virtualHubName, VirtualHubInner virtualHubParameters) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = createOrUpdateWithResponseAsync(resourceGroupName, virtualHubName, virtualHubParameters);
-        return client.<VirtualHubInner, VirtualHubInner>getLroResultAsync(response, client.getHttpPipeline(), VirtualHubInner.class, VirtualHubInner.class)
+        return this.client.<VirtualHubInner, VirtualHubInner>getLroResultAsync(response, this.client.getHttpPipeline(), VirtualHubInner.class, VirtualHubInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -257,7 +269,7 @@ public final class VirtualHubsInner implements InnerSupportsGet<VirtualHubInner>
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<VirtualHubInner> updateTagsAsync(String resourceGroupName, String virtualHubName, Map<String, String> tags) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateTagsWithResponseAsync(resourceGroupName, virtualHubName, tags);
-        return client.<VirtualHubInner, VirtualHubInner>getLroResultAsync(response, client.getHttpPipeline(), VirtualHubInner.class, VirtualHubInner.class)
+        return this.client.<VirtualHubInner, VirtualHubInner>getLroResultAsync(response, this.client.getHttpPipeline(), VirtualHubInner.class, VirtualHubInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -304,7 +316,7 @@ public final class VirtualHubsInner implements InnerSupportsGet<VirtualHubInner>
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Void> deleteAsync(String resourceGroupName, String virtualHubName) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = deleteWithResponseAsync(resourceGroupName, virtualHubName);
-        return client.<Void, Void>getLroResultAsync(response, client.getHttpPipeline(), Void.class, Void.class)
+        return this.client.<Void, Void>getLroResultAsync(response, this.client.getHttpPipeline(), Void.class, Void.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }

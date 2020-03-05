@@ -8,11 +8,11 @@ package com.azure.management.appservice.models;
 
 import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.azure.management.appservice.ApplicationLogsConfig;
 import com.azure.management.appservice.EnabledConfig;
 import com.azure.management.appservice.HttpLogsConfig;
 import com.azure.management.appservice.ProxyOnlyResource;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * The SiteLogsConfig model.

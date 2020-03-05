@@ -10,6 +10,7 @@ import com.azure.core.annotation.BodyParam;
 import com.azure.core.annotation.Delete;
 import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
+import com.azure.core.annotation.Headers;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
 import com.azure.core.annotation.Patch;
@@ -71,76 +72,91 @@ public final class DisksInner implements InnerSupportsGet<DiskInner>, InnerSuppo
     @Host("{$host}")
     @ServiceInterface(name = "ComputeManagementClientDisks")
     private interface DisksService {
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @BodyParam("application/json") DiskInner disk, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @BodyParam("application/json") DiskUpdate disk, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DiskInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DiskListInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/disks")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DiskListInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/beginGetAccess")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> grantAccess(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @BodyParam("application/json") GrantAccessData grantAccessData, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/endGetAccess")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> revokeAccess(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DiskInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @BodyParam("application/json") DiskInner disk, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DiskInner>> beginUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @BodyParam("application/json") DiskUpdate disk, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/beginGetAccess")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<AccessUriInner>> beginGrantAccess(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @BodyParam("application/json") GrantAccessData grantAccessData, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/endGetAccess")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginRevokeAccess(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("diskName") String diskName, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DiskListInner>> listByResourceGroupNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -176,7 +192,7 @@ public final class DisksInner implements InnerSupportsGet<DiskInner>, InnerSuppo
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<DiskInner> createOrUpdateAsync(String resourceGroupName, String diskName, DiskInner disk) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = createOrUpdateWithResponseAsync(resourceGroupName, diskName, disk);
-        return client.<DiskInner, DiskInner>getLroResultAsync(response, client.getHttpPipeline(), DiskInner.class, DiskInner.class)
+        return this.client.<DiskInner, DiskInner>getLroResultAsync(response, this.client.getHttpPipeline(), DiskInner.class, DiskInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -225,7 +241,7 @@ public final class DisksInner implements InnerSupportsGet<DiskInner>, InnerSuppo
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<DiskInner> updateAsync(String resourceGroupName, String diskName, DiskUpdate disk) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateWithResponseAsync(resourceGroupName, diskName, disk);
-        return client.<DiskInner, DiskInner>getLroResultAsync(response, client.getHttpPipeline(), DiskInner.class, DiskInner.class)
+        return this.client.<DiskInner, DiskInner>getLroResultAsync(response, this.client.getHttpPipeline(), DiskInner.class, DiskInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -322,7 +338,7 @@ public final class DisksInner implements InnerSupportsGet<DiskInner>, InnerSuppo
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Void> deleteAsync(String resourceGroupName, String diskName) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = deleteWithResponseAsync(resourceGroupName, diskName);
-        return client.<Void, Void>getLroResultAsync(response, client.getHttpPipeline(), Void.class, Void.class)
+        return this.client.<Void, Void>getLroResultAsync(response, this.client.getHttpPipeline(), Void.class, Void.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -460,7 +476,7 @@ public final class DisksInner implements InnerSupportsGet<DiskInner>, InnerSuppo
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<AccessUriInner> grantAccessAsync(String resourceGroupName, String diskName, GrantAccessData grantAccessData) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = grantAccessWithResponseAsync(resourceGroupName, diskName, grantAccessData);
-        return client.<AccessUriInner, AccessUriInner>getLroResultAsync(response, client.getHttpPipeline(), AccessUriInner.class, AccessUriInner.class)
+        return this.client.<AccessUriInner, AccessUriInner>getLroResultAsync(response, this.client.getHttpPipeline(), AccessUriInner.class, AccessUriInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -507,7 +523,7 @@ public final class DisksInner implements InnerSupportsGet<DiskInner>, InnerSuppo
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Void> revokeAccessAsync(String resourceGroupName, String diskName) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = revokeAccessWithResponseAsync(resourceGroupName, diskName);
-        return client.<Void, Void>getLroResultAsync(response, client.getHttpPipeline(), Void.class, Void.class)
+        return this.client.<Void, Void>getLroResultAsync(response, this.client.getHttpPipeline(), Void.class, Void.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }

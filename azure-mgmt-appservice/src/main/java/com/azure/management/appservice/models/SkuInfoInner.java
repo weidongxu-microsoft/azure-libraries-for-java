@@ -7,9 +7,9 @@
 package com.azure.management.appservice.models;
 
 import com.azure.core.annotation.Fluent;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.azure.management.appservice.SkuCapacity;
 import com.azure.management.appservice.SkuDescription;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * The SkuInfo model.

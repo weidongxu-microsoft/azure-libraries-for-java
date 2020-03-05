@@ -9,6 +9,7 @@ package com.azure.management.sql.models;
 import com.azure.core.annotation.BodyParam;
 import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
+import com.azure.core.annotation.Headers;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
 import com.azure.core.annotation.PathParam;
@@ -63,26 +64,31 @@ public final class ManagedServerSecurityAlertPoliciesInner {
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientManagedServerSecurityAlertPolicies")
     private interface ManagedServerSecurityAlertPoliciesService {
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/securityAlertPolicies/{securityAlertPolicyName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ManagedServerSecurityAlertPolicyInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("securityAlertPolicyName") String securityAlertPolicyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/securityAlertPolicies/{securityAlertPolicyName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("securityAlertPolicyName") String securityAlertPolicyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ManagedServerSecurityAlertPolicyInner parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/securityAlertPolicies")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ManagedServerSecurityAlertPolicyListResultInner>> listByInstance(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/securityAlertPolicies/{securityAlertPolicyName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ManagedServerSecurityAlertPolicyInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("securityAlertPolicyName") String securityAlertPolicyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ManagedServerSecurityAlertPolicyInner parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -170,7 +176,7 @@ public final class ManagedServerSecurityAlertPoliciesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<ManagedServerSecurityAlertPolicyInner> createOrUpdateAsync(String resourceGroupName, String managedInstanceName, ManagedServerSecurityAlertPolicyInner parameters) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = createOrUpdateWithResponseAsync(resourceGroupName, managedInstanceName, parameters);
-        return client.<ManagedServerSecurityAlertPolicyInner, ManagedServerSecurityAlertPolicyInner>getLroResultAsync(response, client.getHttpPipeline(), ManagedServerSecurityAlertPolicyInner.class, ManagedServerSecurityAlertPolicyInner.class)
+        return this.client.<ManagedServerSecurityAlertPolicyInner, ManagedServerSecurityAlertPolicyInner>getLroResultAsync(response, this.client.getHttpPipeline(), ManagedServerSecurityAlertPolicyInner.class, ManagedServerSecurityAlertPolicyInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }

@@ -8,6 +8,7 @@ package com.azure.management.compute.models;
 
 import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
+import com.azure.core.annotation.Headers;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
 import com.azure.core.annotation.QueryParam;
@@ -57,6 +58,7 @@ public final class OperationsInner {
     @Host("{$host}")
     @ServiceInterface(name = "ComputeManagementClientOperations")
     private interface OperationsService {
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/providers/Microsoft.Compute/operations")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)

@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * The GenericResource model.
  */
 @Fluent
-public final class GenericResourceInner extends Resource {
+public class GenericResourceInner extends Resource {
     /*
      * Plan for the resource.
      */

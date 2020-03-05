@@ -8,6 +8,7 @@ package com.azure.management.network.models;
 
 import com.azure.core.annotation.BodyParam;
 import com.azure.core.annotation.ExpectedResponses;
+import com.azure.core.annotation.Headers;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
 import com.azure.core.annotation.PathParam;
@@ -60,11 +61,13 @@ public final class VpnSitesConfigurationsInner {
     @Host("{$host}")
     @ServiceInterface(name = "NetworkManagementClientVpnSitesConfigurations")
     private interface VpnSitesConfigurationsService {
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnConfiguration")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(ErrorException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> download(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualWANName") String virtualWANName, @BodyParam("application/json") GetVpnSitesConfigurationRequest request, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnConfiguration")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(ErrorException.class)
@@ -100,7 +103,7 @@ public final class VpnSitesConfigurationsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Void> downloadAsync(String resourceGroupName, String virtualWANName, GetVpnSitesConfigurationRequest request) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = downloadWithResponseAsync(resourceGroupName, virtualWANName, request);
-        return client.<Void, Void>getLroResultAsync(response, client.getHttpPipeline(), Void.class, Void.class)
+        return this.client.<Void, Void>getLroResultAsync(response, this.client.getHttpPipeline(), Void.class, Void.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }

@@ -9,11 +9,11 @@ package com.azure.management.appservice.models;
 import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.management.Resource;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.azure.management.appservice.HostingEnvironmentProfile;
 import com.azure.management.appservice.ProvisioningState;
 import com.azure.management.appservice.SkuDescription;
 import com.azure.management.appservice.StatusOptions;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.OffsetDateTime;
 
 /**

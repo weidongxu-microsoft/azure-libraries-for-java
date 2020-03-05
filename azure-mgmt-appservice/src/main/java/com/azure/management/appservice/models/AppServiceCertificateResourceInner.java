@@ -9,8 +9,8 @@ package com.azure.management.appservice.models;
 import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.management.Resource;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.azure.management.appservice.KeyVaultSecretStatus;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * The AppServiceCertificateResource model.

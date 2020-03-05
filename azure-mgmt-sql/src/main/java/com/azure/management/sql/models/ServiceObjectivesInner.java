@@ -59,13 +59,13 @@ public final class ServiceObjectivesInner {
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientServiceObjectives")
     private interface ServiceObjectivesService {
-        @Headers({"accept: application/json"})
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/serviceObjectives/{serviceObjectiveName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ServiceObjectiveInner>> get(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("serviceObjectiveName") String serviceObjectiveName, @QueryParam("api-version") String apiVersion);
 
-        @Headers({"accept: application/json"})
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/serviceObjectives")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)

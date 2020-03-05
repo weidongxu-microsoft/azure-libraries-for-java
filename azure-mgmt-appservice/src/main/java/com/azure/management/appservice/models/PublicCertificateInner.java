@@ -9,9 +9,9 @@ package com.azure.management.appservice.models;
 import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.util.CoreUtils;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.azure.management.appservice.ProxyOnlyResource;
 import com.azure.management.appservice.PublicCertificateLocation;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * The PublicCertificate model.

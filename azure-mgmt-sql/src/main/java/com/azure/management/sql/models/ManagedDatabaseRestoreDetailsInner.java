@@ -8,6 +8,7 @@ package com.azure.management.sql.models;
 
 import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
+import com.azure.core.annotation.Headers;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
 import com.azure.core.annotation.PathParam;
@@ -54,6 +55,7 @@ public final class ManagedDatabaseRestoreDetailsInner {
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientManagedDatabaseRestoreDetails")
     private interface ManagedDatabaseRestoreDetailsService {
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/restoreDetails/{restoreDetailsName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -73,7 +75,7 @@ public final class ManagedDatabaseRestoreDetailsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ManagedDatabaseRestoreDetailsResultInner>> getWithResponseAsync(String resourceGroupName, String managedInstanceName, String databaseName) {
         final String restoreDetailsName = "Default";
-        final String apiVersion = "2018-06-01-preview";
+        final String apiVersion = "2019-06-01-preview";
         return service.get(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, restoreDetailsName, this.client.getSubscriptionId(), apiVersion);
     }
 

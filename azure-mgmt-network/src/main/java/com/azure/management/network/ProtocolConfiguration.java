@@ -18,27 +18,27 @@ public final class ProtocolConfiguration {
      * HTTP configuration of the connectivity check.
      */
     @JsonProperty(value = "HTTPConfiguration")
-    private HTTPConfiguration hTTPConfiguration;
+    private HttpConfiguration httpConfiguration;
 
     /**
-     * Get the hTTPConfiguration property: HTTP configuration of the
+     * Get the httpConfiguration property: HTTP configuration of the
      * connectivity check.
      * 
-     * @return the hTTPConfiguration value.
+     * @return the httpConfiguration value.
      */
-    public HTTPConfiguration hTTPConfiguration() {
-        return this.hTTPConfiguration;
+    public HttpConfiguration httpConfiguration() {
+        return this.httpConfiguration;
     }
 
     /**
-     * Set the hTTPConfiguration property: HTTP configuration of the
+     * Set the httpConfiguration property: HTTP configuration of the
      * connectivity check.
      * 
-     * @param hTTPConfiguration the hTTPConfiguration value to set.
+     * @param httpConfiguration the httpConfiguration value to set.
      * @return the ProtocolConfiguration object itself.
      */
-    public ProtocolConfiguration withHTTPConfiguration(HTTPConfiguration hTTPConfiguration) {
-        this.hTTPConfiguration = hTTPConfiguration;
+    public ProtocolConfiguration withHttpConfiguration(HttpConfiguration httpConfiguration) {
+        this.httpConfiguration = httpConfiguration;
         return this;
     }
 }

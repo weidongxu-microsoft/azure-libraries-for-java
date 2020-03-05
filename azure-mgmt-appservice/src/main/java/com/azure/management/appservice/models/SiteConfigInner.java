@@ -7,7 +7,6 @@
 package com.azure.management.appservice.models;
 
 import com.azure.core.annotation.Fluent;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.azure.management.appservice.ApiDefinitionInfo;
 import com.azure.management.appservice.ApiManagementConfig;
 import com.azure.management.appservice.AutoHealRules;
@@ -25,6 +24,7 @@ import com.azure.management.appservice.SiteLoadBalancing;
 import com.azure.management.appservice.SiteMachineKey;
 import com.azure.management.appservice.SupportedTlsVersions;
 import com.azure.management.appservice.VirtualApplication;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.OffsetDateTime;
 import java.util.List;
 

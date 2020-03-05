@@ -10,6 +10,7 @@ import com.azure.core.annotation.BodyParam;
 import com.azure.core.annotation.Delete;
 import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
+import com.azure.core.annotation.Headers;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
 import com.azure.core.annotation.Patch;
@@ -73,176 +74,211 @@ public final class VirtualNetworkGatewaysInner implements InnerSupportsGet<Virtu
     @Host("{$host}")
     @ServiceInterface(name = "NetworkManagementClientVirtualNetworkGateways")
     private interface VirtualNetworkGatewaysService {
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualNetworkGatewayInner parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<VirtualNetworkGatewayInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<VirtualNetworkGatewayListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/connections")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<VirtualNetworkGatewayListConnectionsResultInner>> listConnections(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/reset")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> reset(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @QueryParam("gatewayVip") String gatewayVip, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/resetvpnclientsharedkey")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> resetVpnClientSharedKey(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/generatevpnclientpackage")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> generatevpnclientpackage(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VpnClientParameters parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/generatevpnprofile")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> generateVpnProfile(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VpnClientParameters parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getvpnprofilepackageurl")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> getVpnProfilePackageUrl(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getBgpPeerStatus")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> getBgpPeerStatus(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @QueryParam("peer") String peer, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/supportedvpndevices")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<String>> supportedVpnDevices(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getLearnedRoutes")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> getLearnedRoutes(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getAdvertisedRoutes")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> getAdvertisedRoutes(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @QueryParam("peer") String peer, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/setvpnclientipsecparameters")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> setVpnclientIpsecParameters(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VpnClientIPsecParametersInner vpnclientIpsecParams, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getvpnclientipsecparameters")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> getVpnclientIpsecParameters(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/vpndeviceconfigurationscript")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<String>> vpnDeviceConfigurationScript(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayConnectionName") String virtualNetworkGatewayConnectionName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VpnDeviceScriptParameters parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getVpnClientConnectionHealth")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> getVpnclientConnectionHealth(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<VirtualNetworkGatewayInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualNetworkGatewayInner parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<VirtualNetworkGatewayInner>> beginUpdateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/reset")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<VirtualNetworkGatewayInner>> beginReset(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @QueryParam("gatewayVip") String gatewayVip, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/resetvpnclientsharedkey")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginResetVpnClientSharedKey(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/generatevpnclientpackage")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<String>> beginGeneratevpnclientpackage(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VpnClientParameters parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/generatevpnprofile")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<String>> beginGenerateVpnProfile(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VpnClientParameters parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getvpnprofilepackageurl")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<String>> beginGetVpnProfilePackageUrl(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getBgpPeerStatus")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<BgpPeerStatusListResultInner>> beginGetBgpPeerStatus(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @QueryParam("peer") String peer, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getLearnedRoutes")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<GatewayRouteListResultInner>> beginGetLearnedRoutes(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getAdvertisedRoutes")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<GatewayRouteListResultInner>> beginGetAdvertisedRoutes(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @QueryParam("peer") String peer, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/setvpnclientipsecparameters")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<VpnClientIPsecParametersInner>> beginSetVpnclientIpsecParameters(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VpnClientIPsecParametersInner vpnclientIpsecParams, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getvpnclientipsecparameters")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<VpnClientIPsecParametersInner>> beginGetVpnclientIpsecParameters(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getVpnClientConnectionHealth")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<VpnClientConnectionHealthDetailListResultInner>> beginGetVpnclientConnectionHealth(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkGatewayName") String virtualNetworkGatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<VirtualNetworkGatewayListResultInner>> listNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -278,7 +314,7 @@ public final class VirtualNetworkGatewaysInner implements InnerSupportsGet<Virtu
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<VirtualNetworkGatewayInner> createOrUpdateAsync(String resourceGroupName, String virtualNetworkGatewayName, VirtualNetworkGatewayInner parameters) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = createOrUpdateWithResponseAsync(resourceGroupName, virtualNetworkGatewayName, parameters);
-        return client.<VirtualNetworkGatewayInner, VirtualNetworkGatewayInner>getLroResultAsync(response, client.getHttpPipeline(), VirtualNetworkGatewayInner.class, VirtualNetworkGatewayInner.class)
+        return this.client.<VirtualNetworkGatewayInner, VirtualNetworkGatewayInner>getLroResultAsync(response, this.client.getHttpPipeline(), VirtualNetworkGatewayInner.class, VirtualNetworkGatewayInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -375,7 +411,7 @@ public final class VirtualNetworkGatewaysInner implements InnerSupportsGet<Virtu
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Void> deleteAsync(String resourceGroupName, String virtualNetworkGatewayName) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = deleteWithResponseAsync(resourceGroupName, virtualNetworkGatewayName);
-        return client.<Void, Void>getLroResultAsync(response, client.getHttpPipeline(), Void.class, Void.class)
+        return this.client.<Void, Void>getLroResultAsync(response, this.client.getHttpPipeline(), Void.class, Void.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -425,7 +461,7 @@ public final class VirtualNetworkGatewaysInner implements InnerSupportsGet<Virtu
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<VirtualNetworkGatewayInner> updateTagsAsync(String resourceGroupName, String virtualNetworkGatewayName, Map<String, String> tags) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateTagsWithResponseAsync(resourceGroupName, virtualNetworkGatewayName, tags);
-        return client.<VirtualNetworkGatewayInner, VirtualNetworkGatewayInner>getLroResultAsync(response, client.getHttpPipeline(), VirtualNetworkGatewayInner.class, VirtualNetworkGatewayInner.class)
+        return this.client.<VirtualNetworkGatewayInner, VirtualNetworkGatewayInner>getLroResultAsync(response, this.client.getHttpPipeline(), VirtualNetworkGatewayInner.class, VirtualNetworkGatewayInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -573,7 +609,7 @@ public final class VirtualNetworkGatewaysInner implements InnerSupportsGet<Virtu
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<VirtualNetworkGatewayInner> resetAsync(String resourceGroupName, String virtualNetworkGatewayName, String gatewayVip) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = resetWithResponseAsync(resourceGroupName, virtualNetworkGatewayName, gatewayVip);
-        return client.<VirtualNetworkGatewayInner, VirtualNetworkGatewayInner>getLroResultAsync(response, client.getHttpPipeline(), VirtualNetworkGatewayInner.class, VirtualNetworkGatewayInner.class)
+        return this.client.<VirtualNetworkGatewayInner, VirtualNetworkGatewayInner>getLroResultAsync(response, this.client.getHttpPipeline(), VirtualNetworkGatewayInner.class, VirtualNetworkGatewayInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -590,6 +626,41 @@ public final class VirtualNetworkGatewaysInner implements InnerSupportsGet<Virtu
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public VirtualNetworkGatewayInner reset(String resourceGroupName, String virtualNetworkGatewayName, String gatewayVip) {
+        return resetAsync(resourceGroupName, virtualNetworkGatewayName, gatewayVip).block();
+    }
+
+    /**
+     * Resets the primary of the virtual network gateway in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param virtualNetworkGatewayName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<VirtualNetworkGatewayInner> resetAsync(String resourceGroupName, String virtualNetworkGatewayName) {
+        final String gatewayVip = null;
+        final String apiVersion = "2019-06-01";
+        Mono<SimpleResponse<Flux<ByteBuffer>>> response = resetWithResponseAsync(resourceGroupName, virtualNetworkGatewayName, gatewayVip);
+        return this.client.<VirtualNetworkGatewayInner, VirtualNetworkGatewayInner>getLroResultAsync(response, this.client.getHttpPipeline(), VirtualNetworkGatewayInner.class, VirtualNetworkGatewayInner.class)
+            .last()
+            .flatMap(AsyncPollResponse::getFinalResult);
+    }
+
+    /**
+     * Resets the primary of the virtual network gateway in the specified resource group.
+     * 
+     * @param resourceGroupName 
+     * @param virtualNetworkGatewayName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public VirtualNetworkGatewayInner reset(String resourceGroupName, String virtualNetworkGatewayName) {
+        final String gatewayVip = null;
+        final String apiVersion = "2019-06-01";
         return resetAsync(resourceGroupName, virtualNetworkGatewayName, gatewayVip).block();
     }
 
@@ -620,7 +691,7 @@ public final class VirtualNetworkGatewaysInner implements InnerSupportsGet<Virtu
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Void> resetVpnClientSharedKeyAsync(String resourceGroupName, String virtualNetworkGatewayName) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = resetVpnClientSharedKeyWithResponseAsync(resourceGroupName, virtualNetworkGatewayName);
-        return client.<Void, Void>getLroResultAsync(response, client.getHttpPipeline(), Void.class, Void.class)
+        return this.client.<Void, Void>getLroResultAsync(response, this.client.getHttpPipeline(), Void.class, Void.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -668,7 +739,7 @@ public final class VirtualNetworkGatewaysInner implements InnerSupportsGet<Virtu
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<String> generatevpnclientpackageAsync(String resourceGroupName, String virtualNetworkGatewayName, VpnClientParameters parameters) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = generatevpnclientpackageWithResponseAsync(resourceGroupName, virtualNetworkGatewayName, parameters);
-        return client.<String, String>getLroResultAsync(response, client.getHttpPipeline(), String.class, String.class)
+        return this.client.<String, String>getLroResultAsync(response, this.client.getHttpPipeline(), String.class, String.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -717,7 +788,7 @@ public final class VirtualNetworkGatewaysInner implements InnerSupportsGet<Virtu
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<String> generateVpnProfileAsync(String resourceGroupName, String virtualNetworkGatewayName, VpnClientParameters parameters) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = generateVpnProfileWithResponseAsync(resourceGroupName, virtualNetworkGatewayName, parameters);
-        return client.<String, String>getLroResultAsync(response, client.getHttpPipeline(), String.class, String.class)
+        return this.client.<String, String>getLroResultAsync(response, this.client.getHttpPipeline(), String.class, String.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -764,7 +835,7 @@ public final class VirtualNetworkGatewaysInner implements InnerSupportsGet<Virtu
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<String> getVpnProfilePackageUrlAsync(String resourceGroupName, String virtualNetworkGatewayName) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = getVpnProfilePackageUrlWithResponseAsync(resourceGroupName, virtualNetworkGatewayName);
-        return client.<String, String>getLroResultAsync(response, client.getHttpPipeline(), String.class, String.class)
+        return this.client.<String, String>getLroResultAsync(response, this.client.getHttpPipeline(), String.class, String.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -812,7 +883,7 @@ public final class VirtualNetworkGatewaysInner implements InnerSupportsGet<Virtu
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<BgpPeerStatusListResultInner> getBgpPeerStatusAsync(String resourceGroupName, String virtualNetworkGatewayName, String peer) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = getBgpPeerStatusWithResponseAsync(resourceGroupName, virtualNetworkGatewayName, peer);
-        return client.<BgpPeerStatusListResultInner, BgpPeerStatusListResultInner>getLroResultAsync(response, client.getHttpPipeline(), BgpPeerStatusListResultInner.class, BgpPeerStatusListResultInner.class)
+        return this.client.<BgpPeerStatusListResultInner, BgpPeerStatusListResultInner>getLroResultAsync(response, this.client.getHttpPipeline(), BgpPeerStatusListResultInner.class, BgpPeerStatusListResultInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -829,6 +900,41 @@ public final class VirtualNetworkGatewaysInner implements InnerSupportsGet<Virtu
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public BgpPeerStatusListResultInner getBgpPeerStatus(String resourceGroupName, String virtualNetworkGatewayName, String peer) {
+        return getBgpPeerStatusAsync(resourceGroupName, virtualNetworkGatewayName, peer).block();
+    }
+
+    /**
+     * The GetBgpPeerStatus operation retrieves the status of all BGP peers.
+     * 
+     * @param resourceGroupName 
+     * @param virtualNetworkGatewayName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<BgpPeerStatusListResultInner> getBgpPeerStatusAsync(String resourceGroupName, String virtualNetworkGatewayName) {
+        final String peer = null;
+        final String apiVersion = "2019-06-01";
+        Mono<SimpleResponse<Flux<ByteBuffer>>> response = getBgpPeerStatusWithResponseAsync(resourceGroupName, virtualNetworkGatewayName, peer);
+        return this.client.<BgpPeerStatusListResultInner, BgpPeerStatusListResultInner>getLroResultAsync(response, this.client.getHttpPipeline(), BgpPeerStatusListResultInner.class, BgpPeerStatusListResultInner.class)
+            .last()
+            .flatMap(AsyncPollResponse::getFinalResult);
+    }
+
+    /**
+     * The GetBgpPeerStatus operation retrieves the status of all BGP peers.
+     * 
+     * @param resourceGroupName 
+     * @param virtualNetworkGatewayName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public BgpPeerStatusListResultInner getBgpPeerStatus(String resourceGroupName, String virtualNetworkGatewayName) {
+        final String peer = null;
+        final String apiVersion = "2019-06-01";
         return getBgpPeerStatusAsync(resourceGroupName, virtualNetworkGatewayName, peer).block();
     }
 
@@ -909,7 +1015,7 @@ public final class VirtualNetworkGatewaysInner implements InnerSupportsGet<Virtu
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<GatewayRouteListResultInner> getLearnedRoutesAsync(String resourceGroupName, String virtualNetworkGatewayName) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = getLearnedRoutesWithResponseAsync(resourceGroupName, virtualNetworkGatewayName);
-        return client.<GatewayRouteListResultInner, GatewayRouteListResultInner>getLroResultAsync(response, client.getHttpPipeline(), GatewayRouteListResultInner.class, GatewayRouteListResultInner.class)
+        return this.client.<GatewayRouteListResultInner, GatewayRouteListResultInner>getLroResultAsync(response, this.client.getHttpPipeline(), GatewayRouteListResultInner.class, GatewayRouteListResultInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -957,7 +1063,7 @@ public final class VirtualNetworkGatewaysInner implements InnerSupportsGet<Virtu
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<GatewayRouteListResultInner> getAdvertisedRoutesAsync(String resourceGroupName, String virtualNetworkGatewayName, String peer) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = getAdvertisedRoutesWithResponseAsync(resourceGroupName, virtualNetworkGatewayName, peer);
-        return client.<GatewayRouteListResultInner, GatewayRouteListResultInner>getLroResultAsync(response, client.getHttpPipeline(), GatewayRouteListResultInner.class, GatewayRouteListResultInner.class)
+        return this.client.<GatewayRouteListResultInner, GatewayRouteListResultInner>getLroResultAsync(response, this.client.getHttpPipeline(), GatewayRouteListResultInner.class, GatewayRouteListResultInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -1006,7 +1112,7 @@ public final class VirtualNetworkGatewaysInner implements InnerSupportsGet<Virtu
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<VpnClientIPsecParametersInner> setVpnclientIpsecParametersAsync(String resourceGroupName, String virtualNetworkGatewayName, VpnClientIPsecParametersInner vpnclientIpsecParams) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = setVpnclientIpsecParametersWithResponseAsync(resourceGroupName, virtualNetworkGatewayName, vpnclientIpsecParams);
-        return client.<VpnClientIPsecParametersInner, VpnClientIPsecParametersInner>getLroResultAsync(response, client.getHttpPipeline(), VpnClientIPsecParametersInner.class, VpnClientIPsecParametersInner.class)
+        return this.client.<VpnClientIPsecParametersInner, VpnClientIPsecParametersInner>getLroResultAsync(response, this.client.getHttpPipeline(), VpnClientIPsecParametersInner.class, VpnClientIPsecParametersInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -1053,7 +1159,7 @@ public final class VirtualNetworkGatewaysInner implements InnerSupportsGet<Virtu
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<VpnClientIPsecParametersInner> getVpnclientIpsecParametersAsync(String resourceGroupName, String virtualNetworkGatewayName) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = getVpnclientIpsecParametersWithResponseAsync(resourceGroupName, virtualNetworkGatewayName);
-        return client.<VpnClientIPsecParametersInner, VpnClientIPsecParametersInner>getLroResultAsync(response, client.getHttpPipeline(), VpnClientIPsecParametersInner.class, VpnClientIPsecParametersInner.class)
+        return this.client.<VpnClientIPsecParametersInner, VpnClientIPsecParametersInner>getLroResultAsync(response, this.client.getHttpPipeline(), VpnClientIPsecParametersInner.class, VpnClientIPsecParametersInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -1152,7 +1258,7 @@ public final class VirtualNetworkGatewaysInner implements InnerSupportsGet<Virtu
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<VpnClientConnectionHealthDetailListResultInner> getVpnclientConnectionHealthAsync(String resourceGroupName, String virtualNetworkGatewayName) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = getVpnclientConnectionHealthWithResponseAsync(resourceGroupName, virtualNetworkGatewayName);
-        return client.<VpnClientConnectionHealthDetailListResultInner, VpnClientConnectionHealthDetailListResultInner>getLroResultAsync(response, client.getHttpPipeline(), VpnClientConnectionHealthDetailListResultInner.class, VpnClientConnectionHealthDetailListResultInner.class)
+        return this.client.<VpnClientConnectionHealthDetailListResultInner, VpnClientConnectionHealthDetailListResultInner>getLroResultAsync(response, this.client.getHttpPipeline(), VpnClientConnectionHealthDetailListResultInner.class, VpnClientConnectionHealthDetailListResultInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }

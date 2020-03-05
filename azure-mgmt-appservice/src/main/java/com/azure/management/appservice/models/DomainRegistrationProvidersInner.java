@@ -8,6 +8,7 @@ package com.azure.management.appservice.models;
 
 import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
+import com.azure.core.annotation.Headers;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
 import com.azure.core.annotation.PathParam;
@@ -58,11 +59,13 @@ public final class DomainRegistrationProvidersInner {
     @Host("{$host}")
     @ServiceInterface(name = "WebSiteManagementClientDomainRegistrationProviders")
     private interface DomainRegistrationProvidersService {
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/providers/Microsoft.DomainRegistration/operations")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<CsmOperationCollectionInner>> listOperations(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)

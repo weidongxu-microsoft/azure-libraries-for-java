@@ -19,7 +19,7 @@ public final class ResourceListResultInner {
      * An array of resources.
      */
     @JsonProperty(value = "value")
-    private List<GenericResourceInner> value;
+    private List<GenericResourceExpandedInner> value;
 
     /*
      * The URL to use for getting the next set of results.
@@ -32,7 +32,7 @@ public final class ResourceListResultInner {
      * 
      * @return the value value.
      */
-    public List<GenericResourceInner> getValue() {
+    public List<GenericResourceExpandedInner> getValue() {
         return this.value;
     }
 
@@ -42,7 +42,7 @@ public final class ResourceListResultInner {
      * @param value the value value to set.
      * @return the ResourceListResultInner object itself.
      */
-    public ResourceListResultInner setValue(List<GenericResourceInner> value) {
+    public ResourceListResultInner setValue(List<GenericResourceExpandedInner> value) {
         this.value = value;
         return this;
     }

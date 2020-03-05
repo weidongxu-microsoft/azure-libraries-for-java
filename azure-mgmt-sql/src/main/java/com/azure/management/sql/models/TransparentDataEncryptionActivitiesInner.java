@@ -8,6 +8,7 @@ package com.azure.management.sql.models;
 
 import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
+import com.azure.core.annotation.Headers;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
 import com.azure.core.annotation.PathParam;
@@ -58,6 +59,7 @@ public final class TransparentDataEncryptionActivitiesInner {
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientTransparentDataEncryptionActivities")
     private interface TransparentDataEncryptionActivitiesService {
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{transparentDataEncryptionName}/operationResults")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)

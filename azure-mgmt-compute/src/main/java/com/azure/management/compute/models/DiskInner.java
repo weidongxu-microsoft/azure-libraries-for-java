@@ -108,7 +108,7 @@ public class DiskInner extends Resource {
      * disks. One operation can transfer between 4k and 256k bytes.
      */
     @JsonProperty(value = "properties.diskIOPSReadWrite")
-    private Long diskIOPSReadWrite;
+    private Long diskIopsReadWrite;
 
     /*
      * The bandwidth allowed for this disk; only settable for UltraSSD disks.
@@ -327,26 +327,26 @@ public class DiskInner extends Resource {
     }
 
     /**
-     * Get the diskIOPSReadWrite property: The number of IOPS allowed for this
+     * Get the diskIopsReadWrite property: The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer
      * between 4k and 256k bytes.
      * 
-     * @return the diskIOPSReadWrite value.
+     * @return the diskIopsReadWrite value.
      */
-    public Long diskIOPSReadWrite() {
-        return this.diskIOPSReadWrite;
+    public Long diskIopsReadWrite() {
+        return this.diskIopsReadWrite;
     }
 
     /**
-     * Set the diskIOPSReadWrite property: The number of IOPS allowed for this
+     * Set the diskIopsReadWrite property: The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer
      * between 4k and 256k bytes.
      * 
-     * @param diskIOPSReadWrite the diskIOPSReadWrite value to set.
+     * @param diskIopsReadWrite the diskIopsReadWrite value to set.
      * @return the DiskInner object itself.
      */
-    public DiskInner withDiskIOPSReadWrite(Long diskIOPSReadWrite) {
-        this.diskIOPSReadWrite = diskIOPSReadWrite;
+    public DiskInner withDiskIopsReadWrite(Long diskIopsReadWrite) {
+        this.diskIopsReadWrite = diskIopsReadWrite;
         return this;
     }
 

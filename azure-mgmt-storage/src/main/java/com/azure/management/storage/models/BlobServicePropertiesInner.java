@@ -50,7 +50,13 @@ public class BlobServicePropertiesInner extends ProxyResource {
     private DeleteRetentionPolicy deleteRetentionPolicy;
 
     /*
-     * Automatic Snapshot is enabled if set to true.
+     * Versioning is enabled if set to true.
+     */
+    @JsonProperty(value = "properties.isVersioningEnabled")
+    private Boolean isVersioningEnabled;
+
+    /*
+     * Deprecated in favor of isVersioningEnabled property.
      */
     @JsonProperty(value = "properties.automaticSnapshotPolicyEnabled")
     private Boolean automaticSnapshotPolicyEnabled;
@@ -66,6 +72,12 @@ public class BlobServicePropertiesInner extends ProxyResource {
      */
     @JsonProperty(value = "properties.restorePolicy")
     private RestorePolicyProperties restorePolicy;
+
+    /*
+     * The service properties for soft delete.
+     */
+    @JsonProperty(value = "properties.containerDeleteRetentionPolicy")
+    private DeleteRetentionPolicy containerDeleteRetentionPolicy;
 
     /**
      * Get the sku property: The SKU of the storage account.
@@ -147,8 +159,30 @@ public class BlobServicePropertiesInner extends ProxyResource {
     }
 
     /**
-     * Get the automaticSnapshotPolicyEnabled property: Automatic Snapshot is
-     * enabled if set to true.
+     * Get the isVersioningEnabled property: Versioning is enabled if set to
+     * true.
+     * 
+     * @return the isVersioningEnabled value.
+     */
+    public Boolean isVersioningEnabled() {
+        return this.isVersioningEnabled;
+    }
+
+    /**
+     * Set the isVersioningEnabled property: Versioning is enabled if set to
+     * true.
+     * 
+     * @param isVersioningEnabled the isVersioningEnabled value to set.
+     * @return the BlobServicePropertiesInner object itself.
+     */
+    public BlobServicePropertiesInner setIsVersioningEnabled(Boolean isVersioningEnabled) {
+        this.isVersioningEnabled = isVersioningEnabled;
+        return this;
+    }
+
+    /**
+     * Get the automaticSnapshotPolicyEnabled property: Deprecated in favor of
+     * isVersioningEnabled property.
      * 
      * @return the automaticSnapshotPolicyEnabled value.
      */
@@ -157,8 +191,8 @@ public class BlobServicePropertiesInner extends ProxyResource {
     }
 
     /**
-     * Set the automaticSnapshotPolicyEnabled property: Automatic Snapshot is
-     * enabled if set to true.
+     * Set the automaticSnapshotPolicyEnabled property: Deprecated in favor of
+     * isVersioningEnabled property.
      * 
      * @param automaticSnapshotPolicyEnabled the automaticSnapshotPolicyEnabled
      * value to set.
@@ -210,6 +244,29 @@ public class BlobServicePropertiesInner extends ProxyResource {
      */
     public BlobServicePropertiesInner setRestorePolicy(RestorePolicyProperties restorePolicy) {
         this.restorePolicy = restorePolicy;
+        return this;
+    }
+
+    /**
+     * Get the containerDeleteRetentionPolicy property: The service properties
+     * for soft delete.
+     * 
+     * @return the containerDeleteRetentionPolicy value.
+     */
+    public DeleteRetentionPolicy getContainerDeleteRetentionPolicy() {
+        return this.containerDeleteRetentionPolicy;
+    }
+
+    /**
+     * Set the containerDeleteRetentionPolicy property: The service properties
+     * for soft delete.
+     * 
+     * @param containerDeleteRetentionPolicy the containerDeleteRetentionPolicy
+     * value to set.
+     * @return the BlobServicePropertiesInner object itself.
+     */
+    public BlobServicePropertiesInner setContainerDeleteRetentionPolicy(DeleteRetentionPolicy containerDeleteRetentionPolicy) {
+        this.containerDeleteRetentionPolicy = containerDeleteRetentionPolicy;
         return this;
     }
 }

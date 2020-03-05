@@ -42,6 +42,12 @@ public class ServerAzureADAdministratorInner extends ProxyResource {
     @JsonProperty(value = "properties.tenantId")
     private UUID tenantId;
 
+    /*
+     * Azure Active Directory only Authentication enabled.
+     */
+    @JsonProperty(value = "properties.azureADOnlyAuthentication")
+    private Boolean azureADOnlyAuthentication;
+
     /**
      * Creates an instance of ServerAzureADAdministratorInner class.
      */
@@ -126,6 +132,29 @@ public class ServerAzureADAdministratorInner extends ProxyResource {
      */
     public ServerAzureADAdministratorInner withTenantId(UUID tenantId) {
         this.tenantId = tenantId;
+        return this;
+    }
+
+    /**
+     * Get the azureADOnlyAuthentication property: Azure Active Directory only
+     * Authentication enabled.
+     * 
+     * @return the azureADOnlyAuthentication value.
+     */
+    public Boolean azureADOnlyAuthentication() {
+        return this.azureADOnlyAuthentication;
+    }
+
+    /**
+     * Set the azureADOnlyAuthentication property: Azure Active Directory only
+     * Authentication enabled.
+     * 
+     * @param azureADOnlyAuthentication the azureADOnlyAuthentication value to
+     * set.
+     * @return the ServerAzureADAdministratorInner object itself.
+     */
+    public ServerAzureADAdministratorInner withAzureADOnlyAuthentication(Boolean azureADOnlyAuthentication) {
+        this.azureADOnlyAuthentication = azureADOnlyAuthentication;
         return this;
     }
 }

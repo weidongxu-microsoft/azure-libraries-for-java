@@ -9,7 +9,6 @@ package com.azure.management.appservice.models;
 import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.management.Resource;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.azure.management.appservice.Contact;
 import com.azure.management.appservice.DnsType;
 import com.azure.management.appservice.DomainPropertiesDomainNotRenewableReasonsItem;
@@ -17,6 +16,7 @@ import com.azure.management.appservice.DomainPurchaseConsent;
 import com.azure.management.appservice.DomainStatus;
 import com.azure.management.appservice.HostName;
 import com.azure.management.appservice.ProvisioningState;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.OffsetDateTime;
 import java.util.List;
 

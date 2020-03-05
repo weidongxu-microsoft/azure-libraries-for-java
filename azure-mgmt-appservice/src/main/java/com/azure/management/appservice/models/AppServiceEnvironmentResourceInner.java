@@ -9,7 +9,6 @@ package com.azure.management.appservice.models;
 import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.management.Resource;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.azure.management.appservice.HostingEnvironmentStatus;
 import com.azure.management.appservice.InternalLoadBalancingMode;
 import com.azure.management.appservice.NameValuePair;
@@ -18,6 +17,7 @@ import com.azure.management.appservice.ProvisioningState;
 import com.azure.management.appservice.VirtualIPMapping;
 import com.azure.management.appservice.VirtualNetworkProfile;
 import com.azure.management.appservice.WorkerPool;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**

@@ -7,9 +7,9 @@
 package com.azure.management.appservice.models;
 
 import com.azure.core.annotation.Fluent;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.azure.management.appservice.ConnStringValueTypePair;
 import com.azure.management.appservice.ProxyOnlyResource;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
 
 /**

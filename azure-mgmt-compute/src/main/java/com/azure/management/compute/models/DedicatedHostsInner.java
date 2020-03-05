@@ -10,6 +10,7 @@ import com.azure.core.annotation.BodyParam;
 import com.azure.core.annotation.Delete;
 import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
+import com.azure.core.annotation.Headers;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
 import com.azure.core.annotation.Patch;
@@ -67,46 +68,55 @@ public final class DedicatedHostsInner {
     @Host("{$host}")
     @ServiceInterface(name = "ComputeManagementClientDedicatedHosts")
     private interface DedicatedHostsService {
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostGroupName") String hostGroupName, @PathParam("hostName") String hostName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DedicatedHostInner parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostGroupName") String hostGroupName, @PathParam("hostName") String hostName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DedicatedHostUpdate parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostGroupName") String hostGroupName, @PathParam("hostName") String hostName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DedicatedHostInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostGroupName") String hostGroupName, @PathParam("hostName") String hostName, @QueryParam("$expand") String expand, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DedicatedHostListResultInner>> listByHostGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostGroupName") String hostGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DedicatedHostInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostGroupName") String hostGroupName, @PathParam("hostName") String hostName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DedicatedHostInner parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DedicatedHostInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostGroupName") String hostGroupName, @PathParam("hostName") String hostName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DedicatedHostUpdate parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostGroupName") String hostGroupName, @PathParam("hostName") String hostName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -144,7 +154,7 @@ public final class DedicatedHostsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<DedicatedHostInner> createOrUpdateAsync(String resourceGroupName, String hostGroupName, String hostName, DedicatedHostInner parameters) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = createOrUpdateWithResponseAsync(resourceGroupName, hostGroupName, hostName, parameters);
-        return client.<DedicatedHostInner, DedicatedHostInner>getLroResultAsync(response, client.getHttpPipeline(), DedicatedHostInner.class, DedicatedHostInner.class)
+        return this.client.<DedicatedHostInner, DedicatedHostInner>getLroResultAsync(response, this.client.getHttpPipeline(), DedicatedHostInner.class, DedicatedHostInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -196,7 +206,7 @@ public final class DedicatedHostsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<DedicatedHostInner> updateAsync(String resourceGroupName, String hostGroupName, String hostName, DedicatedHostUpdate parameters) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateWithResponseAsync(resourceGroupName, hostGroupName, hostName, parameters);
-        return client.<DedicatedHostInner, DedicatedHostInner>getLroResultAsync(response, client.getHttpPipeline(), DedicatedHostInner.class, DedicatedHostInner.class)
+        return this.client.<DedicatedHostInner, DedicatedHostInner>getLroResultAsync(response, this.client.getHttpPipeline(), DedicatedHostInner.class, DedicatedHostInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -246,7 +256,7 @@ public final class DedicatedHostsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Void> deleteAsync(String resourceGroupName, String hostGroupName, String hostName) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = deleteWithResponseAsync(resourceGroupName, hostGroupName, hostName);
-        return client.<Void, Void>getLroResultAsync(response, client.getHttpPipeline(), Void.class, Void.class)
+        return this.client.<Void, Void>getLroResultAsync(response, this.client.getHttpPipeline(), Void.class, Void.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }

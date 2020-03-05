@@ -163,6 +163,12 @@ public class ManagedInstanceUpdate {
     @JsonProperty(value = "properties.instancePoolId")
     private String instancePoolId;
 
+    /*
+     * Minimal TLS version. Allowed values: 'None', '1.0', '1.1', '1.2'
+     */
+    @JsonProperty(value = "properties.minimalTlsVersion")
+    private String minimalTlsVersion;
+
     /**
      * Get the sku property: An ARM Resource SKU.
      * 
@@ -597,6 +603,28 @@ public class ManagedInstanceUpdate {
      */
     public ManagedInstanceUpdate withInstancePoolId(String instancePoolId) {
         this.instancePoolId = instancePoolId;
+        return this;
+    }
+
+    /**
+     * Get the minimalTlsVersion property: Minimal TLS version. Allowed values:
+     * 'None', '1.0', '1.1', '1.2'.
+     * 
+     * @return the minimalTlsVersion value.
+     */
+    public String minimalTlsVersion() {
+        return this.minimalTlsVersion;
+    }
+
+    /**
+     * Set the minimalTlsVersion property: Minimal TLS version. Allowed values:
+     * 'None', '1.0', '1.1', '1.2'.
+     * 
+     * @param minimalTlsVersion the minimalTlsVersion value to set.
+     * @return the ManagedInstanceUpdate object itself.
+     */
+    public ManagedInstanceUpdate withMinimalTlsVersion(String minimalTlsVersion) {
+        this.minimalTlsVersion = minimalTlsVersion;
         return this;
     }
 }

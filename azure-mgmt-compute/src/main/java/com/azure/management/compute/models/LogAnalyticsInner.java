@@ -8,6 +8,7 @@ package com.azure.management.compute.models;
 
 import com.azure.core.annotation.BodyParam;
 import com.azure.core.annotation.ExpectedResponses;
+import com.azure.core.annotation.Headers;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
 import com.azure.core.annotation.PathParam;
@@ -60,21 +61,25 @@ public final class LogAnalyticsInner {
     @Host("{$host}")
     @ServiceInterface(name = "ComputeManagementClientLogAnalytics")
     private interface LogAnalyticsService {
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getRequestRateByInterval")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> exportRequestRateByInterval(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RequestRateByIntervalInput parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getThrottledRequests")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> exportThrottledRequests(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ThrottledRequestsInput parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getRequestRateByInterval")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<LogAnalyticsOperationResultInner>> beginExportRequestRateByInterval(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RequestRateByIntervalInput parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getThrottledRequests")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -108,7 +113,7 @@ public final class LogAnalyticsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<LogAnalyticsOperationResultInner> exportRequestRateByIntervalAsync(String location, RequestRateByIntervalInput parameters) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = exportRequestRateByIntervalWithResponseAsync(location, parameters);
-        return client.<LogAnalyticsOperationResultInner, LogAnalyticsOperationResultInner>getLroResultAsync(response, client.getHttpPipeline(), LogAnalyticsOperationResultInner.class, LogAnalyticsOperationResultInner.class)
+        return this.client.<LogAnalyticsOperationResultInner, LogAnalyticsOperationResultInner>getLroResultAsync(response, this.client.getHttpPipeline(), LogAnalyticsOperationResultInner.class, LogAnalyticsOperationResultInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -154,7 +159,7 @@ public final class LogAnalyticsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<LogAnalyticsOperationResultInner> exportThrottledRequestsAsync(String location, ThrottledRequestsInput parameters) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = exportThrottledRequestsWithResponseAsync(location, parameters);
-        return client.<LogAnalyticsOperationResultInner, LogAnalyticsOperationResultInner>getLroResultAsync(response, client.getHttpPipeline(), LogAnalyticsOperationResultInner.class, LogAnalyticsOperationResultInner.class)
+        return this.client.<LogAnalyticsOperationResultInner, LogAnalyticsOperationResultInner>getLroResultAsync(response, this.client.getHttpPipeline(), LogAnalyticsOperationResultInner.class, LogAnalyticsOperationResultInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }

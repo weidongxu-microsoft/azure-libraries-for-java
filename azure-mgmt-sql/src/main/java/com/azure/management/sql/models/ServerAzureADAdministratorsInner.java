@@ -10,9 +10,11 @@ import com.azure.core.annotation.BodyParam;
 import com.azure.core.annotation.Delete;
 import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
+import com.azure.core.annotation.Headers;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
 import com.azure.core.annotation.PathParam;
+import com.azure.core.annotation.Post;
 import com.azure.core.annotation.Put;
 import com.azure.core.annotation.QueryParam;
 import com.azure.core.annotation.ReturnType;
@@ -66,36 +68,55 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientServerAzureADAdministrators")
     private interface ServerAzureADAdministratorsService {
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators/{administratorName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ServerAzureADAdministratorInner>> get(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("administratorName") String administratorName, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators/{administratorName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("administratorName") String administratorName, @BodyParam("application/json") ServerAzureADAdministratorInner parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators/{administratorName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("administratorName") String administratorName, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<AdministratorListResultInner>> listByServer(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/disableAzureADOnlyAuthentication")
+        @ExpectedResponses({200, 202})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<Flux<ByteBuffer>>> disableAzureADOnlyAuthentication(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @QueryParam("api-version") String apiVersion);
+
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators/{administratorName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ServerAzureADAdministratorInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("administratorName") String administratorName, @BodyParam("application/json") ServerAzureADAdministratorInner parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators/{administratorName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("administratorName") String administratorName, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/disableAzureADOnlyAuthentication")
+        @ExpectedResponses({200, 202})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<ServerAzureADAdministratorInner>> beginDisableAzureADOnlyAuthentication(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @QueryParam("api-version") String apiVersion);
+
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -103,7 +124,7 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     }
 
     /**
-     * Gets a server Administrator.
+     * Gets a Azure Active Directory administrator.
      * 
      * @param resourceGroupName 
      * @param serverName 
@@ -114,12 +135,12 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ServerAzureADAdministratorInner>> getWithResponseAsync(String resourceGroupName, String serverName) {
         final String administratorName = "ActiveDirectory";
-        final String apiVersion = "2018-06-01-preview";
+        final String apiVersion = "2019-06-01-preview";
         return service.get(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, administratorName, apiVersion);
     }
 
     /**
-     * Gets a server Administrator.
+     * Gets a Azure Active Directory administrator.
      * 
      * @param resourceGroupName 
      * @param serverName 
@@ -140,7 +161,7 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     }
 
     /**
-     * Gets a server Administrator.
+     * Gets a Azure Active Directory administrator.
      * 
      * @param resourceGroupName 
      * @param serverName 
@@ -154,7 +175,7 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     }
 
     /**
-     * Creates a new Server Active Directory Administrator or updates an existing server Active Directory Administrator.
+     * Creates or updates an existing Azure Active Directory administrator.
      * 
      * @param resourceGroupName 
      * @param serverName 
@@ -166,12 +187,12 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String serverName, ServerAzureADAdministratorInner parameters) {
         final String administratorName = "ActiveDirectory";
-        final String apiVersion = "2018-06-01-preview";
+        final String apiVersion = "2019-06-01-preview";
         return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, administratorName, parameters, apiVersion);
     }
 
     /**
-     * Creates a new Server Active Directory Administrator or updates an existing server Active Directory Administrator.
+     * Creates or updates an existing Azure Active Directory administrator.
      * 
      * @param resourceGroupName 
      * @param serverName 
@@ -183,13 +204,13 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<ServerAzureADAdministratorInner> createOrUpdateAsync(String resourceGroupName, String serverName, ServerAzureADAdministratorInner parameters) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = createOrUpdateWithResponseAsync(resourceGroupName, serverName, parameters);
-        return client.<ServerAzureADAdministratorInner, ServerAzureADAdministratorInner>getLroResultAsync(response, client.getHttpPipeline(), ServerAzureADAdministratorInner.class, ServerAzureADAdministratorInner.class)
+        return this.client.<ServerAzureADAdministratorInner, ServerAzureADAdministratorInner>getLroResultAsync(response, this.client.getHttpPipeline(), ServerAzureADAdministratorInner.class, ServerAzureADAdministratorInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
 
     /**
-     * Creates a new Server Active Directory Administrator or updates an existing server Active Directory Administrator.
+     * Creates or updates an existing Azure Active Directory administrator.
      * 
      * @param resourceGroupName 
      * @param serverName 
@@ -204,7 +225,7 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     }
 
     /**
-     * Deletes an existing server Active Directory Administrator.
+     * Deletes the Azure Active Directory administrator with the given name.
      * 
      * @param resourceGroupName 
      * @param serverName 
@@ -215,12 +236,12 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String serverName) {
         final String administratorName = "ActiveDirectory";
-        final String apiVersion = "2018-06-01-preview";
+        final String apiVersion = "2019-06-01-preview";
         return service.delete(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, administratorName, apiVersion);
     }
 
     /**
-     * Deletes an existing server Active Directory Administrator.
+     * Deletes the Azure Active Directory administrator with the given name.
      * 
      * @param resourceGroupName 
      * @param serverName 
@@ -231,13 +252,13 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Void> deleteAsync(String resourceGroupName, String serverName) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = deleteWithResponseAsync(resourceGroupName, serverName);
-        return client.<Void, Void>getLroResultAsync(response, client.getHttpPipeline(), Void.class, Void.class)
+        return this.client.<Void, Void>getLroResultAsync(response, this.client.getHttpPipeline(), Void.class, Void.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
 
     /**
-     * Deletes an existing server Active Directory Administrator.
+     * Deletes the Azure Active Directory administrator with the given name.
      * 
      * @param resourceGroupName 
      * @param serverName 
@@ -251,7 +272,7 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     }
 
     /**
-     * Gets a list of server Administrators.
+     * Gets a list of Azure Active Directory administrators in a server.
      * 
      * @param resourceGroupName 
      * @param serverName 
@@ -261,7 +282,7 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ServerAzureADAdministratorInner>> listByServerSinglePageAsync(String resourceGroupName, String serverName) {
-        final String apiVersion = "2018-06-01-preview";
+        final String apiVersion = "2019-06-01-preview";
         return service.listByServer(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -272,7 +293,7 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     }
 
     /**
-     * Gets a list of server Administrators.
+     * Gets a list of Azure Active Directory administrators in a server.
      * 
      * @param resourceGroupName 
      * @param serverName 
@@ -288,7 +309,7 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     }
 
     /**
-     * Gets a list of server Administrators.
+     * Gets a list of Azure Active Directory administrators in a server.
      * 
      * @param resourceGroupName 
      * @param serverName 
@@ -302,7 +323,53 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     }
 
     /**
-     * Creates a new Server Active Directory Administrator or updates an existing server Active Directory Administrator.
+     * Disables Azure Active Directory only authentication on logical Server.
+     * 
+     * @param resourceGroupName 
+     * @param serverName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<SimpleResponse<Flux<ByteBuffer>>> disableAzureADOnlyAuthenticationWithResponseAsync(String resourceGroupName, String serverName) {
+        final String apiVersion = "2019-06-01-preview";
+        return service.disableAzureADOnlyAuthentication(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, apiVersion);
+    }
+
+    /**
+     * Disables Azure Active Directory only authentication on logical Server.
+     * 
+     * @param resourceGroupName 
+     * @param serverName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<ServerAzureADAdministratorInner> disableAzureADOnlyAuthenticationAsync(String resourceGroupName, String serverName) {
+        Mono<SimpleResponse<Flux<ByteBuffer>>> response = disableAzureADOnlyAuthenticationWithResponseAsync(resourceGroupName, serverName);
+        return this.client.<ServerAzureADAdministratorInner, ServerAzureADAdministratorInner>getLroResultAsync(response, this.client.getHttpPipeline(), ServerAzureADAdministratorInner.class, ServerAzureADAdministratorInner.class)
+            .last()
+            .flatMap(AsyncPollResponse::getFinalResult);
+    }
+
+    /**
+     * Disables Azure Active Directory only authentication on logical Server.
+     * 
+     * @param resourceGroupName 
+     * @param serverName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public ServerAzureADAdministratorInner disableAzureADOnlyAuthentication(String resourceGroupName, String serverName) {
+        return disableAzureADOnlyAuthenticationAsync(resourceGroupName, serverName).block();
+    }
+
+    /**
+     * Creates or updates an existing Azure Active Directory administrator.
      * 
      * @param resourceGroupName 
      * @param serverName 
@@ -314,12 +381,12 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ServerAzureADAdministratorInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String serverName, ServerAzureADAdministratorInner parameters) {
         final String administratorName = "ActiveDirectory";
-        final String apiVersion = "2018-06-01-preview";
+        final String apiVersion = "2019-06-01-preview";
         return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, administratorName, parameters, apiVersion);
     }
 
     /**
-     * Creates a new Server Active Directory Administrator or updates an existing server Active Directory Administrator.
+     * Creates or updates an existing Azure Active Directory administrator.
      * 
      * @param resourceGroupName 
      * @param serverName 
@@ -341,7 +408,7 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     }
 
     /**
-     * Creates a new Server Active Directory Administrator or updates an existing server Active Directory Administrator.
+     * Creates or updates an existing Azure Active Directory administrator.
      * 
      * @param resourceGroupName 
      * @param serverName 
@@ -356,7 +423,7 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     }
 
     /**
-     * Deletes an existing server Active Directory Administrator.
+     * Deletes the Azure Active Directory administrator with the given name.
      * 
      * @param resourceGroupName 
      * @param serverName 
@@ -367,12 +434,12 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String serverName) {
         final String administratorName = "ActiveDirectory";
-        final String apiVersion = "2018-06-01-preview";
+        final String apiVersion = "2019-06-01-preview";
         return service.beginDelete(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, administratorName, apiVersion);
     }
 
     /**
-     * Deletes an existing server Active Directory Administrator.
+     * Deletes the Azure Active Directory administrator with the given name.
      * 
      * @param resourceGroupName 
      * @param serverName 
@@ -387,7 +454,7 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     }
 
     /**
-     * Deletes an existing server Active Directory Administrator.
+     * Deletes the Azure Active Directory administrator with the given name.
      * 
      * @param resourceGroupName 
      * @param serverName 
@@ -398,6 +465,56 @@ public final class ServerAzureADAdministratorsInner implements InnerSupportsDele
     @ServiceMethod(returns = ReturnType.SINGLE)
     public void beginDelete(String resourceGroupName, String serverName) {
         beginDeleteAsync(resourceGroupName, serverName).block();
+    }
+
+    /**
+     * Disables Azure Active Directory only authentication on logical Server.
+     * 
+     * @param resourceGroupName 
+     * @param serverName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<SimpleResponse<ServerAzureADAdministratorInner>> beginDisableAzureADOnlyAuthenticationWithResponseAsync(String resourceGroupName, String serverName) {
+        final String apiVersion = "2019-06-01-preview";
+        return service.beginDisableAzureADOnlyAuthentication(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, apiVersion);
+    }
+
+    /**
+     * Disables Azure Active Directory only authentication on logical Server.
+     * 
+     * @param resourceGroupName 
+     * @param serverName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<ServerAzureADAdministratorInner> beginDisableAzureADOnlyAuthenticationAsync(String resourceGroupName, String serverName) {
+        return beginDisableAzureADOnlyAuthenticationWithResponseAsync(resourceGroupName, serverName)
+            .flatMap((SimpleResponse<ServerAzureADAdministratorInner> res) -> {
+                if (res.getValue() != null) {
+                    return Mono.just(res.getValue());
+                } else {
+                    return Mono.empty();
+                }
+            });
+    }
+
+    /**
+     * Disables Azure Active Directory only authentication on logical Server.
+     * 
+     * @param resourceGroupName 
+     * @param serverName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public ServerAzureADAdministratorInner beginDisableAzureADOnlyAuthentication(String resourceGroupName, String serverName) {
+        return beginDisableAzureADOnlyAuthenticationAsync(resourceGroupName, serverName).block();
     }
 
     /**

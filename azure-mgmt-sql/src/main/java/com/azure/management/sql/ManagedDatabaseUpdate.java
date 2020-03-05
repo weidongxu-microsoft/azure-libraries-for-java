@@ -124,6 +124,13 @@ public class ManagedDatabaseUpdate {
     @JsonProperty(value = "properties.recoverableDatabaseId")
     private String recoverableDatabaseId;
 
+    /*
+     * The name of the Long Term Retention backup to be used for restore of
+     * this managed database.
+     */
+    @JsonProperty(value = "properties.longTermRetentionBackupResourceId")
+    private String longTermRetentionBackupResourceId;
+
     /**
      * Get the tags property: Resource tags.
      * 
@@ -406,6 +413,29 @@ public class ManagedDatabaseUpdate {
      */
     public ManagedDatabaseUpdate withRecoverableDatabaseId(String recoverableDatabaseId) {
         this.recoverableDatabaseId = recoverableDatabaseId;
+        return this;
+    }
+
+    /**
+     * Get the longTermRetentionBackupResourceId property: The name of the Long
+     * Term Retention backup to be used for restore of this managed database.
+     * 
+     * @return the longTermRetentionBackupResourceId value.
+     */
+    public String longTermRetentionBackupResourceId() {
+        return this.longTermRetentionBackupResourceId;
+    }
+
+    /**
+     * Set the longTermRetentionBackupResourceId property: The name of the Long
+     * Term Retention backup to be used for restore of this managed database.
+     * 
+     * @param longTermRetentionBackupResourceId the
+     * longTermRetentionBackupResourceId value to set.
+     * @return the ManagedDatabaseUpdate object itself.
+     */
+    public ManagedDatabaseUpdate withLongTermRetentionBackupResourceId(String longTermRetentionBackupResourceId) {
+        this.longTermRetentionBackupResourceId = longTermRetentionBackupResourceId;
         return this;
     }
 }

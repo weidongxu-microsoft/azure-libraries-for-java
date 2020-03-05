@@ -10,6 +10,7 @@ import com.azure.core.annotation.BodyParam;
 import com.azure.core.annotation.Delete;
 import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
+import com.azure.core.annotation.Headers;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
 import com.azure.core.annotation.PathParam;
@@ -66,56 +67,67 @@ public final class InstanceFailoverGroupsInner {
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientInstanceFailoverGroups")
     private interface InstanceFailoverGroupsService {
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<InstanceFailoverGroupInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("locationName") String locationName, @PathParam("failoverGroupName") String failoverGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("locationName") String locationName, @PathParam("failoverGroupName") String failoverGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") InstanceFailoverGroupInner parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("locationName") String locationName, @PathParam("failoverGroupName") String failoverGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<InstanceFailoverGroupListResultInner>> listByLocation(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("locationName") String locationName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}/failover")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> failover(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("locationName") String locationName, @PathParam("failoverGroupName") String failoverGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}/forceFailoverAllowDataLoss")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> forceFailoverAllowDataLoss(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("locationName") String locationName, @PathParam("failoverGroupName") String failoverGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<InstanceFailoverGroupInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("locationName") String locationName, @PathParam("failoverGroupName") String failoverGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") InstanceFailoverGroupInner parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("locationName") String locationName, @PathParam("failoverGroupName") String failoverGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}/failover")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<InstanceFailoverGroupInner>> beginFailover(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("locationName") String locationName, @PathParam("failoverGroupName") String failoverGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}/forceFailoverAllowDataLoss")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<InstanceFailoverGroupInner>> beginForceFailoverAllowDataLoss(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("locationName") String locationName, @PathParam("failoverGroupName") String failoverGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
@@ -206,7 +218,7 @@ public final class InstanceFailoverGroupsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<InstanceFailoverGroupInner> createOrUpdateAsync(String resourceGroupName, String locationName, String failoverGroupName, InstanceFailoverGroupInner parameters) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = createOrUpdateWithResponseAsync(resourceGroupName, locationName, failoverGroupName, parameters);
-        return client.<InstanceFailoverGroupInner, InstanceFailoverGroupInner>getLroResultAsync(response, client.getHttpPipeline(), InstanceFailoverGroupInner.class, InstanceFailoverGroupInner.class)
+        return this.client.<InstanceFailoverGroupInner, InstanceFailoverGroupInner>getLroResultAsync(response, this.client.getHttpPipeline(), InstanceFailoverGroupInner.class, InstanceFailoverGroupInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -256,7 +268,7 @@ public final class InstanceFailoverGroupsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Void> deleteAsync(String resourceGroupName, String locationName, String failoverGroupName) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = deleteWithResponseAsync(resourceGroupName, locationName, failoverGroupName);
-        return client.<Void, Void>getLroResultAsync(response, client.getHttpPipeline(), Void.class, Void.class)
+        return this.client.<Void, Void>getLroResultAsync(response, this.client.getHttpPipeline(), Void.class, Void.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -356,7 +368,7 @@ public final class InstanceFailoverGroupsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<InstanceFailoverGroupInner> failoverAsync(String resourceGroupName, String locationName, String failoverGroupName) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = failoverWithResponseAsync(resourceGroupName, locationName, failoverGroupName);
-        return client.<InstanceFailoverGroupInner, InstanceFailoverGroupInner>getLroResultAsync(response, client.getHttpPipeline(), InstanceFailoverGroupInner.class, InstanceFailoverGroupInner.class)
+        return this.client.<InstanceFailoverGroupInner, InstanceFailoverGroupInner>getLroResultAsync(response, this.client.getHttpPipeline(), InstanceFailoverGroupInner.class, InstanceFailoverGroupInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -405,7 +417,7 @@ public final class InstanceFailoverGroupsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<InstanceFailoverGroupInner> forceFailoverAllowDataLossAsync(String resourceGroupName, String locationName, String failoverGroupName) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = forceFailoverAllowDataLossWithResponseAsync(resourceGroupName, locationName, failoverGroupName);
-        return client.<InstanceFailoverGroupInner, InstanceFailoverGroupInner>getLroResultAsync(response, client.getHttpPipeline(), InstanceFailoverGroupInner.class, InstanceFailoverGroupInner.class)
+        return this.client.<InstanceFailoverGroupInner, InstanceFailoverGroupInner>getLroResultAsync(response, this.client.getHttpPipeline(), InstanceFailoverGroupInner.class, InstanceFailoverGroupInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }

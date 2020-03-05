@@ -6,13 +6,27 @@
 
 package com.azure.management.appservice.models;
 
+import com.azure.core.annotation.ReturnType;
 import com.azure.core.annotation.ServiceClientBuilder;
+import com.azure.core.annotation.ServiceMethod;
 import com.azure.core.http.HttpPipeline;
 import com.azure.core.http.HttpPipelineBuilder;
 import com.azure.core.http.policy.CookiePolicy;
 import com.azure.core.http.policy.RetryPolicy;
 import com.azure.core.http.policy.UserAgentPolicy;
+import com.azure.core.http.rest.PagedFlux;
+import com.azure.core.http.rest.PagedIterable;
+import com.azure.core.http.rest.PagedResponse;
+import com.azure.core.http.rest.PagedResponseBase;
+import com.azure.core.http.rest.Response;
+import com.azure.core.http.rest.SimpleResponse;
 import com.azure.core.management.AzureEnvironment;
+import com.azure.management.appservice.CheckNameResourceTypes;
+import com.azure.management.appservice.CsmMoveResourceEnvelope;
+import com.azure.management.appservice.SkuName;
+import com.azure.management.appservice.ValidateRequest;
+import com.azure.management.appservice.VnetParameters;
+import reactor.core.publisher.Mono;
 
 /**
  * A builder for creating a new instance of the WebSiteManagementClientImpl type.

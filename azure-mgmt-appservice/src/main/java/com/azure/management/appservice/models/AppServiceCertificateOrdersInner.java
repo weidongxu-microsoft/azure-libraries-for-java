@@ -10,6 +10,7 @@ import com.azure.core.annotation.BodyParam;
 import com.azure.core.annotation.Delete;
 import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
+import com.azure.core.annotation.Headers;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
 import com.azure.core.annotation.Patch;
@@ -29,15 +30,15 @@ import com.azure.core.http.rest.Response;
 import com.azure.core.http.rest.RestProxy;
 import com.azure.core.http.rest.SimpleResponse;
 import com.azure.core.util.polling.AsyncPollResponse;
-import com.azure.management.resources.fluentcore.collection.InnerSupportsDelete;
-import com.azure.management.resources.fluentcore.collection.InnerSupportsGet;
-import com.azure.management.resources.fluentcore.collection.InnerSupportsListing;
 import com.azure.management.appservice.AppServiceCertificateOrderPatchResource;
 import com.azure.management.appservice.AppServiceCertificatePatchResource;
 import com.azure.management.appservice.DefaultErrorResponseException;
 import com.azure.management.appservice.ReissueCertificateOrderRequest;
 import com.azure.management.appservice.RenewCertificateOrderRequest;
 import com.azure.management.appservice.SiteSealRequest;
+import com.azure.management.resources.fluentcore.collection.InnerSupportsDelete;
+import com.azure.management.resources.fluentcore.collection.InnerSupportsGet;
+import com.azure.management.resources.fluentcore.collection.InnerSupportsListing;
 import java.nio.ByteBuffer;
 import java.util.List;
 import reactor.core.publisher.Flux;
@@ -76,126 +77,151 @@ public final class AppServiceCertificateOrdersInner implements InnerSupportsGet<
     @Host("{$host}")
     @ServiceInterface(name = "WebSiteManagementClientAppServiceCertificateOrders")
     private interface AppServiceCertificateOrdersService {
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.CertificateRegistration/certificateOrders")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AppServiceCertificateOrderCollectionInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.CertificateRegistration/validateCertificateRegistrationInformation")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> validatePurchaseInformation(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AppServiceCertificateOrderInner appServiceCertificateOrder, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AppServiceCertificateOrderCollectionInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AppServiceCertificateOrderInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("certificateOrderName") String certificateOrderName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("certificateOrderName") String certificateOrderName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AppServiceCertificateOrderInner certificateDistinguishedName, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("certificateOrderName") String certificateOrderName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AppServiceCertificateOrderInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("certificateOrderName") String certificateOrderName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AppServiceCertificateOrderPatchResource certificateDistinguishedName, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AppServiceCertificateCollectionInner>> listCertificates(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("certificateOrderName") String certificateOrderName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AppServiceCertificateResourceInner>> getCertificate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("certificateOrderName") String certificateOrderName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateCertificate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("certificateOrderName") String certificateOrderName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AppServiceCertificateResourceInner keyVaultCertificate, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> deleteCertificate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("certificateOrderName") String certificateOrderName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AppServiceCertificateResourceInner>> updateCertificate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("certificateOrderName") String certificateOrderName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AppServiceCertificatePatchResource keyVaultCertificate, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/reissue")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> reissue(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("certificateOrderName") String certificateOrderName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ReissueCertificateOrderRequest reissueCertificateOrderRequest, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/renew")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> renew(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("certificateOrderName") String certificateOrderName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RenewCertificateOrderRequest renewCertificateOrderRequest, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/resendEmail")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> resendEmail(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("certificateOrderName") String certificateOrderName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/resendRequestEmails")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> resendRequestEmails(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("certificateOrderName") String certificateOrderName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") NameIdentifierInner nameIdentifier, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/retrieveSiteSeal")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<SiteSealInner>> retrieveSiteSeal(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("certificateOrderName") String certificateOrderName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") SiteSealRequest siteSealRequest, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/verifyDomainOwnership")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<Response<Void>> verifyDomainOwnership(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("certificateOrderName") String certificateOrderName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{name}/retrieveCertificateActions")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<List<CertificateOrderActionInner>>> retrieveCertificateActions(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{name}/retrieveEmailHistory")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<List<CertificateEmailInner>>> retrieveCertificateEmailHistory(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AppServiceCertificateOrderInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("certificateOrderName") String certificateOrderName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AppServiceCertificateOrderInner certificateDistinguishedName, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AppServiceCertificateResourceInner>> beginCreateOrUpdateCertificate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("certificateOrderName") String certificateOrderName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AppServiceCertificateResourceInner keyVaultCertificate, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AppServiceCertificateOrderCollectionInner>> listNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
         Mono<SimpleResponse<AppServiceCertificateOrderCollectionInner>> listByResourceGroupNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
@@ -407,7 +433,7 @@ public final class AppServiceCertificateOrdersInner implements InnerSupportsGet<
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<AppServiceCertificateOrderInner> createOrUpdateAsync(String resourceGroupName, String certificateOrderName, AppServiceCertificateOrderInner certificateDistinguishedName) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = createOrUpdateWithResponseAsync(resourceGroupName, certificateOrderName, certificateDistinguishedName);
-        return client.<AppServiceCertificateOrderInner, AppServiceCertificateOrderInner>getLroResultAsync(response, client.getHttpPipeline(), AppServiceCertificateOrderInner.class, AppServiceCertificateOrderInner.class)
+        return this.client.<AppServiceCertificateOrderInner, AppServiceCertificateOrderInner>getLroResultAsync(response, this.client.getHttpPipeline(), AppServiceCertificateOrderInner.class, AppServiceCertificateOrderInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -654,7 +680,7 @@ public final class AppServiceCertificateOrdersInner implements InnerSupportsGet<
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<AppServiceCertificateResourceInner> createOrUpdateCertificateAsync(String resourceGroupName, String certificateOrderName, String name, AppServiceCertificateResourceInner keyVaultCertificate) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = createOrUpdateCertificateWithResponseAsync(resourceGroupName, certificateOrderName, name, keyVaultCertificate);
-        return client.<AppServiceCertificateResourceInner, AppServiceCertificateResourceInner>getLroResultAsync(response, client.getHttpPipeline(), AppServiceCertificateResourceInner.class, AppServiceCertificateResourceInner.class)
+        return this.client.<AppServiceCertificateResourceInner, AppServiceCertificateResourceInner>getLroResultAsync(response, this.client.getHttpPipeline(), AppServiceCertificateResourceInner.class, AppServiceCertificateResourceInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }

@@ -7,9 +7,9 @@
 package com.azure.management.appservice.models;
 
 import com.azure.core.annotation.Fluent;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.azure.management.appservice.CsmOperationDescriptionProperties;
 import com.azure.management.appservice.CsmOperationDisplay;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * The CsmOperationDescription model.

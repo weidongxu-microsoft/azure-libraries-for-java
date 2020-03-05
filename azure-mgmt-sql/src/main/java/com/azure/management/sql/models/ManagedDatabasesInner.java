@@ -10,6 +10,7 @@ import com.azure.core.annotation.BodyParam;
 import com.azure.core.annotation.Delete;
 import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
+import com.azure.core.annotation.Headers;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
 import com.azure.core.annotation.Patch;
@@ -69,60 +70,83 @@ public final class ManagedDatabasesInner {
     @Host("{$host}")
     @ServiceInterface(name = "SqlManagementClientManagedDatabases")
     private interface ManagedDatabasesService {
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ManagedDatabaseListResultInner>> listByInstance(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ManagedDatabaseInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ManagedDatabaseInner parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ManagedDatabaseUpdate parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/inaccessibleManagedDatabases")
+        @ExpectedResponses({200})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<ManagedDatabaseListResultInner>> listInaccessibleByInstance(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/completeRestore")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<Flux<ByteBuffer>>> completeRestore(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CompleteDatabaseRestoreDefinition parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ManagedDatabaseInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ManagedDatabaseInner parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ManagedDatabaseInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ManagedDatabaseUpdate parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json;q=0.9" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/completeRestore")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<Response<Void>> beginCompleteRestore(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CompleteDatabaseRestoreDefinition parameters, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("{nextLink}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<ManagedDatabaseListResultInner>> listByInstanceNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
+
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
+        @Get("{nextLink}")
+        @ExpectedResponses({200})
+        @UnexpectedResponseExceptionType(CloudException.class)
+        Mono<SimpleResponse<ManagedDatabaseListResultInner>> listInaccessibleByInstanceNext(@PathParam(value = "nextLink", encoded = true) String nextLink);
     }
 
     /**
@@ -136,7 +160,7 @@ public final class ManagedDatabasesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ManagedDatabaseInner>> listByInstanceSinglePageAsync(String resourceGroupName, String managedInstanceName) {
-        final String apiVersion = "2018-06-01-preview";
+        final String apiVersion = "2019-06-01-preview";
         return service.listByInstance(this.client.getHost(), resourceGroupName, managedInstanceName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
@@ -188,7 +212,7 @@ public final class ManagedDatabasesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ManagedDatabaseInner>> getWithResponseAsync(String resourceGroupName, String managedInstanceName, String databaseName) {
-        final String apiVersion = "2018-06-01-preview";
+        final String apiVersion = "2019-06-01-preview";
         return service.get(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -242,7 +266,7 @@ public final class ManagedDatabasesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String managedInstanceName, String databaseName, ManagedDatabaseInner parameters) {
-        final String apiVersion = "2018-06-01-preview";
+        final String apiVersion = "2019-06-01-preview";
         return service.createOrUpdate(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -260,7 +284,7 @@ public final class ManagedDatabasesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<ManagedDatabaseInner> createOrUpdateAsync(String resourceGroupName, String managedInstanceName, String databaseName, ManagedDatabaseInner parameters) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = createOrUpdateWithResponseAsync(resourceGroupName, managedInstanceName, databaseName, parameters);
-        return client.<ManagedDatabaseInner, ManagedDatabaseInner>getLroResultAsync(response, client.getHttpPipeline(), ManagedDatabaseInner.class, ManagedDatabaseInner.class)
+        return this.client.<ManagedDatabaseInner, ManagedDatabaseInner>getLroResultAsync(response, this.client.getHttpPipeline(), ManagedDatabaseInner.class, ManagedDatabaseInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -293,7 +317,7 @@ public final class ManagedDatabasesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String managedInstanceName, String databaseName) {
-        final String apiVersion = "2018-06-01-preview";
+        final String apiVersion = "2019-06-01-preview";
         return service.delete(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -310,7 +334,7 @@ public final class ManagedDatabasesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Void> deleteAsync(String resourceGroupName, String managedInstanceName, String databaseName) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = deleteWithResponseAsync(resourceGroupName, managedInstanceName, databaseName);
-        return client.<Void, Void>getLroResultAsync(response, client.getHttpPipeline(), Void.class, Void.class)
+        return this.client.<Void, Void>getLroResultAsync(response, this.client.getHttpPipeline(), Void.class, Void.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -343,7 +367,7 @@ public final class ManagedDatabasesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> updateWithResponseAsync(String resourceGroupName, String managedInstanceName, String databaseName, ManagedDatabaseUpdate parameters) {
-        final String apiVersion = "2018-06-01-preview";
+        final String apiVersion = "2019-06-01-preview";
         return service.update(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -361,7 +385,7 @@ public final class ManagedDatabasesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<ManagedDatabaseInner> updateAsync(String resourceGroupName, String managedInstanceName, String databaseName, ManagedDatabaseUpdate parameters) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = updateWithResponseAsync(resourceGroupName, managedInstanceName, databaseName, parameters);
-        return client.<ManagedDatabaseInner, ManagedDatabaseInner>getLroResultAsync(response, client.getHttpPipeline(), ManagedDatabaseInner.class, ManagedDatabaseInner.class)
+        return this.client.<ManagedDatabaseInner, ManagedDatabaseInner>getLroResultAsync(response, this.client.getHttpPipeline(), ManagedDatabaseInner.class, ManagedDatabaseInner.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -383,6 +407,57 @@ public final class ManagedDatabasesInner {
     }
 
     /**
+     * Gets a list of inaccessible managed databases in a managed instance.
+     * 
+     * @param resourceGroupName 
+     * @param managedInstanceName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<PagedResponse<ManagedDatabaseInner>> listInaccessibleByInstanceSinglePageAsync(String resourceGroupName, String managedInstanceName) {
+        final String apiVersion = "2019-06-01-preview";
+        return service.listInaccessibleByInstance(this.client.getHost(), resourceGroupName, managedInstanceName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+            res.getRequest(),
+            res.getStatusCode(),
+            res.getHeaders(),
+            res.getValue().value(),
+            res.getValue().nextLink(),
+            null));
+    }
+
+    /**
+     * Gets a list of inaccessible managed databases in a managed instance.
+     * 
+     * @param resourceGroupName 
+     * @param managedInstanceName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.COLLECTION)
+    public PagedFlux<ManagedDatabaseInner> listInaccessibleByInstanceAsync(String resourceGroupName, String managedInstanceName) {
+        return new PagedFlux<>(
+            () -> listInaccessibleByInstanceSinglePageAsync(resourceGroupName, managedInstanceName),
+            nextLink -> listInaccessibleByInstanceNextSinglePageAsync(nextLink));
+    }
+
+    /**
+     * Gets a list of inaccessible managed databases in a managed instance.
+     * 
+     * @param resourceGroupName 
+     * @param managedInstanceName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.COLLECTION)
+    public PagedIterable<ManagedDatabaseInner> listInaccessibleByInstance(String resourceGroupName, String managedInstanceName) {
+        return new PagedIterable<>(listInaccessibleByInstanceAsync(resourceGroupName, managedInstanceName));
+    }
+
+    /**
      * Completes the restore operation on a managed database.
      * 
      * @param resourceGroupName 
@@ -395,7 +470,7 @@ public final class ManagedDatabasesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> completeRestoreWithResponseAsync(String resourceGroupName, String managedInstanceName, String databaseName, String lastBackupName) {
-        final String apiVersion = "2018-06-01-preview";
+        final String apiVersion = "2019-06-01-preview";
         CompleteDatabaseRestoreDefinition parameters = new CompleteDatabaseRestoreDefinition();
         parameters.withLastBackupName(lastBackupName);
         return service.completeRestore(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -415,7 +490,7 @@ public final class ManagedDatabasesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Void> completeRestoreAsync(String resourceGroupName, String managedInstanceName, String databaseName, String lastBackupName) {
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = completeRestoreWithResponseAsync(resourceGroupName, managedInstanceName, databaseName, lastBackupName);
-        return client.<Void, Void>getLroResultAsync(response, client.getHttpPipeline(), Void.class, Void.class)
+        return this.client.<Void, Void>getLroResultAsync(response, this.client.getHttpPipeline(), Void.class, Void.class)
             .last()
             .flatMap(AsyncPollResponse::getFinalResult);
     }
@@ -449,7 +524,7 @@ public final class ManagedDatabasesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ManagedDatabaseInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String managedInstanceName, String databaseName, ManagedDatabaseInner parameters) {
-        final String apiVersion = "2018-06-01-preview";
+        final String apiVersion = "2019-06-01-preview";
         return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -504,7 +579,7 @@ public final class ManagedDatabasesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String managedInstanceName, String databaseName) {
-        final String apiVersion = "2018-06-01-preview";
+        final String apiVersion = "2019-06-01-preview";
         return service.beginDelete(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, this.client.getSubscriptionId(), apiVersion);
     }
 
@@ -552,7 +627,7 @@ public final class ManagedDatabasesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ManagedDatabaseInner>> beginUpdateWithResponseAsync(String resourceGroupName, String managedInstanceName, String databaseName, ManagedDatabaseUpdate parameters) {
-        final String apiVersion = "2018-06-01-preview";
+        final String apiVersion = "2019-06-01-preview";
         return service.beginUpdate(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, this.client.getSubscriptionId(), parameters, apiVersion);
     }
 
@@ -608,7 +683,7 @@ public final class ManagedDatabasesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginCompleteRestoreWithResponseAsync(String resourceGroupName, String managedInstanceName, String databaseName, String lastBackupName) {
-        final String apiVersion = "2018-06-01-preview";
+        final String apiVersion = "2019-06-01-preview";
         CompleteDatabaseRestoreDefinition parameters = new CompleteDatabaseRestoreDefinition();
         parameters.withLastBackupName(lastBackupName);
         return service.beginCompleteRestore(this.client.getHost(), resourceGroupName, managedInstanceName, databaseName, this.client.getSubscriptionId(), parameters, apiVersion);
@@ -658,6 +733,25 @@ public final class ManagedDatabasesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ManagedDatabaseInner>> listByInstanceNextSinglePageAsync(String nextLink) {
         return service.listByInstanceNext(nextLink).map(res -> new PagedResponseBase<>(
+            res.getRequest(),
+            res.getStatusCode(),
+            res.getHeaders(),
+            res.getValue().value(),
+            res.getValue().nextLink(),
+            null));
+    }
+
+    /**
+     * Get the next page of items.
+     * 
+     * @param nextLink null
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<PagedResponse<ManagedDatabaseInner>> listInaccessibleByInstanceNextSinglePageAsync(String nextLink) {
+        return service.listInaccessibleByInstanceNext(nextLink).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),

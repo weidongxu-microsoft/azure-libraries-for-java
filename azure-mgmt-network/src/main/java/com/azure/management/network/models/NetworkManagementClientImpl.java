@@ -8,6 +8,7 @@ package com.azure.management.network.models;
 
 import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
+import com.azure.core.annotation.Headers;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
 import com.azure.core.annotation.PathParam;
@@ -1357,7 +1358,7 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
         this.p2SVpnServerConfigurations = new P2SVpnServerConfigurationsInner(this);
         this.p2SVpnGateways = new P2SVpnGatewaysInner(this);
         this.webApplicationFirewallPolicies = new WebApplicationFirewallPoliciesInner(this);
-        this.service = RestProxy.create(NetworkManagementClientService.class, this.httpPipeline);
+        this.service = RestProxy.create(NetworkManagementClientService.class, this.httpPipeline, this.getSerializerAdapter());
     }
 
     /**
@@ -1367,11 +1368,13 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
     @Host("{$host}")
     @ServiceInterface(name = "NetworkManagementClient")
     private interface NetworkManagementClientService {
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/CheckDnsNameAvailability")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
         Mono<SimpleResponse<DnsNameAvailabilityResultInner>> checkDnsNameAvailability(@HostParam("$host") String host, @PathParam("location") String location, @QueryParam("domainNameLabel") String domainNameLabel, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
 
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/supportedSecurityProviders")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorException.class)

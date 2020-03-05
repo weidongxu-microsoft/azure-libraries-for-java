@@ -1189,34 +1189,6 @@ public final class SqlManagementClientImpl extends AzureServiceClient {
     }
 
     /**
-     * The ManagedDatabaseRestoreDetailsInner object to access its operations.
-     */
-    private ManagedDatabaseRestoreDetailsInner managedDatabaseRestoreDetails;
-
-    /**
-     * Gets the ManagedDatabaseRestoreDetailsInner object to access its operations.
-     * 
-     * @return the ManagedDatabaseRestoreDetailsInner object.
-     */
-    public ManagedDatabaseRestoreDetailsInner managedDatabaseRestoreDetails() {
-        return this.managedDatabaseRestoreDetails;
-    }
-
-    /**
-     * The ManagedDatabasesInner object to access its operations.
-     */
-    private ManagedDatabasesInner managedDatabases;
-
-    /**
-     * Gets the ManagedDatabasesInner object to access its operations.
-     * 
-     * @return the ManagedDatabasesInner object.
-     */
-    public ManagedDatabasesInner managedDatabases() {
-        return this.managedDatabases;
-    }
-
-    /**
      * The PrivateEndpointConnectionsInner object to access its operations.
      */
     private PrivateEndpointConnectionsInner privateEndpointConnections;
@@ -1259,20 +1231,6 @@ public final class SqlManagementClientImpl extends AzureServiceClient {
     }
 
     /**
-     * The ServerAzureADAdministratorsInner object to access its operations.
-     */
-    private ServerAzureADAdministratorsInner serverAzureADAdministrators;
-
-    /**
-     * Gets the ServerAzureADAdministratorsInner object to access its operations.
-     * 
-     * @return the ServerAzureADAdministratorsInner object.
-     */
-    public ServerAzureADAdministratorsInner serverAzureADAdministrators() {
-        return this.serverAzureADAdministrators;
-    }
-
-    /**
      * The CapabilitiesInner object to access its operations.
      */
     private CapabilitiesInner capabilities;
@@ -1284,6 +1242,34 @@ public final class SqlManagementClientImpl extends AzureServiceClient {
      */
     public CapabilitiesInner capabilities() {
         return this.capabilities;
+    }
+
+    /**
+     * The LongTermRetentionManagedInstanceBackupsInner object to access its operations.
+     */
+    private LongTermRetentionManagedInstanceBackupsInner longTermRetentionManagedInstanceBackups;
+
+    /**
+     * Gets the LongTermRetentionManagedInstanceBackupsInner object to access its operations.
+     * 
+     * @return the LongTermRetentionManagedInstanceBackupsInner object.
+     */
+    public LongTermRetentionManagedInstanceBackupsInner longTermRetentionManagedInstanceBackups() {
+        return this.longTermRetentionManagedInstanceBackups;
+    }
+
+    /**
+     * The ManagedInstanceLongTermRetentionPoliciesInner object to access its operations.
+     */
+    private ManagedInstanceLongTermRetentionPoliciesInner managedInstanceLongTermRetentionPolicies;
+
+    /**
+     * Gets the ManagedInstanceLongTermRetentionPoliciesInner object to access its operations.
+     * 
+     * @return the ManagedInstanceLongTermRetentionPoliciesInner object.
+     */
+    public ManagedInstanceLongTermRetentionPoliciesInner managedInstanceLongTermRetentionPolicies() {
+        return this.managedInstanceLongTermRetentionPolicies;
     }
 
     /**
@@ -1312,6 +1298,48 @@ public final class SqlManagementClientImpl extends AzureServiceClient {
      */
     public WorkloadClassifiersInner workloadClassifiers() {
         return this.workloadClassifiers;
+    }
+
+    /**
+     * The ManagedDatabaseRestoreDetailsInner object to access its operations.
+     */
+    private ManagedDatabaseRestoreDetailsInner managedDatabaseRestoreDetails;
+
+    /**
+     * Gets the ManagedDatabaseRestoreDetailsInner object to access its operations.
+     * 
+     * @return the ManagedDatabaseRestoreDetailsInner object.
+     */
+    public ManagedDatabaseRestoreDetailsInner managedDatabaseRestoreDetails() {
+        return this.managedDatabaseRestoreDetails;
+    }
+
+    /**
+     * The ManagedDatabasesInner object to access its operations.
+     */
+    private ManagedDatabasesInner managedDatabases;
+
+    /**
+     * Gets the ManagedDatabasesInner object to access its operations.
+     * 
+     * @return the ManagedDatabasesInner object.
+     */
+    public ManagedDatabasesInner managedDatabases() {
+        return this.managedDatabases;
+    }
+
+    /**
+     * The ServerAzureADAdministratorsInner object to access its operations.
+     */
+    private ServerAzureADAdministratorsInner serverAzureADAdministrators;
+
+    /**
+     * Gets the ServerAzureADAdministratorsInner object to access its operations.
+     * 
+     * @return the ServerAzureADAdministratorsInner object.
+     */
+    public ServerAzureADAdministratorsInner serverAzureADAdministrators() {
+        return this.serverAzureADAdministrators;
     }
 
     /**
@@ -1418,14 +1446,16 @@ public final class SqlManagementClientImpl extends AzureServiceClient {
         this.instancePools = new InstancePoolsInner(this);
         this.usages = new UsagesInner(this);
         this.managedInstances = new ManagedInstancesInner(this);
-        this.managedDatabaseRestoreDetails = new ManagedDatabaseRestoreDetailsInner(this);
-        this.managedDatabases = new ManagedDatabasesInner(this);
         this.privateEndpointConnections = new PrivateEndpointConnectionsInner(this);
         this.privateLinkResources = new PrivateLinkResourcesInner(this);
         this.servers = new ServersInner(this);
-        this.serverAzureADAdministrators = new ServerAzureADAdministratorsInner(this);
         this.capabilities = new CapabilitiesInner(this);
+        this.longTermRetentionManagedInstanceBackups = new LongTermRetentionManagedInstanceBackupsInner(this);
+        this.managedInstanceLongTermRetentionPolicies = new ManagedInstanceLongTermRetentionPoliciesInner(this);
         this.workloadGroups = new WorkloadGroupsInner(this);
         this.workloadClassifiers = new WorkloadClassifiersInner(this);
+        this.managedDatabaseRestoreDetails = new ManagedDatabaseRestoreDetailsInner(this);
+        this.managedDatabases = new ManagedDatabasesInner(this);
+        this.serverAzureADAdministrators = new ServerAzureADAdministratorsInner(this);
     }
 }

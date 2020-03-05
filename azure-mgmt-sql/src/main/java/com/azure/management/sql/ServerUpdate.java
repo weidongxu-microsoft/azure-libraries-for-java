@@ -67,6 +67,13 @@ public class ServerUpdate {
     @JsonProperty(value = "properties.minimalTlsVersion")
     private String minimalTlsVersion;
 
+    /*
+     * Whether or not public endpoint access is allowed for this server.  Value
+     * is optional but if passed in, must be 'Enabled' or 'Disabled'
+     */
+    @JsonProperty(value = "properties.publicNetworkAccess")
+    private ServerPublicNetworkAccess publicNetworkAccess;
+
     /**
      * Get the tags property: Resource tags.
      * 
@@ -200,6 +207,30 @@ public class ServerUpdate {
      */
     public ServerUpdate withMinimalTlsVersion(String minimalTlsVersion) {
         this.minimalTlsVersion = minimalTlsVersion;
+        return this;
+    }
+
+    /**
+     * Get the publicNetworkAccess property: Whether or not public endpoint
+     * access is allowed for this server.  Value is optional but if passed in,
+     * must be 'Enabled' or 'Disabled'.
+     * 
+     * @return the publicNetworkAccess value.
+     */
+    public ServerPublicNetworkAccess publicNetworkAccess() {
+        return this.publicNetworkAccess;
+    }
+
+    /**
+     * Set the publicNetworkAccess property: Whether or not public endpoint
+     * access is allowed for this server.  Value is optional but if passed in,
+     * must be 'Enabled' or 'Disabled'.
+     * 
+     * @param publicNetworkAccess the publicNetworkAccess value to set.
+     * @return the ServerUpdate object itself.
+     */
+    public ServerUpdate withPublicNetworkAccess(ServerPublicNetworkAccess publicNetworkAccess) {
+        this.publicNetworkAccess = publicNetworkAccess;
         return this;
     }
 }

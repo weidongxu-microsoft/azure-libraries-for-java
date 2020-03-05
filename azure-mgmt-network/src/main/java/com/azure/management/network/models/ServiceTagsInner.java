@@ -8,6 +8,7 @@ package com.azure.management.network.models;
 
 import com.azure.core.annotation.ExpectedResponses;
 import com.azure.core.annotation.Get;
+import com.azure.core.annotation.Headers;
 import com.azure.core.annotation.Host;
 import com.azure.core.annotation.HostParam;
 import com.azure.core.annotation.PathParam;
@@ -54,6 +55,7 @@ public final class ServiceTagsInner {
     @Host("{$host}")
     @ServiceInterface(name = "NetworkManagementClientServiceTags")
     private interface ServiceTagsService {
+        @Headers({ "Content-Type: application/json", "Accept: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/serviceTags")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)

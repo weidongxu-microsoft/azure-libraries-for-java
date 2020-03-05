@@ -8,10 +8,10 @@ package com.azure.management.appservice.models;
 
 import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.azure.management.appservice.ApplicationStack;
 import com.azure.management.appservice.ProxyOnlyResource;
 import com.azure.management.appservice.StackMajorVersion;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**

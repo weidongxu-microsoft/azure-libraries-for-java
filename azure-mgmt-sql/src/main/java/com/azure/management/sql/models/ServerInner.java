@@ -11,6 +11,7 @@ import com.azure.core.annotation.JsonFlatten;
 import com.azure.core.management.Resource;
 import com.azure.management.sql.ResourceIdentity;
 import com.azure.management.sql.ServerPrivateEndpointConnection;
+import com.azure.management.sql.ServerPublicNetworkAccess;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
@@ -75,6 +76,13 @@ public class ServerInner extends Resource {
      */
     @JsonProperty(value = "properties.minimalTlsVersion")
     private String minimalTlsVersion;
+
+    /*
+     * Whether or not public endpoint access is allowed for this server.  Value
+     * is optional but if passed in, must be 'Enabled' or 'Disabled'
+     */
+    @JsonProperty(value = "properties.publicNetworkAccess")
+    private ServerPublicNetworkAccess publicNetworkAccess;
 
     /**
      * Get the identity property: Azure Active Directory identity configuration
@@ -221,6 +229,30 @@ public class ServerInner extends Resource {
      */
     public ServerInner withMinimalTlsVersion(String minimalTlsVersion) {
         this.minimalTlsVersion = minimalTlsVersion;
+        return this;
+    }
+
+    /**
+     * Get the publicNetworkAccess property: Whether or not public endpoint
+     * access is allowed for this server.  Value is optional but if passed in,
+     * must be 'Enabled' or 'Disabled'.
+     * 
+     * @return the publicNetworkAccess value.
+     */
+    public ServerPublicNetworkAccess publicNetworkAccess() {
+        return this.publicNetworkAccess;
+    }
+
+    /**
+     * Set the publicNetworkAccess property: Whether or not public endpoint
+     * access is allowed for this server.  Value is optional but if passed in,
+     * must be 'Enabled' or 'Disabled'.
+     * 
+     * @param publicNetworkAccess the publicNetworkAccess value to set.
+     * @return the ServerInner object itself.
+     */
+    public ServerInner withPublicNetworkAccess(ServerPublicNetworkAccess publicNetworkAccess) {
+        this.publicNetworkAccess = publicNetworkAccess;
         return this;
     }
 }

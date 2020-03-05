@@ -8,12 +8,12 @@ package com.azure.management.appservice.models;
 
 import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.azure.management.appservice.AzureResourceType;
 import com.azure.management.appservice.CustomHostNameDnsRecordType;
 import com.azure.management.appservice.HostNameType;
 import com.azure.management.appservice.ProxyOnlyResource;
 import com.azure.management.appservice.SslState;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * The HostNameBinding model.

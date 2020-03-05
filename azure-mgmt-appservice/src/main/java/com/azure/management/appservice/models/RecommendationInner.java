@@ -8,11 +8,11 @@ package com.azure.management.appservice.models;
 
 import com.azure.core.annotation.Fluent;
 import com.azure.core.annotation.JsonFlatten;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.azure.management.appservice.Channels;
 import com.azure.management.appservice.NotificationLevel;
 import com.azure.management.appservice.ProxyOnlyResource;
 import com.azure.management.appservice.ResourceScopeType;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
