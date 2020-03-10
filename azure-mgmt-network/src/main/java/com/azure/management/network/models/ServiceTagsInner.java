@@ -59,7 +59,7 @@ public final class ServiceTagsInner {
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/serviceTags")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ServiceTagsListResultInner>> list(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ServiceTagsListResultInner>> list(@HostParam("$host") String host, @PathParam("location") String location, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
     }
 
     /**
@@ -73,7 +73,7 @@ public final class ServiceTagsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ServiceTagsListResultInner>> listWithResponseAsync(String location) {
         final String apiVersion = "2019-06-01";
-        return service.list(this.client.getHost(), location, this.client.getSubscriptionId(), apiVersion);
+        return service.list(this.client.getHost(), location, apiVersion, this.client.getSubscriptionId());
     }
 
     /**

@@ -77,13 +77,13 @@ public final class SnapshotsInner implements InnerSupportsGet<SnapshotInner>, In
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("snapshotName") String snapshotName, @BodyParam("application/json") SnapshotInner snapshot, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("snapshotName") String snapshotName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SnapshotInner snapshot);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("snapshotName") String snapshotName, @BodyParam("application/json") SnapshotUpdate snapshot, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("snapshotName") String snapshotName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SnapshotUpdate snapshot);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}")
@@ -113,7 +113,7 @@ public final class SnapshotsInner implements InnerSupportsGet<SnapshotInner>, In
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}/beginGetAccess")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> grantAccess(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("snapshotName") String snapshotName, @BodyParam("application/json") GrantAccessData grantAccessData, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> grantAccess(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("snapshotName") String snapshotName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") GrantAccessData grantAccessData);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}/endGetAccess")
@@ -125,13 +125,13 @@ public final class SnapshotsInner implements InnerSupportsGet<SnapshotInner>, In
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<SnapshotInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("snapshotName") String snapshotName, @BodyParam("application/json") SnapshotInner snapshot, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SnapshotInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("snapshotName") String snapshotName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SnapshotInner snapshot);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<SnapshotInner>> beginUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("snapshotName") String snapshotName, @BodyParam("application/json") SnapshotUpdate snapshot, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SnapshotInner>> beginUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("snapshotName") String snapshotName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SnapshotUpdate snapshot);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}")
@@ -143,7 +143,7 @@ public final class SnapshotsInner implements InnerSupportsGet<SnapshotInner>, In
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}/beginGetAccess")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<AccessUriInner>> beginGrantAccess(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("snapshotName") String snapshotName, @BodyParam("application/json") GrantAccessData grantAccessData, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<AccessUriInner>> beginGrantAccess(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("snapshotName") String snapshotName, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") GrantAccessData grantAccessData);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}/endGetAccess")
@@ -177,7 +177,7 @@ public final class SnapshotsInner implements InnerSupportsGet<SnapshotInner>, In
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String snapshotName, SnapshotInner snapshot) {
         final String apiVersion = "2019-03-01";
-        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, snapshotName, snapshot, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, snapshotName, apiVersion, snapshot);
     }
 
     /**
@@ -226,7 +226,7 @@ public final class SnapshotsInner implements InnerSupportsGet<SnapshotInner>, In
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> updateWithResponseAsync(String resourceGroupName, String snapshotName, SnapshotUpdate snapshot) {
         final String apiVersion = "2019-03-01";
-        return service.update(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, snapshotName, snapshot, apiVersion);
+        return service.update(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, snapshotName, apiVersion, snapshot);
     }
 
     /**
@@ -461,7 +461,7 @@ public final class SnapshotsInner implements InnerSupportsGet<SnapshotInner>, In
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> grantAccessWithResponseAsync(String resourceGroupName, String snapshotName, GrantAccessData grantAccessData) {
         final String apiVersion = "2019-03-01";
-        return service.grantAccess(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, snapshotName, grantAccessData, apiVersion);
+        return service.grantAccess(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, snapshotName, apiVersion, grantAccessData);
     }
 
     /**
@@ -556,7 +556,7 @@ public final class SnapshotsInner implements InnerSupportsGet<SnapshotInner>, In
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SnapshotInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String snapshotName, SnapshotInner snapshot) {
         final String apiVersion = "2019-03-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, snapshotName, snapshot, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, snapshotName, apiVersion, snapshot);
     }
 
     /**
@@ -609,7 +609,7 @@ public final class SnapshotsInner implements InnerSupportsGet<SnapshotInner>, In
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SnapshotInner>> beginUpdateWithResponseAsync(String resourceGroupName, String snapshotName, SnapshotUpdate snapshot) {
         final String apiVersion = "2019-03-01";
-        return service.beginUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, snapshotName, snapshot, apiVersion);
+        return service.beginUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, snapshotName, apiVersion, snapshot);
     }
 
     /**
@@ -706,7 +706,7 @@ public final class SnapshotsInner implements InnerSupportsGet<SnapshotInner>, In
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<AccessUriInner>> beginGrantAccessWithResponseAsync(String resourceGroupName, String snapshotName, GrantAccessData grantAccessData) {
         final String apiVersion = "2019-03-01";
-        return service.beginGrantAccess(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, snapshotName, grantAccessData, apiVersion);
+        return service.beginGrantAccess(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, snapshotName, apiVersion, grantAccessData);
     }
 
     /**

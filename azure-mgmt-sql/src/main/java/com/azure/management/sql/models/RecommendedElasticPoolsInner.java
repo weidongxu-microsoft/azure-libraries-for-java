@@ -63,19 +63,19 @@ public final class RecommendedElasticPoolsInner {
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/recommendedElasticPools/{recommendedElasticPoolName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<RecommendedElasticPoolInner>> get(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("recommendedElasticPoolName") String recommendedElasticPoolName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<RecommendedElasticPoolInner>> get(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("recommendedElasticPoolName") String recommendedElasticPoolName);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/recommendedElasticPools")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<RecommendedElasticPoolListResultInner>> listByServer(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<RecommendedElasticPoolListResultInner>> listByServer(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/recommendedElasticPools/{recommendedElasticPoolName}/metrics")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<RecommendedElasticPoolListMetricsResultInner>> listMetrics(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("recommendedElasticPoolName") String recommendedElasticPoolName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<RecommendedElasticPoolListMetricsResultInner>> listMetrics(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("recommendedElasticPoolName") String recommendedElasticPoolName);
     }
 
     /**
@@ -91,7 +91,7 @@ public final class RecommendedElasticPoolsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<RecommendedElasticPoolInner>> getWithResponseAsync(String resourceGroupName, String serverName, String recommendedElasticPoolName) {
         final String apiVersion = "2014-04-01";
-        return service.get(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, recommendedElasticPoolName, apiVersion);
+        return service.get(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, recommendedElasticPoolName);
     }
 
     /**
@@ -143,7 +143,7 @@ public final class RecommendedElasticPoolsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<RecommendedElasticPoolInner>> listByServerSinglePageAsync(String resourceGroupName, String serverName) {
         final String apiVersion = "2014-04-01";
-        return service.listByServer(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listByServer(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -194,7 +194,7 @@ public final class RecommendedElasticPoolsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<RecommendedElasticPoolMetricInner>> listMetricsSinglePageAsync(String resourceGroupName, String serverName, String recommendedElasticPoolName) {
         final String apiVersion = "2014-04-01";
-        return service.listMetrics(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, recommendedElasticPoolName, apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listMetrics(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, recommendedElasticPoolName).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),

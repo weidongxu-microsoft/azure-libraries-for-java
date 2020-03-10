@@ -73,43 +73,43 @@ public final class ContainerServicesInner implements InnerSupportsGet<ContainerS
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/containerServices")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ContainerServiceListResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ContainerServiceListResultInner>> list(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("containerServiceName") String containerServiceName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ContainerServiceInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("containerServiceName") String containerServiceName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ContainerServiceInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ContainerServiceInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("containerServiceName") String containerServiceName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ContainerServiceInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("containerServiceName") String containerServiceName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("containerServiceName") String containerServiceName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("containerServiceName") String containerServiceName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ContainerServiceListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ContainerServiceListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ContainerServiceInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("containerServiceName") String containerServiceName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ContainerServiceInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ContainerServiceInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("containerServiceName") String containerServiceName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ContainerServiceInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("containerServiceName") String containerServiceName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("containerServiceName") String containerServiceName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -133,7 +133,7 @@ public final class ContainerServicesInner implements InnerSupportsGet<ContainerS
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ContainerServiceInner>> listSinglePageAsync() {
         final String apiVersion = "2017-01-31";
-        return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -179,7 +179,7 @@ public final class ContainerServicesInner implements InnerSupportsGet<ContainerS
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String containerServiceName, ContainerServiceInner parameters) {
         final String apiVersion = "2017-01-31";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, containerServiceName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, containerServiceName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -227,7 +227,7 @@ public final class ContainerServicesInner implements InnerSupportsGet<ContainerS
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ContainerServiceInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String containerServiceName) {
         final String apiVersion = "2017-01-31";
-        return service.getByResourceGroup(this.client.getHost(), resourceGroupName, containerServiceName, this.client.getSubscriptionId(), apiVersion);
+        return service.getByResourceGroup(this.client.getHost(), resourceGroupName, containerServiceName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -277,7 +277,7 @@ public final class ContainerServicesInner implements InnerSupportsGet<ContainerS
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String containerServiceName) {
         final String apiVersion = "2017-01-31";
-        return service.delete(this.client.getHost(), resourceGroupName, containerServiceName, this.client.getSubscriptionId(), apiVersion);
+        return service.delete(this.client.getHost(), resourceGroupName, containerServiceName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -322,7 +322,7 @@ public final class ContainerServicesInner implements InnerSupportsGet<ContainerS
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ContainerServiceInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
         final String apiVersion = "2017-01-31";
-        return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listByResourceGroup(this.client.getHost(), resourceGroupName, apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -372,7 +372,7 @@ public final class ContainerServicesInner implements InnerSupportsGet<ContainerS
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ContainerServiceInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String containerServiceName, ContainerServiceInner parameters) {
         final String apiVersion = "2017-01-31";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, containerServiceName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, containerServiceName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -424,7 +424,7 @@ public final class ContainerServicesInner implements InnerSupportsGet<ContainerS
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String containerServiceName) {
         final String apiVersion = "2017-01-31";
-        return service.beginDelete(this.client.getHost(), resourceGroupName, containerServiceName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginDelete(this.client.getHost(), resourceGroupName, containerServiceName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**

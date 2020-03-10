@@ -70,37 +70,37 @@ public final class VirtualMachineScaleSetExtensionsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("vmssExtensionName") String vmssExtensionName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineScaleSetExtensionInner extensionParameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("vmssExtensionName") String vmssExtensionName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineScaleSetExtensionInner extensionParameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("vmssExtensionName") String vmssExtensionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("vmssExtensionName") String vmssExtensionName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualMachineScaleSetExtensionInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("vmssExtensionName") String vmssExtensionName, @QueryParam("$expand") String expand, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VirtualMachineScaleSetExtensionInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("vmssExtensionName") String vmssExtensionName, @QueryParam("$expand") String expand, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualMachineScaleSetExtensionListResultInner>> list(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VirtualMachineScaleSetExtensionListResultInner>> list(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualMachineScaleSetExtensionInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("vmssExtensionName") String vmssExtensionName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineScaleSetExtensionInner extensionParameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VirtualMachineScaleSetExtensionInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("vmssExtensionName") String vmssExtensionName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineScaleSetExtensionInner extensionParameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("vmssExtensionName") String vmssExtensionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("vmssExtensionName") String vmssExtensionName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -123,7 +123,7 @@ public final class VirtualMachineScaleSetExtensionsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String vmScaleSetName, String vmssExtensionName, VirtualMachineScaleSetExtensionInner extensionParameters) {
         final String apiVersion = "2019-03-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, vmScaleSetName, vmssExtensionName, this.client.getSubscriptionId(), extensionParameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, vmScaleSetName, vmssExtensionName, apiVersion, this.client.getSubscriptionId(), extensionParameters);
     }
 
     /**
@@ -174,7 +174,7 @@ public final class VirtualMachineScaleSetExtensionsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String vmScaleSetName, String vmssExtensionName) {
         final String apiVersion = "2019-03-01";
-        return service.delete(this.client.getHost(), resourceGroupName, vmScaleSetName, vmssExtensionName, this.client.getSubscriptionId(), apiVersion);
+        return service.delete(this.client.getHost(), resourceGroupName, vmScaleSetName, vmssExtensionName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -224,7 +224,7 @@ public final class VirtualMachineScaleSetExtensionsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VirtualMachineScaleSetExtensionInner>> getWithResponseAsync(String resourceGroupName, String vmScaleSetName, String vmssExtensionName, String expand) {
         final String apiVersion = "2019-03-01";
-        return service.get(this.client.getHost(), resourceGroupName, vmScaleSetName, vmssExtensionName, expand, this.client.getSubscriptionId(), apiVersion);
+        return service.get(this.client.getHost(), resourceGroupName, vmScaleSetName, vmssExtensionName, expand, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -263,7 +263,6 @@ public final class VirtualMachineScaleSetExtensionsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<VirtualMachineScaleSetExtensionInner> getAsync(String resourceGroupName, String vmScaleSetName, String vmssExtensionName) {
         final String expand = null;
-        final String apiVersion = "2019-03-01";
         return getWithResponseAsync(resourceGroupName, vmScaleSetName, vmssExtensionName, expand)
             .flatMap((SimpleResponse<VirtualMachineScaleSetExtensionInner> res) -> {
                 if (res.getValue() != null) {
@@ -303,7 +302,6 @@ public final class VirtualMachineScaleSetExtensionsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public VirtualMachineScaleSetExtensionInner get(String resourceGroupName, String vmScaleSetName, String vmssExtensionName) {
         final String expand = null;
-        final String apiVersion = "2019-03-01";
         return getAsync(resourceGroupName, vmScaleSetName, vmssExtensionName, expand).block();
     }
 
@@ -319,7 +317,7 @@ public final class VirtualMachineScaleSetExtensionsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<VirtualMachineScaleSetExtensionInner>> listSinglePageAsync(String resourceGroupName, String vmScaleSetName) {
         final String apiVersion = "2019-03-01";
-        return service.list(this.client.getHost(), resourceGroupName, vmScaleSetName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), resourceGroupName, vmScaleSetName, apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -372,7 +370,7 @@ public final class VirtualMachineScaleSetExtensionsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VirtualMachineScaleSetExtensionInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String vmScaleSetName, String vmssExtensionName, VirtualMachineScaleSetExtensionInner extensionParameters) {
         final String apiVersion = "2019-03-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, vmScaleSetName, vmssExtensionName, this.client.getSubscriptionId(), extensionParameters, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, vmScaleSetName, vmssExtensionName, apiVersion, this.client.getSubscriptionId(), extensionParameters);
     }
 
     /**
@@ -427,7 +425,7 @@ public final class VirtualMachineScaleSetExtensionsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String vmScaleSetName, String vmssExtensionName) {
         final String apiVersion = "2019-03-01";
-        return service.beginDelete(this.client.getHost(), resourceGroupName, vmScaleSetName, vmssExtensionName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginDelete(this.client.getHost(), resourceGroupName, vmScaleSetName, vmssExtensionName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**

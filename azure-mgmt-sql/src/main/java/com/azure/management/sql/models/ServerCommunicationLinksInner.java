@@ -70,31 +70,31 @@ public final class ServerCommunicationLinksInner {
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/communicationLinks/{communicationLinkName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("communicationLinkName") String communicationLinkName, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> delete(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("communicationLinkName") String communicationLinkName);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/communicationLinks/{communicationLinkName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ServerCommunicationLinkInner>> get(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("communicationLinkName") String communicationLinkName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ServerCommunicationLinkInner>> get(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("communicationLinkName") String communicationLinkName);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/communicationLinks/{communicationLinkName}")
         @ExpectedResponses({201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("communicationLinkName") String communicationLinkName, @BodyParam("application/json") ServerCommunicationLinkInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("communicationLinkName") String communicationLinkName, @BodyParam("application/json") ServerCommunicationLinkInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/communicationLinks")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ServerCommunicationLinkListResultInner>> listByServer(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ServerCommunicationLinkListResultInner>> listByServer(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/communicationLinks/{communicationLinkName}")
         @ExpectedResponses({201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ServerCommunicationLinkInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("communicationLinkName") String communicationLinkName, @BodyParam("application/json") ServerCommunicationLinkInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ServerCommunicationLinkInner>> beginCreateOrUpdate(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("communicationLinkName") String communicationLinkName, @BodyParam("application/json") ServerCommunicationLinkInner parameters);
     }
 
     /**
@@ -110,7 +110,7 @@ public final class ServerCommunicationLinksInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> deleteWithResponseAsync(String resourceGroupName, String serverName, String communicationLinkName) {
         final String apiVersion = "2014-04-01";
-        return service.delete(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, communicationLinkName, apiVersion);
+        return service.delete(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, communicationLinkName);
     }
 
     /**
@@ -157,7 +157,7 @@ public final class ServerCommunicationLinksInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ServerCommunicationLinkInner>> getWithResponseAsync(String resourceGroupName, String serverName, String communicationLinkName) {
         final String apiVersion = "2014-04-01";
-        return service.get(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, communicationLinkName, apiVersion);
+        return service.get(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, communicationLinkName);
     }
 
     /**
@@ -213,7 +213,7 @@ public final class ServerCommunicationLinksInner {
         final String apiVersion = "2014-04-01";
         ServerCommunicationLinkInner parameters = new ServerCommunicationLinkInner();
         parameters.withPartnerServer(partnerServer);
-        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, communicationLinkName, parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, communicationLinkName, parameters);
     }
 
     /**
@@ -263,7 +263,7 @@ public final class ServerCommunicationLinksInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ServerCommunicationLinkInner>> listByServerSinglePageAsync(String resourceGroupName, String serverName) {
         final String apiVersion = "2014-04-01";
-        return service.listByServer(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listByServer(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -317,7 +317,7 @@ public final class ServerCommunicationLinksInner {
         final String apiVersion = "2014-04-01";
         ServerCommunicationLinkInner parameters = new ServerCommunicationLinkInner();
         parameters.withPartnerServer(partnerServer);
-        return service.beginCreateOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, communicationLinkName, parameters, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, communicationLinkName, parameters);
     }
 
     /**

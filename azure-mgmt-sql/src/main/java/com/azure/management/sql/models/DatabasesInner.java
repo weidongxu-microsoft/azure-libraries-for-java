@@ -77,31 +77,31 @@ public final class DatabasesInner {
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/import")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> importMethod(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @BodyParam("application/json") ImportRequest parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> importMethod(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @BodyParam("application/json") ImportRequest parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/{extensionName}")
         @ExpectedResponses({201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createImportOperation(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("extensionName") String extensionName, @BodyParam("application/json") ImportExtensionRequest parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createImportOperation(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("extensionName") String extensionName, @BodyParam("application/json") ImportExtensionRequest parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/export")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> export(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @BodyParam("application/json") ExportRequest parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> export(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @BodyParam("application/json") ExportRequest parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/metrics")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<MetricListResultInner>> listMetrics(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @QueryParam("$filter") String filter, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<MetricListResultInner>> listMetrics(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @QueryParam("$filter") String filter);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/metricDefinitions")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<MetricDefinitionListResultInner>> listMetricDefinitions(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<MetricDefinitionListResultInner>> listMetricDefinitions(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases")
@@ -119,7 +119,7 @@ public final class DatabasesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DatabaseInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DatabaseInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}")
@@ -131,7 +131,7 @@ public final class DatabasesInner {
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DatabaseUpdate parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DatabaseUpdate parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/databases")
@@ -161,7 +161,7 @@ public final class DatabasesInner {
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/move")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> rename(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ResourceMoveDefinition parameters, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> rename(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ResourceMoveDefinition parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/failover")
@@ -173,25 +173,25 @@ public final class DatabasesInner {
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/import")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ImportExportResponseInner>> beginImport(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @BodyParam("application/json") ImportRequest parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ImportExportResponseInner>> beginImport(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @BodyParam("application/json") ImportRequest parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/{extensionName}")
         @ExpectedResponses({201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ImportExportResponseInner>> beginCreateImportOperation(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("extensionName") String extensionName, @BodyParam("application/json") ImportExtensionRequest parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ImportExportResponseInner>> beginCreateImportOperation(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("extensionName") String extensionName, @BodyParam("application/json") ImportExtensionRequest parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/export")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ImportExportResponseInner>> beginExport(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @BodyParam("application/json") ExportRequest parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ImportExportResponseInner>> beginExport(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @BodyParam("application/json") ExportRequest parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DatabaseInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DatabaseInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DatabaseInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DatabaseInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}")
@@ -203,7 +203,7 @@ public final class DatabasesInner {
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DatabaseInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DatabaseUpdate parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DatabaseInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DatabaseUpdate parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/pause")
@@ -255,7 +255,7 @@ public final class DatabasesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> importMethodWithResponseAsync(String resourceGroupName, String serverName, ImportRequest parameters) {
         final String apiVersion = "2014-04-01";
-        return service.importMethod(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, parameters, apiVersion);
+        return service.importMethod(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, parameters);
     }
 
     /**
@@ -304,9 +304,9 @@ public final class DatabasesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createImportOperationWithResponseAsync(String resourceGroupName, String serverName, String databaseName, ImportExtensionRequest parameters) {
-        final String extensionName = "import";
         final String apiVersion = "2014-04-01";
-        return service.createImportOperation(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, extensionName, parameters, apiVersion);
+        final String extensionName = "import";
+        return service.createImportOperation(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, extensionName, parameters);
     }
 
     /**
@@ -358,7 +358,7 @@ public final class DatabasesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> exportWithResponseAsync(String resourceGroupName, String serverName, String databaseName, ExportRequest parameters) {
         final String apiVersion = "2014-04-01";
-        return service.export(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, parameters, apiVersion);
+        return service.export(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, parameters);
     }
 
     /**
@@ -410,7 +410,7 @@ public final class DatabasesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<MetricInner>> listMetricsSinglePageAsync(String resourceGroupName, String serverName, String databaseName, String filter) {
         final String apiVersion = "2014-04-01";
-        return service.listMetrics(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, filter, apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listMetrics(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, filter).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -465,7 +465,7 @@ public final class DatabasesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<MetricDefinitionInner>> listMetricDefinitionsSinglePageAsync(String resourceGroupName, String serverName, String databaseName) {
         final String apiVersion = "2014-04-01";
-        return service.listMetricDefinitions(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listMetricDefinitions(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -623,7 +623,7 @@ public final class DatabasesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String serverName, String databaseName, DatabaseInner parameters) {
         final String apiVersion = "2017-10-01-preview";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -724,7 +724,7 @@ public final class DatabasesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> updateWithResponseAsync(String resourceGroupName, String serverName, String databaseName, DatabaseUpdate parameters) {
         final String apiVersion = "2017-10-01-preview";
-        return service.update(this.client.getHost(), resourceGroupName, serverName, databaseName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.update(this.client.getHost(), resourceGroupName, serverName, databaseName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -979,7 +979,7 @@ public final class DatabasesInner {
         final String apiVersion = "2017-10-01-preview";
         ResourceMoveDefinition parameters = new ResourceMoveDefinition();
         parameters.withId(id);
-        return service.rename(this.client.getHost(), resourceGroupName, serverName, databaseName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.rename(this.client.getHost(), resourceGroupName, serverName, databaseName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -1057,6 +1057,25 @@ public final class DatabasesInner {
      * @param resourceGroupName 
      * @param serverName 
      * @param databaseName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<Void> failoverAsync(String resourceGroupName, String serverName, String databaseName) {
+        final ReplicaType replicaType = null;
+        Mono<SimpleResponse<Flux<ByteBuffer>>> response = failoverWithResponseAsync(resourceGroupName, serverName, databaseName, replicaType);
+        return this.client.<Void, Void>getLroResultAsync(response, this.client.getHttpPipeline(), Void.class, Void.class)
+            .last()
+            .flatMap(AsyncPollResponse::getFinalResult);
+    }
+
+    /**
+     * Failovers a database.
+     * 
+     * @param resourceGroupName 
+     * @param serverName 
+     * @param databaseName 
      * @param replicaType 
      * @throws IllegalArgumentException thrown if parameters fail the validation.
      * @throws CloudException thrown if the request is rejected by server.
@@ -1078,29 +1097,8 @@ public final class DatabasesInner {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<Void> failoverAsync(String resourceGroupName, String serverName, String databaseName) {
-        final ReplicaType replicaType = null;
-        final String apiVersion = "2018-06-01-preview";
-        Mono<SimpleResponse<Flux<ByteBuffer>>> response = failoverWithResponseAsync(resourceGroupName, serverName, databaseName, replicaType);
-        return this.client.<Void, Void>getLroResultAsync(response, this.client.getHttpPipeline(), Void.class, Void.class)
-            .last()
-            .flatMap(AsyncPollResponse::getFinalResult);
-    }
-
-    /**
-     * Failovers a database.
-     * 
-     * @param resourceGroupName 
-     * @param serverName 
-     * @param databaseName 
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
     public void failover(String resourceGroupName, String serverName, String databaseName) {
         final ReplicaType replicaType = null;
-        final String apiVersion = "2018-06-01-preview";
         failoverAsync(resourceGroupName, serverName, databaseName, replicaType).block();
     }
 
@@ -1117,7 +1115,7 @@ public final class DatabasesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ImportExportResponseInner>> beginImportWithResponseAsync(String resourceGroupName, String serverName, ImportRequest parameters) {
         final String apiVersion = "2014-04-01";
-        return service.beginImport(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, parameters, apiVersion);
+        return service.beginImport(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, parameters);
     }
 
     /**
@@ -1170,9 +1168,9 @@ public final class DatabasesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ImportExportResponseInner>> beginCreateImportOperationWithResponseAsync(String resourceGroupName, String serverName, String databaseName, ImportExtensionRequest parameters) {
-        final String extensionName = "import";
         final String apiVersion = "2014-04-01";
-        return service.beginCreateImportOperation(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, extensionName, parameters, apiVersion);
+        final String extensionName = "import";
+        return service.beginCreateImportOperation(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, extensionName, parameters);
     }
 
     /**
@@ -1228,7 +1226,7 @@ public final class DatabasesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ImportExportResponseInner>> beginExportWithResponseAsync(String resourceGroupName, String serverName, String databaseName, ExportRequest parameters) {
         final String apiVersion = "2014-04-01";
-        return service.beginExport(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, parameters, apiVersion);
+        return service.beginExport(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, parameters);
     }
 
     /**
@@ -1284,7 +1282,7 @@ public final class DatabasesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DatabaseInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String serverName, String databaseName, DatabaseInner parameters) {
         final String apiVersion = "2017-10-01-preview";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -1387,7 +1385,7 @@ public final class DatabasesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DatabaseInner>> beginUpdateWithResponseAsync(String resourceGroupName, String serverName, String databaseName, DatabaseUpdate parameters) {
         final String apiVersion = "2017-10-01-preview";
-        return service.beginUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -1629,7 +1627,6 @@ public final class DatabasesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Void> beginFailoverAsync(String resourceGroupName, String serverName, String databaseName) {
         final ReplicaType replicaType = null;
-        final String apiVersion = "2018-06-01-preview";
         return beginFailoverWithResponseAsync(resourceGroupName, serverName, databaseName, replicaType)
             .flatMap((Response<Void> res) -> Mono.empty());
     }
@@ -1663,7 +1660,6 @@ public final class DatabasesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public void beginFailover(String resourceGroupName, String serverName, String databaseName) {
         final ReplicaType replicaType = null;
-        final String apiVersion = "2018-06-01-preview";
         beginFailoverAsync(resourceGroupName, serverName, databaseName, replicaType).block();
     }
 

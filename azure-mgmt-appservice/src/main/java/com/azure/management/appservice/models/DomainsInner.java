@@ -77,7 +77,7 @@ public final class DomainsInner implements InnerSupportsGet<DomainInner>, InnerS
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/checkDomainAvailability")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<DomainAvailabilityCheckResultInner>> checkAvailability(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") NameIdentifierInner identifier, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DomainAvailabilityCheckResultInner>> checkAvailability(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") NameIdentifierInner identifier);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/domains")
@@ -95,7 +95,7 @@ public final class DomainsInner implements InnerSupportsGet<DomainInner>, InnerS
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/listDomainRecommendations")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<NameIdentifierCollectionInner>> listRecommendations(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DomainRecommendationSearchParameters parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<NameIdentifierCollectionInner>> listRecommendations(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DomainRecommendationSearchParameters parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains")
@@ -113,7 +113,7 @@ public final class DomainsInner implements InnerSupportsGet<DomainInner>, InnerS
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("domainName") String domainName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DomainInner domain, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("domainName") String domainName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DomainInner domain);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}")
@@ -125,7 +125,7 @@ public final class DomainsInner implements InnerSupportsGet<DomainInner>, InnerS
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<DomainInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("domainName") String domainName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DomainPatchResource domain, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DomainInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("domainName") String domainName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DomainPatchResource domain);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers")
@@ -143,7 +143,7 @@ public final class DomainsInner implements InnerSupportsGet<DomainInner>, InnerS
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<DomainOwnershipIdentifierInner>> createOrUpdateOwnershipIdentifier(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("domainName") String domainName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DomainOwnershipIdentifierInner domainOwnershipIdentifier, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DomainOwnershipIdentifierInner>> createOrUpdateOwnershipIdentifier(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("domainName") String domainName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DomainOwnershipIdentifierInner domainOwnershipIdentifier);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}")
@@ -155,7 +155,7 @@ public final class DomainsInner implements InnerSupportsGet<DomainInner>, InnerS
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<DomainOwnershipIdentifierInner>> updateOwnershipIdentifier(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("domainName") String domainName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DomainOwnershipIdentifierInner domainOwnershipIdentifier, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DomainOwnershipIdentifierInner>> updateOwnershipIdentifier(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("domainName") String domainName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DomainOwnershipIdentifierInner domainOwnershipIdentifier);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/renew")
@@ -167,7 +167,7 @@ public final class DomainsInner implements InnerSupportsGet<DomainInner>, InnerS
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<DomainInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("domainName") String domainName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DomainInner domain, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DomainInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("domainName") String domainName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") DomainInner domain);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -206,7 +206,7 @@ public final class DomainsInner implements InnerSupportsGet<DomainInner>, InnerS
     public Mono<SimpleResponse<DomainAvailabilityCheckResultInner>> checkAvailabilityWithResponseAsync(String name) {
         NameIdentifierInner identifier = new NameIdentifierInner();
         identifier.withName(name);
-        return service.checkAvailability(this.client.getHost(), this.client.getSubscriptionId(), identifier, this.client.getApiVersion());
+        return service.checkAvailability(this.client.getHost(), this.client.getSubscriptionId(), this.client.getApiVersion(), identifier);
     }
 
     /**
@@ -333,7 +333,7 @@ public final class DomainsInner implements InnerSupportsGet<DomainInner>, InnerS
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<NameIdentifierInner>> listRecommendationsSinglePageAsync(DomainRecommendationSearchParameters parameters) {
-        return service.listRecommendations(this.client.getHost(), this.client.getSubscriptionId(), parameters, this.client.getApiVersion()).map(res -> new PagedResponseBase<>(
+        return service.listRecommendations(this.client.getHost(), this.client.getSubscriptionId(), this.client.getApiVersion(), parameters).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -478,7 +478,7 @@ public final class DomainsInner implements InnerSupportsGet<DomainInner>, InnerS
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String domainName, DomainInner domain) {
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, domainName, this.client.getSubscriptionId(), domain, this.client.getApiVersion());
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, domainName, this.client.getSubscriptionId(), this.client.getApiVersion(), domain);
     }
 
     /**
@@ -603,7 +603,7 @@ public final class DomainsInner implements InnerSupportsGet<DomainInner>, InnerS
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DomainInner>> updateWithResponseAsync(String resourceGroupName, String domainName, DomainPatchResource domain) {
-        return service.update(this.client.getHost(), resourceGroupName, domainName, this.client.getSubscriptionId(), domain, this.client.getApiVersion());
+        return service.update(this.client.getHost(), resourceGroupName, domainName, this.client.getSubscriptionId(), this.client.getApiVersion(), domain);
     }
 
     /**
@@ -758,7 +758,7 @@ public final class DomainsInner implements InnerSupportsGet<DomainInner>, InnerS
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DomainOwnershipIdentifierInner>> createOrUpdateOwnershipIdentifierWithResponseAsync(String resourceGroupName, String domainName, String name, DomainOwnershipIdentifierInner domainOwnershipIdentifier) {
-        return service.createOrUpdateOwnershipIdentifier(this.client.getHost(), resourceGroupName, domainName, name, this.client.getSubscriptionId(), domainOwnershipIdentifier, this.client.getApiVersion());
+        return service.createOrUpdateOwnershipIdentifier(this.client.getHost(), resourceGroupName, domainName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), domainOwnershipIdentifier);
     }
 
     /**
@@ -859,7 +859,7 @@ public final class DomainsInner implements InnerSupportsGet<DomainInner>, InnerS
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DomainOwnershipIdentifierInner>> updateOwnershipIdentifierWithResponseAsync(String resourceGroupName, String domainName, String name, DomainOwnershipIdentifierInner domainOwnershipIdentifier) {
-        return service.updateOwnershipIdentifier(this.client.getHost(), resourceGroupName, domainName, name, this.client.getSubscriptionId(), domainOwnershipIdentifier, this.client.getApiVersion());
+        return service.updateOwnershipIdentifier(this.client.getHost(), resourceGroupName, domainName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), domainOwnershipIdentifier);
     }
 
     /**
@@ -956,7 +956,7 @@ public final class DomainsInner implements InnerSupportsGet<DomainInner>, InnerS
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DomainInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String domainName, DomainInner domain) {
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, domainName, this.client.getSubscriptionId(), domain, this.client.getApiVersion());
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, domainName, this.client.getSubscriptionId(), this.client.getApiVersion(), domain);
     }
 
     /**

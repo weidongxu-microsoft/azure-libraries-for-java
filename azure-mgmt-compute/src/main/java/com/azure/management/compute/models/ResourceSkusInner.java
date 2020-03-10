@@ -63,7 +63,7 @@ public final class ResourceSkusInner {
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/skus")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ResourceSkusResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("$filter") String filter, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ResourceSkusResultInner>> list(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @QueryParam("$filter") String filter);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -83,7 +83,7 @@ public final class ResourceSkusInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ResourceSkuInner>> listSinglePageAsync(String filter) {
         final String apiVersion = "2019-04-01";
-        return service.list(this.client.getHost(), this.client.getSubscriptionId(), filter, apiVersion).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), filter).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -116,7 +116,6 @@ public final class ResourceSkusInner {
     @ServiceMethod(returns = ReturnType.COLLECTION)
     public PagedFlux<ResourceSkuInner> listAsync() {
         final String filter = null;
-        final String apiVersion = "2019-04-01";
         return new PagedFlux<>(
             () -> listSinglePageAsync(filter),
             nextLink -> listNextSinglePageAsync(nextLink));
@@ -144,7 +143,6 @@ public final class ResourceSkusInner {
     @ServiceMethod(returns = ReturnType.COLLECTION)
     public PagedIterable<ResourceSkuInner> list() {
         final String filter = null;
-        final String apiVersion = "2019-04-01";
         return new PagedIterable<>(listAsync(filter));
     }
 

@@ -63,19 +63,19 @@ public final class PrivateEndpointConnectionsInner {
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<PrivateEndpointConnectionInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @PathParam("privateEndpointConnectionName") String privateEndpointConnectionName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PrivateEndpointConnectionInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("privateEndpointConnectionName") String privateEndpointConnectionName);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<PrivateEndpointConnectionInner>> put(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @PathParam("privateEndpointConnectionName") String privateEndpointConnectionName, @BodyParam("application/json") PrivateEndpointConnectionInner properties, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PrivateEndpointConnectionInner>> put(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("privateEndpointConnectionName") String privateEndpointConnectionName, @BodyParam("application/json") PrivateEndpointConnectionInner properties);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @PathParam("privateEndpointConnectionName") String privateEndpointConnectionName, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("privateEndpointConnectionName") String privateEndpointConnectionName);
     }
 
     /**
@@ -90,7 +90,7 @@ public final class PrivateEndpointConnectionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PrivateEndpointConnectionInner>> getWithResponseAsync(String resourceGroupName, String accountName, String privateEndpointConnectionName) {
-        return service.get(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), privateEndpointConnectionName, this.client.getApiVersion());
+        return service.get(this.client.getHost(), resourceGroupName, accountName, this.client.getApiVersion(), this.client.getSubscriptionId(), privateEndpointConnectionName);
     }
 
     /**
@@ -143,7 +143,7 @@ public final class PrivateEndpointConnectionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PrivateEndpointConnectionInner>> putWithResponseAsync(String resourceGroupName, String accountName, String privateEndpointConnectionName, PrivateEndpointConnectionInner properties) {
-        return service.put(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), privateEndpointConnectionName, properties, this.client.getApiVersion());
+        return service.put(this.client.getHost(), resourceGroupName, accountName, this.client.getApiVersion(), this.client.getSubscriptionId(), privateEndpointConnectionName, properties);
     }
 
     /**
@@ -197,7 +197,7 @@ public final class PrivateEndpointConnectionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> deleteWithResponseAsync(String resourceGroupName, String accountName, String privateEndpointConnectionName) {
-        return service.delete(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), privateEndpointConnectionName, this.client.getApiVersion());
+        return service.delete(this.client.getHost(), resourceGroupName, accountName, this.client.getApiVersion(), this.client.getSubscriptionId(), privateEndpointConnectionName);
     }
 
     /**

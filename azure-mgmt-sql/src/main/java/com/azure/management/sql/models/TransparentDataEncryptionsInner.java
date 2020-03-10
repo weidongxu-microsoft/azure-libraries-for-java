@@ -62,13 +62,13 @@ public final class TransparentDataEncryptionsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{transparentDataEncryptionName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<TransparentDataEncryptionInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("transparentDataEncryptionName") String transparentDataEncryptionName, @BodyParam("application/json") TransparentDataEncryptionInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<TransparentDataEncryptionInner>> createOrUpdate(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("transparentDataEncryptionName") String transparentDataEncryptionName, @BodyParam("application/json") TransparentDataEncryptionInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{transparentDataEncryptionName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<TransparentDataEncryptionInner>> get(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("transparentDataEncryptionName") String transparentDataEncryptionName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<TransparentDataEncryptionInner>> get(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("transparentDataEncryptionName") String transparentDataEncryptionName);
     }
 
     /**
@@ -84,11 +84,11 @@ public final class TransparentDataEncryptionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<TransparentDataEncryptionInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String serverName, String databaseName, TransparentDataEncryptionStatus status) {
-        final String transparentDataEncryptionName = "current";
         final String apiVersion = "2014-04-01";
+        final String transparentDataEncryptionName = "current";
         TransparentDataEncryptionInner parameters = new TransparentDataEncryptionInner();
         parameters.withStatus(status);
-        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, transparentDataEncryptionName, parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, transparentDataEncryptionName, parameters);
     }
 
     /**
@@ -142,9 +142,9 @@ public final class TransparentDataEncryptionsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<TransparentDataEncryptionInner>> getWithResponseAsync(String resourceGroupName, String serverName, String databaseName) {
-        final String transparentDataEncryptionName = "current";
         final String apiVersion = "2014-04-01";
-        return service.get(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, transparentDataEncryptionName, apiVersion);
+        final String transparentDataEncryptionName = "current";
+        return service.get(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, transparentDataEncryptionName);
     }
 
     /**

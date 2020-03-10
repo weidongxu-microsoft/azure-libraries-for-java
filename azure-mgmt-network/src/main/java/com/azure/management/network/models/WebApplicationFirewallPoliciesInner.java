@@ -79,7 +79,7 @@ public final class WebApplicationFirewallPoliciesInner implements InnerSupportsG
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<WebApplicationFirewallPolicyListResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<WebApplicationFirewallPolicyListResultInner>> list(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}")
@@ -91,7 +91,7 @@ public final class WebApplicationFirewallPoliciesInner implements InnerSupportsG
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<WebApplicationFirewallPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") WebApplicationFirewallPolicyInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<WebApplicationFirewallPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") WebApplicationFirewallPolicyInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}")
@@ -175,7 +175,7 @@ public final class WebApplicationFirewallPoliciesInner implements InnerSupportsG
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<WebApplicationFirewallPolicyInner>> listSinglePageAsync() {
         final String apiVersion = "2019-06-01";
-        return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -271,7 +271,7 @@ public final class WebApplicationFirewallPoliciesInner implements InnerSupportsG
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<WebApplicationFirewallPolicyInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String policyName, WebApplicationFirewallPolicyInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, policyName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, policyName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**

@@ -63,7 +63,7 @@ public final class AvailableEndpointServicesInner {
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/virtualNetworkAvailableEndpointServices")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<EndpointServicesListResultInner>> list(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<EndpointServicesListResultInner>> list(@HostParam("$host") String host, @PathParam("location") String location, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -83,7 +83,7 @@ public final class AvailableEndpointServicesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<EndpointServiceResultInner>> listSinglePageAsync(String location) {
         final String apiVersion = "2019-06-01";
-        return service.list(this.client.getHost(), location, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), location, apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),

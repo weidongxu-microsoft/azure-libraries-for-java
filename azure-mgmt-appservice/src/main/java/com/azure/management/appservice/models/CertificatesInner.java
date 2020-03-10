@@ -90,7 +90,7 @@ public final class CertificatesInner implements InnerSupportsGet<CertificateInne
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/certificates/{name}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<CertificateInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CertificateInner certificateEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<CertificateInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CertificateInner certificateEnvelope);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/certificates/{name}")
@@ -102,7 +102,7 @@ public final class CertificatesInner implements InnerSupportsGet<CertificateInne
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/certificates/{name}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<CertificateInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CertificatePatchResource certificateEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<CertificateInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CertificatePatchResource certificateEnvelope);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -266,7 +266,7 @@ public final class CertificatesInner implements InnerSupportsGet<CertificateInne
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<CertificateInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String name, CertificateInner certificateEnvelope) {
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), certificateEnvelope, this.client.getApiVersion());
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), certificateEnvelope);
     }
 
     /**
@@ -361,7 +361,7 @@ public final class CertificatesInner implements InnerSupportsGet<CertificateInne
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<CertificateInner>> updateWithResponseAsync(String resourceGroupName, String name, CertificatePatchResource certificateEnvelope) {
-        return service.update(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), certificateEnvelope, this.client.getApiVersion());
+        return service.update(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), certificateEnvelope);
     }
 
     /**

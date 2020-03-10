@@ -63,19 +63,19 @@ public final class FileServicesInner {
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<FileServiceItemsInner>> list(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<FileServiceItemsInner>> list(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<FileServicePropertiesInner>> setServiceProperties(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @PathParam("FileServicesName") String fileServicesName, @BodyParam("application/json") FileServicePropertiesInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<FileServicePropertiesInner>> setServiceProperties(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("FileServicesName") String fileServicesName, @BodyParam("application/json") FileServicePropertiesInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<FileServicePropertiesInner>> getServiceProperties(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @PathParam("FileServicesName") String fileServicesName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<FileServicePropertiesInner>> getServiceProperties(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("FileServicesName") String fileServicesName);
     }
 
     /**
@@ -89,7 +89,7 @@ public final class FileServicesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<FileServiceItemsInner>> listWithResponseAsync(String resourceGroupName, String accountName) {
-        return service.list(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), this.client.getApiVersion());
+        return service.list(this.client.getHost(), resourceGroupName, accountName, this.client.getApiVersion(), this.client.getSubscriptionId());
     }
 
     /**
@@ -144,7 +144,7 @@ public final class FileServicesInner {
         FileServicePropertiesInner parameters = new FileServicePropertiesInner();
         parameters.setCors(cors);
         parameters.setShareDeleteRetentionPolicy(shareDeleteRetentionPolicy);
-        return service.setServiceProperties(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), fileServicesName, parameters, this.client.getApiVersion());
+        return service.setServiceProperties(this.client.getHost(), resourceGroupName, accountName, this.client.getApiVersion(), this.client.getSubscriptionId(), fileServicesName, parameters);
     }
 
     /**
@@ -198,7 +198,7 @@ public final class FileServicesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<FileServicePropertiesInner>> getServicePropertiesWithResponseAsync(String resourceGroupName, String accountName) {
         final String fileServicesName = "default";
-        return service.getServiceProperties(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), fileServicesName, this.client.getApiVersion());
+        return service.getServiceProperties(this.client.getHost(), resourceGroupName, accountName, this.client.getApiVersion(), this.client.getSubscriptionId(), fileServicesName);
     }
 
     /**

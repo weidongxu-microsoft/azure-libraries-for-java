@@ -60,31 +60,31 @@ public final class VirtualMachineImagesInner {
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions/{version}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualMachineImageInner>> get(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("publisherName") String publisherName, @PathParam("offer") String offer, @PathParam("skus") String skus, @PathParam("version") String version, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VirtualMachineImageInner>> get(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("publisherName") String publisherName, @PathParam("offer") String offer, @PathParam("skus") String skus, @PathParam("version") String version, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<List<VirtualMachineImageResourceInner>>> list(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("publisherName") String publisherName, @PathParam("offer") String offer, @PathParam("skus") String skus, @QueryParam("$filter") String filter, @QueryParam("$top") Integer top, @QueryParam("$orderby") String orderby, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<List<VirtualMachineImageResourceInner>>> list(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("publisherName") String publisherName, @PathParam("offer") String offer, @PathParam("skus") String skus, @QueryParam("$filter") String filter, @QueryParam("$top") Integer top, @QueryParam("$orderby") String orderby, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<List<VirtualMachineImageResourceInner>>> listOffers(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("publisherName") String publisherName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<List<VirtualMachineImageResourceInner>>> listOffers(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("publisherName") String publisherName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<List<VirtualMachineImageResourceInner>>> listPublishers(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<List<VirtualMachineImageResourceInner>>> listPublishers(@HostParam("$host") String host, @PathParam("location") String location, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<List<VirtualMachineImageResourceInner>>> listSkus(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("publisherName") String publisherName, @PathParam("offer") String offer, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<List<VirtualMachineImageResourceInner>>> listSkus(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("publisherName") String publisherName, @PathParam("offer") String offer, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
     }
 
     /**
@@ -102,7 +102,7 @@ public final class VirtualMachineImagesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VirtualMachineImageInner>> getWithResponseAsync(String location, String publisherName, String offer, String skus, String version) {
         final String apiVersion = "2019-03-01";
-        return service.get(this.client.getHost(), location, publisherName, offer, skus, version, this.client.getSubscriptionId(), apiVersion);
+        return service.get(this.client.getHost(), location, publisherName, offer, skus, version, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -163,7 +163,7 @@ public final class VirtualMachineImagesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<List<VirtualMachineImageResourceInner>>> listWithResponseAsync(String location, String publisherName, String offer, String skus, String filter, Integer top, String orderby) {
         final String apiVersion = "2019-03-01";
-        return service.list(this.client.getHost(), location, publisherName, offer, skus, filter, top, orderby, this.client.getSubscriptionId(), apiVersion);
+        return service.list(this.client.getHost(), location, publisherName, offer, skus, filter, top, orderby, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -208,7 +208,6 @@ public final class VirtualMachineImagesInner {
         final String filter = null;
         final Integer top = null;
         final String orderby = null;
-        final String apiVersion = "2019-03-01";
         return listWithResponseAsync(location, publisherName, offer, skus, filter, top, orderby)
             .flatMap((SimpleResponse<List<VirtualMachineImageResourceInner>> res) -> {
                 if (res.getValue() != null) {
@@ -254,7 +253,6 @@ public final class VirtualMachineImagesInner {
         final String filter = null;
         final Integer top = null;
         final String orderby = null;
-        final String apiVersion = "2019-03-01";
         return listAsync(location, publisherName, offer, skus, filter, top, orderby).block();
     }
 
@@ -270,7 +268,7 @@ public final class VirtualMachineImagesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<List<VirtualMachineImageResourceInner>>> listOffersWithResponseAsync(String location, String publisherName) {
         final String apiVersion = "2019-03-01";
-        return service.listOffers(this.client.getHost(), location, publisherName, this.client.getSubscriptionId(), apiVersion);
+        return service.listOffers(this.client.getHost(), location, publisherName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -319,7 +317,7 @@ public final class VirtualMachineImagesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<List<VirtualMachineImageResourceInner>>> listPublishersWithResponseAsync(String location) {
         final String apiVersion = "2019-03-01";
-        return service.listPublishers(this.client.getHost(), location, this.client.getSubscriptionId(), apiVersion);
+        return service.listPublishers(this.client.getHost(), location, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -368,7 +366,7 @@ public final class VirtualMachineImagesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<List<VirtualMachineImageResourceInner>>> listSkusWithResponseAsync(String location, String publisherName, String offer) {
         final String apiVersion = "2019-03-01";
-        return service.listSkus(this.client.getHost(), location, publisherName, offer, this.client.getSubscriptionId(), apiVersion);
+        return service.listSkus(this.client.getHost(), location, publisherName, offer, apiVersion, this.client.getSubscriptionId());
     }
 
     /**

@@ -69,31 +69,31 @@ public final class FileSharesInner {
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<FileShareItemsInner>> list(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("$maxpagesize") String maxpagesize, @QueryParam("$filter") String filter, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<FileShareItemsInner>> list(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @QueryParam("$maxpagesize") String maxpagesize, @QueryParam("$filter") String filter);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<FileShareInner>> create(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("shareName") String shareName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") FileShareInner fileShare, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<FileShareInner>> create(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("shareName") String shareName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") FileShareInner fileShare);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<FileShareInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("shareName") String shareName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") FileShareInner fileShare, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<FileShareInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("shareName") String shareName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") FileShareInner fileShare);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<FileShareInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("shareName") String shareName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<FileShareInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("shareName") String shareName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("shareName") String shareName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("shareName") String shareName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -115,7 +115,7 @@ public final class FileSharesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<FileShareItemInner>> listSinglePageAsync(String resourceGroupName, String accountName, String maxpagesize, String filter) {
-        return service.list(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), maxpagesize, filter, this.client.getApiVersion()).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), resourceGroupName, accountName, this.client.getApiVersion(), this.client.getSubscriptionId(), maxpagesize, filter).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -209,7 +209,7 @@ public final class FileSharesInner {
         FileShareInner fileShare = new FileShareInner();
         fileShare.setMetadata(metadata);
         fileShare.setShareQuota(shareQuota);
-        return service.create(this.client.getHost(), resourceGroupName, accountName, shareName, this.client.getSubscriptionId(), fileShare, this.client.getApiVersion());
+        return service.create(this.client.getHost(), resourceGroupName, accountName, shareName, this.client.getApiVersion(), this.client.getSubscriptionId(), fileShare);
     }
 
     /**
@@ -270,7 +270,7 @@ public final class FileSharesInner {
         FileShareInner fileShare = new FileShareInner();
         fileShare.setMetadata(metadata);
         fileShare.setShareQuota(shareQuota);
-        return service.update(this.client.getHost(), resourceGroupName, accountName, shareName, this.client.getSubscriptionId(), fileShare, this.client.getApiVersion());
+        return service.update(this.client.getHost(), resourceGroupName, accountName, shareName, this.client.getApiVersion(), this.client.getSubscriptionId(), fileShare);
     }
 
     /**
@@ -326,7 +326,7 @@ public final class FileSharesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<FileShareInner>> getWithResponseAsync(String resourceGroupName, String accountName, String shareName) {
-        return service.get(this.client.getHost(), resourceGroupName, accountName, shareName, this.client.getSubscriptionId(), this.client.getApiVersion());
+        return service.get(this.client.getHost(), resourceGroupName, accountName, shareName, this.client.getApiVersion(), this.client.getSubscriptionId());
     }
 
     /**
@@ -378,7 +378,7 @@ public final class FileSharesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> deleteWithResponseAsync(String resourceGroupName, String accountName, String shareName) {
-        return service.delete(this.client.getHost(), resourceGroupName, accountName, shareName, this.client.getSubscriptionId(), this.client.getApiVersion());
+        return service.delete(this.client.getHost(), resourceGroupName, accountName, shareName, this.client.getApiVersion(), this.client.getSubscriptionId());
     }
 
     /**

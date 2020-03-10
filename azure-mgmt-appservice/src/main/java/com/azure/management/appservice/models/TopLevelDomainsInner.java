@@ -78,7 +78,7 @@ public final class TopLevelDomainsInner {
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains/{name}/listAgreements")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<TldLegalAgreementCollectionInner>> listAgreements(@HostParam("$host") String host, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TopLevelDomainAgreementOption agreementOption, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<TldLegalAgreementCollectionInner>> listAgreements(@HostParam("$host") String host, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") TopLevelDomainAgreementOption agreementOption);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -191,7 +191,7 @@ public final class TopLevelDomainsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<TldLegalAgreementInner>> listAgreementsSinglePageAsync(String name, TopLevelDomainAgreementOption agreementOption) {
-        return service.listAgreements(this.client.getHost(), name, this.client.getSubscriptionId(), agreementOption, this.client.getApiVersion()).map(res -> new PagedResponseBase<>(
+        return service.listAgreements(this.client.getHost(), name, this.client.getSubscriptionId(), this.client.getApiVersion(), agreementOption).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),

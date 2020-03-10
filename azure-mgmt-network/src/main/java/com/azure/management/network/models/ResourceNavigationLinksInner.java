@@ -59,7 +59,7 @@ public final class ResourceNavigationLinksInner {
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/ResourceNavigationLinks")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ResourceNavigationLinksListResultInner>> list(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkName") String virtualNetworkName, @PathParam("subnetName") String subnetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ResourceNavigationLinksListResultInner>> list(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualNetworkName") String virtualNetworkName, @PathParam("subnetName") String subnetName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
     }
 
     /**
@@ -75,7 +75,7 @@ public final class ResourceNavigationLinksInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ResourceNavigationLinksListResultInner>> listWithResponseAsync(String resourceGroupName, String virtualNetworkName, String subnetName) {
         final String apiVersion = "2019-06-01";
-        return service.list(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, this.client.getSubscriptionId(), apiVersion);
+        return service.list(this.client.getHost(), resourceGroupName, virtualNetworkName, subnetName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**

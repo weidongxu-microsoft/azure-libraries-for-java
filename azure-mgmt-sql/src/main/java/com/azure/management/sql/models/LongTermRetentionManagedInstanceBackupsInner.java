@@ -339,7 +339,6 @@ public final class LongTermRetentionManagedInstanceBackupsInner {
     public PagedFlux<ManagedInstanceLongTermRetentionBackupInner> listByDatabaseAsync(String locationName, String managedInstanceName, String databaseName) {
         final Boolean onlyLatestPerDatabase = null;
         final DatabaseState databaseState = null;
-        final String apiVersion = "2018-06-01-preview";
         return new PagedFlux<>(
             () -> listByDatabaseSinglePageAsync(locationName, managedInstanceName, databaseName, onlyLatestPerDatabase, databaseState),
             nextLink -> listByDatabaseNextSinglePageAsync(nextLink));
@@ -376,7 +375,6 @@ public final class LongTermRetentionManagedInstanceBackupsInner {
     public PagedIterable<ManagedInstanceLongTermRetentionBackupInner> listByDatabase(String locationName, String managedInstanceName, String databaseName) {
         final Boolean onlyLatestPerDatabase = null;
         final DatabaseState databaseState = null;
-        final String apiVersion = "2018-06-01-preview";
         return new PagedIterable<>(listByDatabaseAsync(locationName, managedInstanceName, databaseName, onlyLatestPerDatabase, databaseState));
     }
 
@@ -434,7 +432,6 @@ public final class LongTermRetentionManagedInstanceBackupsInner {
     public PagedFlux<ManagedInstanceLongTermRetentionBackupInner> listByInstanceAsync(String locationName, String managedInstanceName) {
         final Boolean onlyLatestPerDatabase = null;
         final DatabaseState databaseState = null;
-        final String apiVersion = "2018-06-01-preview";
         return new PagedFlux<>(
             () -> listByInstanceSinglePageAsync(locationName, managedInstanceName, onlyLatestPerDatabase, databaseState),
             nextLink -> listByInstanceNextSinglePageAsync(nextLink));
@@ -469,7 +466,6 @@ public final class LongTermRetentionManagedInstanceBackupsInner {
     public PagedIterable<ManagedInstanceLongTermRetentionBackupInner> listByInstance(String locationName, String managedInstanceName) {
         final Boolean onlyLatestPerDatabase = null;
         final DatabaseState databaseState = null;
-        final String apiVersion = "2018-06-01-preview";
         return new PagedIterable<>(listByInstanceAsync(locationName, managedInstanceName, onlyLatestPerDatabase, databaseState));
     }
 
@@ -524,7 +520,6 @@ public final class LongTermRetentionManagedInstanceBackupsInner {
     public PagedFlux<ManagedInstanceLongTermRetentionBackupInner> listByLocationAsync(String locationName) {
         final Boolean onlyLatestPerDatabase = null;
         final DatabaseState databaseState = null;
-        final String apiVersion = "2018-06-01-preview";
         return new PagedFlux<>(
             () -> listByLocationSinglePageAsync(locationName, onlyLatestPerDatabase, databaseState),
             nextLink -> listByLocationNextSinglePageAsync(nextLink));
@@ -557,7 +552,6 @@ public final class LongTermRetentionManagedInstanceBackupsInner {
     public PagedIterable<ManagedInstanceLongTermRetentionBackupInner> listByLocation(String locationName) {
         final Boolean onlyLatestPerDatabase = null;
         final DatabaseState databaseState = null;
-        final String apiVersion = "2018-06-01-preview";
         return new PagedIterable<>(listByLocationAsync(locationName, onlyLatestPerDatabase, databaseState));
     }
 
@@ -735,7 +729,6 @@ public final class LongTermRetentionManagedInstanceBackupsInner {
     public PagedFlux<ManagedInstanceLongTermRetentionBackupInner> listByResourceGroupDatabaseAsync(String resourceGroupName, String locationName, String managedInstanceName, String databaseName) {
         final Boolean onlyLatestPerDatabase = null;
         final DatabaseState databaseState = null;
-        final String apiVersion = "2018-06-01-preview";
         return new PagedFlux<>(
             () -> listByResourceGroupDatabaseSinglePageAsync(resourceGroupName, locationName, managedInstanceName, databaseName, onlyLatestPerDatabase, databaseState),
             nextLink -> listByResourceGroupDatabaseNextSinglePageAsync(nextLink));
@@ -774,7 +767,6 @@ public final class LongTermRetentionManagedInstanceBackupsInner {
     public PagedIterable<ManagedInstanceLongTermRetentionBackupInner> listByResourceGroupDatabase(String resourceGroupName, String locationName, String managedInstanceName, String databaseName) {
         final Boolean onlyLatestPerDatabase = null;
         final DatabaseState databaseState = null;
-        final String apiVersion = "2018-06-01-preview";
         return new PagedIterable<>(listByResourceGroupDatabaseAsync(resourceGroupName, locationName, managedInstanceName, databaseName, onlyLatestPerDatabase, databaseState));
     }
 
@@ -835,7 +827,6 @@ public final class LongTermRetentionManagedInstanceBackupsInner {
     public PagedFlux<ManagedInstanceLongTermRetentionBackupInner> listByResourceGroupInstanceAsync(String resourceGroupName, String locationName, String managedInstanceName) {
         final Boolean onlyLatestPerDatabase = null;
         final DatabaseState databaseState = null;
-        final String apiVersion = "2018-06-01-preview";
         return new PagedFlux<>(
             () -> listByResourceGroupInstanceSinglePageAsync(resourceGroupName, locationName, managedInstanceName, onlyLatestPerDatabase, databaseState),
             nextLink -> listByResourceGroupInstanceNextSinglePageAsync(nextLink));
@@ -872,7 +863,6 @@ public final class LongTermRetentionManagedInstanceBackupsInner {
     public PagedIterable<ManagedInstanceLongTermRetentionBackupInner> listByResourceGroupInstance(String resourceGroupName, String locationName, String managedInstanceName) {
         final Boolean onlyLatestPerDatabase = null;
         final DatabaseState databaseState = null;
-        final String apiVersion = "2018-06-01-preview";
         return new PagedIterable<>(listByResourceGroupInstanceAsync(resourceGroupName, locationName, managedInstanceName, onlyLatestPerDatabase, databaseState));
     }
 
@@ -930,7 +920,6 @@ public final class LongTermRetentionManagedInstanceBackupsInner {
     public PagedFlux<ManagedInstanceLongTermRetentionBackupInner> listByResourceGroupLocationAsync(String resourceGroupName, String locationName) {
         final Boolean onlyLatestPerDatabase = null;
         final DatabaseState databaseState = null;
-        final String apiVersion = "2018-06-01-preview";
         return new PagedFlux<>(
             () -> listByResourceGroupLocationSinglePageAsync(resourceGroupName, locationName, onlyLatestPerDatabase, databaseState),
             nextLink -> listByResourceGroupLocationNextSinglePageAsync(nextLink));
@@ -965,7 +954,6 @@ public final class LongTermRetentionManagedInstanceBackupsInner {
     public PagedIterable<ManagedInstanceLongTermRetentionBackupInner> listByResourceGroupLocation(String resourceGroupName, String locationName) {
         final Boolean onlyLatestPerDatabase = null;
         final DatabaseState databaseState = null;
-        final String apiVersion = "2018-06-01-preview";
         return new PagedIterable<>(listByResourceGroupLocationAsync(resourceGroupName, locationName, onlyLatestPerDatabase, databaseState));
     }
 

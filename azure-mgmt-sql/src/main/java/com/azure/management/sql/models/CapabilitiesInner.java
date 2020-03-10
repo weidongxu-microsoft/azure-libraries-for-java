@@ -110,7 +110,6 @@ public final class CapabilitiesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<LocationCapabilitiesInner> listByLocationAsync(String locationName) {
         final CapabilityGroup include = null;
-        final String apiVersion = "2018-06-01-preview";
         return listByLocationWithResponseAsync(locationName, include)
             .flatMap((SimpleResponse<LocationCapabilitiesInner> res) -> {
                 if (res.getValue() != null) {
@@ -146,7 +145,6 @@ public final class CapabilitiesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public LocationCapabilitiesInner listByLocation(String locationName) {
         final CapabilityGroup include = null;
-        final String apiVersion = "2018-06-01-preview";
         return listByLocationAsync(locationName, include).block();
     }
 }

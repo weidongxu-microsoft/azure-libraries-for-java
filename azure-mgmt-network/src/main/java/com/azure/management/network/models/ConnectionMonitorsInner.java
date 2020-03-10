@@ -74,79 +74,79 @@ public final class ConnectionMonitorsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ConnectionMonitorInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ConnectionMonitorInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<ConnectionMonitorResultInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ConnectionMonitorResultInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<ConnectionMonitorResultInner>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ConnectionMonitorResultInner>> updateTags(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") TagsObject parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/stop")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> stop(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> stop(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/start")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> start(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> start(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/query")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> query(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> query(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<ConnectionMonitorListResultInner>> list(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ConnectionMonitorListResultInner>> list(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<ConnectionMonitorResultInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ConnectionMonitorInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ConnectionMonitorResultInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ConnectionMonitorInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/stop")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<Response<Void>> beginStop(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginStop(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/start")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<Response<Void>> beginStart(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginStart(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/query")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<ConnectionMonitorQueryResultInner>> beginQuery(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ConnectionMonitorQueryResultInner>> beginQuery(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("connectionMonitorName") String connectionMonitorName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
     }
 
     /**
@@ -163,7 +163,7 @@ public final class ConnectionMonitorsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName, ConnectionMonitorInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -214,7 +214,7 @@ public final class ConnectionMonitorsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ConnectionMonitorResultInner>> getWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName) {
         final String apiVersion = "2019-06-01";
-        return service.get(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), apiVersion);
+        return service.get(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -267,7 +267,7 @@ public final class ConnectionMonitorsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName) {
         final String apiVersion = "2019-06-01";
-        return service.delete(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), apiVersion);
+        return service.delete(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -319,7 +319,7 @@ public final class ConnectionMonitorsInner {
         final String apiVersion = "2019-06-01";
         TagsObject parameters = new TagsObject();
         parameters.withTags(tags);
-        return service.updateTags(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.updateTags(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -374,7 +374,7 @@ public final class ConnectionMonitorsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> stopWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName) {
         final String apiVersion = "2019-06-01";
-        return service.stop(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), apiVersion);
+        return service.stop(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -423,7 +423,7 @@ public final class ConnectionMonitorsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> startWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName) {
         final String apiVersion = "2019-06-01";
-        return service.start(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), apiVersion);
+        return service.start(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -472,7 +472,7 @@ public final class ConnectionMonitorsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> queryWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName) {
         final String apiVersion = "2019-06-01";
-        return service.query(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), apiVersion);
+        return service.query(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -520,7 +520,7 @@ public final class ConnectionMonitorsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ConnectionMonitorResultInner>> listSinglePageAsync(String resourceGroupName, String networkWatcherName) {
         final String apiVersion = "2019-06-01";
-        return service.list(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), resourceGroupName, networkWatcherName, apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -572,7 +572,7 @@ public final class ConnectionMonitorsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ConnectionMonitorResultInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName, ConnectionMonitorInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -627,7 +627,7 @@ public final class ConnectionMonitorsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName) {
         final String apiVersion = "2019-06-01";
-        return service.beginDelete(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginDelete(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -674,7 +674,7 @@ public final class ConnectionMonitorsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginStopWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName) {
         final String apiVersion = "2019-06-01";
-        return service.beginStop(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginStop(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -721,7 +721,7 @@ public final class ConnectionMonitorsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginStartWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName) {
         final String apiVersion = "2019-06-01";
-        return service.beginStart(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginStart(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -768,7 +768,7 @@ public final class ConnectionMonitorsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ConnectionMonitorQueryResultInner>> beginQueryWithResponseAsync(String resourceGroupName, String networkWatcherName, String connectionMonitorName) {
         final String apiVersion = "2019-06-01";
-        return service.beginQuery(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginQuery(this.client.getHost(), resourceGroupName, networkWatcherName, connectionMonitorName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**

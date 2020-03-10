@@ -63,13 +63,13 @@ public final class DefaultSecurityRulesInner {
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/defaultSecurityRules")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<SecurityRuleListResultInner>> list(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkSecurityGroupName") String networkSecurityGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SecurityRuleListResultInner>> list(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkSecurityGroupName") String networkSecurityGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/defaultSecurityRules/{defaultSecurityRuleName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<SecurityRuleInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkSecurityGroupName") String networkSecurityGroupName, @PathParam("defaultSecurityRuleName") String defaultSecurityRuleName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SecurityRuleInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkSecurityGroupName") String networkSecurityGroupName, @PathParam("defaultSecurityRuleName") String defaultSecurityRuleName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -90,7 +90,7 @@ public final class DefaultSecurityRulesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<SecurityRuleInner>> listSinglePageAsync(String resourceGroupName, String networkSecurityGroupName) {
         final String apiVersion = "2019-06-01";
-        return service.list(this.client.getHost(), resourceGroupName, networkSecurityGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), resourceGroupName, networkSecurityGroupName, apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -142,7 +142,7 @@ public final class DefaultSecurityRulesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SecurityRuleInner>> getWithResponseAsync(String resourceGroupName, String networkSecurityGroupName, String defaultSecurityRuleName) {
         final String apiVersion = "2019-06-01";
-        return service.get(this.client.getHost(), resourceGroupName, networkSecurityGroupName, defaultSecurityRuleName, this.client.getSubscriptionId(), apiVersion);
+        return service.get(this.client.getHost(), resourceGroupName, networkSecurityGroupName, defaultSecurityRuleName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**

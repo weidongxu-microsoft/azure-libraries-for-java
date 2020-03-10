@@ -82,7 +82,7 @@ public final class InstancePoolsInner implements InnerSupportsGet<InstancePoolIn
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("instancePoolName") String instancePoolName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") InstancePoolInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("instancePoolName") String instancePoolName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") InstancePoolInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}")
@@ -94,7 +94,7 @@ public final class InstancePoolsInner implements InnerSupportsGet<InstancePoolIn
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("instancePoolName") String instancePoolName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") InstancePoolUpdate parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("instancePoolName") String instancePoolName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") InstancePoolUpdate parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools")
@@ -112,7 +112,7 @@ public final class InstancePoolsInner implements InnerSupportsGet<InstancePoolIn
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<InstancePoolInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("instancePoolName") String instancePoolName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") InstancePoolInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<InstancePoolInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("instancePoolName") String instancePoolName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") InstancePoolInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}")
@@ -124,7 +124,7 @@ public final class InstancePoolsInner implements InnerSupportsGet<InstancePoolIn
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<InstancePoolInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("instancePoolName") String instancePoolName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") InstancePoolUpdate parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<InstancePoolInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("instancePoolName") String instancePoolName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") InstancePoolUpdate parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -202,7 +202,7 @@ public final class InstancePoolsInner implements InnerSupportsGet<InstancePoolIn
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String instancePoolName, InstancePoolInner parameters) {
         final String apiVersion = "2018-06-01-preview";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, instancePoolName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, instancePoolName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -299,7 +299,7 @@ public final class InstancePoolsInner implements InnerSupportsGet<InstancePoolIn
         final String apiVersion = "2018-06-01-preview";
         InstancePoolUpdate parameters = new InstancePoolUpdate();
         parameters.withTags(tags);
-        return service.update(this.client.getHost(), resourceGroupName, instancePoolName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.update(this.client.getHost(), resourceGroupName, instancePoolName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -438,7 +438,7 @@ public final class InstancePoolsInner implements InnerSupportsGet<InstancePoolIn
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<InstancePoolInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String instancePoolName, InstancePoolInner parameters) {
         final String apiVersion = "2018-06-01-preview";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, instancePoolName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, instancePoolName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -537,7 +537,7 @@ public final class InstancePoolsInner implements InnerSupportsGet<InstancePoolIn
         final String apiVersion = "2018-06-01-preview";
         InstancePoolUpdate parameters = new InstancePoolUpdate();
         parameters.withTags(tags);
-        return service.beginUpdate(this.client.getHost(), resourceGroupName, instancePoolName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginUpdate(this.client.getHost(), resourceGroupName, instancePoolName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**

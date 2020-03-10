@@ -64,19 +64,19 @@ public final class ProvidersInner {
         @Post("/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/unregister")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ProviderInner>> unregister(@HostParam("$host") String host, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ProviderInner>> unregister(@HostParam("$host") String host, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/register")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ProviderInner>> register(@HostParam("$host") String host, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ProviderInner>> register(@HostParam("$host") String host, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ProviderListResultInner>> list(@HostParam("$host") String host, @QueryParam("$top") Integer top, @QueryParam("$expand") String expand, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ProviderListResultInner>> list(@HostParam("$host") String host, @QueryParam("$top") Integer top, @QueryParam("$expand") String expand, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/providers")
@@ -88,7 +88,7 @@ public final class ProvidersInner {
         @Get("/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ProviderInner>> get(@HostParam("$host") String host, @QueryParam("$expand") String expand, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ProviderInner>> get(@HostParam("$host") String host, @QueryParam("$expand") String expand, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/providers/{resourceProviderNamespace}")
@@ -119,7 +119,7 @@ public final class ProvidersInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ProviderInner>> unregisterWithResponseAsync(String resourceProviderNamespace) {
-        return service.unregister(this.client.getHost(), resourceProviderNamespace, this.client.getSubscriptionId(), this.client.getApiVersion());
+        return service.unregister(this.client.getHost(), resourceProviderNamespace, this.client.getApiVersion(), this.client.getSubscriptionId());
     }
 
     /**
@@ -165,7 +165,7 @@ public final class ProvidersInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ProviderInner>> registerWithResponseAsync(String resourceProviderNamespace) {
-        return service.register(this.client.getHost(), resourceProviderNamespace, this.client.getSubscriptionId(), this.client.getApiVersion());
+        return service.register(this.client.getHost(), resourceProviderNamespace, this.client.getApiVersion(), this.client.getSubscriptionId());
     }
 
     /**
@@ -212,7 +212,7 @@ public final class ProvidersInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ProviderInner>> listSinglePageAsync(Integer top, String expand) {
-        return service.list(this.client.getHost(), top, expand, this.client.getSubscriptionId(), this.client.getApiVersion()).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), top, expand, this.client.getApiVersion(), this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -368,7 +368,7 @@ public final class ProvidersInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ProviderInner>> getWithResponseAsync(String resourceProviderNamespace, String expand) {
-        return service.get(this.client.getHost(), expand, resourceProviderNamespace, this.client.getSubscriptionId(), this.client.getApiVersion());
+        return service.get(this.client.getHost(), expand, resourceProviderNamespace, this.client.getApiVersion(), this.client.getSubscriptionId());
     }
 
     /**

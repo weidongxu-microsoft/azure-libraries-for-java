@@ -63,7 +63,7 @@ public final class TransparentDataEncryptionActivitiesInner {
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{transparentDataEncryptionName}/operationResults")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<TransparentDataEncryptionActivityListResultInner>> listByConfiguration(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("transparentDataEncryptionName") String transparentDataEncryptionName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<TransparentDataEncryptionActivityListResultInner>> listByConfiguration(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("transparentDataEncryptionName") String transparentDataEncryptionName);
     }
 
     /**
@@ -78,9 +78,9 @@ public final class TransparentDataEncryptionActivitiesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<TransparentDataEncryptionActivityInner>> listByConfigurationSinglePageAsync(String resourceGroupName, String serverName, String databaseName) {
-        final String transparentDataEncryptionName = "current";
         final String apiVersion = "2014-04-01";
-        return service.listByConfiguration(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, transparentDataEncryptionName, apiVersion).map(res -> new PagedResponseBase<>(
+        final String transparentDataEncryptionName = "current";
+        return service.listByConfiguration(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, transparentDataEncryptionName).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),

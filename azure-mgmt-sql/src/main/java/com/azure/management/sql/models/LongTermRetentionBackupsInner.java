@@ -348,7 +348,6 @@ public final class LongTermRetentionBackupsInner {
     public PagedFlux<LongTermRetentionBackupInner> listByResourceGroupDatabaseAsync(String resourceGroupName, String locationName, String longTermRetentionServerName, String longTermRetentionDatabaseName) {
         final Boolean onlyLatestPerDatabase = null;
         final LongTermRetentionDatabaseState databaseState = null;
-        final String apiVersion = "2017-03-01-preview";
         return new PagedFlux<>(
             () -> listByResourceGroupDatabaseSinglePageAsync(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, onlyLatestPerDatabase, databaseState),
             nextLink -> listByResourceGroupDatabaseNextSinglePageAsync(nextLink));
@@ -387,7 +386,6 @@ public final class LongTermRetentionBackupsInner {
     public PagedIterable<LongTermRetentionBackupInner> listByResourceGroupDatabase(String resourceGroupName, String locationName, String longTermRetentionServerName, String longTermRetentionDatabaseName) {
         final Boolean onlyLatestPerDatabase = null;
         final LongTermRetentionDatabaseState databaseState = null;
-        final String apiVersion = "2017-03-01-preview";
         return new PagedIterable<>(listByResourceGroupDatabaseAsync(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, onlyLatestPerDatabase, databaseState));
     }
 
@@ -445,7 +443,6 @@ public final class LongTermRetentionBackupsInner {
     public PagedFlux<LongTermRetentionBackupInner> listByResourceGroupLocationAsync(String resourceGroupName, String locationName) {
         final Boolean onlyLatestPerDatabase = null;
         final LongTermRetentionDatabaseState databaseState = null;
-        final String apiVersion = "2017-03-01-preview";
         return new PagedFlux<>(
             () -> listByResourceGroupLocationSinglePageAsync(resourceGroupName, locationName, onlyLatestPerDatabase, databaseState),
             nextLink -> listByResourceGroupLocationNextSinglePageAsync(nextLink));
@@ -480,7 +477,6 @@ public final class LongTermRetentionBackupsInner {
     public PagedIterable<LongTermRetentionBackupInner> listByResourceGroupLocation(String resourceGroupName, String locationName) {
         final Boolean onlyLatestPerDatabase = null;
         final LongTermRetentionDatabaseState databaseState = null;
-        final String apiVersion = "2017-03-01-preview";
         return new PagedIterable<>(listByResourceGroupLocationAsync(resourceGroupName, locationName, onlyLatestPerDatabase, databaseState));
     }
 
@@ -541,7 +537,6 @@ public final class LongTermRetentionBackupsInner {
     public PagedFlux<LongTermRetentionBackupInner> listByResourceGroupServerAsync(String resourceGroupName, String locationName, String longTermRetentionServerName) {
         final Boolean onlyLatestPerDatabase = null;
         final LongTermRetentionDatabaseState databaseState = null;
-        final String apiVersion = "2017-03-01-preview";
         return new PagedFlux<>(
             () -> listByResourceGroupServerSinglePageAsync(resourceGroupName, locationName, longTermRetentionServerName, onlyLatestPerDatabase, databaseState),
             nextLink -> listByResourceGroupServerNextSinglePageAsync(nextLink));
@@ -578,7 +573,6 @@ public final class LongTermRetentionBackupsInner {
     public PagedIterable<LongTermRetentionBackupInner> listByResourceGroupServer(String resourceGroupName, String locationName, String longTermRetentionServerName) {
         final Boolean onlyLatestPerDatabase = null;
         final LongTermRetentionDatabaseState databaseState = null;
-        final String apiVersion = "2017-03-01-preview";
         return new PagedIterable<>(listByResourceGroupServerAsync(resourceGroupName, locationName, longTermRetentionServerName, onlyLatestPerDatabase, databaseState));
     }
 
@@ -747,7 +741,6 @@ public final class LongTermRetentionBackupsInner {
     public PagedFlux<LongTermRetentionBackupInner> listByDatabaseAsync(String locationName, String longTermRetentionServerName, String longTermRetentionDatabaseName) {
         final Boolean onlyLatestPerDatabase = null;
         final LongTermRetentionDatabaseState databaseState = null;
-        final String apiVersion = "2017-03-01-preview";
         return new PagedFlux<>(
             () -> listByDatabaseSinglePageAsync(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, onlyLatestPerDatabase, databaseState),
             nextLink -> listByDatabaseNextSinglePageAsync(nextLink));
@@ -784,7 +777,6 @@ public final class LongTermRetentionBackupsInner {
     public PagedIterable<LongTermRetentionBackupInner> listByDatabase(String locationName, String longTermRetentionServerName, String longTermRetentionDatabaseName) {
         final Boolean onlyLatestPerDatabase = null;
         final LongTermRetentionDatabaseState databaseState = null;
-        final String apiVersion = "2017-03-01-preview";
         return new PagedIterable<>(listByDatabaseAsync(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, onlyLatestPerDatabase, databaseState));
     }
 
@@ -839,7 +831,6 @@ public final class LongTermRetentionBackupsInner {
     public PagedFlux<LongTermRetentionBackupInner> listByLocationAsync(String locationName) {
         final Boolean onlyLatestPerDatabase = null;
         final LongTermRetentionDatabaseState databaseState = null;
-        final String apiVersion = "2017-03-01-preview";
         return new PagedFlux<>(
             () -> listByLocationSinglePageAsync(locationName, onlyLatestPerDatabase, databaseState),
             nextLink -> listByLocationNextSinglePageAsync(nextLink));
@@ -872,7 +863,6 @@ public final class LongTermRetentionBackupsInner {
     public PagedIterable<LongTermRetentionBackupInner> listByLocation(String locationName) {
         final Boolean onlyLatestPerDatabase = null;
         final LongTermRetentionDatabaseState databaseState = null;
-        final String apiVersion = "2017-03-01-preview";
         return new PagedIterable<>(listByLocationAsync(locationName, onlyLatestPerDatabase, databaseState));
     }
 
@@ -930,7 +920,6 @@ public final class LongTermRetentionBackupsInner {
     public PagedFlux<LongTermRetentionBackupInner> listByServerAsync(String locationName, String longTermRetentionServerName) {
         final Boolean onlyLatestPerDatabase = null;
         final LongTermRetentionDatabaseState databaseState = null;
-        final String apiVersion = "2017-03-01-preview";
         return new PagedFlux<>(
             () -> listByServerSinglePageAsync(locationName, longTermRetentionServerName, onlyLatestPerDatabase, databaseState),
             nextLink -> listByServerNextSinglePageAsync(nextLink));
@@ -965,7 +954,6 @@ public final class LongTermRetentionBackupsInner {
     public PagedIterable<LongTermRetentionBackupInner> listByServer(String locationName, String longTermRetentionServerName) {
         final Boolean onlyLatestPerDatabase = null;
         final LongTermRetentionDatabaseState databaseState = null;
-        final String apiVersion = "2017-03-01-preview";
         return new PagedIterable<>(listByServerAsync(locationName, longTermRetentionServerName, onlyLatestPerDatabase, databaseState));
     }
 

@@ -78,199 +78,199 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/virtualMachines")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualMachineListResultInner>> listByLocation(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VirtualMachineListResultInner>> listByLocation(@HostParam("$host") String host, @PathParam("location") String location, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/capture")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> capture(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineCaptureParameters parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> capture(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineCaptureParameters parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineUpdateInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineUpdateInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualMachineInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("$expand") String expand, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VirtualMachineInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("$expand") String expand, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualMachineInstanceViewInner>> instanceView(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VirtualMachineInstanceViewInner>> instanceView(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/convertToManagedDisks")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> convertToManagedDisks(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> convertToManagedDisks(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/deallocate")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> deallocate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> deallocate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/generalize")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> generalize(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> generalize(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualMachineListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VirtualMachineListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachines")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualMachineListResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VirtualMachineListResultInner>> list(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/vmSizes")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualMachineSizeListResultInner>> listAvailableSizes(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VirtualMachineSizeListResultInner>> listAvailableSizes(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/powerOff")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> powerOff(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("skipShutdown") Boolean skipShutdown, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> powerOff(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("skipShutdown") Boolean skipShutdown, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/restart")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> restart(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> restart(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/start")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> start(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> start(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/redeploy")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> redeploy(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> redeploy(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/reimage")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> reimage(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineReimageParameters parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> reimage(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineReimageParameters parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/performMaintenance")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> performMaintenance(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> performMaintenance(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json,text/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommand")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> runCommand(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RunCommandInput parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> runCommand(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RunCommandInput parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/capture")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualMachineCaptureResultInner>> beginCapture(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineCaptureParameters parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VirtualMachineCaptureResultInner>> beginCapture(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineCaptureParameters parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualMachineInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VirtualMachineInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualMachineInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineUpdateInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VirtualMachineInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineUpdateInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/convertToManagedDisks")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginConvertToManagedDisks(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginConvertToManagedDisks(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/deallocate")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginDeallocate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginDeallocate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/powerOff")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginPowerOff(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("skipShutdown") Boolean skipShutdown, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginPowerOff(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("skipShutdown") Boolean skipShutdown, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/restart")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginRestart(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginRestart(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/start")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginStart(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginStart(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/redeploy")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginRedeploy(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginRedeploy(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/reimage")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginReimage(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineReimageParameters parameters, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginReimage(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualMachineReimageParameters parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/performMaintenance")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginPerformMaintenance(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginPerformMaintenance(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json,text/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommand")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<RunCommandResultInner>> beginRunCommand(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RunCommandInput parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<RunCommandResultInner>> beginRunCommand(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmName") String vmName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") RunCommandInput parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -302,7 +302,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<VirtualMachineInner>> listByLocationSinglePageAsync(String location) {
         final String apiVersion = "2019-03-01";
-        return service.listByLocation(this.client.getHost(), location, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listByLocation(this.client.getHost(), location, apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -352,7 +352,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> captureWithResponseAsync(String resourceGroupName, String vmName, VirtualMachineCaptureParameters parameters) {
         final String apiVersion = "2019-03-01";
-        return service.capture(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.capture(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -401,7 +401,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String vmName, VirtualMachineInner parameters) {
         final String apiVersion = "2019-03-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -450,7 +450,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> updateWithResponseAsync(String resourceGroupName, String vmName, VirtualMachineUpdateInner parameters) {
         final String apiVersion = "2019-03-01";
-        return service.update(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.update(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -498,7 +498,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String vmName) {
         final String apiVersion = "2019-03-01";
-        return service.delete(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), apiVersion);
+        return service.delete(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -545,7 +545,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     public Mono<SimpleResponse<VirtualMachineInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String vmName) {
         final String expand = "instanceView";
         final String apiVersion = "2019-03-01";
-        return service.getByResourceGroup(this.client.getHost(), resourceGroupName, vmName, expand, this.client.getSubscriptionId(), apiVersion);
+        return service.getByResourceGroup(this.client.getHost(), resourceGroupName, vmName, expand, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -595,7 +595,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VirtualMachineInstanceViewInner>> instanceViewWithResponseAsync(String resourceGroupName, String vmName) {
         final String apiVersion = "2019-03-01";
-        return service.instanceView(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), apiVersion);
+        return service.instanceView(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -645,7 +645,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> convertToManagedDisksWithResponseAsync(String resourceGroupName, String vmName) {
         final String apiVersion = "2019-03-01";
-        return service.convertToManagedDisks(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), apiVersion);
+        return service.convertToManagedDisks(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -691,7 +691,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deallocateWithResponseAsync(String resourceGroupName, String vmName) {
         final String apiVersion = "2019-03-01";
-        return service.deallocate(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), apiVersion);
+        return service.deallocate(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -737,7 +737,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> generalizeWithResponseAsync(String resourceGroupName, String vmName) {
         final String apiVersion = "2019-03-01";
-        return service.generalize(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), apiVersion);
+        return service.generalize(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -780,7 +780,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<VirtualMachineInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
         final String apiVersion = "2019-03-01";
-        return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listByResourceGroup(this.client.getHost(), resourceGroupName, apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -826,7 +826,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<VirtualMachineInner>> listSinglePageAsync() {
         final String apiVersion = "2019-03-01";
-        return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -871,7 +871,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<VirtualMachineSizeInner>> listAvailableSizesSinglePageAsync(String resourceGroupName, String vmName) {
         final String apiVersion = "2019-03-01";
-        return service.listAvailableSizes(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listAvailableSizes(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -922,7 +922,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> powerOffWithResponseAsync(String resourceGroupName, String vmName, Boolean skipShutdown) {
         final String apiVersion = "2019-03-01";
-        return service.powerOff(this.client.getHost(), resourceGroupName, vmName, skipShutdown, this.client.getSubscriptionId(), apiVersion);
+        return service.powerOff(this.client.getHost(), resourceGroupName, vmName, skipShutdown, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -937,6 +937,24 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Void> powerOffAsync(String resourceGroupName, String vmName, Boolean skipShutdown) {
+        Mono<SimpleResponse<Flux<ByteBuffer>>> response = powerOffWithResponseAsync(resourceGroupName, vmName, skipShutdown);
+        return this.client.<Void, Void>getLroResultAsync(response, this.client.getHttpPipeline(), Void.class, Void.class)
+            .last()
+            .flatMap(AsyncPollResponse::getFinalResult);
+    }
+
+    /**
+     * The operation to power off (stop) a virtual machine. The virtual machine can be restarted with the same provisioned resources. You are still charged for this virtual machine.
+     * 
+     * @param resourceGroupName 
+     * @param vmName 
+     * @throws IllegalArgumentException thrown if parameters fail the validation.
+     * @throws CloudException thrown if the request is rejected by server.
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
+     */
+    @ServiceMethod(returns = ReturnType.SINGLE)
+    public Mono<Void> powerOffAsync(String resourceGroupName, String vmName) {
+        final Boolean skipShutdown = null;
         Mono<SimpleResponse<Flux<ByteBuffer>>> response = powerOffWithResponseAsync(resourceGroupName, vmName, skipShutdown);
         return this.client.<Void, Void>getLroResultAsync(response, this.client.getHttpPipeline(), Void.class, Void.class)
             .last()
@@ -968,28 +986,8 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
-    public Mono<Void> powerOffAsync(String resourceGroupName, String vmName) {
-        final Boolean skipShutdown = null;
-        final String apiVersion = "2019-03-01";
-        Mono<SimpleResponse<Flux<ByteBuffer>>> response = powerOffWithResponseAsync(resourceGroupName, vmName, skipShutdown);
-        return this.client.<Void, Void>getLroResultAsync(response, this.client.getHttpPipeline(), Void.class, Void.class)
-            .last()
-            .flatMap(AsyncPollResponse::getFinalResult);
-    }
-
-    /**
-     * The operation to power off (stop) a virtual machine. The virtual machine can be restarted with the same provisioned resources. You are still charged for this virtual machine.
-     * 
-     * @param resourceGroupName 
-     * @param vmName 
-     * @throws IllegalArgumentException thrown if parameters fail the validation.
-     * @throws CloudException thrown if the request is rejected by server.
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent.
-     */
-    @ServiceMethod(returns = ReturnType.SINGLE)
     public void powerOff(String resourceGroupName, String vmName) {
         final Boolean skipShutdown = null;
-        final String apiVersion = "2019-03-01";
         powerOffAsync(resourceGroupName, vmName, skipShutdown).block();
     }
 
@@ -1005,7 +1003,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> restartWithResponseAsync(String resourceGroupName, String vmName) {
         final String apiVersion = "2019-03-01";
-        return service.restart(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), apiVersion);
+        return service.restart(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -1051,7 +1049,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> startWithResponseAsync(String resourceGroupName, String vmName) {
         final String apiVersion = "2019-03-01";
-        return service.start(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), apiVersion);
+        return service.start(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -1097,7 +1095,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> redeployWithResponseAsync(String resourceGroupName, String vmName) {
         final String apiVersion = "2019-03-01";
-        return service.redeploy(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), apiVersion);
+        return service.redeploy(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -1149,7 +1147,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
             parameters = new VirtualMachineReimageParameters();
             parameters.withTempDisk(tempDisk);
         }
-        return service.reimage(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.reimage(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -1197,7 +1195,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> performMaintenanceWithResponseAsync(String resourceGroupName, String vmName) {
         final String apiVersion = "2019-03-01";
-        return service.performMaintenance(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), apiVersion);
+        return service.performMaintenance(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -1244,7 +1242,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> runCommandWithResponseAsync(String resourceGroupName, String vmName, RunCommandInput parameters) {
         final String apiVersion = "2019-03-01";
-        return service.runCommand(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.runCommand(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -1293,7 +1291,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VirtualMachineCaptureResultInner>> beginCaptureWithResponseAsync(String resourceGroupName, String vmName, VirtualMachineCaptureParameters parameters) {
         final String apiVersion = "2019-03-01";
-        return service.beginCapture(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginCapture(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -1346,7 +1344,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VirtualMachineInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String vmName, VirtualMachineInner parameters) {
         final String apiVersion = "2019-03-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -1399,7 +1397,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VirtualMachineInner>> beginUpdateWithResponseAsync(String resourceGroupName, String vmName, VirtualMachineUpdateInner parameters) {
         final String apiVersion = "2019-03-01";
-        return service.beginUpdate(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginUpdate(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -1451,7 +1449,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String vmName) {
         final String apiVersion = "2019-03-01";
-        return service.beginDelete(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginDelete(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -1495,7 +1493,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginConvertToManagedDisksWithResponseAsync(String resourceGroupName, String vmName) {
         final String apiVersion = "2019-03-01";
-        return service.beginConvertToManagedDisks(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginConvertToManagedDisks(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -1539,7 +1537,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeallocateWithResponseAsync(String resourceGroupName, String vmName) {
         final String apiVersion = "2019-03-01";
-        return service.beginDeallocate(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginDeallocate(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -1584,7 +1582,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginPowerOffWithResponseAsync(String resourceGroupName, String vmName, Boolean skipShutdown) {
         final String apiVersion = "2019-03-01";
-        return service.beginPowerOff(this.client.getHost(), resourceGroupName, vmName, skipShutdown, this.client.getSubscriptionId(), apiVersion);
+        return service.beginPowerOff(this.client.getHost(), resourceGroupName, vmName, skipShutdown, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -1615,7 +1613,6 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Void> beginPowerOffAsync(String resourceGroupName, String vmName) {
         final Boolean skipShutdown = null;
-        final String apiVersion = "2019-03-01";
         return beginPowerOffWithResponseAsync(resourceGroupName, vmName, skipShutdown)
             .flatMap((Response<Void> res) -> Mono.empty());
     }
@@ -1647,7 +1644,6 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public void beginPowerOff(String resourceGroupName, String vmName) {
         final Boolean skipShutdown = null;
-        final String apiVersion = "2019-03-01";
         beginPowerOffAsync(resourceGroupName, vmName, skipShutdown).block();
     }
 
@@ -1663,7 +1659,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginRestartWithResponseAsync(String resourceGroupName, String vmName) {
         final String apiVersion = "2019-03-01";
-        return service.beginRestart(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginRestart(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -1707,7 +1703,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginStartWithResponseAsync(String resourceGroupName, String vmName) {
         final String apiVersion = "2019-03-01";
-        return service.beginStart(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginStart(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -1751,7 +1747,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginRedeployWithResponseAsync(String resourceGroupName, String vmName) {
         final String apiVersion = "2019-03-01";
-        return service.beginRedeploy(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginRedeploy(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -1801,7 +1797,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
             parameters = new VirtualMachineReimageParameters();
             parameters.withTempDisk(tempDisk);
         }
-        return service.beginReimage(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginReimage(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -1847,7 +1843,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginPerformMaintenanceWithResponseAsync(String resourceGroupName, String vmName) {
         final String apiVersion = "2019-03-01";
-        return service.beginPerformMaintenance(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginPerformMaintenance(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -1892,7 +1888,7 @@ public final class VirtualMachinesInner implements InnerSupportsGet<VirtualMachi
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<RunCommandResultInner>> beginRunCommandWithResponseAsync(String resourceGroupName, String vmName, RunCommandInput parameters) {
         final String apiVersion = "2019-03-01";
-        return service.beginRunCommand(this.client.getHost(), resourceGroupName, vmName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginRunCommand(this.client.getHost(), resourceGroupName, vmName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**

@@ -88,7 +88,7 @@ public final class EncryptionProtectorsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/encryptionProtector/{encryptionProtectorName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("encryptionProtectorName") String encryptionProtectorName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") EncryptionProtectorInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("encryptionProtectorName") String encryptionProtectorName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") EncryptionProtectorInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/encryptionProtector/{encryptionProtectorName}/revalidate")
@@ -100,7 +100,7 @@ public final class EncryptionProtectorsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/encryptionProtector/{encryptionProtectorName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<EncryptionProtectorInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("encryptionProtectorName") String encryptionProtectorName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") EncryptionProtectorInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<EncryptionProtectorInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("encryptionProtectorName") String encryptionProtectorName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") EncryptionProtectorInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -272,7 +272,7 @@ public final class EncryptionProtectorsInner {
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String serverName, EncryptionProtectorInner parameters) {
         final String encryptionProtectorName = "current";
         final String apiVersion = "2015-05-01-preview";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, encryptionProtectorName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, encryptionProtectorName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -367,7 +367,7 @@ public final class EncryptionProtectorsInner {
     public Mono<SimpleResponse<EncryptionProtectorInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String serverName, EncryptionProtectorInner parameters) {
         final String encryptionProtectorName = "current";
         final String apiVersion = "2015-05-01-preview";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serverName, encryptionProtectorName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serverName, encryptionProtectorName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**

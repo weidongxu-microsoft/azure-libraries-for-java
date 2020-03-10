@@ -66,12 +66,12 @@ public final class WebSiteManagementClientBuilder {
     }
 
     /*
-     * The API version to use for this operation.
+     * Api Version
      */
     private String apiVersion;
 
     /**
-     * Sets The API version to use for this operation.
+     * Sets Api Version.
      * 
      * @param apiVersion the apiVersion value.
      * @return the WebSiteManagementClientBuilder.

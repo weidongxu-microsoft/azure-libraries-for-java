@@ -75,55 +75,55 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/resources")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ResourceListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("$filter") String filter, @QueryParam("$expand") String expand, @QueryParam("$top") Integer top, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ResourceListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("$filter") String filter, @QueryParam("$expand") String expand, @QueryParam("$top") Integer top, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/moveResources")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> moveResources(@HostParam("$host") String host, @PathParam("sourceResourceGroupName") String sourceResourceGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ResourcesMoveInfo parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> moveResources(@HostParam("$host") String host, @PathParam("sourceResourceGroupName") String sourceResourceGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ResourcesMoveInfo parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/validateMoveResources")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> validateMoveResources(@HostParam("$host") String host, @PathParam("sourceResourceGroupName") String sourceResourceGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ResourcesMoveInfo parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> validateMoveResources(@HostParam("$host") String host, @PathParam("sourceResourceGroupName") String sourceResourceGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ResourcesMoveInfo parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resources")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ResourceListResultInner>> list(@HostParam("$host") String host, @QueryParam("$filter") String filter, @QueryParam("$expand") String expand, @QueryParam("$top") Integer top, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ResourceListResultInner>> list(@HostParam("$host") String host, @QueryParam("$filter") String filter, @QueryParam("$expand") String expand, @QueryParam("$top") Integer top, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Head("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}")
         @ExpectedResponses({204, 404})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Boolean>> checkExistence(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam(value = "parentResourcePath", encoded = true) String parentResourcePath, @PathParam(value = "resourceType", encoded = true) String resourceType, @PathParam("resourceName") String resourceName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Boolean>> checkExistence(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam(value = "parentResourcePath", encoded = true) String parentResourcePath, @PathParam(value = "resourceType", encoded = true) String resourceType, @PathParam("resourceName") String resourceName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam(value = "parentResourcePath", encoded = true) String parentResourcePath, @PathParam(value = "resourceType", encoded = true) String resourceType, @PathParam("resourceName") String resourceName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam(value = "parentResourcePath", encoded = true) String parentResourcePath, @PathParam(value = "resourceType", encoded = true) String resourceType, @PathParam("resourceName") String resourceName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam(value = "parentResourcePath", encoded = true) String parentResourcePath, @PathParam(value = "resourceType", encoded = true) String resourceType, @PathParam("resourceName") String resourceName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") GenericResourceInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam(value = "parentResourcePath", encoded = true) String parentResourcePath, @PathParam(value = "resourceType", encoded = true) String resourceType, @PathParam("resourceName") String resourceName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") GenericResourceInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam(value = "parentResourcePath", encoded = true) String parentResourcePath, @PathParam(value = "resourceType", encoded = true) String resourceType, @PathParam("resourceName") String resourceName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") GenericResourceInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam(value = "parentResourcePath", encoded = true) String parentResourcePath, @PathParam(value = "resourceType", encoded = true) String resourceType, @PathParam("resourceName") String resourceName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") GenericResourceInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<GenericResourceInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam(value = "parentResourcePath", encoded = true) String parentResourcePath, @PathParam(value = "resourceType", encoded = true) String resourceType, @PathParam("resourceName") String resourceName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<GenericResourceInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam(value = "parentResourcePath", encoded = true) String parentResourcePath, @PathParam(value = "resourceType", encoded = true) String resourceType, @PathParam("resourceName") String resourceName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Head("/{resourceId}")
@@ -141,13 +141,13 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
         @Put("/{resourceId}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateById(@HostParam("$host") String host, @PathParam(value = "resourceId", encoded = true) String resourceId, @BodyParam("application/json") GenericResourceInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateById(@HostParam("$host") String host, @PathParam(value = "resourceId", encoded = true) String resourceId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") GenericResourceInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/{resourceId}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> updateById(@HostParam("$host") String host, @PathParam(value = "resourceId", encoded = true) String resourceId, @BodyParam("application/json") GenericResourceInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> updateById(@HostParam("$host") String host, @PathParam(value = "resourceId", encoded = true) String resourceId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") GenericResourceInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/{resourceId}")
@@ -159,31 +159,31 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/moveResources")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginMoveResources(@HostParam("$host") String host, @PathParam("sourceResourceGroupName") String sourceResourceGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ResourcesMoveInfo parameters, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginMoveResources(@HostParam("$host") String host, @PathParam("sourceResourceGroupName") String sourceResourceGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ResourcesMoveInfo parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/validateMoveResources")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginValidateMoveResources(@HostParam("$host") String host, @PathParam("sourceResourceGroupName") String sourceResourceGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ResourcesMoveInfo parameters, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginValidateMoveResources(@HostParam("$host") String host, @PathParam("sourceResourceGroupName") String sourceResourceGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ResourcesMoveInfo parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam(value = "parentResourcePath", encoded = true) String parentResourcePath, @PathParam(value = "resourceType", encoded = true) String resourceType, @PathParam("resourceName") String resourceName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam(value = "parentResourcePath", encoded = true) String parentResourcePath, @PathParam(value = "resourceType", encoded = true) String resourceType, @PathParam("resourceName") String resourceName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<GenericResourceInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam(value = "parentResourcePath", encoded = true) String parentResourcePath, @PathParam(value = "resourceType", encoded = true) String resourceType, @PathParam("resourceName") String resourceName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") GenericResourceInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<GenericResourceInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam(value = "parentResourcePath", encoded = true) String parentResourcePath, @PathParam(value = "resourceType", encoded = true) String resourceType, @PathParam("resourceName") String resourceName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") GenericResourceInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<GenericResourceInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam(value = "parentResourcePath", encoded = true) String parentResourcePath, @PathParam(value = "resourceType", encoded = true) String resourceType, @PathParam("resourceName") String resourceName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") GenericResourceInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<GenericResourceInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("resourceProviderNamespace") String resourceProviderNamespace, @PathParam(value = "parentResourcePath", encoded = true) String parentResourcePath, @PathParam(value = "resourceType", encoded = true) String resourceType, @PathParam("resourceName") String resourceName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") GenericResourceInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/{resourceId}")
@@ -195,13 +195,13 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
         @Put("/{resourceId}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<GenericResourceInner>> beginCreateOrUpdateById(@HostParam("$host") String host, @PathParam(value = "resourceId", encoded = true) String resourceId, @BodyParam("application/json") GenericResourceInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<GenericResourceInner>> beginCreateOrUpdateById(@HostParam("$host") String host, @PathParam(value = "resourceId", encoded = true) String resourceId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") GenericResourceInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/{resourceId}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<GenericResourceInner>> beginUpdateById(@HostParam("$host") String host, @PathParam(value = "resourceId", encoded = true) String resourceId, @BodyParam("application/json") GenericResourceInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<GenericResourceInner>> beginUpdateById(@HostParam("$host") String host, @PathParam(value = "resourceId", encoded = true) String resourceId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") GenericResourceInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -229,7 +229,7 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<GenericResourceExpandedInner>> listByResourceGroupSinglePageAsync(String resourceGroupName, String filter, String expand, Integer top) {
-        return service.listByResourceGroup(this.client.getHost(), resourceGroupName, filter, expand, top, this.client.getSubscriptionId(), this.client.getApiVersion()).map(res -> new PagedResponseBase<>(
+        return service.listByResourceGroup(this.client.getHost(), resourceGroupName, filter, expand, top, this.client.getApiVersion(), this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -317,7 +317,7 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> moveResourcesWithResponseAsync(String sourceResourceGroupName, ResourcesMoveInfo parameters) {
-        return service.moveResources(this.client.getHost(), sourceResourceGroupName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.moveResources(this.client.getHost(), sourceResourceGroupName, this.client.getApiVersion(), this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -362,7 +362,7 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> validateMoveResourcesWithResponseAsync(String sourceResourceGroupName, ResourcesMoveInfo parameters) {
-        return service.validateMoveResources(this.client.getHost(), sourceResourceGroupName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.validateMoveResources(this.client.getHost(), sourceResourceGroupName, this.client.getApiVersion(), this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -408,7 +408,7 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<GenericResourceExpandedInner>> listSinglePageAsync(String filter, String expand, Integer top) {
-        return service.list(this.client.getHost(), filter, expand, top, this.client.getSubscriptionId(), this.client.getApiVersion()).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), filter, expand, top, this.client.getApiVersion(), this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -493,7 +493,7 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Boolean>> checkExistenceWithResponseAsync(String resourceGroupName, String resourceProviderNamespace, String parentResourcePath, String resourceType, String resourceName) {
-        return service.checkExistence(this.client.getHost(), resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, this.client.getSubscriptionId(), this.client.getApiVersion());
+        return service.checkExistence(this.client.getHost(), resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, this.client.getApiVersion(), this.client.getSubscriptionId());
     }
 
     /**
@@ -551,7 +551,7 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String resourceProviderNamespace, String parentResourcePath, String resourceType, String resourceName) {
-        return service.delete(this.client.getHost(), resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, this.client.getSubscriptionId(), this.client.getApiVersion());
+        return service.delete(this.client.getHost(), resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, this.client.getApiVersion(), this.client.getSubscriptionId());
     }
 
     /**
@@ -606,7 +606,7 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String resourceProviderNamespace, String parentResourcePath, String resourceType, String resourceName, GenericResourceInner parameters) {
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, this.client.getApiVersion(), this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -663,7 +663,7 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> updateWithResponseAsync(String resourceGroupName, String resourceProviderNamespace, String parentResourcePath, String resourceType, String resourceName, GenericResourceInner parameters) {
-        return service.update(this.client.getHost(), resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.update(this.client.getHost(), resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, this.client.getApiVersion(), this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -719,7 +719,7 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<GenericResourceInner>> getWithResponseAsync(String resourceGroupName, String resourceProviderNamespace, String parentResourcePath, String resourceType, String resourceName) {
-        return service.get(this.client.getHost(), resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, this.client.getSubscriptionId(), this.client.getApiVersion());
+        return service.get(this.client.getHost(), resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, this.client.getApiVersion(), this.client.getSubscriptionId());
     }
 
     /**
@@ -862,7 +862,7 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateByIdWithResponseAsync(String resourceId, GenericResourceInner parameters) {
-        return service.createOrUpdateById(this.client.getHost(), resourceId, parameters, this.client.getApiVersion());
+        return service.createOrUpdateById(this.client.getHost(), resourceId, this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -907,7 +907,7 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> updateByIdWithResponseAsync(String resourceId, GenericResourceInner parameters) {
-        return service.updateById(this.client.getHost(), resourceId, parameters, this.client.getApiVersion());
+        return service.updateById(this.client.getHost(), resourceId, this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -998,7 +998,7 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginMoveResourcesWithResponseAsync(String sourceResourceGroupName, ResourcesMoveInfo parameters) {
-        return service.beginMoveResources(this.client.getHost(), sourceResourceGroupName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.beginMoveResources(this.client.getHost(), sourceResourceGroupName, this.client.getApiVersion(), this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -1041,7 +1041,7 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginValidateMoveResourcesWithResponseAsync(String sourceResourceGroupName, ResourcesMoveInfo parameters) {
-        return service.beginValidateMoveResources(this.client.getHost(), sourceResourceGroupName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.beginValidateMoveResources(this.client.getHost(), sourceResourceGroupName, this.client.getApiVersion(), this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -1087,7 +1087,7 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String resourceProviderNamespace, String parentResourcePath, String resourceType, String resourceName) {
-        return service.beginDelete(this.client.getHost(), resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, this.client.getSubscriptionId(), this.client.getApiVersion());
+        return service.beginDelete(this.client.getHost(), resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, this.client.getApiVersion(), this.client.getSubscriptionId());
     }
 
     /**
@@ -1140,7 +1140,7 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<GenericResourceInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String resourceProviderNamespace, String parentResourcePath, String resourceType, String resourceName, GenericResourceInner parameters) {
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, this.client.getApiVersion(), this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -1201,7 +1201,7 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<GenericResourceInner>> beginUpdateWithResponseAsync(String resourceGroupName, String resourceProviderNamespace, String parentResourcePath, String resourceType, String resourceName, GenericResourceInner parameters) {
-        return service.beginUpdate(this.client.getHost(), resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, this.client.getSubscriptionId(), parameters, this.client.getApiVersion());
+        return service.beginUpdate(this.client.getHost(), resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, this.client.getApiVersion(), this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -1298,7 +1298,7 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<GenericResourceInner>> beginCreateOrUpdateByIdWithResponseAsync(String resourceId, GenericResourceInner parameters) {
-        return service.beginCreateOrUpdateById(this.client.getHost(), resourceId, parameters, this.client.getApiVersion());
+        return service.beginCreateOrUpdateById(this.client.getHost(), resourceId, this.client.getApiVersion(), parameters);
     }
 
     /**
@@ -1347,7 +1347,7 @@ public final class ResourcesInner implements InnerSupportsListing<GenericResourc
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<GenericResourceInner>> beginUpdateByIdWithResponseAsync(String resourceId, GenericResourceInner parameters) {
-        return service.beginUpdateById(this.client.getHost(), resourceId, parameters, this.client.getApiVersion());
+        return service.beginUpdateById(this.client.getHost(), resourceId, this.client.getApiVersion(), parameters);
     }
 
     /**

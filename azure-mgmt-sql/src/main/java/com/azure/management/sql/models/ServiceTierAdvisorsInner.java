@@ -63,13 +63,13 @@ public final class ServiceTierAdvisorsInner {
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/serviceTierAdvisors/{serviceTierAdvisorName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ServiceTierAdvisorInner>> get(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("serviceTierAdvisorName") String serviceTierAdvisorName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ServiceTierAdvisorInner>> get(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("serviceTierAdvisorName") String serviceTierAdvisorName);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/serviceTierAdvisors")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ServiceTierAdvisorListResultInner>> listByDatabase(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ServiceTierAdvisorListResultInner>> listByDatabase(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName);
     }
 
     /**
@@ -86,7 +86,7 @@ public final class ServiceTierAdvisorsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ServiceTierAdvisorInner>> getWithResponseAsync(String resourceGroupName, String serverName, String databaseName, String serviceTierAdvisorName) {
         final String apiVersion = "2014-04-01";
-        return service.get(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, serviceTierAdvisorName, apiVersion);
+        return service.get(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, serviceTierAdvisorName);
     }
 
     /**
@@ -141,7 +141,7 @@ public final class ServiceTierAdvisorsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ServiceTierAdvisorInner>> listByDatabaseSinglePageAsync(String resourceGroupName, String serverName, String databaseName) {
         final String apiVersion = "2014-04-01";
-        return service.listByDatabase(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listByDatabase(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),

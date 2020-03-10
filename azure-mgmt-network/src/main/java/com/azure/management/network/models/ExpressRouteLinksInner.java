@@ -63,13 +63,13 @@ public final class ExpressRouteLinksInner {
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}/links/{linkName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ExpressRouteLinkInner>> get(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRoutePortName") String expressRoutePortName, @PathParam("linkName") String linkName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ExpressRouteLinkInner>> get(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRoutePortName") String expressRoutePortName, @PathParam("linkName") String linkName);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}/links")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ExpressRouteLinkListResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRoutePortName") String expressRoutePortName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ExpressRouteLinkListResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("expressRoutePortName") String expressRoutePortName);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -91,7 +91,7 @@ public final class ExpressRouteLinksInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRouteLinkInner>> getWithResponseAsync(String resourceGroupName, String expressRoutePortName, String linkName) {
         final String apiVersion = "2019-06-01";
-        return service.get(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, expressRoutePortName, linkName, apiVersion);
+        return service.get(this.client.getHost(), this.client.getSubscriptionId(), apiVersion, resourceGroupName, expressRoutePortName, linkName);
     }
 
     /**
@@ -143,7 +143,7 @@ public final class ExpressRouteLinksInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ExpressRouteLinkInner>> listSinglePageAsync(String resourceGroupName, String expressRoutePortName) {
         final String apiVersion = "2019-06-01";
-        return service.list(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, expressRoutePortName, apiVersion).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion, resourceGroupName, expressRoutePortName).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),

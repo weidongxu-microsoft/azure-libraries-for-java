@@ -72,43 +72,43 @@ public final class AvailabilitySetsInner implements InnerSupportsGet<Availabilit
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<AvailabilitySetInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AvailabilitySetInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<AvailabilitySetInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AvailabilitySetInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<AvailabilitySetInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AvailabilitySetUpdate parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<AvailabilitySetInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AvailabilitySetUpdate parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<AvailabilitySetInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<AvailabilitySetInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/availabilitySets")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<AvailabilitySetListResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("$expand") String expand, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<AvailabilitySetListResultInner>> list(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @QueryParam("$expand") String expand);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<AvailabilitySetListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<AvailabilitySetListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/vmSizes")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualMachineSizeListResultInner>> listAvailableSizes(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VirtualMachineSizeListResultInner>> listAvailableSizes(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("availabilitySetName") String availabilitySetName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -136,7 +136,7 @@ public final class AvailabilitySetsInner implements InnerSupportsGet<Availabilit
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<AvailabilitySetInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String availabilitySetName, AvailabilitySetInner parameters) {
         final String apiVersion = "2019-03-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, availabilitySetName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, availabilitySetName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -189,7 +189,7 @@ public final class AvailabilitySetsInner implements InnerSupportsGet<Availabilit
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<AvailabilitySetInner>> updateWithResponseAsync(String resourceGroupName, String availabilitySetName, AvailabilitySetUpdate parameters) {
         final String apiVersion = "2019-03-01";
-        return service.update(this.client.getHost(), resourceGroupName, availabilitySetName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.update(this.client.getHost(), resourceGroupName, availabilitySetName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -241,7 +241,7 @@ public final class AvailabilitySetsInner implements InnerSupportsGet<Availabilit
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> deleteWithResponseAsync(String resourceGroupName, String availabilitySetName) {
         final String apiVersion = "2019-03-01";
-        return service.delete(this.client.getHost(), resourceGroupName, availabilitySetName, this.client.getSubscriptionId(), apiVersion);
+        return service.delete(this.client.getHost(), resourceGroupName, availabilitySetName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -285,7 +285,7 @@ public final class AvailabilitySetsInner implements InnerSupportsGet<Availabilit
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<AvailabilitySetInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String availabilitySetName) {
         final String apiVersion = "2019-03-01";
-        return service.getByResourceGroup(this.client.getHost(), resourceGroupName, availabilitySetName, this.client.getSubscriptionId(), apiVersion);
+        return service.getByResourceGroup(this.client.getHost(), resourceGroupName, availabilitySetName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -334,7 +334,7 @@ public final class AvailabilitySetsInner implements InnerSupportsGet<Availabilit
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<AvailabilitySetInner>> listSinglePageAsync(String expand) {
         final String apiVersion = "2019-03-01";
-        return service.list(this.client.getHost(), this.client.getSubscriptionId(), expand, apiVersion).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), expand).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -367,7 +367,6 @@ public final class AvailabilitySetsInner implements InnerSupportsGet<Availabilit
     @ServiceMethod(returns = ReturnType.COLLECTION)
     public PagedFlux<AvailabilitySetInner> listAsync() {
         final String expand = null;
-        final String apiVersion = "2019-03-01";
         return new PagedFlux<>(
             () -> listSinglePageAsync(expand),
             nextLink -> listBySubscriptionNextSinglePageAsync(nextLink));
@@ -395,7 +394,6 @@ public final class AvailabilitySetsInner implements InnerSupportsGet<Availabilit
     @ServiceMethod(returns = ReturnType.COLLECTION)
     public PagedIterable<AvailabilitySetInner> list() {
         final String expand = null;
-        final String apiVersion = "2019-03-01";
         return new PagedIterable<>(listAsync(expand));
     }
 
@@ -410,7 +408,7 @@ public final class AvailabilitySetsInner implements InnerSupportsGet<Availabilit
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<AvailabilitySetInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
         final String apiVersion = "2019-03-01";
-        return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listByResourceGroup(this.client.getHost(), resourceGroupName, apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -459,7 +457,7 @@ public final class AvailabilitySetsInner implements InnerSupportsGet<Availabilit
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<VirtualMachineSizeInner>> listAvailableSizesSinglePageAsync(String resourceGroupName, String availabilitySetName) {
         final String apiVersion = "2019-03-01";
-        return service.listAvailableSizes(this.client.getHost(), resourceGroupName, availabilitySetName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listAvailableSizes(this.client.getHost(), resourceGroupName, availabilitySetName, apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),

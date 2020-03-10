@@ -98,7 +98,7 @@ public final class VirtualClustersInner implements InnerSupportsGet<VirtualClust
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/virtualClusters/{virtualClusterName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualClusterName") String virtualClusterName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualClusterUpdate parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualClusterName") String virtualClusterName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VirtualClusterUpdate parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/virtualClusters/{virtualClusterName}")
@@ -110,7 +110,7 @@ public final class VirtualClustersInner implements InnerSupportsGet<VirtualClust
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/virtualClusters/{virtualClusterName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<VirtualClusterInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualClusterName") String virtualClusterName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VirtualClusterUpdate parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VirtualClusterInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("virtualClusterName") String virtualClusterName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VirtualClusterUpdate parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -324,7 +324,7 @@ public final class VirtualClustersInner implements InnerSupportsGet<VirtualClust
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> updateWithResponseAsync(String resourceGroupName, String virtualClusterName, VirtualClusterUpdate parameters) {
         final String apiVersion = "2015-05-01-preview";
-        return service.update(this.client.getHost(), resourceGroupName, virtualClusterName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.update(this.client.getHost(), resourceGroupName, virtualClusterName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -417,7 +417,7 @@ public final class VirtualClustersInner implements InnerSupportsGet<VirtualClust
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VirtualClusterInner>> beginUpdateWithResponseAsync(String resourceGroupName, String virtualClusterName, VirtualClusterUpdate parameters) {
         final String apiVersion = "2015-05-01-preview";
-        return service.beginUpdate(this.client.getHost(), resourceGroupName, virtualClusterName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginUpdate(this.client.getHost(), resourceGroupName, virtualClusterName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**

@@ -62,13 +62,13 @@ public final class ServerConnectionPoliciesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/connectionPolicies/{connectionPolicyName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ServerConnectionPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("connectionPolicyName") String connectionPolicyName, @BodyParam("application/json") ServerConnectionPolicyInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ServerConnectionPolicyInner>> createOrUpdate(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("connectionPolicyName") String connectionPolicyName, @BodyParam("application/json") ServerConnectionPolicyInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/connectionPolicies/{connectionPolicyName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ServerConnectionPolicyInner>> get(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("connectionPolicyName") String connectionPolicyName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ServerConnectionPolicyInner>> get(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("connectionPolicyName") String connectionPolicyName);
     }
 
     /**
@@ -83,11 +83,11 @@ public final class ServerConnectionPoliciesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ServerConnectionPolicyInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String serverName, ServerConnectionType connectionType) {
-        final String connectionPolicyName = "default";
         final String apiVersion = "2014-04-01";
+        final String connectionPolicyName = "default";
         ServerConnectionPolicyInner parameters = new ServerConnectionPolicyInner();
         parameters.withConnectionType(connectionType);
-        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, connectionPolicyName, parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, connectionPolicyName, parameters);
     }
 
     /**
@@ -138,9 +138,9 @@ public final class ServerConnectionPoliciesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ServerConnectionPolicyInner>> getWithResponseAsync(String resourceGroupName, String serverName) {
-        final String connectionPolicyName = "default";
         final String apiVersion = "2014-04-01";
-        return service.get(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, connectionPolicyName, apiVersion);
+        final String connectionPolicyName = "default";
+        return service.get(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, connectionPolicyName);
     }
 
     /**

@@ -95,7 +95,7 @@ public final class AppServicePlansInner implements InnerSupportsGet<AppServicePl
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AppServicePlanInner appServicePlan, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") AppServicePlanInner appServicePlan);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}")
@@ -107,7 +107,7 @@ public final class AppServicePlansInner implements InnerSupportsGet<AppServicePl
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<AppServicePlanInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AppServicePlanPatchResource appServicePlan, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<AppServicePlanInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") AppServicePlanPatchResource appServicePlan);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/capabilities")
@@ -197,7 +197,7 @@ public final class AppServicePlansInner implements InnerSupportsGet<AppServicePl
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<VnetGatewayInner>> updateVnetGateway(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("gatewayName") String gatewayName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VnetGatewayInner connectionEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VnetGatewayInner>> updateVnetGateway(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("gatewayName") String gatewayName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VnetGatewayInner connectionEnvelope);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes")
@@ -215,7 +215,7 @@ public final class AppServicePlansInner implements InnerSupportsGet<AppServicePl
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes/{routeName}")
         @ExpectedResponses({200, 400, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<VnetRouteInner>> createOrUpdateVnetRoute(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("routeName") String routeName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VnetRouteInner route, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VnetRouteInner>> createOrUpdateVnetRoute(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("routeName") String routeName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VnetRouteInner route);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes/{routeName}")
@@ -227,7 +227,7 @@ public final class AppServicePlansInner implements InnerSupportsGet<AppServicePl
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes/{routeName}")
         @ExpectedResponses({200, 400, 404})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<VnetRouteInner>> updateVnetRoute(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("routeName") String routeName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VnetRouteInner route, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VnetRouteInner>> updateVnetRoute(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("vnetName") String vnetName, @PathParam("routeName") String routeName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VnetRouteInner route);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/workers/{workerName}/reboot")
@@ -239,7 +239,7 @@ public final class AppServicePlansInner implements InnerSupportsGet<AppServicePl
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<AppServicePlanInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") AppServicePlanInner appServicePlan, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<AppServicePlanInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("name") String name, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") AppServicePlanInner appServicePlan);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -459,7 +459,7 @@ public final class AppServicePlansInner implements InnerSupportsGet<AppServicePl
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String name, AppServicePlanInner appServicePlan) {
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), appServicePlan, this.client.getApiVersion());
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), appServicePlan);
     }
 
     /**
@@ -550,7 +550,7 @@ public final class AppServicePlansInner implements InnerSupportsGet<AppServicePl
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<AppServicePlanInner>> updateWithResponseAsync(String resourceGroupName, String name, AppServicePlanPatchResource appServicePlan) {
-        return service.update(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), appServicePlan, this.client.getApiVersion());
+        return service.update(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), appServicePlan);
     }
 
     /**
@@ -1429,7 +1429,7 @@ public final class AppServicePlansInner implements InnerSupportsGet<AppServicePl
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VnetGatewayInner>> updateVnetGatewayWithResponseAsync(String resourceGroupName, String name, String vnetName, String gatewayName, VnetGatewayInner connectionEnvelope) {
-        return service.updateVnetGateway(this.client.getHost(), resourceGroupName, name, vnetName, gatewayName, this.client.getSubscriptionId(), connectionEnvelope, this.client.getApiVersion());
+        return service.updateVnetGateway(this.client.getHost(), resourceGroupName, name, vnetName, gatewayName, this.client.getSubscriptionId(), this.client.getApiVersion(), connectionEnvelope);
     }
 
     /**
@@ -1594,7 +1594,7 @@ public final class AppServicePlansInner implements InnerSupportsGet<AppServicePl
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VnetRouteInner>> createOrUpdateVnetRouteWithResponseAsync(String resourceGroupName, String name, String vnetName, String routeName, VnetRouteInner route) {
-        return service.createOrUpdateVnetRoute(this.client.getHost(), resourceGroupName, name, vnetName, routeName, this.client.getSubscriptionId(), route, this.client.getApiVersion());
+        return service.createOrUpdateVnetRoute(this.client.getHost(), resourceGroupName, name, vnetName, routeName, this.client.getSubscriptionId(), this.client.getApiVersion(), route);
     }
 
     /**
@@ -1701,7 +1701,7 @@ public final class AppServicePlansInner implements InnerSupportsGet<AppServicePl
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VnetRouteInner>> updateVnetRouteWithResponseAsync(String resourceGroupName, String name, String vnetName, String routeName, VnetRouteInner route) {
-        return service.updateVnetRoute(this.client.getHost(), resourceGroupName, name, vnetName, routeName, this.client.getSubscriptionId(), route, this.client.getApiVersion());
+        return service.updateVnetRoute(this.client.getHost(), resourceGroupName, name, vnetName, routeName, this.client.getSubscriptionId(), this.client.getApiVersion(), route);
     }
 
     /**
@@ -1803,7 +1803,7 @@ public final class AppServicePlansInner implements InnerSupportsGet<AppServicePl
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<AppServicePlanInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String name, AppServicePlanInner appServicePlan) {
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), appServicePlan, this.client.getApiVersion());
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, name, this.client.getSubscriptionId(), this.client.getApiVersion(), appServicePlan);
     }
 
     /**

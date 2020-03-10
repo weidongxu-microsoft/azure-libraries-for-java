@@ -64,43 +64,43 @@ public final class VirtualMachineScaleSetRollingUpgradesInner {
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/rollingUpgrades/cancel")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> cancel(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> cancel(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/osRollingUpgrade")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> startOSUpgrade(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> startOSUpgrade(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensionRollingUpgrade")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> startExtensionUpgrade(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> startExtensionUpgrade(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/rollingUpgrades/latest")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<RollingUpgradeStatusInfoInner>> getLatest(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<RollingUpgradeStatusInfoInner>> getLatest(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/rollingUpgrades/cancel")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginCancel(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginCancel(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/osRollingUpgrade")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginStartOSUpgrade(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginStartOSUpgrade(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensionRollingUpgrade")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginStartExtensionUpgrade(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginStartExtensionUpgrade(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("vmScaleSetName") String vmScaleSetName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
     }
 
     /**
@@ -115,7 +115,7 @@ public final class VirtualMachineScaleSetRollingUpgradesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> cancelWithResponseAsync(String resourceGroupName, String vmScaleSetName) {
         final String apiVersion = "2019-03-01";
-        return service.cancel(this.client.getHost(), resourceGroupName, vmScaleSetName, this.client.getSubscriptionId(), apiVersion);
+        return service.cancel(this.client.getHost(), resourceGroupName, vmScaleSetName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -161,7 +161,7 @@ public final class VirtualMachineScaleSetRollingUpgradesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> startOSUpgradeWithResponseAsync(String resourceGroupName, String vmScaleSetName) {
         final String apiVersion = "2019-03-01";
-        return service.startOSUpgrade(this.client.getHost(), resourceGroupName, vmScaleSetName, this.client.getSubscriptionId(), apiVersion);
+        return service.startOSUpgrade(this.client.getHost(), resourceGroupName, vmScaleSetName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -207,7 +207,7 @@ public final class VirtualMachineScaleSetRollingUpgradesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> startExtensionUpgradeWithResponseAsync(String resourceGroupName, String vmScaleSetName) {
         final String apiVersion = "2019-03-01";
-        return service.startExtensionUpgrade(this.client.getHost(), resourceGroupName, vmScaleSetName, this.client.getSubscriptionId(), apiVersion);
+        return service.startExtensionUpgrade(this.client.getHost(), resourceGroupName, vmScaleSetName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -253,7 +253,7 @@ public final class VirtualMachineScaleSetRollingUpgradesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<RollingUpgradeStatusInfoInner>> getLatestWithResponseAsync(String resourceGroupName, String vmScaleSetName) {
         final String apiVersion = "2019-03-01";
-        return service.getLatest(this.client.getHost(), resourceGroupName, vmScaleSetName, this.client.getSubscriptionId(), apiVersion);
+        return service.getLatest(this.client.getHost(), resourceGroupName, vmScaleSetName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -303,7 +303,7 @@ public final class VirtualMachineScaleSetRollingUpgradesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginCancelWithResponseAsync(String resourceGroupName, String vmScaleSetName) {
         final String apiVersion = "2019-03-01";
-        return service.beginCancel(this.client.getHost(), resourceGroupName, vmScaleSetName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginCancel(this.client.getHost(), resourceGroupName, vmScaleSetName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -347,7 +347,7 @@ public final class VirtualMachineScaleSetRollingUpgradesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginStartOSUpgradeWithResponseAsync(String resourceGroupName, String vmScaleSetName) {
         final String apiVersion = "2019-03-01";
-        return service.beginStartOSUpgrade(this.client.getHost(), resourceGroupName, vmScaleSetName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginStartOSUpgrade(this.client.getHost(), resourceGroupName, vmScaleSetName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -391,7 +391,7 @@ public final class VirtualMachineScaleSetRollingUpgradesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginStartExtensionUpgradeWithResponseAsync(String resourceGroupName, String vmScaleSetName) {
         final String apiVersion = "2019-03-01";
-        return service.beginStartExtensionUpgrade(this.client.getHost(), resourceGroupName, vmScaleSetName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginStartExtensionUpgrade(this.client.getHost(), resourceGroupName, vmScaleSetName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**

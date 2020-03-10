@@ -63,7 +63,7 @@ public final class DatabaseUsagesInner {
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/usages")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DatabaseUsageListResultInner>> listByDatabase(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DatabaseUsageListResultInner>> listByDatabase(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName);
     }
 
     /**
@@ -79,7 +79,7 @@ public final class DatabaseUsagesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<DatabaseUsageInner>> listByDatabaseSinglePageAsync(String resourceGroupName, String serverName, String databaseName) {
         final String apiVersion = "2014-04-01";
-        return service.listByDatabase(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listByDatabase(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),

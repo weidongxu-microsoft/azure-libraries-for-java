@@ -73,37 +73,37 @@ public final class ProximityPlacementGroupsInner implements InnerSupportsGet<Pro
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ProximityPlacementGroupInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("proximityPlacementGroupName") String proximityPlacementGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ProximityPlacementGroupInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ProximityPlacementGroupInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("proximityPlacementGroupName") String proximityPlacementGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ProximityPlacementGroupInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ProximityPlacementGroupInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("proximityPlacementGroupName") String proximityPlacementGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ProximityPlacementGroupUpdate parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ProximityPlacementGroupInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("proximityPlacementGroupName") String proximityPlacementGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ProximityPlacementGroupUpdate parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("proximityPlacementGroupName") String proximityPlacementGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("proximityPlacementGroupName") String proximityPlacementGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ProximityPlacementGroupInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("proximityPlacementGroupName") String proximityPlacementGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ProximityPlacementGroupInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("proximityPlacementGroupName") String proximityPlacementGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/proximityPlacementGroups")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ProximityPlacementGroupListResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ProximityPlacementGroupListResultInner>> list(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ProximityPlacementGroupListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ProximityPlacementGroupListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -131,7 +131,7 @@ public final class ProximityPlacementGroupsInner implements InnerSupportsGet<Pro
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ProximityPlacementGroupInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String proximityPlacementGroupName, ProximityPlacementGroupInner parameters) {
         final String apiVersion = "2019-03-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, proximityPlacementGroupName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, proximityPlacementGroupName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -186,7 +186,7 @@ public final class ProximityPlacementGroupsInner implements InnerSupportsGet<Pro
         final String apiVersion = "2019-03-01";
         ProximityPlacementGroupUpdate parameters = new ProximityPlacementGroupUpdate();
         parameters.withTags(tags);
-        return service.update(this.client.getHost(), resourceGroupName, proximityPlacementGroupName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.update(this.client.getHost(), resourceGroupName, proximityPlacementGroupName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -238,7 +238,7 @@ public final class ProximityPlacementGroupsInner implements InnerSupportsGet<Pro
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> deleteWithResponseAsync(String resourceGroupName, String proximityPlacementGroupName) {
         final String apiVersion = "2019-03-01";
-        return service.delete(this.client.getHost(), resourceGroupName, proximityPlacementGroupName, this.client.getSubscriptionId(), apiVersion);
+        return service.delete(this.client.getHost(), resourceGroupName, proximityPlacementGroupName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -282,7 +282,7 @@ public final class ProximityPlacementGroupsInner implements InnerSupportsGet<Pro
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ProximityPlacementGroupInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String proximityPlacementGroupName) {
         final String apiVersion = "2019-03-01";
-        return service.getByResourceGroup(this.client.getHost(), resourceGroupName, proximityPlacementGroupName, this.client.getSubscriptionId(), apiVersion);
+        return service.getByResourceGroup(this.client.getHost(), resourceGroupName, proximityPlacementGroupName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -329,7 +329,7 @@ public final class ProximityPlacementGroupsInner implements InnerSupportsGet<Pro
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ProximityPlacementGroupInner>> listSinglePageAsync() {
         final String apiVersion = "2019-03-01";
-        return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -373,7 +373,7 @@ public final class ProximityPlacementGroupsInner implements InnerSupportsGet<Pro
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ProximityPlacementGroupInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
         final String apiVersion = "2019-03-01";
-        return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listByResourceGroup(this.client.getHost(), resourceGroupName, apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),

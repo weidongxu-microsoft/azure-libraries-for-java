@@ -72,37 +72,37 @@ public final class DedicatedHostGroupsInner implements InnerSupportsGet<Dedicate
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DedicatedHostGroupInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostGroupName") String hostGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DedicatedHostGroupInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DedicatedHostGroupInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostGroupName") String hostGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DedicatedHostGroupInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DedicatedHostGroupInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostGroupName") String hostGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DedicatedHostGroupUpdate parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DedicatedHostGroupInner>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostGroupName") String hostGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") DedicatedHostGroupUpdate parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostGroupName") String hostGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostGroupName") String hostGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DedicatedHostGroupInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostGroupName") String hostGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DedicatedHostGroupInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("hostGroupName") String hostGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DedicatedHostGroupListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DedicatedHostGroupListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/hostGroups")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DedicatedHostGroupListResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DedicatedHostGroupListResultInner>> list(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -130,7 +130,7 @@ public final class DedicatedHostGroupsInner implements InnerSupportsGet<Dedicate
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DedicatedHostGroupInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String hostGroupName, DedicatedHostGroupInner parameters) {
         final String apiVersion = "2019-03-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, hostGroupName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, hostGroupName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -183,7 +183,7 @@ public final class DedicatedHostGroupsInner implements InnerSupportsGet<Dedicate
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DedicatedHostGroupInner>> updateWithResponseAsync(String resourceGroupName, String hostGroupName, DedicatedHostGroupUpdate parameters) {
         final String apiVersion = "2019-03-01";
-        return service.update(this.client.getHost(), resourceGroupName, hostGroupName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.update(this.client.getHost(), resourceGroupName, hostGroupName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -235,7 +235,7 @@ public final class DedicatedHostGroupsInner implements InnerSupportsGet<Dedicate
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> deleteWithResponseAsync(String resourceGroupName, String hostGroupName) {
         final String apiVersion = "2019-03-01";
-        return service.delete(this.client.getHost(), resourceGroupName, hostGroupName, this.client.getSubscriptionId(), apiVersion);
+        return service.delete(this.client.getHost(), resourceGroupName, hostGroupName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -279,7 +279,7 @@ public final class DedicatedHostGroupsInner implements InnerSupportsGet<Dedicate
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DedicatedHostGroupInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String hostGroupName) {
         final String apiVersion = "2019-03-01";
-        return service.getByResourceGroup(this.client.getHost(), resourceGroupName, hostGroupName, this.client.getSubscriptionId(), apiVersion);
+        return service.getByResourceGroup(this.client.getHost(), resourceGroupName, hostGroupName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -328,7 +328,7 @@ public final class DedicatedHostGroupsInner implements InnerSupportsGet<Dedicate
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<DedicatedHostGroupInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
         final String apiVersion = "2019-03-01";
-        return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listByResourceGroup(this.client.getHost(), resourceGroupName, apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -374,7 +374,7 @@ public final class DedicatedHostGroupsInner implements InnerSupportsGet<Dedicate
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<DedicatedHostGroupInner>> listSinglePageAsync() {
         final String apiVersion = "2019-03-01";
-        return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),

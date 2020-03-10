@@ -69,7 +69,7 @@ public final class ExpressRoutePortsLocationsInner {
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePortsLocations/{locationName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ExpressRoutePortsLocationInner>> get(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("locationName") String locationName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ExpressRoutePortsLocationInner>> get(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @PathParam("locationName") String locationName);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -131,7 +131,7 @@ public final class ExpressRoutePortsLocationsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ExpressRoutePortsLocationInner>> getWithResponseAsync(String locationName) {
         final String apiVersion = "2019-06-01";
-        return service.get(this.client.getHost(), this.client.getSubscriptionId(), locationName, apiVersion);
+        return service.get(this.client.getHost(), this.client.getSubscriptionId(), apiVersion, locationName);
     }
 
     /**

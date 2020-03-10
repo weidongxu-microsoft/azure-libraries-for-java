@@ -73,13 +73,13 @@ public final class ElasticPoolsInner {
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/metrics")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<MetricListResultInner>> listMetrics(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("elasticPoolName") String elasticPoolName, @QueryParam("$filter") String filter, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<MetricListResultInner>> listMetrics(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("elasticPoolName") String elasticPoolName, @QueryParam("$filter") String filter);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/metricDefinitions")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<MetricDefinitionListResultInner>> listMetricDefinitions(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("elasticPoolName") String elasticPoolName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<MetricDefinitionListResultInner>> listMetricDefinitions(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("elasticPoolName") String elasticPoolName);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools")
@@ -97,7 +97,7 @@ public final class ElasticPoolsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("elasticPoolName") String elasticPoolName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ElasticPoolInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("elasticPoolName") String elasticPoolName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ElasticPoolInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}")
@@ -109,7 +109,7 @@ public final class ElasticPoolsInner {
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("elasticPoolName") String elasticPoolName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ElasticPoolUpdate parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("elasticPoolName") String elasticPoolName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ElasticPoolUpdate parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/failover")
@@ -121,7 +121,7 @@ public final class ElasticPoolsInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ElasticPoolInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("elasticPoolName") String elasticPoolName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ElasticPoolInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ElasticPoolInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("elasticPoolName") String elasticPoolName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ElasticPoolInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}")
@@ -133,7 +133,7 @@ public final class ElasticPoolsInner {
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ElasticPoolInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("elasticPoolName") String elasticPoolName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ElasticPoolUpdate parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ElasticPoolInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("elasticPoolName") String elasticPoolName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ElasticPoolUpdate parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/failover")
@@ -162,7 +162,7 @@ public final class ElasticPoolsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<MetricInner>> listMetricsSinglePageAsync(String resourceGroupName, String serverName, String elasticPoolName, String filter) {
         final String apiVersion = "2014-04-01";
-        return service.listMetrics(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, elasticPoolName, filter, apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listMetrics(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, elasticPoolName, filter).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -217,7 +217,7 @@ public final class ElasticPoolsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<MetricDefinitionInner>> listMetricDefinitionsSinglePageAsync(String resourceGroupName, String serverName, String elasticPoolName) {
         final String apiVersion = "2014-04-01";
-        return service.listMetricDefinitions(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, elasticPoolName, apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listMetricDefinitions(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, elasticPoolName).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -308,7 +308,6 @@ public final class ElasticPoolsInner {
     @ServiceMethod(returns = ReturnType.COLLECTION)
     public PagedFlux<ElasticPoolInner> listByServerAsync(String resourceGroupName, String serverName) {
         final Integer skip = null;
-        final String apiVersion = "2017-10-01-preview";
         return new PagedFlux<>(
             () -> listByServerSinglePageAsync(resourceGroupName, serverName, skip),
             nextLink -> listByServerNextSinglePageAsync(nextLink));
@@ -341,7 +340,6 @@ public final class ElasticPoolsInner {
     @ServiceMethod(returns = ReturnType.COLLECTION)
     public PagedIterable<ElasticPoolInner> listByServer(String resourceGroupName, String serverName) {
         final Integer skip = null;
-        final String apiVersion = "2017-10-01-preview";
         return new PagedIterable<>(listByServerAsync(resourceGroupName, serverName, skip));
     }
 
@@ -412,7 +410,7 @@ public final class ElasticPoolsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String serverName, String elasticPoolName, ElasticPoolInner parameters) {
         final String apiVersion = "2017-10-01-preview";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, elasticPoolName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, elasticPoolName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -513,7 +511,7 @@ public final class ElasticPoolsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> updateWithResponseAsync(String resourceGroupName, String serverName, String elasticPoolName, ElasticPoolUpdate parameters) {
         final String apiVersion = "2017-10-01-preview";
-        return service.update(this.client.getHost(), resourceGroupName, serverName, elasticPoolName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.update(this.client.getHost(), resourceGroupName, serverName, elasticPoolName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -614,7 +612,7 @@ public final class ElasticPoolsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ElasticPoolInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String serverName, String elasticPoolName, ElasticPoolInner parameters) {
         final String apiVersion = "2017-10-01-preview";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serverName, elasticPoolName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serverName, elasticPoolName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -717,7 +715,7 @@ public final class ElasticPoolsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ElasticPoolInner>> beginUpdateWithResponseAsync(String resourceGroupName, String serverName, String elasticPoolName, ElasticPoolUpdate parameters) {
         final String apiVersion = "2017-10-01-preview";
-        return service.beginUpdate(this.client.getHost(), resourceGroupName, serverName, elasticPoolName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginUpdate(this.client.getHost(), resourceGroupName, serverName, elasticPoolName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**

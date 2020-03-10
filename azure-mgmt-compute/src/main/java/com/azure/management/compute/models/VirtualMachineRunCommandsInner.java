@@ -63,13 +63,13 @@ public final class VirtualMachineRunCommandsInner {
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<RunCommandListResultInner>> list(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<RunCommandListResultInner>> list(@HostParam("$host") String host, @PathParam("location") String location, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json,text/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands/{commandId}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<RunCommandDocumentInner>> get(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("commandId") String commandId, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<RunCommandDocumentInner>> get(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("commandId") String commandId, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json,text/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -89,7 +89,7 @@ public final class VirtualMachineRunCommandsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<RunCommandDocumentBaseInner>> listSinglePageAsync(String location) {
         final String apiVersion = "2019-03-01";
-        return service.list(this.client.getHost(), location, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), location, apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -138,7 +138,7 @@ public final class VirtualMachineRunCommandsInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<RunCommandDocumentInner>> getWithResponseAsync(String location, String commandId) {
         final String apiVersion = "2019-03-01";
-        return service.get(this.client.getHost(), location, commandId, this.client.getSubscriptionId(), apiVersion);
+        return service.get(this.client.getHost(), location, commandId, apiVersion, this.client.getSubscriptionId());
     }
 
     /**

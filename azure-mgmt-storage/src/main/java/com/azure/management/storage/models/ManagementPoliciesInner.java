@@ -65,19 +65,19 @@ public final class ManagementPoliciesInner implements InnerSupportsDelete<Void> 
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ManagementPolicyInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @PathParam("managementPolicyName") String managementPolicyName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ManagementPolicyInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("managementPolicyName") String managementPolicyName);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ManagementPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @PathParam("managementPolicyName") String managementPolicyName, @BodyParam("application/json") ManagementPolicyInner properties, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ManagementPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("managementPolicyName") String managementPolicyName, @BodyParam("application/json") ManagementPolicyInner properties);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @PathParam("subscriptionId") String subscriptionId, @PathParam("managementPolicyName") String managementPolicyName, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("accountName") String accountName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("managementPolicyName") String managementPolicyName);
     }
 
     /**
@@ -92,7 +92,7 @@ public final class ManagementPoliciesInner implements InnerSupportsDelete<Void> 
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ManagementPolicyInner>> getWithResponseAsync(String resourceGroupName, String accountName) {
         final String managementPolicyName = "default";
-        return service.get(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), managementPolicyName, this.client.getApiVersion());
+        return service.get(this.client.getHost(), resourceGroupName, accountName, this.client.getApiVersion(), this.client.getSubscriptionId(), managementPolicyName);
     }
 
     /**
@@ -145,7 +145,7 @@ public final class ManagementPoliciesInner implements InnerSupportsDelete<Void> 
         final String managementPolicyName = "default";
         ManagementPolicyInner properties = new ManagementPolicyInner();
         properties.setPolicy(policy);
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), managementPolicyName, properties, this.client.getApiVersion());
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, accountName, this.client.getApiVersion(), this.client.getSubscriptionId(), managementPolicyName, properties);
     }
 
     /**
@@ -197,7 +197,7 @@ public final class ManagementPoliciesInner implements InnerSupportsDelete<Void> 
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> deleteWithResponseAsync(String resourceGroupName, String accountName) {
         final String managementPolicyName = "default";
-        return service.delete(this.client.getHost(), resourceGroupName, accountName, this.client.getSubscriptionId(), managementPolicyName, this.client.getApiVersion());
+        return service.delete(this.client.getHost(), resourceGroupName, accountName, this.client.getApiVersion(), this.client.getSubscriptionId(), managementPolicyName);
     }
 
     /**

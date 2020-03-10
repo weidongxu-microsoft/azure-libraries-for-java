@@ -71,61 +71,61 @@ public final class PacketCapturesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}")
         @ExpectedResponses({201})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> create(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PacketCaptureInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> create(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PacketCaptureInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<PacketCaptureResultInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PacketCaptureResultInner>> get(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}/stop")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> stop(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> stop(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}/queryStatus")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> getStatus(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> getStatus(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<PacketCaptureListResultInner>> list(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PacketCaptureListResultInner>> list(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}")
         @ExpectedResponses({201})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<PacketCaptureResultInner>> beginCreate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PacketCaptureInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PacketCaptureResultInner>> beginCreate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PacketCaptureInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}")
         @ExpectedResponses({202, 204})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}/stop")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<Response<Void>> beginStop(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginStop(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}/queryStatus")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(ErrorResponseException.class)
-        Mono<SimpleResponse<PacketCaptureQueryStatusResultInner>> beginGetStatus(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PacketCaptureQueryStatusResultInner>> beginGetStatus(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("networkWatcherName") String networkWatcherName, @PathParam("packetCaptureName") String packetCaptureName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
     }
 
     /**
@@ -142,7 +142,7 @@ public final class PacketCapturesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName, PacketCaptureInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.create(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.create(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -193,7 +193,7 @@ public final class PacketCapturesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PacketCaptureResultInner>> getWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName) {
         final String apiVersion = "2019-06-01";
-        return service.get(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), apiVersion);
+        return service.get(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -246,7 +246,7 @@ public final class PacketCapturesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName) {
         final String apiVersion = "2019-06-01";
-        return service.delete(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), apiVersion);
+        return service.delete(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -295,7 +295,7 @@ public final class PacketCapturesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> stopWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName) {
         final String apiVersion = "2019-06-01";
-        return service.stop(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), apiVersion);
+        return service.stop(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -344,7 +344,7 @@ public final class PacketCapturesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> getStatusWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName) {
         final String apiVersion = "2019-06-01";
-        return service.getStatus(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), apiVersion);
+        return service.getStatus(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -392,7 +392,7 @@ public final class PacketCapturesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<PacketCaptureResultInner>> listSinglePageAsync(String resourceGroupName, String networkWatcherName) {
         final String apiVersion = "2019-06-01";
-        return service.list(this.client.getHost(), resourceGroupName, networkWatcherName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), resourceGroupName, networkWatcherName, apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -444,7 +444,7 @@ public final class PacketCapturesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PacketCaptureResultInner>> beginCreateWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName, PacketCaptureInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreate(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginCreate(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -499,7 +499,7 @@ public final class PacketCapturesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName) {
         final String apiVersion = "2019-06-01";
-        return service.beginDelete(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginDelete(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -546,7 +546,7 @@ public final class PacketCapturesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginStopWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName) {
         final String apiVersion = "2019-06-01";
-        return service.beginStop(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginStop(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -593,7 +593,7 @@ public final class PacketCapturesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PacketCaptureQueryStatusResultInner>> beginGetStatusWithResponseAsync(String resourceGroupName, String networkWatcherName, String packetCaptureName) {
         final String apiVersion = "2019-06-01";
-        return service.beginGetStatus(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginGetStatus(this.client.getHost(), resourceGroupName, networkWatcherName, packetCaptureName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**

@@ -75,13 +75,13 @@ public final class BackupShortTermRetentionPoliciesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BackupShortTermRetentionPolicyInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") BackupShortTermRetentionPolicyInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BackupShortTermRetentionPolicyInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") BackupShortTermRetentionPolicyInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies")
@@ -93,13 +93,13 @@ public final class BackupShortTermRetentionPoliciesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<BackupShortTermRetentionPolicyInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BackupShortTermRetentionPolicyInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<BackupShortTermRetentionPolicyInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") BackupShortTermRetentionPolicyInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies/{policyName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<BackupShortTermRetentionPolicyInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") BackupShortTermRetentionPolicyInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<BackupShortTermRetentionPolicyInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("policyName") String policyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") BackupShortTermRetentionPolicyInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -179,7 +179,7 @@ public final class BackupShortTermRetentionPoliciesInner {
         final String apiVersion = "2017-10-01-preview";
         BackupShortTermRetentionPolicyInner parameters = new BackupShortTermRetentionPolicyInner();
         parameters.withRetentionDays(retentionDays);
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, policyName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, policyName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -234,7 +234,7 @@ public final class BackupShortTermRetentionPoliciesInner {
         final String apiVersion = "2017-10-01-preview";
         BackupShortTermRetentionPolicyInner parameters = new BackupShortTermRetentionPolicyInner();
         parameters.withRetentionDays(retentionDays);
-        return service.update(this.client.getHost(), resourceGroupName, serverName, databaseName, policyName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.update(this.client.getHost(), resourceGroupName, serverName, databaseName, policyName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -343,7 +343,7 @@ public final class BackupShortTermRetentionPoliciesInner {
         final String apiVersion = "2017-10-01-preview";
         BackupShortTermRetentionPolicyInner parameters = new BackupShortTermRetentionPolicyInner();
         parameters.withRetentionDays(retentionDays);
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, policyName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, policyName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -402,7 +402,7 @@ public final class BackupShortTermRetentionPoliciesInner {
         final String apiVersion = "2017-10-01-preview";
         BackupShortTermRetentionPolicyInner parameters = new BackupShortTermRetentionPolicyInner();
         parameters.withRetentionDays(retentionDays);
-        return service.beginUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, policyName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, policyName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**

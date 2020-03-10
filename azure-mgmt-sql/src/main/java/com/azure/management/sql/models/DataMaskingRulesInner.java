@@ -65,13 +65,13 @@ public final class DataMaskingRulesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DataMaskingRuleInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("dataMaskingPolicyName") String dataMaskingPolicyName, @PathParam("dataMaskingRuleName") String dataMaskingRuleName, @BodyParam("application/json") DataMaskingRuleInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DataMaskingRuleInner>> createOrUpdate(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("dataMaskingPolicyName") String dataMaskingPolicyName, @PathParam("dataMaskingRuleName") String dataMaskingRuleName, @BodyParam("application/json") DataMaskingRuleInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DataMaskingRuleListResultInner>> listByDatabase(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("dataMaskingPolicyName") String dataMaskingPolicyName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DataMaskingRuleListResultInner>> listByDatabase(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("dataMaskingPolicyName") String dataMaskingPolicyName);
     }
 
     /**
@@ -88,9 +88,9 @@ public final class DataMaskingRulesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DataMaskingRuleInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String serverName, String databaseName, String dataMaskingRuleName, DataMaskingRuleInner parameters) {
-        final String dataMaskingPolicyName = "Default";
         final String apiVersion = "2014-04-01";
-        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, dataMaskingPolicyName, dataMaskingRuleName, parameters, apiVersion);
+        final String dataMaskingPolicyName = "Default";
+        return service.createOrUpdate(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, dataMaskingPolicyName, dataMaskingRuleName, parameters);
     }
 
     /**
@@ -146,9 +146,9 @@ public final class DataMaskingRulesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<DataMaskingRuleInner>> listByDatabaseSinglePageAsync(String resourceGroupName, String serverName, String databaseName) {
-        final String dataMaskingPolicyName = "Default";
         final String apiVersion = "2014-04-01";
-        return service.listByDatabase(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, dataMaskingPolicyName, apiVersion).map(res -> new PagedResponseBase<>(
+        final String dataMaskingPolicyName = "Default";
+        return service.listByDatabase(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, dataMaskingPolicyName).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),

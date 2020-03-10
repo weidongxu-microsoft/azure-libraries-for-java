@@ -88,7 +88,7 @@ public final class ServersInner implements InnerSupportsGet<ServerInner>, InnerS
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ServerInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ServerInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}")
@@ -100,7 +100,7 @@ public final class ServersInner implements InnerSupportsGet<ServerInner>, InnerS
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ServerUpdate parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ServerUpdate parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Sql/servers")
@@ -112,13 +112,13 @@ public final class ServersInner implements InnerSupportsGet<ServerInner>, InnerS
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Sql/checkNameAvailability")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<CheckNameAvailabilityResponseInner>> checkNameAvailability(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CheckNameAvailabilityRequest parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<CheckNameAvailabilityResponseInner>> checkNameAvailability(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CheckNameAvailabilityRequest parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ServerInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ServerInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ServerInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ServerInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}")
@@ -130,7 +130,7 @@ public final class ServersInner implements InnerSupportsGet<ServerInner>, InnerS
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}")
         @ExpectedResponses({200, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ServerInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ServerUpdate parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ServerInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ServerUpdate parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -256,7 +256,7 @@ public final class ServersInner implements InnerSupportsGet<ServerInner>, InnerS
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String serverName, ServerInner parameters) {
         final String apiVersion = "2019-06-01-preview";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -351,7 +351,7 @@ public final class ServersInner implements InnerSupportsGet<ServerInner>, InnerS
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> updateWithResponseAsync(String resourceGroupName, String serverName, ServerUpdate parameters) {
         final String apiVersion = "2019-06-01-preview";
-        return service.update(this.client.getHost(), resourceGroupName, serverName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.update(this.client.getHost(), resourceGroupName, serverName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -442,7 +442,7 @@ public final class ServersInner implements InnerSupportsGet<ServerInner>, InnerS
         final String apiVersion = "2019-06-01-preview";
         CheckNameAvailabilityRequest parameters = new CheckNameAvailabilityRequest();
         parameters.withName(name);
-        return service.checkNameAvailability(this.client.getHost(), this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.checkNameAvailability(this.client.getHost(), this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -491,7 +491,7 @@ public final class ServersInner implements InnerSupportsGet<ServerInner>, InnerS
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ServerInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String serverName, ServerInner parameters) {
         final String apiVersion = "2019-06-01-preview";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serverName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serverName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -588,7 +588,7 @@ public final class ServersInner implements InnerSupportsGet<ServerInner>, InnerS
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ServerInner>> beginUpdateWithResponseAsync(String resourceGroupName, String serverName, ServerUpdate parameters) {
         final String apiVersion = "2019-06-01-preview";
-        return service.beginUpdate(this.client.getHost(), resourceGroupName, serverName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginUpdate(this.client.getHost(), resourceGroupName, serverName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**

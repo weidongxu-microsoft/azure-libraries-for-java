@@ -103,12 +103,12 @@ public final class WebSiteManagementClientImpl extends AzureServiceClient {
     }
 
     /**
-     * The API version to use for this operation.
+     * Api Version.
      */
     private String apiVersion;
 
     /**
-     * Gets The API version to use for this operation.
+     * Gets Api Version.
      * 
      * @return the apiVersion value.
      */
@@ -117,7 +117,7 @@ public final class WebSiteManagementClientImpl extends AzureServiceClient {
     }
 
     /**
-     * Sets The API version to use for this operation.
+     * Sets Api Version.
      * 
      * @param apiVersion the apiVersion value.
      * @return the service client itself.
@@ -396,7 +396,7 @@ public final class WebSiteManagementClientImpl extends AzureServiceClient {
         @Put("/providers/Microsoft.Web/publishingUsers/web")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<UserInner>> updatePublishingUser(@HostParam("$host") String host, @BodyParam("application/json") UserInner userDetails, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<UserInner>> updatePublishingUser(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") UserInner userDetails);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/providers/Microsoft.Web/sourcecontrols")
@@ -414,7 +414,7 @@ public final class WebSiteManagementClientImpl extends AzureServiceClient {
         @Put("/providers/Microsoft.Web/sourcecontrols/{sourceControlType}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<SourceControlInner>> updateSourceControl(@HostParam("$host") String host, @PathParam("sourceControlType") String sourceControlType, @BodyParam("application/json") SourceControlInner requestMessage, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<SourceControlInner>> updateSourceControl(@HostParam("$host") String host, @PathParam("sourceControlType") String sourceControlType, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") SourceControlInner requestMessage);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Web/billingMeters")
@@ -426,7 +426,7 @@ public final class WebSiteManagementClientImpl extends AzureServiceClient {
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Web/checknameavailability")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<ResourceNameAvailabilityInner>> checkNameAvailability(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ResourceNameAvailabilityRequest request, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ResourceNameAvailabilityInner>> checkNameAvailability(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ResourceNameAvailabilityRequest request);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Web/deploymentLocations")
@@ -444,7 +444,7 @@ public final class WebSiteManagementClientImpl extends AzureServiceClient {
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Web/listSitesAssignedToHostName")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<IdentifierCollectionInner>> listSiteIdentifiersAssignedToHostName(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") NameIdentifierInner nameIdentifier, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<IdentifierCollectionInner>> listSiteIdentifiersAssignedToHostName(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") NameIdentifierInner nameIdentifier);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Web/premieraddonoffers")
@@ -462,25 +462,25 @@ public final class WebSiteManagementClientImpl extends AzureServiceClient {
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Web/verifyHostingEnvironmentVnet")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<VnetValidationFailureDetailsInner>> verifyHostingEnvironmentVnet(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") VnetParameters parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<VnetValidationFailureDetailsInner>> verifyHostingEnvironmentVnet(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") VnetParameters parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/moveResources")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> move(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CsmMoveResourceEnvelope moveResourceEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> move(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CsmMoveResourceEnvelope moveResourceEnvelope);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/validate")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<SimpleResponse<ValidateResponseInner>> validate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ValidateRequest validateRequest, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ValidateResponseInner>> validate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ValidateRequest validateRequest);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/validateMoveResources")
         @ExpectedResponses({204})
         @UnexpectedResponseExceptionType(DefaultErrorResponseException.class)
-        Mono<Response<Void>> validateMove(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CsmMoveResourceEnvelope moveResourceEnvelope, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> validateMove(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") CsmMoveResourceEnvelope moveResourceEnvelope);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -563,7 +563,7 @@ public final class WebSiteManagementClientImpl extends AzureServiceClient {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<UserInner>> updatePublishingUserWithResponseAsync(UserInner userDetails) {
-        return service.updatePublishingUser(this.getHost(), userDetails, this.getApiVersion());
+        return service.updatePublishingUser(this.getHost(), this.getApiVersion(), userDetails);
     }
 
     /**
@@ -697,7 +697,7 @@ public final class WebSiteManagementClientImpl extends AzureServiceClient {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<SourceControlInner>> updateSourceControlWithResponseAsync(String sourceControlType, SourceControlInner requestMessage) {
-        return service.updateSourceControl(this.getHost(), sourceControlType, requestMessage, this.getApiVersion());
+        return service.updateSourceControl(this.getHost(), sourceControlType, this.getApiVersion(), requestMessage);
     }
 
     /**
@@ -829,7 +829,7 @@ public final class WebSiteManagementClientImpl extends AzureServiceClient {
         request.withName(name);
         request.withType(type);
         request.withIsFqdn(isFqdn);
-        return service.checkNameAvailability(this.getHost(), this.getSubscriptionId(), request, this.getApiVersion());
+        return service.checkNameAvailability(this.getHost(), this.getSubscriptionId(), this.getApiVersion(), request);
     }
 
     /**
@@ -1009,7 +1009,7 @@ public final class WebSiteManagementClientImpl extends AzureServiceClient {
     public Mono<PagedResponse<IdentifierInner>> listSiteIdentifiersAssignedToHostNameSinglePageAsync(String name) {
         NameIdentifierInner nameIdentifier = new NameIdentifierInner();
         nameIdentifier.withName(name);
-        return service.listSiteIdentifiersAssignedToHostName(this.getHost(), this.getSubscriptionId(), nameIdentifier, this.getApiVersion()).map(res -> new PagedResponseBase<>(
+        return service.listSiteIdentifiersAssignedToHostName(this.getHost(), this.getSubscriptionId(), this.getApiVersion(), nameIdentifier).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -1137,7 +1137,7 @@ public final class WebSiteManagementClientImpl extends AzureServiceClient {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<VnetValidationFailureDetailsInner>> verifyHostingEnvironmentVnetWithResponseAsync(VnetParameters parameters) {
-        return service.verifyHostingEnvironmentVnet(this.getHost(), this.getSubscriptionId(), parameters, this.getApiVersion());
+        return service.verifyHostingEnvironmentVnet(this.getHost(), this.getSubscriptionId(), this.getApiVersion(), parameters);
     }
 
     /**
@@ -1184,7 +1184,7 @@ public final class WebSiteManagementClientImpl extends AzureServiceClient {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> moveWithResponseAsync(String resourceGroupName, CsmMoveResourceEnvelope moveResourceEnvelope) {
-        return service.move(this.getHost(), resourceGroupName, this.getSubscriptionId(), moveResourceEnvelope, this.getApiVersion());
+        return service.move(this.getHost(), resourceGroupName, this.getSubscriptionId(), this.getApiVersion(), moveResourceEnvelope);
     }
 
     /**
@@ -1227,7 +1227,7 @@ public final class WebSiteManagementClientImpl extends AzureServiceClient {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ValidateResponseInner>> validateWithResponseAsync(String resourceGroupName, ValidateRequest validateRequest) {
-        return service.validate(this.getHost(), resourceGroupName, this.getSubscriptionId(), validateRequest, this.getApiVersion());
+        return service.validate(this.getHost(), resourceGroupName, this.getSubscriptionId(), this.getApiVersion(), validateRequest);
     }
 
     /**
@@ -1276,7 +1276,7 @@ public final class WebSiteManagementClientImpl extends AzureServiceClient {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> validateMoveWithResponseAsync(String resourceGroupName, CsmMoveResourceEnvelope moveResourceEnvelope) {
-        return service.validateMove(this.getHost(), resourceGroupName, this.getSubscriptionId(), moveResourceEnvelope, this.getApiVersion());
+        return service.validateMove(this.getHost(), resourceGroupName, this.getSubscriptionId(), this.getApiVersion(), moveResourceEnvelope);
     }
 
     /**

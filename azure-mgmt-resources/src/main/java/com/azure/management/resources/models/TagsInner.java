@@ -65,31 +65,31 @@ public final class TagsInner {
         @Delete("/subscriptions/{subscriptionId}/tagNames/{tagName}/tagValues/{tagValue}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> deleteValue(@HostParam("$host") String host, @PathParam("tagName") String tagName, @PathParam("tagValue") String tagValue, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> deleteValue(@HostParam("$host") String host, @PathParam("tagName") String tagName, @PathParam("tagValue") String tagValue, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/tagNames/{tagName}/tagValues/{tagValue}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<TagValueInner>> createOrUpdateValue(@HostParam("$host") String host, @PathParam("tagName") String tagName, @PathParam("tagValue") String tagValue, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<TagValueInner>> createOrUpdateValue(@HostParam("$host") String host, @PathParam("tagName") String tagName, @PathParam("tagValue") String tagValue, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/tagNames/{tagName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<TagDetailsInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("tagName") String tagName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<TagDetailsInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("tagName") String tagName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/tagNames/{tagName}")
         @ExpectedResponses({200, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("tagName") String tagName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> delete(@HostParam("$host") String host, @PathParam("tagName") String tagName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/tagNames")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<TagsListResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<TagsListResultInner>> list(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -109,7 +109,7 @@ public final class TagsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> deleteValueWithResponseAsync(String tagName, String tagValue) {
-        return service.deleteValue(this.client.getHost(), tagName, tagValue, this.client.getSubscriptionId(), this.client.getApiVersion());
+        return service.deleteValue(this.client.getHost(), tagName, tagValue, this.client.getApiVersion(), this.client.getSubscriptionId());
     }
 
     /**
@@ -152,7 +152,7 @@ public final class TagsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<TagValueInner>> createOrUpdateValueWithResponseAsync(String tagName, String tagValue) {
-        return service.createOrUpdateValue(this.client.getHost(), tagName, tagValue, this.client.getSubscriptionId(), this.client.getApiVersion());
+        return service.createOrUpdateValue(this.client.getHost(), tagName, tagValue, this.client.getApiVersion(), this.client.getSubscriptionId());
     }
 
     /**
@@ -200,7 +200,7 @@ public final class TagsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<TagDetailsInner>> createOrUpdateWithResponseAsync(String tagName) {
-        return service.createOrUpdate(this.client.getHost(), tagName, this.client.getSubscriptionId(), this.client.getApiVersion());
+        return service.createOrUpdate(this.client.getHost(), tagName, this.client.getApiVersion(), this.client.getSubscriptionId());
     }
 
     /**
@@ -246,7 +246,7 @@ public final class TagsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> deleteWithResponseAsync(String tagName) {
-        return service.delete(this.client.getHost(), tagName, this.client.getSubscriptionId(), this.client.getApiVersion());
+        return service.delete(this.client.getHost(), tagName, this.client.getApiVersion(), this.client.getSubscriptionId());
     }
 
     /**
@@ -284,7 +284,7 @@ public final class TagsInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<TagDetailsInner>> listSinglePageAsync() {
-        return service.list(this.client.getHost(), this.client.getSubscriptionId(), this.client.getApiVersion()).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), this.client.getApiVersion(), this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),

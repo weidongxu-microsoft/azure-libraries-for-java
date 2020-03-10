@@ -61,13 +61,13 @@ public final class DataMaskingPoliciesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DataMaskingPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("dataMaskingPolicyName") String dataMaskingPolicyName, @BodyParam("application/json") DataMaskingPolicyInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DataMaskingPolicyInner>> createOrUpdate(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("dataMaskingPolicyName") String dataMaskingPolicyName, @BodyParam("application/json") DataMaskingPolicyInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DataMaskingPolicyInner>> get(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("dataMaskingPolicyName") String dataMaskingPolicyName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DataMaskingPolicyInner>> get(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("dataMaskingPolicyName") String dataMaskingPolicyName);
     }
 
     /**
@@ -83,9 +83,9 @@ public final class DataMaskingPoliciesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DataMaskingPolicyInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String serverName, String databaseName, DataMaskingPolicyInner parameters) {
-        final String dataMaskingPolicyName = "Default";
         final String apiVersion = "2014-04-01";
-        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, dataMaskingPolicyName, parameters, apiVersion);
+        final String dataMaskingPolicyName = "Default";
+        return service.createOrUpdate(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, dataMaskingPolicyName, parameters);
     }
 
     /**
@@ -139,9 +139,9 @@ public final class DataMaskingPoliciesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DataMaskingPolicyInner>> getWithResponseAsync(String resourceGroupName, String serverName, String databaseName) {
-        final String dataMaskingPolicyName = "Default";
         final String apiVersion = "2014-04-01";
-        return service.get(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, dataMaskingPolicyName, apiVersion);
+        final String dataMaskingPolicyName = "Default";
+        return service.get(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, dataMaskingPolicyName);
     }
 
     /**

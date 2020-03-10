@@ -122,7 +122,6 @@ public final class UsagesInner {
     @ServiceMethod(returns = ReturnType.COLLECTION)
     public PagedFlux<UsageInner> listByInstancePoolAsync(String resourceGroupName, String instancePoolName) {
         final Boolean expandChildren = null;
-        final String apiVersion = "2018-06-01-preview";
         return new PagedFlux<>(
             () -> listByInstancePoolSinglePageAsync(resourceGroupName, instancePoolName, expandChildren),
             nextLink -> listByInstancePoolNextSinglePageAsync(nextLink));
@@ -155,7 +154,6 @@ public final class UsagesInner {
     @ServiceMethod(returns = ReturnType.COLLECTION)
     public PagedIterable<UsageInner> listByInstancePool(String resourceGroupName, String instancePoolName) {
         final Boolean expandChildren = null;
-        final String apiVersion = "2018-06-01-preview";
         return new PagedIterable<>(listByInstancePoolAsync(resourceGroupName, instancePoolName, expandChildren));
     }
 

@@ -69,12 +69,12 @@ public final class StorageManagementClientImpl extends AzureServiceClient {
     }
 
     /**
-     * The API version to use for this operation.
+     * Api Version.
      */
     private String apiVersion;
 
     /**
-     * Gets The API version to use for this operation.
+     * Gets Api Version.
      * 
      * @return the apiVersion value.
      */
@@ -83,7 +83,7 @@ public final class StorageManagementClientImpl extends AzureServiceClient {
     }
 
     /**
-     * Sets The API version to use for this operation.
+     * Sets Api Version.
      * 
      * @param apiVersion the apiVersion value.
      * @return the service client itself.

@@ -63,7 +63,7 @@ public final class UsagesInner {
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<UsageListResultInner>> listByLocation(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("location") String location, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<UsageListResultInner>> listByLocation(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("location") String location);
     }
 
     /**
@@ -76,7 +76,7 @@ public final class UsagesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<UsageInner>> listByLocationSinglePageAsync(String location) {
-        return service.listByLocation(this.client.getHost(), this.client.getSubscriptionId(), location, this.client.getApiVersion()).map(res -> new PagedResponseBase<>(
+        return service.listByLocation(this.client.getHost(), this.client.getApiVersion(), this.client.getSubscriptionId(), location).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),

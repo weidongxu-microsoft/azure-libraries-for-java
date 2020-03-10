@@ -76,85 +76,85 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<PrivateLinkServiceInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("$expand") String expand, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PrivateLinkServiceInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @QueryParam("$expand") String expand);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PrivateLinkServiceInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PrivateLinkServiceInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<PrivateLinkServiceListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PrivateLinkServiceListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/privateLinkServices")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<PrivateLinkServiceListResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PrivateLinkServiceListResultInner>> list(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections/{peConnectionName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<PrivateEndpointConnectionInner>> updatePrivateEndpointConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @PathParam("peConnectionName") String peConnectionName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PrivateEndpointConnectionInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PrivateEndpointConnectionInner>> updatePrivateEndpointConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @PathParam("peConnectionName") String peConnectionName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PrivateEndpointConnectionInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections/{peConnectionName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> deletePrivateEndpointConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @PathParam("peConnectionName") String peConnectionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> deletePrivateEndpointConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @PathParam("peConnectionName") String peConnectionName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/checkPrivateLinkServiceVisibility")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<PrivateLinkServiceVisibilityInner>> checkPrivateLinkServiceVisibility(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CheckPrivateLinkServiceVisibilityRequest parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PrivateLinkServiceVisibilityInner>> checkPrivateLinkServiceVisibility(@HostParam("$host") String host, @PathParam("location") String location, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CheckPrivateLinkServiceVisibilityRequest parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Post("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/checkPrivateLinkServiceVisibility")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<PrivateLinkServiceVisibilityInner>> checkPrivateLinkServiceVisibilityByResourceGroup(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CheckPrivateLinkServiceVisibilityRequest parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PrivateLinkServiceVisibilityInner>> checkPrivateLinkServiceVisibilityByResourceGroup(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") CheckPrivateLinkServiceVisibilityRequest parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/autoApprovedPrivateLinkServices")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<AutoApprovedPrivateLinkServicesResultInner>> listAutoApprovedPrivateLinkServices(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<AutoApprovedPrivateLinkServicesResultInner>> listAutoApprovedPrivateLinkServices(@HostParam("$host") String host, @PathParam("location") String location, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/autoApprovedPrivateLinkServices")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<AutoApprovedPrivateLinkServicesResultInner>> listAutoApprovedPrivateLinkServicesByResourceGroup(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<AutoApprovedPrivateLinkServicesResultInner>> listAutoApprovedPrivateLinkServicesByResourceGroup(@HostParam("$host") String host, @PathParam("location") String location, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<SimpleResponse<PrivateLinkServiceInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PrivateLinkServiceInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<PrivateLinkServiceInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") PrivateLinkServiceInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections/{peConnectionName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(ErrorException.class)
-        Mono<Response<Void>> beginDeletePrivateEndpointConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @PathParam("peConnectionName") String peConnectionName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginDeletePrivateEndpointConnection(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serviceName") String serviceName, @PathParam("peConnectionName") String peConnectionName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -193,7 +193,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String serviceName) {
         final String apiVersion = "2019-06-01";
-        return service.delete(this.client.getHost(), resourceGroupName, serviceName, this.client.getSubscriptionId(), apiVersion);
+        return service.delete(this.client.getHost(), resourceGroupName, serviceName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -240,7 +240,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PrivateLinkServiceInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String serviceName, String expand) {
         final String apiVersion = "2019-06-01";
-        return service.getByResourceGroup(this.client.getHost(), resourceGroupName, serviceName, this.client.getSubscriptionId(), expand, apiVersion);
+        return service.getByResourceGroup(this.client.getHost(), resourceGroupName, serviceName, apiVersion, this.client.getSubscriptionId(), expand);
     }
 
     /**
@@ -277,7 +277,6 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PrivateLinkServiceInner> getByResourceGroupAsync(String resourceGroupName, String serviceName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
         return getByResourceGroupWithResponseAsync(resourceGroupName, serviceName, expand)
             .flatMap((SimpleResponse<PrivateLinkServiceInner> res) -> {
                 if (res.getValue() != null) {
@@ -315,7 +314,6 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     @ServiceMethod(returns = ReturnType.SINGLE)
     public PrivateLinkServiceInner getByResourceGroup(String resourceGroupName, String serviceName) {
         final String expand = null;
-        final String apiVersion = "2019-06-01";
         return getByResourceGroupAsync(resourceGroupName, serviceName, expand).block();
     }
 
@@ -332,7 +330,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String serviceName, PrivateLinkServiceInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serviceName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serviceName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -379,7 +377,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<PrivateLinkServiceInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
         final String apiVersion = "2019-06-01";
-        return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listByResourceGroup(this.client.getHost(), resourceGroupName, apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -425,7 +423,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<PrivateLinkServiceInner>> listSinglePageAsync() {
         final String apiVersion = "2019-06-01";
-        return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -472,7 +470,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PrivateEndpointConnectionInner>> updatePrivateEndpointConnectionWithResponseAsync(String resourceGroupName, String serviceName, String peConnectionName, PrivateEndpointConnectionInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.updatePrivateEndpointConnection(this.client.getHost(), resourceGroupName, serviceName, peConnectionName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.updatePrivateEndpointConnection(this.client.getHost(), resourceGroupName, serviceName, peConnectionName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -527,7 +525,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deletePrivateEndpointConnectionWithResponseAsync(String resourceGroupName, String serviceName, String peConnectionName) {
         final String apiVersion = "2019-06-01";
-        return service.deletePrivateEndpointConnection(this.client.getHost(), resourceGroupName, serviceName, peConnectionName, this.client.getSubscriptionId(), apiVersion);
+        return service.deletePrivateEndpointConnection(this.client.getHost(), resourceGroupName, serviceName, peConnectionName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -577,7 +575,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
         final String apiVersion = "2019-06-01";
         CheckPrivateLinkServiceVisibilityRequest parameters = new CheckPrivateLinkServiceVisibilityRequest();
         parameters.withPrivateLinkServiceAlias(privateLinkServiceAlias);
-        return service.checkPrivateLinkServiceVisibility(this.client.getHost(), location, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.checkPrivateLinkServiceVisibility(this.client.getHost(), location, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -630,7 +628,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
         final String apiVersion = "2019-06-01";
         CheckPrivateLinkServiceVisibilityRequest parameters = new CheckPrivateLinkServiceVisibilityRequest();
         parameters.withPrivateLinkServiceAlias(privateLinkServiceAlias);
-        return service.checkPrivateLinkServiceVisibilityByResourceGroup(this.client.getHost(), location, resourceGroupName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.checkPrivateLinkServiceVisibilityByResourceGroup(this.client.getHost(), location, resourceGroupName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -681,7 +679,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<AutoApprovedPrivateLinkServiceInner>> listAutoApprovedPrivateLinkServicesSinglePageAsync(String location) {
         final String apiVersion = "2019-06-01";
-        return service.listAutoApprovedPrivateLinkServices(this.client.getHost(), location, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listAutoApprovedPrivateLinkServices(this.client.getHost(), location, apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -730,7 +728,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<AutoApprovedPrivateLinkServiceInner>> listAutoApprovedPrivateLinkServicesByResourceGroupSinglePageAsync(String location, String resourceGroupName) {
         final String apiVersion = "2019-06-01";
-        return service.listAutoApprovedPrivateLinkServicesByResourceGroup(this.client.getHost(), location, resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listAutoApprovedPrivateLinkServicesByResourceGroup(this.client.getHost(), location, resourceGroupName, apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -781,7 +779,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String serviceName) {
         final String apiVersion = "2019-06-01";
-        return service.beginDelete(this.client.getHost(), resourceGroupName, serviceName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginDelete(this.client.getHost(), resourceGroupName, serviceName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -826,7 +824,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<PrivateLinkServiceInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String serviceName, PrivateLinkServiceInner parameters) {
         final String apiVersion = "2019-06-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serviceName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serviceName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -879,7 +877,7 @@ public final class PrivateLinkServicesInner implements InnerSupportsGet<PrivateL
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeletePrivateEndpointConnectionWithResponseAsync(String resourceGroupName, String serviceName, String peConnectionName) {
         final String apiVersion = "2019-06-01";
-        return service.beginDeletePrivateEndpointConnection(this.client.getHost(), resourceGroupName, serviceName, peConnectionName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginDeletePrivateEndpointConnection(this.client.getHost(), resourceGroupName, serviceName, peConnectionName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**

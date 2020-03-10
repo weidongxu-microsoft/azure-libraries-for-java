@@ -1372,7 +1372,7 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/CheckDnsNameAvailability")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<DnsNameAvailabilityResultInner>> checkDnsNameAvailability(@HostParam("$host") String host, @PathParam("location") String location, @QueryParam("domainNameLabel") String domainNameLabel, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<DnsNameAvailabilityResultInner>> checkDnsNameAvailability(@HostParam("$host") String host, @PathParam("location") String location, @QueryParam("domainNameLabel") String domainNameLabel, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/supportedSecurityProviders")
@@ -1393,7 +1393,7 @@ public final class NetworkManagementClientImpl extends AzureServiceClient {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<DnsNameAvailabilityResultInner>> checkDnsNameAvailabilityWithResponseAsync(String location, String domainNameLabel) {
         final String apiVersion = "2019-06-01";
-        return service.checkDnsNameAvailability(this.getHost(), location, domainNameLabel, this.getSubscriptionId(), apiVersion);
+        return service.checkDnsNameAvailability(this.getHost(), location, domainNameLabel, apiVersion, this.getSubscriptionId());
     }
 
     /**

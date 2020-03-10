@@ -200,7 +200,6 @@ public final class JobExecutionsInner {
         final Boolean isActive = null;
         final Integer skip = null;
         final Integer top = null;
-        final String apiVersion = "2017-03-01-preview";
         return new PagedFlux<>(
             () -> listByAgentSinglePageAsync(resourceGroupName, serverName, jobAgentName, createTimeMin, createTimeMax, endTimeMin, endTimeMax, isActive, skip, top),
             nextLink -> listByAgentNextSinglePageAsync(nextLink));
@@ -247,7 +246,6 @@ public final class JobExecutionsInner {
         final Boolean isActive = null;
         final Integer skip = null;
         final Integer top = null;
-        final String apiVersion = "2017-03-01-preview";
         return new PagedIterable<>(listByAgentAsync(resourceGroupName, serverName, jobAgentName, createTimeMin, createTimeMax, endTimeMin, endTimeMax, isActive, skip, top));
     }
 
@@ -431,7 +429,6 @@ public final class JobExecutionsInner {
         final Boolean isActive = null;
         final Integer skip = null;
         final Integer top = null;
-        final String apiVersion = "2017-03-01-preview";
         return new PagedFlux<>(
             () -> listByJobSinglePageAsync(resourceGroupName, serverName, jobAgentName, jobName, createTimeMin, createTimeMax, endTimeMin, endTimeMax, isActive, skip, top),
             nextLink -> listByJobNextSinglePageAsync(nextLink));
@@ -480,7 +477,6 @@ public final class JobExecutionsInner {
         final Boolean isActive = null;
         final Integer skip = null;
         final Integer top = null;
-        final String apiVersion = "2017-03-01-preview";
         return new PagedIterable<>(listByJobAsync(resourceGroupName, serverName, jobAgentName, jobName, createTimeMin, createTimeMax, endTimeMin, endTimeMax, isActive, skip, top));
     }
 

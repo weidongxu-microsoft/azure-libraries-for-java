@@ -76,7 +76,7 @@ public final class WorkloadClassifiersInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("workloadGroupName") String workloadGroupName, @PathParam("workloadClassifierName") String workloadClassifierName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") WorkloadClassifierInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("workloadGroupName") String workloadGroupName, @PathParam("workloadClassifierName") String workloadClassifierName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") WorkloadClassifierInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}")
@@ -94,7 +94,7 @@ public final class WorkloadClassifiersInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<WorkloadClassifierInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("workloadGroupName") String workloadGroupName, @PathParam("workloadClassifierName") String workloadClassifierName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") WorkloadClassifierInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<WorkloadClassifierInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("workloadGroupName") String workloadGroupName, @PathParam("workloadClassifierName") String workloadClassifierName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") WorkloadClassifierInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}")
@@ -184,7 +184,7 @@ public final class WorkloadClassifiersInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String serverName, String databaseName, String workloadGroupName, String workloadClassifierName, WorkloadClassifierInner parameters) {
         final String apiVersion = "2019-06-01-preview";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, workloadGroupName, workloadClassifierName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, workloadGroupName, workloadClassifierName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -354,7 +354,7 @@ public final class WorkloadClassifiersInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<WorkloadClassifierInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String serverName, String databaseName, String workloadGroupName, String workloadClassifierName, WorkloadClassifierInner parameters) {
         final String apiVersion = "2019-06-01-preview";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, workloadGroupName, workloadClassifierName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, serverName, databaseName, workloadGroupName, workloadClassifierName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**

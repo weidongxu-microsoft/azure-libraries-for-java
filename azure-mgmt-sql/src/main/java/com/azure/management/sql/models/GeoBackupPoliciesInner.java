@@ -66,19 +66,19 @@ public final class GeoBackupPoliciesInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/geoBackupPolicies/{geoBackupPolicyName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<GeoBackupPolicyInner>> createOrUpdate(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("geoBackupPolicyName") String geoBackupPolicyName, @BodyParam("application/json") GeoBackupPolicyInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<GeoBackupPolicyInner>> createOrUpdate(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("geoBackupPolicyName") String geoBackupPolicyName, @BodyParam("application/json") GeoBackupPolicyInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/geoBackupPolicies/{geoBackupPolicyName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<GeoBackupPolicyInner>> get(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("geoBackupPolicyName") String geoBackupPolicyName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<GeoBackupPolicyInner>> get(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @PathParam("geoBackupPolicyName") String geoBackupPolicyName);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/geoBackupPolicies")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<GeoBackupPolicyListResultInner>> listByDatabase(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<GeoBackupPolicyListResultInner>> listByDatabase(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("databaseName") String databaseName);
     }
 
     /**
@@ -94,11 +94,11 @@ public final class GeoBackupPoliciesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<GeoBackupPolicyInner>> createOrUpdateWithResponseAsync(String resourceGroupName, String serverName, String databaseName, GeoBackupPolicyState state) {
-        final String geoBackupPolicyName = "Default";
         final String apiVersion = "2014-04-01";
+        final String geoBackupPolicyName = "Default";
         GeoBackupPolicyInner parameters = new GeoBackupPolicyInner();
         parameters.withState(state);
-        return service.createOrUpdate(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, geoBackupPolicyName, parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, geoBackupPolicyName, parameters);
     }
 
     /**
@@ -152,9 +152,9 @@ public final class GeoBackupPoliciesInner {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<GeoBackupPolicyInner>> getWithResponseAsync(String resourceGroupName, String serverName, String databaseName) {
-        final String geoBackupPolicyName = "Default";
         final String apiVersion = "2014-04-01";
-        return service.get(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, geoBackupPolicyName, apiVersion);
+        final String geoBackupPolicyName = "Default";
+        return service.get(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, geoBackupPolicyName);
     }
 
     /**
@@ -207,7 +207,7 @@ public final class GeoBackupPoliciesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<GeoBackupPolicyInner>> listByDatabaseSinglePageAsync(String resourceGroupName, String serverName, String databaseName) {
         final String apiVersion = "2014-04-01";
-        return service.listByDatabase(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName, apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listByDatabase(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, databaseName).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),

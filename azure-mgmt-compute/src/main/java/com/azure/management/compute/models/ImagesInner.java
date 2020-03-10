@@ -75,55 +75,55 @@ public final class ImagesInner implements InnerSupportsGet<ImageInner>, InnerSup
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("imageName") String imageName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ImageInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("imageName") String imageName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ImageInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("imageName") String imageName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ImageUpdate parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> update(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("imageName") String imageName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ImageUpdate parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("imageName") String imageName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> delete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("imageName") String imageName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ImageInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("imageName") String imageName, @QueryParam("$expand") String expand, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ImageInner>> getByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("imageName") String imageName, @QueryParam("$expand") String expand, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ImageListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ImageListResultInner>> listByResourceGroup(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("/subscriptions/{subscriptionId}/providers/Microsoft.Compute/images")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ImageListResultInner>> list(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ImageListResultInner>> list(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ImageInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("imageName") String imageName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ImageInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ImageInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("imageName") String imageName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ImageInner parameters);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Patch("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}")
         @ExpectedResponses({200, 201})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ImageInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("imageName") String imageName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ImageUpdate parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ImageInner>> beginUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("imageName") String imageName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ImageUpdate parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}")
         @ExpectedResponses({200, 202, 204})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("imageName") String imageName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion);
+        Mono<Response<Void>> beginDelete(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("imageName") String imageName, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId);
 
         @Headers({ "Accept: application/json", "Content-Type: application/json" })
         @Get("{nextLink}")
@@ -151,7 +151,7 @@ public final class ImagesInner implements InnerSupportsGet<ImageInner>, InnerSup
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String imageName, ImageInner parameters) {
         final String apiVersion = "2019-03-01";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, imageName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, imageName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -200,7 +200,7 @@ public final class ImagesInner implements InnerSupportsGet<ImageInner>, InnerSup
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> updateWithResponseAsync(String resourceGroupName, String imageName, ImageUpdate parameters) {
         final String apiVersion = "2019-03-01";
-        return service.update(this.client.getHost(), resourceGroupName, imageName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.update(this.client.getHost(), resourceGroupName, imageName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -248,7 +248,7 @@ public final class ImagesInner implements InnerSupportsGet<ImageInner>, InnerSup
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> deleteWithResponseAsync(String resourceGroupName, String imageName) {
         final String apiVersion = "2019-03-01";
-        return service.delete(this.client.getHost(), resourceGroupName, imageName, this.client.getSubscriptionId(), apiVersion);
+        return service.delete(this.client.getHost(), resourceGroupName, imageName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -295,7 +295,7 @@ public final class ImagesInner implements InnerSupportsGet<ImageInner>, InnerSup
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ImageInner>> getByResourceGroupWithResponseAsync(String resourceGroupName, String imageName, String expand) {
         final String apiVersion = "2019-03-01";
-        return service.getByResourceGroup(this.client.getHost(), resourceGroupName, imageName, expand, this.client.getSubscriptionId(), apiVersion);
+        return service.getByResourceGroup(this.client.getHost(), resourceGroupName, imageName, expand, apiVersion, this.client.getSubscriptionId());
     }
 
     /**
@@ -332,7 +332,6 @@ public final class ImagesInner implements InnerSupportsGet<ImageInner>, InnerSup
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<ImageInner> getByResourceGroupAsync(String resourceGroupName, String imageName) {
         final String expand = null;
-        final String apiVersion = "2019-03-01";
         return getByResourceGroupWithResponseAsync(resourceGroupName, imageName, expand)
             .flatMap((SimpleResponse<ImageInner> res) -> {
                 if (res.getValue() != null) {
@@ -370,7 +369,6 @@ public final class ImagesInner implements InnerSupportsGet<ImageInner>, InnerSup
     @ServiceMethod(returns = ReturnType.SINGLE)
     public ImageInner getByResourceGroup(String resourceGroupName, String imageName) {
         final String expand = null;
-        final String apiVersion = "2019-03-01";
         return getByResourceGroupAsync(resourceGroupName, imageName, expand).block();
     }
 
@@ -385,7 +383,7 @@ public final class ImagesInner implements InnerSupportsGet<ImageInner>, InnerSup
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ImageInner>> listByResourceGroupSinglePageAsync(String resourceGroupName) {
         final String apiVersion = "2019-03-01";
-        return service.listByResourceGroup(this.client.getHost(), resourceGroupName, this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listByResourceGroup(this.client.getHost(), resourceGroupName, apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -431,7 +429,7 @@ public final class ImagesInner implements InnerSupportsGet<ImageInner>, InnerSup
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ImageInner>> listSinglePageAsync() {
         final String apiVersion = "2019-03-01";
-        return service.list(this.client.getHost(), this.client.getSubscriptionId(), apiVersion).map(res -> new PagedResponseBase<>(
+        return service.list(this.client.getHost(), apiVersion, this.client.getSubscriptionId()).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
@@ -477,7 +475,7 @@ public final class ImagesInner implements InnerSupportsGet<ImageInner>, InnerSup
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ImageInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String imageName, ImageInner parameters) {
         final String apiVersion = "2019-03-01";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, imageName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, imageName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -530,7 +528,7 @@ public final class ImagesInner implements InnerSupportsGet<ImageInner>, InnerSup
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ImageInner>> beginUpdateWithResponseAsync(String resourceGroupName, String imageName, ImageUpdate parameters) {
         final String apiVersion = "2019-03-01";
-        return service.beginUpdate(this.client.getHost(), resourceGroupName, imageName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginUpdate(this.client.getHost(), resourceGroupName, imageName, apiVersion, this.client.getSubscriptionId(), parameters);
     }
 
     /**
@@ -582,7 +580,7 @@ public final class ImagesInner implements InnerSupportsGet<ImageInner>, InnerSup
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<Response<Void>> beginDeleteWithResponseAsync(String resourceGroupName, String imageName) {
         final String apiVersion = "2019-03-01";
-        return service.beginDelete(this.client.getHost(), resourceGroupName, imageName, this.client.getSubscriptionId(), apiVersion);
+        return service.beginDelete(this.client.getHost(), resourceGroupName, imageName, apiVersion, this.client.getSubscriptionId());
     }
 
     /**

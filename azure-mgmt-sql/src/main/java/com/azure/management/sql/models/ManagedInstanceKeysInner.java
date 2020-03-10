@@ -82,7 +82,7 @@ public final class ManagedInstanceKeysInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/keys/{keyName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("keyName") String keyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ManagedInstanceKeyInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("keyName") String keyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ManagedInstanceKeyInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/keys/{keyName}")
@@ -94,7 +94,7 @@ public final class ManagedInstanceKeysInner {
         @Put("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/keys/{keyName}")
         @ExpectedResponses({200, 201, 202})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ManagedInstanceKeyInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("keyName") String keyName, @PathParam("subscriptionId") String subscriptionId, @BodyParam("application/json") ManagedInstanceKeyInner parameters, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ManagedInstanceKeyInner>> beginCreateOrUpdate(@HostParam("$host") String host, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("managedInstanceName") String managedInstanceName, @PathParam("keyName") String keyName, @PathParam("subscriptionId") String subscriptionId, @QueryParam("api-version") String apiVersion, @BodyParam("application/json") ManagedInstanceKeyInner parameters);
 
         @Headers({ "Accept: application/json;q=0.9", "Content-Type: application/json" })
         @Delete("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/keys/{keyName}")
@@ -160,7 +160,6 @@ public final class ManagedInstanceKeysInner {
     @ServiceMethod(returns = ReturnType.COLLECTION)
     public PagedFlux<ManagedInstanceKeyInner> listByInstanceAsync(String resourceGroupName, String managedInstanceName) {
         final String filter = null;
-        final String apiVersion = "2017-10-01-preview";
         return new PagedFlux<>(
             () -> listByInstanceSinglePageAsync(resourceGroupName, managedInstanceName, filter),
             nextLink -> listByInstanceNextSinglePageAsync(nextLink));
@@ -193,7 +192,6 @@ public final class ManagedInstanceKeysInner {
     @ServiceMethod(returns = ReturnType.COLLECTION)
     public PagedIterable<ManagedInstanceKeyInner> listByInstance(String resourceGroupName, String managedInstanceName) {
         final String filter = null;
-        final String apiVersion = "2017-10-01-preview";
         return new PagedIterable<>(listByInstanceAsync(resourceGroupName, managedInstanceName, filter));
     }
 
@@ -264,7 +262,7 @@ public final class ManagedInstanceKeysInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<Flux<ByteBuffer>>> createOrUpdateWithResponseAsync(String resourceGroupName, String managedInstanceName, String keyName, ManagedInstanceKeyInner parameters) {
         final String apiVersion = "2017-10-01-preview";
-        return service.createOrUpdate(this.client.getHost(), resourceGroupName, managedInstanceName, keyName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.createOrUpdate(this.client.getHost(), resourceGroupName, managedInstanceName, keyName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**
@@ -365,7 +363,7 @@ public final class ManagedInstanceKeysInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<SimpleResponse<ManagedInstanceKeyInner>> beginCreateOrUpdateWithResponseAsync(String resourceGroupName, String managedInstanceName, String keyName, ManagedInstanceKeyInner parameters) {
         final String apiVersion = "2017-10-01-preview";
-        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, managedInstanceName, keyName, this.client.getSubscriptionId(), parameters, apiVersion);
+        return service.beginCreateOrUpdate(this.client.getHost(), resourceGroupName, managedInstanceName, keyName, this.client.getSubscriptionId(), apiVersion, parameters);
     }
 
     /**

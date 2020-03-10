@@ -63,7 +63,7 @@ public final class ElasticPoolActivitiesInner {
         @Get("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/elasticPoolActivity")
         @ExpectedResponses({200})
         @UnexpectedResponseExceptionType(CloudException.class)
-        Mono<SimpleResponse<ElasticPoolActivityListResultInner>> listByElasticPool(@HostParam("$host") String host, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("elasticPoolName") String elasticPoolName, @QueryParam("api-version") String apiVersion);
+        Mono<SimpleResponse<ElasticPoolActivityListResultInner>> listByElasticPool(@HostParam("$host") String host, @QueryParam("api-version") String apiVersion, @PathParam("subscriptionId") String subscriptionId, @PathParam("resourceGroupName") String resourceGroupName, @PathParam("serverName") String serverName, @PathParam("elasticPoolName") String elasticPoolName);
     }
 
     /**
@@ -79,7 +79,7 @@ public final class ElasticPoolActivitiesInner {
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Mono<PagedResponse<ElasticPoolActivityInner>> listByElasticPoolSinglePageAsync(String resourceGroupName, String serverName, String elasticPoolName) {
         final String apiVersion = "2014-04-01";
-        return service.listByElasticPool(this.client.getHost(), this.client.getSubscriptionId(), resourceGroupName, serverName, elasticPoolName, apiVersion).map(res -> new PagedResponseBase<>(
+        return service.listByElasticPool(this.client.getHost(), apiVersion, this.client.getSubscriptionId(), resourceGroupName, serverName, elasticPoolName).map(res -> new PagedResponseBase<>(
             res.getRequest(),
             res.getStatusCode(),
             res.getHeaders(),
